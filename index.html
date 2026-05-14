@@ -2869,6 +2869,530 @@
       .example-card{border-radius:16px;}
     }
 
+  
+
+    /* ===== MOBILE / TABLET REDESIGN OVERRIDES — desktop >=1025px untouched ===== */
+    .hero-title-mobile-main,
+    .hero-title-mobile-meta,
+    .hero-title-mobile-time{
+      display:none;
+    }
+
+    @media (max-width:1024px){
+      html,
+      body{
+        max-width:100%;
+        overflow-x:hidden !important;
+      }
+
+      *,
+      *::before,
+      *::after{
+        box-sizing:border-box;
+      }
+
+      img,
+      video{
+        max-width:100%;
+      }
+
+      .process-grid > *:last-child:nth-child(odd),
+      .benefits-grid > *:last-child:nth-child(odd),
+      .options-flow > *:last-child:nth-child(odd),
+      .services-grid > *:last-child:nth-child(odd),
+      .fit-grid > *:last-child:nth-child(odd),
+      .workflow-grid > *:last-child:nth-child(odd),
+      .possibilities-grid > *:last-child:nth-child(odd),
+      .audience-grid > *:last-child:nth-child(odd),
+      .cards-grid > *:last-child:nth-child(odd){
+        grid-column:1 / -1 !important;
+      }
+    }
+
+    @media (min-width:769px) and (max-width:1024px){
+      .hero{
+        padding:0 0 76px !important;
+      }
+
+      .hero-card{
+        min-height:82svh !important;
+        height:auto !important;
+        display:flex !important;
+        align-items:flex-end !important;
+        overflow:hidden !important;
+      }
+
+      .hero-image,
+      .hero-image img,
+      .hero-bg,
+      .hero img,
+      .hero-background,
+      .hero-background img{
+        height:100% !important;
+        object-fit:cover !important;
+        object-position:center center !important;
+      }
+
+      .hero-content{
+        min-height:82svh !important;
+        align-items:flex-end !important;
+        padding:150px 48px 64px !important;
+        width:100% !important;
+      }
+
+      .hero-content .container{
+        width:100% !important;
+      }
+
+      .hero-copy{
+        max-width:760px !important;
+        padding:0 !important;
+        gap:16px !important;
+      }
+
+      .hero-title-main{
+        font-size:clamp(72px,10vw,108px) !important;
+        line-height:.88 !important;
+        max-width:760px !important;
+      }
+
+      .hero-title-meta{
+        font-size:clamp(42px,6vw,62px) !important;
+        line-height:.9 !important;
+      }
+
+      .hero-subtitle{
+        max-width:620px !important;
+        font-size:26px !important;
+        line-height:1.4 !important;
+      }
+
+      .hero-kicker{
+        max-width:680px !important;
+        font-size:24px !important;
+      }
+
+      .process-grid,
+      .benefits-grid,
+      .services-grid,
+      .fit-grid,
+      .cards-grid{
+        display:grid !important;
+        grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+        gap:16px !important;
+      }
+
+      .options-flow{
+        display:grid !important;
+        grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+        gap:16px !important;
+      }
+
+      .option-chip.wide,
+      .option-chip.mid,
+      .option-chip.narrow{
+        max-width:none !important;
+        flex:none !important;
+      }
+    }
+
+    @media (max-width:768px){
+      .site-header{
+        height:auto !important;
+        min-height:0 !important;
+      }
+
+      .site-header .inner,
+      .header{
+        display:grid !important;
+        grid-template-columns:1fr !important;
+        gap:10px !important;
+        align-items:center !important;
+        padding:14px 16px !important;
+      }
+
+      .brand,
+      .header-logo{
+        max-width:180px !important;
+        overflow:hidden !important;
+        justify-self:center !important;
+        text-align:center !important;
+      }
+
+      .brand-title{
+        font-size:15px !important;
+        letter-spacing:.18em !important;
+        white-space:nowrap !important;
+      }
+
+      .brand-subtitle{
+        font-size:9px !important;
+        letter-spacing:.18em !important;
+        white-space:nowrap !important;
+      }
+
+      .header-actions{
+        display:grid !important;
+        grid-template-columns:auto 1fr !important;
+        gap:10px !important;
+        align-items:center !important;
+        width:100% !important;
+      }
+
+      .lang-switch,
+      .language-switcher{
+        flex-shrink:0 !important;
+        justify-self:start !important;
+      }
+
+      .site-header .btn,
+      .header .btn,
+      .header-cta{
+        width:100% !important;
+        min-width:0 !important;
+        padding:14px 16px !important;
+        font-size:12px !important;
+        letter-spacing:.14em !important;
+        white-space:nowrap !important;
+      }
+
+      .hero{
+        padding:0 0 54px !important;
+      }
+
+      .hero-card{
+        min-height:100svh !important;
+        height:auto !important;
+        display:flex !important;
+        align-items:flex-end !important;
+        overflow:hidden !important;
+        border-radius:0 0 24px 24px !important;
+      }
+
+      .hero-image,
+      .hero-image img,
+      .hero-bg,
+      .hero-bg img,
+      .hero-background,
+      .hero-background img,
+      .hero img{
+        position:absolute !important;
+        inset:0 !important;
+        width:100% !important;
+        height:100% !important;
+        object-fit:cover !important;
+        object-position:50% 35% !important;
+      }
+
+      .hero-image img{
+        animation:none !important;
+        transform:none !important;
+      }
+
+      .hero-overlay{
+        background:linear-gradient(to bottom, rgba(0,0,0,.08) 0%, rgba(0,0,0,.18) 38%, rgba(0,0,0,.50) 100%) !important;
+      }
+
+      .hero-card::after{
+        content:"";
+        position:absolute;
+        inset:0;
+        z-index:1;
+        background:linear-gradient(to bottom, rgba(0,0,0,.08) 0%, rgba(0,0,0,.18) 38%, rgba(0,0,0,.50) 100%);
+        pointer-events:none;
+      }
+
+      .hero-content{
+        position:relative !important;
+        z-index:2 !important;
+        width:100% !important;
+        max-width:100% !important;
+        min-height:100svh !important;
+        display:flex !important;
+        align-items:flex-end !important;
+        padding:132px 20px 44px !important;
+      }
+
+      .hero-content .container{
+        width:100% !important;
+      }
+
+      .hero-copy{
+        max-width:100% !important;
+        padding:0 !important;
+        display:grid !important;
+        gap:14px !important;
+      }
+
+      .hero-badge{
+        width:fit-content !important;
+        max-width:100% !important;
+        font-size:11px !important;
+        line-height:1 !important;
+        letter-spacing:.18em !important;
+        padding:12px 18px !important;
+        white-space:nowrap !important;
+      }
+
+      .hero-title{
+        max-width:100% !important;
+        display:grid !important;
+        gap:4px !important;
+        line-height:.88 !important;
+        letter-spacing:-.04em !important;
+        text-wrap:balance;
+      }
+
+      .hero-title-main,
+      .hero-title-meta{
+        display:none !important;
+      }
+
+      .hero-title-mobile-main,
+      .hero-title-mobile-meta,
+      .hero-title-mobile-time{
+        display:block !important;
+        font-family:"Cormorant Garamond", Georgia, serif !important;
+        text-transform:uppercase !important;
+        color:#fff !important;
+        text-shadow:0 16px 30px rgba(0,0,0,.22) !important;
+      }
+
+      .hero-title-mobile-main,
+      .hero-title-mobile-meta{
+        font-size:clamp(46px,14vw,64px) !important;
+        line-height:.88 !important;
+        letter-spacing:-.04em !important;
+        font-weight:600 !important;
+      }
+
+      .hero-title-mobile-time{
+        margin-top:3px !important;
+        font-size:clamp(28px,8vw,42px) !important;
+        line-height:1 !important;
+        letter-spacing:-.03em !important;
+        font-weight:500 !important;
+      }
+
+      .hero-subtitle,
+      .hero-text{
+        max-width:94% !important;
+        font-size:clamp(17px,4.4vw,22px) !important;
+        line-height:1.38 !important;
+      }
+
+      .hero-kicker,
+      .hero-italic,
+      .hero-micro{
+        display:none !important;
+      }
+
+      .hero-actions{
+        display:grid !important;
+        grid-template-columns:1fr !important;
+        gap:12px !important;
+        margin-top:8px !important;
+      }
+
+      .hero-actions .btn{
+        width:100% !important;
+        min-height:58px !important;
+        justify-content:center !important;
+        font-size:13px !important;
+        letter-spacing:.16em !important;
+        white-space:nowrap !important;
+      }
+
+      .process-grid,
+      .benefits-grid,
+      .services-grid,
+      .fit-grid,
+      .workflow-grid,
+      .possibilities-grid,
+      .audience-grid,
+      .cards-grid{
+        display:grid !important;
+        grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+        gap:12px !important;
+        align-items:stretch !important;
+      }
+
+      .options-flow{
+        display:grid !important;
+        grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+        gap:12px !important;
+        align-items:stretch !important;
+      }
+
+      .process-card,
+      .benefit-card,
+      .option-chip,
+      .service-card,
+      .fit-card,
+      .workflow-card,
+      .possibility-card,
+      .audience-card,
+      .card{
+        width:auto !important;
+        min-width:0 !important;
+        max-width:none !important;
+        min-height:auto !important;
+        padding:18px 14px !important;
+        border-radius:22px !important;
+        gap:10px !important;
+      }
+
+      .option-chip.wide,
+      .option-chip.mid,
+      .option-chip.narrow{
+        flex:none !important;
+        max-width:none !important;
+      }
+
+      .process-card h3,
+      .benefit-card h3,
+      .option-chip h3,
+      .service-card h3,
+      .fit-card h3,
+      .workflow-card h3,
+      .possibility-card h3,
+      .audience-card h3,
+      .card h3{
+        font-size:clamp(18px,5vw,24px) !important;
+        line-height:1.05 !important;
+        letter-spacing:.04em !important;
+      }
+
+      .benefit-main{
+        margin-top:10px !important;
+        font-size:clamp(24px,7vw,32px) !important;
+        line-height:.9 !important;
+        letter-spacing:-.035em !important;
+      }
+
+      .process-card p,
+      .benefit-card p,
+      .benefit-note,
+      .option-chip p,
+      .service-card p,
+      .fit-card p,
+      .workflow-card p,
+      .possibility-card p,
+      .audience-card p,
+      .card p{
+        font-size:clamp(13px,3.6vw,16px) !important;
+        line-height:1.35 !important;
+      }
+
+      .process-step,
+      .benefit-label,
+      .fit-kicker{
+        font-size:10px !important;
+        letter-spacing:.14em !important;
+      }
+
+      .process-visual,
+      .service-visual,
+      .fit-visual{
+        aspect-ratio:4/3 !important;
+        max-height:180px !important;
+      }
+
+      .process-card img,
+      .service-card img,
+      .fit-card img,
+      .card img{
+        max-height:180px !important;
+        object-fit:cover !important;
+      }
+
+      .cases-layout{
+        display:grid !important;
+        grid-template-columns:1fr !important;
+        gap:18px !important;
+      }
+
+      .cases-left .example-card,
+      .case-before img{
+        aspect-ratio:4 / 3 !important;
+        height:auto !important;
+        min-height:0 !important;
+        object-fit:cover !important;
+        object-position:center !important;
+      }
+
+      .cases-right-grid,
+      .case-options{
+        display:grid !important;
+        grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+        gap:10px !important;
+      }
+
+      .cases-right-grid .example-card,
+      .case-options img{
+        aspect-ratio:3 / 4 !important;
+        object-fit:cover !important;
+      }
+
+      .variant-style-label,
+      .case-option-title,
+      .case-label,
+      .example-block-label{
+        font-size:11px !important;
+        letter-spacing:.14em !important;
+      }
+
+      .category-tab,
+      .case-tab{
+        padding:12px 18px !important;
+        font-size:13px !important;
+        letter-spacing:.16em !important;
+        min-width:auto !important;
+      }
+    }
+
+    @media (max-width:430px){
+      .process-grid,
+      .benefits-grid,
+      .services-grid,
+      .fit-grid,
+      .workflow-grid,
+      .possibilities-grid,
+      .audience-grid,
+      .cards-grid,
+      .options-flow{
+        grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+        gap:10px !important;
+      }
+
+      .process-card,
+      .benefit-card,
+      .option-chip,
+      .service-card,
+      .fit-card,
+      .workflow-card,
+      .possibility-card,
+      .audience-card,
+      .card{
+        padding:16px 12px !important;
+        border-radius:20px !important;
+      }
+
+      .hero-content{
+        padding:124px 18px 38px !important;
+      }
+
+      .hero-badge{
+        font-size:10px !important;
+        padding:11px 14px !important;
+      }
+
+      .hero-actions .btn{
+        font-size:12px !important;
+        letter-spacing:.13em !important;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -3119,7 +3643,10 @@
           badge: "Новый формат дизайна",
           titleMain: "50 вариантов вашего интерьера",
           titleMeta: "за 48 часов",
-          subtitle: "Первый формат дизайна, где вы выбираете из десятков решений, а не адаптируетесь под один вариант.",
+          titleMobileMain: "50 вариантов",
+          titleMobileMeta: "вашего интерьера",
+          titleMobileTime: "за 48 часов",
+          subtitle: "Вы выбираете из десятков решений, а не адаптируетесь под один вариант.",
           kicker: "Вы сразу видите потенциал пространства — без месяцев ожидания и бесконечных правок.",
           micro: "Интерьеры • Архитектура • Коммерческие пространства",
           primary: "Получить 50 вариантов",
@@ -3512,6 +4039,9 @@
                     <h1 class="hero-title hero-reveal hero-reveal-delay-2">
                       <span class="hero-title-main">${escapeHtml(t.hero.titleMain)}</span>
                       <span class="hero-title-meta">${escapeHtml(t.hero.titleMeta)}</span>
+                      <span class="hero-title-mobile-main">${escapeHtml(t.hero.titleMobileMain || t.hero.titleMain)}</span>
+                      <span class="hero-title-mobile-meta">${escapeHtml(t.hero.titleMobileMeta || "")}</span>
+                      <span class="hero-title-mobile-time">${escapeHtml(t.hero.titleMobileTime || t.hero.titleMeta)}</span>
                     </h1>
                     <p class="hero-subtitle hero-reveal hero-reveal-delay-3">${escapeHtml(t.hero.subtitle)}</p>
                     <p class="hero-kicker hero-reveal hero-reveal-delay-4">${escapeHtml(t.hero.kicker)}</p>
