@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Политика конфиденциальности — LAV Design</title>
+  <meta name="description" content="Политика конфиденциальности LAV Design: обработка персональных данных, cookies, аналитика и права пользователей.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://lavinteriors.pro/privacy.html">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #f4f0e9;
+      --bg-soft: #faf8f4;
+      --text: #27231f;
+      --muted: #7a7067;
+      --line: rgba(39, 35, 31, 0.12);
+      --card: rgba(255, 252, 247, 0.78);
+      --card-solid: #fffaf3;
+      --accent: #9b7b55;
+      --accent-dark: #5f4a32;
+      --shadow: 0 24px 70px rgba(52, 43, 35, 0.10);
+      --radius-lg: 28px;
+      --radius-md: 20px;
+      --max: 1160px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Manrope", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(255,255,255,0.9), transparent 34%),
+        linear-gradient(135deg, #f7f3ec 0%, #efe8dc 48%, #f8f5ef 100%);
+      line-height: 1.72;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      min-height: 100vh;
+    }
+
+    .container {
+      width: min(var(--max), calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .site-header {
+      padding: 24px 0;
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(18px);
+      background: rgba(244, 240, 233, 0.72);
+      position: sticky;
+      top: 0;
+      z-index: 20;
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 22px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      min-width: 0;
+    }
+
+    .brand-title {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 32px;
+      line-height: 0.95;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .brand-subtitle {
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 12px 20px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255,255,255,0.45);
+      box-shadow: 0 12px 30px rgba(52,43,35,0.06);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      transition: 0.25s ease;
+      white-space: nowrap;
+    }
+
+    .back-link:hover {
+      transform: translateY(-1px);
+      border-color: rgba(155,123,85,0.42);
+      background: rgba(255,255,255,0.72);
+    }
+
+    .hero {
+      padding: 76px 0 44px;
+    }
+
+    .eyebrow {
+      font-size: 12px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent-dark);
+      font-weight: 700;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      margin: 0;
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(46px, 7vw, 92px);
+      line-height: 0.92;
+      letter-spacing: 0.035em;
+      text-transform: uppercase;
+      font-weight: 500;
+      max-width: 980px;
+    }
+
+    .hero-text {
+      max-width: 690px;
+      margin-top: 24px;
+      font-size: 18px;
+      color: var(--muted);
+    }
+
+    .updated {
+      display: inline-flex;
+      margin-top: 26px;
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.48);
+      border: 1px solid var(--line);
+      color: var(--accent-dark);
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .document-wrap {
+      padding: 18px 0 86px;
+    }
+
+    .document-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+      padding: clamp(26px, 5vw, 62px);
+      backdrop-filter: blur(20px);
+    }
+
+    .notice {
+      padding: 22px 24px;
+      border-radius: var(--radius-md);
+      background: rgba(155, 123, 85, 0.08);
+      border: 1px solid rgba(155, 123, 85, 0.18);
+      color: #564838;
+      margin-bottom: 38px;
+      font-size: 15px;
+    }
+
+    section.policy-section {
+      padding: 30px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    section.policy-section:first-of-type {
+      border-top: none;
+      padding-top: 0;
+    }
+
+    h2 {
+      margin: 0 0 16px;
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(27px, 3.3vw, 42px);
+      line-height: 1.05;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    p {
+      margin: 0 0 14px;
+      color: var(--muted);
+      font-size: 15.5px;
+    }
+
+    ul {
+      margin: 12px 0 0;
+      padding-left: 20px;
+      color: var(--muted);
+      font-size: 15.5px;
+    }
+
+    li {
+      margin: 7px 0;
+    }
+
+    strong {
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .details-grid {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 10px 18px;
+      margin: 18px 0 6px;
+      font-size: 15px;
+    }
+
+    .details-grid div {
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgba(39,35,31,0.08);
+    }
+
+    .details-grid .label {
+      color: var(--accent-dark);
+      font-weight: 700;
+    }
+
+    .details-grid .value {
+      color: var(--muted);
+    }
+
+    .footer {
+      padding: 44px 0;
+      border-top: 1px solid var(--line);
+      background: rgba(255,255,255,0.26);
+    }
+
+    .footer-inner {
+      display: grid;
+      grid-template-columns: 1.1fr 1.4fr;
+      gap: 34px;
+      align-items: start;
+    }
+
+    .footer-title {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 34px;
+      line-height: 1;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .footer-description {
+      max-width: 420px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 12px 20px;
+      font-size: 13px;
+      color: var(--accent-dark);
+      font-weight: 600;
+    }
+
+    .legal-note {
+      grid-column: 1 / -1;
+      padding-top: 22px;
+      margin-top: 10px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .lang-switcher {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 5px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255,255,255,0.45);
+      box-shadow: 0 12px 30px rgba(52,43,35,0.05);
+    }
+
+    .lang-btn {
+      border: 0;
+      background: transparent;
+      color: var(--muted);
+      font: inherit;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      padding: 8px 12px;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: 0.25s ease;
+    }
+
+    .lang-btn.is-active {
+      color: #fffaf3;
+      background: var(--accent-dark);
+      box-shadow: 0 8px 22px rgba(95,74,50,0.18);
+    }
+
+    .lang-btn:focus-visible {
+      outline: 2px solid rgba(155,123,85,0.45);
+      outline-offset: 3px;
+    }
+
+    [data-lang-content] {
+      display: none;
+    }
+
+    [data-lang-content].is-visible {
+      display: block;
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        padding-top: 58px;
+      }
+
+      .footer-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-links {
+        justify-content: flex-start;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .container {
+        width: min(100% - 28px, var(--max));
+      }
+
+      .site-header {
+        padding: 18px 0;
+      }
+
+      .header-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .header-actions {
+        width: 100%;
+        justify-content: flex-start;
+      }
+
+      .lang-switcher {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .brand-title {
+        font-size: 27px;
+      }
+
+      .brand-subtitle {
+        font-size: 10px;
+        white-space: normal;
+      }
+
+      .back-link {
+        width: 100%;
+      }
+
+      .hero {
+        padding: 44px 0 28px;
+      }
+
+      h1 {
+        font-size: clamp(38px, 13vw, 54px);
+        line-height: 0.96;
+        letter-spacing: 0.025em;
+      }
+
+      .hero-text {
+        font-size: 15.5px;
+      }
+
+      .document-card {
+        border-radius: 22px;
+        padding: 22px 18px;
+      }
+
+      .notice {
+        padding: 18px;
+      }
+
+      section.policy-section {
+        padding: 24px 0;
+      }
+
+      .details-grid {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+
+      .details-grid .label {
+        border-bottom: none;
+        padding-bottom: 2px;
+      }
+
+      .details-grid .value {
+        padding-bottom: 12px;
+      }
+
+      p, ul {
+        font-size: 14.5px;
+      }
+
+      .footer-links {
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="index.html" aria-label="LAV Design — на главную">
+          <span class="brand-title">LAV Design</span>
+          <span class="brand-subtitle">Interior Design & Redesign</span>
+        </a>
+
+        <div class="header-actions">
+          <div class="lang-switcher" aria-label="Language switcher">
+            <button class="lang-btn is-active" type="button" data-lang-switch="ru" aria-pressed="true">RU</button>
+            <button class="lang-btn" type="button" data-lang-switch="en" aria-pressed="false">EN</button>
+          </div>
+          <a class="back-link" href="index.html" data-i18n="backLink">Вернуться на сайт</a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container">
+          <div class="eyebrow" data-i18n="eyebrow">Legal document</div>
+          <h1 data-i18n="title">Политика конфиденциальности</h1>
+          <p class="hero-text" data-i18n="heroText">
+            Как LAV Design обрабатывает персональные данные, cookies и обращения пользователей.
+          </p>
+          <div class="updated" data-i18n="updated">Последнее обновление: 14 мая 2026</div>
+        </div>
+      </section>
+
+      <section class="document-wrap">
+        <div class="container">
+          <article class="document-card">
+
+            <section data-lang-content="ru" lang="ru" class="is-visible">
+
+            <div class="notice">
+              Настоящая Политика разработана с учётом требований законодательства Российской Федерации, а также общих принципов GDPR, ePrivacy, CCPA/CPRA и иных применимых международных стандартов защиты данных, насколько они применимы к деятельности сайта.
+              <br><br>
+              Английская версия предоставляется для удобства международных пользователей. В случае расхождений между языковыми версиями преимущественную силу имеет русская версия, если иное не требуется применимым законодательством.
+            </div>
+
+            <section class="policy-section">
+              <h2>1. Общие положения</h2>
+              <p>
+                Настоящая Политика конфиденциальности и обработки персональных данных описывает, какие данные могут обрабатываться при использовании сайта <strong>lavinteriors.pro</strong>, при переходе во внешние каналы связи LAV Design, а также при деловой переписке с пользователями.
+              </p>
+              <p>
+                Использование сайта означает ознакомление пользователя с настоящей Политикой. Если пользователь не согласен с её условиями, он может прекратить использование сайта и не направлять обращения через указанные каналы связи.
+              </p>
+              <p>
+                Настоящая Политика не является отдельным согласием на обработку персональных данных. Если в будущем на сайте появятся формы заявки, согласие на обработку персональных данных должно запрашиваться отдельно, явно и не быть отмеченным заранее.
+              </p>
+            </section>
+
+            <section class="policy-section">
+              <h2>2. Оператор персональных данных</h2>
+
+              <p>
+                Оператором персональных данных является лицо, определяющее цели и способы обработки персональных данных, связанных с деятельностью LAV Design.
+              </p>
+
+              <div class="details-grid">
+                <div class="label">Проект</div>
+                <div class="value">LAV Design</div>
+
+                <div class="label">Сайт</div>
+                <div class="value">lavinteriors.pro</div>
+
+                <div class="label">Email</div>
+                <div class="value">hello@lavinteriors.pro</div>
+
+                <div class="label">Оператор</div>
+                <div class="value">
+                  Физическое лицо, осуществляющее деятельность под брендом LAV Design. Контактная информация для связи: hello@lavinteriors.pro
+                </div>
+
+                <div class="label">Юридический адрес</div>
+                <div class="value">
+                  Не применяется. Взаимодействие осуществляется дистанционно.
+                </div>
+              </div>
+            </section>
+
+            <section class="policy-section">
+              <h2>3. Какие данные могут обрабатываться</h2>
+              <p>
+                В зависимости от способа взаимодействия с сайтом и LAV Design могут обрабатываться следующие категории данных:
+              </p>
+              <ul>
+                <li>имя пользователя;</li>
+                <li>номер телефона;</li>
+                <li>адрес электронной почты;</li>
+                <li>никнейм или ссылка на профиль в мессенджере или социальной сети;</li>
+                <li>содержание сообщения пользователя;</li>
+                <li>сведения о проекте, которые пользователь самостоятельно передаёт;</li>
+                <li>IP-адрес, тип устройства, браузер, язык, дата и время посещения сайта;</li>
+                <li>cookies и похожие технические идентификаторы;</li>
+                <li>данные аналитики, если на сайте подключены Яндекс.Метрика, Google Analytics, Meta Pixel, Pinterest Tag или другие инструменты.</li>
+              </ul>
+            </section>
+
+            <section class="policy-section">
+              <h2>4. Как пользователь передаёт данные</h2>
+              <p>
+                Сайт не содержит встроенных форм заявки, не принимает оплату и не предусматривает загрузку файлов напрямую через сайт.
+              </p>
+              <p>
+                Пользователь может перейти во внешние каналы связи: VK, Telegram, MAX, WhatsApp, Email, X и другие указанные платформы. При переходе во внешние сервисы пользователь самостоятельно решает, какие данные направить LAV Design.
+              </p>
+            </section>
+
+            <section class="policy-section">
+              <h2>5. Цели обработки данных</h2>
+              <p>Персональные данные могут обрабатываться для следующих целей:</p>
+              <ul>
+                <li>ответ на обращение пользователя;</li>
+                <li>обсуждение задачи, проекта, стоимости и сроков;</li>
+                <li>подготовка предложения по услугам;</li>
+                <li>ведение деловой переписки;</li>
+                <li>улучшение сайта и пользовательского опыта;</li>
+                <li>аналитика посещаемости сайта;</li>
+                <li>защита сайта от злоупотреблений, спама, технических ошибок и несанкционированного доступа;</li>
+                <li>выполнение требований законодательства.</li>
+              </ul>
+            </section>
+
+            <section class="policy-section">
+              <h2>6. Правовые основания обработки</h2>
+              <p>
+                Обработка персональных данных может осуществляться на основании согласия пользователя, обращения пользователя по собственной инициативе, необходимости подготовки ответа или предложения, исполнения обязанностей, предусмотренных законом, а также законного интереса LAV Design в обеспечении работоспособности и безопасности сайта.
+              </p>
+              <p>
+                Согласие на обработку персональных данных, если оно требуется, должно быть отдельным, конкретным, информированным, сознательным и однозначным.
+              </p>
+            </section>
+
+            <section class="policy-section">
+              <h2>7. Cookies и аналитика</h2>
+              <p>
+                Сайт может использовать технические cookies, необходимые для корректной работы сайта, а также аналитические и маркетинговые cookies только при наличии согласия пользователя, если такое согласие требуется применимым законодательством.
+              </p>
+              <p>
+                Если на сайте подключаются Яндекс.Метрика, Google Analytics, Meta Pixel, Pinterest Tag или другие необязательные трекеры, такие инструменты не должны запускаться до принятия пользователем соответствующих cookies, когда это требуется применимыми правилами ePrivacy, GDPR или иными нормами.
+              </p>
+              <p>
+                Пользователь может ограничить или отключить cookies в настройках браузера. Это может повлиять на работу отдельных функций сайта.
+              </p>
+            </section>
+
+            <section class="policy-section">
+              <h2>8. Сторонние сервисы и внешние ссылки</h2>
+              <p>
+                На сайте могут размещаться ссылки на внешние платформы, включая VK, Telegram, MAX, WhatsApp, Email, X, Pinterest, Instagram и другие сервисы.
+              </p>
+              <p>
+                При переходе пользователя во внешние сервисы связи обработка данных может осуществляться соответствующими платформами по их собственным политикам конфиденциальности. LAV Design не контролирует техническую инфраструктуру таких платформ.
+              </p>
+            </section>
+
+            <section class="policy-section">
+              <h2>9. Передача данных третьим лицам</h2>
+              <p>
+                LAV Design не продаёт персональные данные пользователей.
+              </p>
+              <p>
+                Передача данных третьим лицам возможна, если это необходимо для обработки обращения пользователя, использования внешних сервисов связи, аналитики, хостинга, технической поддержки сайта, выполнения требований закона или защиты прав и законных интересов LAV Design.
+              </p>
+              <p>
+                Если в будущем будут использоваться рекламные инструменты, которые могут квалифицироваться как sharing/sale по законодательству отдельных штатов США, пользователю должен быть предоставлен понятный способ отказаться от такой передачи.
+              </p>
+            </section>
+
+            <section class="policy-section">
+              <h2>10. Трансграничная передача данных</h2>
+              <p>
+                Некоторые внешние сервисы, мессенджеры, социальные сети, аналитические инструменты или хостинг-платформы могут находиться за пределами страны пользователя. В таком случае данные могут обрабатываться в иностранных юрисдикциях.
+              </p>
+              <p>
+                Если обработка персональных данных граждан Российской Федерации будет осуществляться с использованием иностранных сервисов или серверов, необходимо отдельно оценить требования о локализации и трансграничной передаче персональных данных.
+              </p>
+            </section>
+
+            <section class="policy-section">
+              <h2>11. Сроки хранения данных</h2>
+              <p>
+                Персональные данные хранятся не дольше, чем это необходимо для целей, ради которых они были получены, если иной срок не предусмотрен законом, договором, деловой необходимостью или техническими настройками используемых сервисов.
+              </p>
+              <p>
+                Деловая переписка может храниться в течение периода, необходимого для обсуждения проекта, защиты прав и подтверждения договорённостей.
+              </p>
+            </section>
+
+            <section class="policy-section">
+              <h2>12. Права пользователя</h2>
+              <p>
+                Пользователь вправе запросить информацию об обработке своих персональных данных, потребовать их уточнения, удаления, ограничения обработки, отозвать согласие или направить возражение против обработки в случаях, предусмотренных применимым законодательством.
+              </p>
+              <p>
+                Если пользователь находится в Европейской экономической зоне, Великобритании, США, Калифорнии или иной юрисдикции с особыми требованиями к защите данных, он может обладать дополнительными правами: право доступа, удаления, исправления, ограничения обработки, отзыва согласия, отказа от маркетинговой обработки, отказа от продажи или передачи персональной информации, если такая продажа или передача применяется.
+              </p>
+            </section>
+
+            <section class="policy-section">
+              <h2>13. Как отозвать согласие или направить запрос</h2>
+              <p>
+                Пользователь может направить запрос, связанный с персональными данными, на email: <strong>hello@lavinteriors.pro</strong>.
+              </p>
+              <p>
+                В запросе желательно указать имя, способ связи, суть обращения и информацию, позволяющую идентифицировать взаимодействие пользователя с LAV Design. Ответ направляется в разумный срок с учётом требований применимого законодательства.
+              </p>
+            </section>
+
+            <section class="policy-section">
+              <h2>14. Безопасность данных</h2>
+              <p>
+                LAV Design принимает разумные организационные и технические меры для защиты персональных данных от несанкционированного доступа, утраты, изменения, раскрытия или неправомерного использования.
+              </p>
+              <p>
+                При этом ни один способ передачи данных через интернет не может быть абсолютно безопасным. Пользователь учитывает этот риск при передаче информации через внешние платформы и мессенджеры.
+              </p>
+            </section>
+
+            <section class="policy-section">
+              <h2>15. Данные несовершеннолетних</h2>
+              <p>
+                Сайт и услуги LAV Design не ориентированы на самостоятельное использование несовершеннолетними. Если LAV Design станет известно, что персональные данные несовершеннолетнего были переданы без согласия законного представителя, такие данные могут быть удалены.
+              </p>
+            </section>
+
+            <section class="policy-section">
+              <h2>16. Изменение политики</h2>
+              <p>
+                LAV Design может обновлять настоящую Политику при изменении сайта, используемых сервисов, каналов связи, законодательства или подхода к обработке данных.
+              </p>
+              <p>
+                Актуальная версия Политики публикуется на этой странице. Дата последнего обновления указывается в верхней части документа.
+              </p>
+            </section>
+
+            <section class="policy-section">
+              <h2>17. Отдельное согласие на обработку персональных данных</h2>
+              <p>
+                Если в будущем на сайте появится форма заявки, пользователь должен иметь возможность отдельно отметить согласие на обработку персональных данных.
+              </p>
+              <p>
+                Чекбоксы должны быть разделены:
+              </p>
+              <ul>
+                <li>«Я даю согласие на обработку персональных данных»;</li>
+                <li>«Я принимаю Пользовательское соглашение»;</li>
+                <li>«Я согласен с использованием cookies».</li>
+              </ul>
+              <p>
+                Галочки не должны быть заранее проставлены. Согласие должно быть отдельным и однозначным.
+              </p>
+            </section>
+
+            <section class="policy-section">
+              <h2>18. Контакты</h2>
+              <p>
+                По вопросам, связанным с настоящей Политикой, обработкой персональных данных или отзывом согласия, пользователь может обратиться по адресу:
+              </p>
+              <p>
+                <strong>Email:</strong> hello@lavinteriors.pro<br>
+                <strong>Сайт:</strong> lavinteriors.pro
+              </p>
+            </section>
+
+
+            </section>
+
+            <section data-lang-content="en" lang="en">
+              <div class="notice">
+                This Privacy Policy is prepared with consideration of the requirements of the laws of the Russian Federation, as well as the general principles of GDPR, ePrivacy, CCPA/CPRA and other applicable international data protection standards, to the extent they apply to the operation of this website.
+                <br><br>
+                This English version is provided for convenience of international users. In case of conflict between language versions, the Russian version shall prevail where permitted by applicable law.
+              </div>
+
+              <section class="policy-section">
+                <h2>1. General provisions</h2>
+                <p>This Privacy Policy and Personal Data Processing Policy explains what data may be processed when using <strong>lavinteriors.pro</strong>, when contacting LAV Design through external communication channels, and during business correspondence with users.</p>
+                <p>Use of the website means that the user has reviewed this Policy. If the user does not agree with its terms, the user may stop using the website and refrain from sending inquiries through the listed communication channels.</p>
+                <p>This Policy is not a separate consent to personal data processing. If contact forms are added to the website in the future, consent to personal data processing must be requested separately, explicitly and without pre-ticked boxes.</p>
+              </section>
+
+              <section class="policy-section">
+                <h2>2. Personal data controller</h2>
+                <p>The personal data controller is the person determining the purposes and means of personal data processing related to the activities of LAV Design.</p>
+                <div class="details-grid">
+                  <div class="label">Project</div><div class="value">LAV Design</div>
+                  <div class="label">Website</div><div class="value">lavinteriors.pro</div>
+                  <div class="label">Email</div><div class="value">hello@lavinteriors.pro</div>
+                  <div class="label">Controller</div><div class="value">An individual operating under the LAV Design brand. Contact email: hello@lavinteriors.pro</div>
+                  <div class="label">Legal address</div><div class="value">Not applicable. Interaction is carried out remotely.</div>
+                </div>
+              </section>
+
+              <section class="policy-section">
+                <h2>3. Data that may be processed</h2>
+                <p>Depending on the way the user interacts with the website and LAV Design, the following categories of data may be processed:</p>
+                <ul>
+                  <li>user name;</li><li>phone number;</li><li>email address;</li><li>messenger or social media nickname/profile link;</li><li>message content;</li><li>project information voluntarily provided by the user;</li><li>IP address, device type, browser, language, date and time of website visit;</li><li>cookies and similar technical identifiers;</li><li>analytics data if Yandex Metrica, Google Analytics, Meta Pixel, Pinterest Tag or other tools are connected.</li>
+                </ul>
+              </section>
+
+              <section class="policy-section"><h2>4. How the user provides data</h2><p>The website does not contain embedded inquiry forms, does not accept payments and does not provide direct file upload through the website.</p><p>The user may proceed to external communication channels, including VK, Telegram, MAX, WhatsApp, Email, X and other listed platforms. When using external services, the user decides independently what data to send to LAV Design.</p></section>
+
+              <section class="policy-section"><h2>5. Purposes of processing</h2><p>Personal data may be processed for the following purposes:</p><ul><li>responding to user inquiries;</li><li>discussing the task, project, price and timeline;</li><li>preparing a service proposal;</li><li>maintaining business correspondence;</li><li>improving the website and user experience;</li><li>website traffic analytics;</li><li>protecting the website from abuse, spam, technical errors and unauthorized access;</li><li>complying with legal requirements.</li></ul></section>
+
+              <section class="policy-section"><h2>6. Legal bases for processing</h2><p>Personal data may be processed based on the user’s consent, the user’s own inquiry, the need to prepare a response or proposal, compliance with legal obligations, and the legitimate interest of LAV Design in ensuring the functionality and security of the website.</p><p>Consent to personal data processing, where required, must be separate, specific, informed, conscious and unambiguous.</p></section>
+
+              <section class="policy-section"><h2>7. Cookies and analytics</h2><p>The website may use technical cookies necessary for proper website operation, as well as analytical and marketing cookies only with the user’s consent where such consent is required by applicable law.</p><p>If Yandex Metrica, Google Analytics, Meta Pixel, Pinterest Tag or other optional trackers are connected, such tools must not be launched before the user accepts the relevant cookies where required by ePrivacy, GDPR or other applicable rules.</p><p>The user may restrict or disable cookies in browser settings. This may affect the operation of certain website functions.</p></section>
+
+              <section class="policy-section"><h2>8. Third-party services and external links</h2><p>The website may contain links to external platforms, including VK, Telegram, MAX, WhatsApp, Email, X, Pinterest, Instagram and other services.</p><p>When the user goes to external communication services, data may be processed by the respective platforms under their own privacy policies. LAV Design does not control the technical infrastructure of such platforms.</p></section>
+
+              <section class="policy-section"><h2>9. Transfer of data to third parties</h2><p>LAV Design does not sell users’ personal data.</p><p>Data may be transferred to third parties if necessary to process a user inquiry, use external communication services, analytics, hosting, technical website support, comply with legal requirements or protect the rights and legitimate interests of LAV Design.</p><p>If advertising tools that may qualify as sharing/sale under the laws of certain U.S. states are used in the future, users must be provided with a clear way to opt out of such transfer.</p></section>
+
+              <section class="policy-section"><h2>10. Cross-border data transfer</h2><p>Some external services, messengers, social networks, analytics tools or hosting platforms may be located outside the user’s country. In such cases, data may be processed in foreign jurisdictions.</p><p>If personal data of citizens of the Russian Federation is processed using foreign services or servers, requirements on localization and cross-border transfer of personal data should be assessed separately.</p></section>
+
+              <section class="policy-section"><h2>11. Data retention</h2><p>Personal data is retained no longer than necessary for the purposes for which it was obtained, unless another period is required by law, contract, business necessity or technical settings of the services used.</p><p>Business correspondence may be retained for the period necessary to discuss the project, protect rights and confirm arrangements.</p></section>
+
+              <section class="policy-section"><h2>12. User rights</h2><p>The user may request information about the processing of personal data, request correction, deletion, restriction of processing, withdraw consent or object to processing in cases provided by applicable law.</p><p>If the user is located in the European Economic Area, the United Kingdom, the United States, California or another jurisdiction with specific data protection requirements, the user may have additional rights, including access, deletion, correction, restriction of processing, consent withdrawal, opt-out from marketing processing, and opt-out from sale or sharing of personal information where applicable.</p></section>
+
+              <section class="policy-section"><h2>13. How to withdraw consent or submit a request</h2><p>The user may send a request related to personal data to: <strong>hello@lavinteriors.pro</strong>.</p><p>The request should preferably include the user’s name, contact method, the subject of the request and information allowing identification of the user’s interaction with LAV Design. A response will be provided within a reasonable time, taking into account applicable legal requirements.</p></section>
+
+              <section class="policy-section"><h2>14. Data security</h2><p>LAV Design takes reasonable organizational and technical measures to protect personal data from unauthorized access, loss, alteration, disclosure or unlawful use.</p><p>However, no method of data transmission over the internet can be absolutely secure. The user should consider this risk when transmitting information through external platforms and messengers.</p></section>
+
+              <section class="policy-section"><h2>15. Minors’ data</h2><p>The website and LAV Design services are not intended for independent use by minors. If LAV Design becomes aware that personal data of a minor has been provided without the consent of a legal representative, such data may be deleted.</p></section>
+
+              <section class="policy-section"><h2>16. Changes to this Policy</h2><p>LAV Design may update this Policy when the website, services used, communication channels, legislation or data processing approach changes.</p><p>The current version of the Policy is published on this page. The date of the latest update is indicated at the top of the document.</p></section>
+
+              <section class="policy-section"><h2>17. Separate consent to personal data processing</h2><p>If an inquiry form is added to the website in the future, the user must be able to separately tick consent to personal data processing.</p><p>Checkboxes must be separated:</p><ul><li>“I consent to the processing of personal data”;</li><li>“I accept the Terms of Use”;</li><li>“I agree to the use of cookies”.</li></ul><p>Checkboxes must not be pre-ticked. Consent must be separate and unambiguous.</p></section>
+
+              <section class="policy-section"><h2>18. Contacts</h2><p>For questions related to this Policy, personal data processing or withdrawal of consent, the user may contact:</p><p><strong>Email:</strong> hello@lavinteriors.pro<br><strong>Website:</strong> lavinteriors.pro</p></section>
+            </section>
+
+                    </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-inner">
+        <div>
+          <div class="footer-title">LAV Design</div>
+          <div class="footer-description" data-i18n="footerDescription">
+            Премиальный интерьерный дизайн, редизайн и визуальные концепции для частных и коммерческих пространств.
+          </div>
+        </div>
+
+        <nav class="footer-links" aria-label="Юридические ссылки" data-i18n-attr="aria-label:footerAria">
+          <a href="privacy.html" data-i18n="privacyLink">Политика конфиденциальности</a>
+          <a href="terms.html" data-i18n="termsLink">Пользовательское соглашение</a>
+          <a href="cookies.html" data-i18n="cookiesLink">Политика cookies</a>
+          <a href="mailto:hello@lavinteriors.pro">Email</a>
+        </nav>
+
+        <div class="legal-note" data-i18n="legalNote">
+          Информация на сайте носит информационный характер и не является публичной офертой.
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <script>
+    (function () {
+      const STORAGE_KEY = 'lav-design-language';
+      const defaultLang = 'ru';
+      const availableLangs = ['ru', 'en'];
+
+      const translations = {
+        ru: {
+          documentLang: 'ru',
+          pageTitle: 'Политика конфиденциальности — LAV Design',
+          metaDescription: 'Политика конфиденциальности LAV Design: обработка персональных данных, cookies, аналитика и права пользователей.',
+          brandAria: 'LAV Design — на главную',
+          backLink: 'Вернуться на сайт',
+          eyebrow: 'Legal document',
+          title: 'Политика конфиденциальности',
+          heroText: 'Как LAV Design обрабатывает персональные данные, cookies и обращения пользователей.',
+          updated: 'Последнее обновление: 14 мая 2026',
+          footerDescription: 'Премиальный интерьерный дизайн, редизайн и визуальные концепции для частных и коммерческих пространств.',
+          footerAria: 'Юридические ссылки',
+          privacyLink: 'Политика конфиденциальности',
+          termsLink: 'Пользовательское соглашение',
+          cookiesLink: 'Политика cookies',
+          legalNote: 'Информация на сайте носит информационный характер и не является публичной офертой.'
+        },
+        en: {
+          documentLang: 'en',
+          pageTitle: 'Privacy Policy — LAV Design',
+          metaDescription: 'LAV Design Privacy Policy: personal data processing, cookies, analytics and users’ rights.',
+          brandAria: 'LAV Design — home',
+          backLink: 'Back to website',
+          eyebrow: 'Legal document',
+          title: 'Privacy Policy',
+          heroText: 'How LAV Design processes personal data, cookies and user inquiries.',
+          updated: 'Last updated: May 14, 2026',
+          footerDescription: 'Premium interior design, redesign and visual concepts for private and commercial spaces.',
+          footerAria: 'Legal links',
+          privacyLink: 'Privacy Policy',
+          termsLink: 'Terms of Use',
+          cookiesLink: 'Cookie Policy',
+          legalNote: 'The information on this website is provided for informational purposes only and does not constitute a public offer.'
+        }
+      };
+
+      function getInitialLang() {
+        const savedLang = localStorage.getItem(STORAGE_KEY);
+        return availableLangs.includes(savedLang) ? savedLang : defaultLang;
+      }
+
+      function setLang(lang) {
+        const nextLang = availableLangs.includes(lang) ? lang : defaultLang;
+        const dictionary = translations[nextLang];
+
+        document.documentElement.lang = dictionary.documentLang;
+        document.title = dictionary.pageTitle;
+
+        const metaDescription = document.querySelector('meta[name="description"]');
+        if (metaDescription) metaDescription.setAttribute('content', dictionary.metaDescription);
+
+        document.querySelectorAll('[data-lang-content]').forEach((section) => {
+          section.classList.toggle('is-visible', section.dataset.langContent === nextLang);
+        });
+
+        document.querySelectorAll('[data-lang-switch]').forEach((button) => {
+          const isActive = button.dataset.langSwitch === nextLang;
+          button.classList.toggle('is-active', isActive);
+          button.setAttribute('aria-pressed', String(isActive));
+        });
+
+        document.querySelectorAll('[data-i18n]').forEach((element) => {
+          const key = element.dataset.i18n;
+          if (dictionary[key]) element.textContent = dictionary[key];
+        });
+
+        document.querySelectorAll('[data-i18n-attr]').forEach((element) => {
+          element.dataset.i18nAttr.split(';').forEach((item) => {
+            const parts = item.split(':');
+            if (parts.length !== 2) return;
+            const attr = parts[0].trim();
+            const key = parts[1].trim();
+            if (dictionary[key]) element.setAttribute(attr, dictionary[key]);
+          });
+        });
+
+        const brand = document.querySelector('.brand');
+        if (brand) brand.setAttribute('aria-label', dictionary.brandAria);
+
+        localStorage.setItem(STORAGE_KEY, nextLang);
+      }
+
+      document.querySelectorAll('[data-lang-switch]').forEach((button) => {
+        button.addEventListener('click', () => setLang(button.dataset.langSwitch));
+      });
+
+      setLang(getInitialLang());
+    })();
+  </script>
+
+</body>
+</html>

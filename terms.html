@@ -1,0 +1,1123 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Пользовательское соглашение — LAV Design</title>
+  <meta name="description" content="Пользовательское соглашение LAV Design: правила использования сайта, условия просмотра материалов, интеллектуальная собственность и порядок взаимодействия.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://lavinteriors.pro/terms.html">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #f4f0e9;
+      --bg-soft: #faf8f4;
+      --text: #27231f;
+      --muted: #7a7067;
+      --line: rgba(39, 35, 31, 0.12);
+      --card: rgba(255, 252, 247, 0.78);
+      --card-solid: #fffaf3;
+      --accent: #9b7b55;
+      --accent-dark: #5f4a32;
+      --shadow: 0 24px 70px rgba(52, 43, 35, 0.10);
+      --radius-lg: 28px;
+      --radius-md: 20px;
+      --max: 1160px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Manrope", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(255,255,255,0.9), transparent 34%),
+        linear-gradient(135deg, #f7f3ec 0%, #efe8dc 48%, #f8f5ef 100%);
+      line-height: 1.72;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      min-height: 100vh;
+    }
+
+    .container {
+      width: min(var(--max), calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .site-header {
+      padding: 24px 0;
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(18px);
+      background: rgba(244, 240, 233, 0.72);
+      position: sticky;
+      top: 0;
+      z-index: 20;
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 22px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      min-width: 0;
+    }
+
+    .brand-title {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 32px;
+      line-height: 0.95;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .brand-subtitle {
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 12px 20px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255,255,255,0.45);
+      box-shadow: 0 12px 30px rgba(52,43,35,0.06);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      transition: 0.25s ease;
+      white-space: nowrap;
+    }
+
+    .back-link:hover {
+      transform: translateY(-1px);
+      border-color: rgba(155,123,85,0.42);
+      background: rgba(255,255,255,0.72);
+    }
+
+    .header-actions {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .language-switcher {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      min-height: 44px;
+      padding: 4px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255,255,255,0.42);
+      box-shadow: 0 12px 30px rgba(52,43,35,0.06);
+      backdrop-filter: blur(14px);
+    }
+
+    .lang-btn {
+      appearance: none;
+      border: 0;
+      cursor: pointer;
+      min-height: 34px;
+      padding: 8px 13px;
+      border-radius: 999px;
+      background: transparent;
+      color: var(--accent-dark);
+      font-family: inherit;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      transition: 0.25s ease;
+    }
+
+    .lang-btn:hover {
+      background: rgba(155,123,85,0.08);
+    }
+
+    .lang-btn.is-active {
+      background: var(--accent-dark);
+      color: #fffaf3;
+      box-shadow: 0 10px 22px rgba(95,74,50,0.18);
+    }
+
+    [data-lang-content] {
+      display: none;
+    }
+
+    [data-lang-content].is-active {
+      display: block;
+    }
+
+
+    .hero {
+      padding: 76px 0 44px;
+    }
+
+    .eyebrow {
+      font-size: 12px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent-dark);
+      font-weight: 700;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      margin: 0;
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(46px, 7vw, 92px);
+      line-height: 0.92;
+      letter-spacing: 0.035em;
+      text-transform: uppercase;
+      font-weight: 500;
+      max-width: 980px;
+    }
+
+    .hero-text {
+      max-width: 760px;
+      margin-top: 24px;
+      font-size: 18px;
+      color: var(--muted);
+    }
+
+    .updated {
+      display: inline-flex;
+      margin-top: 26px;
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.48);
+      border: 1px solid var(--line);
+      color: var(--accent-dark);
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .document-wrap {
+      padding: 18px 0 86px;
+    }
+
+    .document-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+      padding: clamp(26px, 5vw, 62px);
+      backdrop-filter: blur(20px);
+    }
+
+    .notice {
+      padding: 22px 24px;
+      border-radius: var(--radius-md);
+      background: rgba(155, 123, 85, 0.08);
+      border: 1px solid rgba(155, 123, 85, 0.18);
+      color: #564838;
+      margin-bottom: 38px;
+      font-size: 15px;
+    }
+
+    section.terms-section {
+      padding: 30px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    section.terms-section:first-of-type {
+      border-top: none;
+      padding-top: 0;
+    }
+
+    h2 {
+      margin: 0 0 16px;
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(27px, 3.3vw, 42px);
+      line-height: 1.05;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    p {
+      margin: 0 0 14px;
+      color: var(--muted);
+      font-size: 15.5px;
+    }
+
+    ul {
+      margin: 12px 0 0;
+      padding-left: 20px;
+      color: var(--muted);
+      font-size: 15.5px;
+    }
+
+    li {
+      margin: 7px 0;
+    }
+
+    strong {
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .details-grid {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 10px 18px;
+      margin: 18px 0 6px;
+      font-size: 15px;
+    }
+
+    .details-grid div {
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgba(39,35,31,0.08);
+    }
+
+    .details-grid .label {
+      color: var(--accent-dark);
+      font-weight: 700;
+    }
+
+    .details-grid .value {
+      color: var(--muted);
+    }
+
+    .footer {
+      padding: 44px 0;
+      border-top: 1px solid var(--line);
+      background: rgba(255,255,255,0.26);
+    }
+
+    .footer-inner {
+      display: grid;
+      grid-template-columns: 1.1fr 1.4fr;
+      gap: 34px;
+      align-items: start;
+    }
+
+    .footer-title {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 34px;
+      line-height: 1;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .footer-description {
+      max-width: 420px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 12px 20px;
+      font-size: 13px;
+      color: var(--accent-dark);
+      font-weight: 600;
+    }
+
+    .legal-note {
+      grid-column: 1 / -1;
+      padding-top: 22px;
+      margin-top: 10px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        padding-top: 58px;
+      }
+
+      .footer-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-links {
+        justify-content: flex-start;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .container {
+        width: min(100% - 28px, var(--max));
+      }
+
+      .site-header {
+        padding: 18px 0;
+      }
+
+      .header-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .brand-title {
+        font-size: 27px;
+      }
+
+      .brand-subtitle {
+        font-size: 10px;
+        white-space: normal;
+      }
+
+      .header-actions {
+        width: 100%;
+        justify-content: flex-start;
+      }
+
+      .back-link {
+        flex: 1 1 100%;
+        width: 100%;
+      }
+
+      .hero {
+        padding: 44px 0 28px;
+      }
+
+      h1 {
+        font-size: clamp(38px, 13vw, 54px);
+        line-height: 0.96;
+        letter-spacing: 0.025em;
+      }
+
+      .hero-text {
+        font-size: 15.5px;
+      }
+
+      .document-card {
+        border-radius: 22px;
+        padding: 22px 18px;
+      }
+
+      .notice {
+        padding: 18px;
+      }
+
+      section.terms-section {
+        padding: 24px 0;
+      }
+
+      .details-grid {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+
+      .details-grid .label {
+        border-bottom: none;
+        padding-bottom: 2px;
+      }
+
+      .details-grid .value {
+        padding-bottom: 12px;
+      }
+
+      p, ul {
+        font-size: 14.5px;
+      }
+
+      .footer-links {
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="index.html" aria-label="LAV Design — на главную">
+          <span class="brand-title">LAV Design</span>
+          <span class="brand-subtitle">Interior Design & Redesign</span>
+        </a>
+
+        <div class="header-actions">
+          <div class="language-switcher" role="group" aria-label="Language switcher">
+            <button class="lang-btn is-active" type="button" data-lang-switch="ru" aria-pressed="true">RU</button>
+            <button class="lang-btn" type="button" data-lang-switch="en" aria-pressed="false">EN</button>
+          </div>
+          <a class="back-link" href="index.html" data-lang-text="back-link">Вернуться на сайт</a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container">
+          <div class="eyebrow">Legal document</div>
+          <h1 data-lang-text="hero-title">Пользовательское соглашение</h1>
+          <p class="hero-text" data-lang-text="hero-text">
+            Правила использования сайта LAV Design, условия просмотра материалов и порядок взаимодействия с брендом.
+          </p>
+          <div class="updated" data-lang-text="updated">Последнее обновление: 14 мая 2026</div>
+        </div>
+      </section>
+
+      <section class="document-wrap">
+        <div class="container">
+          <article class="document-card">
+
+            <section data-lang-content="ru" class="is-active">
+            <div class="notice">
+              Настоящее Пользовательское соглашение разработано с учётом законодательства Российской Федерации, а также общих принципов регулирования онлайн-сервисов, потребительских прав и цифровых услуг в Европейском союзе, Великобритании, США и иных юрисдикциях, насколько они применимы к деятельности сайта.
+              <br><br>
+              Английская версия предоставляется для удобства международных пользователей. В случае расхождений между языковыми версиями преимущественную силу имеет русская версия, если иное не требуется применимым законодательством.
+            </div>
+
+            <section class="terms-section">
+              <h2>1. Общие положения</h2>
+              <p>
+                Настоящее Пользовательское соглашение определяет правила использования сайта <strong>lavinteriors.pro</strong>, просмотра размещённых на нём материалов и взаимодействия с брендом LAV Design.
+              </p>
+              <p>
+                Используя сайт, пользователь подтверждает, что ознакомился с настоящим Соглашением и понимает его условия. Если пользователь не согласен с условиями Соглашения, он может прекратить использование сайта.
+              </p>
+            </section>
+
+            <section class="terms-section">
+              <h2>2. Статус сайта</h2>
+              <p>
+                Сайт LAV Design является информационной витриной, предназначенной для демонстрации подхода, направлений работы, примеров визуальных решений и способов связи.
+              </p>
+              <p>
+                Сайт не является интернет-магазином, маркетплейсом, платёжной платформой или сервисом автоматического заключения договора.
+              </p>
+              <p>
+                На сайте не предусмотрены встроенные формы заявки, онлайн-оплата, загрузка файлов или автоматическое оформление заказа.
+              </p>
+            </section>
+
+            <section class="terms-section">
+              <h2>3. Кто является владельцем сайта</h2>
+              <p>
+                Сайт используется для представления деятельности бренда LAV Design.
+              </p>
+
+              <div class="details-grid">
+                <div class="label">Бренд</div>
+                <div class="value">LAV Design</div>
+
+                <div class="label">Сайт</div>
+                <div class="value">lavinteriors.pro</div>
+
+                <div class="label">Email</div>
+                <div class="value">hello@lavinteriors.pro</div>
+
+                <div class="label">Владелец / оператор</div>
+                <div class="value">Физическое лицо, осуществляющее деятельность под брендом LAV Design.</div>
+
+                <div class="label">Юридический адрес</div>
+                <div class="value">Не применяется. Взаимодействие осуществляется дистанционно.</div>
+              </div>
+            </section>
+
+            <section class="terms-section">
+              <h2>4. Использование сайта</h2>
+              <p>
+                Пользователь вправе просматривать сайт, знакомиться с информацией о направлениях работы LAV Design, изучать визуальные материалы и переходить по указанным контактным ссылкам.
+              </p>
+              <p>
+                Пользователь обязуется не использовать сайт для незаконных действий, попыток нарушения его работы, копирования материалов без разрешения, рассылки спама, вмешательства в техническую инфраструктуру или действий, нарушающих права LAV Design и третьих лиц.
+              </p>
+            </section>
+
+            <section class="terms-section">
+              <h2>5. Информационный характер материалов</h2>
+              <p>
+                Все материалы сайта размещены в информационных, демонстрационных и презентационных целях.
+              </p>
+              <p>
+                Описания услуг, примеры визуальных решений, изображения, тексты, форматы работы, цены и сроки не являются гарантированным предложением выполнить конкретную услугу на фиксированных условиях.
+              </p>
+            </section>
+
+            <section class="terms-section">
+              <h2>6. Отсутствие публичной оферты</h2>
+              <p>
+                Информация, размещённая на сайте, носит информационный характер и не является публичной офертой, если иное прямо не указано в отдельном документе, договоре, счёте, коммерческом предложении или индивидуальной переписке с пользователем.
+              </p>
+              <p>
+                Любые цены, примеры услуг, сроки, форматы работы и визуальные материалы являются ориентировочными и могут быть изменены в зависимости от задачи, объёма работ, исходных данных, сроков, сложности объекта и индивидуальных договорённостей сторон.
+              </p>
+            </section>
+
+            <section class="terms-section">
+              <h2>7. Услуги LAV Design</h2>
+              <p>
+                LAV Design может предоставлять услуги в сфере интерьерного дизайна, редизайна, архитектурной визуализации, ландшафтного дизайна, коммерческих пространств, подбора концепций, визуальных решений и иных связанных услуг.
+              </p>
+              <p>
+                Конкретный состав услуг, этапы, сроки, стоимость, порядок оплаты, количество правок, формат передачи материалов и ответственность сторон определяются отдельно — в переписке, счёте, договоре, техническом задании или ином индивидуальном соглашении.
+              </p>
+            </section>
+
+            <section class="terms-section">
+              <h2>8. Порядок связи и обсуждения проекта</h2>
+              <p>
+                Для связи с LAV Design пользователь может использовать указанные на сайте внешние каналы: email, мессенджеры, социальные сети и иные платформы.
+              </p>
+              <p>
+                Переписка через внешние сервисы не означает автоматического заключения договора. Договорённости считаются согласованными только после явного подтверждения условий сторонами.
+              </p>
+            </section>
+
+            <section class="terms-section">
+              <h2>9. Стоимость, сроки и состав работ</h2>
+              <p>
+                Стоимость, сроки и состав работ зависят от объёма задачи, исходных данных, площади объекта, сложности проектирования, количества вариантов, срочности, формата результата и иных индивидуальных условий.
+              </p>
+              <p>
+                Любые ориентиры, указанные на сайте, не являются окончательной ценой или гарантированным сроком выполнения работ без отдельного согласования.
+              </p>
+            </section>
+
+            <section class="terms-section">
+              <h2>10. Договор и оплата</h2>
+              <p>
+                Оплата услуг не производится через сайт. Все финансовые условия обсуждаются отдельно и оформляются вне сайта.
+              </p>
+              <p>
+                Оказание услуг может регулироваться индивидуальными договорённостями сторон, договором, счётом, техническим заданием, перепиской или иным документом, подтверждающим согласованные условия.
+              </p>
+              <p>
+                Если пользователь является потребителем, его права могут регулироваться применимым законодательством о защите прав потребителей.
+              </p>
+              <p>
+                Если в будущем на сайте появятся онлайн-платежи, подписки или сохранение платёжных данных, условия оплаты, отмены, возвратов и использования платёжной информации должны быть дополнительно раскрыты до совершения оплаты.
+              </p>
+            </section>
+
+            <section class="terms-section">
+              <h2>11. Интеллектуальная собственность</h2>
+              <p>
+                Все тексты, структура сайта, визуальные материалы, изображения, концепции, дизайн-решения, графика, подборки, логотипы, элементы интерфейса и иные материалы сайта принадлежат LAV Design или используются на законных основаниях.
+              </p>
+              <p>
+                Без письменного согласия LAV Design запрещается:
+              </p>
+              <ul>
+                <li>копировать материалы сайта полностью или частично;</li>
+                <li>использовать визуализации как собственные работы;</li>
+                <li>публиковать изображения и тексты без разрешения;</li>
+                <li>удалять водяные знаки, подписи или указания авторства;</li>
+                <li>воспроизводить структуру сайта для конкурирующего проекта;</li>
+                <li>использовать материалы для обучения моделей, датасетов или коммерческих нейросетевых продуктов;</li>
+                <li>использовать материалы сайта для рекламных кампаний, портфолио, обучающих материалов или иных коммерческих продуктов.</li>
+              </ul>
+              <p>
+                Пользователь не вправе использовать материалы сайта для создания конкурирующих услуг, портфолио, рекламных кампаний, обучающих материалов, нейросетевых датасетов или иных коммерческих продуктов без письменного согласия LAV Design.
+              </p>
+            </section>
+
+            <section class="terms-section">
+              <h2>12. Использование изображений, визуализаций и портфолио</h2>
+              <p>
+                Изображения, визуализации, коллажи, концепции и иные материалы на сайте могут быть демонстрационными, концептуальными, авторскими, созданными с использованием цифровых инструментов или использованными на законных основаниях.
+              </p>
+              <p>
+                Такие материалы показывают визуальный подход, уровень подачи, стиль мышления и возможные направления работы. Они не гарантируют идентичный результат в конкретном проекте без отдельного согласования технического задания, бюджета, материалов, производителей, размеров и условий реализации.
+              </p>
+            </section>
+
+            <section class="terms-section">
+              <h2>13. Пользовательские материалы</h2>
+              <p>
+                Если пользователь передаёт LAV Design фотографии, планы, чертежи, референсы, изображения, описания объекта или иные материалы, пользователь подтверждает, что имеет право передавать такие материалы и что их использование для обсуждения проекта не нарушает права третьих лиц.
+              </p>
+              <p>
+                Передача материалов через Telegram, WhatsApp, VK, MAX, Email, X или иные внешние каналы регулируется также правилами соответствующих платформ.
+              </p>
+            </section>
+
+            <section class="terms-section">
+              <h2>14. Внешние ссылки и сторонние сервисы</h2>
+              <p>
+                Сайт может содержать ссылки на сторонние сервисы: VK, Telegram, MAX, WhatsApp, Email-клиент, X, Instagram, TikTok, Pinterest и иные платформы.
+              </p>
+              <p>
+                LAV Design не контролирует работу этих сервисов, их доступность, правила, безопасность и обработку данных на их стороне.
+              </p>
+              <p>
+                Переходя на сторонние платформы, пользователь принимает правила соответствующих сервисов самостоятельно.
+              </p>
+            </section>
+
+            <section class="terms-section">
+              <h2>15. Ограничение ответственности</h2>
+              <p>
+                LAV Design не несёт ответственности за:
+              </p>
+              <ul>
+                <li>невозможность доступа к сайту по техническим причинам;</li>
+                <li>работу сторонних платформ, социальных сетей и мессенджеров;</li>
+                <li>решения пользователя, принятые без индивидуальной консультации;</li>
+                <li>самостоятельное использование идей, изображений или общих рекомендаций с сайта;</li>
+                <li>действия третьих лиц;</li>
+                <li>несовместимость сайта с устаревшими браузерами или устройствами;</li>
+                <li>отличие итогового результата проекта от демонстрационных материалов сайта без отдельного согласования всех условий.</li>
+              </ul>
+              <p>
+                Любые визуализации, примеры, изображения и описания на сайте являются демонстрационными и не гарантируют идентичный результат в конкретном проекте без отдельного согласования технического задания, бюджета, материалов, производителей, размеров и условий реализации.
+              </p>
+            </section>
+
+            <section class="terms-section">
+              <h2>16. Международные пользователи</h2>
+              <p>
+                Пользователи из Европейского союза, Великобритании, США и других стран должны учитывать, что сайт является информационной витриной, а не автоматическим сервисом продажи цифрового продукта.
+              </p>
+              <p>
+                До заключения договора пользователь должен получить индивидуальную информацию о составе услуги, стоимости, сроках, условиях оплаты, порядке отмены или прекращения работы, если такие условия применимы к конкретной услуге.
+              </p>
+              <p>
+                Если к отношениям сторон применяются специальные нормы о защите потребителей, цифровых услугах, дистанционных договорах или раскрытии информации, такие условия должны быть уточнены до заключения индивидуального соглашения.
+              </p>
+            </section>
+
+            <section class="terms-section">
+              <h2>17. Конфиденциальность и персональные данные</h2>
+              <p>
+                Обработка персональных данных пользователей регулируется Политикой конфиденциальности LAV Design.
+              </p>
+              <p>
+                Пользователь может ознакомиться с ней по ссылке:
+                <strong><a href="privacy.html">privacy.html</a></strong>.
+              </p>
+            </section>
+
+            <section class="terms-section">
+              <h2>18. Изменение соглашения</h2>
+              <p>
+                LAV Design может изменять настоящее Пользовательское соглашение при обновлении сайта, изменении направлений работы, подключении новых сервисов, изменении законодательства или подхода к взаимодействию с пользователями.
+              </p>
+              <p>
+                Актуальная версия Соглашения публикуется на этой странице. Дата последнего обновления указывается в верхней части документа.
+              </p>
+            </section>
+
+            <section class="terms-section">
+              <h2>19. Применимое право и разрешение споров</h2>
+              <p>
+                Настоящее Соглашение разработано с учётом законодательства Российской Федерации и применимых международных принципов регулирования онлайн-сервисов, насколько они относятся к деятельности информационного сайта.
+              </p>
+              <p>
+                Возможные вопросы, претензии или споры рекомендуется сначала урегулировать путём переговоров и письменной переписки по контактному email LAV Design.
+              </p>
+              <p>
+                Если спор не может быть урегулирован добровольно, он подлежит разрешению в порядке, предусмотренном применимым законодательством и индивидуальными договорённостями сторон.
+              </p>
+            </section>
+
+            <section class="terms-section">
+              <h2>20. Контакты</h2>
+              <p>
+                По вопросам, связанным с настоящим Пользовательским соглашением, пользователь может обратиться по адресу:
+              </p>
+              <p>
+                <strong>Email:</strong> hello@lavinteriors.pro<br>
+                <strong>Сайт:</strong> lavinteriors.pro
+              </p>
+            </section>
+
+            </section>
+
+            <section data-lang-content="en">
+            <div class="notice">
+              These Terms of Use have been prepared with regard to the laws of the Russian Federation and general principles applicable to online services, consumer rights and digital services in the European Union, the United Kingdom, the United States and other jurisdictions, to the extent applicable to this website.
+              <br><br>
+              This English version is provided for convenience of international users. In case of conflict between language versions, the Russian version shall prevail where permitted by applicable law.
+            </div>
+
+            <section class="terms-section">
+              <h2>1. General provisions</h2>
+              <p>
+                These Terms of Use define the rules for using the website <strong>lavinteriors.pro</strong>, viewing the materials published on it and interacting with the LAV Design brand.
+              </p>
+              <p>
+                By using the website, the user confirms that they have read these Terms and understand their conditions. If the user does not agree with these Terms, they may stop using the website.
+              </p>
+            </section>
+
+            <section class="terms-section">
+              <h2>2. Status of the website</h2>
+              <p>
+                The LAV Design website is an informational showcase intended to present the approach, areas of work, examples of visual solutions and contact methods.
+              </p>
+              <p>
+                The website is not an online store, marketplace, payment platform or automatic contract-forming service.
+              </p>
+              <p>
+                The website does not provide built-in application forms, online payments, file uploads or automatic order placement.
+              </p>
+            </section>
+
+            <section class="terms-section">
+              <h2>3. Website owner</h2>
+              <p>
+                The website is used to present the activities of the LAV Design brand.
+              </p>
+              <div class="details-grid">
+                <div class="label">Brand</div>
+                <div class="value">LAV Design</div>
+                <div class="label">Website</div>
+                <div class="value">lavinteriors.pro</div>
+                <div class="label">Email</div>
+                <div class="value">hello@lavinteriors.pro</div>
+                <div class="label">Owner / operator</div>
+                <div class="value">An individual operating under the LAV Design brand.</div>
+                <div class="label">Legal address</div>
+                <div class="value">Not applicable. Interaction is carried out remotely.</div>
+              </div>
+            </section>
+
+            <section class="terms-section">
+              <h2>4. Use of the website</h2>
+              <p>
+                The user may view the website, read information about LAV Design services, study visual materials and follow the contact links provided on the website.
+              </p>
+              <p>
+                The user must not use the website for unlawful actions, attempts to disrupt its operation, copying materials without permission, sending spam, interfering with the technical infrastructure or violating the rights of LAV Design and third parties.
+              </p>
+            </section>
+
+            <section class="terms-section">
+              <h2>5. Informational nature of materials</h2>
+              <p>
+                All website materials are provided for informational, demonstration and presentation purposes.
+              </p>
+              <p>
+                Service descriptions, examples of visual solutions, images, texts, work formats, prices and timelines are not a guaranteed offer to provide a specific service on fixed terms.
+              </p>
+            </section>
+
+            <section class="terms-section">
+              <h2>6. No public offer</h2>
+              <p>
+                Information published on the website is informational and does not constitute a public offer unless expressly stated otherwise in a separate document, contract, invoice, commercial proposal or individual correspondence with the user.
+              </p>
+              <p>
+                Any prices, service examples, timelines, work formats and visual materials are indicative and may be changed depending on the task, scope of work, source materials, deadlines, complexity of the property and individual agreements between the parties.
+              </p>
+            </section>
+
+            <section class="terms-section">
+              <h2>7. LAV Design services</h2>
+              <p>
+                LAV Design may provide services in interior design, redesign, architectural visualization, landscape design, commercial spaces, concept selection, visual solutions and related fields.
+              </p>
+              <p>
+                The exact scope of services, stages, deadlines, price, payment procedure, number of revisions, format of deliverables and responsibility of the parties are determined separately in correspondence, invoice, contract, technical brief or another individual agreement.
+              </p>
+            </section>
+
+            <section class="terms-section">
+              <h2>8. Contact and project discussion</h2>
+              <p>
+                To contact LAV Design, the user may use external channels listed on the website: email, messengers, social networks and other platforms.
+              </p>
+              <p>
+                Correspondence through external services does not automatically create a contract. Terms are considered agreed only after explicit confirmation by the parties.
+              </p>
+            </section>
+
+            <section class="terms-section">
+              <h2>9. Price, timeline and scope of work</h2>
+              <p>
+                Price, timeline and scope of work depend on the task, source materials, property area, design complexity, number of options, urgency, deliverable format and other individual conditions.
+              </p>
+              <p>
+                Any references on the website are not a final price or guaranteed completion time unless separately agreed.
+              </p>
+            </section>
+
+            <section class="terms-section">
+              <h2>10. Contract and payment</h2>
+              <p>
+                Payments are not made through the website. All financial terms are discussed separately and arranged outside the website.
+              </p>
+              <p>
+                Services may be governed by individual agreements, a contract, invoice, technical brief, correspondence or another document confirming the agreed terms.
+              </p>
+              <p>
+                If the user is a consumer, their rights may be regulated by applicable consumer protection laws.
+              </p>
+              <p>
+                If online payments, subscriptions or stored payment details are added to the website in the future, payment, cancellation, refund and payment data terms must be additionally disclosed before payment.
+              </p>
+            </section>
+
+            <section class="terms-section">
+              <h2>11. Intellectual property</h2>
+              <p>
+                All texts, website structure, visual materials, images, concepts, design solutions, graphics, selections, logos, interface elements and other website materials belong to LAV Design or are used on lawful grounds.
+              </p>
+              <p>Without written permission from LAV Design, it is prohibited to:</p>
+              <ul>
+                <li>copy website materials in whole or in part;</li>
+                <li>use visualizations as one’s own work;</li>
+                <li>publish images and texts without permission;</li>
+                <li>remove watermarks, captions or authorship notices;</li>
+                <li>reproduce the website structure for a competing project;</li>
+                <li>use materials for training models, datasets or commercial AI products;</li>
+                <li>use website materials for advertising campaigns, portfolios, educational materials or other commercial products.</li>
+              </ul>
+              <p>
+                The user may not use website materials to create competing services, portfolios, advertising campaigns, educational materials, AI datasets or other commercial products without written permission from LAV Design.
+              </p>
+            </section>
+
+            <section class="terms-section">
+              <h2>12. Images, visualizations and portfolio</h2>
+              <p>
+                Images, visualizations, collages, concepts and other materials on the website may be demonstrational, conceptual, original, created with digital tools or used on lawful grounds.
+              </p>
+              <p>
+                Such materials show the visual approach, presentation level, design thinking and possible directions of work. They do not guarantee an identical result in a specific project without separate agreement on the technical brief, budget, materials, manufacturers, dimensions and implementation conditions.
+              </p>
+            </section>
+
+            <section class="terms-section">
+              <h2>13. User materials</h2>
+              <p>
+                If the user sends LAV Design photos, plans, drawings, references, images, object descriptions or other materials, the user confirms that they have the right to provide such materials and that their use for project discussion does not violate third-party rights.
+              </p>
+              <p>
+                Transfer of materials through Telegram, WhatsApp, VK, MAX, Email, X or other external channels is also governed by the rules of the relevant platforms.
+              </p>
+            </section>
+
+            <section class="terms-section">
+              <h2>14. External links and third-party services</h2>
+              <p>
+                The website may contain links to third-party services, including VK, Telegram, MAX, WhatsApp, email client, X, Instagram, TikTok, Pinterest and other platforms.
+              </p>
+              <p>
+                LAV Design does not control the operation, availability, rules, security or data processing practices of these services.
+              </p>
+              <p>
+                By visiting third-party platforms, the user accepts the rules of those services independently.
+              </p>
+            </section>
+
+            <section class="terms-section">
+              <h2>15. Limitation of liability</h2>
+              <p>LAV Design is not responsible for:</p>
+              <ul>
+                <li>inability to access the website for technical reasons;</li>
+                <li>operation of third-party platforms, social networks and messengers;</li>
+                <li>decisions made by the user without individual consultation;</li>
+                <li>independent use of ideas, images or general recommendations from the website;</li>
+                <li>actions of third parties;</li>
+                <li>incompatibility of the website with outdated browsers or devices;</li>
+                <li>differences between the final project result and demonstration materials without separate agreement on all conditions.</li>
+              </ul>
+              <p>
+                Any visualizations, examples, images and descriptions on the website are demonstrational and do not guarantee an identical result in a specific project without separate agreement on the technical brief, budget, materials, manufacturers, dimensions and implementation conditions.
+              </p>
+            </section>
+
+            <section class="terms-section">
+              <h2>16. International users</h2>
+              <p>
+                Users from the European Union, the United Kingdom, the United States and other countries should take into account that the website is an informational showcase, not an automatic service for selling a digital product.
+              </p>
+              <p>
+                Before entering into an agreement, the user should receive individual information about the service scope, price, timeline, payment terms, cancellation or termination procedure, where applicable to the specific service.
+              </p>
+              <p>
+                If special rules on consumer protection, digital services, distance contracts or information disclosure apply to the relationship between the parties, such terms should be clarified before entering into an individual agreement.
+              </p>
+            </section>
+
+            <section class="terms-section">
+              <h2>17. Privacy and personal data</h2>
+              <p>
+                Processing of users’ personal data is governed by the LAV Design Privacy Policy.
+              </p>
+              <p>
+                The user may read it here: <strong><a href="privacy.html">privacy.html</a></strong>.
+              </p>
+            </section>
+
+            <section class="terms-section">
+              <h2>18. Changes to these Terms</h2>
+              <p>
+                LAV Design may amend these Terms when updating the website, changing areas of work, connecting new services, changing legislation or updating the approach to user interaction.
+              </p>
+              <p>
+                The current version of the Terms is published on this page. The date of the last update is shown at the top of the document.
+              </p>
+            </section>
+
+            <section class="terms-section">
+              <h2>19. Applicable law and dispute resolution</h2>
+              <p>
+                These Terms have been prepared with regard to the laws of the Russian Federation and applicable international principles for online services, to the extent relevant to an informational website.
+              </p>
+              <p>
+                Any questions, claims or disputes should first be resolved through negotiations and written correspondence using the LAV Design contact email.
+              </p>
+              <p>
+                If a dispute cannot be resolved voluntarily, it shall be resolved in accordance with applicable law and individual agreements between the parties.
+              </p>
+            </section>
+
+            <section class="terms-section">
+              <h2>20. Contacts</h2>
+              <p>
+                For questions related to these Terms of Use, the user may contact:
+              </p>
+              <p>
+                <strong>Email:</strong> hello@lavinteriors.pro<br>
+                <strong>Website:</strong> lavinteriors.pro
+              </p>
+            </section>
+            </section>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-inner">
+        <div>
+          <div class="footer-title">LAV Design</div>
+          <div class="footer-description" data-lang-text="footer-description">
+            Премиальный интерьерный дизайн, редизайн и визуальные концепции для частных и коммерческих пространств.
+          </div>
+        </div>
+
+        <nav class="footer-links" aria-label="Юридические ссылки" data-lang-text="footer-links">
+          <a href="privacy.html">Политика конфиденциальности</a>
+          <a href="terms.html">Пользовательское соглашение</a>
+          <a href="cookies.html">Политика cookies</a>
+          <a href="mailto:hello@lavinteriors.pro">Email</a>
+        </nav>
+
+        <div class="legal-note" data-lang-text="legal-note">
+          Информация на сайте носит информационный характер и не является публичной офертой.
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <script>
+    (function () {
+      const STORAGE_KEY = 'lav-design-language';
+      const DEFAULT_LANG = 'ru';
+      const supportedLanguages = ['ru', 'en'];
+
+      const uiText = {
+        ru: {
+          documentLang: 'ru',
+          title: 'Пользовательское соглашение — LAV Design',
+          description: 'Пользовательское соглашение LAV Design: правила использования сайта, условия просмотра материалов, интеллектуальная собственность и порядок взаимодействия.',
+          'back-link': 'Вернуться на сайт',
+          'hero-title': 'Пользовательское соглашение',
+          'hero-text': 'Правила использования сайта LAV Design, условия просмотра материалов и порядок взаимодействия с брендом.',
+          updated: 'Последнее обновление: 14 мая 2026',
+          'footer-description': 'Премиальный интерьерный дизайн, редизайн и визуальные концепции для частных и коммерческих пространств.',
+          'footer-links': '<a href="privacy.html">Политика конфиденциальности</a><a href="terms.html">Пользовательское соглашение</a><a href="cookies.html">Политика cookies</a><a href="mailto:hello@lavinteriors.pro">Email</a>',
+          'legal-note': 'Информация на сайте носит информационный характер и не является публичной офертой.'
+        },
+        en: {
+          documentLang: 'en',
+          title: 'Terms of Use — LAV Design',
+          description: 'LAV Design Terms of Use: website rules, materials, intellectual property and interaction procedure.',
+          'back-link': 'Back to website',
+          'hero-title': 'Terms of Use',
+          'hero-text': 'Rules for using the LAV Design website, viewing materials and interacting with the brand.',
+          updated: 'Last updated: May 14, 2026',
+          'footer-description': 'Premium interior design, redesign and visual concepts for private and commercial spaces.',
+          'footer-links': '<a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Use</a><a href="cookies.html">Cookie Policy</a><a href="mailto:hello@lavinteriors.pro">Email</a>',
+          'legal-note': 'Information on the website is provided for informational purposes and does not constitute a public offer.'
+        }
+      };
+
+      function getSavedLanguage() {
+        const saved = localStorage.getItem(STORAGE_KEY);
+        return supportedLanguages.includes(saved) ? saved : DEFAULT_LANG;
+      }
+
+      function setLanguage(lang) {
+        const nextLang = supportedLanguages.includes(lang) ? lang : DEFAULT_LANG;
+
+        document.documentElement.lang = uiText[nextLang].documentLang;
+        document.title = uiText[nextLang].title;
+
+        const metaDescription = document.querySelector('meta[name="description"]');
+        if (metaDescription) {
+          metaDescription.setAttribute('content', uiText[nextLang].description);
+        }
+
+        document.querySelectorAll('[data-lang-content]').forEach((section) => {
+          section.classList.toggle('is-active', section.dataset.langContent === nextLang);
+        });
+
+        document.querySelectorAll('[data-lang-switch]').forEach((button) => {
+          const isActive = button.dataset.langSwitch === nextLang;
+          button.classList.toggle('is-active', isActive);
+          button.setAttribute('aria-pressed', String(isActive));
+        });
+
+        document.querySelectorAll('[data-lang-text]').forEach((element) => {
+          const key = element.dataset.langText;
+          if (uiText[nextLang][key]) {
+            element.innerHTML = uiText[nextLang][key];
+          }
+        });
+
+        localStorage.setItem(STORAGE_KEY, nextLang);
+      }
+
+      document.querySelectorAll('[data-lang-switch]').forEach((button) => {
+        button.addEventListener('click', () => setLanguage(button.dataset.langSwitch));
+      });
+
+      setLanguage(getSavedLanguage());
+    })();
+  </script>
+
+</body>
+</html>

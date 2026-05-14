@@ -1,0 +1,1212 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Политика cookies — LAV Design</title>
+  <meta name="description" content="Политика cookies LAV Design: какие cookies использует сайт, как работает аналитика, согласие пользователя и настройки cookies.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://lavinteriors.pro/cookies.html">
+
+  <meta property="og:title" content="Политика cookies — LAV Design">
+  <meta property="og:description" content="Информация об использовании cookies, аналитики и пользовательских настроек на сайте LAV Design.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #f4f0e9;
+      --bg-soft: #faf8f4;
+      --text: #27231f;
+      --muted: #7a7067;
+      --line: rgba(39, 35, 31, 0.12);
+      --card: rgba(255, 252, 247, 0.78);
+      --accent: #9b7b55;
+      --accent-dark: #5f4a32;
+      --shadow: 0 24px 70px rgba(52, 43, 35, 0.10);
+      --radius-lg: 28px;
+      --radius-md: 20px;
+      --max: 1160px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: "Manrope", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(255,255,255,0.9), transparent 34%),
+        linear-gradient(135deg, #f7f3ec 0%, #efe8dc 48%, #f8f5ef 100%);
+      line-height: 1.72;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    [hidden] {
+      display: none !important;
+    }
+
+    .page {
+      min-height: 100vh;
+    }
+
+    .container {
+      width: min(var(--max), calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .site-header {
+      padding: 24px 0;
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(18px);
+      background: rgba(244, 240, 233, 0.72);
+      position: sticky;
+      top: 0;
+      z-index: 20;
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 22px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      min-width: 0;
+    }
+
+    .brand-title {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 32px;
+      line-height: 0.95;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .brand-subtitle {
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .back-link,
+    .lang-switch button,
+    .cookie-btn,
+    .settings-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 12px 20px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255,255,255,0.45);
+      box-shadow: 0 12px 30px rgba(52,43,35,0.06);
+      font-family: "Manrope", sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--text);
+      cursor: pointer;
+      transition: 0.25s ease;
+      white-space: nowrap;
+    }
+
+    .back-link:hover,
+    .lang-switch button:hover,
+    .cookie-btn:hover,
+    .settings-btn:hover {
+      transform: translateY(-1px);
+      border-color: rgba(155,123,85,0.42);
+      background: rgba(255,255,255,0.72);
+    }
+
+    .lang-switch {
+      display: inline-flex;
+      gap: 6px;
+      padding: 4px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255,255,255,0.34);
+    }
+
+    .lang-switch button {
+      min-height: 36px;
+      padding: 8px 13px;
+      box-shadow: none;
+      border-color: transparent;
+      background: transparent;
+    }
+
+    .lang-switch button.active {
+      background: var(--text);
+      color: #fffaf3;
+      border-color: var(--text);
+    }
+
+    .hero {
+      padding: 76px 0 44px;
+    }
+
+    .eyebrow {
+      font-size: 12px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent-dark);
+      font-weight: 700;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      margin: 0;
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(46px, 7vw, 92px);
+      line-height: 0.92;
+      letter-spacing: 0.035em;
+      text-transform: uppercase;
+      font-weight: 500;
+      max-width: 980px;
+    }
+
+    .hero-text {
+      max-width: 760px;
+      margin-top: 24px;
+      font-size: 18px;
+      color: var(--muted);
+    }
+
+    .updated {
+      display: inline-flex;
+      margin-top: 26px;
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.48);
+      border: 1px solid var(--line);
+      color: var(--accent-dark);
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .document-wrap {
+      padding: 18px 0 86px;
+    }
+
+    .document-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+      padding: clamp(26px, 5vw, 62px);
+      backdrop-filter: blur(20px);
+    }
+
+    .notice {
+      padding: 22px 24px;
+      border-radius: var(--radius-md);
+      background: rgba(155, 123, 85, 0.08);
+      border: 1px solid rgba(155, 123, 85, 0.18);
+      color: #564838;
+      margin-bottom: 38px;
+      font-size: 15px;
+    }
+
+    section.cookie-section {
+      padding: 30px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    section.cookie-section:first-of-type {
+      border-top: none;
+      padding-top: 0;
+    }
+
+    h2 {
+      margin: 0 0 16px;
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(27px, 3.3vw, 42px);
+      line-height: 1.05;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    p {
+      margin: 0 0 14px;
+      color: var(--muted);
+      font-size: 15.5px;
+    }
+
+    ul {
+      margin: 12px 0 0;
+      padding-left: 20px;
+      color: var(--muted);
+      font-size: 15.5px;
+    }
+
+    li {
+      margin: 7px 0;
+    }
+
+    strong {
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .cookie-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      overflow: hidden;
+      border-radius: 20px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.35);
+    }
+
+    .cookie-table th,
+    .cookie-table td {
+      padding: 16px 14px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .cookie-table th {
+      color: var(--accent-dark);
+      font-weight: 700;
+      background: rgba(155, 123, 85, 0.08);
+    }
+
+    .cookie-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .cookie-table strong {
+      white-space: nowrap;
+    }
+
+    .settings-btn {
+      margin-top: 14px;
+      background: rgba(39,35,31,0.92);
+      color: #fffaf3;
+      border-color: rgba(39,35,31,0.92);
+    }
+
+    .footer {
+      padding: 44px 0;
+      border-top: 1px solid var(--line);
+      background: rgba(255,255,255,0.26);
+    }
+
+    .footer-inner {
+      display: grid;
+      grid-template-columns: 1.1fr 1.4fr;
+      gap: 34px;
+      align-items: start;
+    }
+
+    .footer-title {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 34px;
+      line-height: 1;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .footer-description {
+      max-width: 420px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 12px 20px;
+      font-size: 13px;
+      color: var(--accent-dark);
+      font-weight: 600;
+    }
+
+    .legal-note {
+      grid-column: 1 / -1;
+      padding-top: 22px;
+      margin-top: 10px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .cookie-banner {
+      position: fixed;
+      left: 20px;
+      right: 20px;
+      bottom: 20px;
+      z-index: 50;
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 20px;
+      border-radius: 24px;
+      border: 1px solid var(--line);
+      background: rgba(255, 250, 243, 0.94);
+      backdrop-filter: blur(20px);
+      box-shadow: 0 24px 70px rgba(52, 43, 35, 0.18);
+    }
+
+    .cookie-banner p {
+      margin-bottom: 16px;
+      font-size: 14px;
+    }
+
+    .cookie-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .cookie-btn.primary {
+      background: var(--text);
+      color: #fffaf3;
+      border-color: var(--text);
+    }
+
+    .cookie-btn.secondary {
+      background: transparent;
+    }
+
+    .cookie-settings {
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid var(--line);
+    }
+
+    .cookie-check {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin: 10px 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .cookie-check input {
+      margin-top: 4px;
+      accent-color: var(--accent-dark);
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        padding-top: 58px;
+      }
+
+      .footer-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-links {
+        justify-content: flex-start;
+      }
+
+      .cookie-table,
+      .cookie-table thead,
+      .cookie-table tbody,
+      .cookie-table th,
+      .cookie-table td,
+      .cookie-table tr {
+        display: block;
+      }
+
+      .cookie-table thead {
+        display: none;
+      }
+
+      .cookie-table {
+        border: none;
+        background: transparent;
+      }
+
+      .cookie-table tr {
+        margin-bottom: 14px;
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        background: rgba(255,255,255,0.36);
+        overflow: hidden;
+      }
+
+      .cookie-table td {
+        border-bottom: 1px solid rgba(39,35,31,0.08);
+        padding: 12px 14px;
+      }
+
+      .cookie-table td:last-child {
+        border-bottom: none;
+      }
+
+      .cookie-table td::before {
+        content: attr(data-label);
+        display: block;
+        color: var(--accent-dark);
+        font-weight: 700;
+        margin-bottom: 4px;
+        font-size: 12px;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .container {
+        width: min(100% - 28px, var(--max));
+      }
+
+      .site-header {
+        padding: 18px 0;
+      }
+
+      .header-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .header-actions {
+        width: 100%;
+        justify-content: space-between;
+      }
+
+      .brand-title {
+        font-size: 27px;
+      }
+
+      .brand-subtitle {
+        font-size: 10px;
+        white-space: normal;
+      }
+
+      .back-link {
+        flex: 1;
+        min-width: 190px;
+      }
+
+      .hero {
+        padding: 44px 0 28px;
+      }
+
+      h1 {
+        font-size: clamp(38px, 13vw, 54px);
+        line-height: 0.96;
+        letter-spacing: 0.025em;
+      }
+
+      .hero-text {
+        font-size: 15.5px;
+      }
+
+      .document-card {
+        border-radius: 22px;
+        padding: 22px 18px;
+      }
+
+      .notice {
+        padding: 18px;
+      }
+
+      section.cookie-section {
+        padding: 24px 0;
+      }
+
+      p, ul {
+        font-size: 14.5px;
+      }
+
+      .footer-links {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .cookie-banner {
+        left: 12px;
+        right: 12px;
+        bottom: 12px;
+        padding: 16px;
+        border-radius: 20px;
+      }
+
+      .cookie-actions {
+        flex-direction: column;
+      }
+
+      .cookie-btn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="index.html" aria-label="LAV Design — на главную">
+          <span class="brand-title">LAV Design</span>
+          <span class="brand-subtitle">Interior Design & Redesign</span>
+        </a>
+
+        <div class="header-actions">
+          <a class="back-link" href="index.html" data-i18n-ru="Вернуться на сайт" data-i18n-en="Back to website">Вернуться на сайт</a>
+
+          <div class="lang-switch" aria-label="Language switch">
+            <button type="button" data-lang="ru">RU</button>
+            <button type="button" data-lang="en">EN</button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+
+      <section data-lang-content="ru">
+        <section class="hero">
+          <div class="container">
+            <div class="eyebrow">Legal document</div>
+            <h1>Политика cookies</h1>
+            <p class="hero-text">
+              Как LAV Design использует cookies, аналитику и настройки согласия пользователей.
+            </p>
+            <div class="updated">Последнее обновление: 14 мая 2026</div>
+          </div>
+        </section>
+
+        <section class="document-wrap">
+          <div class="container">
+            <article class="document-card">
+
+              <div class="notice">
+                Настоящая Политика cookies разработана с учётом законодательства Российской Федерации, а также общих принципов GDPR, ePrivacy, CCPA/CPRA и иных применимых международных стандартов защиты данных, насколько они применимы к деятельности сайта.
+              </div>
+
+              <section class="cookie-section">
+                <h2>1. Общие положения</h2>
+                <p>
+                  Настоящая Политика cookies объясняет, какие cookies и похожие технологии могут использоваться на сайте <strong>lavinteriors.pro</strong>, зачем они нужны и как пользователь может управлять своим выбором.
+                </p>
+                <p>
+                  Настоящая Политика cookies является частью системы юридических документов сайта и должна рассматриваться совместно с <a href="privacy.html"><strong>Политикой конфиденциальности</strong></a> и <a href="terms.html"><strong>Пользовательским соглашением</strong></a>.
+                </p>
+                <p>
+                  Английская версия предоставляется для удобства международных пользователей. В случае расхождений между языковыми версиями приоритет имеет русская версия, если иное не требуется применимым законодательством.
+                </p>
+              </section>
+
+              <section class="cookie-section">
+                <h2>2. Что такое cookies</h2>
+                <p>
+                  Cookies — это небольшие файлы или технические идентификаторы, которые сайт может сохранять на устройстве пользователя. Они помогают сайту работать корректно, запоминать настройки, понимать посещаемость и, при наличии согласия, использовать аналитику или рекламные инструменты.
+                </p>
+              </section>
+
+              <section class="cookie-section">
+                <h2>3. Какие cookies может использовать сайт</h2>
+                <p>Сайт может использовать следующие категории cookies:</p>
+                <ul>
+                  <li><strong>строго необходимые cookies</strong> — для базовой работы сайта;</li>
+                  <li><strong>функциональные cookies</strong> — для сохранения языка, интерфейса и пользовательских настроек;</li>
+                  <li><strong>аналитические cookies</strong> — для анализа посещаемости и технической работы сайта;</li>
+                  <li><strong>маркетинговые cookies и пиксели</strong> — для рекламы, ретаргетинга и оценки эффективности кампаний, если такие инструменты будут подключены.</li>
+                </ul>
+              </section>
+
+              <section class="cookie-section">
+                <h2>4. Строго необходимые cookies</h2>
+                <p>
+                  Строго необходимые cookies нужны для корректной работы сайта, отображения cookie-баннера, сохранения базовых настроек и обеспечения технических функций.
+                </p>
+                <p>
+                  Для таких cookies согласие обычно не требуется, если они действительно необходимы для работы сайта и не используются для аналитики или маркетинга.
+                </p>
+              </section>
+
+              <section class="cookie-section">
+                <h2>5. Аналитические cookies</h2>
+                <p>
+                  Аналитические cookies могут использоваться для понимания посещаемости сайта, популярных разделов, источников переходов, технических ошибок и общего улучшения сайта.
+                </p>
+                <p>
+                  После подключения соответствующих инструментов сайт может использовать Яндекс.Метрику, Google Analytics, Cloudflare Web Analytics или аналогичные сервисы. В ЕС такие cookies обычно требуют предварительного согласия, если они не являются строго необходимыми.
+                </p>
+              </section>
+
+              <section class="cookie-section">
+                <h2>6. Маркетинговые cookies и пиксели</h2>
+                <p>
+                  Маркетинговые cookies и пиксели могут использоваться для рекламы, ретаргетинга, оценки эффективности рекламных кампаний и построения аудиторий.
+                </p>
+                <p>
+                  К таким инструментам могут относиться Meta Pixel, Pinterest Tag, TikTok Pixel, Google Ads, VK Ads pixel и другие рекламные технологии. Эти cookies не должны запускаться до получения согласия пользователя, если такое согласие требуется применимым законодательством.
+                </p>
+              </section>
+
+              <section class="cookie-section">
+                <h2>7. Cookies сторонних сервисов</h2>
+                <p>
+                  Сайт может использовать или в будущем подключить Cloudflare, GitHub Pages, Google Fonts, Yandex.Metrica, Google Analytics, Meta Pixel, Pinterest Tag, TikTok Pixel, VK Ads, Telegram, WhatsApp, MAX, email-сервисы, X и другие платформы.
+                </p>
+                <p>
+                  Сторонние сервисы могут устанавливать собственные cookies или аналогичные технологии в соответствии со своими политиками. LAV Design не контролирует cookies, которые устанавливаются внешними платформами после перехода пользователя по внешним ссылкам.
+                </p>
+              </section>
+
+              <section class="cookie-section">
+                <h2>8. Согласие пользователя</h2>
+                <p>
+                  Строго необходимые cookies могут использоваться без отдельного согласия. Аналитические, рекламные и ретаргетинговые cookies требуют согласия пользователя, если такое согласие требуется применимым законодательством.
+                </p>
+                <p>
+                  Согласие должно быть свободным, конкретным, информированным и однозначным. Отказ от необязательных cookies должен быть таким же простым, как согласие. Доступ к сайту не должен блокироваться из-за отказа от необязательных cookies.
+                </p>
+              </section>
+
+              <section class="cookie-section">
+                <h2>9. Как изменить или отозвать согласие</h2>
+                <p>
+                  Пользователь может изменить свой выбор по cookies. При нажатии на кнопку ниже сохранённые настройки будут сброшены, и сайт снова покажет баннер согласия.
+                </p>
+                <button type="button" class="settings-btn" id="resetCookieConsent">
+                  Изменить настройки cookies
+                </button>
+              </section>
+
+              <section class="cookie-section">
+                <h2>10. Как отключить cookies в браузере</h2>
+                <p>
+                  Пользователь может ограничить, удалить или заблокировать cookies в настройках своего браузера. В разных браузерах такие настройки находятся в разделах приватности, безопасности или данных сайтов.
+                </p>
+                <p>
+                  Отключение cookies может повлиять на работу отдельных функций сайта, включая сохранение языка и отображение настроек согласия.
+                </p>
+              </section>
+
+              <section class="cookie-section">
+                <h2>11. Cookies и персональные данные</h2>
+                <p>
+                  Если cookies, аналитические или рекламные технологии позволяют прямо или косвенно идентифицировать пользователя, такие данные могут рассматриваться как персональные данные и обрабатываются в соответствии с Политикой конфиденциальности.
+                </p>
+                <p>
+                  Для пользователей из Российской Федерации также необходимо учитывать требования 152-ФЗ и правила локализации персональных данных граждан РФ при подключении иностранных сервисов аналитики и рекламы.
+                </p>
+              </section>
+
+              <section class="cookie-section">
+                <h2>12. Международные пользователи</h2>
+                <p>
+                  По логике GDPR/ePrivacy строго необходимые cookies могут использоваться без согласия, а аналитические, рекламные и ретаргетинговые cookies обычно требуют предварительного согласия.
+                </p>
+                <p>
+                  LAV Design не продаёт персональные данные пользователей. Если в будущем будут подключены рекламные инструменты, которые могут квалифицироваться как sale/share of personal information по законодательству отдельных штатов США, пользователю должен быть предоставлен способ отказаться от такой передачи.
+                </p>
+              </section>
+
+              <section class="cookie-section">
+                <h2>13. Изменения политики cookies</h2>
+                <p>
+                  LAV Design может обновлять настоящую Политику cookies при изменении сайта, подключении новых сервисов, изменении законодательства или подхода к обработке данных.
+                </p>
+                <p>
+                  Актуальная версия публикуется на этой странице. Дата последнего обновления указана в верхней части документа.
+                </p>
+              </section>
+
+              <section class="cookie-section">
+                <h2>14. Контакты</h2>
+                <p>
+                  По вопросам, связанным с cookies и настройками согласия, пользователь может обратиться по адресу:
+                </p>
+                <p>
+                  <strong>Email:</strong> hello@lavinteriors.pro<br>
+                  <strong>Сайт:</strong> lavinteriors.pro
+                </p>
+              </section>
+
+              <section class="cookie-section">
+                <h2>Таблица cookies</h2>
+
+                <table class="cookie-table">
+                  <thead>
+                    <tr>
+                      <th>Название</th>
+                      <th>Тип</th>
+                      <th>Цель</th>
+                      <th>Срок хранения</th>
+                      <th>Провайдер</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td data-label="Название"><strong>lavLegalLang</strong></td>
+                      <td data-label="Тип">Функциональные</td>
+                      <td data-label="Цель">Сохраняет выбранный язык юридических страниц.</td>
+                      <td data-label="Срок хранения">До очистки localStorage</td>
+                      <td data-label="Провайдер">LAV Design</td>
+                    </tr>
+                    <tr>
+                      <td data-label="Название"><strong>lavCookieConsent</strong></td>
+                      <td data-label="Тип">Необходимые / функциональные</td>
+                      <td data-label="Цель">Сохраняет выбор пользователя по cookies.</td>
+                      <td data-label="Срок хранения">6–12 месяцев или до очистки localStorage</td>
+                      <td data-label="Провайдер">LAV Design</td>
+                    </tr>
+                    <tr>
+                      <td data-label="Название"><strong>_ga / _ga_*</strong></td>
+                      <td data-label="Тип">Аналитические</td>
+                      <td data-label="Цель">Google Analytics, если подключён.</td>
+                      <td data-label="Срок хранения">До 2 лет</td>
+                      <td data-label="Провайдер">Google</td>
+                    </tr>
+                    <tr>
+                      <td data-label="Название"><strong>_ym_uid / _ym_d</strong></td>
+                      <td data-label="Тип">Аналитические</td>
+                      <td data-label="Цель">Яндекс.Метрика, если подключена.</td>
+                      <td data-label="Срок хранения">До 1 года</td>
+                      <td data-label="Провайдер">Yandex</td>
+                    </tr>
+                    <tr>
+                      <td data-label="Название"><strong>_fbp</strong></td>
+                      <td data-label="Тип">Маркетинговые</td>
+                      <td data-label="Цель">Meta Pixel, если подключён.</td>
+                      <td data-label="Срок хранения">До 3 месяцев</td>
+                      <td data-label="Провайдер">Meta</td>
+                    </tr>
+                    <tr>
+                      <td data-label="Название"><strong>_pin_unauth</strong></td>
+                      <td data-label="Тип">Маркетинговые</td>
+                      <td data-label="Цель">Pinterest Tag, если подключён.</td>
+                      <td data-label="Срок хранения">До 1 года</td>
+                      <td data-label="Провайдер">Pinterest</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+
+            </article>
+          </div>
+        </section>
+      </section>
+
+      <section data-lang-content="en" hidden>
+        <section class="hero">
+          <div class="container">
+            <div class="eyebrow">Legal document</div>
+            <h1>Cookie Policy</h1>
+            <p class="hero-text">
+              How LAV Design uses cookies, analytics tools and user consent settings.
+            </p>
+            <div class="updated">Last updated: May 14, 2026</div>
+          </div>
+        </section>
+
+        <section class="document-wrap">
+          <div class="container">
+            <article class="document-card">
+
+              <div class="notice">
+                This Cookie Policy has been prepared taking into account the laws of the Russian Federation, as well as the general principles of GDPR, ePrivacy, CCPA/CPRA and other applicable international data protection standards, to the extent applicable to the website.
+              </div>
+
+              <section class="cookie-section">
+                <h2>1. General provisions</h2>
+                <p>
+                  This Cookie Policy explains which cookies and similar technologies may be used on <strong>lavinteriors.pro</strong>, why they are used and how users can manage their choices.
+                </p>
+                <p>
+                  This Cookie Policy is part of the website’s legal document system and should be read together with the <a href="privacy.html"><strong>Privacy Policy</strong></a> and <a href="terms.html"><strong>Terms of Use</strong></a>.
+                </p>
+                <p>
+                  This English version is provided for convenience of international users. In case of conflict between language versions, the Russian version shall prevail where permitted by applicable law.
+                </p>
+              </section>
+
+              <section class="cookie-section">
+                <h2>2. What cookies are</h2>
+                <p>
+                  Cookies are small files or technical identifiers that a website may store on a user’s device. They help the website operate properly, remember settings, understand traffic and, where consent is given, use analytics or advertising tools.
+                </p>
+              </section>
+
+              <section class="cookie-section">
+                <h2>3. What cookies the website may use</h2>
+                <p>The website may use the following categories of cookies:</p>
+                <ul>
+                  <li><strong>strictly necessary cookies</strong> — for basic website functionality;</li>
+                  <li><strong>functional cookies</strong> — to remember language, interface and user preferences;</li>
+                  <li><strong>analytics cookies</strong> — to analyse traffic and technical performance;</li>
+                  <li><strong>marketing cookies and pixels</strong> — for advertising, retargeting and campaign measurement, if such tools are connected.</li>
+                </ul>
+              </section>
+
+              <section class="cookie-section">
+                <h2>4. Strictly necessary cookies</h2>
+                <p>
+                  Strictly necessary cookies are required for the website to function correctly, display the cookie banner, remember basic settings and provide technical features.
+                </p>
+                <p>
+                  These cookies generally do not require consent if they are truly necessary and are not used for analytics or marketing.
+                </p>
+              </section>
+
+              <section class="cookie-section">
+                <h2>5. Analytics cookies</h2>
+                <p>
+                  Analytics cookies may be used to understand website traffic, popular sections, traffic sources, technical errors and to improve the website.
+                </p>
+                <p>
+                  After relevant tools are connected, the website may use Yandex.Metrica, Google Analytics, Cloudflare Web Analytics or similar services. In the EU, analytics cookies usually require prior consent unless they are strictly necessary.
+                </p>
+              </section>
+
+              <section class="cookie-section">
+                <h2>6. Marketing cookies and pixels</h2>
+                <p>
+                  Marketing cookies and pixels may be used for advertising, retargeting, campaign measurement and audience building.
+                </p>
+                <p>
+                  These tools may include Meta Pixel, Pinterest Tag, TikTok Pixel, Google Ads, VK Ads pixel and other advertising technologies. These cookies must not be activated before user consent where such consent is required by applicable law.
+                </p>
+              </section>
+
+              <section class="cookie-section">
+                <h2>7. Third-party cookies</h2>
+                <p>
+                  The website may use or later connect Cloudflare, GitHub Pages, Google Fonts, Yandex.Metrica, Google Analytics, Meta Pixel, Pinterest Tag, TikTok Pixel, VK Ads, Telegram, WhatsApp, MAX, email services, X and other platforms.
+                </p>
+                <p>
+                  Third-party services may set their own cookies or similar technologies according to their own policies. LAV Design does not control cookies set by external platforms after a user follows external links.
+                </p>
+              </section>
+
+              <section class="cookie-section">
+                <h2>8. User consent</h2>
+                <p>
+                  Strictly necessary cookies may be used without separate consent. Analytics, advertising and retargeting cookies require user consent where required by applicable law.
+                </p>
+                <p>
+                  Consent must be freely given, specific, informed and unambiguous. Refusing non-essential cookies must be as easy as accepting them. Access to the website must not be blocked because the user refuses non-essential cookies.
+                </p>
+              </section>
+
+              <section class="cookie-section">
+                <h2>9. How to change or withdraw consent</h2>
+                <p>
+                  Users may change their cookie choice. By clicking the button below, saved settings will be reset and the website will display the consent banner again.
+                </p>
+                <button type="button" class="settings-btn" id="resetCookieConsentEn">
+                  Change cookie settings
+                </button>
+              </section>
+
+              <section class="cookie-section">
+                <h2>10. How to disable cookies in the browser</h2>
+                <p>
+                  Users may restrict, delete or block cookies in their browser settings. These settings are usually located in privacy, security or site data sections.
+                </p>
+                <p>
+                  Disabling cookies may affect some website functions, including language preferences and consent settings.
+                </p>
+              </section>
+
+              <section class="cookie-section">
+                <h2>11. Cookies and personal data</h2>
+                <p>
+                  If cookies, analytics or advertising technologies can directly or indirectly identify a user, such data may be considered personal data and processed in accordance with the Privacy Policy.
+                </p>
+                <p>
+                  For users from the Russian Federation, personal data localisation requirements should also be assessed when foreign analytics or advertising services are connected.
+                </p>
+              </section>
+
+              <section class="cookie-section">
+                <h2>12. International users</h2>
+                <p>
+                  Under the GDPR/ePrivacy approach, strictly necessary cookies may be used without consent, while analytics, advertising and retargeting cookies usually require prior consent.
+                </p>
+                <p>
+                  LAV Design does not sell users’ personal data. If advertising tools are connected in the future and may qualify as a sale/share of personal information under certain U.S. state laws, users should be provided with a way to opt out of such transfer.
+                </p>
+              </section>
+
+              <section class="cookie-section">
+                <h2>13. Changes to this Cookie Policy</h2>
+                <p>
+                  LAV Design may update this Cookie Policy when the website changes, new services are connected, laws change or data processing practices are updated.
+                </p>
+                <p>
+                  The current version is published on this page. The date of the latest update is shown at the top of the document.
+                </p>
+              </section>
+
+              <section class="cookie-section">
+                <h2>14. Contacts</h2>
+                <p>
+                  For questions related to cookies and consent settings, users may contact:
+                </p>
+                <p>
+                  <strong>Email:</strong> hello@lavinteriors.pro<br>
+                  <strong>Website:</strong> lavinteriors.pro
+                </p>
+              </section>
+
+              <section class="cookie-section">
+                <h2>Cookie table</h2>
+
+                <table class="cookie-table">
+                  <thead>
+                    <tr>
+                      <th>Cookie name</th>
+                      <th>Type</th>
+                      <th>Purpose</th>
+                      <th>Storage period</th>
+                      <th>Provider</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td data-label="Cookie name"><strong>lavLegalLang</strong></td>
+                      <td data-label="Type">Functional</td>
+                      <td data-label="Purpose">Stores the selected language for legal pages.</td>
+                      <td data-label="Storage period">Until localStorage is cleared</td>
+                      <td data-label="Provider">LAV Design</td>
+                    </tr>
+                    <tr>
+                      <td data-label="Cookie name"><strong>lavCookieConsent</strong></td>
+                      <td data-label="Type">Necessary / functional</td>
+                      <td data-label="Purpose">Stores the user’s cookie choice.</td>
+                      <td data-label="Storage period">6–12 months or until localStorage is cleared</td>
+                      <td data-label="Provider">LAV Design</td>
+                    </tr>
+                    <tr>
+                      <td data-label="Cookie name"><strong>_ga / _ga_*</strong></td>
+                      <td data-label="Type">Analytics</td>
+                      <td data-label="Purpose">Google Analytics, if connected.</td>
+                      <td data-label="Storage period">Up to 2 years</td>
+                      <td data-label="Provider">Google</td>
+                    </tr>
+                    <tr>
+                      <td data-label="Cookie name"><strong>_ym_uid / _ym_d</strong></td>
+                      <td data-label="Type">Analytics</td>
+                      <td data-label="Purpose">Yandex.Metrica, if connected.</td>
+                      <td data-label="Storage period">Up to 1 year</td>
+                      <td data-label="Provider">Yandex</td>
+                    </tr>
+                    <tr>
+                      <td data-label="Cookie name"><strong>_fbp</strong></td>
+                      <td data-label="Type">Marketing</td>
+                      <td data-label="Purpose">Meta Pixel, if connected.</td>
+                      <td data-label="Storage period">Up to 3 months</td>
+                      <td data-label="Provider">Meta</td>
+                    </tr>
+                    <tr>
+                      <td data-label="Cookie name"><strong>_pin_unauth</strong></td>
+                      <td data-label="Type">Marketing</td>
+                      <td data-label="Purpose">Pinterest Tag, if connected.</td>
+                      <td data-label="Storage period">Up to 1 year</td>
+                      <td data-label="Provider">Pinterest</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+
+            </article>
+          </div>
+        </section>
+      </section>
+
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-inner">
+        <div>
+          <div class="footer-title">LAV Design</div>
+          <div class="footer-description" data-i18n-ru="Премиальный интерьерный дизайн, редизайн и визуальные концепции для частных и коммерческих пространств." data-i18n-en="Premium interior design, redesign and visual concepts for private and commercial spaces.">
+            Премиальный интерьерный дизайн, редизайн и визуальные концепции для частных и коммерческих пространств.
+          </div>
+        </div>
+
+        <nav class="footer-links" aria-label="Legal links">
+          <a href="privacy.html" data-i18n-ru="Политика конфиденциальности" data-i18n-en="Privacy Policy">Политика конфиденциальности</a>
+          <a href="terms.html" data-i18n-ru="Пользовательское соглашение" data-i18n-en="Terms of Use">Пользовательское соглашение</a>
+          <a href="cookies.html" data-i18n-ru="Политика cookies" data-i18n-en="Cookie Policy">Политика cookies</a>
+          <a href="mailto:hello@lavinteriors.pro">Email</a>
+        </nav>
+
+        <div class="legal-note" data-i18n-ru="Информация на сайте носит информационный характер и не является публичной офертой." data-i18n-en="The information on the website is for informational purposes only and does not constitute a public offer.">
+          Информация на сайте носит информационный характер и не является публичной офертой.
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <div class="cookie-banner" id="cookieBanner" hidden>
+    <p data-i18n-ru="Мы используем необходимые cookies для работы сайта, а также можем использовать аналитические и маркетинговые cookies для улучшения сайта и рекламы. Вы можете принять все cookies, отклонить необязательные cookies или изменить настройки." data-i18n-en="We use necessary cookies to operate the website and may use analytics and marketing cookies to improve the website and advertising. You can accept all cookies, reject non-essential cookies or adjust settings.">
+      Мы используем необходимые cookies для работы сайта, а также можем использовать аналитические и маркетинговые cookies для улучшения сайта и рекламы. Вы можете принять все cookies, отклонить необязательные cookies или изменить настройки.
+    </p>
+
+    <div class="cookie-actions">
+      <button type="button" class="cookie-btn primary" id="acceptAllCookies" data-i18n-ru="Принять все" data-i18n-en="Accept all">Принять все</button>
+      <button type="button" class="cookie-btn secondary" id="rejectOptionalCookies" data-i18n-ru="Отклонить необязательные" data-i18n-en="Reject optional">Отклонить необязательные</button>
+      <button type="button" class="cookie-btn secondary" id="openCookieSettings" data-i18n-ru="Настроить" data-i18n-en="Settings">Настроить</button>
+    </div>
+
+    <div class="cookie-settings" id="cookieSettings" hidden>
+      <label class="cookie-check">
+        <input type="checkbox" checked disabled>
+        <span data-i18n-ru="Необходимые cookies — всегда активны, потому что нужны для работы сайта." data-i18n-en="Necessary cookies — always active because they are required for the website to function.">
+          Необходимые cookies — всегда активны, потому что нужны для работы сайта.
+        </span>
+      </label>
+
+      <label class="cookie-check">
+        <input type="checkbox" id="analyticsConsent">
+        <span data-i18n-ru="Аналитические cookies — помогают понимать посещаемость и улучшать сайт." data-i18n-en="Analytics cookies — help understand traffic and improve the website.">
+          Аналитические cookies — помогают понимать посещаемость и улучшать сайт.
+        </span>
+      </label>
+
+      <label class="cookie-check">
+        <input type="checkbox" id="marketingConsent">
+        <span data-i18n-ru="Маркетинговые cookies — могут использоваться для рекламы и ретаргетинга." data-i18n-en="Marketing cookies — may be used for advertising and retargeting.">
+          Маркетинговые cookies — могут использоваться для рекламы и ретаргетинга.
+        </span>
+      </label>
+
+      <div class="cookie-actions">
+        <button type="button" class="cookie-btn primary" id="saveCookieSettings" data-i18n-ru="Сохранить настройки" data-i18n-en="Save settings">Сохранить настройки</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const langButtons = document.querySelectorAll("[data-lang]");
+    const langContents = document.querySelectorAll("[data-lang-content]");
+    const translatableElements = document.querySelectorAll("[data-i18n-ru][data-i18n-en]");
+
+    function setLang(lang) {
+      localStorage.setItem("lavLegalLang", lang);
+
+      langButtons.forEach(button => {
+        button.classList.toggle("active", button.dataset.lang === lang);
+      });
+
+      langContents.forEach(section => {
+        section.hidden = section.dataset.langContent !== lang;
+      });
+
+      translatableElements.forEach(element => {
+        const value = element.dataset[`i18n${lang.charAt(0).toUpperCase() + lang.slice(1)}`];
+        if (value) element.textContent = value;
+      });
+
+      document.documentElement.lang = lang;
+    }
+
+    const savedLang = localStorage.getItem("lavLegalLang") || "ru";
+    setLang(savedLang);
+
+    langButtons.forEach(button => {
+      button.addEventListener("click", () => setLang(button.dataset.lang));
+    });
+
+    const cookieBanner = document.getElementById("cookieBanner");
+    const cookieSettings = document.getElementById("cookieSettings");
+    const acceptAllCookies = document.getElementById("acceptAllCookies");
+    const rejectOptionalCookies = document.getElementById("rejectOptionalCookies");
+    const openCookieSettings = document.getElementById("openCookieSettings");
+    const saveCookieSettings = document.getElementById("saveCookieSettings");
+    const analyticsConsent = document.getElementById("analyticsConsent");
+    const marketingConsent = document.getElementById("marketingConsent");
+
+    function saveCookieConsent({ analytics, marketing }) {
+      localStorage.setItem("lavCookieConsent", "saved");
+      localStorage.setItem("lavCookieAnalytics", analytics ? "true" : "false");
+      localStorage.setItem("lavCookieMarketing", marketing ? "true" : "false");
+      cookieBanner.hidden = true;
+
+      /*
+        ВАЖНО:
+        Аналитика и рекламные пиксели должны запускаться только здесь,
+        после проверки согласия пользователя.
+
+        Пример:
+        if (analytics) {
+          // load Google Analytics / Yandex.Metrica
+        }
+
+        if (marketing) {
+          // load Meta Pixel / Pinterest Tag / TikTok Pixel
+        }
+      */
+    }
+
+    if (!localStorage.getItem("lavCookieConsent")) {
+      cookieBanner.hidden = false;
+    }
+
+    acceptAllCookies?.addEventListener("click", () => {
+      saveCookieConsent({ analytics: true, marketing: true });
+    });
+
+    rejectOptionalCookies?.addEventListener("click", () => {
+      saveCookieConsent({ analytics: false, marketing: false });
+    });
+
+    openCookieSettings?.addEventListener("click", () => {
+      cookieSettings.hidden = !cookieSettings.hidden;
+    });
+
+    saveCookieSettings?.addEventListener("click", () => {
+      saveCookieConsent({
+        analytics: analyticsConsent.checked,
+        marketing: marketingConsent.checked
+      });
+    });
+
+    function resetCookieConsent() {
+      localStorage.removeItem("lavCookieConsent");
+      localStorage.removeItem("lavCookieAnalytics");
+      localStorage.removeItem("lavCookieMarketing");
+      window.location.reload();
+    }
+
+    document.getElementById("resetCookieConsent")?.addEventListener("click", resetCookieConsent);
+    document.getElementById("resetCookieConsentEn")?.addEventListener("click", resetCookieConsent);
+  </script>
+</body>
+</html>
