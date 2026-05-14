@@ -4219,6 +4219,173 @@
         right:9px !important;
       }
     }
+
+
+    /* ===== FINAL SERVICE / PROCESS ARROW / EXAMPLES LABEL FIXES ===== */
+    /* Desktop: стрелки процесса были внутри карточек и обрезались из-за overflow:hidden. */
+    @media (min-width:1025px){
+      .process-grid{
+        overflow:visible !important;
+        position:relative !important;
+        z-index:2 !important;
+      }
+
+      .process-card{
+        overflow:visible !important;
+        position:relative !important;
+        z-index:1 !important;
+      }
+
+      .process-card:hover{
+        z-index:2 !important;
+      }
+
+      .process-arrow{
+        display:flex !important;
+        position:absolute !important;
+        top:50% !important;
+        right:-20px !important;
+        transform:translateY(-50%) !important;
+        z-index:999 !important;
+        width:34px !important;
+        height:34px !important;
+        pointer-events:none !important;
+        box-shadow:0 12px 28px rgba(57,41,22,.16), inset 0 1px 0 rgba(255,255,255,.9) !important;
+      }
+    }
+
+    /* Examples: уменьшаем подписи и резервируем место под цифру, чтобы текст не наезжал. */
+    .variant-style-label{
+      font-size:8px !important;
+      line-height:1.08 !important;
+      letter-spacing:.065em !important;
+      max-width:calc(100% - 58px) !important;
+      padding:6px 8px !important;
+      padding-right:8px !important;
+      white-space:normal !important;
+      overflow:hidden !important;
+      text-overflow:clip !important;
+    }
+
+    .variant-card-wrap::after{
+      top:16px !important;
+      right:14px !important;
+      z-index:8 !important;
+      min-width:24px !important;
+      text-align:right !important;
+      font-size:8px !important;
+      letter-spacing:.08em !important;
+      color:rgba(255,241,226,.94) !important;
+      text-shadow:0 2px 10px rgba(0,0,0,.22) !important;
+    }
+
+    .example-block-label,
+    .case-label,
+    .case-option-title{
+      font-size:9px !important;
+      line-height:1.15 !important;
+      letter-spacing:.12em !important;
+    }
+
+    /* Services: строка индивидуальной стоимости во всех карточках, кроме быстрого редизайна. */
+    .service-price-custom{
+      margin-top:auto !important;
+      padding-top:14px !important;
+      border-top:1px solid rgba(216,203,186,.9) !important;
+      display:grid !important;
+      align-items:end !important;
+      min-height:72px !important;
+    }
+
+    .service-price-custom strong{
+      font-family:"Cormorant Garamond", Georgia, serif !important;
+      font-size:clamp(1.45rem, 2vw, 1.95rem) !important;
+      line-height:.96 !important;
+      letter-spacing:-.03em !important;
+      color:var(--text) !important;
+      font-weight:700 !important;
+      text-align:center !important;
+    }
+
+    @media (min-width:769px) and (max-width:1024px){
+      .variant-style-label{
+        font-size:6.6px !important;
+        line-height:1.05 !important;
+        letter-spacing:.04em !important;
+        max-width:calc(100% - 46px) !important;
+        left:8px !important;
+        top:8px !important;
+        padding:5px 6px !important;
+      }
+
+      .variant-card-wrap::after{
+        top:12px !important;
+        right:10px !important;
+        font-size:6.8px !important;
+      }
+
+      .service-price-custom{ min-height:62px !important; padding-top:12px !important; }
+      .service-price-custom strong{ font-size:clamp(1.28rem, 3vw, 1.7rem) !important; }
+    }
+
+    @media (max-width:768px){
+      .variant-style-label{
+        font-size:5.8px !important;
+        line-height:1.02 !important;
+        letter-spacing:.025em !important;
+        max-width:calc(100% - 38px) !important;
+        left:6px !important;
+        top:6px !important;
+        padding:4px 5px !important;
+        border-radius:999px !important;
+      }
+
+      .variant-card-wrap::after{
+        top:9px !important;
+        right:8px !important;
+        font-size:5.9px !important;
+        letter-spacing:.04em !important;
+        min-width:18px !important;
+      }
+
+      .example-block-label,
+      .case-label,
+      .case-option-title{
+        font-size:7px !important;
+        line-height:1.08 !important;
+        letter-spacing:.055em !important;
+      }
+
+      .service-price-custom{
+        min-height:54px !important;
+        padding-top:10px !important;
+      }
+
+      .service-price-custom strong{
+        font-size:clamp(16px, 4.35vw, 22px) !important;
+        line-height:.98 !important;
+      }
+    }
+
+    @media (max-width:430px){
+      .variant-style-label{
+        font-size:5.2px !important;
+        letter-spacing:.015em !important;
+        max-width:calc(100% - 34px) !important;
+        padding:3px 4px !important;
+      }
+
+      .variant-card-wrap::after{
+        font-size:5.2px !important;
+        top:8px !important;
+        right:7px !important;
+      }
+
+      .service-price-custom strong{
+        font-size:clamp(14px, 4vw, 18px) !important;
+      }
+    }
+
 </style>
 </head>
 <body>
@@ -4561,6 +4728,7 @@
           ],
           priceFrom: "10 000 ₽",
           priceNote: "Прозрачная стоимость для быстрого дизайна",
+          customPrice: "Стоимость рассчитывается индивидуально",
           bottom: "Финальный формат зависит от задачи: кому-то нужен быстрый выбор, кому-то — точная реализация выбранного решения"
         },
 
@@ -4715,6 +4883,7 @@
           ],
           priceFrom: "$150",
           priceNote: "Transparent price for fast design",
+          customPrice: "Price is calculated individually",
           bottom: "The final format depends on the task: some need a quick choice, others need precise realization of the selected solution"
         },
 
@@ -4995,7 +5164,11 @@
                         <strong>${escapeHtml(t.services.priceFrom)}</strong>
                         <span>${escapeHtml(t.services.priceNote)}</span>
                       </div>
-                    ` : ""}
+                    ` : `
+                      <div class="service-price service-price-custom">
+                        <strong>${escapeHtml(t.services.customPrice)}</strong>
+                      </div>
+                    `}
                   </article>
                 `).join("")}
               </div>
