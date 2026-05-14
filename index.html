@@ -2430,6 +2430,445 @@
       }
     }
 
+
+    /* ===== FINAL RESPONSIVE FIXES: iPad / iPhone ONLY ===== */
+    html,
+    body{
+      overflow-x:hidden;
+    }
+
+    @media (min-width:769px) and (max-width:1024px){
+      .container{width:min(var(--container), calc(100% - 40px));}
+
+      .site-header{
+        height:auto;
+        min-height:88px;
+      }
+
+      .site-header .inner{
+        min-height:88px;
+        display:grid;
+        grid-template-columns:minmax(0,1fr) auto;
+        gap:18px;
+        align-items:center;
+      }
+
+      .brand{min-width:0;}
+      .header-actions{justify-content:flex-end; gap:10px;}
+      .header-actions .btn{white-space:nowrap;}
+
+      .hero{padding:0 0 82px;}
+      .hero-card{min-height:auto; height:auto;}
+      .hero-content{
+        min-height:auto;
+        padding:150px 0 70px;
+        align-items:center;
+      }
+      .hero-image img{
+        object-fit:cover;
+        object-position:center center;
+      }
+      .hero-overlay{
+        background:
+          linear-gradient(90deg, rgba(24,19,15,.62) 0%, rgba(24,19,15,.36) 40%, rgba(24,19,15,.14) 100%),
+          linear-gradient(180deg, rgba(24,19,15,.10) 0%, rgba(24,19,15,.04) 42%, rgba(24,19,15,.20) 100%);
+      }
+      .hero-copy{padding:0; max-width:760px;}
+      .hero-title-main{font-size:clamp(72px, 9vw, 110px); max-width:12.5ch;}
+      .hero-title-meta{font-size:clamp(32px, 4.2vw, 48px);}
+      .hero-subtitle{font-size:clamp(18px, 2.4vw, 24px); line-height:1.55;}
+
+      .section-title{font-size:clamp(58px, 7.8vw, 96px); line-height:.95; text-align:center;}
+      .section-subtitle{font-size:clamp(18px, 2.4vw, 24px); line-height:1.55;}
+
+      .process-grid,
+      .benefits-grid,
+      .services-grid,
+      .fit-grid{
+        grid-template-columns:repeat(2, minmax(0,1fr));
+        gap:22px;
+        align-items:stretch;
+      }
+
+      .process-card:nth-last-child(1):nth-child(odd),
+      .benefit-card:nth-last-child(1):nth-child(odd),
+      .service-card:nth-last-child(1):nth-child(odd),
+      .fit-card:nth-last-child(1):nth-child(odd){
+        grid-column:1 / -1;
+      }
+
+      .process-card,
+      .benefit-card,
+      .service-card,
+      .fit-card{
+        min-height:auto;
+      }
+
+      .cases-layout{
+        grid-template-columns:1fr 1fr;
+        align-items:start;
+        gap:20px;
+      }
+
+      .cases-left,
+      .cases-right{
+        min-height:0;
+      }
+
+      .cases-left .example-card,
+      .source-card-wrap .example-card{
+        aspect-ratio:4 / 3;
+        height:auto;
+      }
+
+      .cases-right-grid{
+        grid-template-columns:repeat(2, minmax(0,1fr));
+        grid-template-rows:auto;
+        gap:12px;
+      }
+
+      .cases-right-grid .example-card{
+        aspect-ratio:3 / 4;
+      }
+    }
+
+    @media (max-width:768px){
+      html,
+      body{
+        width:100%;
+        max-width:100%;
+        overflow-x:hidden;
+      }
+
+      .container{width:min(var(--container), calc(100% - 24px));}
+
+      .site-header{
+        height:auto;
+        min-height:0;
+      }
+
+      .site-header .inner{
+        height:auto;
+        min-height:0;
+        display:grid;
+        grid-template-columns:1fr;
+        gap:12px;
+        align-items:center;
+        justify-items:center;
+        padding:14px 0;
+      }
+
+      .brand{
+        max-width:100%;
+        text-align:center;
+        align-items:center;
+      }
+
+      .brand-title{font-size:16px; letter-spacing:.18em;}
+      .brand-subtitle{font-size:10px; letter-spacing:.18em;}
+
+      .header-actions{
+        width:100%;
+        display:flex;
+        flex-wrap:wrap;
+        justify-content:center;
+        gap:10px;
+      }
+
+      .header-actions .btn{
+        width:100%;
+        max-width:360px;
+        justify-content:center;
+        white-space:nowrap;
+        font-size:clamp(13px, 3.4vw, 16px);
+        letter-spacing:.12em;
+        padding-left:14px;
+        padding-right:14px;
+      }
+
+      .lang-switch{flex:0 0 auto;}
+
+      .hero{
+        min-height:auto;
+        height:auto;
+        padding:0 0 56px;
+        overflow:hidden;
+      }
+
+      .hero-card{
+        min-height:auto;
+        height:auto;
+        border-radius:0 0 24px 24px;
+      }
+
+      .hero-content{
+        min-height:auto;
+        height:auto;
+        padding:140px 0 48px;
+        align-items:center;
+      }
+
+      .hero-image img{
+        object-fit:cover;
+        object-position:center center;
+        animation:none;
+        transform:none;
+      }
+
+      .hero-overlay{
+        background:
+          linear-gradient(180deg, rgba(24,19,15,.44) 0%, rgba(24,19,15,.28) 42%, rgba(24,19,15,.42) 100%),
+          linear-gradient(90deg, rgba(24,19,15,.46) 0%, rgba(24,19,15,.20) 100%);
+      }
+
+      .hero-copy{
+        padding:0;
+        max-width:100%;
+        gap:16px;
+      }
+
+      .hero-title{
+        max-width:100%;
+        gap:8px;
+      }
+
+      .hero-title-main{
+        font-size:clamp(42px, 12vw, 88px);
+        line-height:.9;
+        max-width:100%;
+        word-break:normal;
+        overflow-wrap:normal;
+      }
+
+      .hero-title-meta{
+        font-size:clamp(25px, 7vw, 42px);
+        line-height:1;
+      }
+
+      .hero-subtitle,
+      .hero-kicker{
+        font-size:clamp(18px, 4.8vw, 28px);
+        line-height:1.45;
+      }
+
+      .hero-micro{font-size:11px; line-height:1.5;}
+
+      .hero-actions{
+        display:grid;
+        grid-template-columns:1fr;
+        gap:12px;
+        width:100%;
+      }
+
+      .hero-actions .btn{
+        width:100%;
+        min-height:54px;
+        padding-left:14px;
+        padding-right:14px;
+        font-size:13px;
+      }
+
+      .section{padding:72px 0;}
+      .section-head{margin-bottom:32px;}
+      .section-title,
+      .contact-title{
+        font-size:clamp(42px, 11vw, 96px);
+        line-height:.95;
+        text-align:center;
+      }
+      .section-subtitle,
+      .section-lead,
+      .contact-subtitle{
+        font-size:clamp(18px, 4.8vw, 28px);
+        line-height:1.5;
+      }
+
+      .process-grid,
+      .benefits-grid,
+      .services-grid,
+      .fit-grid{
+        display:grid;
+        grid-template-columns:1fr;
+        gap:18px;
+      }
+
+      .process-card,
+      .benefit-card,
+      .service-card,
+      .fit-card,
+      .option-chip{
+        min-height:auto;
+        padding:24px;
+      }
+
+      .process-visual,
+      .service-visual,
+      .fit-visual{
+        aspect-ratio:4 / 3;
+      }
+
+      .examples-control-group{
+        display:flex;
+        flex-wrap:wrap;
+        justify-content:center;
+        gap:10px;
+      }
+
+      .category-tab{
+        padding:12px 18px;
+        font-size:13px;
+        letter-spacing:.16em;
+        min-width:auto;
+        min-height:40px;
+      }
+
+      .examples-module{padding:16px; border-radius:22px;}
+
+      .cases-layout{
+        display:grid;
+        grid-template-columns:1fr;
+        gap:20px;
+        align-items:start;
+      }
+
+      .cases-left,
+      .cases-right{
+        display:grid;
+        grid-template-rows:auto auto;
+        gap:10px;
+        min-height:0;
+      }
+
+      .case-before img,
+      .cases-left .example-card,
+      .source-card-wrap .example-card{
+        aspect-ratio:4 / 3;
+        height:auto;
+      }
+
+      .case-before img,
+      .example-card img{
+        object-fit:cover;
+        object-position:center;
+      }
+
+      .case-options,
+      .cases-right-grid{
+        display:grid;
+        grid-template-columns:repeat(2, minmax(0,1fr));
+        grid-template-rows:auto;
+        gap:12px;
+      }
+
+      .case-options img,
+      .cases-right-grid .example-card{
+        aspect-ratio:3 / 4;
+        object-fit:cover;
+      }
+
+      .variant-style-label{
+        left:10px;
+        top:10px;
+        max-width:calc(100% - 20px);
+        font-size:8px;
+        letter-spacing:.12em;
+        padding:7px 10px;
+        padding-right:30px;
+      }
+
+      .variant-card-wrap::after{
+        top:16px;
+        right:14px;
+        font-size:8px;
+      }
+
+      .contact-buttons.contact-groups,
+      .modal-links.modal-groups{
+        grid-template-columns:1fr;
+      }
+
+      .footer-inner{
+        padding:40px 0 120px;
+      }
+
+      .footer-top,
+      .footer-mini,
+      .footer-legal-links,
+      .socials{
+        display:flex;
+        flex-wrap:wrap;
+        gap:14px;
+        justify-content:flex-start;
+      }
+
+      .site-footer a,
+      .footer-legal a{
+        line-height:1.5;
+      }
+
+      .cookie-banner{
+        left:16px;
+        right:16px;
+        bottom:16px;
+        padding:22px;
+        max-height:70vh;
+        overflow-y:auto;
+        display:none;
+        grid-template-columns:1fr;
+        gap:14px;
+      }
+
+      .cookie-actions{
+        display:grid;
+        grid-template-columns:1fr;
+        gap:12px;
+        justify-content:stretch;
+      }
+
+      .cookie-actions button,
+      .cookie-actions .btn{
+        width:100%;
+      }
+    }
+
+    @media (max-width:430px){
+      .container{width:min(var(--container), calc(100% - 22px));}
+
+      .site-header .inner{padding:12px 0;}
+      .brand-title{font-size:15px;}
+      .brand-subtitle{font-size:9px;}
+
+      .header-actions .btn{
+        max-width:100%;
+        font-size:13px;
+        min-height:44px;
+      }
+
+      .hero-content{padding:132px 0 44px;}
+      .hero-title-main{font-size:clamp(40px, 12.4vw, 54px);}
+      .hero-title-meta{font-size:clamp(23px, 7.1vw, 32px);}
+      .hero-subtitle,
+      .hero-kicker{font-size:clamp(17px, 4.8vw, 21px);}
+
+      .section-title,
+      .contact-title{font-size:clamp(38px, 10.8vw, 52px);}
+      .section-subtitle,
+      .contact-subtitle{font-size:clamp(16px, 4.7vw, 20px);}
+
+      .process-card,
+      .benefit-card,
+      .service-card,
+      .fit-card,
+      .option-chip{
+        padding:22px;
+      }
+
+      .examples-module{padding:12px;}
+      .category-tab{padding:11px 14px; font-size:12px;}
+      .cases-right-grid{gap:10px;}
+      .example-card{border-radius:16px;}
+    }
+
   </style>
 </head>
 <body>
@@ -2762,8 +3201,8 @@
             ["Чертежи мебели", "Решения для индивидуального изготовления", false],
             ["Полный дизайн-проект", "От концепции до визуализации и технической части", false]
           ],
-          priceFrom: "от 10 000 ₽",
-          priceNote: "Прозрачная стоимость для быстрого редизайна",
+          priceFrom: "10 000 ₽",
+          priceNote: "Прозрачная стоимость для быстрого дизайна",
           bottom: "Финальный формат зависит от задачи: кому-то нужен быстрый выбор, кому-то — точная реализация выбранного решения"
         },
 
@@ -2916,8 +3355,8 @@
             ["Furniture drawings", "Solutions for custom production", false],
             ["Full design project", "From concept to visualization and technical package", false]
           ],
-          priceFrom: "starting from $150",
-          priceNote: "Transparent pricing for a fast redesign",
+          priceFrom: "$150",
+          priceNote: "Transparent price for fast design",
           bottom: "The final format depends on the task: some need a quick choice, others need precise realization of the selected solution"
         },
 
