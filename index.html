@@ -3393,6 +3393,595 @@
       }
     }
 
+
+    /* ===== FINAL MOBILE/TABLET FIX — diagnostic class aliases + strongest overrides. Desktop >=1025px untouched. ===== */
+    @media (max-width:1024px){
+      html, body{
+        width:100% !important;
+        max-width:100% !important;
+        overflow-x:hidden !important;
+      }
+
+      body{ position:relative !important; }
+      img, video, svg{ max-width:100% !important; }
+      .container{ max-width:100% !important; }
+
+      .process-grid, .workflow-grid,
+      .benefits-grid,
+      .options-flow, .possibilities-grid,
+      .services-grid,
+      .fit-grid, .audience-grid,
+      .cards-grid{
+        display:grid !important;
+        grid-template-columns:repeat(2, minmax(0, 1fr)) !important;
+        align-items:stretch !important;
+      }
+
+      .process-grid > *:last-child:nth-child(odd), .workflow-grid > *:last-child:nth-child(odd),
+      .benefits-grid > *:last-child:nth-child(odd),
+      .options-flow > *:last-child:nth-child(odd), .possibilities-grid > *:last-child:nth-child(odd),
+      .services-grid > *:last-child:nth-child(odd),
+      .fit-grid > *:last-child:nth-child(odd), .audience-grid > *:last-child:nth-child(odd),
+      .cards-grid > *:last-child:nth-child(odd){
+        grid-column:1 / -1 !important;
+      }
+
+      .process-arrow{ display:none !important; }
+
+      .cases-layout{
+        display:grid !important;
+        align-items:start !important;
+      }
+
+      .cookie-banner{
+        position:fixed !important;
+        z-index:110 !important;
+        overscroll-behavior:contain !important;
+      }
+    }
+
+    @media (min-width:769px) and (max-width:1024px){
+      .site-header.header{
+        height:auto !important;
+        min-height:86px !important;
+      }
+
+      .site-header.header .inner{
+        min-height:86px !important;
+        display:grid !important;
+        grid-template-columns:minmax(190px, .85fr) auto !important;
+        gap:18px !important;
+        align-items:center !important;
+      }
+
+      .header-actions{
+        display:flex !important;
+        align-items:center !important;
+        justify-content:flex-end !important;
+        gap:12px !important;
+        min-width:0 !important;
+      }
+
+      .header-cta{
+        max-width:310px !important;
+        min-width:0 !important;
+        padding-inline:18px !important;
+        font-size:13px !important;
+        letter-spacing:.12em !important;
+      }
+
+      .hero{
+        padding:0 0 80px !important;
+        min-height:auto !important;
+        height:auto !important;
+      }
+
+      .hero-card{
+        min-height:82svh !important;
+        height:auto !important;
+        position:relative !important;
+        display:flex !important;
+        align-items:flex-end !important;
+        overflow:hidden !important;
+      }
+
+      .hero-image, .hero-image img,
+      .hero-bg, .hero-bg img,
+      .hero-background, .hero-background img{
+        position:absolute !important;
+        inset:0 !important;
+        width:100% !important;
+        height:100% !important;
+        object-fit:cover !important;
+        object-position:50% 42% !important;
+      }
+
+      .hero-image img{
+        animation:none !important;
+        transform:none !important;
+      }
+
+      .hero-overlay{
+        background:
+          linear-gradient(to bottom, rgba(0,0,0,.04) 0%, rgba(0,0,0,.12) 36%, rgba(0,0,0,.50) 100%),
+          linear-gradient(90deg, rgba(0,0,0,.44) 0%, rgba(0,0,0,.22) 45%, rgba(0,0,0,.08) 100%) !important;
+      }
+
+      .hero-content{
+        position:relative !important;
+        z-index:2 !important;
+        width:100% !important;
+        min-height:82svh !important;
+        display:flex !important;
+        align-items:flex-end !important;
+        padding:150px 48px 64px !important;
+      }
+
+      .hero-content .container{ width:100% !important; }
+      .hero-copy{ max-width:760px !important; padding:0 !important; gap:16px !important; }
+
+      .hero-title{ max-width:760px !important; gap:6px !important; }
+      .hero-title-main{ font-size:clamp(72px,10vw,108px) !important; line-height:.88 !important; max-width:760px !important; }
+      .hero-title-meta{ font-size:clamp(42px,6vw,62px) !important; line-height:.94 !important; }
+      .hero-subtitle{ max-width:620px !important; font-size:26px !important; line-height:1.4 !important; }
+      .hero-kicker{ max-width:680px !important; font-size:22px !important; line-height:1.2 !important; }
+      .hero-micro{ font-size:11px !important; line-height:1.35 !important; }
+
+      .process-grid, .workflow-grid,
+      .benefits-grid,
+      .options-flow, .possibilities-grid,
+      .services-grid,
+      .fit-grid, .audience-grid,
+      .cards-grid{
+        gap:18px !important;
+      }
+
+      .process-card, .workflow-card,
+      .benefit-card,
+      .option-chip, .possibility-card,
+      .service-card,
+      .fit-card, .audience-card,
+      .card{
+        width:auto !important;
+        min-width:0 !important;
+        max-width:none !important;
+        min-height:auto !important;
+        padding:20px 18px !important;
+        border-radius:24px !important;
+      }
+
+      .process-visual, .service-visual, .fit-visual{
+        max-height:220px !important;
+        aspect-ratio:4 / 3 !important;
+      }
+
+      .cases-layout{ grid-template-columns:minmax(0, .9fr) minmax(0, 1.35fr) !important; gap:18px !important; }
+      .cases-right-grid, .case-options{ grid-template-columns:repeat(2, minmax(0, 1fr)) !important; gap:12px !important; }
+      .cases-left .example-card, .case-before .example-card{ aspect-ratio:4 / 3 !important; height:auto !important; }
+      .cases-right-grid .example-card{ aspect-ratio:3 / 4 !important; }
+    }
+
+    @media (max-width:768px){
+      .site-header.header{
+        position:sticky !important;
+        top:0 !important;
+        height:auto !important;
+        min-height:0 !important;
+        z-index:90 !important;
+      }
+
+      .site-header.header .inner,
+      .header{
+        width:100% !important;
+        display:grid !important;
+        grid-template-columns:1fr !important;
+        gap:10px !important;
+        align-items:center !important;
+        padding:12px 14px !important;
+      }
+
+      .brand.header-logo,
+      .header-logo{
+        justify-self:center !important;
+        max-width:190px !important;
+        min-width:0 !important;
+        text-align:center !important;
+        overflow:hidden !important;
+      }
+
+      .brand-title{
+        font-size:14px !important;
+        line-height:1 !important;
+        letter-spacing:.16em !important;
+        white-space:nowrap !important;
+      }
+
+      .brand-subtitle{
+        margin-top:4px !important;
+        font-size:8.5px !important;
+        line-height:1.15 !important;
+        letter-spacing:.14em !important;
+        white-space:nowrap !important;
+      }
+
+      .header-actions{
+        display:grid !important;
+        grid-template-columns:auto minmax(0, 1fr) !important;
+        gap:9px !important;
+        align-items:center !important;
+        width:100% !important;
+        min-width:0 !important;
+      }
+
+      .lang-switch.language-switcher,
+      .language-switcher{
+        justify-self:start !important;
+        min-width:max-content !important;
+        padding:3px !important;
+      }
+
+      .lang-switch button{
+        min-width:38px !important;
+        padding:7px 9px !important;
+        font-size:11px !important;
+      }
+
+      .site-header .header-cta,
+      .site-header .btn,
+      .header .btn{
+        width:100% !important;
+        min-width:0 !important;
+        max-width:100% !important;
+        min-height:42px !important;
+        padding:11px 10px !important;
+        justify-content:center !important;
+        font-size:11px !important;
+        line-height:1.05 !important;
+        letter-spacing:.10em !important;
+        white-space:nowrap !important;
+      }
+
+      .hero{
+        position:relative !important;
+        min-height:auto !important;
+        height:auto !important;
+        padding:0 0 56px !important;
+        overflow:hidden !important;
+      }
+
+      .hero-card{
+        position:relative !important;
+        min-height:calc(100svh - 96px) !important;
+        height:auto !important;
+        display:flex !important;
+        align-items:flex-end !important;
+        overflow:hidden !important;
+        border-radius:0 0 22px 22px !important;
+      }
+
+      .hero-image, .hero-image img,
+      .hero-bg, .hero-bg img,
+      .hero-background, .hero-background img{
+        position:absolute !important;
+        inset:0 !important;
+        width:100% !important;
+        height:100% !important;
+        max-width:none !important;
+        object-fit:cover !important;
+        object-position:50% 36% !important;
+      }
+
+      .hero-image img{
+        animation:none !important;
+        transform:none !important;
+      }
+
+      .hero-overlay{
+        z-index:1 !important;
+        background:
+          linear-gradient(to bottom, rgba(0,0,0,.05) 0%, rgba(0,0,0,.15) 34%, rgba(0,0,0,.56) 100%) !important;
+      }
+
+      .hero-card::after{
+        content:"" !important;
+        position:absolute !important;
+        inset:0 !important;
+        z-index:1 !important;
+        pointer-events:none !important;
+        background:linear-gradient(to bottom, rgba(0,0,0,.05) 0%, rgba(0,0,0,.15) 34%, rgba(0,0,0,.56) 100%) !important;
+      }
+
+      .hero-content{
+        position:relative !important;
+        z-index:2 !important;
+        width:100% !important;
+        max-width:100% !important;
+        min-height:calc(100svh - 96px) !important;
+        display:flex !important;
+        align-items:flex-end !important;
+        padding:96px 18px 36px !important;
+      }
+
+      .hero-content .container{
+        width:100% !important;
+        margin:0 !important;
+      }
+
+      .hero-copy{
+        max-width:100% !important;
+        width:100% !important;
+        padding:0 !important;
+        display:grid !important;
+        gap:11px !important;
+        align-content:end !important;
+      }
+
+      .hero-badge{
+        width:fit-content !important;
+        max-width:100% !important;
+        min-height:0 !important;
+        padding:10px 14px !important;
+        font-size:10px !important;
+        line-height:1 !important;
+        letter-spacing:.14em !important;
+        white-space:nowrap !important;
+      }
+
+      .hero-title{
+        max-width:100% !important;
+        margin:0 !important;
+        display:grid !important;
+        gap:2px !important;
+        line-height:.88 !important;
+        letter-spacing:-.04em !important;
+        text-wrap:balance;
+      }
+
+      .hero-title-main,
+      .hero-title-meta{
+        display:none !important;
+      }
+
+      .hero-title-mobile-main,
+      .hero-title-mobile-meta,
+      .hero-title-mobile-time{
+        display:block !important;
+        font-family:"Cormorant Garamond", Georgia, serif !important;
+        text-transform:uppercase !important;
+        color:#fff !important;
+        text-shadow:0 14px 28px rgba(0,0,0,.28) !important;
+      }
+
+      .hero-title-mobile-main,
+      .hero-title-mobile-meta{
+        font-size:clamp(42px, 12.6vw, 58px) !important;
+        line-height:.86 !important;
+        letter-spacing:-.045em !important;
+        font-weight:600 !important;
+      }
+
+      .hero-title-mobile-time{
+        margin-top:4px !important;
+        font-size:clamp(28px, 7.8vw, 38px) !important;
+        line-height:.98 !important;
+        letter-spacing:-.03em !important;
+        font-weight:500 !important;
+      }
+
+      .hero-subtitle,
+      .hero-text{
+        max-width:94% !important;
+        margin:0 !important;
+        font-size:clamp(16px, 4vw, 19px) !important;
+        line-height:1.32 !important;
+        display:-webkit-box !important;
+        -webkit-line-clamp:3 !important;
+        -webkit-box-orient:vertical !important;
+        overflow:hidden !important;
+      }
+
+      .hero-kicker,
+      .hero-italic,
+      .hero-micro{
+        display:none !important;
+      }
+
+      .hero-actions{
+        width:100% !important;
+        display:grid !important;
+        grid-template-columns:1fr !important;
+        gap:9px !important;
+        margin-top:5px !important;
+      }
+
+      .hero-actions .btn{
+        width:100% !important;
+        min-width:0 !important;
+        min-height:50px !important;
+        padding:0 14px !important;
+        justify-content:center !important;
+        font-size:11px !important;
+        line-height:1.05 !important;
+        letter-spacing:.12em !important;
+        white-space:nowrap !important;
+      }
+
+      .section{ padding:58px 0 !important; }
+      .section-head{ gap:12px !important; margin-bottom:24px !important; }
+      .section-title{ font-size:clamp(34px, 9.6vw, 54px) !important; line-height:.92 !important; letter-spacing:-.045em !important; text-align:center !important; }
+      .section-subtitle{ font-size:clamp(14px, 3.8vw, 17px) !important; line-height:1.42 !important; }
+      .script-line{ font-size:clamp(18px, 5vw, 24px) !important; line-height:1.1 !important; }
+      .eyebrow{ font-size:10px !important; letter-spacing:.18em !important; }
+
+      .process-grid, .workflow-grid,
+      .benefits-grid,
+      .options-flow, .possibilities-grid,
+      .services-grid,
+      .fit-grid, .audience-grid,
+      .cards-grid{
+        grid-template-columns:repeat(2, minmax(0, 1fr)) !important;
+        gap:10px !important;
+      }
+
+      .process-card, .workflow-card,
+      .benefit-card,
+      .option-chip, .possibility-card,
+      .service-card,
+      .fit-card, .audience-card,
+      .card{
+        width:auto !important;
+        min-width:0 !important;
+        max-width:none !important;
+        min-height:auto !important;
+        padding:14px 11px !important;
+        border-radius:18px !important;
+        gap:8px !important;
+      }
+
+      .process-card h3, .workflow-card h3,
+      .option-chip h3, .possibility-card h3,
+      .service-card h3,
+      .fit-card h3, .audience-card h3,
+      .card h3{
+        font-size:clamp(12px, 3.5vw, 16px) !important;
+        line-height:1.14 !important;
+        letter-spacing:.035em !important;
+        overflow-wrap:anywhere !important;
+      }
+
+      .benefit-main{
+        margin-top:8px !important;
+        max-width:100% !important;
+        font-size:clamp(20px, 5.8vw, 28px) !important;
+        line-height:.92 !important;
+        letter-spacing:-.035em !important;
+      }
+
+      .process-card p, .workflow-card p,
+      .benefit-note, .benefit-card p,
+      .option-chip p, .possibility-card p,
+      .service-card p,
+      .fit-card p, .audience-card p,
+      .card p{
+        font-size:clamp(11px, 3.1vw, 14px) !important;
+        line-height:1.28 !important;
+        overflow-wrap:anywhere !important;
+      }
+
+      .process-step, .benefit-label, .fit-kicker{
+        font-size:9px !important;
+        letter-spacing:.12em !important;
+      }
+
+      .process-visual, .service-visual, .fit-visual{
+        aspect-ratio:4 / 3 !important;
+        max-height:128px !important;
+        border-radius:14px !important;
+      }
+
+      .process-card img,
+      .service-card img,
+      .fit-card img,
+      .card img{
+        max-height:128px !important;
+        object-fit:cover !important;
+      }
+
+      .service-price{ padding-top:10px !important; gap:2px !important; }
+      .service-price strong{ font-size:clamp(24px, 7vw, 32px) !important; line-height:.95 !important; }
+      .service-price span{ font-size:9px !important; line-height:1.25 !important; letter-spacing:.1em !important; }
+
+      .examples-module{ padding:12px !important; border-radius:22px !important; }
+      .cases-layout{ grid-template-columns:1fr !important; gap:14px !important; }
+      .cases-left, .cases-right{ gap:8px !important; }
+      .case-before .example-card, .cases-left .example-card{ aspect-ratio:4 / 3 !important; height:auto !important; min-height:0 !important; }
+      .cases-right-grid, .case-options{ grid-template-columns:repeat(2, minmax(0, 1fr)) !important; gap:9px !important; }
+      .cases-right-grid .example-card, .case-option .example-card{ aspect-ratio:3 / 4 !important; min-height:0 !important; }
+      .variant-style-label{ left:8px !important; top:8px !important; max-width:calc(100% - 16px) !important; padding:6px 8px !important; padding-right:26px !important; font-size:8px !important; line-height:1.08 !important; letter-spacing:.08em !important; }
+      .variant-card-wrap::after{ top:13px !important; right:12px !important; font-size:8px !important; }
+      .example-block-label, .case-label, .case-option-title{ font-size:9px !important; line-height:1.2 !important; letter-spacing:.12em !important; }
+      .example-card-caption{ display:none !important; }
+      .category-tab, .case-tab{ padding:9px 11px !important; font-size:10px !important; letter-spacing:.10em !important; min-width:auto !important; }
+
+      .footer-inner{ padding:28px 0 104px !important; }
+      .footer-top, .footer-mini, .footer-legal-links{ gap:12px !important; align-items:flex-start !important; }
+      .footer-note, .footer-legal p, .footer a{ font-size:12px !important; line-height:1.45 !important; }
+
+      .cookie-banner{
+        left:12px !important;
+        right:12px !important;
+        bottom:12px !important;
+        padding:16px !important;
+        max-height:58svh !important;
+        overflow-y:auto !important;
+        grid-template-columns:1fr !important;
+        gap:12px !important;
+      }
+      .cookie-banner p{ font-size:12px !important; line-height:1.42 !important; }
+      .cookie-actions{ display:grid !important; grid-template-columns:1fr !important; gap:8px !important; }
+      .cookie-actions .btn, .cookie-actions button{ width:100% !important; min-height:42px !important; font-size:11px !important; }
+    }
+
+    @media (max-width:430px){
+      .container{ width:min(var(--container), calc(100% - 20px)) !important; }
+
+      .site-header.header .inner,
+      .header{ padding:11px 10px !important; gap:8px !important; }
+      .brand.header-logo{ max-width:172px !important; }
+      .brand-title{ font-size:13px !important; letter-spacing:.14em !important; }
+      .brand-subtitle{ font-size:8px !important; letter-spacing:.12em !important; }
+      .header-actions{ gap:7px !important; }
+      .lang-switch button{ min-width:34px !important; padding:6px 7px !important; font-size:10px !important; }
+      .site-header .header-cta{ min-height:40px !important; padding:10px 8px !important; font-size:10px !important; letter-spacing:.08em !important; }
+
+      .hero-card{ min-height:calc(100svh - 88px) !important; }
+      .hero-content{ min-height:calc(100svh - 88px) !important; padding:82px 16px 30px !important; }
+      .hero-copy{ gap:9px !important; }
+      .hero-badge{ font-size:9px !important; padding:9px 11px !important; letter-spacing:.12em !important; }
+      .hero-title-mobile-main, .hero-title-mobile-meta{ font-size:clamp(38px, 12vw, 50px) !important; }
+      .hero-title-mobile-time{ font-size:clamp(25px, 7.5vw, 34px) !important; }
+      .hero-subtitle{ max-width:100% !important; font-size:15px !important; line-height:1.28 !important; }
+      .hero-actions .btn{ min-height:46px !important; font-size:10px !important; letter-spacing:.09em !important; }
+
+      .process-grid, .workflow-grid,
+      .benefits-grid,
+      .options-flow, .possibilities-grid,
+      .services-grid,
+      .fit-grid, .audience-grid,
+      .cards-grid{
+        gap:8px !important;
+      }
+
+      .process-card, .workflow-card,
+      .benefit-card,
+      .option-chip, .possibility-card,
+      .service-card,
+      .fit-card, .audience-card,
+      .card{
+        padding:12px 9px !important;
+        border-radius:16px !important;
+      }
+
+      .process-card h3, .workflow-card h3,
+      .option-chip h3, .possibility-card h3,
+      .service-card h3,
+      .fit-card h3, .audience-card h3,
+      .card h3{ font-size:clamp(11px, 3.25vw, 14px) !important; }
+
+      .process-card p, .workflow-card p,
+      .benefit-note, .benefit-card p,
+      .option-chip p, .possibility-card p,
+      .service-card p,
+      .fit-card p, .audience-card p,
+      .card p{ font-size:clamp(10.5px, 2.95vw, 12.5px) !important; }
+
+      .benefit-main{ font-size:clamp(18px, 5.5vw, 24px) !important; }
+      .process-visual, .service-visual, .fit-visual{ max-height:104px !important; }
+      .service-price strong{ font-size:24px !important; }
+      .service-price span{ font-size:8.5px !important; }
+      .variant-style-label{ font-size:7.2px !important; letter-spacing:.06em !important; }
+    }
+
   </style>
 </head>
 <body>
@@ -3400,6 +3989,11 @@
   <div id="app"></div>
 
   <script>
+    try {
+      if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+      if (!location.hash) window.scrollTo(0, 0);
+    } catch(e) {}
+
     /* =========================================================
        IMAGE CONFIG — CHANGE ONLY THIS BLOCK
        ========================================================= */
@@ -3958,9 +4552,9 @@
       return `
         <div class="examples-module">
           <div class="cases-layout">
-            <div class="cases-left">
+            <div class="cases-left case-before">
               <div class="example-block-label">${escapeHtml(t.source)}</div>
-              <div class="source-card-wrap">
+              <div class="source-card-wrap case-before-card">
                 ${makeImageCard(set.source, t.source, {
                   cardClass: 'example-card-source',
                   badge: t.source,
@@ -3969,11 +4563,11 @@
               </div>
             </div>
 
-            <div class="cases-right">
+            <div class="cases-right case-options-wrap">
               <div class="example-block-label">${escapeHtml(t.variants)}</div>
-              <div class="cases-right-grid">
+              <div class="cases-right-grid case-options">
                 ${variants.map((item, index) => `
-                  <div class="variant-card-wrap">
+                  <div class="variant-card-wrap case-option">
                     ${makeImageCard(item.src, item.label, {
                       cardClass: 'example-card-variant',
                       badge: item.label,
@@ -4001,9 +4595,9 @@
       const app = document.getElementById("app");
 
       app.innerHTML = `
-        <header class="site-header">
+        <header class="site-header header">
           <div class="container inner">
-            <a href="#top" class="brand">
+            <a href="#top" class="brand header-logo">
               <div class="brand-title">${escapeHtml(t.brand)}</div>
               <div class="brand-subtitle">${escapeHtml(t.brandSub)}</div>
             </a>
@@ -4013,11 +4607,11 @@
             </nav>
 
             <div class="header-actions">
-              <div class="lang-switch">
+              <div class="lang-switch language-switcher">
                 <button type="button" class="${lang === "ru" ? "active" : ""}" data-lang="ru">RU</button>
                 <button type="button" class="${lang === "en" ? "active" : ""}" data-lang="en">EN</button>
               </div>
-              <button type="button" class="btn btn-pill btn-dark" data-open-contact>${escapeHtml(t.cta)}</button>
+              <button type="button" class="btn btn-pill btn-dark header-cta" data-open-contact>${escapeHtml(t.cta)}</button>
             </div>
           </div>
         </header>
@@ -4064,9 +4658,9 @@
                 <p class="section-subtitle">${escapeHtml(t.process.subtitle)}</p>
               </div>
 
-              <div class="process-grid">
+              <div class="process-grid workflow-grid cards-grid">
                 ${t.process.items.map((item, index) => `
-                  <article class="process-card">
+                  <article class="process-card workflow-card card">
                     ${makeProcessVisual(IMAGE_CONFIG.process[index]?.src || "", IMAGE_CONFIG.process[index]?.alt || item[0])}
                     <div class="process-step">0${index + 1}</div>
                     <div>
@@ -4089,9 +4683,9 @@
                 <p class="script-line">${escapeHtml(t.benefits.accent)}</p>
               </div>
 
-              <div class="benefits-grid">
+              <div class="benefits-grid cards-grid">
                 ${t.benefits.items.map(item => `
-                  <article class="benefit-card">
+                  <article class="benefit-card card">
                     <div class="benefit-label">${escapeHtml(item[0])}</div>
                     <div class="benefit-main">${escapeHtml(item[1])}</div>
                     <div class="benefit-note">${escapeHtml(item[2])}</div>
@@ -4134,9 +4728,9 @@
                 <p class="script-line">${escapeHtml(t.projectOptions.accent)}</p>
               </div>
 
-              <div class="options-flow">
+              <div class="options-flow possibilities-grid cards-grid">
                 ${t.projectOptions.items.map(item => `
-                  <article class="option-chip ${escapeHtml(item[2])}">
+                  <article class="option-chip possibility-card card ${escapeHtml(item[2])}">
                     <h3>${escapeHtml(item[0])}</h3>
                     <p>${escapeHtml(item[1])}</p>
                   </article>
@@ -4153,9 +4747,9 @@
                 <p class="section-subtitle">${escapeHtml(t.services.subtitle)}</p>
               </div>
 
-              <div class="services-grid">
+              <div class="services-grid cards-grid">
                 ${t.services.items.map((item, index) => `
-                  <article class="service-card">
+                  <article class="service-card card">
                     ${makeServiceVisual(IMAGE_CONFIG.services[index]?.src || "", IMAGE_CONFIG.services[index]?.alt || item[0])}
                     <h3>${escapeHtml(item[0])}</h3>
                     <p>${escapeHtml(item[1])}</p>
@@ -4181,9 +4775,9 @@
                 <p class="section-subtitle">${escapeHtml(t.whoFits.subtitle)}</p>
               </div>
 
-              <div class="fit-grid">
+              <div class="fit-grid audience-grid cards-grid">
                 ${t.whoFits.items.map((item, index) => `
-                  <article class="fit-card ${item[2] ? item[2] : ""}">
+                  <article class="fit-card audience-card card ${item[2] ? item[2] : ""}">
                     ${makeFitVisual(IMAGE_CONFIG.whoFits[index]?.src || "", IMAGE_CONFIG.whoFits[index]?.alt || item[0])}
                     <div class="fit-kicker">0${index + 1}</div>
                     <h3>${escapeHtml(item[0])}</h3>
