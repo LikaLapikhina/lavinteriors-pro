@@ -17,7 +17,7 @@ window.LAV_VS_SHOWCASE = [
     type: "image",
     src: "../images/main-hero-1.jpg",
     title: { en: "Quiet luxury frame", ru: "Кадр тихой роскоши" },
-    tag: { en: "Lifestyle", ru: "Lifestyle" }
+    tag: { en: "Lifestyle", ru: "Образ жизни" }
   },
   {
     type: "image",
