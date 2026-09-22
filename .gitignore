@@ -1,0 +1,16 @@
+﻿pinterest/.env
+pinterest/secrets/
+pinterest/publish_log.json
+.env
+.env.*
+exports/
+__pycache__/
+*.pyc
+.DS_Store
+Thumbs.db
+index(3).html
+index.txt
+studio_server.py
+image-studio.html
+наполнение/
+фоновые/
