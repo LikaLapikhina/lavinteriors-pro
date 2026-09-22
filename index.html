@@ -5219,9 +5219,11 @@ window.LAV_FEATURES = window.LAV_FEATURES || { options48: false, visualStudio: t
 (function(){
   function lang(){ return localStorage.getItem('lavLang') || document.documentElement.getAttribute('data-lang') || 'en'; }
   function moneyRub(n){ return Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g,' ') + ' ₽'; }
-  function moneyUsdFromRub(rub){
-    const usd = Math.ceil((rub / 90) * 1.65 / 10) * 10;
-    return '$' + usd.toString().replace(/\B(?=(\d{3})+(?!\d))/g,' ');
+  function moneyDesign(n){
+    if(window.LAV_DESIGN_PRICING && typeof window.LAV_DESIGN_PRICING.formatMoney === 'function'){
+      return window.LAV_DESIGN_PRICING.formatMoney(n, lang());
+    }
+    return lang() === 'ru' ? moneyRub(n) : ('$' + Math.round(n).toLocaleString('en-US'));
   }
   const COPY = {
     ru:{
@@ -5351,19 +5353,23 @@ window.LAV_FEATURES = window.LAV_FEATURES || { options48: false, visualStudio: t
       ['options48','options48'], ['full','packageFull'], ['planning','planningFmt'], ['concept','conceptFmt'], ['visuals','visualsFmt'], ['drawings','drawingsFmt'], ['procurement','procurementFmt']
     ];
     const optionsArch = [['archViz','archViz'], ['archSmall','archSmall'], ['archLarge','archLarge']];
-    const fullRates = (window.LAV_DESIGN_PRICING && window.LAV_DESIGN_PRICING.ratesPerSqm) || {basic:3000, extended:4000, author:5000};
+    const fullRates = (window.LAV_DESIGN_PRICING && window.LAV_DESIGN_PRICING.forLang && window.LAV_DESIGN_PRICING.forLang(lang()).ratesPerSqm) || {basic:3000, extended:4000, author:5000};
     const designRate = (det, areaM2) => {
       if(window.LAV_DESIGN_PRICING && typeof window.LAV_DESIGN_PRICING.rateFor === 'function'){
-        return window.LAV_DESIGN_PRICING.rateFor(det, areaM2);
+        return window.LAV_DESIGN_PRICING.rateFor(det, areaM2, lang());
       }
       let r = fullRates[det] ?? fullRates.basic;
       if((Number(areaM2)||0) > 200) r = Math.max(0, r - 1000);
       return r;
     };
     const detailDescKey = {basic:'basic', extended:'extended', author:'author'};
-    const separateRates = (window.LAV_DESIGN_PRICING && window.LAV_DESIGN_PRICING.separateStageRates) || {planning:350, concept:450, visuals:1800, drawings:1200, procurement:1000};
+    const separateRates = (window.LAV_DESIGN_PRICING && typeof window.LAV_DESIGN_PRICING.getSeparateRates === 'function')
+      ? window.LAV_DESIGN_PRICING.getSeparateRates(lang())
+      : {planning:350, concept:450, visuals:1800, drawings:1200, procurement:1000};
     const separateTotal = Object.values(separateRates).reduce((a,b)=>a+b,0);
-    const minTotal = (window.LAV_DESIGN_PRICING && window.LAV_DESIGN_PRICING.minimumTotal) || 100000;
+    const minTotal = (window.LAV_DESIGN_PRICING && typeof window.LAV_DESIGN_PRICING.getMinTotal === 'function')
+      ? window.LAV_DESIGN_PRICING.getMinTotal(lang())
+      : 100000;
 
     function optionList(list){
       const current = pack.value;
@@ -5374,7 +5380,7 @@ window.LAV_FEATURES = window.LAV_FEATURES || { options48: false, visualStudio: t
     function label(select){ return select.options[select.selectedIndex]?.textContent || '—'; }
     function commercialDiscount(a){ return a > 300 ? .75 : a > 100 ? .85 : 1; }
     function objectMultiplier(obj){ return obj === 'house' ? 1.12 : obj === 'commercial' ? commercialDiscount(Number(area.value)||0) : obj === 'landscape' ? .8 : 1; }
-    function displayMoneyRubOrUsd(rub){ return lang() === 'ru' ? moneyRub(rub) : moneyUsdFromRub(rub); }
+    function displayMoneyRubOrUsd(amount){ return moneyDesign(amount); }
     function minProjectText(costWasRaised){ return costWasRaised ? ' ' + c('min') : ''; }
     function timeline(fmt){
       if(fmt === 'options48') return c('timelineFast');
@@ -5424,10 +5430,13 @@ window.LAV_FEATURES = window.LAV_FEATURES || { options48: false, visualStudio: t
       }
 
       if(fmt === 'options48'){
-        outCost.textContent = lang() === 'ru' ? moneyRub(10000) : moneyUsdFromRub(10000);
+        const optPrice = (window.LAV_DESIGN_PRICING && typeof window.LAV_DESIGN_PRICING.getOptions48PerView === 'function')
+          ? window.LAV_DESIGN_PRICING.getOptions48PerView(lang())
+          : (lang() === 'ru' ? 10000 : 150);
+        outCost.textContent = moneyDesign(optPrice);
         outDesc.textContent = c('options');
         compareLeft.textContent = '—';
-        compareRight.textContent = lang() === 'ru' ? moneyRub(10000) : moneyUsdFromRub(10000);
+        compareRight.textContent = moneyDesign(optPrice);
         return;
       }
 
@@ -5502,8 +5511,12 @@ window.LAV_FEATURES = window.LAV_FEATURES || { options48: false, visualStudio: t
   const RU = () => (localStorage.getItem('lavLang') || document.documentElement.getAttribute('data-lang') || 'en') === 'ru';
   const lang = () => RU() ? 'ru' : 'en';
   const rub = n => Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g,' ') + ' ₽';
-  const usd = rubValue => '$' + (Math.ceil((rubValue / 90) * 1.65 / 10) * 10).toString().replace(/\B(?=(\d{3})+(?!\d))/g,' ');
-  const money = n => RU() ? rub(n) : usd(n);
+  const money = n => {
+    if(window.LAV_DESIGN_PRICING && typeof window.LAV_DESIGN_PRICING.formatMoney === 'function'){
+      return window.LAV_DESIGN_PRICING.formatMoney(n, lang());
+    }
+    return RU() ? rub(n) : ('$' + Math.round(n).toLocaleString('en-US'));
+  };
   const tr = {
     ru:{
       calcFormat:'Формат работы', calcObject:'Тип объекта', calcArea:'Площадь, м²', calcViews:'Количество ракурсов / помещений',
@@ -5645,18 +5658,22 @@ window.LAV_FEATURES = window.LAV_FEATURES || { options48: false, visualStudio: t
     const count = document.getElementById('optionsCount');
     if(!objType || !area || !pack || !detail) return;
 
-    const fullRates = (window.LAV_DESIGN_PRICING && window.LAV_DESIGN_PRICING.ratesPerSqm) || {basic:3000, extended:4000, author:5000};
+    const fullRates = (window.LAV_DESIGN_PRICING && window.LAV_DESIGN_PRICING.forLang && window.LAV_DESIGN_PRICING.forLang(lang()).ratesPerSqm) || {basic:3000, extended:4000, author:5000};
     const designRate = (det, areaM2) => {
       if(window.LAV_DESIGN_PRICING && typeof window.LAV_DESIGN_PRICING.rateFor === 'function'){
-        return window.LAV_DESIGN_PRICING.rateFor(det, areaM2);
+        return window.LAV_DESIGN_PRICING.rateFor(det, areaM2, lang());
       }
       let r = fullRates[det] ?? fullRates.basic;
       if((Number(areaM2)||0) > 200) r = Math.max(0, r - 1000);
       return r;
     };
-    const separateRates = (window.LAV_DESIGN_PRICING && window.LAV_DESIGN_PRICING.separateStageRates) || {planning:350, concept:450, visuals:1800, drawings:1200, procurement:1000};
+    const separateRates = (window.LAV_DESIGN_PRICING && typeof window.LAV_DESIGN_PRICING.getSeparateRates === 'function')
+      ? window.LAV_DESIGN_PRICING.getSeparateRates(lang())
+      : {planning:350, concept:450, visuals:1800, drawings:1200, procurement:1000};
     const separateTotal = Object.values(separateRates).reduce((s,n)=>s+n,0);
-    const minTotal = (window.LAV_DESIGN_PRICING && window.LAV_DESIGN_PRICING.minimumTotal) || 100000;
+    const minTotal = (window.LAV_DESIGN_PRICING && typeof window.LAV_DESIGN_PRICING.getMinTotal === 'function')
+      ? window.LAV_DESIGN_PRICING.getMinTotal(lang())
+      : 100000;
     const multiplier = () => {
       const a = Math.max(0, Number(area.value)||0);
       if(objType.value === 'house') return 1.12;
@@ -5732,7 +5749,10 @@ window.LAV_FEATURES = window.LAV_FEATURES || { options48: false, visualStudio: t
         return;
       }
       if(isOptions){
-        const price = 10000 * views;
+        const optPrice = (window.LAV_DESIGN_PRICING && typeof window.LAV_DESIGN_PRICING.getOptions48PerView === 'function')
+          ? window.LAV_DESIGN_PRICING.getOptions48PerView(lang())
+          : (RU() ? 10000 : 150);
+        const price = optPrice * views;
         if(outCost) outCost.textContent = money(price);
         if(outDesc) outDesc.textContent = T('optionsDesc');
         return;
@@ -5855,8 +5875,12 @@ window.LAV_FEATURES = window.LAV_FEATURES || { options48: false, visualStudio: t
   const isRu = () => (localStorage.getItem('lavLang') || document.documentElement.getAttribute('data-lang') || 'en') === 'ru';
   const L = () => isRu() ? 'ru' : 'en';
   const rub = n => Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g,' ') + ' ₽';
-  const usd = rubValue => '$' + (Math.ceil((rubValue / 90) * 1.65 / 10) * 10).toString().replace(/\B(?=(\d{3})+(?!\d))/g,' ');
-  const money = n => isRu() ? rub(n) : usd(n);
+  const money = n => {
+    if(window.LAV_DESIGN_PRICING && typeof window.LAV_DESIGN_PRICING.formatMoney === 'function'){
+      return window.LAV_DESIGN_PRICING.formatMoney(n, L());
+    }
+    return isRu() ? rub(n) : ('$' + Math.round(n).toLocaleString('en-US'));
+  };
   const dict = {
     ru:{
       calcFormat:'Формат работы', calcObject:'Тип объекта', calcArea:'Площадь, м²', calcViews:'Количество ракурсов / помещений',
@@ -5975,21 +5999,24 @@ window.LAV_FEATURES = window.LAV_FEATURES || { options48: false, visualStudio: t
 
   function designRate(det, areaM2){
     const cfg=window.LAV_DESIGN_PRICING;
-    if(cfg && typeof cfg.rateFor==='function') return cfg.rateFor(det, areaM2);
-    const rates=(cfg && cfg.ratesPerSqm) || {basic:3000,extended:4000,author:5000};
-    let r=rates[det]??rates.basic;
-    if((Number(areaM2)||0)>(cfg?.largeAreaThreshold??200)) r=Math.max(0, r-(cfg?.largeAreaDiscountPerSqm??1000));
-    return r;
+    if(cfg && typeof cfg.rateFor==='function') return cfg.rateFor(det, areaM2, L());
+    const locale = cfg && cfg.forLang ? cfg.forLang(L()) : null;
+    const rates=(locale && locale.ratesPerSqm) || {basic:3000,extended:4000,author:5000};
+    const large=(locale && locale.ratesPerSqmLarge) || null;
+    const a=Number(areaM2)||0;
+    if(large && a>(locale?.largeAreaThreshold??200)) return large[det]??large.basic;
+    return rates[det]??rates.basic;
   }
 
   function recalcCalculator(){
     fixCalculatorDom(); setPackOptions(); setLabels();
     const objType=document.getElementById('objType'), area=document.getElementById('area'), pack=document.getElementById('pack'), detail=document.getElementById('detailLevel'), count=document.getElementById('optionsCount');
     if(!objType || !area || !pack || !detail) return;
-    const cfg=window.LAV_DESIGN_PRICING||{};
-    const minTotal=cfg.minimumTotal||100000;
-    const sep=(cfg.separateStageRates)||{planning:350,concept:450,visuals:1800,drawings:1200,procurement:1000};
+    const pricing=window.LAV_DESIGN_PRICING;
+    const minTotal=(pricing && typeof pricing.getMinTotal==='function') ? pricing.getMinTotal(L()) : 100000;
+    const sep=(pricing && typeof pricing.getSeparateRates==='function') ? pricing.getSeparateRates(L()) : {planning:350,concept:450,visuals:1800,drawings:1200,procurement:1000};
     const sepTotal=Object.values(sep).reduce((s,n)=>s+n,0);
+    const optUnit=(pricing && typeof pricing.getOptions48PerView==='function') ? pricing.getOptions48PerView(L()) : (isRu()?10000:150);
     const fmt=pack.value, obj=objType.value, det=detail.value;
     const isArch=obj==='architecture', isOptions=fmt==='options48';
     const a=Math.max(0, Number(area.value)||0), views=Math.max(1, Number(count?.value)||1);
@@ -6017,7 +6044,7 @@ window.LAV_FEATURES = window.LAV_FEATURES || { options48: false, visualStudio: t
       if(outDesc) outDesc.textContent=T('archDesc')+(raised?(' '+T('min')):''); return;
     }
     if(isOptions){
-      const price=10000*views; if(outCost) outCost.textContent=money(price); if(outDesc) outDesc.textContent=T('optionsDesc'); return;
+      const price=optUnit*views; if(outCost) outCost.textContent=money(price); if(outDesc) outDesc.textContent=T('optionsDesc'); return;
     }
     let price=0, desc='';
     const m=mult(), separate=a*sepTotal*m, packageBasic=a*designRate('basic',a)*m;

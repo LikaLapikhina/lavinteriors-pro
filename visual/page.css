@@ -92,6 +92,30 @@
 }
 
 #vs-audience .lead{margin-top:6px;margin-bottom:0}
+.vs-included{margin-top:36px}
+.vs-included .eyebrow{margin-bottom:12px}
+.vs-included-strip{
+  padding:16px 18px;
+}
+.vs-included-list{
+  list-style:none;margin:0;padding:0;
+  display:flex;flex-wrap:wrap;gap:8px 0;
+  align-items:center;
+}
+.vs-included-list li{
+  font-size:12px;line-height:1.45;letter-spacing:.04em;
+  color:rgba(20,20,20,.72);
+  padding:0 14px;
+  position:relative;
+}
+.vs-included-list li:first-child{padding-left:0}
+.vs-included-list li:not(:first-child)::before{
+  content:"";
+  position:absolute;left:0;top:50%;
+  width:1px;height:12px;
+  transform:translateY(-50%);
+  background:rgba(20,20,20,.18);
+}
 .vs-cats{
   display:grid;
   grid-template-columns:repeat(3,minmax(0,1fr));

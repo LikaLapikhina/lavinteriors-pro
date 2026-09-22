@@ -45,6 +45,14 @@
       showTitle: "Selected work",
       showLead: "A short mixed stream of LAV Visual Studio — interiors, product, light, architecture.",
 
+      inclTitle: "What’s included",
+      incl1: "brief and format review",
+      incl2: "visual direction development",
+      incl3: "multiple generated options",
+      incl4: "selection of the best results",
+      incl5: "final refinement",
+      incl6: "1 round of revisions",
+
       calcEye: "Order",
       calcTitle: "Calculator",
       calcLead: "Choose images, video, or both — enter quantity and duration.",
@@ -141,6 +149,14 @@
       showTitle: "Избранные работы",
       showLead: "Короткий общий поток LAV Visual Studio — интерьер, продукт, свет, архитектура.",
 
+      inclTitle: "Что входит в работу",
+      incl1: "анализ задачи и формата",
+      incl2: "разработка визуальной подачи",
+      incl3: "генерация нескольких вариантов",
+      incl4: "отбор лучших решений",
+      incl5: "финальная доработка",
+      incl6: "1 раунд корректировок",
+
       calcEye: "Заказ",
       calcTitle: "Калькулятор",
       calcLead: "Выберите изображения, видео или оба — укажите количество и длительность.",
@@ -218,12 +234,12 @@
   }
 
   function money(n) {
+    if (window.LAV_VS_PRICING && typeof window.LAV_VS_PRICING.formatMoney === "function") {
+      return window.LAV_VS_PRICING.formatMoney(n, state.lang);
+    }
     const v = Math.round(Number(n) || 0);
-    const sym =
-      window.LAV_VS_PRICING?.currencySymbol?.[state.lang] ||
-      window.LAV_VS_PRICING?.currencySymbol?.en ||
-      "₽";
-    return v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") + " " + sym;
+    if (state.lang === "en") return "$" + v.toLocaleString("en-US");
+    return v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") + " ₽";
   }
 
   function clamp(n, min, max) {
@@ -265,23 +281,33 @@
     const cfg = window.LAV_VS_PRICING;
     if (!cfg) return null;
 
-    // Prefer centralized engine; fall back if an old cached pricing.js is still loaded.
     const quote =
       typeof cfg.computeQuote === "function"
         ? cfg.computeQuote({
             images: activeQtys().images,
             videos: activeQtys().videos,
-            durationKey: state.durationKey
+            durationKey: state.durationKey,
+            lang: state.lang
           })
         : (function () {
+            const locale = cfg.forLang
+              ? cfg.forLang(state.lang)
+              : state.lang === "ru"
+                ? {
+                    imagePrice: 2500,
+                    videoPrices: { upTo30: 3500, from31to60: 6000, from61to90: 10000 },
+                    contentPack: { minImages: 5, minVideos: 2, discountPercent: 7 },
+                    largeOrder: { threshold: 100000, discountPercent: 10 }
+                  }
+                : {
+                    imagePrice: 35,
+                    videoPrices: { upTo30: 50, from31to60: 85, from61to90: 145 },
+                    contentPack: { minImages: 5, minVideos: 2, discountPercent: 7 },
+                    largeOrder: { threshold: 1500, discountPercent: 10 }
+                  };
             const q = activeQtys();
-            // If stale pricing.js is cached, ignore old pricePerImage/pricePerVideo.
-            const imageUnit = cfg.imagePrice != null ? cfg.imagePrice : 2500;
-            const videoMap = cfg.videoPrices || {
-              upTo30: 3500,
-              from31to60: 6000,
-              from61to90: 10000
-            };
+            const imageUnit = locale.imagePrice;
+            const videoMap = locale.videoPrices;
             const videoUnit =
               state.durationKey === "over90"
                 ? null
@@ -290,14 +316,8 @@
             const imagesTotal = q.images * imageUnit;
             const videosTotal = customVideo ? 0 : q.videos * (videoUnit || 0);
             const subtotal = imagesTotal + videosTotal;
-            const pack =
-              cfg.contentPack || {
-                minImages: 5,
-                minVideos: 2,
-                discountPercent: 7
-              };
-            const large =
-              cfg.largeOrder || { threshold: 100000, discountPercent: 10 };
+            const pack = locale.contentPack;
+            const large = locale.largeOrder;
             const packEligible =
               q.images >= pack.minImages && q.videos >= pack.minVideos;
             const largeEligible = subtotal >= large.threshold;
