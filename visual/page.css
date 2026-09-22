@@ -314,6 +314,14 @@
 @media(max-width:980px){
   .vs-formats,.vs-cats,.vs-how,.vs-final,.vs-calc-grid{grid-template-columns:1fr}
   .vs-formats{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .vs-included-list li{
+    padding:4px 0;width:100%;
+  }
+  .vs-included-list li:not(:first-child)::before{display:none}
+  .vs-included-list li:not(:first-child){
+    border-top:1px solid rgba(20,20,20,.08);
+    padding-top:8px;margin-top:2px;
+  }
 }
 @media(max-width:720px){
   .vs-formats{grid-template-columns:1fr 1fr}
