@@ -201,30 +201,48 @@ html[data-lang="ru"] .brand-center .brand-script{display:block !important;}
   background:rgba(255,255,255,.42) !important;
 }
 
-/* Section photo backgrounds */
+/* Section photo backgrounds — full-bleed like main site */
 .section{
-  padding:72px 0;
+  padding:88px 0;
   position:relative !important;
   isolation:isolate;
-  background-size:cover !important;
-  background-position:center !important;
-  background-repeat:no-repeat !important;
+  overflow:hidden;
   z-index:1;
+  width:100%;
+  margin:0;
+  border:none !important;
+  outline:none !important;
+  box-shadow:none !important;
+  background:transparent !important;
 }
-.section.tight{padding:56px 0}
-.section::before{
-  content:"" !important;
+.section.tight{padding:72px 0}
+.section > .wrap{position:relative;z-index:1}
+.section-bg{
   position:absolute !important;
   inset:0 !important;
   z-index:0 !important;
   pointer-events:none !important;
-  background:linear-gradient(180deg, rgba(239,233,223,.58), rgba(239,233,223,.66)) !important;
+  background-color:var(--paper-2);
+  background-size:cover !important;
+  background-position:center !important;
+  background-repeat:no-repeat !important;
+  /* Zoom so photo texture fills edges (tall sections crop landscape JPEGs into a strip) */
+  transform:scale(1.18);
+  transform-origin:center center;
+  filter:saturate(1.03) contrast(1.02);
 }
-.section > *{position:relative;z-index:1}
+.section-bg::after{
+  content:"" !important;
+  position:absolute !important;
+  inset:0 !important;
+  background:linear-gradient(180deg, rgba(239,233,223,.42), rgba(239,233,223,.55)) !important;
+}
+#vs-work > .section-bg{background-image:url('../images/bg-brands.jpg')}
+#vs-showcase > .section-bg{background-image:url('../images/bg-portfolio.jpg')}
+#order > .section-bg{background-image:url('../images/bg-pricing.jpg')}
 
-#vs-work{background-image:url('../images/bg-brands.jpg')}
-#vs-showcase{background-image:url('../images/bg-portfolio.jpg')}
-#order{background-image:url('../images/bg-pricing.jpg')}
+/* kill old bg-on-section rules if any */
+.section::before{content:none !important;display:none !important}
 
 /* Pricing field / result — main calculator language */
 .pricing .box{

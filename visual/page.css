@@ -54,7 +54,12 @@
 }
 
 #vs-audience .lead{margin-top:6px;margin-bottom:0}
-#vs-audience .vs-cats{margin-top:18px}
+.vs-cats{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:14px;
+  margin-top:18px;
+}
 .vs-cat{
   padding:0;overflow:hidden;cursor:pointer;
   transition:transform 280ms var(--ease), background 280ms var(--ease);
