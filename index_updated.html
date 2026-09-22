@@ -129,19 +129,19 @@
     .header-inner{
       height:var(--header-h);
       display:grid;
-      grid-template-columns: minmax(0,1.4fr) auto minmax(0,.8fr);
+      grid-template-columns: 1fr auto 1fr;
       align-items:center;
-      gap:14px;
+      gap:18px;
       padding:8px 0;
     }
 
     .nav-left{
       display:flex;
       align-items:center;
-      gap:10px;
+      gap:18px;
       justify-content:flex-start;
       min-width:0;
-      flex-wrap:nowrap;
+      flex-wrap:wrap;
     }
     .nav-left a{
       font-family:var(--sans);
@@ -2670,6 +2670,14 @@ body[data-page="service"] #servicePage{padding-top:0 !important;}
   padding:10px 0 !important;
   gap:8px !important;
 }
+/* Keep LAV INTERIORS dead-center: equal side columns */
+.header-inner{
+  grid-template-columns:1fr auto 1fr !important;
+  gap:18px !important;
+}
+.nav-left{justify-self:start;justify-content:flex-start !important}
+.brand-center{justify-self:center}
+.actions-right{justify-self:end;justify-content:flex-end !important}
 .header-cta-service,
 .nav-left a{
   font-family:var(--sans) !important;
