@@ -46,7 +46,7 @@ window.LAV_VS_CATEGORIES = [
     },
     blurb: {
       en: "Campaign visuals and lifestyle frames for collections.",
-      ru: "Кампании и lifestyle-кадры для коллекций."
+      ru: "Кампании и атмосферы коллекций для продвижения."
     },
     examples: []
   },
