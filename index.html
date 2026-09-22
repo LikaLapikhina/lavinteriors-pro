@@ -3115,6 +3115,7 @@ html.lav-offer-50-off body[data-page="service"] #servicePage{display:none !impor
 </style>
 </head>
 
+<script src="/js/lav-design-pricing.js"></script>
 <script>
 /* Feature flags — restore options48: set LAV_FEATURES.options48=true and remove lav-offer-50-off */
 window.LAV_FEATURES = window.LAV_FEATURES || { options48: false, visualStudio: true };
@@ -5350,10 +5351,19 @@ window.LAV_FEATURES = window.LAV_FEATURES || { options48: false, visualStudio: t
       ['options48','options48'], ['full','packageFull'], ['planning','planningFmt'], ['concept','conceptFmt'], ['visuals','visualsFmt'], ['drawings','drawingsFmt'], ['procurement','procurementFmt']
     ];
     const optionsArch = [['archViz','archViz'], ['archSmall','archSmall'], ['archLarge','archLarge']];
-    const fullRates = {basic:3500, extended:4500, author:6000};
+    const fullRates = (window.LAV_DESIGN_PRICING && window.LAV_DESIGN_PRICING.ratesPerSqm) || {basic:3000, extended:4000, author:5000};
+    const designRate = (det, areaM2) => {
+      if(window.LAV_DESIGN_PRICING && typeof window.LAV_DESIGN_PRICING.rateFor === 'function'){
+        return window.LAV_DESIGN_PRICING.rateFor(det, areaM2);
+      }
+      let r = fullRates[det] ?? fullRates.basic;
+      if((Number(areaM2)||0) > 200) r = Math.max(0, r - 1000);
+      return r;
+    };
     const detailDescKey = {basic:'basic', extended:'extended', author:'author'};
-    const separateRates = {planning:350, concept:450, visuals:1800, drawings:1200, procurement:1000};
+    const separateRates = (window.LAV_DESIGN_PRICING && window.LAV_DESIGN_PRICING.separateStageRates) || {planning:350, concept:450, visuals:1800, drawings:1200, procurement:1000};
     const separateTotal = Object.values(separateRates).reduce((a,b)=>a+b,0);
+    const minTotal = (window.LAV_DESIGN_PRICING && window.LAV_DESIGN_PRICING.minimumTotal) || 100000;
 
     function optionList(list){
       const current = pack.value;
@@ -5392,22 +5402,23 @@ window.LAV_FEATURES = window.LAV_FEATURES || { options48: false, visualStudio: t
       const det = detail.value;
       const a = Math.max(0, Number(area.value) || 0);
       const isArch = obj === 'architecture';
-      if(areaField) areaField.style.display = isArch ? 'none' : '';
-      if(detailField) detailField.style.display = (!isArch && fmt === 'full') ? '' : 'none';
+      if(areaField) areaField.style.display = '';
+      if(detailField) detailField.style.display = (fmt === 'full' || isArch) ? '' : 'none';
       outDescTitle.textContent = c('incl');
       compareLeftLabel.textContent = c('separate');
       compareRightLabel.textContent = c('package');
       outFormat.textContent = label(pack);
-      outDetail.textContent = isArch ? '—' : (fmt === 'full' ? label(detail) : '—');
+      outDetail.textContent = (fmt === 'full' || isArch) ? label(detail) : '—';
       outTime.textContent = timeline(fmt);
       if(compare) compare.style.display = 'grid';
 
       if(isArch){
-        let rub = 40000;
-        if(fmt === 'archSmall') rub = 150000;
-        if(fmt === 'archLarge') rub = 250000;
-        outCost.textContent = lang() === 'ru' ? (fmt === 'archViz' ? 'от ' + moneyRub(rub) : moneyRub(rub)) : (fmt === 'archViz' ? 'from ' + moneyUsdFromRub(rub) : moneyUsdFromRub(rub));
-        outDesc.textContent = c('arch');
+        const multiplier = objectMultiplier(obj);
+        let rub = a * designRate(det, a) * multiplier;
+        const raised = rub > 0 && rub < minTotal;
+        rub = Math.max(rub, minTotal);
+        outCost.textContent = displayMoneyRubOrUsd(rub);
+        outDesc.textContent = c('arch') + minProjectText(raised);
         if(compare) compare.style.display = 'none';
         return;
       }
@@ -5427,25 +5438,25 @@ window.LAV_FEATURES = window.LAV_FEATURES || { options48: false, visualStudio: t
       let packageRub = 0;
 
       if(fmt === 'full'){
-        packageRub = a * fullRates[det] * multiplier;
+        packageRub = a * designRate(det, a) * multiplier;
         rub = packageRub;
         desc = c(detailDescKey[det]) + ' ' + c('compareHint');
-        compareLeft.textContent = displayMoneyRubOrUsd(Math.max(separateRub, 100000));
-        compareRight.textContent = displayMoneyRubOrUsd(Math.max(packageRub, 100000));
+        compareLeft.textContent = displayMoneyRubOrUsd(Math.max(separateRub, minTotal));
+        compareRight.textContent = displayMoneyRubOrUsd(Math.max(packageRub, minTotal));
       } else if(fmt === 'procurement'){
         rub = a * separateRates.procurement * multiplier;
         desc = c('procurement');
-        compareLeft.textContent = displayMoneyRubOrUsd(Math.max(separateRub, 100000));
-        compareRight.textContent = displayMoneyRubOrUsd(Math.max(rub, 100000));
+        compareLeft.textContent = displayMoneyRubOrUsd(Math.max(separateRub, minTotal));
+        compareRight.textContent = displayMoneyRubOrUsd(Math.max(rub, minTotal));
       } else {
         rub = a * (separateRates[fmt] || 0) * multiplier;
         desc = c(fmt);
-        packageRub = a * fullRates.basic * multiplier;
-        compareLeft.textContent = displayMoneyRubOrUsd(Math.max(separateRub, 100000));
-        compareRight.textContent = displayMoneyRubOrUsd(Math.max(packageRub, 100000));
+        packageRub = a * designRate('basic', a) * multiplier;
+        compareLeft.textContent = displayMoneyRubOrUsd(Math.max(separateRub, minTotal));
+        compareRight.textContent = displayMoneyRubOrUsd(Math.max(packageRub, minTotal));
       }
-      const raised = rub > 0 && rub < 100000;
-      rub = Math.max(rub, 100000);
+      const raised = rub > 0 && rub < minTotal;
+      rub = Math.max(rub, minTotal);
       outCost.textContent = displayMoneyRubOrUsd(rub);
       if(obj === 'commercial') desc += ' ' + c('commercial');
       outDesc.textContent = desc + minProjectText(raised);
@@ -5634,9 +5645,18 @@ window.LAV_FEATURES = window.LAV_FEATURES || { options48: false, visualStudio: t
     const count = document.getElementById('optionsCount');
     if(!objType || !area || !pack || !detail) return;
 
-    const fullRates = {basic:3500, extended:4500, author:6000};
-    const separateRates = {planning:350, concept:450, visuals:1800, drawings:1200, procurement:1000};
-    const separateTotal = 350 + 450 + 1800 + 1200 + 1000;
+    const fullRates = (window.LAV_DESIGN_PRICING && window.LAV_DESIGN_PRICING.ratesPerSqm) || {basic:3000, extended:4000, author:5000};
+    const designRate = (det, areaM2) => {
+      if(window.LAV_DESIGN_PRICING && typeof window.LAV_DESIGN_PRICING.rateFor === 'function'){
+        return window.LAV_DESIGN_PRICING.rateFor(det, areaM2);
+      }
+      let r = fullRates[det] ?? fullRates.basic;
+      if((Number(areaM2)||0) > 200) r = Math.max(0, r - 1000);
+      return r;
+    };
+    const separateRates = (window.LAV_DESIGN_PRICING && window.LAV_DESIGN_PRICING.separateStageRates) || {planning:350, concept:450, visuals:1800, drawings:1200, procurement:1000};
+    const separateTotal = Object.values(separateRates).reduce((s,n)=>s+n,0);
+    const minTotal = (window.LAV_DESIGN_PRICING && window.LAV_DESIGN_PRICING.minimumTotal) || 100000;
     const multiplier = () => {
       const a = Math.max(0, Number(area.value)||0);
       if(objType.value === 'house') return 1.12;
@@ -5689,25 +5709,26 @@ window.LAV_FEATURES = window.LAV_FEATURES || { options48: false, visualStudio: t
       const compareLeft = document.getElementById('compareLeft');
       const compareRight = document.getElementById('compareRight');
 
-      if(areaField) areaField.style.display = isArch ? 'none' : '';
+      if(areaField) areaField.style.display = isArch ? '' : (isOptions ? 'none' : '');
       if(countField) countField.classList.toggle('show', isOptions);
-      if(detailField) detailField.style.display = (!isArch && fmt === 'full') ? '' : 'none';
+      if(detailField) detailField.style.display = (!isOptions && (fmt === 'full' || isArch)) ? '' : 'none';
       if(countRow) countRow.classList.toggle('show', isOptions);
       if(compare) compare.style.display = isOptions || isArch ? 'none' : 'grid';
       if(outDescTitle) outDescTitle.textContent = T('included');
       if(compareLeftLabel) compareLeftLabel.textContent = T('separate');
       if(compareRightLabel) compareRightLabel.textContent = T('package');
       if(outFormat) outFormat.textContent = pack.options[pack.selectedIndex]?.textContent || '—';
-      if(outDetail) outDetail.textContent = (!isArch && fmt === 'full') ? (detail.options[detail.selectedIndex]?.textContent || '—') : '—';
+      if(outDetail) outDetail.textContent = (!isOptions && (fmt === 'full' || isArch)) ? (detail.options[detail.selectedIndex]?.textContent || '—') : '—';
       if(outTime) outTime.textContent = timeline(fmt);
       if(outCount) outCount.textContent = String(views);
 
       if(isArch){
-        let price = 40000;
-        if(fmt === 'archSmall') price = 150000;
-        if(fmt === 'archLarge') price = 250000;
-        if(outCost) outCost.textContent = fmt === 'archViz' ? (RU() ? 'от ' + rub(price) : 'from ' + usd(price)) : money(price);
-        if(outDesc) outDesc.textContent = T('arch');
+        const rate = designRate(detail.value, a);
+        let price = a * rate * m;
+        const raised = price > 0 && price < minTotal;
+        price = Math.max(price, minTotal);
+        if(outCost) outCost.textContent = money(price);
+        if(outDesc) outDesc.textContent = T('arch') + (raised ? (' ' + T('min')) : '');
         return;
       }
       if(isOptions){
@@ -5718,20 +5739,20 @@ window.LAV_FEATURES = window.LAV_FEATURES || { options48: false, visualStudio: t
       }
       let price = 0, desc = '';
       const separate = a * separateTotal * m;
-      const packageBasic = a * fullRates.basic * m;
+      const packageBasic = a * designRate('basic', a) * m;
       if(fmt === 'full'){
-        price = a * fullRates[detail.value] * m;
+        price = a * designRate(detail.value, a) * m;
         desc = (detail.value === 'author' ? T('fullAuthor') : detail.value === 'extended' ? T('fullExtended') : T('fullBasic')) + ' ' + T('compareHint');
-        if(compareLeft) compareLeft.textContent = money(Math.max(separate, 100000));
-        if(compareRight) compareRight.textContent = money(Math.max(price, 100000));
+        if(compareLeft) compareLeft.textContent = money(Math.max(separate, minTotal));
+        if(compareRight) compareRight.textContent = money(Math.max(price, minTotal));
       }else{
         price = a * (separateRates[fmt] || 0) * m;
         desc = T(fmt + 'Desc');
-        if(compareLeft) compareLeft.textContent = money(Math.max(separate, 100000));
-        if(compareRight) compareRight.textContent = money(Math.max(packageBasic, 100000));
+        if(compareLeft) compareLeft.textContent = money(Math.max(separate, minTotal));
+        if(compareRight) compareRight.textContent = money(Math.max(packageBasic, minTotal));
       }
-      const raised = price > 0 && price < 100000;
-      price = Math.max(price, 100000);
+      const raised = price > 0 && price < minTotal;
+      price = Math.max(price, minTotal);
       if(outCost) outCost.textContent = money(price);
       if(objType.value === 'commercial') desc += ' ' + T('commercial');
       if(raised) desc += ' ' + T('min');
@@ -5952,51 +5973,63 @@ window.LAV_FEATURES = window.LAV_FEATURES || { options48: false, visualStudio: t
     pack.value=list.some(([v])=>v===current) ? current : (arch?'archViz':'full');
   }
 
+  function designRate(det, areaM2){
+    const cfg=window.LAV_DESIGN_PRICING;
+    if(cfg && typeof cfg.rateFor==='function') return cfg.rateFor(det, areaM2);
+    const rates=(cfg && cfg.ratesPerSqm) || {basic:3000,extended:4000,author:5000};
+    let r=rates[det]??rates.basic;
+    if((Number(areaM2)||0)>(cfg?.largeAreaThreshold??200)) r=Math.max(0, r-(cfg?.largeAreaDiscountPerSqm??1000));
+    return r;
+  }
+
   function recalcCalculator(){
     fixCalculatorDom(); setPackOptions(); setLabels();
     const objType=document.getElementById('objType'), area=document.getElementById('area'), pack=document.getElementById('pack'), detail=document.getElementById('detailLevel'), count=document.getElementById('optionsCount');
     if(!objType || !area || !pack || !detail) return;
+    const cfg=window.LAV_DESIGN_PRICING||{};
+    const minTotal=cfg.minimumTotal||100000;
+    const sep=(cfg.separateStageRates)||{planning:350,concept:450,visuals:1800,drawings:1200,procurement:1000};
+    const sepTotal=Object.values(sep).reduce((s,n)=>s+n,0);
     const fmt=pack.value, obj=objType.value, det=detail.value;
     const isArch=obj==='architecture', isOptions=fmt==='options48';
     const a=Math.max(0, Number(area.value)||0), views=Math.max(1, Number(count?.value)||1);
     const objField=document.getElementById('objField'), areaField=document.getElementById('areaField'), detailField=document.getElementById('detailField'), countField=document.getElementById('optionsCountField'), countRow=document.getElementById('outOptionsCountRow');
-    show(objField, !isOptions); show(areaField, !isOptions && !isArch); show(countField, isOptions); show(detailField, !isOptions && !isArch && fmt==='full'); show(countRow, isOptions);
+    show(objField, !isOptions); show(areaField, !isOptions); show(countField, isOptions); show(detailField, !isOptions && (fmt==='full' || isArch)); show(countRow, isOptions);
     const outFormat=document.getElementById('outFormat'), outDetail=document.getElementById('outDetail'), outTime=document.getElementById('outTime'), outCost=document.getElementById('outCost'), outDescTitle=document.getElementById('outDescTitle'), outDesc=document.getElementById('outDesc'), outCount=document.getElementById('outOptionsCount'), compare=document.getElementById('calcCompare');
     const compareLeftLabel=document.getElementById('compareLeftLabel'), compareRightLabel=document.getElementById('compareRightLabel'), compareLeft=document.getElementById('compareLeft'), compareRight=document.getElementById('compareRight');
     if(outDescTitle) outDescTitle.textContent=T('included');
     if(compareLeftLabel) compareLeftLabel.textContent=T('separate'); if(compareRightLabel) compareRightLabel.textContent=T('package');
     if(outFormat) outFormat.textContent=pack.options[pack.selectedIndex]?.textContent || '—';
-    if(outDetail) outDetail.textContent=(!isArch && !isOptions && fmt==='full') ? (detail.options[detail.selectedIndex]?.textContent || '—') : '—';
+    if(outDetail) outDetail.textContent=(!isOptions && (fmt==='full' || isArch)) ? (detail.options[detail.selectedIndex]?.textContent || '—') : '—';
     if(outCount) outCount.textContent=String(views);
     if(compare) compare.style.display=(isOptions || isArch) ? 'none' : 'grid';
     const mult=()=> obj==='house'?1.12 : obj==='commercial'?(a>300?.75:a>100?.85:1) : obj==='landscape'?.8:1;
-    const fullRates={basic:3500,extended:4500,author:6000};
-    const sep={planning:350,concept:450,visuals:1800,drawings:1200,procurement:1000};
-    const sepTotal=350+450+1800+1200+1000;
     const timeline=()=>{
       if(isOptions) return T('tFast'); if(isArch) return T('tArch'); if(fmt==='planning') return T('tPlan'); if(fmt==='concept') return T('tConcept'); if(fmt==='visuals') return T('tVis'); if(fmt==='drawings') return T('tDraw'); if(fmt==='procurement') return T('tProc');
       if(det==='extended') return T('tFullExtended'); if(det==='author') return T('tFullAuthor'); return T('tFullBasic');
     };
     if(outTime) outTime.textContent=timeline();
     if(isArch){
-      let price=40000; if(fmt==='archSmall') price=150000; if(fmt==='archLarge') price=250000;
-      if(outCost) outCost.textContent=fmt==='archViz' ? (isRu()?'от '+rub(price):'from '+usd(price)) : money(price);
-      if(outDesc) outDesc.textContent=T('archDesc'); return;
+      const m=mult();
+      let price=a*designRate(det,a)*m;
+      const raised=price>0 && price<minTotal; price=Math.max(price,minTotal);
+      if(outCost) outCost.textContent=money(price);
+      if(outDesc) outDesc.textContent=T('archDesc')+(raised?(' '+T('min')):''); return;
     }
     if(isOptions){
       const price=10000*views; if(outCost) outCost.textContent=money(price); if(outDesc) outDesc.textContent=T('optionsDesc'); return;
     }
     let price=0, desc='';
-    const m=mult(), separate=a*sepTotal*m, packageBasic=a*fullRates.basic*m;
+    const m=mult(), separate=a*sepTotal*m, packageBasic=a*designRate('basic',a)*m;
     if(fmt==='full'){
-      price=a*fullRates[det]*m;
+      price=a*designRate(det,a)*m;
       desc=(det==='author'?T('fullAuthor'):det==='extended'?T('fullExtended'):T('fullBasic'))+' '+T('compareHint');
-      if(compareLeft) compareLeft.textContent=money(Math.max(separate,100000)); if(compareRight) compareRight.textContent=money(Math.max(price,100000));
+      if(compareLeft) compareLeft.textContent=money(Math.max(separate,minTotal)); if(compareRight) compareRight.textContent=money(Math.max(price,minTotal));
     }else{
       price=a*(sep[fmt]||0)*m; desc=T(fmt+'Desc');
-      if(compareLeft) compareLeft.textContent=money(Math.max(separate,100000)); if(compareRight) compareRight.textContent=money(Math.max(packageBasic,100000));
+      if(compareLeft) compareLeft.textContent=money(Math.max(separate,minTotal)); if(compareRight) compareRight.textContent=money(Math.max(packageBasic,minTotal));
     }
-    const raised=price>0 && price<100000; price=Math.max(price,100000);
+    const raised=price>0 && price<minTotal; price=Math.max(price,minTotal);
     if(outCost) outCost.textContent=money(price);
     if(obj==='commercial') desc+=' '+T('commercialDesc'); if(raised) desc+=' '+T('min');
     if(outDesc) outDesc.textContent=desc;

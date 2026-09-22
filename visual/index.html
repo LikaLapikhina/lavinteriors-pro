@@ -12,8 +12,8 @@
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600&amp;family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&amp;family=Italianno&amp;family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&amp;display=swap" rel="stylesheet"/>
-<link rel="stylesheet" href="lav-chrome.css?v=20260922b"/>
-<link rel="stylesheet" href="page.css?v=20260922b"/>
+<link rel="stylesheet" href="lav-chrome.css?v=20260922d"/>
+<link rel="stylesheet" href="page.css?v=20260922d"/>
 </head>
 <body>
 <header class="header">
@@ -118,55 +118,43 @@
   <div class="wrap">
     <p class="eyebrow" data-i18n="calcEye">Order</p>
     <h2 class="h2" data-i18n="calcTitle">Calculator</h2>
-    <p class="lead" data-i18n="calcLead">Choose a format, enter quantity, see the estimate.</p>
+    <p class="lead" data-i18n="calcLead">Choose images, video, or both — enter quantity and duration.</p>
 
     <div class="vs-calc-grid pricing">
       <div class="box">
         <div class="vs-tabs" role="tablist">
           <button type="button" class="tab active" data-mode="images" data-i18n="tabImages">Images</button>
           <button type="button" class="tab" data-mode="videos" data-i18n="tabVideos">Videos</button>
-          <button type="button" class="tab" data-mode="pack" data-i18n="tabPack">Content Pack</button>
+          <button type="button" class="tab" data-mode="both" data-i18n="tabBoth">Images + Videos</button>
         </div>
 
         <div class="vs-panel" id="panelImages">
           <div class="field">
-            <div class="label" data-i18n="qtyImages">Number of images</div>
+            <div class="label" data-i18n="qtyImages">Quantity</div>
             <div class="qty-row">
               <button type="button" class="qty-btn" data-qty-for="imgQtyInput" data-delta="-1" aria-label="-">−</button>
-              <input class="control" id="imgQtyInput" type="number" min="1" step="1" inputmode="numeric" value="5"/>
+              <input class="control" id="imgQtyInput" type="number" min="0" step="1" inputmode="numeric" value="1"/>
               <button type="button" class="qty-btn" data-qty-for="imgQtyInput" data-delta="1" aria-label="+">+</button>
             </div>
-            <div class="qty-quick" id="imgQuick"></div>
           </div>
         </div>
 
         <div class="vs-panel" id="panelVideos" hidden>
           <div class="field">
-            <div class="label" data-i18n="qtyVideos">Number of videos</div>
+            <div class="label" data-i18n="qtyVideos">Quantity</div>
             <div class="qty-row">
               <button type="button" class="qty-btn" data-qty-for="vidQtyInput" data-delta="-1" aria-label="-">−</button>
-              <input class="control" id="vidQtyInput" type="number" min="1" step="1" inputmode="numeric" value="1"/>
+              <input class="control" id="vidQtyInput" type="number" min="0" step="1" inputmode="numeric" value="1"/>
               <button type="button" class="qty-btn" data-qty-for="vidQtyInput" data-delta="1" aria-label="+">+</button>
             </div>
-            <div class="qty-quick" id="vidQuick"></div>
-          </div>
-        </div>
-
-        <div class="vs-panel" id="panelPack" hidden>
-          <div class="field">
-            <div class="label" data-i18n="packImages">Images</div>
-            <div class="qty-row">
-              <button type="button" class="qty-btn" data-qty-for="packImgInput" data-delta="-1" aria-label="-">−</button>
-              <input class="control" id="packImgInput" type="number" min="0" step="1" inputmode="numeric" value="5"/>
-              <button type="button" class="qty-btn" data-qty-for="packImgInput" data-delta="1" aria-label="+">+</button>
-            </div>
           </div>
           <div class="field">
-            <div class="label" data-i18n="packVideos">Videos</div>
-            <div class="qty-row">
-              <button type="button" class="qty-btn" data-qty-for="packVidInput" data-delta="-1" aria-label="-">−</button>
-              <input class="control" id="packVidInput" type="number" min="0" step="1" inputmode="numeric" value="1"/>
-              <button type="button" class="qty-btn" data-qty-for="packVidInput" data-delta="1" aria-label="+">+</button>
+            <div class="label" data-i18n="durationLabel">Duration</div>
+            <div class="vs-seg" id="durationSeg" role="group" aria-label="Duration">
+              <button type="button" class="seg active" data-duration="upTo30" data-i18n="durUpTo30">Up to 30 sec</button>
+              <button type="button" class="seg" data-duration="from31to60" data-i18n="dur31to60">31–60 sec</button>
+              <button type="button" class="seg" data-duration="from61to90" data-i18n="dur61to90">61–90 sec</button>
+              <button type="button" class="seg" data-duration="over90" data-i18n="durOver90">Over 90 sec</button>
             </div>
           </div>
         </div>
@@ -174,17 +162,18 @@
 
       <div class="box">
         <div class="result" id="vsSummary">
-          <div class="metric"><span class="k" data-i18n="sumFormat">Format</span><span class="v" id="sumFormat">—</span></div>
-          <div class="metric"><span class="k" data-i18n="sumQty">Quantity</span><span class="v" id="sumQty">—</span></div>
+          <div id="vsBreakdown" class="vs-breakdown"></div>
           <div class="metric"><span class="k" data-i18n="sumEta">Timeline</span><span class="v" id="sumEta">—</span></div>
           <div class="metric"><span class="k" data-i18n="sumTotal">Total</span><span class="v total" id="sumTotal">—</span></div>
         </div>
         <div class="calcActions">
-          <button type="button" class="btn primary" id="btnPay" data-i18n="ctaPay">Place order</button>
+          <button type="button" class="btn primary" id="btnPay" data-i18n="ctaPay">Order Now</button>
+          <a class="btn" id="btnDiscuss" href="https://t.me/LAVINTERIORS" target="_blank" rel="noopener" hidden data-i18n="ctaDiscuss">Discuss project</a>
         </div>
-        <p class="vs-note" data-i18n="etaNote">Standard orders — within 48 hours after receiving the complete brief and source materials. Large orders are quoted individually.</p>
+        <p class="vs-note" data-i18n="etaNote">Timeline is calculated after receiving the complete brief and all source materials. Large and non-standard orders are agreed individually.</p>
         <p class="vs-draft" id="draftHint" data-i18n="draftHint">Draft prices — confirm before public campaign.</p>
-        <p class="vs-draft" id="customHint" hidden data-i18n="customHint">Large volume — we will confirm the quote individually.</p>
+        <p class="vs-hint" id="packHint" hidden data-i18n="packHint">Better value when ordering a series of images and videos</p>
+        <p class="vs-draft" id="customHint" hidden data-i18n="customHint">Individual quote required for this duration.</p>
       </div>
     </div>
 
@@ -238,9 +227,9 @@
   </div>
 </footer>
 
-<script src="pricing.js"></script>
-<script src="categories.js"></script>
-<script src="showcase.js"></script>
-<script src="app.js"></script>
+<script src="pricing.js?v=20260922d"></script>
+<script src="categories.js?v=20260922d"></script>
+<script src="showcase.js?v=20260922d"></script>
+<script src="app.js?v=20260922d"></script>
 </body>
 </html>

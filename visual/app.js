@@ -47,29 +47,38 @@
 
       calcEye: "Order",
       calcTitle: "Calculator",
-      calcLead: "Choose a format, enter quantity, see the estimate.",
+      calcLead: "Choose images, video, or both — enter quantity and duration.",
       tabImages: "Images",
       tabVideos: "Videos",
-      tabPack: "Content Pack",
-      qtyImages: "Number of images",
-      qtyVideos: "Number of videos",
-      packImages: "Images",
-      packVideos: "Videos",
-      sumFormat: "Format",
-      sumQty: "Quantity",
+      tabBoth: "Images + Videos",
+      qtyImages: "Quantity",
+      qtyVideos: "Quantity",
+      durationLabel: "Duration",
+      durUpTo30: "Up to 30 sec",
+      dur31to60: "31–60 sec",
+      dur61to90: "61–90 sec",
+      durOver90: "Over 90 sec",
+      lineImages: "Images",
+      lineVideos: "Videos",
+      lineVideosDur: {
+        upTo30: "Videos up to 30 sec",
+        from31to60: "Videos 31–60 sec",
+        from61to90: "Videos 61–90 sec",
+        over90: "Videos over 90 sec"
+      },
+      lineSubtotal: "Subtotal",
+      lineDiscountPack: "Content Pack −7%",
+      lineDiscountLarge: "Large order −10%",
       sumEta: "Timeline",
       sumTotal: "Total",
-      ctaPay: "Place order",
+      ctaPay: "Order Now",
+      ctaDiscuss: "Discuss project",
+      customQuote: "Individual quote",
+      packHint: "Better value when ordering a series of images and videos",
       etaNote:
-        "Standard orders — within 48 hours after receiving the complete brief and source materials. Large orders are quoted individually.",
+        "Timeline is calculated after receiving the complete brief and all source materials. Large and non-standard orders are agreed individually.",
       draftHint: "Draft prices — confirm before public campaign.",
-      customHint: "Large volume — we will confirm the quote individually.",
-      fmtLabelImages: "Images",
-      fmtLabelVideos: "Videos",
-      fmtLabelPack: "Content Pack",
-      qtyImagesN: (n) => `${n} images`,
-      qtyVideosN: (n) => `${n} videos`,
-      qtyPackN: (i, v) => `${i} images + ${v} videos`,
+      customHint: "Individual quote required for this duration.",
 
       howEye: "Process",
       howTitle: "How it works",
@@ -86,7 +95,7 @@
 
       payPendingTitle: "LAV Visual Studio order",
       payPendingBody: (o) =>
-        `Hello LAV Visual Studio,%0A%0AI would like to order:%0A- Format: ${o.format}%0A- Details: ${o.details}%0A- Total: ${o.total}%0A- Timeline: ${o.eta}%0A%0AI will attach brief / references in the next message.`
+        `Hello LAV Visual Studio,%0A%0AI would like to order:%0A- Details: ${o.details}%0A- Total: ${o.total}%0A- Timeline: ${o.eta}%0A%0AI will attach brief / references in the next message.`
     },
     ru: {
       navPortfolio: "Портфолио",
@@ -134,29 +143,38 @@
 
       calcEye: "Заказ",
       calcTitle: "Калькулятор",
-      calcLead: "Выберите формат, введите количество и увидьте стоимость.",
+      calcLead: "Выберите изображения, видео или оба — укажите количество и длительность.",
       tabImages: "Изображения",
       tabVideos: "Видео",
-      tabPack: "Контент-пакет",
-      qtyImages: "Количество изображений",
-      qtyVideos: "Количество видео",
-      packImages: "Изображений",
-      packVideos: "Видео",
-      sumFormat: "Формат",
-      sumQty: "Количество",
+      tabBoth: "Изображения + видео",
+      qtyImages: "Количество",
+      qtyVideos: "Количество",
+      durationLabel: "Длительность",
+      durUpTo30: "До 30 сек",
+      dur31to60: "31–60 сек",
+      dur61to90: "61–90 сек",
+      durOver90: "Более 90 сек",
+      lineImages: "Изображения",
+      lineVideos: "Видео",
+      lineVideosDur: {
+        upTo30: "Видео до 30 сек",
+        from31to60: "Видео 31–60 сек",
+        from61to90: "Видео 61–90 сек",
+        over90: "Видео более 90 сек"
+      },
+      lineSubtotal: "Стоимость",
+      lineDiscountPack: "Content Pack −7%",
+      lineDiscountLarge: "Скидка за большой заказ −10%",
       sumEta: "Срок",
       sumTotal: "Итого",
       ctaPay: "Оформить заказ",
+      ctaDiscuss: "Обсудить проект",
+      customQuote: "Индивидуальный расчёт",
+      packHint: "Выгоднее при заказе серии изображений и видео",
       etaNote:
-        "Стандартные заказы — до 48 часов после получения полного брифа и исходных материалов. Крупные заказы рассчитываются индивидуально.",
+        "Срок рассчитывается после получения полного брифа и всех исходных материалов. Срок крупных и нестандартных заказов согласовывается индивидуально.",
       draftHint: "Черновые цены — подтвердите перед публичной кампанией.",
-      customHint: "Крупный объём — стоимость подтвердим индивидуально.",
-      fmtLabelImages: "Изображения",
-      fmtLabelVideos: "Видео",
-      fmtLabelPack: "Контент-пакет",
-      qtyImagesN: (n) => `${n} изображений`,
-      qtyVideosN: (n) => `${n} видео`,
-      qtyPackN: (i, v) => `${i} изображений + ${v} видео`,
+      customHint: "Для этой длительности нужен индивидуальный расчёт.",
 
       howEye: "Процесс",
       howTitle: "Как это работает",
@@ -173,17 +191,16 @@
 
       payPendingTitle: "Заказ LAV Visual Studio",
       payPendingBody: (o) =>
-        `Здравствуйте, LAV Visual Studio,%0A%0AХочу оформить заказ:%0A- Формат: ${o.format}%0A- Детали: ${o.details}%0A- Итого: ${o.total}%0A- Срок: ${o.eta}%0A%0AБриф / референсы приложу следующим сообщением.`
+        `Здравствуйте, LAV Visual Studio,%0A%0AХочу оформить заказ:%0A- Детали: ${o.details}%0A- Итого: ${o.total}%0A- Срок: ${o.eta}%0A%0AБриф / референсы приложу следующим сообщением.`
     }
   };
 
   const state = {
     lang: localStorage.getItem("lavLang") || "en",
     mode: "images",
-    imgQty: 5,
+    imgQty: 1,
     vidQty: 1,
-    packImg: 5,
-    packVid: 1,
+    durationKey: "upTo30",
     openCat: null,
     catIndex: {},
     order: null
@@ -213,14 +230,6 @@
     return Math.max(min, Math.min(max, n));
   }
 
-  function discountPercent(qty, table) {
-    let pct = 0;
-    (table || []).forEach((row) => {
-      if (qty >= row.minQty) pct = row.percentOff;
-    });
-    return pct;
-  }
-
   function applyI18n() {
     document.documentElement.setAttribute("data-lang", state.lang);
     document.documentElement.lang = state.lang;
@@ -242,95 +251,144 @@
         : "LAV Visual Studio — visual content for business";
     renderCategories();
     renderShowcase();
+    syncDurationSeg();
     recalc();
+  }
+
+  function activeQtys() {
+    if (state.mode === "images") return { images: state.imgQty, videos: 0 };
+    if (state.mode === "videos") return { images: 0, videos: state.vidQty };
+    return { images: state.imgQty, videos: state.vidQty };
   }
 
   function priceFor() {
     const cfg = window.LAV_VS_PRICING;
-    if (!cfg) return null;
-    const eta = loc(cfg.etaLabel) || t("etaNote");
+    if (!cfg || typeof cfg.computeQuote !== "function") return null;
+    const q = activeQtys();
+    const quote = cfg.computeQuote({
+      images: q.images,
+      videos: q.videos,
+      durationKey: state.durationKey
+    });
 
-    if (state.mode === "pack") {
-      const i = state.packImg;
-      const v = state.packVid;
-      let total =
-        i * cfg.pricePerImage + v * cfg.pricePerVideo;
-      total = Math.round(total * (1 - (cfg.packDiscount || 0)));
-      total = Math.max(total, cfg.minimumOrder || 0);
-      const over =
-        i >= (cfg.customThreshold?.images || 9999) ||
-        v >= (cfg.customThreshold?.videos || 9999);
-      return {
-        format: t("fmtLabelPack"),
-        details: t("qtyPackN")(i, v),
-        total,
-        eta,
-        over,
-        sku: `pack-${i}x${v}`
-      };
+    const eta =
+      quote.etaKey === "etaCustom"
+        ? loc(cfg.etaCustom) || t("customQuote")
+        : loc(cfg.etaLabel);
+
+    const detailsParts = [];
+    if (quote.images > 0) detailsParts.push(`${quote.images}× ${t("lineImages")}`);
+    if (quote.videos > 0) {
+      const durMap = t("lineVideosDur");
+      detailsParts.push(
+        `${quote.videos}× ${(durMap && durMap[quote.durationKey]) || t("lineVideos")}`
+      );
     }
 
-    if (state.mode === "videos") {
-      const qty = state.vidQty;
-      const pct = discountPercent(qty, cfg.volumeDiscounts?.videos);
-      let total = Math.round(cfg.pricePerVideo * qty * (1 - pct / 100));
-      total = Math.max(total, cfg.minimumOrder || 0);
-      return {
-        format: t("fmtLabelVideos"),
-        details: t("qtyVideosN")(qty),
-        total,
-        eta,
-        over: qty >= (cfg.customThreshold?.videos || 9999),
-        sku: `videos-${qty}`
-      };
-    }
-
-    const qty = state.imgQty;
-    const pct = discountPercent(qty, cfg.volumeDiscounts?.images);
-    let total = Math.round(cfg.pricePerImage * qty * (1 - pct / 100));
-    total = Math.max(total, cfg.minimumOrder || 0);
     return {
-      format: t("fmtLabelImages"),
-      details: t("qtyImagesN")(qty),
-      total,
+      ...quote,
+      format: state.mode,
+      details: detailsParts.join(" + ") || "—",
       eta,
-      over: qty >= (cfg.customThreshold?.images || 9999),
-      sku: `images-${qty}`
+      totalDisplay: quote.customVideo ? t("customQuote") : money(quote.total),
+      sku: `vs-${state.mode}-${quote.images}i-${quote.videos}v-${quote.durationKey}`
     };
+  }
+
+  function renderBreakdown(order) {
+    const root = document.getElementById("vsBreakdown");
+    if (!root || !order) return;
+    const lines = [];
+
+    if (order.images > 0) {
+      lines.push(
+        `<div class="line"><span class="k">${t("lineImages")}<br>${order.images} × ${money(
+          order.imageUnit
+        )}</span><span class="v">${money(order.imagesTotal)}</span></div>`
+      );
+    }
+
+    if (order.videos > 0) {
+      const durMap = t("lineVideosDur");
+      const label = (durMap && durMap[order.durationKey]) || t("lineVideos");
+      if (order.customVideo) {
+        lines.push(
+          `<div class="line is-custom"><span class="k">${label}<br>${order.videos} × —</span><span class="v">${t(
+            "customQuote"
+          )}</span></div>`
+        );
+      } else {
+        lines.push(
+          `<div class="line"><span class="k">${label}<br>${order.videos} × ${money(
+            order.videoUnit
+          )}</span><span class="v">${money(order.videosTotal)}</span></div>`
+        );
+      }
+    }
+
+    if (!order.customVideo && (order.images > 0 || order.videos > 0)) {
+      lines.push(
+        `<div class="line is-sub"><span class="k">${t("lineSubtotal")}</span><span class="v">${money(
+          order.subtotal
+        )}</span></div>`
+      );
+      if (order.discountKind === "contentPack") {
+        lines.push(
+          `<div class="line is-disc"><span class="k">${t("lineDiscountPack")}</span><span class="v">−${money(
+            order.discountAmount
+          )}</span></div>`
+        );
+      } else if (order.discountKind === "largeOrder") {
+        lines.push(
+          `<div class="line is-disc"><span class="k">${t("lineDiscountLarge")}</span><span class="v">−${money(
+            order.discountAmount
+          )}</span></div>`
+        );
+      }
+    }
+
+    root.innerHTML = lines.join("");
   }
 
   function recalc() {
     const order = priceFor();
     state.order = order;
     if (!order) return;
-    const set = (id, val) => {
-      const el = document.getElementById(id);
-      if (el) el.textContent = val;
-    };
-    set("sumFormat", order.format);
-    set("sumQty", order.details);
-    set("sumEta", order.eta);
-    set("sumTotal", money(order.total));
+
+    renderBreakdown(order);
+
+    const etaEl = document.getElementById("sumEta");
+    const totalEl = document.getElementById("sumTotal");
+    if (etaEl) etaEl.textContent = order.eta;
+    if (totalEl) totalEl.textContent = order.customVideo ? t("customQuote") : money(order.total);
+
     const draft = document.getElementById("draftHint");
     if (draft) draft.hidden = !window.LAV_VS_PRICING?.draft;
+
     const custom = document.getElementById("customHint");
-    if (custom) custom.hidden = !order.over;
+    if (custom) custom.hidden = !order.customVideo;
+
+    const packHint = document.getElementById("packHint");
+    if (packHint) {
+      packHint.hidden = !(order.packEligible && order.discountKind === "contentPack");
+    }
+
+    const btnPay = document.getElementById("btnPay");
+    const btnDiscuss = document.getElementById("btnDiscuss");
+    if (btnPay) btnPay.hidden = !!order.customVideo;
+    if (btnDiscuss) btnDiscuss.hidden = !order.customVideo;
   }
 
   function syncQtyInputs() {
     const img = document.getElementById("imgQtyInput");
     const vid = document.getElementById("vidQtyInput");
-    const pImg = document.getElementById("packImgInput");
-    const pVid = document.getElementById("packVidInput");
     if (img) img.value = String(state.imgQty);
     if (vid) vid.value = String(state.vidQty);
-    if (pImg) pImg.value = String(state.packImg);
-    if (pVid) pVid.value = String(state.packVid);
-    document.querySelectorAll("[data-quick-images]").forEach((btn) => {
-      btn.classList.toggle("active", Number(btn.dataset.quickImages) === state.imgQty);
-    });
-    document.querySelectorAll("[data-quick-videos]").forEach((btn) => {
-      btn.classList.toggle("active", Number(btn.dataset.quickVideos) === state.vidQty);
+  }
+
+  function syncDurationSeg() {
+    document.querySelectorAll("#durationSeg .seg").forEach((btn) => {
+      btn.classList.toggle("active", btn.getAttribute("data-duration") === state.durationKey);
     });
   }
 
@@ -339,52 +397,24 @@
     document.querySelectorAll(".vs-tabs .tab").forEach((tab) => {
       tab.classList.toggle("active", tab.getAttribute("data-mode") === mode);
     });
-    document.getElementById("panelImages").hidden = mode !== "images";
-    document.getElementById("panelVideos").hidden = mode !== "videos";
-    document.getElementById("panelPack").hidden = mode !== "pack";
+    const showImages = mode === "images" || mode === "both";
+    const showVideos = mode === "videos" || mode === "both";
+    const panelImages = document.getElementById("panelImages");
+    const panelVideos = document.getElementById("panelVideos");
+    if (panelImages) panelImages.hidden = !showImages;
+    if (panelVideos) panelVideos.hidden = !showVideos;
+    // Ensure both panels remain usable in "both" mode (stack in same column)
+    if (mode === "both" && panelImages && panelVideos) {
+      panelVideos.hidden = false;
+      panelImages.hidden = false;
+    }
     recalc();
-  }
-
-  function renderQuickChips() {
-    const cfg = window.LAV_VS_PRICING;
-    const imgBox = document.getElementById("imgQuick");
-    const vidBox = document.getElementById("vidQuick");
-    if (imgBox) {
-      imgBox.innerHTML = (cfg.quickQty?.images || [])
-        .map(
-          (n) =>
-            `<button type="button" class="chip" data-quick-images="${n}">${n}</button>`
-        )
-        .join("");
-      imgBox.querySelectorAll("[data-quick-images]").forEach((btn) => {
-        btn.addEventListener("click", () => {
-          state.imgQty = Number(btn.dataset.quickImages);
-          syncQtyInputs();
-          recalc();
-        });
-      });
-    }
-    if (vidBox) {
-      vidBox.innerHTML = (cfg.quickQty?.videos || [])
-        .map(
-          (n) =>
-            `<button type="button" class="chip" data-quick-videos="${n}">${n}</button>`
-        )
-        .join("");
-      vidBox.querySelectorAll("[data-quick-videos]").forEach((btn) => {
-        btn.addEventListener("click", () => {
-          state.vidQty = Number(btn.dataset.quickVideos);
-          syncQtyInputs();
-          recalc();
-        });
-      });
-    }
   }
 
   function bindQty(id, key, limitsKey) {
     const input = document.getElementById(id);
     const cfg = window.LAV_VS_PRICING;
-    const lim = cfg.qtyLimits?.[limitsKey] || { min: 0, max: 999 };
+    const lim = cfg?.qtyLimits?.[limitsKey] || { min: 0, max: 999 };
     const read = () => {
       const n = parseInt(input.value, 10);
       state[key] = clamp(Number.isFinite(n) ? n : lim.min, lim.min, lim.max);
@@ -532,13 +562,13 @@
 
   function startCheckout() {
     const order = state.order || priceFor();
-    if (!order) return;
+    if (!order || order.customVideo) return;
     const prodamus = window.LAV_VS_PRODAMUS || {};
     if (prodamus.enabled && prodamus.paymentBaseUrl && prodamus.shopId) {
       const url = new URL(prodamus.paymentBaseUrl);
       url.searchParams.set("shop_id", prodamus.shopId);
       url.searchParams.set("order_id", `vs-${Date.now()}`);
-      url.searchParams.set("products[0][name]", `LAV Visual Studio — ${order.format}`);
+      url.searchParams.set("products[0][name]", `LAV Visual Studio — ${order.details}`);
       url.searchParams.set("products[0][price]", String(order.total));
       url.searchParams.set("products[0][quantity]", "1");
       url.searchParams.set("currency", prodamus.currency || "rub");
@@ -548,7 +578,6 @@
       return;
     }
     const body = t("payPendingBody")({
-      format: order.format,
       details: order.details,
       total: money(order.total),
       eta: order.eta
@@ -573,14 +602,19 @@
   document.querySelectorAll(".vs-tabs .tab").forEach((tab) => {
     tab.addEventListener("click", () => setMode(tab.getAttribute("data-mode")));
   });
+  document.querySelectorAll("#durationSeg .seg").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      state.durationKey = btn.getAttribute("data-duration") || "upTo30";
+      syncDurationSeg();
+      recalc();
+    });
+  });
   document.getElementById("btnPay")?.addEventListener("click", startCheckout);
 
-  renderQuickChips();
   bindQty("imgQtyInput", "imgQty", "images");
   bindQty("vidQtyInput", "vidQty", "videos");
-  bindQty("packImgInput", "packImg", "packImages");
-  bindQty("packVidInput", "packVid", "packVideos");
   syncQtyInputs();
+  syncDurationSeg();
   applyI18n();
   setMode("images");
 })();

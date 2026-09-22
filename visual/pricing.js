@@ -1,68 +1,142 @@
-/* LAV Visual Studio — centralized pricing (DRAFT placeholders).
- * Edit ONLY this file to change prices, discounts and thresholds.
- * Do not hardcode commercial numbers in components.
+/* LAV Visual Studio — centralized commercial rates.
+ * Edit ONLY this file to change visual pricing / discounts.
  */
 window.LAV_VS_PRICING = {
-  /** true → UI shows a small “draft prices” hint */
-  draft: true,
-
+  draft: false,
   currencySymbol: { en: "₽", ru: "₽" },
   currencyCode: "RUB",
 
-  pricePerImage: 4500,
-  pricePerVideo: 18000,
+  imagePrice: 2500,
 
-  /** Volume discounts: first matching highest minQty wins */
-  volumeDiscounts: {
-    images: [
-      { minQty: 5, percentOff: 8 },
-      { minQty: 10, percentOff: 15 },
-      { minQty: 20, percentOff: 25 }
-    ],
-    videos: [
-      { minQty: 3, percentOff: 10 },
-      { minQty: 5, percentOff: 15 },
-      { minQty: 10, percentOff: 22 }
-    ]
+  videoPrices: {
+    upTo30: 3500,
+    from31to60: 6000,
+    from61to90: 10000
+    // over90 → custom quote, not auto-priced
   },
 
-  /** Content pack: discount applied to (images*rate + videos*rate) */
-  packDiscount: 0.12,
+  contentPack: {
+    minImages: 5,
+    minVideos: 2,
+    discountPercent: 7
+  },
 
-  minimumOrder: 4500,
-
-  /** Above these quantities → suggest custom / quote */
-  customThreshold: {
-    images: 50,
-    videos: 20
+  largeOrder: {
+    threshold: 100000,
+    discountPercent: 10
   },
 
   qtyLimits: {
-    images: { min: 1, max: 200 },
-    videos: { min: 1, max: 100 },
-    packImages: { min: 0, max: 200 },
-    packVideos: { min: 0, max: 100 }
+    images: { min: 0, max: 500 },
+    videos: { min: 0, max: 200 }
   },
 
-  /** Quick-pick chips next to manual input */
-  quickQty: {
-    images: [5, 10, 20],
-    videos: [1, 3, 5]
-  },
-
-  etaHours: 48,
   etaLabel: {
     en: "Within 48 hours*",
     ru: "До 48 часов*"
+  },
+
+  etaCustom: {
+    en: "Quoted individually",
+    ru: "Согласовывается индивидуально"
+  },
+
+  /** What base price includes (structure for future expansion) */
+  includes: {
+    image: {
+      finals: 1,
+      formats: 1,
+      revisionRounds: 1
+    },
+    video: {
+      durationTier: true,
+      aspectRatios: 1,
+      revisionRounds: 1
+    }
+  },
+
+  videoPriceFor(durationKey) {
+    if (durationKey === "upTo30") return this.videoPrices.upTo30;
+    if (durationKey === "from31to60") return this.videoPrices.from31to60;
+    if (durationKey === "from61to90") return this.videoPrices.from61to90;
+    return null; // over90 / custom
+  },
+
+  /**
+   * Core quote engine — single source of calculation truth.
+   * @param {{ images?: number, videos?: number, durationKey?: string }} input
+   */
+  computeQuote(input) {
+    const images = Math.max(0, Math.floor(Number(input?.images) || 0));
+    const videos = Math.max(0, Math.floor(Number(input?.videos) || 0));
+    const durationKey = input?.durationKey || "upTo30";
+
+    const imageUnit = this.imagePrice;
+    const imagesTotal = images * imageUnit;
+
+    const videoUnit = this.videoPriceFor(durationKey);
+    const customVideo = videos > 0 && videoUnit == null;
+    const videosTotal = customVideo || videoUnit == null ? 0 : videos * videoUnit;
+
+    const subtotal = imagesTotal + videosTotal;
+
+    const packCfg = this.contentPack;
+    const largeCfg = this.largeOrder;
+    const packEligible =
+      images >= packCfg.minImages && videos >= packCfg.minVideos;
+    const largeEligible = subtotal >= largeCfg.threshold;
+
+    let discountKind = null;
+    let discountPercent = 0;
+    if (packEligible && largeEligible) {
+      if (largeCfg.discountPercent >= packCfg.discountPercent) {
+        discountKind = "largeOrder";
+        discountPercent = largeCfg.discountPercent;
+      } else {
+        discountKind = "contentPack";
+        discountPercent = packCfg.discountPercent;
+      }
+    } else if (largeEligible) {
+      discountKind = "largeOrder";
+      discountPercent = largeCfg.discountPercent;
+    } else if (packEligible) {
+      discountKind = "contentPack";
+      discountPercent = packCfg.discountPercent;
+    }
+
+    const discountAmount = Math.round((subtotal * discountPercent) / 100);
+    const total = Math.max(0, subtotal - discountAmount);
+
+    const isLargeOrCustom = customVideo || largeEligible || subtotal >= largeCfg.threshold;
+    const etaKey = customVideo || isLargeOrCustom ? "etaCustom" : "etaLabel";
+
+    return {
+      images,
+      videos,
+      durationKey,
+      imageUnit,
+      imagesTotal,
+      videoUnit,
+      videosTotal,
+      customVideo,
+      subtotal,
+      packEligible,
+      largeEligible,
+      discountKind,
+      discountPercent,
+      discountAmount,
+      total,
+      etaKey,
+      includes: this.includes
+    };
   }
 };
 
-/** Prodamus — fill when ready. Keep disabled until keys exist. */
 window.LAV_VS_PRODAMUS = {
   enabled: false,
   paymentBaseUrl: "",
   shopId: "",
-  note: "Need shop_id + server-side secret. Prefer a tiny backend for signatures.",
+  note: "Need shop_id + server-side secret.",
   successUrl: "https://lavinteriors.pro/visual/?paid=1",
   failUrl: "https://lavinteriors.pro/visual/?paid=0",
   currency: "rub"

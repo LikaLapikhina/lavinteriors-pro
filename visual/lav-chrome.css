@@ -228,13 +228,13 @@ html[data-lang="ru"] .brand-center .brand-script{display:block !important;}
   background-repeat:no-repeat !important;
   transform:scale(1.06);
   transform-origin:center center;
-  filter:saturate(1.05) contrast(1.04);
+  filter:saturate(.92) contrast(1.02) brightness(.72);
 }
 .section-bg::after{
   content:"" !important;
   position:absolute !important;
   inset:0 !important;
-  background:linear-gradient(180deg, rgba(239,233,223,.28), rgba(239,233,223,.38)) !important;
+  background:linear-gradient(180deg, rgba(232,224,210,.62), rgba(232,224,210,.74)) !important;
 }
 #vs-work > .section-bg{background-image:url('../images/vs-bg-work.jpg') !important}
 #vs-showcase > .section-bg{background-image:url('../images/vs-bg-showcase.jpg') !important}
@@ -327,7 +327,7 @@ html[data-lang="ru"] .brand-center .brand-script{display:block !important;}
 .site-footer::before{
   content:"" !important;position:absolute !important;inset:0 !important;
   z-index:0 !important;pointer-events:none !important;
-  background:linear-gradient(180deg, rgba(239,233,223,.32), rgba(239,233,223,.42)) !important;
+  background:linear-gradient(180deg, rgba(232,224,210,.66), rgba(232,224,210,.78)) !important;
 }
 .site-footer > *{position:relative;z-index:1}
 .footerInner{
