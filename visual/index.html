@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html data-lang="en" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>LAV Visual Studio — Premium visual content</title>
+<meta name="description" content="LAV Visual Studio — premium images and cinematic videos for brands, designers, real estate and agencies. Without constant photoshoots."/>
+<link rel="canonical" href="https://lavinteriors.pro/visual/"/>
+<link href="../my-favicon/favicon.ico" rel="icon" sizes="any"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Italianno&family=Manrope:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --paper:#E8E0D4; --paper-2:#E4DDD0; --paper-warm:#EDE6D8;
+  --ink:#1A1714; --muted:rgba(26,23,20,.62);
+  --line:rgba(26,23,20,.12);
+  --sans:"Manrope",ui-sans-serif,system-ui,sans-serif;
+  --serif:"Cormorant Garamond","Times New Roman",serif;
+  --script:"Italianno","Apple Chancery",cursive;
+  --container:1180px; --gutter:22px; --header-h:112px;
+  --ease:cubic-bezier(.2,.8,.2,1);
+  --shadow-soft:0 10px 30px rgba(26,20,10,.10);
+}
+html[data-lang="ru"]{ --script:"Playfair Display",var(--serif); }
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0; color:var(--ink); font-family:var(--sans);
+  background:
+    radial-gradient(1200px 900px at 12% 6%, rgba(26,23,20,.05), transparent 55%),
+    radial-gradient(900px 700px at 85% 15%, rgba(170,145,100,.06), transparent 55%),
+    linear-gradient(180deg, var(--paper), var(--paper-2) 50%, var(--paper-warm));
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none}
+button,input,select{font:inherit}
+.wrap{max-width:var(--container);margin:0 auto;padding:0 var(--gutter)}
+.eyebrow{font-size:10px;letter-spacing:.34em;text-transform:uppercase;color:var(--muted);margin:0 0 10px}
+.h2{font-family:var(--serif);font-weight:500;font-size:clamp(28px,4vw,44px);letter-spacing:.06em;text-transform:uppercase;margin:0 0 12px;line-height:1.1}
+.lead{font-size:15px;line-height:1.75;color:rgba(26,23,20,.72);max-width:58ch;margin:0}
+.script{font-family:var(--script);font-size:clamp(28px,3.2vw,40px);font-weight:400;letter-spacing:.02em;color:rgba(26,23,20,.78)}
+.section{padding:72px 0;position:relative}
+.section.tight{padding:56px 0}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  border:1px solid rgba(20,20,20,.22);background:rgba(255,255,255,.35);
+  padding:14px 18px;font-size:10px;letter-spacing:.28em;text-transform:uppercase;
+  cursor:pointer;transition:transform 220ms var(--ease),background 220ms var(--ease),border-color 220ms var(--ease);
+}
+.btn:hover{transform:translateY(-1px);background:rgba(255,255,255,.55);border-color:rgba(20,20,20,.32)}
+.btn.primary{background:rgba(26,23,20,.92);color:#f4efe6;border-color:rgba(26,23,20,.92)}
+.btn.primary:hover{background:#111;color:#fff}
+.btn.ghost{background:transparent}
+.header{
+  position:sticky;top:0;z-index:100;
+  background:rgba(228,221,208,.88);backdrop-filter:blur(14px) saturate(1.3);
+  border-bottom:1px solid var(--line);
+}
+.header-inner{
+  height:var(--header-h);display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:16px;
+}
+.nav-left{display:flex;gap:18px;flex-wrap:wrap}
+.nav-left a{font-size:10px;letter-spacing:.28em;text-transform:uppercase;opacity:.78}
+.nav-left a:hover{opacity:1}
+.brand-center{text-align:center}
+.brand-sub{font-size:9px;letter-spacing:.28em;text-transform:uppercase;color:var(--muted)}
+.brand-top{font-family:var(--serif);font-size:22px;letter-spacing:.18em;text-transform:uppercase}
+.brand-script{font-family:var(--script);font-size:26px;line-height:1}
+.actions-right{display:flex;align-items:center;justify-content:flex-end;gap:14px}
+.header-cta-service{
+  font-size:9px;letter-spacing:.2em;text-transform:uppercase;max-width:220px;text-align:center;
+  border-bottom:1px solid rgba(20,20,20,.28);padding-bottom:2px;
+}
+.lang{
+  display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:999px;
+  border:1px solid rgba(20,20,20,.18);background:rgba(228,221,208,.45);
+  font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:rgba(20,20,20,.62);
+}
+.lang button{border:0;background:transparent;cursor:pointer;opacity:.85;font:inherit;color:inherit}
+.lang button.active{opacity:1;color:rgba(20,20,20,.92)}
+
+/* Hero */
+.vs-hero{
+  min-height:min(88vh,820px);display:grid;align-items:end;padding:48px 0 64px;
+  position:relative;overflow:hidden;
+}
+.vs-hero-media{
+  position:absolute;inset:0;background:
+    linear-gradient(180deg, rgba(26,23,20,.25), rgba(26,23,20,.55)),
+    url('../images/brands-visual.jpg') center/cover no-repeat;
+  z-index:0;
+}
+.vs-hero-media video{
+  width:100%;height:100%;object-fit:cover;display:block;opacity:.92;
+}
+.vs-hero .wrap{position:relative;z-index:1;color:#f6f1e8}
+.vs-hero .eyebrow,.vs-hero .lead{color:rgba(246,241,232,.78)}
+.vs-hero .h1{
+  font-family:var(--serif);font-weight:500;margin:0 0 14px;
+  font-size:clamp(36px,6vw,72px);letter-spacing:.08em;text-transform:uppercase;line-height:1.02;
+}
+.vs-hero .lead{max-width:42ch;color:rgba(246,241,232,.86)}
+.vs-hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.vs-hero .btn{border-color:rgba(255,255,255,.35);color:#f6f1e8;background:rgba(255,255,255,.08)}
+.vs-hero .btn.primary{background:#f6f1e8;color:var(--ink);border-color:#f6f1e8}
+.vs-hero .btn.ghost:hover{background:rgba(255,255,255,.16)}
+
+.vs-grid{display:grid;gap:16px}
+.vs-audience{grid-template-columns:repeat(3,minmax(0,1fr))}
+.vs-card{
+  border:1px solid rgba(20,20,20,.10);background:rgba(255,255,255,.42);
+  box-shadow:var(--shadow-soft);padding:22px 20px;
+}
+.vs-card h3{margin:0 0 8px;font-size:12px;letter-spacing:.22em;text-transform:uppercase;font-weight:600}
+.vs-card p{margin:0;font-size:13px;line-height:1.7;color:rgba(20,20,20,.66)}
+
+.vs-products{grid-template-columns:repeat(2,minmax(0,1fr))}
+.vs-products .vs-card.wide{grid-column:1 / -1}
+.vs-kicker{font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+
+/* Calculator */
+.vs-calc{
+  border:1px solid rgba(20,20,20,.12);background:rgba(255,252,247,.55);
+  box-shadow:var(--shadow-soft);padding:24px;
+}
+.vs-tabs{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 20px}
+.vs-tab{
+  border:1px solid rgba(20,20,20,.16);background:rgba(255,255,255,.35);
+  padding:11px 14px;font-size:10px;letter-spacing:.22em;text-transform:uppercase;cursor:pointer;
+}
+.vs-tab.active{background:rgba(26,23,20,.92);color:#f4efe6;border-color:rgba(26,23,20,.92)}
+.vs-qty{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 8px}
+.vs-chip{
+  min-width:52px;border:1px solid rgba(20,20,20,.16);background:rgba(255,255,255,.4);
+  padding:12px 14px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;text-align:center;
+}
+.vs-chip.active{background:rgba(26,23,20,.9);color:#f4efe6;border-color:rgba(26,23,20,.9)}
+.vs-field{margin-top:12px;display:none}
+.vs-field.show{display:block}
+.vs-field label{display:block;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.vs-field input,.vs-field select{
+  width:100%;max-width:280px;border:1px solid rgba(20,20,20,.16);background:rgba(255,255,255,.55);
+  padding:12px 14px;outline:none;
+}
+.vs-summary{
+  margin-top:22px;padding-top:18px;border-top:1px solid rgba(20,20,20,.12);
+  display:grid;gap:10px;
+}
+.vs-summary .row{display:flex;justify-content:space-between;gap:16px;font-size:14px}
+.vs-summary .total{font-family:var(--serif);font-size:28px;letter-spacing:.04em}
+.vs-note{font-size:12px;line-height:1.7;color:var(--muted);margin:10px 0 0}
+.vs-draft{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:rgba(140,90,40,.85);margin-top:8px}
+.vs-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+
+.vs-steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.vs-step .n{font-family:var(--serif);font-size:28px;letter-spacing:.08em;margin-bottom:8px}
+.vs-step h3{margin:0 0 8px;font-size:12px;letter-spacing:.2em;text-transform:uppercase}
+.vs-step p{margin:0;font-size:13px;line-height:1.7;color:rgba(20,20,20,.66)}
+
+.vs-show{
+  display:grid;grid-template-columns:2fr 1fr 1fr;gap:12px;margin-top:22px;
+}
+.vs-show .slot{
+  aspect-ratio:16/10;border:1px dashed rgba(20,20,20,.22);
+  background:rgba(255,255,255,.28);display:grid;place-items:center;text-align:center;padding:16px;
+  font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);
+}
+.vs-show .slot.main{aspect-ratio:16/9}
+.vs-show .slot.has-media{border-style:solid;padding:0;overflow:hidden}
+.vs-show .slot img,.vs-show .slot video{width:100%;height:100%;object-fit:cover}
+
+.vs-final{
+  border:1px solid rgba(20,20,20,.12);background:rgba(255,255,255,.4);
+  padding:28px 24px;display:grid;gap:18px;grid-template-columns:1.2fr 1fr;
+}
+.vs-final .actions{display:flex;flex-wrap:wrap;gap:10px;align-content:start}
+
+footer{border-top:1px solid var(--line);padding:28px 0 40px;margin-top:20px}
+.foot-row{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;align-items:center}
+.foot-row a{font-size:10px;letter-spacing:.22em;text-transform:uppercase;opacity:.75}
+.foot-row a:hover{opacity:1}
+
+@media(max-width:980px){
+  .header-inner{grid-template-columns:1fr;height:auto;padding:14px 0;gap:10px}
+  .nav-left,.actions-right{justify-content:center}
+  .brand-center{order:-1}
+  .vs-audience,.vs-products,.vs-steps,.vs-show,.vs-final{grid-template-columns:1fr}
+  .vs-show .slot.main{aspect-ratio:16/10}
+  :root{--header-h:auto}
+}
+@media(max-width:720px){
+  .section{padding:52px 0}
+  .vs-hero{min-height:78vh;padding:36px 0 48px}
+  .nav-left a{font-size:9px;letter-spacing:.18em}
+  .header-cta-service{max-width:none}
+}
+</style>
+</head>
+<body>
+<header class="header">
+  <div class="wrap">
+    <div class="header-inner">
+      <nav class="nav-left" aria-label="Primary">
+        <a href="/#portfolio" data-i18n="navPortfolio">Portfolio</a>
+        <a href="/#about" data-i18n="navAbout">About</a>
+        <a href="/#process" data-i18n="navProcess">Process</a>
+        <a href="/#pricing" data-i18n="navPricing">Pricing</a>
+      </nav>
+      <a class="brand-center" href="/" aria-label="LAV Interiors">
+        <div class="brand-sub" data-i18n="brandSub">Interior Design &amp; Architecture</div>
+        <div class="brand-top">LAV INTERIORS</div>
+        <div class="brand-script">as a system</div>
+      </a>
+      <div class="actions-right">
+        <a class="header-cta-service" href="/visual/" data-i18n="navVisualStudio">LAV Visual Studio</a>
+        <div class="lang" aria-label="Language switch">
+          <button type="button" class="active" id="langEN">EN</button>
+          <span class="sep">|</span>
+          <button type="button" id="langRU">RU</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- BLOCK 1 — HERO -->
+<section class="vs-hero" id="top">
+  <div class="vs-hero-media" id="vsHeroMedia" aria-hidden="true">
+    <!-- Optional: replace with <video autoplay muted loop playsinline src="..."> -->
+  </div>
+  <div class="wrap">
+    <p class="eyebrow">LAV Visual Studio</p>
+    <h1 class="h1" data-i18n="heroTitle">Premium visual content without constant photoshoots.</h1>
+    <p class="lead" data-i18n="heroLead">Images and cinematic videos for social media, advertising, websites and launches.</p>
+    <div class="vs-hero-actions">
+      <a class="btn primary" href="#order" data-i18n="ctaOrder">Start a Project</a>
+      <a class="btn ghost" href="#for-whom" data-i18n="ctaWho">Who it’s for</a>
+    </div>
+  </div>
+</section>
+
+<!-- BLOCK 2 — WHO -->
+<section class="section" id="for-whom">
+  <div class="wrap">
+    <p class="eyebrow" data-i18n="whoEye">For whom</p>
+    <h2 class="h2" data-i18n="whoTitle">Who we work with</h2>
+    <p class="lead" data-i18n="whoLead">Find your category — and see how visual production supports your business.</p>
+    <div class="vs-grid vs-audience" style="margin-top:28px">
+      <article class="vs-card"><h3 data-i18n="who1T">Interior Designers</h3><p data-i18n="who1D">Content to present and promote projects.</p></article>
+      <article class="vs-card"><h3 data-i18n="who2T">Furniture &amp; Kitchen Brands</h3><p data-i18n="who2D">Product in a finished interior — without constant shoots.</p></article>
+      <article class="vs-card"><h3 data-i18n="who3T">Lighting &amp; Interior Brands</h3><p data-i18n="who3D">Campaign visuals and lifestyle frames for collections.</p></article>
+      <article class="vs-card"><h3 data-i18n="who4T">Architecture Studios</h3><p data-i18n="who4D">Atmospheric storytelling for concepts and exteriors.</p></article>
+      <article class="vs-card"><h3 data-i18n="who5T">Real Estate &amp; Developers</h3><p data-i18n="who5D">Future object and lifestyle — before construction ends.</p></article>
+      <article class="vs-card"><h3 data-i18n="who6T">Creative / Marketing Agencies</h3><p data-i18n="who6D">External visual production for client projects.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- SHOWREEL SLOT (compact portfolio system) -->
+<section class="section tight" id="showreel">
+  <div class="wrap">
+    <p class="eyebrow" data-i18n="showEye">Selected frames</p>
+    <h2 class="h2" data-i18n="showTitle">A glimpse of the work</h2>
+    <p class="lead" data-i18n="showLead">A compact showcase — add images and videos here as the library grows.</p>
+    <div class="vs-show" id="vsShowreel">
+      <div class="slot main" data-slot="main" data-i18n="showPlaceholder">Video / hero frame placeholder</div>
+      <div class="slot" data-slot="a" data-i18n="showPlaceholderShort">Frame</div>
+      <div class="slot" data-slot="b" data-i18n="showPlaceholderShort">Frame</div>
+    </div>
+  </div>
+</section>
+
+<!-- BLOCK 3 — WHAT -->
+<section class="section" id="what">
+  <div class="wrap">
+    <p class="eyebrow" data-i18n="whatEye">What we create</p>
+    <h2 class="h2" data-i18n="whatTitle">Images · Videos · Packs</h2>
+    <p class="lead" data-i18n="whatLead">Three clear formats — plus custom production for larger brands and ongoing needs.</p>
+    <div class="vs-grid vs-products" style="margin-top:28px">
+      <article class="vs-card">
+        <div class="vs-kicker">01</div>
+        <h3 data-i18n="prod1T">Images</h3>
+        <p data-i18n="prod1D">Series for social media, websites, advertising, launches and presentations.</p>
+      </article>
+      <article class="vs-card">
+        <div class="vs-kicker">02</div>
+        <h3 data-i18n="prod2T">Videos</h3>
+        <p data-i18n="prod2D">Short cinematic / social-first films for Reels, TikTok, ads and product stories.</p>
+      </article>
+      <article class="vs-card">
+        <div class="vs-kicker">03</div>
+        <h3 data-i18n="prod3T">Content Packs</h3>
+        <p data-i18n="prod3D">Images + videos as one visual system — coherent across channels.</p>
+      </article>
+      <article class="vs-card wide">
+        <div class="vs-kicker">04</div>
+        <h3 data-i18n="prod4T">Custom / Ongoing Production</h3>
+        <p data-i18n="prod4D">Large series, brand systems, agencies and developers — quote-based.</p>
+        <div style="margin-top:16px">
+          <a class="btn" href="#custom" data-i18n="ctaQuote">Request a Quote</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- BLOCK 4 — CALCULATOR -->
+<section class="section" id="order">
+  <div class="wrap">
+    <p class="eyebrow" data-i18n="calcEye">Order</p>
+    <h2 class="h2" data-i18n="calcTitle">Calculator &amp; instant order</h2>
+    <p class="lead" data-i18n="calcLead">Choose a format, see the estimate, then proceed to order.</p>
+    <p class="vs-note" data-i18n="etaNote" style="margin-top:14px">Standard delivery: within 48 hours after receiving the complete brief and source materials. Large or non-standard orders — timeline individually.</p>
+
+    <div class="vs-calc" style="margin-top:28px">
+      <div class="vs-tabs" role="tablist">
+        <button type="button" class="vs-tab active" data-mode="images" data-i18n="tabImages">Images</button>
+        <button type="button" class="vs-tab" data-mode="videos" data-i18n="tabVideos">Videos</button>
+        <button type="button" class="vs-tab" data-mode="packs" data-i18n="tabPacks">Content Pack</button>
+      </div>
+
+      <div id="panelImages">
+        <div class="vs-kicker" data-i18n="pickQty">Select quantity</div>
+        <div class="vs-qty" id="imgQty"></div>
+        <div class="vs-field" id="imgCustomField">
+          <label for="imgCustom" data-i18n="customQty">Custom quantity</label>
+          <input id="imgCustom" type="number" min="1" step="1" value="8"/>
+        </div>
+      </div>
+
+      <div id="panelVideos" hidden>
+        <div class="vs-kicker" data-i18n="pickQty">Select quantity</div>
+        <div class="vs-qty" id="vidQty"></div>
+        <div class="vs-field" id="vidCustomField">
+          <label for="vidCustom" data-i18n="customQty">Custom quantity</label>
+          <input id="vidCustom" type="number" min="1" step="1" value="4"/>
+        </div>
+      </div>
+
+      <div id="panelPacks" hidden>
+        <div class="vs-kicker" data-i18n="pickPack">Select a pack</div>
+        <div class="vs-qty" id="packQty" style="flex-direction:column;align-items:stretch"></div>
+      </div>
+
+      <div class="vs-summary" id="vsSummary">
+        <div class="row"><span data-i18n="sumFormat">Format</span><strong id="sumFormat">—</strong></div>
+        <div class="row"><span data-i18n="sumQty">Quantity</span><strong id="sumQty">—</strong></div>
+        <div class="row"><span data-i18n="sumEta">Timeline</span><strong id="sumEta">—</strong></div>
+        <div class="row"><span data-i18n="sumTotal">Total</span><strong class="total" id="sumTotal">—</strong></div>
+        <p class="vs-draft" id="draftHint" hidden data-i18n="draftHint">Draft prices — confirm before public campaign.</p>
+        <div class="vs-actions">
+          <button type="button" class="btn primary" id="btnPay" data-i18n="ctaPay">Order &amp; Pay</button>
+          <a class="btn" href="#custom" data-i18n="ctaQuote">Request a Quote</a>
+        </div>
+        <p class="vs-note" id="payNote" data-i18n="payNote">Online payment connects via Prodamus. Until keys are set, the order opens a prepared email / messenger brief.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BLOCK 5 — HOW -->
+<section class="section tight" id="how">
+  <div class="wrap">
+    <p class="eyebrow" data-i18n="howEye">Process</p>
+    <h2 class="h2" data-i18n="howTitle">How it works</h2>
+    <div class="vs-steps" style="margin-top:28px">
+      <article class="vs-step vs-card">
+        <div class="n">01</div>
+        <h3 data-i18n="how1T">Choose a format</h3>
+        <p data-i18n="how1D">Images / Videos / Content Pack</p>
+      </article>
+      <article class="vs-step vs-card">
+        <div class="n">02</div>
+        <h3 data-i18n="how2T">Share materials</h3>
+        <p data-i18n="how2D">Project, product, references, brand assets or source files.</p>
+      </article>
+      <article class="vs-step vs-card">
+        <div class="n">03</div>
+        <h3 data-i18n="how3T">Receive content</h3>
+        <p data-i18n="how3D">Ready assets for publishing and commercial use.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- BLOCK 6 — FINAL CTA -->
+<section class="section" id="custom">
+  <div class="wrap">
+    <div class="vs-final">
+      <div>
+        <p class="eyebrow" data-i18n="finalEye">Next step</p>
+        <h2 class="h2" data-i18n="finalTitle">Ready to start</h2>
+        <p class="lead" data-i18n="finalLead">Standard packages go through the calculator. Non-standard or ongoing production — write to us.</p>
+      </div>
+      <div class="actions">
+        <a class="btn primary" href="#order" data-i18n="ctaOrderNow">Order Now</a>
+        <a class="btn" id="btnTelegram" href="https://t.me/LAVINTERIORS" target="_blank" rel="noopener" data-i18n="ctaCustom">Start a Custom Project</a>
+        <a class="btn ghost" href="mailto:hello@lavinteriors.pro?subject=LAV%20Visual%20Studio" data-i18n="ctaEmail">Email</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-row">
+    <a href="/">LAV Interiors</a>
+    <a href="/#contact" data-i18n="navContact">Contact</a>
+    <a href="/privacy.html" data-i18n="navPrivacy">Privacy</a>
+  </div>
+</footer>
+
+<script src="pricing.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

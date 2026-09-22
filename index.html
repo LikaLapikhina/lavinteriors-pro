@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
-<meta content="LAV Interiors — interior design, architecture, landscape and commercial spaces. Editorial luxury approach, full projects and 50 interior options in 48 hours." name="description"/>
+<meta content="LAV Interiors — interior design, architecture, landscape and commercial spaces. Editorial luxury approach to interiors, architecture and visual content." name="description"/>
 <title>LAV Interiors — Interior Design &amp; Architecture</title>
 <meta content="1c18b9a6aef9e0b1085e17ac5f704a95" name="p:domain_verify"/>
 <link href="/my-favicon/favicon-96x96.png" rel="icon" sizes="96x96" type="image/png"/>
@@ -3102,8 +3102,29 @@ input, textarea, select, .control, .contactCard input, .contactCard textarea{
   font-size:20px;
 }
 
+
+/* ===== LAV FEATURE: temporarily hide «50 options / 48h» offer ===== */
+html.lav-offer-50-off .lav-offer-50,
+html.lav-offer-50-off #styleVision,
+html.lav-offer-50-off #servicePage,
+html.lav-offer-50-off option[value="options48"]{
+  display:none !important;
+}
+html.lav-offer-50-off body[data-page="service"] #servicePage{display:none !important;}
+
 </style>
 </head>
+
+<script>
+/* Feature flags — restore options48: set LAV_FEATURES.options48=true and remove lav-offer-50-off */
+window.LAV_FEATURES = window.LAV_FEATURES || { options48: false, visualStudio: true };
+(function(){
+  if(!window.LAV_FEATURES.options48){
+    document.documentElement.classList.add('lav-offer-50-off');
+  }
+})();
+</script>
+
 <body data-page="home">
 <!-- RIGHT FIXED QUICK ACTIONS (mail / star / calculator) -->
 <div aria-label="Quick actions" class="quickRail">
@@ -3145,7 +3166,7 @@ input, textarea, select, .control, .contactCard input, .contactCard textarea{
 </a>
 <!-- RIGHT ACTIONS -->
 <div class="actions-right">
-<a class="header-cta-service" data-i18n="navConcepts" data-service-link="" href="/interior-concepts/">50 options in 48 hours</a>
+<a class="header-cta-service" data-i18n="navVisualStudio" href="/visual/">LAV Visual Studio</a>
 <div aria-label="Language switch" class="lang">
 <button class="active" id="langEN" type="button">EN</button>
 <span class="sep">|</span>
@@ -3276,7 +3297,7 @@ input, textarea, select, .control, .contactCard input, .contactCard textarea{
 <p data-i18n="portCtaText">
           Want a project that looks expensive on camera — and works flawlessly day to day? Start with a short brief and we’ll propose the best package.
         </p>
-<div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end"><a class="btn" data-home-anchor="pricing" data-i18n="portCtaBtn" href="#pricing">Open calculator</a><a class="btn primary" data-i18n="navConcepts" data-service-link="" href="/interior-concepts/">50 options in 48 hours</a></div>
+<div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end"><a class="btn" data-home-anchor="pricing" data-i18n="portCtaBtn" href="#pricing">Open calculator</a><a class="btn primary" data-i18n="navVisualStudio" href="/visual/">LAV Visual Studio</a></div>
 </div>
 <div class="rule"></div>
 <div aria-hidden="true" class="orn">— — —</div>
@@ -3500,7 +3521,7 @@ input, textarea, select, .control, .contactCard input, .contactCard textarea{
 </section>
 
 <!-- STYLE VISION — quick service showcase -->
-<section class="section styleVision" id="styleVision" data-aos="fade-up">
+<section class="section styleVision lav-offer-50" id="styleVision" data-aos="fade-up">
 <div class="wrap">
 <!-- Decorative large cursive accent -->
 
@@ -3590,7 +3611,7 @@ input, textarea, select, .control, .contactCard input, .contactCard textarea{
 <div class="field" id="packWrap">
 <div class="label" data-lav-i18n="calcFormat">Work format</div>
 <select class="control" id="pack">
-<option data-lav-i18n="fmtOptions48" value="options48">50 options in 48 hours</option>
+<option class="lav-offer-50" data-lav-i18n="fmtOptions48" value="options48">50 options in 48 hours</option>
 <option data-lav-i18n="fmtPlanning" value="planning">Planning solution</option>
 <option data-lav-i18n="fmtConcept" value="concept">Visual concept</option>
 <option data-lav-i18n="fmtVisuals" value="visuals">Visualizations</option>
@@ -3608,7 +3629,7 @@ input, textarea, select, .control, .contactCard input, .contactCard textarea{
 </div>
 <div class="calcActions">
 <a class="btn primary btn-dark" data-home-anchor="contact" data-lav-i18n="btnExact" href="#contact">Discuss exact estimate</a>
-<a class="btn" data-i18n="navConcepts" data-service-link="" href="/interior-concepts/">50 options in 48 hours</a>
+<a class="btn" data-i18n="navVisualStudio" href="/visual/">LAV Visual Studio</a>
 </div>
 </div>
 <div class="box reveal estimate-result">
@@ -3639,7 +3660,7 @@ input, textarea, select, .control, .contactCard input, .contactCard textarea{
 <p data-lav-i18n="startCtaText">Let’s create an interior with character, beauty and logic.</p>
 <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end">
 <a class="btn primary btn-dark" data-home-anchor="contact" data-lav-i18n="startCtaBtn" href="#contact">Discuss project</a>
-<a class="btn" data-i18n="navConcepts" data-service-link="" href="/interior-concepts/">50 options in 48 hours</a>
+<a class="btn" data-i18n="navVisualStudio" href="/visual/">LAV Visual Studio</a>
 </div>
 </div>
 </div>
@@ -3686,7 +3707,7 @@ input, textarea, select, .control, .contactCard input, .contactCard textarea{
 </div>
 </div>
 </section>
-<section aria-label="50 interior options in 48 hours" class="servicePage" id="servicePage">
+<section aria-label="50 interior options in 48 hours" class="servicePage lav-offer-50" id="servicePage">
 <main class="hero wrap serviceHero" id="interior-concepts">
 <div class="hero-card">
 <div class="hero-media" data-img="serviceHero"></div><div class="hero-overlay"></div>
@@ -3753,7 +3774,7 @@ input, textarea, select, .control, .contactCard input, .contactCard textarea{
 <a data-home-anchor="portfolio" data-i18n="navPortfolio" href="#portfolio">Portfolio</a>
 <a data-home-anchor="about" data-i18n="navAbout" href="#about">About</a>
 <a data-home-anchor="pricing" data-i18n="navPricing" href="#pricing">Pricing</a>
-<a data-i18n="navConcepts" data-service-link="" href="/interior-concepts/">50 options in 48 hours</a>
+<a data-i18n="navVisualStudio" href="/visual/">LAV Visual Studio</a>
 <a data-home-anchor="contact" data-i18n="footContact" href="#contact">Contact</a>
 </div>
 <div aria-label="Social links" class="footSocial" data-footer-social=""></div>
@@ -4778,13 +4799,13 @@ input, textarea, select, .control, .contactCard input, .contactCard textarea{
 
 
     Object.assign(dictFull.en,{
-      navConcepts:"50 options in 48 hours",tabInteriors:"Interiors",tabHouses:"Houses",styleNeoclassic:"Modern Neoclassical",styleQuiet:"Quiet Luxury",styleOrganic:"Organic Modern",styleAmerican:"American Classic",styleMinimal:"Contemporary Minimalism",styleMed:"New Mediterranean",styleBoutique:"Boutique Interior",styleHouse:"Private House",
+      navConcepts:"50 options in 48 hours",navVisualStudio:"LAV Visual Studio",tabInteriors:"Interiors",tabHouses:"Houses",styleNeoclassic:"Modern Neoclassical",styleQuiet:"Quiet Luxury",styleOrganic:"Organic Modern",styleAmerican:"American Classic",styleMinimal:"Contemporary Minimalism",styleMed:"New Mediterranean",styleBoutique:"Boutique Interior",styleHouse:"Private House",
       aboutLead:"LAV Interiors is a personal interior design brand. I create interiors where beauty rests on planning, proportion, light, materials and the everyday logic of life.",portLead:"Vertical gallery 3:4 — filter by direction and style. The set grows with every new frame.",portLeadV2:"Vertical gallery 3:4 — filter by direction and style. The set grows with every new frame.",portFilterCat:"Direction",portFilterStyle:"Style",portCtaText:"Need a faster first step? Start with 50 interior options in 48 hours — a focused visual concept service before moving into a full project.",
       svcBadge:"A NEW DESIGN FORMAT",svcHeroTitle:"50 INTERIOR OPTIONS\nIN 48 HOURS",svcHeroSub:"You choose from dozens of solutions instead of adapting to a single concept.",svcPrimary:"Get 50 options",svcSecondary:"View examples",svcHeroNote:"You see the full potential of the space immediately — without months of waiting and endless revisions.",svcProcessEye:"Workflow",svcProcessTitle:"Work process",svcProcessLead:"A clear system where the right direction becomes visible from the first stages.",svcP1T:"Initial data",svcP1D:"The space, object, layout or task that the work starts from.",svcP2T:"Brief",svcP2D:"Fixing the style, goals, budget and key priorities.",svcP3T:"Creating options",svcP3D:"Several strong concepts with different design approaches.",svcP4T:"Choosing direction",svcP4D:"Defining the solution that truly fits you.",svcP5T:"Next step",svcP5D:"Moving to materials, drawings and further implementation.",svcBenefitsEye:"Benefits",svcBenefitsTitle:"What you get",svcBenefitsLead:"A format where you control the result instead of adapting to it.",svcB1T:"Freedom of choice",svcB1D:"Dozens of concepts instead of one solution.",svcB2T:"Speed",svcB2D:"Strong solutions in 48 hours.",svcB3T:"Budget efficiency",svcB3D:"Fewer revisions and reworks.",svcB4T:"Result control",svcB4D:"You choose the final option.",svcB5T:"Real-world viability",svcB5D:"Solutions are designed for implementation.",svcB6T:"Flexibility",svcB6D:"Stop at concept or move into a full project.",svcExamplesEye:"Cases",svcExamplesTitle:"Project examples",svcExamplesLead:"Choose not only the layout, but also the style of the space.",svcSource:"Source",svcVariants:"Variants",svcServicesEye:"Services",svcServicesTitle:"Services",svcServicesLead:"From a fast visual choice to full implementation.",svcS1T:"Fast redesign",svcS1D:"Up to 50 options for one space with different design solutions.",svcPrice:"from $150",svcS2T:"Selection & sourcing",svcS2D:"Materials, furniture, lighting and decorative elements.",svcS3T:"Layout planning",svcS3D:"Spatial logic and functional zoning.",svcS4T:"Technical drawings",svcS4D:"Documentation for implementation.",svcS5T:"Furniture drawings",svcS5D:"Solutions for custom production.",svcS6T:"Full design project",svcS6D:"From concept to visualization and technical package.",svcContactTitle:"Get 50 options",svcContactLead:"Choose a convenient channel and discuss your task directly. No file uploads or payment on the website.",svcLegal:"Payment, contract, timing and exact scope are discussed separately outside the website. The information is not a public offer."
     });
     Object.assign(dictFull.ru,{
-      navAbout:"Обо мне",navConcepts:"50 вариантов за 48 ч",tabRes:"Интерьеры",tabInteriors:"Интерьеры",tabHouses:"Дома",styleNeoclassic:"Современная неоклассика",styleQuiet:"Тихая роскошь",styleOrganic:"Organic modern",styleAmerican:"Американская классика",styleMinimal:"Современный минимализм",styleMed:"Новая средиземноморская эстетика",styleBoutique:"Бутик-интерьер",styleHouse:"Частный дом",
-      brandSub:"Дизайн интерьера и архитектура",aboutLead:"LAV Interiors — персональный дизайнерский бренд. Я создаю интерьеры, где красота опирается на планировку, пропорции, свет, материалы и повседневную логику жизни.",portLead:"Вертикальная галерея 3:4 — фильтр по направлению и стилю. Подборка растёт с каждым новым кадром.",portLeadV2:"Вертикальная галерея 3:4 — фильтр по направлению и стилю. Подборка растёт с каждым новым кадром.",portFilterCat:"Направление",portFilterStyle:"Стиль",portCtaText:"Нет времени долго ждать? Начните с услуги «50 вариантов интерьера за 48 часов» — это быстрый способ увидеть разные направления до полноценного дизайн-проекта.",
+      navAbout:"Обо мне",navConcepts:"50 вариантов за 48 ч",navVisualStudio:"LAV Visual Studio",tabRes:"Интерьеры",tabInteriors:"Интерьеры",tabHouses:"Дома",styleNeoclassic:"Современная неоклассика",styleQuiet:"Тихая роскошь",styleOrganic:"Organic modern",styleAmerican:"Американская классика",styleMinimal:"Современный минимализм",styleMed:"Новая средиземноморская эстетика",styleBoutique:"Бутик-интерьер",styleHouse:"Частный дом",
+      brandSub:"Дизайн интерьера и архитектура",aboutLead:"LAV Interiors — персональный дизайнерский бренд. Я создаю интерьеры, где красота опирается на планировку, пропорции, свет, материалы и повседневную логику жизни.",portLead:"Вертикальная галерея 3:4 — фильтр по направлению и стилю. Подборка растёт с каждым новым кадром.",portLeadV2:"Вертикальная галерея 3:4 — фильтр по направлению и стилю. Подборка растёт с каждым новым кадром.",portFilterCat:"Направление",portFilterStyle:"Стиль",portCtaText:"Нужен проект, который выглядит дорого в кадре и работает в повседневной жизни? Начните с короткого брифа — предложим оптимальный формат.",
       svcBadge:"НОВЫЙ ФОРМАТ ДИЗАЙНА",svcHeroTitle:"50 ВАРИАНТОВ ИНТЕРЬЕРА\nЗА 48 ЧАСОВ",svcHeroSub:"Вы выбираете из десятков решений, а не адаптируетесь под один вариант.",svcPrimary:"Получить 50 вариантов",svcSecondary:"Смотреть примеры",svcHeroNote:"Вы сразу видите потенциал пространства — без месяцев ожидания и бесконечных правок.",svcProcessEye:"Workflow",svcProcessTitle:"Процесс работы",svcProcessLead:"Понятная система, в которой верное направление видно уже на первых этапах.",svcP1T:"Исходные данные",svcP1D:"Пространство, объект, планировка или задача, с которой начинается работа.",svcP2T:"Бриф",svcP2D:"Фиксация стиля, задач, бюджета и ключевых приоритетов.",svcP3T:"Создание вариантов",svcP3D:"Несколько сильных концепций с разными дизайнерскими подходами.",svcP4T:"Выбор направления",svcP4D:"Определение решения, которое действительно подходит именно вам.",svcP5T:"Следующий этап",svcP5D:"Переход к подбору материалов, чертежам и дальнейшей реализации.",svcBenefitsEye:"Benefits",svcBenefitsTitle:"Что вы получаете",svcBenefitsLead:"Формат, в котором вы контролируете результат, а не адаптируетесь под него.",svcB1T:"Свобода выбора",svcB1D:"Десятки концепций вместо одного решения.",svcB2T:"Скорость",svcB2D:"Сильные решения за 48 часов.",svcB3T:"Экономия бюджета",svcB3D:"Меньше правок и переделок.",svcB4T:"Контроль результата",svcB4D:"Вы выбираете финальный вариант.",svcB5T:"Реализуемость",svcB5D:"Решения продуманы для воплощения.",svcB6T:"Гибкость",svcB6D:"Можно остановиться на концепции или перейти к полному проекту.",svcExamplesEye:"Cases",svcExamplesTitle:"Примеры решений",svcExamplesLead:"Выбирайте не только планировку, но и стиль пространства.",svcSource:"Исходник",svcVariants:"Варианты",svcServicesEye:"Services",svcServicesTitle:"Услуги",svcServicesLead:"От быстрого визуального выбора до полной реализации.",svcS1T:"Быстрый редизайн",svcS1D:"До 50 вариантов одного пространства с разными дизайнерскими решениями.",svcPrice:"от 10 000 ₽",svcS2T:"Подбор и комплектация",svcS2D:"Материалы, мебель, освещение и декоративные элементы.",svcS3T:"Планировка",svcS3D:"Логика пространства и функциональное зонирование.",svcS4T:"Технические чертежи",svcS4D:"Документация для реализации проекта.",svcS5T:"Чертежи мебели",svcS5D:"Решения для индивидуального изготовления.",svcS6T:"Полный дизайн-проект",svcS6D:"От концепции до визуализации и технической части.",svcContactTitle:"Получить 50 вариантов",svcContactLead:"Выберите удобный канал связи и обсудите задачу напрямую. Без загрузки файлов и оплаты на сайте.",svcLegal:"Оплата, договор, сроки и точный состав услуг обсуждаются отдельно вне сайта. Информация не является публичной офертой."
     });
 
@@ -4843,7 +4864,12 @@ input, textarea, select, .control, .contactCard input, .contactCard textarea{
     window.addEventListener('popstate', () => showSitePage(location.pathname.includes('interior-concepts') ? 'service' : 'home', false));
 
     applyI18n(localStorage.getItem("lavLang") || "en");
-    showSitePage(location.pathname.includes("interior-concepts") ? "service" : "home", false);
+    if(!window.LAV_FEATURES?.options48 && location.pathname.includes('interior-concepts')){
+      history.replaceState({page:'home'}, '', '/');
+      showSitePage('home', false);
+    } else {
+      showSitePage(location.pathname.includes("interior-concepts") ? "service" : "home", false);
+    }
   </script>
 
 <script>
@@ -4862,7 +4888,7 @@ input, textarea, select, .control, .contactCard input, .contactCard textarea{
 
   const PATCH = {
     en: {
-      tabAll:'All', tabPublic:'Public Spaces', navConcepts:'50 options in 48 hours',
+      tabAll:'All', tabPublic:'Public Spaces', navConcepts:'50 options in 48 hours',navVisualStudio:'LAV Visual Studio',
       styleNeoclassic:'Modern Neoclassical', styleQuiet:'Quiet Luxury', styleOrganic:'Organic Modern', styleAmerican:'American Classic', styleMinimal:'Contemporary Minimalism', styleMed:'New Mediterranean', styleBoutique:'Boutique Interior', styleHouse:'Private House', styleWarm:'Warm Minimalism', styleLuxuryApt:'Luxury Apartment',
       portCtaText:'Need a faster first step? Start with 50 interior options in 48 hours — a focused way to see several directions before moving into a full project.',
       portCtaBtn:'Open estimate', portLeadV2:'Vertical gallery 3:4 — filter by direction and style. The set grows with every new frame.', portFilterCat:'Direction', portFilterStyle:'Style', procTimeline:'The average timeline for a full design project is around 3 months, depending on area, scope and approval speed.',
@@ -4891,9 +4917,9 @@ input, textarea, select, .control, .contactCard input, .contactCard textarea{
       formNeedConsent:'Please accept the Privacy Policy before sending.', formOpenMail:'Opening your email client with the prepared request…'
     },
     ru: {
-      tabAll:'Все', tabPublic:'Общественные', navConcepts:'50 вариантов за 48 ч',
+      tabAll:'Все', tabPublic:'Общественные', navConcepts:'50 вариантов за 48 ч',navVisualStudio:'LAV Visual Studio',
       styleNeoclassic:'Современная неоклассика', styleQuiet:'Тихая роскошь', styleOrganic:'Organic Modern', styleAmerican:'Американская классика', styleMinimal:'Современный минимализм', styleMed:'Новая средиземноморская эстетика', styleBoutique:'Бутик-интерьер', styleHouse:'Частный дом', styleWarm:'Тёплый минимализм', styleLuxuryApt:'Премиальная квартира',
-      portCtaText:'Нет времени долго ждать? Начните с услуги «50 вариантов интерьера за 48 часов» — это быстрый способ увидеть разные направления и выбрать сильную основу для дальнейшего проекта.',
+      portCtaText:'Нужен проект, который выглядит дорого в кадре и работает в повседневной жизни? Начните с короткого брифа — предложим оптимальный формат.',
       portCtaBtn:'Открыть расчёт', portLeadV2:'Вертикальная галерея 3:4 — фильтр по направлению и стилю. Подборка растёт с каждым новым кадром.', portFilterCat:'Направление', portFilterStyle:'Стиль', procTimeline:'Средний срок полного дизайн-проекта — около 3 месяцев, но точный график зависит от площади, состава проекта и скорости согласований.',
       priceTitle:'Предварительная оценка проекта', priceLead2:'Выберите тип объекта, площадь, формат работы и уровень детализации — калькулятор покажет предварительный ориентир до финального брифа.', calcParamsTitle:'Параметры проекта', calcOrientTitle:'Ориентир', calcFormat:'Формат работы', calcDetail:'Уровень детализации',
       objApartment:'Квартира', objHouse:'Дом', objCommercial:'Коммерческое пространство', objArchitecture:'Архитектура / экстерьер', objLandscape:'Ландшафт',
@@ -4936,6 +4962,7 @@ input, textarea, select, .control, .contactCard input, .contactCard textarea{
     document.querySelectorAll('[data-i18n="tabPublic"]').forEach(el=>el.textContent=t('tabPublic'));
     document.querySelectorAll('[data-i18n="priceTitle"]').forEach(el=>el.textContent=t('priceTitle'));
     document.querySelectorAll('[data-i18n="navConcepts"]').forEach(el=>el.textContent=t('navConcepts'));
+    document.querySelectorAll('[data-i18n="navVisualStudio"]').forEach(el=>el.textContent=t('navVisualStudio')||'LAV Visual Studio');
     document.querySelectorAll('[data-i18n="portCtaBtn"]').forEach(el=>el.textContent=t('portCtaBtn'));
     const brandBtn = document.querySelector('.brand-toggle');
     if(brandBtn){ brandBtn.textContent = document.querySelector('.brandline-big')?.classList.contains('expanded') ? t('showLessBrands') : t('showMoreBrands'); }
@@ -5166,7 +5193,7 @@ input, textarea, select, .control, .contactCard input, .contactCard textarea{
     const isSvc = page === 'service';
     document.title = isSvc ? '50 interior options in 48 hours — LAV Interiors' : 'LAV Interiors — Interior Design & Architecture';
     const meta = document.querySelector('meta[name="description"]');
-    if(meta) meta.content = isSvc ? '50 interior options in 48 hours by LAV Interiors — a fast premium concept service for apartments, houses, commercial spaces and landscape.' : 'LAV Interiors — interior design, architecture, landscape and commercial spaces. Editorial luxury approach, full projects and 50 interior options in 48 hours.';
+    if(meta) meta.content = isSvc ? '50 interior options in 48 hours by LAV Interiors — a fast premium concept service for apartments, houses, commercial spaces and landscape.' : 'LAV Interiors — interior design, architecture, landscape and commercial spaces. Editorial luxury approach to interiors, architecture and visual content.';
   };
 
   document.querySelector('.brand-toggle')?.addEventListener('click',()=>{

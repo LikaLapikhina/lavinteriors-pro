@@ -1,8 +1,11 @@
-﻿pinterest/.env
+# secrets / local tooling
+pinterest/.env
 pinterest/secrets/
 pinterest/publish_log.json
 .env
 .env.*
+
+# local studio / exports / junk
 exports/
 __pycache__/
 *.pyc
@@ -10,7 +13,7 @@ __pycache__/
 Thumbs.db
 index(3).html
 index.txt
-studio_server.py
-image-studio.html
+_patch_*.py
+_sync_*.py
 наполнение/
 фоновые/

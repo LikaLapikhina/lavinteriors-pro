@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>LAV — Image Studio</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+  :root{
+    --paper:#EFE9DF;
+    --ink:#1A1714;
+    --muted:#6B6358;
+    --line:rgba(26,23,20,.14);
+    --serif:"Cormorant Garamond", Georgia, serif;
+    --sans:"Manrope", system-ui, sans-serif;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    font-family:var(--sans);
+    color:var(--ink);
+    background:linear-gradient(180deg,#F4EFE6,#EFE9DF);
+    min-height:100vh;
+  }
+  .top{
+    position:sticky; top:0; z-index:5;
+    display:flex; gap:16px; align-items:center; justify-content:space-between;
+    padding:14px 18px;
+    border-bottom:1px solid var(--line);
+    background:rgba(239,233,223,.92);
+    backdrop-filter:blur(10px);
+  }
+  .top h1{
+    margin:0;
+    font-family:var(--serif);
+    font-weight:500;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    font-size:20px;
+  }
+  .top p{margin:4px 0 0; color:var(--muted); font-size:12px; letter-spacing:.04em}
+  .actions{display:flex; gap:8px; flex-wrap:wrap}
+  button, .filebtn{
+    border:1px solid var(--line);
+    background:rgba(255,255,255,.55);
+    color:var(--ink);
+    font:inherit;
+    font-size:11px;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    padding:10px 12px;
+    cursor:pointer;
+    border-radius:0;
+  }
+  button.primary,.filebtn.primary-look{background:rgba(26,23,20,.88); color:#fff; border-color:rgba(26,23,20,.88)}
+  button:disabled{opacity:.4; cursor:not-allowed}
+  .ok{color:#2f6b3a}
+  .layout{
+    display:grid;
+    grid-template-columns: minmax(320px,420px) 1fr;
+    min-height:calc(100vh - 74px);
+  }
+  .panel{
+    border-right:1px solid var(--line);
+    overflow:auto;
+    padding:16px;
+  }
+  .preview-wrap{position:relative; background:#ddd;}
+  .preview-wrap iframe{
+    width:100%;
+    height:calc(100vh - 74px);
+    border:0;
+    background:#EFE9DF;
+  }
+  .hint{
+    margin:0 0 14px;
+    padding:12px;
+    border:1px solid var(--line);
+    background:rgba(255,255,255,.45);
+    font-size:13px;
+    line-height:1.55;
+    color:rgba(26,23,20,.78);
+  }
+  .group{margin:0 0 22px}
+  .group h2{
+    margin:0 0 10px;
+    font-family:var(--serif);
+    font-weight:500;
+    font-size:18px;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+  }
+  .slot{
+    display:grid;
+    grid-template-columns: 28px 72px 1fr;
+    gap:10px;
+    padding:12px 10px;
+    border:1px dashed transparent;
+    border-bottom:1px solid rgba(26,23,20,.08);
+    align-items:center;
+    transition: background .15s ease, border-color .15s ease;
+  }
+  .slot.is-drag{
+    background:rgba(255,255,255,.72);
+    border-color:rgba(26,23,20,.35);
+  }
+  .slot.is-reorder-over{
+    background:rgba(26,23,20,.06);
+    border-color:rgba(26,23,20,.4);
+  }
+  .slot.is-dragging-row{
+    opacity:.45;
+  }
+  .slot-handle{
+    width:28px;
+    height:54px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:grab;
+    color:rgba(26,23,20,.35);
+    font-size:14px;
+    letter-spacing:-1px;
+    user-select:none;
+    border:1px solid transparent;
+  }
+  .slot-handle:hover{color:rgba(26,23,20,.7); background:rgba(255,255,255,.5);}
+  .slot-handle:active{cursor:grabbing;}
+  .slot:not([data-reorder="1"]) .slot-handle{visibility:hidden; pointer-events:none;}
+  .slot .drop-hint{
+    display:block;
+    margin-top:4px;
+    font-size:10px;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:rgba(26,23,20,.42);
+  }
+  .thumb{
+    width:72px; height:54px;
+    border:1px solid var(--line);
+    background:#e8e1d5 center/cover no-repeat;
+  }
+  .slot-meta{min-width:0}
+  .slot-meta strong{
+    display:block;
+    font-size:12px;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+  }
+  .slot-meta span{
+    display:block;
+    margin-top:3px;
+    font-size:11px;
+    color:var(--muted);
+    word-break:break-all;
+  }
+  .slot-meta .row{display:flex; gap:6px; flex-wrap:wrap; margin-top:8px}
+  .checks{display:flex; gap:14px; flex-wrap:wrap; margin:0 0 12px; font-size:12px; color:var(--muted)}
+  .checks label{display:flex; gap:6px; align-items:center; cursor:pointer}
+  .status{
+    position:fixed; left:16px; bottom:16px; z-index:10;
+    max-width:min(520px, calc(100vw - 32px));
+    padding:10px 12px;
+    background:rgba(26,23,20,.9);
+    color:#fff;
+    font-size:12px;
+    letter-spacing:.04em;
+    opacity:0;
+    transform:translateY(8px);
+    transition:.25s ease;
+    pointer-events:none;
+  }
+  .status.show{opacity:1; transform:none}
+  #filePick{display:none}
+  @media (max-width:980px){
+    .layout{grid-template-columns:1fr}
+    .preview-wrap iframe{height:60vh}
+  }
+</style>
+</head>
+<body>
+  <header class="top">
+    <div>
+      <h1>LAV Image Studio</h1>
+      <p id="topSub">Перетащите фото на строку или нажмите «Выбрать» — сохранится оптимизированно для веба</p>
+    </div>
+    <div class="actions">
+      <button type="button" id="btnReload">Обновить превью</button>
+      <button type="button" id="btnOpenSite" class="primary">Открыть сайт</button>
+    </div>
+  </header>
+
+  <div class="layout">
+    <aside class="panel">
+      <p class="hint" id="serverHint">
+        <b>Как пользоваться:</b><br/>
+        Перетащите картинку из проводника <b>прямо на строку слота</b> — или нажмите «Выбрать и сохранить».<br/>
+        Тяжёлые файлы автоматически уменьшаются и сжимаются для сайта (JPEG progressive).
+      </p>
+
+      <div class="checks">
+        <label><input type="checkbox" id="processBg" checked/> Обработать как фон (шум + приглушение для bg-*)</label>
+        <label><input type="checkbox" id="optimizeWeb" checked/> Оптимизировать вес для веба</label>
+      </div>
+
+      <div id="slots"></div>
+    </aside>
+    <section class="preview-wrap">
+      <iframe id="preview" title="Site preview" src="index_updated.html?studio=1"></iframe>
+    </section>
+  </div>
+
+  <input id="filePick" type="file" accept="image/*"/>
+  <div class="status" id="status"></div>
+
+<script>
+const SLOTS = [
+  { group: 'Hero (галерея, 6 слотов)', items: [
+    { id:'hero1', label:'Hero 1', file:'main-hero-1.jpg', kind:'hero', index:0 },
+    { id:'hero2', label:'Hero 2', file:'main-hero-2.jpg', kind:'hero', index:1 },
+    { id:'hero3', label:'Hero 3', file:'main-hero-3.jpg', kind:'hero', index:2 },
+    { id:'hero4', label:'Hero 4', file:'main-hero-4.jpg', kind:'hero', index:3 },
+    { id:'hero5', label:'Hero 5', file:'main-hero-5.jpg', kind:'hero', index:4 },
+    { id:'hero6', label:'Hero 6', file:'main-hero-6.jpg', kind:'hero', index:5 },
+  ]},
+  { group: 'О студии', items: [
+    { id:'aboutPortrait', label:'Фото в рамке (кухня и т.п.)', file:'about-portrait.jpg', kind:'dataImg', key:'aboutPortrait' },
+    { id:'bgAbout', label:'Фон секции About', file:'bg-about.jpg', kind:'sectionBg', section:'#about', treatAsBg:true },
+  ]},
+  { group: 'Фоны секций (уникальные)', items: [
+    { id:'bgPortfolio', label:'Фон Portfolio', file:'bg-portfolio.jpg', kind:'sectionBg', section:'#portfolio', treatAsBg:true },
+    { id:'bgProjects', label:'Фон Design Projects', file:'bg-projects.jpg', kind:'sectionBg', section:'#projects', treatAsBg:true },
+    { id:'bgProcess', label:'Фон Process', file:'bg-process.jpg', kind:'sectionBg', section:'#process', treatAsBg:true },
+    { id:'bgBrands', label:'Фон Brands', file:'bg-brands.jpg', kind:'sectionBg', section:'#brands', treatAsBg:true },
+    { id:'bgStyle', label:'Фон 30+ styles', file:'bg-stylevision.jpg', kind:'sectionBg', section:'#styleVision', treatAsBg:true },
+    { id:'bgPricing', label:'Фон Pricing', file:'bg-pricing.jpg', kind:'sectionBg', section:'#pricing', treatAsBg:true },
+    { id:'bgContact', label:'Фон Contact', file:'bg-contact.jpg', kind:'sectionBg', section:'#contact', treatAsBg:true },
+    { id:'bgFooter', label:'Фон Footer', file:'bg-footer.jpg', kind:'sectionBg', section:'footer', treatAsBg:true },
+    { id:'bgService', label:'Фон страницы 50 options', file:'bg-service.jpg', kind:'sectionBg', section:'#servicePage', treatAsBg:true },
+  ]},
+  { group: 'Портфолио V2 (новые + все карточки 3:4)', items: [
+    { id:'p112', label:'NEW Japandi Living', file:'port-v2-living-burgundy-chairs.jpg', kind:'portV2' },
+    { id:'p113', label:'NEW Bath Hex Mosaic', file:'port-v2-bath-hex-mosaic.jpg', kind:'portV2' },
+    { id:'p114', label:'NEW Stone Dining', file:'port-v2-dining-stone-sculptures.jpg', kind:'portV2' },
+    { id:'p115', label:'NEW Fluted Kitchen', file:'port-v2-kitchen-fluted-quartzite.jpg', kind:'portV2' },
+    { id:'p116', label:'NEW Courtyard Fountain', file:'port-v2-courtyard-fountain.jpg', kind:'portV2' },
+    { id:'p101', label:'Bedroom Quiet Luxury', file:'port-v2-bedroom-doors.jpg', kind:'portV2' },
+    { id:'p102', label:'Dining Travertine', file:'port-v2-dining-travertine.jpg', kind:'portV2' },
+    { id:'p103', label:'Living Red Marble', file:'port-v2-living-red-marble.jpg', kind:'portV2' },
+    { id:'p104', label:'Living Marble Portal', file:'port-v2-living-marble-portal.jpg', kind:'portV2' },
+    { id:'p105', label:'Villa Travertine', file:'port-v2-villa-travertine.jpg', kind:'portV2' },
+    { id:'p106', label:'Bath Marble Arch', file:'port-v2-bath-marble-arch.jpg', kind:'portV2' },
+    { id:'p107', label:'Vanity Scallop', file:'port-v2-vanity-scallop.jpg', kind:'portV2' },
+    { id:'p108', label:'Bath Glass Blocks', file:'port-v2-bath-glass-blocks.jpg', kind:'portV2' },
+    { id:'p109', label:'Bath Backlit Marble', file:'port-v2-bath-backlit-marble.jpg', kind:'portV2' },
+    { id:'p110', label:'Kitchen Marble Island', file:'port-v2-kitchen-marble-island.jpg', kind:'portV2' },
+    { id:'p111', label:'Living Blue Rug', file:'port-v2-living-blue-rug.jpg', kind:'portV2' },
+  ]},
+  { group: 'Процесс (этапы)', items: [
+    { id:'proc1', label:'Planning', file:'proc-1.jpg', kind:'proc', index:1 },
+    { id:'proc2', label:'Concept', file:'proc-2.jpg', kind:'proc', index:2 },
+    { id:'proc3', label:'Visuals', file:'proc-3.jpg', kind:'proc', index:3 },
+    { id:'proc4', label:'Drawings', file:'proc-4.jpg', kind:'proc', index:4 },
+    { id:'proc5', label:'Procurement', file:'proc-5.jpg', kind:'proc', index:5 },
+    { id:'proc6', label:'Custom furniture', file:'proc-6.jpg', kind:'proc', index:6 },
+  ]},
+  { group: 'Бренды', items: [
+    { id:'brandsVisual', label:'Картинка справа', file:'brands-visual.jpg', kind:'dataImg', key:'brandsVisual' },
+  ]},
+];
+
+const blobBySlot = {};
+let pendingSlotId = null;
+let apiReady = false;
+const iframe = document.getElementById('preview');
+const statusEl = document.getElementById('status');
+const filePick = document.getElementById('filePick');
+
+function toast(msg){
+  statusEl.textContent = msg;
+  statusEl.classList.add('show');
+  clearTimeout(toast._t);
+  toast._t = setTimeout(()=>statusEl.classList.remove('show'), 3600);
+}
+
+function findSlot(id){
+  for (const g of SLOTS){
+    const s = g.items.find(i => i.id === id);
+    if (s) return s;
+  }
+  return null;
+}
+
+function renderSlots(){
+  const root = document.getElementById('slots');
+  root.innerHTML = '';
+  SLOTS.forEach(group => {
+    const wrap = document.createElement('div');
+    wrap.className = 'group';
+    const canReorder = group.items.length > 1 && group.items.every(s => s.kind === 'hero' || s.kind === 'proc');
+    wrap.innerHTML = `<h2>${group.group}</h2>` +
+      (canReorder ? `<p class="drop-hint" style="margin:-4px 0 10px;display:block">⋮⋮ тяни за ручку слева — меняй порядок на сайте</p>` : '');
+    group.items.forEach(slot => {
+      const row = document.createElement('div');
+      row.className = 'slot';
+      row.dataset.slot = slot.id;
+      if (canReorder) row.dataset.reorder = '1';
+      row.dataset.group = group.group;
+      const hint = canReorder
+        ? 'фото сюда · или ⋮⋮ сменить порядок'
+        : 'можно перетащить фото сюда';
+      row.innerHTML = `
+        <div class="slot-handle" draggable="${canReorder?'true':'false'}" title="Перетащить выше/ниже" aria-label="Перетащить">⋮⋮</div>
+        <div class="thumb" id="thumb-${slot.id}" style="background-image:url('images/${slot.file}?t=${Date.now()}')"></div>
+        <div class="slot-meta">
+          <strong>${slot.label}</strong>
+          <span>файл: images/${slot.file}</span>
+          <span class="drop-hint">${hint}</span>
+          <div class="row">
+            <button type="button" class="filebtn primary-look" data-pick="${slot.id}">Выбрать и сохранить</button>
+          </div>
+        </div>`;
+      wrap.appendChild(row);
+    });
+    root.appendChild(wrap);
+  });
+}
+
+function groupOfSlot(slotId){
+  return SLOTS.find(g => g.items.some(i => i.id === slotId)) || null;
+}
+
+async function reorderSlots(fromId, toId){
+  if (!fromId || !toId || fromId === toId) return;
+  const group = groupOfSlot(fromId);
+  if (!group || group !== groupOfSlot(toId)) return;
+  const items = group.items;
+  const fromIdx = items.findIndex(i => i.id === fromId);
+  const toIdx = items.findIndex(i => i.id === toId);
+  if (fromIdx < 0 || toIdx < 0) return;
+
+  const sourceOrder = items.map(i => i.file);
+  const moved = sourceOrder.splice(fromIdx, 1)[0];
+  sourceOrder.splice(toIdx, 0, moved);
+  const destinations = items.map(i => i.file);
+
+  if (!apiReady){
+    toast('Для смены порядка нужен studio_server.py');
+    return;
+  }
+  toast('Меняю порядок…');
+
+  // 1) try dedicated reorder API
+  let ok = false;
+  let version = Date.now();
+  try{
+    const res = await fetch('/api/reorder', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ order: sourceOrder, destinations })
+    });
+    if (res.ok){
+      const result = await res.json();
+      ok = true;
+      version = (result && result.v) || version;
+    }
+  }catch(e){ /* fallback below */ }
+
+  // 2) fallback: read current files as blobs, rewrite into destination slots
+  if (!ok){
+    const blobs = [];
+    for (const name of sourceOrder){
+      const r = await fetch('images/' + name + '?t=' + Date.now(), { cache:'no-store' });
+      if (!r.ok) throw new Error('Не удалось прочитать ' + name);
+      blobs.push(await r.blob());
+    }
+    for (let i = 0; i < destinations.length; i++){
+      const result = await saveToServer({ file: destinations[i] }, blobs[i]);
+      if (result && result.v) version = result.v;
+    }
+    ok = true;
+  }
+
+  renderSlots();
+  iframe.src = 'index_updated.html?studio=1&v=' + encodeURIComponent(version);
+  toast('Порядок обновлён на сайте');
+}
+
+function postToPreview(payload){
+  try{ iframe.contentWindow.postMessage({ type:'lav-studio', ...payload }, '*'); }catch(e){}
+}
+
+function slotLimits(slot){
+  if (slot.kind === 'hero') return { maxEdge: 2200, maxBytes: 480 * 1024 };
+  if (slot.kind === 'sectionBg' || slot.treatAsBg) return { maxEdge: 2000, maxBytes: 420 * 1024 };
+  if (slot.kind === 'proc') return { maxEdge: 1600, maxBytes: 280 * 1024 };
+  // portfolio cards prefer vertical 3:4
+  if (slot.id && String(slot.id).startsWith('port')) return { maxEdge: 1800, maxBytes: 360 * 1024 };
+  return { maxEdge: 1600, maxBytes: 320 * 1024 };
+}
+
+function canvasToBlob(canvas, type, quality){
+  return new Promise(resolve => canvas.toBlob(resolve, type, quality));
+}
+
+async function encodeBest(canvas, maxBytes){
+  let lo = 0.52, hi = 0.88;
+  let best = await canvasToBlob(canvas, 'image/jpeg', 0.82);
+  for (let i = 0; i < 7; i++){
+    const q = (lo + hi) / 2;
+    const blob = await canvasToBlob(canvas, 'image/jpeg', q);
+    if (!blob) break;
+    if (blob.size > maxBytes) hi = q;
+    else { best = blob; lo = q; }
+  }
+  if (best && best.size > maxBytes * 1.15){
+    const scale = Math.sqrt(maxBytes / best.size) * 0.95;
+    const w = Math.max(640, Math.round(canvas.width * scale));
+    const h = Math.max(360, Math.round(canvas.height * scale));
+    const c2 = document.createElement('canvas');
+    c2.width = w; c2.height = h;
+    c2.getContext('2d').drawImage(canvas, 0, 0, w, h);
+    best = await canvasToBlob(c2, 'image/jpeg', 0.78) || best;
+  }
+  return best;
+}
+
+async function optimizeForWeb(file, slot){
+  const bmp = await createImageBitmap(file);
+  const limits = slotLimits(slot);
+  const treatBg = !!(slot.treatAsBg && document.getElementById('processBg').checked);
+  const doOpt = document.getElementById('optimizeWeb').checked;
+  const maxEdge = doOpt ? limits.maxEdge : Math.max(bmp.width, bmp.height);
+  const scale = Math.min(1, maxEdge / Math.max(bmp.width, bmp.height));
+  const w = Math.max(1, Math.round(bmp.width * scale));
+  const h = Math.max(1, Math.round(bmp.height * scale));
+  const canvas = document.createElement('canvas');
+  canvas.width = w; canvas.height = h;
+  const ctx = canvas.getContext('2d', { alpha: false });
+  ctx.imageSmoothingEnabled = true;
+  ctx.imageSmoothingQuality = 'high';
+  ctx.drawImage(bmp, 0, 0, w, h);
+  if (bmp.close) bmp.close();
+
+  if (treatBg){
+    ctx.fillStyle = 'rgba(239,233,223,0.42)';
+    ctx.fillRect(0,0,w,h);
+    ctx.fillStyle = 'rgba(210,190,160,0.08)';
+    ctx.fillRect(0,0,w,h);
+    const img = ctx.getImageData(0,0,w,h);
+    const d = img.data;
+    for (let i=0;i<d.length;i+=4){
+      const r=d[i], g=d[i+1], b=d[i+2];
+      const gray = 0.299*r + 0.587*g + 0.114*b;
+      let nr = Math.min(255, (r*0.78 + gray*0.22) * 1.12);
+      let ng = Math.min(255, (g*0.78 + gray*0.22) * 1.12);
+      let nb = Math.min(255, (b*0.78 + gray*0.22) * 1.12);
+      const n = (Math.random()-0.5)*22;
+      d[i] = Math.max(0, Math.min(255, nr + n));
+      d[i+1] = Math.max(0, Math.min(255, ng + n));
+      d[i+2] = Math.max(0, Math.min(255, nb + n));
+    }
+    ctx.putImageData(img,0,0);
+  }
+
+  if (!doOpt) return await canvasToBlob(canvas, 'image/jpeg', 0.9);
+  return await encodeBest(canvas, limits.maxBytes);
+}
+
+function fmtKB(n){ return Math.round(n / 1024) + ' KB'; }
+
+async function applyPreview(slot, blob){
+  const url = URL.createObjectURL(blob);
+  if (blobBySlot[slot.id]?.url) URL.revokeObjectURL(blobBySlot[slot.id].url);
+  blobBySlot[slot.id] = { blob, url, file: slot.file };
+  const thumb = document.getElementById('thumb-' + slot.id);
+  if (thumb) thumb.style.backgroundImage = `url('${url}')`;
+  postToPreview({ action:'set', slot, url });
+}
+
+async function saveToServer(slot, blob){
+  const res = await fetch('/api/save?name=' + encodeURIComponent(slot.file), {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/octet-stream' },
+    body: blob
+  });
+  if (!res.ok) throw new Error('Сервер не смог сохранить файл');
+  return res.json();
+}
+
+async function onPick(slotId, file){
+  const slot = findSlot(slotId);
+  if (!slot || !file) return;
+  if (!/^image\//i.test(file.type) && !/\.(jpe?g|png|webp|gif|avif)$/i.test(file.name)){
+    toast('Нужен файл изображения');
+    return;
+  }
+  const before = file.size;
+  toast('Оптимизирую и сохраняю… (' + fmtKB(before) + ')');
+  const blob = await optimizeForWeb(file, slot);
+  await applyPreview(slot, blob);
+  const after = blob.size;
+
+  if (apiReady){
+    const result = await saveToServer(slot, blob);
+    toast('Сохранено images/' + slot.file + ' · ' + fmtKB(before) + ' → ' + fmtKB(after));
+    iframe.src = 'index_updated.html?studio=1&v=' + encodeURIComponent((result && result.v) || Date.now());
+    return;
+  }
+
+  const a = document.createElement('a');
+  a.href = blobBySlot[slotId].url;
+  a.download = slot.file;
+  a.click();
+  toast('Скачан ' + slot.file + ' (' + fmtKB(after) + '). Запустите python studio_server.py');
+}
+
+async function checkApi(){
+  try{
+    const res = await fetch('/api/ping', { cache:'no-store' });
+    apiReady = res.ok;
+  }catch(e){ apiReady = false; }
+  const hint = document.getElementById('serverHint');
+  const sub = document.getElementById('topSub');
+  if (apiReady){
+    sub.textContent = 'Перетащите фото на строку — сохранится сразу, в лёгком веб-формате';
+    hint.innerHTML = '<b class="ok">Сервер сохранения работает.</b> Адрес: <code>' + location.origin + '/image-studio.html</code><br/>Перетащите картинку из проводника на нужную строку или нажмите «Выбрать и сохранить». Тяжёлые фото сожмутся автоматически.';
+  } else {
+    sub.textContent = 'Нужен studio_server.py — иначе файл только скачается';
+    hint.innerHTML = '<b>Сейчас сервер сохранения не отвечает.</b><br/>Откройте <code>http://127.0.0.1:8775/image-studio.html</code><br/>или в папке проекта: <code>python studio_server.py</code>';
+  }
+}
+
+document.getElementById('slots').addEventListener('click', (e) => {
+  const btn = e.target.closest('button[data-pick]');
+  if (!btn) return;
+  pendingSlotId = btn.dataset.pick;
+  filePick.value = '';
+  filePick.click();
+});
+
+['dragenter','dragover','dragleave','drop'].forEach(ev => {
+  document.addEventListener(ev, (e) => {
+    if (!e.dataTransfer) return;
+    const types = [...e.dataTransfer.types];
+    if (types.includes('Files') || types.includes('application/x-lav-reorder')) e.preventDefault();
+  });
+});
+
+let reorderFromId = null;
+
+document.getElementById('slots').addEventListener('dragstart', (e) => {
+  const handle = e.target.closest('.slot-handle');
+  if (!handle || handle.getAttribute('draggable') !== 'true') return;
+  const row = handle.closest('.slot');
+  if (!row || row.dataset.reorder !== '1') return;
+  reorderFromId = row.dataset.slot;
+  e.dataTransfer.setData('application/x-lav-reorder', reorderFromId);
+  e.dataTransfer.setData('text/plain', reorderFromId);
+  e.dataTransfer.effectAllowed = 'move';
+  row.classList.add('is-dragging-row');
+});
+document.getElementById('slots').addEventListener('dragend', (e) => {
+  document.querySelectorAll('.slot.is-dragging-row, .slot.is-reorder-over, .slot.is-drag').forEach(el => {
+    el.classList.remove('is-dragging-row', 'is-reorder-over', 'is-drag');
+  });
+  reorderFromId = null;
+});
+
+document.getElementById('slots').addEventListener('dragenter', (e) => {
+  const row = e.target.closest('.slot');
+  if (!row) return;
+  e.preventDefault();
+  const types = [...(e.dataTransfer?.types || [])];
+  if (types.includes('application/x-lav-reorder') || reorderFromId){
+    if (row.dataset.reorder === '1') row.classList.add('is-reorder-over');
+  } else {
+    row.classList.add('is-drag');
+  }
+});
+document.getElementById('slots').addEventListener('dragover', (e) => {
+  const row = e.target.closest('.slot');
+  if (!row) return;
+  e.preventDefault();
+  const types = [...(e.dataTransfer?.types || [])];
+  if (types.includes('application/x-lav-reorder') || reorderFromId){
+    e.dataTransfer.dropEffect = 'move';
+    if (row.dataset.reorder === '1') row.classList.add('is-reorder-over');
+  } else {
+    e.dataTransfer.dropEffect = 'copy';
+    row.classList.add('is-drag');
+  }
+});
+document.getElementById('slots').addEventListener('dragleave', (e) => {
+  const row = e.target.closest('.slot');
+  if (!row) return;
+  if (!row.contains(e.relatedTarget)) {
+    row.classList.remove('is-drag', 'is-reorder-over');
+  }
+});
+document.getElementById('slots').addEventListener('drop', (e) => {
+  const row = e.target.closest('.slot');
+  if (!row) return;
+  e.preventDefault();
+  row.classList.remove('is-drag', 'is-reorder-over');
+  const reorderId = e.dataTransfer.getData('application/x-lav-reorder') || reorderFromId;
+  if (reorderId && row.dataset.reorder === '1'){
+    reorderSlots(reorderId, row.dataset.slot).catch(err => toast(err.message || String(err)));
+    return;
+  }
+  const file = e.dataTransfer.files && e.dataTransfer.files[0];
+  if (!file) return;
+  onPick(row.dataset.slot, file).catch(err => toast(err.message || String(err)));
+});
+
+filePick.addEventListener('change', () => {
+  const file = filePick.files && filePick.files[0];
+  const slotId = pendingSlotId;
+  pendingSlotId = null;
+  if (!file || !slotId) return;
+  onPick(slotId, file).catch(err => toast(err.message || String(err)));
+});
+
+document.getElementById('btnReload').addEventListener('click', () => {
+  iframe.src = 'index_updated.html?studio=1&t=' + Date.now();
+});
+document.getElementById('btnOpenSite').addEventListener('click', () => {
+  window.open('index_updated.html?v=' + Date.now(), '_blank');
+});
+
+renderSlots();
+checkApi().then(() => {
+  toast(apiReady ? 'Можно перетаскивать фото на строки' : 'Запустите python studio_server.py');
+});
+</script>
+</body>
+</html>
