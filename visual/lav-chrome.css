@@ -222,24 +222,23 @@ html[data-lang="ru"] .brand-center .brand-script{display:block !important;}
   inset:0 !important;
   z-index:0 !important;
   pointer-events:none !important;
-  background-color:var(--paper-2);
+  background-color:#d9d0c1;
   background-size:cover !important;
   background-position:center !important;
   background-repeat:no-repeat !important;
-  /* Zoom so photo texture fills edges (tall sections crop landscape JPEGs into a strip) */
-  transform:scale(1.18);
+  transform:scale(1.06);
   transform-origin:center center;
-  filter:saturate(1.03) contrast(1.02);
+  filter:saturate(1.05) contrast(1.04);
 }
 .section-bg::after{
   content:"" !important;
   position:absolute !important;
   inset:0 !important;
-  background:linear-gradient(180deg, rgba(239,233,223,.42), rgba(239,233,223,.55)) !important;
+  background:linear-gradient(180deg, rgba(239,233,223,.28), rgba(239,233,223,.38)) !important;
 }
-#vs-work > .section-bg{background-image:url('../images/vs-bg-work.jpg')}
-#vs-showcase > .section-bg{background-image:url('../images/vs-bg-showcase.jpg')}
-#order > .section-bg{background-image:url('../images/vs-bg-order.jpg')}
+#vs-work > .section-bg{background-image:url('../images/vs-bg-work.jpg') !important}
+#vs-showcase > .section-bg{background-image:url('../images/vs-bg-showcase.jpg') !important}
+#order > .section-bg{background-image:url('../images/vs-bg-order.jpg') !important}
 
 /* kill old bg-on-section rules if any */
 .section::before{content:none !important;display:none !important}
@@ -328,7 +327,7 @@ html[data-lang="ru"] .brand-center .brand-script{display:block !important;}
 .site-footer::before{
   content:"" !important;position:absolute !important;inset:0 !important;
   z-index:0 !important;pointer-events:none !important;
-  background:linear-gradient(180deg, rgba(239,233,223,.58), rgba(239,233,223,.66)) !important;
+  background:linear-gradient(180deg, rgba(239,233,223,.32), rgba(239,233,223,.42)) !important;
 }
 .site-footer > *{position:relative;z-index:1}
 .footerInner{
