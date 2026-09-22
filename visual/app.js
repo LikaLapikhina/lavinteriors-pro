@@ -1,4 +1,4 @@
-/* LAV Visual Studio page logic — i18n + calculator + Prodamus stub */
+/* LAV Visual Studio — i18n, categories, showcase, calculator */
 (function () {
   const I18N = {
     en: {
@@ -8,81 +8,82 @@
       navPricing: "Pricing",
       navVisualStudio: "LAV Visual Studio",
       brandSub: "Interior Design & Architecture",
-      heroTitle: "Premium visual content without constant photoshoots.",
-      heroLead: "Images and cinematic videos for social media, advertising, websites and launches.",
-      ctaOrder: "Start a Project",
-      ctaWho: "Who it’s for",
-      whoEye: "For whom",
+      footDesc2:
+        "A contemporary editorial luxury approach to interiors, architecture, landscape and commercial spaces.",
+      legalOfferNote:
+        "Payment terms, contract details, timing and exact scope of services are discussed separately outside the website. The information on the website is for informational purposes only and is not a public offer.",
+      footContact: "Contact",
+      privacyLink: "Privacy Policy",
+      termsLink: "Terms of Use",
+      cookiesLink: "Cookie Policy",
+      cookieSettings: "Cookie settings",
+      legalInfoText:
+        "Project: LAV Interiors. Website: lavinteriors.pro. Email: hello@lavinteriors.pro. Operator: an individual operating under the LAV Interiors brand. Legal address: not applicable; all interaction is carried out remotely.",
+
+      heroTitle: "Visual content for business without constant photoshoots",
+      heroLead:
+        "We create images and videos for social media, advertising, websites and launches",
+      ctaOrder: "Start a project",
+      ctaAudience: "Who we work with",
+
+      fmtEye: "Formats",
+      fmtImages: "Images",
+      fmtVideos: "Videos",
+      fmtPacks: "Content Packs",
+      fmtCustom: "Custom Production",
+
+      whoEye: "Audience",
       whoTitle: "Who we work with",
-      whoLead: "Find your category — and see how visual production supports your business.",
-      who1T: "Interior Designers",
-      who1D: "Content to present and promote projects.",
-      who2T: "Furniture & Kitchen Brands",
-      who2D: "Product in a finished interior — without constant shoots.",
-      who3T: "Lighting & Interior Brands",
-      who3D: "Campaign visuals and lifestyle frames for collections.",
-      who4T: "Architecture Studios",
-      who4D: "Atmospheric storytelling for concepts and exteriors.",
-      who5T: "Real Estate & Developers",
-      who5D: "Future object and lifestyle — before construction ends.",
-      who6T: "Creative / Marketing Agencies",
-      who6D: "External visual production for client projects.",
-      showEye: "Selected frames",
-      showTitle: "A glimpse of the work",
-      showLead: "A compact showcase — add images and videos here as the library grows.",
-      showPlaceholder: "Video / hero frame placeholder",
-      showPlaceholderShort: "Frame",
-      whatEye: "What we create",
-      whatTitle: "Images · Videos · Packs",
-      whatLead: "Three clear formats — plus custom production for larger brands and ongoing needs.",
-      prod1T: "Images",
-      prod1D: "Series for social media, websites, advertising, launches and presentations.",
-      prod2T: "Videos",
-      prod2D: "Short cinematic / social-first films for Reels, TikTok, ads and product stories.",
-      prod3T: "Content Packs",
-      prod3D: "Images + videos as one visual system — coherent across channels.",
-      prod4T: "Custom / Ongoing Production",
-      prod4D: "Large series, brand systems, agencies and developers — quote-based.",
-      ctaQuote: "Request a Quote",
+      whoLead: "Open a category to see example films for your niche.",
+      examplesLabel: "Examples",
+      exampleEmpty: "Example coming soon",
+      prevExample: "Prev",
+      nextExample: "Next",
+      openExample: "View example",
+
+      showEye: "Showcase",
+      showTitle: "Selected work",
+      showLead: "A short mixed stream of LAV Visual Studio — interiors, product, light, architecture.",
+
       calcEye: "Order",
-      calcTitle: "Calculator & instant order",
-      calcLead: "Choose a format, see the estimate, then proceed to order.",
-      etaNote:
-        "Standard delivery: within 48 hours after receiving the complete brief and source materials. Large or non-standard orders — timeline individually.",
+      calcTitle: "Calculator",
+      calcLead: "Choose a format, enter quantity, see the estimate.",
       tabImages: "Images",
       tabVideos: "Videos",
-      tabPacks: "Content Pack",
-      pickQty: "Select quantity",
-      pickPack: "Select a pack",
-      customQty: "Custom quantity",
+      tabPack: "Content Pack",
+      qtyImages: "Number of images",
+      qtyVideos: "Number of videos",
+      packImages: "Images",
+      packVideos: "Videos",
       sumFormat: "Format",
       sumQty: "Quantity",
       sumEta: "Timeline",
       sumTotal: "Total",
+      ctaPay: "Place order",
+      etaNote:
+        "Standard orders — within 48 hours after receiving the complete brief and source materials. Large orders are quoted individually.",
       draftHint: "Draft prices — confirm before public campaign.",
-      ctaPay: "Order & Pay",
-      payNote:
-        "Online payment connects via Prodamus. Until keys are set, the order opens a prepared email brief.",
+      customHint: "Large volume — we will confirm the quote individually.",
+      fmtLabelImages: "Images",
+      fmtLabelVideos: "Videos",
+      fmtLabelPack: "Content Pack",
+      qtyImagesN: (n) => `${n} images`,
+      qtyVideosN: (n) => `${n} videos`,
+      qtyPackN: (i, v) => `${i} images + ${v} videos`,
+
       howEye: "Process",
       howTitle: "How it works",
       how1T: "Choose a format",
-      how1D: "Images / Videos / Content Pack",
       how2T: "Share materials",
-      how2D: "Project, product, references, brand assets or source files.",
-      how3T: "Receive content",
-      how3D: "Ready assets for publishing and commercial use.",
-      finalEye: "Next step",
+      how3T: "Receive finished content",
+
+      finalEye: "Next",
       finalTitle: "Ready to start",
-      finalLead: "Standard packages go through the calculator. Non-standard or ongoing production — write to us.",
-      ctaOrderNow: "Order Now",
-      ctaCustom: "Start a Custom Project",
+      finalLead: "Standard orders go through the calculator. Custom production — write to us.",
+      ctaOrderNow: "Order now",
+      ctaCustom: "Custom project",
       ctaEmail: "Email",
-      navContact: "Contact",
-      navPrivacy: "Privacy",
-      etaHours: (h) => (h <= 48 ? "within 48 hours" : `about ${h} hours`),
-      fmtImages: "Images",
-      fmtVideos: "Videos",
-      fmtPack: "Content Pack",
+
       payPendingTitle: "LAV Visual Studio order",
       payPendingBody: (o) =>
         `Hello LAV Visual Studio,%0A%0AI would like to order:%0A- Format: ${o.format}%0A- Details: ${o.details}%0A- Total: ${o.total}%0A- Timeline: ${o.eta}%0A%0AI will attach brief / references in the next message.`
@@ -94,81 +95,82 @@
       navPricing: "Стоимость",
       navVisualStudio: "LAV Visual Studio",
       brandSub: "Дизайн интерьера и архитектура",
-      heroTitle: "Визуальный контент для бизнеса без постоянных съёмок.",
-      heroLead: "Создаём изображения и видео для соцсетей, рекламы, сайтов и запусков.",
+      footDesc2:
+        "Современный editorial luxury подход к интерьеру, архитектуре, ландшафту и коммерческим пространствам.",
+      legalOfferNote:
+        "Условия оплаты, договор, сроки и точный объём услуг обсуждаются отдельно вне сайта. Информация на сайте носит ознакомительный характер и не является публичной офертой.",
+      footContact: "Контакты",
+      privacyLink: "Политика конфиденциальности",
+      termsLink: "Пользовательское соглашение",
+      cookiesLink: "Политика cookies",
+      cookieSettings: "Настройки cookies",
+      legalInfoText:
+        "Проект: LAV Interiors. Сайт: lavinteriors.pro. Email: hello@lavinteriors.pro. Оператор: физическое лицо, работающее под брендом LAV Interiors. Юридический адрес: не применимо; взаимодействие ведётся дистанционно.",
+
+      heroTitle: "Визуальный контент для бизнеса без постоянных съёмок",
+      heroLead:
+        "Создаём изображения и видео для соцсетей, рекламы, сайтов и запусков",
       ctaOrder: "Заказать",
-      ctaWho: "Для кого",
-      whoEye: "Для кого",
+      ctaAudience: "С кем работаем",
+
+      fmtEye: "Форматы",
+      fmtImages: "Изображения",
+      fmtVideos: "Видео",
+      fmtPacks: "Контент-пакеты",
+      fmtCustom: "Индивидуальный продакшн",
+
+      whoEye: "Аудитория",
       whoTitle: "С кем мы работаем",
-      whoLead: "Найдите свою категорию — и сразу увидите, как visual production усиливает ваш бизнес.",
-      who1T: "Интерьерные дизайнеры и студии",
-      who1D: "Контент для презентации и продвижения проектов.",
-      who2T: "Мебельные и кухонные бренды",
-      who2D: "Продукт в готовой интерьерной среде — без постоянных съёмок.",
-      who3T: "Свет и интерьерные бренды",
-      who3D: "Кампании и lifestyle-кадры для коллекций.",
-      who4T: "Архитектурные бюро",
-      who4D: "Атмосферная подача концепций и экстерьеров.",
-      who5T: "Недвижимость и девелоперы",
-      who5D: "Будущий объект и образ жизни ещё до реализации.",
-      who6T: "Креативные и маркетинговые агентства",
-      who6D: "Внешний visual production для клиентских проектов.",
-      showEye: "Кадры",
-      showTitle: "Короткий показ работ",
-      showLead: "Компактная витрина — позже сюда легко добавить новые изображения и видео.",
-      showPlaceholder: "Плейсхолдер видео / главного кадра",
-      showPlaceholderShort: "Кадр",
-      whatEye: "Что создаём",
-      whatTitle: "Images · Videos · Packs",
-      whatLead: "Три понятных формата — и custom production для крупных брендов и регулярного контента.",
-      prod1T: "Images",
-      prod1D: "Серии для соцсетей, сайтов, рекламы, запусков и презентаций.",
-      prod2T: "Videos",
-      prod2D: "Короткие cinematic / social-first видео для Reels, TikTok, рекламы и презентации продукта.",
-      prod3T: "Content Packs",
-      prod3D: "Изображения + видео как одна визуальная система.",
-      prod4T: "Custom / Ongoing Production",
-      prod4D: "Большие серии, бренды, агентства и девелоперы — по запросу.",
-      ctaQuote: "Обсудить проект",
+      whoLead: "Откройте категорию — и посмотрите пример ролика для вашей ниши.",
+      examplesLabel: "Примеры",
+      exampleEmpty: "Пример скоро появится",
+      prevExample: "Назад",
+      nextExample: "Далее",
+      openExample: "Смотреть пример",
+
+      showEye: "Витрина",
+      showTitle: "Избранные работы",
+      showLead: "Короткий общий поток LAV Visual Studio — интерьер, продукт, свет, архитектура.",
+
       calcEye: "Заказ",
-      calcTitle: "Калькулятор и оформление",
-      calcLead: "Выберите формат, увидьте стоимость и перейдите к заказу.",
-      etaNote:
-        "Результат — до 48 часов после получения полного брифа и исходных материалов. Крупные и нестандартные заказы — сроки индивидуально.",
-      tabImages: "Images",
-      tabVideos: "Videos",
-      tabPacks: "Content Pack",
-      pickQty: "Выберите количество",
-      pickPack: "Выберите пакет",
-      customQty: "Своё количество",
+      calcTitle: "Калькулятор",
+      calcLead: "Выберите формат, введите количество и увидьте стоимость.",
+      tabImages: "Изображения",
+      tabVideos: "Видео",
+      tabPack: "Контент-пакет",
+      qtyImages: "Количество изображений",
+      qtyVideos: "Количество видео",
+      packImages: "Изображений",
+      packVideos: "Видео",
       sumFormat: "Формат",
       sumQty: "Количество",
       sumEta: "Срок",
       sumTotal: "Итого",
-      draftHint: "Черновые цены — подтвердите перед публичной кампанией.",
       ctaPay: "Оформить заказ",
-      payNote:
-        "Онлайн-оплата подключается через Prodamus. Пока ключи не заданы, заказ открывает подготовленное письмо.",
+      etaNote:
+        "Стандартные заказы — до 48 часов после получения полного брифа и исходных материалов. Крупные заказы рассчитываются индивидуально.",
+      draftHint: "Черновые цены — подтвердите перед публичной кампанией.",
+      customHint: "Крупный объём — стоимость подтвердим индивидуально.",
+      fmtLabelImages: "Изображения",
+      fmtLabelVideos: "Видео",
+      fmtLabelPack: "Контент-пакет",
+      qtyImagesN: (n) => `${n} изображений`,
+      qtyVideosN: (n) => `${n} видео`,
+      qtyPackN: (i, v) => `${i} изображений + ${v} видео`,
+
       howEye: "Процесс",
       howTitle: "Как это работает",
-      how1T: "Вы выбираете формат",
-      how1D: "Images / Videos / Content Pack",
+      how1T: "Выбираете формат",
       how2T: "Передаёте материалы",
-      how2D: "Проект, продукт, референсы, бренд-материалы или исходники.",
       how3T: "Получаете готовый контент",
-      how3D: "Материалы для публикации и коммерческого использования.",
+
       finalEye: "Дальше",
       finalTitle: "Готовы начать",
-      finalLead: "Стандартные пакеты — через калькулятор. Нестандартный или регулярный production — напишите нам.",
-      ctaOrderNow: "Выбрать пакет",
-      ctaCustom: "Обсудить проект",
+      finalLead: "Стандартные заказы — через калькулятор. Индивидуальный продакшн — напишите нам.",
+      ctaOrderNow: "Заказать",
+      ctaCustom: "Индивидуальный проект",
       ctaEmail: "Email",
-      navContact: "Контакты",
-      navPrivacy: "Конфиденциальность",
-      etaHours: (h) => (h <= 48 ? "до 48 часов" : `около ${h} часов`),
-      fmtImages: "Images",
-      fmtVideos: "Videos",
-      fmtPack: "Content Pack",
+
       payPendingTitle: "Заказ LAV Visual Studio",
       payPendingBody: (o) =>
         `Здравствуйте, LAV Visual Studio,%0A%0AХочу оформить заказ:%0A- Формат: ${o.format}%0A- Детали: ${o.details}%0A- Итого: ${o.total}%0A- Срок: ${o.eta}%0A%0AБриф / референсы приложу следующим сообщением.`
@@ -178,38 +180,37 @@
   const state = {
     lang: localStorage.getItem("lavLang") || "en",
     mode: "images",
-    imgKey: 1,
-    vidKey: 1,
-    packId: "starter",
+    imgQty: 5,
+    vidQty: 1,
+    packImg: 5,
+    packVid: 1,
+    openCat: null,
+    catIndex: {},
     order: null
   };
 
   function t(key) {
     const pack = I18N[state.lang] || I18N.en;
-    return pack[key] ?? I18N.en[key] ?? key;
+    const val = pack[key];
+    return val !== undefined ? val : I18N.en[key] ?? key;
+  }
+
+  function loc(obj) {
+    if (!obj) return "";
+    return obj[state.lang] || obj.en || "";
   }
 
   function money(n) {
     const v = Math.round(Number(n) || 0);
-    return "$" + v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+    const sym =
+      window.LAV_VS_PRICING?.currencySymbol?.[state.lang] ||
+      window.LAV_VS_PRICING?.currencySymbol?.en ||
+      "₽";
+    return v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") + " " + sym;
   }
 
-  function applyI18n() {
-    document.documentElement.setAttribute("data-lang", state.lang);
-    document.documentElement.lang = state.lang;
-    document.querySelectorAll("[data-i18n]").forEach((el) => {
-      const key = el.getAttribute("data-i18n");
-      const val = t(key);
-      if (typeof val === "string") el.textContent = val;
-    });
-    document.getElementById("langEN")?.classList.toggle("active", state.lang === "en");
-    document.getElementById("langRU")?.classList.toggle("active", state.lang === "ru");
-    document.title =
-      state.lang === "ru"
-        ? "LAV Visual Studio — визуальный контент для бизнеса"
-        : "LAV Visual Studio — Premium visual content";
-    renderChips();
-    recalc();
+  function clamp(n, min, max) {
+    return Math.max(min, Math.min(max, n));
   }
 
   function discountPercent(qty, table) {
@@ -220,129 +221,327 @@
     return pct;
   }
 
-  function priceFor(mode) {
+  function applyI18n() {
+    document.documentElement.setAttribute("data-lang", state.lang);
+    document.documentElement.lang = state.lang;
+    document.querySelectorAll("[data-i18n]").forEach((el) => {
+      const key = el.getAttribute("data-i18n");
+      const val = t(key);
+      if (typeof val === "string") el.textContent = val;
+    });
+    document.querySelectorAll("[data-lav-i18n]").forEach((el) => {
+      const key = el.getAttribute("data-lav-i18n");
+      const val = t(key);
+      if (typeof val === "string") el.textContent = val;
+    });
+    document.getElementById("langEN")?.classList.toggle("active", state.lang === "en");
+    document.getElementById("langRU")?.classList.toggle("active", state.lang === "ru");
+    document.title =
+      state.lang === "ru"
+        ? "LAV Visual Studio — визуальный контент для бизнеса"
+        : "LAV Visual Studio — visual content for business";
+    renderCategories();
+    renderShowcase();
+    recalc();
+  }
+
+  function priceFor() {
     const cfg = window.LAV_VS_PRICING;
     if (!cfg) return null;
+    const eta = loc(cfg.etaLabel) || t("etaNote");
 
-    if (mode === "packs") {
-      const pack = cfg.packs.find((p) => p.id === state.packId) || cfg.packs[0];
+    if (state.mode === "pack") {
+      const i = state.packImg;
+      const v = state.packVid;
+      let total =
+        i * cfg.pricePerImage + v * cfg.pricePerVideo;
+      total = Math.round(total * (1 - (cfg.packDiscount || 0)));
+      total = Math.max(total, cfg.minimumOrder || 0);
+      const over =
+        i >= (cfg.customThreshold?.images || 9999) ||
+        v >= (cfg.customThreshold?.videos || 9999);
       return {
-        format: t("fmtPack"),
-        details: `${pack.title[state.lang] || pack.title.en} · ${pack.images} img + ${pack.videos} vid`,
-        total: pack.price,
-        eta: t("etaHours")(pack.etaHours),
-        etaHours: pack.etaHours,
-        sku: pack.id
+        format: t("fmtLabelPack"),
+        details: t("qtyPackN")(i, v),
+        total,
+        eta,
+        over,
+        sku: `pack-${i}x${v}`
       };
     }
 
-    const block = mode === "videos" ? cfg.videos : cfg.images;
-    const key = mode === "videos" ? state.vidKey : state.imgKey;
-    const opt = block.options.find((o) => o.qty === key) || block.options[0];
-    let qty = opt.qty;
-    let total = opt.price;
-    if (qty === "custom") {
-      const input = document.getElementById(mode === "videos" ? "vidCustom" : "imgCustom");
-      qty = Math.max(1, parseInt(input?.value || "1", 10) || 1);
-      const unit = block.customUnitPrice;
-      const pct = discountPercent(qty, block.volumeDiscount);
-      total = Math.round(unit * qty * (1 - pct / 100));
+    if (state.mode === "videos") {
+      const qty = state.vidQty;
+      const pct = discountPercent(qty, cfg.volumeDiscounts?.videos);
+      let total = Math.round(cfg.pricePerVideo * qty * (1 - pct / 100));
+      total = Math.max(total, cfg.minimumOrder || 0);
+      return {
+        format: t("fmtLabelVideos"),
+        details: t("qtyVideosN")(qty),
+        total,
+        eta,
+        over: qty >= (cfg.customThreshold?.videos || 9999),
+        sku: `videos-${qty}`
+      };
     }
+
+    const qty = state.imgQty;
+    const pct = discountPercent(qty, cfg.volumeDiscounts?.images);
+    let total = Math.round(cfg.pricePerImage * qty * (1 - pct / 100));
+    total = Math.max(total, cfg.minimumOrder || 0);
     return {
-      format: mode === "videos" ? t("fmtVideos") : t("fmtImages"),
-      details: `${qty} ${block.unitLabel[state.lang] || block.unitLabel.en}`,
+      format: t("fmtLabelImages"),
+      details: t("qtyImagesN")(qty),
       total,
-      eta: t("etaHours")(block.etaHours),
-      etaHours: block.etaHours,
-      sku: `${mode}-${qty}`
+      eta,
+      over: qty >= (cfg.customThreshold?.images || 9999),
+      sku: `images-${qty}`
     };
   }
 
-  function renderChips() {
-    const cfg = window.LAV_VS_PRICING;
-    if (!cfg) return;
-
-    const fill = (el, options, active, onPick, isPack) => {
-      if (!el) return;
-      el.innerHTML = options
-        .map((o) => {
-          const id = isPack ? o.id : o.qty;
-          const label = isPack
-            ? `${o.title[state.lang] || o.title.en} — ${money(o.price)}`
-            : o.label[state.lang] || o.label.en;
-          const activeCls = String(active) === String(id) ? " active" : "";
-          return `<button type="button" class="vs-chip${activeCls}" data-id="${id}">${label}</button>`;
-        })
-        .join("");
-      el.querySelectorAll(".vs-chip").forEach((btn) => {
-        btn.addEventListener("click", () => onPick(btn.getAttribute("data-id")));
-      });
+  function recalc() {
+    const order = priceFor();
+    state.order = order;
+    if (!order) return;
+    const set = (id, val) => {
+      const el = document.getElementById(id);
+      if (el) el.textContent = val;
     };
+    set("sumFormat", order.format);
+    set("sumQty", order.details);
+    set("sumEta", order.eta);
+    set("sumTotal", money(order.total));
+    const draft = document.getElementById("draftHint");
+    if (draft) draft.hidden = !window.LAV_VS_PRICING?.draft;
+    const custom = document.getElementById("customHint");
+    if (custom) custom.hidden = !order.over;
+  }
 
-    fill(document.getElementById("imgQty"), cfg.images.options, state.imgKey, (id) => {
-      state.imgKey = id === "custom" ? "custom" : Number(id);
-      document.getElementById("imgCustomField")?.classList.toggle("show", state.imgKey === "custom");
-      renderChips();
-      recalc();
+  function syncQtyInputs() {
+    const img = document.getElementById("imgQtyInput");
+    const vid = document.getElementById("vidQtyInput");
+    const pImg = document.getElementById("packImgInput");
+    const pVid = document.getElementById("packVidInput");
+    if (img) img.value = String(state.imgQty);
+    if (vid) vid.value = String(state.vidQty);
+    if (pImg) pImg.value = String(state.packImg);
+    if (pVid) pVid.value = String(state.packVid);
+    document.querySelectorAll("[data-quick-images]").forEach((btn) => {
+      btn.classList.toggle("active", Number(btn.dataset.quickImages) === state.imgQty);
     });
-    fill(document.getElementById("vidQty"), cfg.videos.options, state.vidKey, (id) => {
-      state.vidKey = id === "custom" ? "custom" : Number(id);
-      document.getElementById("vidCustomField")?.classList.toggle("show", state.vidKey === "custom");
-      renderChips();
-      recalc();
+    document.querySelectorAll("[data-quick-videos]").forEach((btn) => {
+      btn.classList.toggle("active", Number(btn.dataset.quickVideos) === state.vidQty);
     });
-    fill(
-      document.getElementById("packQty"),
-      cfg.packs,
-      state.packId,
-      (id) => {
-        state.packId = id;
-        renderChips();
-        recalc();
-      },
-      true
-    );
-
-    document.getElementById("imgCustomField")?.classList.toggle("show", state.imgKey === "custom");
-    document.getElementById("vidCustomField")?.classList.toggle("show", state.vidKey === "custom");
   }
 
   function setMode(mode) {
     state.mode = mode;
-    document.querySelectorAll(".vs-tab").forEach((tab) => {
+    document.querySelectorAll(".vs-tabs .tab").forEach((tab) => {
       tab.classList.toggle("active", tab.getAttribute("data-mode") === mode);
     });
     document.getElementById("panelImages").hidden = mode !== "images";
     document.getElementById("panelVideos").hidden = mode !== "videos";
-    document.getElementById("panelPacks").hidden = mode !== "packs";
+    document.getElementById("panelPack").hidden = mode !== "pack";
     recalc();
   }
 
-  function recalc() {
-    const order = priceFor(state.mode);
-    state.order = order;
-    if (!order) return;
-    document.getElementById("sumFormat").textContent = order.format;
-    document.getElementById("sumQty").textContent = order.details;
-    document.getElementById("sumEta").textContent = order.eta;
-    document.getElementById("sumTotal").textContent = money(order.total);
-    const draft = !!window.LAV_VS_PRICING?.draft;
-    document.getElementById("draftHint").hidden = !draft;
+  function renderQuickChips() {
+    const cfg = window.LAV_VS_PRICING;
+    const imgBox = document.getElementById("imgQuick");
+    const vidBox = document.getElementById("vidQuick");
+    if (imgBox) {
+      imgBox.innerHTML = (cfg.quickQty?.images || [])
+        .map(
+          (n) =>
+            `<button type="button" class="chip" data-quick-images="${n}">${n}</button>`
+        )
+        .join("");
+      imgBox.querySelectorAll("[data-quick-images]").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          state.imgQty = Number(btn.dataset.quickImages);
+          syncQtyInputs();
+          recalc();
+        });
+      });
+    }
+    if (vidBox) {
+      vidBox.innerHTML = (cfg.quickQty?.videos || [])
+        .map(
+          (n) =>
+            `<button type="button" class="chip" data-quick-videos="${n}">${n}</button>`
+        )
+        .join("");
+      vidBox.querySelectorAll("[data-quick-videos]").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          state.vidQty = Number(btn.dataset.quickVideos);
+          syncQtyInputs();
+          recalc();
+        });
+      });
+    }
+  }
+
+  function bindQty(id, key, limitsKey) {
+    const input = document.getElementById(id);
+    const cfg = window.LAV_VS_PRICING;
+    const lim = cfg.qtyLimits?.[limitsKey] || { min: 0, max: 999 };
+    const read = () => {
+      const n = parseInt(input.value, 10);
+      state[key] = clamp(Number.isFinite(n) ? n : lim.min, lim.min, lim.max);
+      syncQtyInputs();
+      recalc();
+    };
+    input?.addEventListener("input", read);
+    input?.addEventListener("change", read);
+    document.querySelectorAll(`[data-qty-for="${id}"]`).forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const delta = Number(btn.dataset.delta) || 0;
+        state[key] = clamp(state[key] + delta, lim.min, lim.max);
+        syncQtyInputs();
+        recalc();
+      });
+    });
+  }
+
+  function renderCategories() {
+    const root = document.getElementById("vsCats");
+    const cats = window.LAV_VS_CATEGORIES || [];
+    if (!root) return;
+
+    root.innerHTML = cats
+      .map((cat) => {
+        const open = state.openCat === cat.id;
+        const examples = cat.examples || [];
+        const idx = state.catIndex[cat.id] || 0;
+        const ex = examples[idx];
+        const countLabel =
+          examples.length > 0
+            ? `${t("examplesLabel")} · ${idx + 1}/${examples.length}`
+            : t("exampleEmpty");
+
+        let media = `<div class="vs-cat__empty">${t("exampleEmpty")}</div>`;
+        if (ex?.video) {
+          media = `<video playsinline controls preload="metadata" ${
+            ex.poster ? `poster="${ex.poster}"` : ""
+          } src="${ex.video}"></video>`;
+        } else if (ex?.poster || ex?.image) {
+          media = `<img src="${ex.poster || ex.image}" alt=""/>`;
+        }
+
+        const caption = ex
+          ? `<div class="vs-cat__caption"><strong>${loc(ex.title)}</strong>${
+              ex.description ? ` — ${loc(ex.description)}` : ""
+            }</div>`
+          : "";
+
+        const nav =
+          examples.length > 1
+            ? `<div class="vs-cat__nav">
+                <button type="button" class="chip" data-cat-prev="${cat.id}">${t(
+                  "prevExample"
+                )}</button>
+                <span style="font-size:11px;letter-spacing:.12em;text-transform:uppercase;opacity:.55">${
+                  idx + 1
+                } / ${examples.length}</span>
+                <button type="button" class="chip" data-cat-next="${cat.id}">${t(
+                  "nextExample"
+                )}</button>
+              </div>`
+            : "";
+
+        return `<button type="button" class="vs-cat molding${
+          open ? " is-open" : ""
+        }" data-cat="${cat.id}" aria-expanded="${open}">
+          <div class="vs-cat__head">
+            <h3>${loc(cat.title)}</h3>
+            <p>${loc(cat.blurb)}</p>
+            <div class="vs-cat__meta">${countLabel}</div>
+          </div>
+          <div class="vs-cat__body">
+            <div class="vs-cat__player">${media}</div>
+            ${caption}
+            ${nav}
+          </div>
+        </button>`;
+      })
+      .join("");
+
+    root.querySelectorAll("[data-cat]").forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        if (e.target.closest("[data-cat-prev],[data-cat-next]")) return;
+        const id = btn.getAttribute("data-cat");
+        state.openCat = state.openCat === id ? null : id;
+        if (state.catIndex[id] == null) state.catIndex[id] = 0;
+        renderCategories();
+      });
+    });
+    root.querySelectorAll("[data-cat-prev]").forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const id = btn.getAttribute("data-cat-prev");
+        const cat = cats.find((c) => c.id === id);
+        const len = cat?.examples?.length || 0;
+        if (!len) return;
+        state.catIndex[id] = ((state.catIndex[id] || 0) - 1 + len) % len;
+        renderCategories();
+      });
+    });
+    root.querySelectorAll("[data-cat-next]").forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const id = btn.getAttribute("data-cat-next");
+        const cat = cats.find((c) => c.id === id);
+        const len = cat?.examples?.length || 0;
+        if (!len) return;
+        state.catIndex[id] = ((state.catIndex[id] || 0) + 1) % len;
+        renderCategories();
+      });
+    });
+  }
+
+  function renderShowcase() {
+    const rail = document.getElementById("vsRail");
+    const items = window.LAV_VS_SHOWCASE || [];
+    if (!rail) return;
+    rail.innerHTML = items
+      .map((item) => {
+        let media = `<div class="ph">—</div>`;
+        if (item.type === "video" && item.src) {
+          media = `<video muted playsinline loop preload="metadata" ${
+            item.poster ? `poster="${item.poster}"` : ""
+          } src="${item.src}"></video>`;
+        } else if (item.src) {
+          media = `<img src="${item.src}" alt="${loc(item.title)}" loading="lazy"/>`;
+        }
+        return `<article class="vs-rail-item">
+          <div class="media">${media}</div>
+          <div class="info">
+            <div class="tag">${loc(item.tag) || ""}</div>
+            <div class="title">${loc(item.title) || ""}</div>
+          </div>
+        </article>`;
+      })
+      .join("");
+
+    rail.querySelectorAll("video").forEach((v) => {
+      const play = () => v.play().catch(() => {});
+      v.addEventListener("mouseenter", play);
+      v.addEventListener("touchstart", play, { passive: true });
+    });
   }
 
   function startCheckout() {
-    const order = state.order || priceFor(state.mode);
+    const order = state.order || priceFor();
     if (!order) return;
     const prodamus = window.LAV_VS_PRODAMUS || {};
     if (prodamus.enabled && prodamus.paymentBaseUrl && prodamus.shopId) {
-      // Integration point: build signed payment URL via backend when available.
       const url = new URL(prodamus.paymentBaseUrl);
       url.searchParams.set("shop_id", prodamus.shopId);
       url.searchParams.set("order_id", `vs-${Date.now()}`);
       url.searchParams.set("products[0][name]", `LAV Visual Studio — ${order.format}`);
       url.searchParams.set("products[0][price]", String(order.total));
       url.searchParams.set("products[0][quantity]", "1");
-      url.searchParams.set("currency", prodamus.currency || "usd");
+      url.searchParams.set("currency", prodamus.currency || "rub");
       url.searchParams.set("urlSuccess", prodamus.successUrl || location.href);
       url.searchParams.set("urlFail", prodamus.failUrl || location.href);
       window.location.href = url.toString();
@@ -361,42 +560,6 @@
       body;
   }
 
-  /** Optional showreel fill — put files in /visual/media/ later */
-  function hydrateShowreel() {
-    const map = {
-      main: { type: "video", src: "media/showreel.mp4", poster: "media/showreel.jpg" },
-      a: { type: "image", src: "media/frame-a.jpg" },
-      b: { type: "image", src: "media/frame-b.jpg" }
-    };
-    Object.entries(map).forEach(([key, conf]) => {
-      const slot = document.querySelector(`[data-slot="${key}"]`);
-      if (!slot) return;
-      const probe = new Image();
-      const testSrc = conf.type === "video" ? conf.poster || conf.src : conf.src;
-      probe.onload = () => {
-        slot.classList.add("has-media");
-        slot.textContent = "";
-        if (conf.type === "video") {
-          const v = document.createElement("video");
-          v.src = conf.src;
-          v.muted = true;
-          v.playsInline = true;
-          v.autoplay = true;
-          v.loop = true;
-          if (conf.poster) v.poster = conf.poster;
-          slot.appendChild(v);
-        } else {
-          const img = document.createElement("img");
-          img.src = conf.src;
-          img.alt = "LAV Visual Studio";
-          slot.appendChild(img);
-        }
-      };
-      probe.onerror = () => {};
-      if (conf.type === "image" || conf.poster) probe.src = testSrc;
-    });
-  }
-
   document.getElementById("langEN")?.addEventListener("click", () => {
     state.lang = "en";
     localStorage.setItem("lavLang", "en");
@@ -407,14 +570,17 @@
     localStorage.setItem("lavLang", "ru");
     applyI18n();
   });
-  document.querySelectorAll(".vs-tab").forEach((tab) => {
+  document.querySelectorAll(".vs-tabs .tab").forEach((tab) => {
     tab.addEventListener("click", () => setMode(tab.getAttribute("data-mode")));
   });
-  document.getElementById("imgCustom")?.addEventListener("input", recalc);
-  document.getElementById("vidCustom")?.addEventListener("input", recalc);
   document.getElementById("btnPay")?.addEventListener("click", startCheckout);
 
+  renderQuickChips();
+  bindQty("imgQtyInput", "imgQty", "images");
+  bindQty("vidQtyInput", "vidQty", "videos");
+  bindQty("packImgInput", "packImg", "packImages");
+  bindQty("packVidInput", "packVid", "packVideos");
+  syncQtyInputs();
   applyI18n();
   setMode("images");
-  hydrateShowreel();
 })();
