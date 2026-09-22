@@ -228,13 +228,13 @@ html[data-lang="ru"] .brand-center .brand-script{display:block !important;}
   background-repeat:no-repeat !important;
   transform:scale(1.06);
   transform-origin:center center;
-  filter:saturate(.92) contrast(1.02) brightness(.72);
+  filter:saturate(.88) contrast(1.0) brightness(.58);
 }
 .section-bg::after{
   content:"" !important;
   position:absolute !important;
   inset:0 !important;
-  background:linear-gradient(180deg, rgba(232,224,210,.62), rgba(232,224,210,.74)) !important;
+  background:linear-gradient(180deg, rgba(228,220,206,.72), rgba(228,220,206,.82)) !important;
 }
 #vs-work > .section-bg{background-image:url('../images/vs-bg-work.jpg') !important}
 #vs-showcase > .section-bg{background-image:url('../images/vs-bg-showcase.jpg') !important}

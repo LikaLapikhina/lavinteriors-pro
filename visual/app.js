@@ -263,13 +263,78 @@
 
   function priceFor() {
     const cfg = window.LAV_VS_PRICING;
-    if (!cfg || typeof cfg.computeQuote !== "function") return null;
-    const q = activeQtys();
-    const quote = cfg.computeQuote({
-      images: q.images,
-      videos: q.videos,
-      durationKey: state.durationKey
-    });
+    if (!cfg) return null;
+
+    // Prefer centralized engine; fall back if an old cached pricing.js is still loaded.
+    const quote =
+      typeof cfg.computeQuote === "function"
+        ? cfg.computeQuote({
+            images: activeQtys().images,
+            videos: activeQtys().videos,
+            durationKey: state.durationKey
+          })
+        : (function () {
+            const q = activeQtys();
+            // If stale pricing.js is cached, ignore old pricePerImage/pricePerVideo.
+            const imageUnit = cfg.imagePrice != null ? cfg.imagePrice : 2500;
+            const videoMap = cfg.videoPrices || {
+              upTo30: 3500,
+              from31to60: 6000,
+              from61to90: 10000
+            };
+            const videoUnit =
+              state.durationKey === "over90"
+                ? null
+                : videoMap[state.durationKey] ?? videoMap.upTo30;
+            const customVideo = q.videos > 0 && videoUnit == null;
+            const imagesTotal = q.images * imageUnit;
+            const videosTotal = customVideo ? 0 : q.videos * (videoUnit || 0);
+            const subtotal = imagesTotal + videosTotal;
+            const pack =
+              cfg.contentPack || {
+                minImages: 5,
+                minVideos: 2,
+                discountPercent: 7
+              };
+            const large =
+              cfg.largeOrder || { threshold: 100000, discountPercent: 10 };
+            const packEligible =
+              q.images >= pack.minImages && q.videos >= pack.minVideos;
+            const largeEligible = subtotal >= large.threshold;
+            let discountKind = null;
+            let discountPercent = 0;
+            if (packEligible || largeEligible) {
+              const packPct = packEligible ? pack.discountPercent : 0;
+              const largePct = largeEligible ? large.discountPercent : 0;
+              if (largePct >= packPct && largePct > 0) {
+                discountKind = "largeOrder";
+                discountPercent = largePct;
+              } else if (packPct > 0) {
+                discountKind = "contentPack";
+                discountPercent = packPct;
+              }
+            }
+            const discountAmount = Math.round((subtotal * discountPercent) / 100);
+            return {
+              images: q.images,
+              videos: q.videos,
+              durationKey: state.durationKey,
+              imageUnit,
+              imagesTotal,
+              videoUnit,
+              videosTotal,
+              customVideo,
+              subtotal,
+              packEligible,
+              largeEligible,
+              discountKind,
+              discountPercent,
+              discountAmount,
+              total: Math.max(0, subtotal - discountAmount),
+              etaKey: customVideo || largeEligible ? "etaCustom" : "etaLabel",
+              includes: cfg.includes
+            };
+          })();
 
     const eta =
       quote.etaKey === "etaCustom"
