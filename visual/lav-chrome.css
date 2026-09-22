@@ -222,12 +222,9 @@ html[data-lang="ru"] .brand-center .brand-script{display:block !important;}
 }
 .section > *{position:relative;z-index:1}
 
-#vs-formats{background-image:url('../images/bg-about.jpg')}
-#vs-audience{background-image:url('../images/bg-brands.jpg')}
+#vs-work{background-image:url('../images/bg-brands.jpg')}
 #vs-showcase{background-image:url('../images/bg-portfolio.jpg')}
 #order{background-image:url('../images/bg-pricing.jpg')}
-#how{background-image:url('../images/bg-process.jpg')}
-#custom{background-image:url('../images/bg-contact.jpg')}
 
 /* Pricing field / result — main calculator language */
 .pricing .box{

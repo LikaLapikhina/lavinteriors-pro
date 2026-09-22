@@ -51,36 +51,36 @@
     <p class="lead" data-i18n="heroLead">We create images and videos for social media, advertising, websites and launches</p>
     <div class="vs-hero-actions">
       <a class="btn primary" href="#order" data-i18n="ctaOrder">Start a project</a>
-      <a class="btn ghost" href="#vs-audience" data-i18n="ctaAudience">Who we work with</a>
+      <a class="btn ghost" href="#vs-work" data-i18n="ctaAudience">Who we work with</a>
     </div>
   </div>
 </section>
 
-<!-- COMPACT FORMATS -->
-<section class="section tight" id="vs-formats">
+<!-- OUR WORK: format + audience — one shared background -->
+<section class="section" id="vs-work">
   <div class="wrap">
-    <p class="eyebrow" data-i18n="fmtEye">Formats</p>
-    <div class="vs-formats">
-      <div class="vs-format"><h3 data-i18n="fmtImages">Images</h3></div>
-      <div class="vs-format"><h3 data-i18n="fmtVideos">Videos</h3></div>
-      <div class="vs-format"><h3 data-i18n="fmtPacks">Content Packs</h3></div>
-      <div class="vs-format"><h3 data-i18n="fmtCustom">Custom Production</h3></div>
+    <h2 class="h2" data-i18n="workTitle">Our work</h2>
+
+    <div class="vs-block" id="vs-formats">
+      <p class="eyebrow" data-i18n="fmtEye">Format</p>
+      <div class="vs-formats">
+        <div class="vs-format"><h3 data-i18n="fmtImages">Images</h3></div>
+        <div class="vs-format"><h3 data-i18n="fmtVideos">Videos</h3></div>
+        <div class="vs-format"><h3 data-i18n="fmtPacks">Content Packs</h3></div>
+        <div class="vs-format"><h3 data-i18n="fmtCustom">Custom Production</h3></div>
+      </div>
+    </div>
+
+    <div class="vs-block" id="vs-audience">
+      <p class="eyebrow" data-i18n="whoTitle">Who we work with</p>
+      <p class="lead" data-i18n="whoLead">Open a category to see example films for your niche.</p>
+      <div class="vs-cats" id="vsCats"></div>
     </div>
   </div>
 </section>
 
-<!-- WHO WE WORK WITH + VIDEO EXAMPLES -->
-<section class="section" id="vs-audience">
-  <div class="wrap">
-    <p class="eyebrow" data-i18n="whoEye">Audience</p>
-    <h2 class="h2" data-i18n="whoTitle">Who we work with</h2>
-    <p class="lead" data-i18n="whoLead">Open a category to see example films for your niche.</p>
-    <div class="vs-cats" id="vsCats"></div>
-  </div>
-</section>
-
-<!-- SHOWCASE RAIL -->
-<section class="section tight" id="vs-showcase">
+<!-- SHOWCASE + HOW — one shared background -->
+<section class="section" id="vs-showcase">
   <div class="wrap">
     <p class="eyebrow" data-i18n="showEye">Showcase</p>
     <h2 class="h2" data-i18n="showTitle">Selected work</h2>
@@ -88,10 +88,29 @@
     <div class="vs-rail-wrap">
       <div class="vs-rail" id="vsRail"></div>
     </div>
+
+    <div class="vs-block" id="how">
+      <p class="eyebrow" data-i18n="howEye">Process</p>
+      <h2 class="h2" data-i18n="howTitle">How it works</h2>
+      <div class="vs-how">
+        <article class="vs-step">
+          <div class="n">01</div>
+          <h3 data-i18n="how1T">Choose a format</h3>
+        </article>
+        <article class="vs-step">
+          <div class="n">02</div>
+          <h3 data-i18n="how2T">Share materials</h3>
+        </article>
+        <article class="vs-step">
+          <div class="n">03</div>
+          <h3 data-i18n="how3T">Receive finished content</h3>
+        </article>
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- CALCULATOR -->
+<!-- CALCULATOR + READY TO START — one shared background -->
 <section class="section" id="order">
   <div class="wrap">
     <p class="eyebrow" data-i18n="calcEye">Order</p>
@@ -165,44 +184,19 @@
         <p class="vs-draft" id="customHint" hidden data-i18n="customHint">Large volume — we will confirm the quote individually.</p>
       </div>
     </div>
-  </div>
-</section>
 
-<!-- HOW — short -->
-<section class="section tight" id="how">
-  <div class="wrap">
-    <p class="eyebrow" data-i18n="howEye">Process</p>
-    <h2 class="h2" data-i18n="howTitle">How it works</h2>
-    <div class="vs-how">
-      <article class="vs-step">
-        <div class="n">01</div>
-        <h3 data-i18n="how1T">Choose a format</h3>
-      </article>
-      <article class="vs-step">
-        <div class="n">02</div>
-        <h3 data-i18n="how2T">Share materials</h3>
-      </article>
-      <article class="vs-step">
-        <div class="n">03</div>
-        <h3 data-i18n="how3T">Receive finished content</h3>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- CTA -->
-<section class="section" id="custom">
-  <div class="wrap">
-    <div class="vs-final">
-      <div>
-        <p class="eyebrow" data-i18n="finalEye">Next</p>
-        <h2 class="h2" data-i18n="finalTitle">Ready to start</h2>
-        <p class="lead" data-i18n="finalLead">Standard orders go through the calculator. Custom production — write to us.</p>
-      </div>
-      <div class="actions">
-        <a class="btn primary" href="#order" data-i18n="ctaOrderNow">Order now</a>
-        <a class="btn" href="https://t.me/LAVINTERIORS" target="_blank" rel="noopener" data-i18n="ctaCustom">Custom project</a>
-        <a class="btn ghost" href="mailto:hello@lavinteriors.pro?subject=LAV%20Visual%20Studio" data-i18n="ctaEmail">Email</a>
+    <div class="vs-block" id="custom">
+      <div class="vs-final">
+        <div>
+          <p class="eyebrow" data-i18n="finalEye">Next</p>
+          <h2 class="h2" data-i18n="finalTitle">Ready to start</h2>
+          <p class="lead" data-i18n="finalLead">Standard orders go through the calculator. Custom production — write to us.</p>
+        </div>
+        <div class="actions">
+          <a class="btn primary" href="#order" data-i18n="ctaOrderNow">Order now</a>
+          <a class="btn" href="https://t.me/LAVINTERIORS" target="_blank" rel="noopener" data-i18n="ctaCustom">Custom project</a>
+          <a class="btn ghost" href="mailto:hello@lavinteriors.pro?subject=LAV%20Visual%20Studio" data-i18n="ctaEmail">Email</a>
+        </div>
       </div>
     </div>
   </div>

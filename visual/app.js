@@ -26,13 +26,13 @@
       ctaOrder: "Start a project",
       ctaAudience: "Who we work with",
 
-      fmtEye: "Formats",
+      fmtEye: "Format",
       fmtImages: "Images",
       fmtVideos: "Videos",
       fmtPacks: "Content Packs",
       fmtCustom: "Custom Production",
 
-      whoEye: "Audience",
+      workTitle: "Our work",
       whoTitle: "Who we work with",
       whoLead: "Open a category to see example films for your niche.",
       examplesLabel: "Examples",
@@ -113,13 +113,13 @@
       ctaOrder: "Заказать",
       ctaAudience: "С кем работаем",
 
-      fmtEye: "Форматы",
+      fmtEye: "Формат",
       fmtImages: "Изображения",
       fmtVideos: "Видео",
       fmtPacks: "Контент-пакеты",
       fmtCustom: "Индивидуальный продакшн",
 
-      whoEye: "Аудитория",
+      workTitle: "Наша работа",
       whoTitle: "С кем мы работаем",
       whoLead: "Откройте категорию — и посмотрите пример ролика для вашей ниши.",
       examplesLabel: "Примеры",

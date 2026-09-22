@@ -31,12 +31,19 @@
 .vs-hero .btn.primary{background:#f6f1e8;color:var(--ink);border-color:#f6f1e8}
 .vs-hero .btn.ghost:hover{background:rgba(255,255,255,.16)}
 
+/* Nested blocks inside a shared photo section */
+.vs-block{margin-top:48px}
+.vs-block:first-of-type{margin-top:28px}
+#vs-work > .wrap > .h2 + .vs-block{margin-top:28px}
+#vs-showcase .vs-block#how{margin-top:56px;padding-top:8px}
+#order .vs-block#custom{margin-top:48px}
+
 /* Compact formats row */
 .vs-formats{
   display:grid;
   grid-template-columns:repeat(4,minmax(0,1fr));
   gap:12px;
-  margin-top:22px;
+  margin-top:14px;
 }
 .vs-format{
   padding:18px 16px;
@@ -46,13 +53,8 @@
   margin:0;font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:600;
 }
 
-/* Audience categories + video examples */
-.vs-cats{
-  display:grid;
-  grid-template-columns:repeat(3,minmax(0,1fr));
-  gap:14px;
-  margin-top:26px;
-}
+#vs-audience .lead{margin-top:6px;margin-bottom:0}
+#vs-audience .vs-cats{margin-top:18px}
 .vs-cat{
   padding:0;overflow:hidden;cursor:pointer;
   transition:transform 280ms var(--ease), background 280ms var(--ease);
