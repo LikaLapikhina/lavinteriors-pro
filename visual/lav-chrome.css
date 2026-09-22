@@ -237,9 +237,9 @@ html[data-lang="ru"] .brand-center .brand-script{display:block !important;}
   inset:0 !important;
   background:linear-gradient(180deg, rgba(239,233,223,.42), rgba(239,233,223,.55)) !important;
 }
-#vs-work > .section-bg{background-image:url('../images/bg-brands.jpg')}
-#vs-showcase > .section-bg{background-image:url('../images/bg-portfolio.jpg')}
-#order > .section-bg{background-image:url('../images/bg-pricing.jpg')}
+#vs-work > .section-bg{background-image:url('../images/vs-bg-work.jpg')}
+#vs-showcase > .section-bg{background-image:url('../images/vs-bg-showcase.jpg')}
+#order > .section-bg{background-image:url('../images/vs-bg-order.jpg')}
 
 /* kill old bg-on-section rules if any */
 .section::before{content:none !important;display:none !important}
@@ -320,7 +320,7 @@ html[data-lang="ru"] .brand-center .brand-script{display:block !important;}
   position:relative;overflow:hidden;
   border-top:1px solid var(--line) !important;
   padding:48px 0 28px;
-  background-image:url('../images/bg-footer.jpg') !important;
+  background-image:url('../images/vs-bg-footer.jpg') !important;
   background-size:cover !important;
   background-position:center !important;
   isolation:isolate;
