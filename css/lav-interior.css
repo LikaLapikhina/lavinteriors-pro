@@ -35,9 +35,9 @@
 .slider-arrow{position:absolute;z-index:3;bottom:22px;width:52px;height:52px;border:1px solid rgba(255,255,255,.5);background:rgba(17,17,15,.55);color:#fff;font-size:24px;cursor:pointer;backdrop-filter:blur(8px);transition:.2s}
 .slider-arrow:hover{background:#fff;color:#171714}.slider-arrow.prev{right:82px}.slider-arrow.next{right:22px}
 .slide-index{position:absolute;left:22px;bottom:31px;font-size:11px;letter-spacing:.18em}
-.portfolio-info{display:flex;flex-direction:column;justify-content:center;padding:36px 28px}
+.portfolio-info{display:flex;flex-direction:column;justify-content:center;min-width:0;overflow:hidden;padding:36px 28px}
 .project-type{margin:0 0 16px;color:var(--accent);font-size:10px;letter-spacing:.22em;text-transform:uppercase}
-.portfolio-info h3{margin:0;font:500 clamp(34px,5vw,62px)/.95 var(--serif);text-transform:uppercase}
+.portfolio-info h3{max-width:100%;margin:0;font:500 clamp(30px,2.25vw,38px)/1 var(--serif);letter-spacing:-.02em;text-transform:uppercase;overflow-wrap:break-word;word-break:normal;hyphens:auto}
 .portfolio-info>p:not(.project-type):not(.swipe-note){margin:22px 0 0;color:rgba(255,255,255,.68);font-size:15px;line-height:1.75}
 .project-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}.project-tags span{border:1px solid rgba(255,255,255,.22);padding:8px 11px;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.7)}
 .portfolio-progress{height:1px;margin-top:38px;background:rgba(255,255,255,.18)}.portfolio-progress span{display:block;height:100%;background:var(--accent);transition:width .5s var(--ease)}
@@ -66,8 +66,9 @@
   .wide-head{grid-template-columns:1fr 1fr;align-items:end}.profile-facts{grid-template-columns:repeat(3,1fr)}.service-grid{grid-template-columns:repeat(2,1fr)}.footer-simple{flex-direction:row;align-items:center;justify-content:space-between}
 }
 @media(min-width:960px){
-  .top-nav{display:flex}.hero-content{padding-bottom:48px}.portfolio-shell{grid-template-columns:minmax(0,1.72fr) minmax(300px,.78fr)}.portfolio-stage{aspect-ratio:4/3}.portfolio-info{padding:48px}.about-grid{grid-template-columns:minmax(340px,.8fr) minmax(0,1fr);gap:8vw}.profile-facts div{padding:18px 12px}.service-grid{grid-template-columns:repeat(3,1fr)}.workflow-grid{grid-template-columns:1fr 1fr;gap:9vw}.contact-section{padding:130px 0}
+  .top-nav{display:flex}.hero-content{padding-bottom:48px}.portfolio-shell{grid-template-columns:minmax(0,1.72fr) minmax(320px,.78fr)}.portfolio-stage{aspect-ratio:4/3}.portfolio-info{padding:42px 38px}.about-grid{grid-template-columns:minmax(340px,.8fr) minmax(0,1fr);gap:8vw}.profile-facts div{padding:18px 12px}.service-grid{grid-template-columns:repeat(3,1fr)}.workflow-grid{grid-template-columns:1fr 1fr;gap:9vw}.contact-section{padding:130px 0}
 }
+@media(min-width:960px) and (max-width:1120px){.portfolio-info{padding:32px 28px}.portfolio-info h3{font-size:32px}}
 @media(max-width:520px){
   .lp-header-inner{padding-left:var(--gutter);padding-right:var(--gutter)}.lp-logo{font-size:19px}.header-cta{padding:13px 15px}.hero{min-height:820px}.hero-shade{background:linear-gradient(0deg,rgba(10,10,9,.92),rgba(10,10,9,.35) 75%)}.hero-media img{object-position:center}.hero h1{font-size:54px}.hero-role{font-size:11px;line-height:1.6}.hero-actions .btn{width:100%}.section{padding:64px 0}.slider-arrow{bottom:16px;width:46px;height:46px}.slider-arrow.prev{right:70px}.slider-arrow.next{right:16px}.slide-index{bottom:27px;left:16px}.portfolio-info{padding:30px 22px}.portrait-wrap figcaption{font-size:20px}.contact-actions .btn{width:100%;min-width:0}
 }
