@@ -108,8 +108,10 @@
 
       var next = event.target.closest('[data-next]');
       var prev = event.target.closest('[data-prev]');
+      var category = event.target.closest('[data-category]');
       if (next) goal('portfolio_next', projectParams());
       if (prev) goal('portfolio_prev', projectParams());
+      if (category) goal('portfolio_category_select', { page_path: location.pathname, category: category.getAttribute('data-category') || '' });
     }, true);
 
     var index = document.querySelector('[data-portfolio] [data-index]');
