@@ -324,7 +324,7 @@ button{font:inherit}
   border-top:1px solid var(--line);
   padding:48px 0 28px;
   background-color:rgba(217,208,193,.82);
-  background-image:url('/images/bg-footer.jpg');
+  background-image:url('/images/bg-footer.webp');
   background-size:cover;
   background-position:center;
   z-index:2;

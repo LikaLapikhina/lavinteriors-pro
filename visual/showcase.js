@@ -9,31 +9,31 @@
 window.LAV_VS_SHOWCASE = [
   {
     type: "image",
-    src: "../images/brands-visual.jpg",
+    src: "../images/brands-visual.webp",
     title: { en: "Interior atmosphere", ru: "Интерьерная атмосфера" },
     tag: { en: "Interior", ru: "Интерьер" }
   },
   {
     type: "image",
-    src: "../images/main-hero-1.jpg",
+    src: "../images/main-hero-1.webp",
     title: { en: "Quiet luxury frame", ru: "Кадр тихой роскоши" },
     tag: { en: "Lifestyle", ru: "Образ жизни" }
   },
   {
     type: "image",
-    src: "../images/bg-portfolio.jpg",
+    src: "../images/bg-portfolio.webp",
     title: { en: "Space composition", ru: "Композиция пространства" },
     tag: { en: "Architecture", ru: "Архитектура" }
   },
   {
     type: "image",
-    src: "../images/bg-brands.jpg",
+    src: "../images/bg-brands.webp",
     title: { en: "Product in context", ru: "Продукт в среде" },
     tag: { en: "Furniture", ru: "Мебель" }
   },
   {
     type: "image",
-    src: "../images/bg-stylevision.jpg",
+    src: "../images/bg-stylevision.webp",
     title: { en: "Light & material", ru: "Свет и материал" },
     tag: { en: "Lighting", ru: "Свет" }
   }

@@ -12,7 +12,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="/css/lav-landing.css"/>
   <link rel="stylesheet" href="/css/lav-interior.css?v=20260929b"/>
-  <script defer src="/js/lav-analytics.js?v=20260929b"></script>
+  <script defer src="/js/lav-image-manifest.js?v=20260929a"></script>
+  <script defer src="/js/lav-analytics.js?v=20260929c"></script>
 </head>
 <body class="page-interior">
   <header class="lp-header">
@@ -25,7 +26,7 @@
 
   <main>
     <section class="hero" id="top">
-      <div class="hero-media" aria-hidden="true"><img src="/images/portfolio-hire/interior-06.png" alt=""/></div>
+      <div class="hero-media" aria-hidden="true"><img src="/images/portfolio-hire/interior-06.webp" srcset="/images/portfolio-hire/interior-06-mobile.webp 720w, /images/portfolio-hire/interior-06.webp 1600w" sizes="100vw" alt="" fetchpriority="high" decoding="async"/></div>
       <div class="hero-shade"></div>
       <div class="wrap hero-content">
         <p class="eyebrow light">Интерьеры · Архитектура · Визуализация</p>
@@ -76,7 +77,7 @@
     <section class="section about-section" id="about">
       <div class="wrap about-grid">
         <figure class="portrait-wrap">
-          <img src="/images/portfolio-hire/portrait.jpg" alt="Анжелика Лапихина — дизайнер интерьеров и архитектор" loading="lazy"/>
+          <img src="/images/portfolio-hire/portrait.webp" srcset="/images/portfolio-hire/portrait-mobile.webp 720w, /images/portfolio-hire/portrait.webp 896w" sizes="(max-width: 699px) 60vw, 300px" alt="Анжелика Лапихина — дизайнер интерьеров и архитектор" loading="lazy" decoding="async"/>
           <figcaption>Анжелика Лапихина<br/><span>Designer · Architect · Visualizer</span></figcaption>
         </figure>
         <div class="about-copy">
@@ -144,12 +145,18 @@
 
   <script>
     const projects = [
-      {category:'interior',image:'/images/portfolio-hire/interior-06.png',type:'Интерьер · Жилая квартира',title:'Тёплый модернизм',description:'Цельное пространство в травертине, тёмном дереве и металле. Классическая архитектура сохранена, а мебель и свет собраны в современную композицию.',tags:['Концепция','3D-визуализация','Материалы']},
-      {category:'interior',image:'/images/portfolio-hire/interior-01.png',type:'Интерьер · Апартаменты',title:'Контраст и пластика',description:'Современный интерьер с глубоким деревом, белым декоративным рельефом и выразительным камнем. Баланс графичности и тактильных деталей.',tags:['Полный цикл','Авторские детали','Визуализация']},
-      {category:'interior',image:'/images/portfolio-hire/interior-02.png',type:'Интерьер · Квартира',title:'Современная классика',description:'Светлая семейная квартира с мягкой пудровой палитрой, латунными акцентами и классическими архитектурными элементами.',tags:['Жилой интерьер','Концепция','Комплектация']},
-      {category:'interior',image:'/images/portfolio-hire/interior-03.png',type:'Интерьер · Пентхаус',title:'Dark statement',description:'Выразительный тёмный интерьер с натуральным деревом, чёрным мрамором и сложным декоративным светом. Представительная атмосфера без лишнего декора.',tags:['Премиум-сегмент','Свет','3D-визуализация']},
-      {category:'interior',image:'/images/portfolio-hire/interior-04.png',type:'Интерьер · Квартира',title:'Natural balance',description:'Спокойный минимализм в натуральной палитре. Тёплое дерево, мягкие фактуры и продуманное хранение формируют комфортный повседневный интерьер.',tags:['Планировка','Полный цикл','Рабочие чертежи']},
-      {category:'interior',image:'/images/portfolio-hire/interior-05.png',type:'Интерьер · Резиденция',title:'Art déco light',description:'Интерпретация современной классики с геометрией ар-деко, латунными деталями и выверенными пропорциями каждого помещения.',tags:['Концепция','Деталировка','Визуализация']}
+      {category:'interior',image:'/images/portfolio-hire/interior-06.webp',width:1600,type:'Интерьер · Жилая квартира',title:'Тёплый модернизм',description:'Цельное пространство в травертине, тёмном дереве и металле. Классическая архитектура сохранена, а мебель и свет собраны в современную композицию.',tags:['Концепция','3D-визуализация','Материалы']},
+      {category:'interior',image:'/images/portfolio-hire/interior-01.webp',width:1448,type:'Интерьер · Апартаменты',title:'Контраст и пластика',description:'Современный интерьер с глубоким деревом, белым декоративным рельефом и выразительным камнем. Баланс графичности и тактильных деталей.',tags:['Полный цикл','Авторские детали','Визуализация']},
+      {category:'interior',image:'/images/portfolio-hire/interior-02.webp',width:1448,type:'Интерьер · Квартира',title:'Современная классика',description:'Светлая семейная квартира с мягкой пудровой палитрой, латунными акцентами и классическими архитектурными элементами.',tags:['Жилой интерьер','Концепция','Комплектация']},
+      {category:'interior',image:'/images/portfolio-hire/interior-03.webp',width:1448,type:'Интерьер · Пентхаус',title:'Dark statement',description:'Выразительный тёмный интерьер с натуральным деревом, чёрным мрамором и сложным декоративным светом. Представительная атмосфера без лишнего декора.',tags:['Премиум-сегмент','Свет','3D-визуализация']},
+      {category:'interior',image:'/images/portfolio-hire/interior-04.webp',width:1448,type:'Интерьер · Квартира',title:'Natural balance',description:'Спокойный минимализм в натуральной палитре. Тёплое дерево, мягкие фактуры и продуманное хранение формируют комфортный повседневный интерьер.',tags:['Планировка','Полный цикл','Рабочие чертежи']},
+      {category:'interior',image:'/images/portfolio-hire/interior-05.webp',width:1448,type:'Интерьер · Резиденция',title:'Art déco light',description:'Интерпретация современной классики с геометрией ар-деко, латунными деталями и выверенными пропорциями каждого помещения.',tags:['Концепция','Деталировка','Визуализация']},
+      {category:'exterior',image:'/images/portfolio-hire/exterior-01.webp',width:1600,type:'Экстерьер · Загородный дом',title:'Дом среди сосен',description:'Современная резиденция, встроенная в сосновый ландшафт: строгая геометрия, тёплое дерево, светлый камень и приватная территория.',tags:['Архитектура','Фасады','Ландшафт']},
+      {category:'exterior',image:'/images/portfolio-hire/exterior-02.webp',width:1448,type:'Экстерьер · Частный дом',title:'Дом на закате',description:'Выразительный силуэт с двускатной кровлей и панорамным остеклением. Тёплый вечерний свет подчёркивает архитектуру и озеленение участка.',tags:['Архитектура','Экстерьер','Озеленение']},
+      {category:'commercial',image:'/images/portfolio-hire/commercial-01.webp',width:896,type:'Коммерческий интерьер · Ресторан',title:'Камерный ресторанный зал',description:'Историческая архитектура, тёплое дерево и современная мебель формируют торжественную, но комфортную атмосферу для гостей.',tags:['Ресторан','Концепция','Визуализация']},
+      {category:'commercial',image:'/images/portfolio-hire/commercial-02.webp',width:1200,type:'Коммерческий интерьер · Офис',title:'Taste & Create',description:'Гибкая офисная кухня и дегустационная зона с натуральным дубом, текстилем шалфейного оттенка и местами для неформальной командной работы.',tags:['Офис','Общественная зона','Материалы']},
+      {category:'commercial',image:'/images/portfolio-hire/commercial-03.webp',width:1200,type:'Коммерческий интерьер · Переговорная',title:'Smart meeting room',description:'Светлая переговорная с панорамным остеклением, интегрированной техникой и подвесными акустическими элементами сложной геометрии.',tags:['Офис','Акустика','Свет']},
+      {category:'commercial',image:'/images/portfolio-hire/commercial-04.webp',width:1200,type:'Коммерческий интерьер · Рабочая зона',title:'Collaborative workspace',description:'Прозрачные перегородки, натуральное дерево и озеленение создают спокойную среду для встреч и совместной работы.',tags:['Офис','Командная работа','Биофильный дизайн']}
     ];
     (() => {
       const root = document.querySelector('[data-portfolio]'); if (!root) return;
@@ -161,7 +168,7 @@
         root.classList.toggle('is-empty', !activeProjects.length);
         arrows.forEach(arrow => { arrow.disabled = !activeProjects.length; });
         track.innerHTML = activeProjects.length
-          ? activeProjects.map((project, i) => `<figure class="portfolio-slide"><img src="${project.image}" alt="${project.title} — ${project.type}" ${i ? 'loading="lazy"' : ''}/></figure>`).join('')
+          ? activeProjects.map((project, i) => `<figure class="portfolio-slide"><img src="${project.image}" srcset="${project.image.replace('.webp','-mobile.webp')} 720w, ${project.image} ${project.width}w" sizes="(max-width: 959px) 100vw, 72vw" alt="${project.title} — ${project.type}" decoding="async" ${i ? 'loading="lazy"' : 'fetchpriority="high"'}/></figure>`).join('')
           : `<div class="portfolio-empty"><span>Раздел подготовлен</span><strong>Новые проекты<br/>скоро появятся</strong></div>`;
       };
       const paint = () => {

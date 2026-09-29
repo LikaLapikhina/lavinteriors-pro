@@ -10,7 +10,7 @@
 .vs-hero-media{
   position:absolute;inset:0;z-index:0;
   background:
-    url('../images/vs-hero.jpg') center 42%/cover no-repeat;
+    url('../images/vs-hero.webp') center 42%/cover no-repeat;
   filter:saturate(1.02) contrast(1.03);
 }
 .vs-hero-media::after{

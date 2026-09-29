@@ -6,6 +6,34 @@
   var CONSENT_SAVED_KEY = 'lavCookieConsent';
   var loaded = false;
 
+  function setupResponsiveImages() {
+    var variants = window.LAV_IMAGE_VARIANTS || {};
+
+    function enhance(image) {
+      if (!image || image.dataset.lavResponsive === 'true') return;
+      var source = image.getAttribute('src') || '';
+      var path = source.replace(/^https?:\/\/[^/]+/i, '').split('?')[0];
+      var variant = variants[path];
+      if (!variant) return;
+      image.srcset = variant.mobile + ' ' + variant.mobileWidth + 'w, ' + path + ' ' + variant.width + 'w';
+      if (!image.sizes) image.sizes = '(max-width: 720px) 100vw, 1600px';
+      if (!image.decoding) image.decoding = 'async';
+      image.dataset.lavResponsive = 'true';
+    }
+
+    document.querySelectorAll('img[src]').forEach(enhance);
+    if (!window.MutationObserver) return;
+    new MutationObserver(function (mutations) {
+      mutations.forEach(function (mutation) {
+        mutation.addedNodes.forEach(function (node) {
+          if (node.nodeType !== 1) return;
+          if (node.matches && node.matches('img[src]')) enhance(node);
+          if (node.querySelectorAll) node.querySelectorAll('img[src]').forEach(enhance);
+        });
+      });
+    }).observe(document.documentElement, { childList: true, subtree: true });
+  }
+
   function hasConsent() {
     return localStorage.getItem(CONSENT_KEY) === 'true';
   }
@@ -140,6 +168,7 @@
   }
 
   function boot() {
+    setupResponsiveImages();
     bindEvents();
     loadMetrika();
     injectConsentBanner();
