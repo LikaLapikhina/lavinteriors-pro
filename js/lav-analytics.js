@@ -14,6 +14,13 @@
       var source = image.getAttribute('src') || '';
       var path = source.replace(/^https?:\/\/[^/]+/i, '').split('?')[0];
       var variant = variants[path];
+      if (!variant && /\/images\/.+\.webp$/i.test(path) && !/-mobile\.webp$/i.test(path)) {
+        variant = {
+          mobile: path.replace(/\.webp$/i, '-mobile.webp'),
+          mobileWidth: 720,
+          width: 1600
+        };
+      }
       if (!variant) return;
       image.srcset = variant.mobile + ' ' + variant.mobileWidth + 'w, ' + path + ' ' + variant.width + 'w';
       if (!image.sizes) image.sizes = '(max-width: 720px) 100vw, 1600px';
