@@ -13,6 +13,8 @@
 <link href="/my-favicon/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
 <meta content="lavinteriors" name="apple-mobile-web-app-title"/>
 <link href="/my-favicon/site.webmanifest" rel="manifest"/>
+<link as="image" fetchpriority="high" href="/images/main-hero-1-mobile.webp?v=20261005c" media="(max-width: 720px)" rel="preload"/>
+<link as="image" fetchpriority="high" href="/images/main-hero-1.webp?v=20261005c" media="(min-width: 721px)" rel="preload"/>
 <!-- FONTS -->
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -283,10 +285,13 @@
     }
     .hero-media{
       position:absolute; inset:0;
-      background-image:url('images/bg-hero.webp');
+      background-image:url('/images/main-hero-1.webp?v=20261005c');
       background-size:cover;
       background-position:center;
       filter:saturate(1.02) contrast(1.02);
+    }
+    @media(max-width:720px){
+      .hero-media{background-image:url('/images/main-hero-1-mobile.webp?v=20261005c');}
     }
     .hero-overlay{
       position:absolute; inset:0;
@@ -3901,7 +3906,7 @@ window.LAV_FEATURES = window.LAV_FEATURES || { options48: false, visualStudio: t
     // ==========================================================
     // Stable asset version: keeps browser/CDN caching effective between visits.
     // Bump only when a deployed image changes.
-    window.LAV_IMG_V = '20261005b';
+    window.LAV_IMG_V = '20261005c';
     window.lavImg = function(src){
       if(!src) return src;
       if(/^blob:|^data:/i.test(src)) return src;
@@ -5302,7 +5307,9 @@ window.LAV_FEATURES = window.LAV_FEATURES || { options48: false, visualStudio: t
     const media = document.getElementById('heroMedia');
     if(!media || media.dataset.fadeReady) return;
     media.dataset.fadeReady = '1';
+    let initialPaint = true;
     const observer = new MutationObserver(()=>{
+      if(initialPaint){ initialPaint = false; return; }
       media.classList.add('is-switching');
       setTimeout(()=>media.classList.remove('is-switching'), 360);
     });
@@ -5820,19 +5827,44 @@ window.LAV_FEATURES = window.LAV_FEATURES || { options48: false, visualStudio: t
     if (window.__lavHeroTimer) clearInterval(window.__lavHeroTimer);
 
     // Hero gallery: only entries listed in IMAGES.heroSlides (currently 6)
-    const slides = raw.map(src => window.lavImg ? window.lavImg(src) : src);
+    const slides = raw.map(src => {
+      const responsive = window.lavResponsiveBg ? window.lavResponsiveBg(src) : src;
+      return window.lavImg ? window.lavImg(responsive) : responsive;
+    });
     let idx = 0;
+    let paintToken = 0;
+    const prepared = new Map();
+    const warm = (slideIdx) => {
+      if(prepared.has(slideIdx)) return prepared.get(slideIdx);
+      const image = new Image();
+      image.decoding = 'async';
+      image.src = slides[slideIdx];
+      prepared.set(slideIdx, image);
+      return image;
+    };
     const paint = (nextIdx) => {
-      idx = nextIdx;
-      media.classList.add('is-switching');
-      setTimeout(()=>{
-        media.style.backgroundImage = `url('${slides[idx]}')`;
-        [...dots.children].forEach((d,i)=>d.classList.toggle('active', i === idx));
-        setTimeout(()=>media.classList.remove('is-switching'), 90);
-      }, 240);
+      const token = ++paintToken;
+      const candidate = warm(nextIdx);
+      const swap = () => {
+        if(token !== paintToken) return;
+        idx = nextIdx;
+        media.classList.add('is-switching');
+        setTimeout(()=>{
+          if(token !== paintToken) return;
+          media.style.backgroundImage = `url('${slides[idx]}')`;
+          [...dots.children].forEach((d,i)=>d.classList.toggle('active', i === idx));
+          setTimeout(()=>media.classList.remove('is-switching'), 90);
+          warm((idx + 1) % slides.length);
+        }, 180);
+      };
+      if(candidate.complete) swap();
+      else {
+        candidate.addEventListener('load', swap, {once:true});
+        candidate.addEventListener('error', swap, {once:true});
+      }
     };
     dots.innerHTML = slides.map((_,i)=>'<button class="dot'+(i===0?' active':'')+'" type="button" aria-label="Slide '+(i+1)+'"></button>').join('');
-    media.style.backgroundImage = `url('${slides[0]}')`;
+    warm(1 % slides.length);
     [...dots.children].forEach((d,i)=>d.addEventListener('click',()=>{paint(i); restart();}));
     const restart = () => {
       clearInterval(window.__lavHeroTimer);
