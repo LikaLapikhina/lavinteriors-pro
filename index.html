@@ -6197,6 +6197,67 @@ window.LAV_FEATURES = window.LAV_FEATURES || { options48: false, visualStudio: t
 @media(max-width:720px){
   .cookieBanner{bottom:10px !important; width:calc(100% - 20px) !important; border-radius:18px !important;}
   .cookieBanner__text{font-size:10.5px !important;}
+
+  /* Keep image-heavy sections as compact grids on phones. */
+  #portfolio .portfolio-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+    gap:10px !important;
+  }
+  #portfolio .portfolio-grid .card{
+    width:100% !important;
+    min-width:0 !important;
+  }
+  #portfolio .portfolio-grid .card .info{
+    left:9px;
+    right:9px;
+    bottom:9px;
+  }
+  #portfolio .portfolio-grid .card .title{
+    margin-bottom:5px;
+    font-size:13px;
+    line-height:1.15;
+  }
+  #portfolio .portfolio-grid .card .tags{
+    gap:4px;
+  }
+  #portfolio .portfolio-grid .card .tag{
+    padding:4px 5px;
+    font-size:7px;
+    letter-spacing:.1em;
+  }
+
+  #process .steps{
+    grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+    gap:10px !important;
+  }
+  #process .step{
+    min-width:0;
+    padding:10px 10px 12px !important;
+    gap:7px;
+  }
+  #process .step .name{
+    font-size:15px;
+    letter-spacing:.04em;
+  }
+  #process .step .desc{
+    font-size:11px;
+    line-height:1.5;
+  }
+  #process .step .meta{
+    gap:5px;
+    margin-top:7px;
+    padding-top:8px;
+  }
+  #process .step .meta .pill{
+    padding:6px 7px;
+    font-size:7px;
+    letter-spacing:.12em;
+  }
+
+  .proj-gallery{
+    grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+    gap:10px !important;
+  }
 }
 @media(prefers-reduced-motion:reduce){
   .lavHeroFadeLayer{transition:none !important;}
