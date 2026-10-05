@@ -1710,17 +1710,7 @@ html[data-lang="ru"] .nav-left a{letter-spacing:.22em;}
   background: rgba(255,255,255,.6) !important;
 }
 
-/* 1. GLOBAL BACKGROUNDS: Warm tinted images for every section */
-#about { background-image: url('images/bg-about.webp'); }
-#portfolio { background-image: url('images/bg-portfolio.webp'); }
-#projects { background-image: url('images/bg-projects.webp'); }
-#process { background-image: url('images/bg-process.webp'); }
-#brands { background-image: url('images/bg-brands.webp'); }
-#styleVision { background-image: url('images/bg-stylevision.webp'); }
-#pricing { background-image: url('images/bg-pricing.webp'); }
-#servicePage { background-image: url('images/bg-service.webp'); }
-#contact { background-image: url('images/bg-contact.webp'); }
-footer { background-image: url('images/bg-footer.webp'); }
+/* 1. GLOBAL BACKGROUNDS: loaded near the viewport to reduce initial transfer. */
 
 #about, #portfolio, #process, #brands, #pricing, #servicePage, #contact, footer {
   background-size: cover !important;
@@ -2818,16 +2808,7 @@ body[data-page="service"] #servicePage{padding-top:0 !important;}
   position:relative !important;
   isolation:isolate;
 }
-#about{background-image:url('images/bg-about.webp') !important;}
-#portfolio{background-image:url('images/bg-portfolio.webp') !important;}
-#projects{background-image:url('images/bg-projects.webp') !important;}
-#process{background-image:url('images/bg-process.webp') !important;}
-#brands{background-image:url('images/bg-brands.webp') !important;}
-#styleVision{background-image:url('images/bg-stylevision.webp') !important;}
-#pricing{background-image:url('images/bg-pricing.webp') !important;}
-#contact{background-image:url('images/bg-contact.webp') !important;}
-footer{background-image:url('images/bg-footer.webp') !important;}
-#servicePage{background-image:url('images/bg-service.webp') !important;}
+/* Section artwork is attached by the lazy background loader below. */
 
 #about::before,#portfolio::before,#projects::before,#process::before,#brands::before,
 #styleVision::before,#pricing::before,#contact::before,footer::before,#servicePage::before{
@@ -2871,6 +2852,18 @@ footer{background-image:url('images/bg-footer.webp') !important;}
 .step .processVisual .ph{
   opacity:.92 !important;
   filter:none !important;
+}
+.step .processVisual--drawing{
+  background:#fff !important;
+}
+.step .processVisual--drawing .ph{
+  background-color:#fff;
+  background-position:center;
+  background-repeat:no-repeat;
+  background-size:contain;
+}
+.step .processVisual--drawing .processGradient{
+  display:none;
 }
 .step .processGradient{
   background:linear-gradient(180deg, rgba(26,23,20,.05), rgba(26,23,20,.18)) !important;
@@ -3406,7 +3399,7 @@ window.LAV_FEATURES = window.LAV_FEATURES || { options48: false, visualStudio: t
 <span class="pill" data-i18n="tOptions">options</span>
 <span class="pill" data-i18n="tApproval">approval</span>
 </div>
-<div class="processVisual"><div class="ph" style="background-image:url('images/proc-1.webp'); opacity:0.8;"></div><div class="processGradient"></div></div>
+<div class="processVisual"><div class="ph" data-lazy-bg="images/proc-1.webp" style="opacity:0.8;"></div><div class="processGradient"></div></div>
 </article>
 <article class="step reveal" style="transition-delay:.1s">
 <div class="head">
@@ -3421,7 +3414,7 @@ window.LAV_FEATURES = window.LAV_FEATURES || { options48: false, visualStudio: t
 <span class="pill" data-i18n="tPalette">palette</span>
 <span class="pill" data-i18n="tMaterials">materials</span>
 </div>
-<div class="processVisual"><div class="ph" style="background-image:url('images/proc-2.webp'); opacity:0.8;"></div><div class="processGradient"></div></div>
+<div class="processVisual"><div class="ph" data-lazy-bg="images/proc-2.webp" style="opacity:0.8;"></div><div class="processGradient"></div></div>
 </article>
 <article class="step reveal" style="transition-delay:.2s">
 <div class="head">
@@ -3436,7 +3429,7 @@ window.LAV_FEATURES = window.LAV_FEATURES || { options48: false, visualStudio: t
 <span class="pill" data-i18n="tLight">light</span>
 <span class="pill" data-i18n="tDetails">details</span>
 </div>
-<div class="processVisual"><div class="ph" style="background-image:url('images/proc-3.webp'); opacity:0.8;"></div><div class="processGradient"></div></div>
+<div class="processVisual"><div class="ph" data-lazy-bg="images/proc-3.webp" style="opacity:0.8;"></div><div class="processGradient"></div></div>
 </article>
 <article class="step reveal" style="transition-delay:.3s">
 <div class="head">
@@ -3451,7 +3444,7 @@ window.LAV_FEATURES = window.LAV_FEATURES || { options48: false, visualStudio: t
 <span class="pill" data-i18n="tPlans">plans</span>
 <span class="pill" data-i18n="tSpecs">specs</span>
 </div>
-<div class="processVisual"><div class="ph" style="background-image:url('images/proc-4.webp'); opacity:0.8;"></div><div class="processGradient"></div></div>
+<div class="processVisual"><div class="ph" data-lazy-bg="images/proc-4.webp" style="opacity:0.8;"></div><div class="processGradient"></div></div>
 </article>
 <article class="step reveal">
 <div class="head">
@@ -3466,7 +3459,7 @@ window.LAV_FEATURES = window.LAV_FEATURES || { options48: false, visualStudio: t
 <span class="pill" data-i18n="tBudget">budget</span>
 <span class="pill" data-i18n="tDelivery">delivery</span>
 </div>
-<div class="processVisual"><div class="ph" style="background-image:url('images/proc-5.webp'); opacity:0.8;"></div><div class="processGradient"></div></div>
+<div class="processVisual"><div class="ph" data-lazy-bg="images/proc-5.webp" style="opacity:0.8;"></div><div class="processGradient"></div></div>
 </article>
 <article class="step reveal">
 <div class="head">
@@ -3481,7 +3474,7 @@ window.LAV_FEATURES = window.LAV_FEATURES || { options48: false, visualStudio: t
 <span class="pill" data-i18n="tSamples">samples</span>
 <span class="pill" data-i18n="tProduction">production</span>
 </div>
-<div class="processVisual"><div class="ph" style="background-image:url('images/proc-6.webp'); opacity:0.8;"></div><div class="processGradient"></div></div>
+<div class="processVisual processVisual--drawing"><div class="ph" data-lazy-bg="images/proc-6.webp" role="img" aria-label="Custom furniture technical drawing" style="opacity:0.8;"></div><div class="processGradient"></div></div>
 </article>
 </div>
 </div>
@@ -3906,18 +3899,45 @@ window.LAV_FEATURES = window.LAV_FEATURES || { options48: false, visualStudio: t
     // ==========================================================
     // ✅ APPLY data-img => background-image
     // ==========================================================
-    window.LAV_IMG_V = String(Date.now());
+    // Stable asset version: keeps browser/CDN caching effective between visits.
+    // Bump only when a deployed image changes.
+    window.LAV_IMG_V = '20261005a';
     window.lavImg = function(src){
       if(!src) return src;
       if(/^blob:|^data:/i.test(src)) return src;
       return src + (src.indexOf('?') >= 0 ? '&' : '?') + 'v=' + window.LAV_IMG_V;
+    };
+    window.lavResponsiveBg = function(src){
+      if(!src || !window.matchMedia('(max-width: 720px)').matches) return src;
+      const clean = src.split('?')[0];
+      const path = clean.charAt(0) === '/' ? clean : '/' + clean;
+      const variant = (window.LAV_IMAGE_VARIANTS || {})[path];
+      return variant && variant.mobile ? variant.mobile : src;
+    };
+    const lavBgObserver = 'IntersectionObserver' in window
+      ? new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if(!entry.isIntersecting) return;
+            const el = entry.target;
+            const src = el.dataset.lavPendingBg;
+            if(src) el.style.backgroundImage = `url('${window.lavImg(window.lavResponsiveBg(src))}')`;
+            delete el.dataset.lavPendingBg;
+            lavBgObserver.unobserve(el);
+          });
+        }, { rootMargin:'600px 0px' })
+      : null;
+    window.lavQueueBg = function(el, src){
+      if(!el || !src) return;
+      el.dataset.lavPendingBg = src;
+      if(lavBgObserver) lavBgObserver.observe(el);
+      else el.style.backgroundImage = `url('${window.lavImg(window.lavResponsiveBg(src))}')`;
     };
     window.lavApplyAllImages = function(){
       const dict = window.IMAGES || {};
       document.querySelectorAll('[data-img]').forEach(el => {
         const key = el.getAttribute('data-img');
         const src = dict[key];
-        if(src) el.style.backgroundImage = `url('${window.lavImg(src)}')`;
+        if(src) window.lavQueueBg(el, src);
       });
       // section backgrounds from CSS also need cache-bust
       const sectionBgs = {
@@ -3935,14 +3955,13 @@ window.LAV_FEATURES = window.LAV_FEATURES || { options48: false, visualStudio: t
       Object.keys(sectionBgs).forEach(sel => {
         const el = document.querySelector(sel);
         if(el){
-          el.style.backgroundImage = `url('${window.lavImg(sectionBgs[sel])}')`;
+          window.lavQueueBg(el, sectionBgs[sel]);
           el.style.backgroundSize = 'cover';
           el.style.backgroundPosition = 'center';
         }
       });
-      document.querySelectorAll('#process .processVisual .ph[style*="background-image"]').forEach((el, i) => {
-        const src = 'images/proc-' + (i+1) + '.webp';
-        el.style.backgroundImage = `url('${window.lavImg(src)}')`;
+      document.querySelectorAll('[data-lazy-bg]').forEach(el => {
+        window.lavQueueBg(el, el.getAttribute('data-lazy-bg'));
       });
     };
     (function applyImages(){
@@ -4152,8 +4171,7 @@ window.LAV_FEATURES = window.LAV_FEATURES || { options48: false, visualStudio: t
 
       function imgSrc(it){
         const fromMap = it.imgKey && window.IMAGES && window.IMAGES[it.imgKey];
-        const raw = fromMap || it.img;
-        return window.lavImg ? window.lavImg(raw) : raw;
+        return fromMap || it.img;
       }
 
       function filtered(){
@@ -4183,11 +4201,12 @@ window.LAV_FEATURES = window.LAV_FEATURES || { options48: false, visualStudio: t
             const tags = (it.styles||[]).slice(0,2).map(s => `<span class="tag">${styleLabel(s)}</span>`).join('');
             const featured = focusPin && it.id === focusPin ? ' is-featured' : '';
             return `<article class="card${featured}" data-id="${it.id}" data-cat="${it.cat}" data-styles="${(it.styles||[]).join(' ')}">
-              <div class="ph" style="background-image:url('${imgSrc(it)}')"></div>
+              <div class="ph" data-lazy-bg="${imgSrc(it)}"></div>
               <div class="shade"></div>
               <div class="info"><h3 class="title">${L(it.title)}</h3><div class="tags">${tags}</div></div>
             </article>`;
           }).join('');
+          grid.querySelectorAll('[data-lazy-bg]').forEach(el => window.lavQueueBg?.(el, el.getAttribute('data-lazy-bg')));
         }
         if(countEl){
           countEl.textContent = langRU()
@@ -5306,7 +5325,7 @@ window.LAV_FEATURES = window.LAV_FEATURES || { options48: false, visualStudio: t
       const fromMap = key && (window.IMAGES || {})[key];
       const bg = ph.style.backgroundImage || '';
       const fromStyle = (bg.match(/url\(['"]?([^'"]+)['"]?\)/) || [])[1];
-      const src = fromMap || fromStyle;
+      const src = fromMap || fromStyle || ph.getAttribute('data-lazy-bg');
       if(!src) return;
       img.style.backgroundImage = `url('${src}')`;
       cap.textContent = card.querySelector('.title')?.textContent?.trim() || 'LAV Interiors';
