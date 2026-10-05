@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>$seo_title</title>
+  <meta name="description" content="$seo_description"/>
+  <meta name="robots" content="index,follow,max-image-preview:large"/>
+  <link rel="canonical" href="$canonical_url"/>
+  <meta property="og:type" content="article"/>
+  <meta property="og:site_name" content="LAV Interiors"/>
+  <meta property="og:locale" content="ru_RU"/>
+  <meta property="og:title" content="$seo_title"/>
+  <meta property="og:description" content="$seo_description"/>
+  <meta property="og:url" content="$canonical_url"/>
+  <meta property="og:image" content="$og_image"/>
+  <meta property="og:image:alt" content="$og_image_alt"/>
+  <meta property="og:image:width" content="$og_image_width"/>
+  <meta property="og:image:height" content="$og_image_height"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="$seo_title"/>
+  <meta name="twitter:description" content="$seo_description"/>
+  <meta name="twitter:image" content="$og_image"/>
+  <link href="/my-favicon/favicon.svg" rel="icon" type="image/svg+xml"/>
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600&amp;family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&amp;display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="/interior/projects/project-page.css?v=20261005a"/>
+  <script type="application/ld+json">$structured_data</script>
+  <script defer src="/js/lav-analytics.js?v=20260929d"></script>
+  <script defer src="/interior/projects/project-page.js?v=20261005a"></script>
+</head>
+<body>
+  <a class="skip-link" href="#project-gallery">К галерее проекта</a>
+  <header class="project-header">
+    <div class="project-wrap header-inner">
+      <a class="brand" href="/interior/" aria-label="LAV — портфолио интерьеров">LAV<span>Interior &amp; Architecture</span></a>
+      <nav aria-label="Навигация проекта">
+        <a href="/interior/#projects">Portfolio</a>
+        <a class="header-contact" href="/interior/#contact">Start Your Project</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <article>
+      <header class="project-intro project-wrap">
+        <nav class="breadcrumbs" aria-label="Хлебные крошки">
+          <a href="/interior/">Interior</a><span aria-hidden="true">/</span><a href="/interior/#projects">Projects</a><span aria-hidden="true">/</span><span aria-current="page">$project_name</span>
+        </nav>
+        <p class="eyebrow">Selected project · $project_number</p>
+        <h1>$project_name</h1>
+        <div class="intro-grid">
+          <p class="project-description">$project_description</p>
+          <dl class="project-facts">$project_facts</dl>
+        </div>
+      </header>
+
+      <section class="project-gallery project-wrap" id="project-gallery" aria-label="Галерея проекта $project_name">
+        $gallery_items
+      </section>
+
+      <nav class="project-pagination project-wrap" aria-label="Соседние проекты">
+        $previous_project
+        $next_project
+      </nav>
+
+      <section class="related-section" aria-labelledby="related-title">
+        <div class="project-wrap">
+          <div class="section-heading">
+            <div><p class="eyebrow">Continue exploring</p><h2 id="related-title">Related Projects</h2></div>
+            <a class="text-link" href="/interior/#projects">Все проекты <span aria-hidden="true">↗</span></a>
+          </div>
+          <div class="related-grid">$related_projects</div>
+        </div>
+      </section>
+
+      <section class="project-cta">
+        <div class="project-wrap cta-inner">
+          <p class="eyebrow light">Next step</p>
+          <h2>Пространство начинается<br/><em>с точной идеи.</em></h2>
+          <p>Посмотрите другие проекты или расскажите о своей задаче — от первой концепции до полного комплекта документации.</p>
+          <div class="cta-actions">
+            <a class="button button-light" href="/interior/#projects">Explore the Portfolio</a>
+            <a class="button button-outline" href="/interior/#contact">Start Your Project</a>
+          </div>
+        </div>
+      </section>
+    </article>
+  </main>
+
+  <footer class="project-footer">
+    <div class="project-wrap footer-inner">
+      <div><strong>LAV INTERIORS</strong><span>Анжелика Лапихина · Москва · Россия</span></div>
+      <div class="footer-links"><a href="/interior/#projects">Portfolio</a><a href="mailto:hello@lavinteriors.pro">Email</a><a href="https://t.me/LAVINTERIORS" target="_blank" rel="noopener">Telegram</a></div>
+    </div>
+  </footer>
+
+  <div class="lightbox" data-lightbox hidden role="dialog" aria-modal="true" aria-label="Просмотр изображения">
+    <button type="button" class="lightbox-close" data-lightbox-close aria-label="Закрыть">×</button>
+    <button type="button" class="lightbox-arrow lightbox-prev" data-lightbox-prev aria-label="Предыдущее изображение">←</button>
+    <figure><img data-lightbox-image alt=""/><figcaption data-lightbox-caption></figcaption></figure>
+    <button type="button" class="lightbox-arrow lightbox-next" data-lightbox-next aria-label="Следующее изображение">→</button>
+  </div>
+</body>
+</html>

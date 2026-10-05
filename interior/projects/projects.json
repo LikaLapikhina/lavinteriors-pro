@@ -1,0 +1,114 @@
+{
+  "siteUrl": "https://lavinteriors.pro",
+  "projects": [
+    {
+      "published": true,
+      "name": "Warm Classic Apartment",
+      "slug": "warm-classic-apartment",
+      "description": "Светлый семейный интерьер, где мягкая классическая архитектура соединяется с современной мебелью, тёплой пудровой палитрой и деликатными латунными акцентами.",
+      "style": "Современная классика",
+      "roomType": "Жилая квартира",
+      "category": "interior",
+      "location": "Москва",
+      "tags": ["Жилой интерьер", "Концепция", "Комплектация"],
+      "seoTitle": "Warm Classic Apartment — проект интерьера | LAV Interiors",
+      "seoDescription": "Warm Classic Apartment — проект светлой семейной квартиры в современной классике от LAV Interiors. Интерьер, материалы и визуализации проекта.",
+      "images": [
+        {
+          "src": "/images/portfolio-hire/interior-02.webp",
+          "mobileSrc": "/images/portfolio-hire/interior-02-mobile.webp",
+          "width": 1448,
+          "height": 1086,
+          "alt": "Warm Classic Apartment — светлая гостиная в современной классике",
+          "layout": "wide"
+        },
+        {
+          "src": "/images/portfolio-hire/interior-01.webp",
+          "mobileSrc": "/images/portfolio-hire/interior-01-mobile.webp",
+          "width": 1448,
+          "height": 1086,
+          "alt": "Контрастная зона гостиной с тёмным деревом и светлым рельефом",
+          "layout": "standard"
+        },
+        {
+          "src": "/images/portfolio-hire/interior-05.webp",
+          "mobileSrc": "/images/portfolio-hire/interior-05-mobile.webp",
+          "width": 1448,
+          "height": 1086,
+          "alt": "Интерьер квартиры с латунными деталями и мягким текстилем",
+          "layout": "standard"
+        },
+        {
+          "src": "/images/portfolio-hire/interior-03.webp",
+          "mobileSrc": "/images/portfolio-hire/interior-03-mobile.webp",
+          "width": 1448,
+          "height": 1086,
+          "alt": "Тёмная интерьерная композиция с натуральным деревом и камнем",
+          "layout": "wide"
+        },
+        {
+          "src": "/images/portfolio-hire/interior-04.webp",
+          "mobileSrc": "/images/portfolio-hire/interior-04-mobile.webp",
+          "width": 1448,
+          "height": 1086,
+          "alt": "Спокойная жилая зона в натуральной тёплой палитре",
+          "layout": "wide"
+        }
+      ]
+    },
+    {
+      "published": true,
+      "name": "Ivory Marble",
+      "slug": "ivory-marble",
+      "description": "Светлый интерьер в современной классике, построенный на выразительном рисунке мрамора, тонких латунных акцентах и мягкой пластике мебели. Единая палитра связывает кухню, гостиную, кабинет, спальню и ванную комнату в цельное пространство.",
+      "style": "Современная классика",
+      "roomType": "Жилая квартира",
+      "category": "interior",
+      "tags": ["Мрамор", "Латунь", "Современная классика"],
+      "seoTitle": "Ivory Marble — интерьер в современной классике | LAV Interiors",
+      "seoDescription": "Ivory Marble — светлый интерьер квартиры с выразительным мрамором, латунными деталями и современной классической архитектурой. Проект LAV Interiors.",
+      "images": [
+        {
+          "src": "/images/projects/ivory-marble/01-kitchen.webp",
+          "mobileSrc": "/images/projects/ivory-marble/01-kitchen-mobile.webp",
+          "width": 1080,
+          "height": 1440,
+          "alt": "Ivory Marble — светлая кухня с мраморным фартуком, рифлёными фасадами и латунными деталями",
+          "layout": "portrait"
+        },
+        {
+          "src": "/images/projects/ivory-marble/02-living-room.webp",
+          "mobileSrc": "/images/projects/ivory-marble/02-living-room-mobile.webp",
+          "width": 1080,
+          "height": 1440,
+          "alt": "Ivory Marble — гостиная в современной классике с мраморным камином и креслом букле",
+          "layout": "portrait"
+        },
+        {
+          "src": "/images/projects/ivory-marble/03-home-office.webp",
+          "mobileSrc": "/images/projects/ivory-marble/03-home-office-mobile.webp",
+          "width": 1080,
+          "height": 1440,
+          "alt": "Ivory Marble — светлый кабинет с мраморным столом, кожей и латунью",
+          "layout": "portrait"
+        },
+        {
+          "src": "/images/projects/ivory-marble/04-bedroom.webp",
+          "mobileSrc": "/images/projects/ivory-marble/04-bedroom-mobile.webp",
+          "width": 1080,
+          "height": 1440,
+          "alt": "Ivory Marble — спальня с мраморной стеной, мягким текстилем и латунными акцентами",
+          "layout": "portrait"
+        },
+        {
+          "src": "/images/projects/ivory-marble/05-bathroom.webp",
+          "mobileSrc": "/images/projects/ivory-marble/05-bathroom-mobile.webp",
+          "width": 1080,
+          "height": 1440,
+          "alt": "Ivory Marble — светлая ванная комната с мрамором, камнем и латунной сантехникой",
+          "layout": "portrait"
+        }
+      ]
+    }
+  ]
+}

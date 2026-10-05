@@ -14,6 +14,7 @@
   <link rel="stylesheet" href="/css/lav-interior.css?v=20260929b"/>
   <script defer src="/js/lav-image-manifest.js?v=20260929a"></script>
   <script defer src="/js/lav-analytics.js?v=20260929d"></script>
+  <script src="/interior/projects/catalog.js?v=20261005a"></script>
 </head>
 <body class="page-interior">
   <header class="lp-header">
@@ -67,6 +68,7 @@
           <div class="portfolio-info">
             <p class="project-type" data-type></p><h3 data-title></h3><p data-description></p>
             <div class="project-tags" data-tags></div>
+            <a class="project-open-link" data-project-link href="#" hidden>Открыть проект <span aria-hidden="true">↗</span></a>
             <div class="portfolio-progress" aria-hidden="true"><span data-progress></span></div>
             <p class="swipe-note">Листайте стрелками или свайпом</p>
           </div>
@@ -144,10 +146,9 @@
   <footer class="site-footer"><div class="wrap footer-simple"><div><strong>LAV INTERIORS</strong><span>Анжелика Лапихина · Москва · Россия</span></div><div class="footer-links"><a href="https://t.me/LAVINTERIORS" target="_blank" rel="noopener">Telegram</a><a href="https://max.ru/u/f9LHodD0cOIox6rq2EeqYTgZ34lLUOmYkmpP5z_EKC7sJ7fXfT3X4AnEHNM" target="_blank" rel="noopener">MAX</a><a href="mailto:hello@lavinteriors.pro">Email</a></div></div></footer>
 
   <script>
-    const projects = [
+    const projects = [...(window.LAV_PROJECT_PAGES || []),
       {category:'interior',image:'/images/portfolio-hire/interior-06.webp',width:1600,type:'Интерьер · Жилая квартира',title:'Тёплый модернизм',description:'Цельное пространство в травертине, тёмном дереве и металле. Классическая архитектура сохранена, а мебель и свет собраны в современную композицию.',tags:['Концепция','3D-визуализация','Материалы']},
       {category:'interior',image:'/images/portfolio-hire/interior-01.webp',width:1448,type:'Интерьер · Апартаменты',title:'Контраст и пластика',description:'Современный интерьер с глубоким деревом, белым декоративным рельефом и выразительным камнем. Баланс графичности и тактильных деталей.',tags:['Полный цикл','Авторские детали','Визуализация']},
-      {category:'interior',image:'/images/portfolio-hire/interior-02.webp',width:1448,type:'Интерьер · Квартира',title:'Современная классика',description:'Светлая семейная квартира с мягкой пудровой палитрой, латунными акцентами и классическими архитектурными элементами.',tags:['Жилой интерьер','Концепция','Комплектация']},
       {category:'interior',image:'/images/portfolio-hire/interior-03.webp',width:1448,type:'Интерьер · Пентхаус',title:'Dark statement',description:'Выразительный тёмный интерьер с натуральным деревом, чёрным мрамором и сложным декоративным светом. Представительная атмосфера без лишнего декора.',tags:['Премиум-сегмент','Свет','3D-визуализация']},
       {category:'interior',image:'/images/portfolio-hire/interior-04.webp',width:1448,type:'Интерьер · Квартира',title:'Natural balance',description:'Спокойный минимализм в натуральной палитре. Тёплое дерево, мягкие фактуры и продуманное хранение формируют комфортный повседневный интерьер.',tags:['Планировка','Полный цикл','Рабочие чертежи']},
       {category:'interior',image:'/images/portfolio-hire/interior-05.webp',width:1448,type:'Интерьер · Резиденция',title:'Art déco light',description:'Интерпретация современной классики с геометрией ар-деко, латунными деталями и выверенными пропорциями каждого помещения.',tags:['Концепция','Деталировка','Визуализация']},
@@ -160,7 +161,7 @@
     ];
     (() => {
       const root = document.querySelector('[data-portfolio]'); if (!root) return;
-      const track = root.querySelector('[data-track]'), title = root.querySelector('[data-title]'), type = root.querySelector('[data-type]'), description = root.querySelector('[data-description]'), tags = root.querySelector('[data-tags]'), index = root.querySelector('[data-index]'), progress = root.querySelector('[data-progress]'), arrows = root.querySelectorAll('.slider-arrow'), tabs = document.querySelectorAll('[data-category]');
+      const track = root.querySelector('[data-track]'), title = root.querySelector('[data-title]'), type = root.querySelector('[data-type]'), description = root.querySelector('[data-description]'), tags = root.querySelector('[data-tags]'), projectLink = root.querySelector('[data-project-link]'), index = root.querySelector('[data-index]'), progress = root.querySelector('[data-progress]'), arrows = root.querySelectorAll('.slider-arrow'), tabs = document.querySelectorAll('[data-category]');
       let current = 0, category = 'interior', activeProjects = [];
       const renderSlides = () => {
         activeProjects = projects.filter(project => project.category === category);
@@ -168,12 +169,12 @@
         root.classList.toggle('is-empty', !activeProjects.length);
         arrows.forEach(arrow => { arrow.disabled = !activeProjects.length; });
         track.innerHTML = activeProjects.length
-          ? activeProjects.map((project, i) => `<figure class="portfolio-slide"><img src="${project.image}" srcset="${project.image.replace('.webp','-mobile.webp')} 720w, ${project.image} ${project.width}w" sizes="(max-width: 959px) 100vw, 72vw" alt="${project.title} — ${project.type}" decoding="async" ${i ? 'loading="lazy"' : 'fetchpriority="high"'}/></figure>`).join('')
+          ? activeProjects.map((project, i) => `<figure class="portfolio-slide">${project.url ? `<a href="${project.url}" aria-label="Открыть проект ${project.title}">` : ''}<img src="${project.image}" srcset="${project.mobileImage || project.image.replace('.webp','-mobile.webp')} 720w, ${project.image} ${project.width}w" sizes="(max-width: 959px) 100vw, 72vw" alt="${project.title} — ${project.type}" decoding="async" ${i ? 'loading="lazy"' : 'fetchpriority="high"'}/>${project.url ? '</a>' : ''}</figure>`).join('')
           : `<div class="portfolio-empty"><span>Раздел подготовлен</span><strong>Новые проекты<br/>скоро появятся</strong></div>`;
       };
       const paint = () => {
-        if (!activeProjects.length) { track.style.transform = 'none'; type.textContent = 'Портфолио · Новая категория'; title.textContent = 'Готово к наполнению'; description.textContent = 'Структура категории уже подготовлена. Проекты будут добавлены после отбора и оформления новых материалов.'; tags.innerHTML = ''; index.textContent = '00 / 00'; progress.style.width = '0'; return; }
-        const project = activeProjects[current]; track.style.transform = `translate3d(${-current * 100}%,0,0)`; type.textContent = project.type; title.textContent = project.title; description.textContent = project.description; tags.innerHTML = project.tags.map(tag => `<span>${tag}</span>`).join(''); index.textContent = `${String(current + 1).padStart(2,'0')} / ${String(activeProjects.length).padStart(2,'0')}`; progress.style.width = `${((current + 1) / activeProjects.length) * 100}%`;
+        if (!activeProjects.length) { track.style.transform = 'none'; type.textContent = 'Портфолио · Новая категория'; title.textContent = 'Готово к наполнению'; description.textContent = 'Структура категории уже подготовлена. Проекты будут добавлены после отбора и оформления новых материалов.'; tags.innerHTML = ''; projectLink.hidden = true; index.textContent = '00 / 00'; progress.style.width = '0'; return; }
+        const project = activeProjects[current]; track.style.transform = `translate3d(${-current * 100}%,0,0)`; type.textContent = project.type; title.textContent = project.title; description.textContent = project.description; tags.innerHTML = project.tags.map(tag => `<span>${tag}</span>`).join(''); projectLink.hidden = !project.url; if (project.url) projectLink.href = project.url; index.textContent = `${String(current + 1).padStart(2,'0')} / ${String(activeProjects.length).padStart(2,'0')}`; progress.style.width = `${((current + 1) / activeProjects.length) * 100}%`;
       };
       const go = direction => { if (!activeProjects.length) return; current = (current + direction + activeProjects.length) % activeProjects.length; paint(); };
       window.portfolioGo = go;
