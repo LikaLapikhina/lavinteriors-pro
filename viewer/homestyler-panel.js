@@ -1,7 +1,23 @@
 (async () => {
-  const app = window.HSApp.App.getApp();
-  const HSCore = window.HSCore;
-  const T3D = window.T3D;
+  let targetWin = window;
+  if (!targetWin.HSApp || !targetWin.HSApp.App) {
+    const iframes = Array.from(document.querySelectorAll('iframe'));
+    for (const ifr of iframes) {
+      try {
+        if (ifr.contentWindow && ifr.contentWindow.HSApp && ifr.contentWindow.HSApp.App) {
+          targetWin = ifr.contentWindow;
+          break;
+        }
+      } catch (e) {}
+    }
+  }
+  if (!targetWin.HSApp || !targetWin.HSApp.App) {
+    alert('Откройте 3D-сцену (проект) в Homestyler и нажмите на закладку «⚡ 3DSky Панель» ещё раз!');
+    return;
+  }
+  const app = targetWin.HSApp.App.getApp();
+  const HSCore = targetWin.HSCore;
+  const T3D = targetWin.T3D;
   const SERVER_ORIGIN = 'http://127.0.0.1:3033';
 
   // ============================================================================
