@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>SkyPro GLB Studio v2 — Проверка качества конвертации (.max → .glb)</title>
+<style>
+  :root {
+    --bg: #121418;
+    --panel: #1b1e24;
+    --card: #232730;
+    --border: #313744;
+    --accent: #3b82f6;
+    --accent-hover: #2563eb;
+    --text: #f3f4f6;
+    --muted: #9ca3af;
+    --ok: #10b981;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  header {
+    height: 54px;
+    background: var(--panel);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    flex-shrink: 0;
+  }
+  header h1 { font-size: 16px; font-weight: 600; display: flex; align-items: center; gap: 10px; }
+  .badge { background: rgba(16,185,129,0.16); color: #34d399; border: 1px solid rgba(16,185,129,0.35); font-size: 11px; padding: 3px 8px; border-radius: 999px; }
+  .folder-info { font-size: 12px; color: var(--muted); background: #14171c; padding: 5px 12px; border-radius: 6px; border: 1px solid var(--border); }
+  .main {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 390px 1fr 350px;
+    min-height: 0;
+  }
+  /* Left sidebar: models list */
+  .sidebar {
+    background: var(--panel);
+    border-right: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+  }
+  .sidebar-header {
+    padding: 10px 12px 8px;
+    border-bottom: 1px solid var(--border);
+    flex-shrink: 0;
+  }
+  .search-input {
+    width: 100%;
+    padding: 7px 10px;
+    background: #121418;
+    border: 1px solid var(--border);
+    color: var(--text);
+    border-radius: 6px;
+    font-size: 13px;
+  }
+  .tags-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-top: 7px;
+    max-height: 68px;
+    overflow-y: auto;
+    padding-right: 2px;
+  }
+  .tag-chip {
+    font-size: 11px;
+    padding: 2px 7px;
+    border-radius: 4px;
+    background: var(--card);
+    color: var(--muted);
+    cursor: pointer;
+    border: 1px solid transparent;
+    white-space: nowrap;
+  }
+  .tag-chip.active { background: rgba(59,130,246,0.22); color: #60a5fa; border-color: #3b82f6; font-weight: 600; }
+  .lib-count-bar {
+    font-size: 11px;
+    color: #9ca3af;
+    margin-top: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .model-grid {
+    flex: 1;
+    overflow-y: auto;
+    padding: 10px 12px;
+    display: grid;
+    grid-template-columns: repeat(3, 114px);
+    justify-content: space-between;
+    gap: 8px;
+    align-content: start;
+  }
+  /* Exact Homestyler Card Match */
+  .hs-card {
+    width: 114px;
+    height: 114px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    transition: border-color 0.15s, transform 0.12s;
+  }
+  .hs-card:hover { border-color: #60a5fa; transform: translateY(-1px); }
+  .hs-card.active { border: 2px solid var(--accent); }
+  .hs-card img {
+    width: 112px;
+    height: 112px;
+    object-fit: cover;
+    display: block;
+    background: #fff;
+  }
+  .hs-card-label {
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    background: linear-gradient(transparent, rgba(0,0,0,0.86));
+    color: #fff;
+    font-size: 10px;
+    line-height: 1.2;
+    padding: 14px 5px 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  /* Center: Interactive 3D GLB Canvas */
+  .viewport-wrap {
+    position: relative;
+    background: radial-gradient(circle at 50% 35%, #2b303c 0%, #171a21 100%);
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+  }
+  #canvas3d { width: 100%; height: 100%; display: block; }
+  .viewport-toolbar {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    right: 14px;
+    display: flex;
+    justify-content: space-between;
+    pointer-events: none;
+  }
+  .vp-box {
+    pointer-events: auto;
+    background: rgba(27,30,36,0.88);
+    backdrop-filter: blur(8px);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .btn {
+    background: var(--card);
+    color: var(--text);
+    border: 1px solid var(--border);
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 12px;
+  }
+  .btn:hover { border-color: #60a5fa; }
+  .btn-primary { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 500; }
+  .btn-primary:hover { background: var(--accent-hover); }
+  /* Right sidebar: Reference comparison & Sub-parts (шарики / части) */
+  .inspector {
+    background: var(--panel);
+    border-left: 1px solid var(--border);
+    overflow-y: auto;
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .sec-title { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted); margin-bottom: 6px; }
+  .ref-pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+  .ref-box {
+    background: #14171c;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+    text-align: center;
+  }
+  .ref-box img { width: 100%; height: 150px; object-fit: contain; background: #fff; display: block; }
+  .ref-box span { display: block; font-size: 11px; color: var(--muted); padding: 4px; }
+  .parts-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .part-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 6px 8px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    font-size: 12px;
+  }
+  .part-item label { display: flex; align-items: center; gap: 7px; cursor: pointer; flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .ball-tag { background: #ef4444; color: #fff; font-size: 10px; padding: 1px 5px; border-radius: 3px; }
+</style>
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+    "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+  }
+}
+</script>
+</head>
+<body>
+<header>
+  <h1>
+    <span>LAV Interiors — 3DSky Pro Studio</span>
+    <span class="badge">Каталог + Homestyler Панель</span>
+  </h1>
+  <div style="display:flex;align-items:center;gap:10px;">
+    <div id="batchStatusText" style="font-size:12px;color:#9ca3af;">Проверка базы...</div>
+    <button id="btnBatchToggle" class="btn btn-primary" style="padding:5px 12px;font-weight:600;">⚙ Обработать новые в GLB</button>
+    <a id="bookmarkletBtn" href="javascript:(function(){var s=document.createElement('script');s.src='http://127.0.0.1:3033/homestyler-panel.js?t='+Date.now();document.body.appendChild(s);})();void(0);" title="Зажмите левой кнопкой мыши и перетащите эту кнопку на панель закладок Chrome! А нажимайте на закладку уже внутри вкладки Homestyler." style="background:#2563eb;color:#fff;text-decoration:none;padding:5px 11px;border-radius:6px;font-size:12px;font-weight:600;border:1px solid #60a5fa;white-space:nowrap;">⚡ 3DSky Панель (перетащи в закладки)</a>
+  </div>
+</header>
+<div class="main">
+  <div class="sidebar">
+    <div class="sidebar-header">
+      <input type="text" id="searchInput" class="search-input" placeholder="Поиск по названию, бренду или #тегу...">
+      <div class="tags-row" id="tagsRow"></div>
+      <div class="lib-count-bar">
+        <span id="libCountText">Библиотека моделей: загрузка...</span>
+        <button id="btnRefreshLib" class="btn" style="padding:1px 7px;font-size:11px;">↻ Обновить</button>
+      </div>
+    </div>
+    <div class="model-grid" id="modelGrid"></div>
+  </div>
+
+  <div class="viewport-wrap">
+    <div class="viewport-toolbar">
+      <div class="vp-box">
+        <strong id="activeTitle">Выберите модель</strong>
+        <span id="activeStats" style="color:var(--muted)"></span>
+      </div>
+      <div class="vp-box">
+        <button class="btn" id="btnHideBalls">Убрать шарики материалов</button>
+        <button class="btn" id="btnResetCam">Сбросить камеру</button>
+      </div>
+    </div>
+    <canvas id="canvas3d"></canvas>
+  </div>
+
+  <div class="inspector">
+    <div>
+      <div class="sec-title">Сравнение: Оригинал 3DSky vs Конвертация GLB v2</div>
+      <div class="ref-pair">
+        <div class="ref-box">
+          <img id="imgRef" src="" alt="Оригинал 3DSky">
+          <span>Оригинал 3DSky</span>
+        </div>
+        <div class="ref-box">
+          <img id="imgPrev" src="" alt="GLB v2 Рендер">
+          <span>Превью модели</span>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="sec-title">Части модели (можно отключить лишние предметы / шарики)</div>
+      <div class="parts-list" id="partsList"></div>
+    </div>
+  </div>
+</div>
+
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
+
+const API_BASE = (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') ? '' : 'http://127.0.0.1:3033';
+const absUrl = (u) => {
+  if (!u) return '';
+  if (u.startsWith('data:') || u.startsWith('http://') || u.startsWith('https://')) return u;
+  return API_BASE + (u.startsWith('/') ? u : '/' + u);
+};
+
+let models = [];
+let activeModel = null;
+let activeTag = '';
+let loadedRoot = null;
+const meshByName = new Map();
+
+const canvas = document.getElementById('canvas3d');
+const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = 1.05;
+renderer.outputColorSpace = THREE.SRGBColorSpace;
+
+const scene = new THREE.Scene();
+const pmrem = new THREE.PMREMGenerator(renderer);
+scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
+
+const dirLight = new THREE.DirectionalLight(0xfff8f0, 1.6);
+dirLight.position.set(2.5, 4.0, 3.0);
+scene.add(dirLight);
+const fillLight = new THREE.DirectionalLight(0xdbeafe, 0.7);
+fillLight.position.set(-3.0, 2.0, -2.0);
+scene.add(fillLight);
+
+const grid = new THREE.GridHelper(3, 15, 0x3b4252, 0x262b36);
+scene.add(grid);
+
+const camera = new THREE.PerspectiveCamera(40, 1, 0.01, 100);
+camera.position.set(1.2, 0.9, 1.4);
+const controls = new OrbitControls(camera, canvas);
+controls.enableDamping = true;
+
+function resize() {
+  const rect = canvas.parentElement.getBoundingClientRect();
+  renderer.setSize(rect.width, rect.height, false);
+  camera.aspect = rect.width / Math.max(1, rect.height);
+  camera.updateProjectionMatrix();
+}
+window.addEventListener('resize', resize);
+resize();
+
+function animate() {
+  requestAnimationFrame(animate);
+  controls.update();
+  renderer.render(scene, camera);
+}
+animate();
+
+function fitCameraToObject(obj) {
+  const box = new THREE.Box3().setFromObject(obj);
+  if (box.isEmpty()) return;
+  const size = box.getSize(new THREE.Vector3());
+  const center = box.getCenter(new THREE.Vector3());
+  const maxDim = Math.max(size.x, size.y, size.z, 0.1);
+  controls.target.copy(center);
+  camera.position.set(center.x + maxDim * 1.25, center.y + maxDim * 0.85, center.z + maxDim * 1.35);
+  camera.near = Math.max(0.005, maxDim * 0.01);
+  camera.far = maxDim * 30;
+  camera.updateProjectionMatrix();
+  controls.update();
+}
+
+const loader = new GLTFLoader();
+
+async function selectModel(m) {
+  activeModel = m;
+  renderCards();
+  document.getElementById('activeTitle').textContent = m.label || m.title || m.id;
+  document.getElementById('activeStats').textContent = `(${m.materialsCount || 0} мат., ${m.meshesCount || 0} объектов)`;
+  const imgUrl = m.thumbDataUri || absUrl(m.reference || m.preview || '');
+  document.getElementById('imgRef').src = absUrl(m.reference || '') || imgUrl;
+  document.getElementById('imgPrev').src = imgUrl;
+
+  if (loadedRoot) {
+    scene.remove(loadedRoot);
+    loadedRoot = null;
+  }
+  meshByName.clear();
+
+  const glbPath = absUrl(m.glb || m.hsGlb) + '?t=' + Date.now();
+  loader.load(glbPath, (gltf) => {
+    loadedRoot = gltf.scene;
+    const box = new THREE.Box3().setFromObject(loadedRoot);
+    const min = box.min;
+    const center = box.getCenter(new THREE.Vector3());
+    loadedRoot.position.set(-center.x, -min.y, -center.z);
+    scene.add(loadedRoot);
+    fitCameraToObject(loadedRoot);
+
+    const partsEl = document.getElementById('partsList');
+    partsEl.innerHTML = '';
+    const meshes = [];
+    loadedRoot.traverse((child) => {
+      if (child.isMesh) {
+        meshes.push(child);
+        meshByName.set(child.name, child);
+      }
+    });
+
+    meshes.forEach((mesh, idx) => {
+      const pMeta = (m.parts || []).find(p => p.name === mesh.name) || {};
+      const isBall = !!pMeta.isMaterialBallCandidate || /sphere|ball|шар/i.test(mesh.name);
+      if (isBall) mesh.visible = false;
+
+      const row = document.createElement('div');
+      row.className = 'part-item';
+      row.innerHTML = `
+        <label>
+          <input type="checkbox" ${mesh.visible ? 'checked' : ''} data-name="${mesh.name}">
+          <span>${idx + 1}. ${mesh.name}</span>
+        </label>
+        ${isBall ? '<span class="ball-tag">шарик</span>' : ''}
+      `;
+      row.querySelector('input').addEventListener('change', (e) => {
+        mesh.visible = e.target.checked;
+      });
+      partsEl.appendChild(row);
+    });
+  });
+}
+
+document.getElementById('btnResetCam').addEventListener('click', () => {
+  if (loadedRoot) fitCameraToObject(loadedRoot);
+});
+
+document.getElementById('btnHideBalls').addEventListener('click', () => {
+  if (!loadedRoot) return;
+  loadedRoot.traverse((c) => {
+    if (c.isMesh && /sphere|ball|шар/i.test(c.name)) {
+      c.visible = false;
+    }
+  });
+});
+
+function renderCards() {
+  const q = document.getElementById('searchInput').value.trim().toLowerCase();
+  const gridEl = document.getElementById('modelGrid');
+  gridEl.innerHTML = '';
+  const filtered = models.filter(m => {
+    const text = ((m.label || '') + ' ' + (m.title || '') + ' ' + (m.brand || '') + ' ' + (m.category || '') + ' ' + (m.subcategory || '') + ' ' + (m.tags || []).join(' ')).toLowerCase();
+    if (q && !text.includes(q.replace('#', ''))) return false;
+    if (activeTag) {
+      const tLow = activeTag.toLowerCase();
+      if (!(m.tags || []).some(t => t.toLowerCase() === tLow) && !text.includes(tLow.replace('#', ''))) return false;
+    }
+    return true;
+  });
+  const countEl = document.getElementById('libCountText');
+  if (countEl) {
+    countEl.textContent = `В библиотеке: ${filtered.length} из ${models.length} моделей`;
+  }
+  const frag = document.createDocumentFragment();
+  filtered.forEach(m => {
+    const card = document.createElement('div');
+    card.className = 'hs-card' + (activeModel && activeModel.id === m.id ? ' active' : '');
+    const thumb = m.thumbDataUri || absUrl(m.reference || m.preview || '');
+    card.innerHTML = `
+      <img loading="lazy" src="${thumb}" alt="${m.label}">
+      <div class="hs-card-label" title="${m.label}">${m.isConverted === false ? '⏳ ' : ''}${m.label}</div>
+    `;
+    card.addEventListener('click', () => selectModel(m));
+    frag.appendChild(card);
+  });
+  gridEl.appendChild(frag);
+}
+
+let batchRunning = false;
+async function pollBatchStatus() {
+  try {
+    const res = await fetch(API_BASE + '/api/batch/status?t=' + Date.now());
+    const st = await res.json();
+    batchRunning = !!st.running;
+    const btn = document.getElementById('btnBatchToggle');
+    const txt = document.getElementById('batchStatusText');
+    if (batchRunning) {
+      btn.textContent = '■ Остановить обработку GLB';
+      btn.style.background = '#dc2626';
+      btn.style.borderColor = '#dc2626';
+      const pInfo = st.statusInfo || {};
+      txt.innerHTML = `<span style="color:#34d399;font-weight:600;">● Идёт конвертация:</span> готово <b>${st.readyCount}</b> шт. (${pInfo.processedInPass || 0}/${pInfo.todoInPass || '?'})`;
+    } else {
+      btn.textContent = '⚙ Обработать новые в GLB';
+      btn.style.background = '#3b82f6';
+      btn.style.borderColor = '#3b82f6';
+      txt.innerHTML = `Готово в базе: <b style="color:#fff">${st.readyCount}</b> шт. (фоновая конвертация выключена — 0% нагрузки на ПК)`;
+    }
+  } catch (e) {
+    document.getElementById('batchStatusText').innerHTML = `<span style="color:#f87171;">Локальный сервер (127.0.0.1:3033) не запущен. Откройте «Панель SkyPro» на рабочем столе.</span>`;
+  }
+}
+
+document.getElementById('btnBatchToggle').addEventListener('click', async () => {
+  const endpoint = batchRunning ? '/api/batch/stop' : '/api/batch/start';
+  await fetch(API_BASE + endpoint, { method: 'POST' });
+  await pollBatchStatus();
+});
+
+document.getElementById('bookmarkletBtn').addEventListener('click', (e) => {
+  e.preventDefault();
+  alert('Как добавить кнопку запуска панели в Homestyler:\\n\\n1. Включите панель закладок в браузере (нажмите Ctrl + Shift + B).\\n2. Зажмите эту синюю кнопку «⚡ 3DSky Панель» левой кнопкой мыши и перетащите её вверх на панель закладок браузера.\\n3. Когда вы откроете проект в Homestyler, просто нажмите на эту закладку вверху браузера — и панель 3DSky Pro сразу появится справа!');
+});
+
+async function loadLibraryModels() {
+  const res = await fetch(API_BASE + '/api/models?t=' + Date.now());
+  models = await res.json();
+  const curatedTags = [
+    'Все', '#⭐Приоритет', '#ДекоративныйНабор', '#divan.ru', '#Ogogo', '#skdesign', '#Maytoni',
+    '#Диваны', '#Кровать', '#Кресла', '#Столы', '#Стулья', '#Пуф', '#тумба', '#Освещение', '#Декор', '#Мебель'
+  ];
+  const tagsRow = document.getElementById('tagsRow');
+  tagsRow.innerHTML = '';
+  curatedTags.forEach(t => {
+    const chip = document.createElement('span');
+    const val = t === 'Все' ? '' : t;
+    chip.className = 'tag-chip' + (activeTag === val ? ' active' : '');
+    chip.textContent = t;
+    chip.addEventListener('click', () => {
+      activeTag = val;
+      Array.from(tagsRow.children).forEach(ch => {
+        const v = ch.textContent === 'Все' ? '' : ch.textContent;
+        ch.className = 'tag-chip' + (activeTag === v ? ' active' : '');
+      });
+      renderCards();
+    });
+    tagsRow.appendChild(chip);
+  });
+  renderCards();
+  if (models.length && !activeModel) selectModel(models[0]);
+}
+
+document.getElementById('btnRefreshLib').addEventListener('click', loadLibraryModels);
+
+async function init() {
+  await pollBatchStatus();
+  setInterval(pollBatchStatus, 4000);
+  await loadLibraryModels();
+  document.getElementById('searchInput').addEventListener('input', renderCards);
+}
+init();
+</script>
+</body>
+</html>
