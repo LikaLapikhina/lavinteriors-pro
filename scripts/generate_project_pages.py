@@ -52,6 +52,16 @@ def load_catalog() -> tuple[dict, list[dict]]:
             mobile = image.get("mobileSrc")
             if mobile and not (ROOT / mobile.lstrip("/")).is_file():
                 raise ValueError(f"{slug}: mobile image does not exist: {mobile}")
+        cover = project.get("cover")
+        if cover:
+            for key in ("src", "width", "height"):
+                if not cover.get(key):
+                    raise ValueError(f"{slug}: cover is missing '{key}'")
+            if not (ROOT / cover["src"].lstrip("/")).is_file():
+                raise ValueError(f"{slug}: cover image does not exist: {cover['src']}")
+            cover_mobile = cover.get("mobileSrc")
+            if cover_mobile and not (ROOT / cover_mobile.lstrip("/")).is_file():
+                raise ValueError(f"{slug}: cover mobile image does not exist: {cover_mobile}")
     return data, [project for project in projects if project.get("published", False)]
 
 
@@ -93,9 +103,10 @@ def related_markup(project: dict, projects: list[dict]) -> str:
         related.extend(candidates[: 3 - len(related)])
     cards = []
     for item in related[:3]:
-        cover = item["images"][0]
+        cover = item.get("cover") or item["images"][0]
+        cover_alt = cover.get("alt") or item["images"][0]["alt"]
         cards.append(f'''<a class="related-card" href="/interior/projects/{esc(item['slug'])}/">
-              <img src="{esc(cover['src'])}" width="{int(cover['width'])}" height="{int(cover['height'])}" alt="{esc(cover['alt'])}" loading="lazy" decoding="async"/>
+              <img src="{esc(cover['src'])}" width="{int(cover['width'])}" height="{int(cover['height'])}" alt="{esc(cover_alt)}" loading="lazy" decoding="async"/>
               <div class="related-copy"><small>{esc(item.get('roomType', 'Project'))}</small><h3>{esc(item['name'])}</h3></div>
             </a>''')
     if not cards:
@@ -135,7 +146,8 @@ def structured_data(site_url: str, project: dict, canonical: str, cover_url: str
 
 def build_page(template: Template, site_url: str, project: dict, projects: list[dict], index: int) -> str:
     canonical = f"{site_url.rstrip('/')}/interior/projects/{project['slug']}/"
-    cover = project["images"][0]
+    cover = project.get("cover") or project["images"][0]
+    cover_alt = cover.get("alt") or project["images"][0]["alt"]
     gallery = "\n".join(picture_markup(image, image_index) for image_index, image in enumerate(project["images"]))
     gallery = gallery.replace("{total:02d}", f"{len(project['images']):02d}")
     previous = projects[index - 1] if index > 0 else None
@@ -145,7 +157,7 @@ def build_page(template: Template, site_url: str, project: dict, projects: list[
         "seo_description": esc(project["seoDescription"]),
         "canonical_url": esc(canonical),
         "og_image": esc(site_url.rstrip("/") + cover["src"]),
-        "og_image_alt": esc(cover["alt"]),
+        "og_image_alt": esc(cover_alt),
         "og_image_width": int(cover["width"]),
         "og_image_height": int(cover["height"]),
         "structured_data": structured_data(site_url, project, canonical, site_url.rstrip("/") + cover["src"]),
@@ -164,13 +176,14 @@ def build_page(template: Template, site_url: str, project: dict, projects: list[
 def write_catalog_js(projects: list[dict]) -> None:
     catalog = []
     for project in projects:
-        cover = project["images"][0]
+        cover = project.get("cover") or project["images"][0]
+        type_label = project.get("typeLabel") or " · ".join(value for value in (project.get("roomType"), project.get("location")) if value)
         catalog.append({
             "category": project.get("category", "interior"),
             "image": cover["src"],
             "mobileImage": cover.get("mobileSrc", cover["src"]),
             "width": cover["width"],
-            "type": " · ".join(value for value in (project.get("roomType"), project.get("location")) if value),
+            "type": type_label,
             "title": project["name"],
             "description": project["description"],
             "tags": project.get("tags", []),

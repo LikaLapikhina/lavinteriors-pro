@@ -2,10 +2,100 @@
 window.LAV_PROJECT_PAGES = [
   {
     "category": "interior",
+    "image": "/images/portfolio-hire/interior-06.webp",
+    "mobileImage": "/images/portfolio-hire/interior-06-mobile.webp",
+    "width": 1600,
+    "type": "Интерьер · Жилая квартира",
+    "title": "Тёплый модернизм",
+    "description": "Цельное пространство в травертине, тёмном дереве и металле. Классическая архитектура сохранена, а мебель и свет собраны в современную скульптурную композицию.",
+    "tags": [
+      "Концепция",
+      "3D-визуализация",
+      "Материалы"
+    ],
+    "url": "/interior/projects/travertine-heritage/"
+  },
+  {
+    "category": "interior",
+    "image": "/images/portfolio-hire/interior-walnut-verde.webp",
+    "mobileImage": "/images/portfolio-hire/interior-walnut-verde-mobile.webp",
+    "width": 1600,
+    "type": "Интерьер · Жилая квартира",
+    "title": "Walnut Verde",
+    "description": "Природный модернизм на сочетании глубокого американского ореха, выразительного зелёного камня и тактильной кожи. Архитектурные объёмы камина и встроенной мебели формируют цельный образ квартиры.",
+    "tags": [
+      "Орех и мрамор",
+      "Концепция",
+      "3D-визуализация"
+    ],
+    "url": "/interior/projects/walnut-verde/"
+  },
+  {
+    "category": "interior",
+    "image": "/images/portfolio-hire/interior-01.webp",
+    "mobileImage": "/images/portfolio-hire/interior-01-mobile.webp",
+    "width": 1448,
+    "type": "Интерьер · Апартаменты",
+    "title": "Контраст и пластика",
+    "description": "Современный интерьер с глубоким тёмным деревом, белым скульптурным барельефом и выразительным мрамором. Выверенный баланс строгой графичности и классической пластики.",
+    "tags": [
+      "Полный цикл",
+      "Авторские детали",
+      "Визуализация"
+    ],
+    "url": "/interior/projects/contrast-and-plasticity/"
+  },
+  {
+    "category": "interior",
+    "image": "/images/portfolio-hire/interior-ivory-marble.webp",
+    "mobileImage": "/images/portfolio-hire/interior-ivory-marble-mobile.webp",
+    "width": 1600,
+    "type": "Интерьер · Жилая квартира",
+    "title": "Ivory Marble",
+    "description": "Светлый интерьер в современной классике, построенный на выразительном рисунке мрамора, тонких латунных акцентах и мягкой пластике рифлёных фасадов. Единая палитра связывает кухню, гостиную, кабинет, спальню и ванную комнату в цельное пространство.",
+    "tags": [
+      "Мрамор",
+      "Латунь",
+      "Современная классика"
+    ],
+    "url": "/interior/projects/ivory-marble/"
+  },
+  {
+    "category": "interior",
+    "image": "/images/portfolio-hire/interior-03.webp",
+    "mobileImage": "/images/portfolio-hire/interior-03-mobile.webp",
+    "width": 1448,
+    "type": "Интерьер · Пентхаус",
+    "title": "Dark statement",
+    "description": "Выразительный тёмный интерьер с натуральным мореным дубом, чёрным мрамором с золотыми прожилками и сложным декоративным светом. Представительная камерная атмосфера без лишнего декора.",
+    "tags": [
+      "Премиум-сегмент",
+      "Свет",
+      "3D-визуализация"
+    ],
+    "url": "/interior/projects/dark-statement/"
+  },
+  {
+    "category": "interior",
+    "image": "/images/portfolio-hire/interior-04.webp",
+    "mobileImage": "/images/portfolio-hire/interior-04-mobile.webp",
+    "width": 1448,
+    "type": "Интерьер · Квартира",
+    "title": "Natural balance",
+    "description": "Спокойный минимализм в натуральной палитре. Светлый дуб, мягкие фактуры льна и коньячной кожи, чистая геометрия и продуманное хранение формируют комфортный повседневный интерьер.",
+    "tags": [
+      "Планировка",
+      "Полный цикл",
+      "Рабочие чертежи"
+    ],
+    "url": "/interior/projects/natural-balance/"
+  },
+  {
+    "category": "interior",
     "image": "/images/portfolio-hire/interior-02.webp",
     "mobileImage": "/images/portfolio-hire/interior-02-mobile.webp",
     "width": 1448,
-    "type": "Жилая квартира · Москва",
+    "type": "Интерьер · Жилая квартира",
     "title": "Warm Classic Apartment",
     "description": "Светлый семейный интерьер, где мягкая классическая архитектура соединяется с современной мебелью, тёплой пудровой палитрой и деликатными латунными акцентами.",
     "tags": [
@@ -17,17 +107,47 @@ window.LAV_PROJECT_PAGES = [
   },
   {
     "category": "interior",
-    "image": "/images/projects/ivory-marble/01-kitchen.webp",
-    "mobileImage": "/images/projects/ivory-marble/01-kitchen-mobile.webp",
-    "width": 1080,
-    "type": "Жилая квартира",
-    "title": "Ivory Marble",
-    "description": "Светлый интерьер в современной классике, построенный на выразительном рисунке мрамора, тонких латунных акцентах и мягкой пластике мебели. Единая палитра связывает кухню, гостиную, кабинет, спальню и ванную комнату в цельное пространство.",
+    "image": "/images/portfolio-hire/interior-oak-boucle.webp",
+    "mobileImage": "/images/portfolio-hire/interior-oak-boucle-mobile.webp",
+    "width": 1600,
+    "type": "Интерьер · Панорамная квартира",
+    "title": "Light Oak & Bouclé",
+    "description": "Воздушное панорамное пространство в молочных и песочных оттенках. Светлый дуб, мягкая пластика дивана букле, травертин и продуманные сценарии естественного и вечернего освещения.",
     "tags": [
-      "Мрамор",
-      "Латунь",
-      "Современная классика"
+      "Светлый дуб",
+      "Букле и камень",
+      "3D-визуализация"
     ],
-    "url": "/interior/projects/ivory-marble/"
+    "url": "/interior/projects/oak-and-boucle/"
+  },
+  {
+    "category": "exterior",
+    "image": "/images/portfolio-hire/exterior-01.webp",
+    "mobileImage": "/images/portfolio-hire/exterior-01-mobile.webp",
+    "width": 1600,
+    "type": "Экстерьер · Загородный дом",
+    "title": "Дом среди сосен",
+    "description": "Современная загородная резиденция, вписанная в сосновый ландшафт: чистая горизонтальная геометрия, тёплое дерево, светлый камень, просторные террасы и приватный внутренний двор.",
+    "tags": [
+      "Архитектура",
+      "Фасады",
+      "Ландшафт"
+    ],
+    "url": "/interior/projects/pine-forest-residence/"
+  },
+  {
+    "category": "exterior",
+    "image": "/images/portfolio-hire/exterior-02.webp",
+    "mobileImage": "/images/portfolio-hire/exterior-02-mobile.webp",
+    "width": 1448,
+    "type": "Экстерьер · Частный дом",
+    "title": "Дом на закате",
+    "description": "Выразительный архитектурный силуэт с двускатной кровлей и панорамным остеклением. Тёплый вечерний свет подчёркивает фактуру дерева, камня и связь интерьера с садом.",
+    "tags": [
+      "Архитектура",
+      "Экстерьер",
+      "Озеленение"
+    ],
+    "url": "/interior/projects/sunset-modern-house/"
   }
 ];

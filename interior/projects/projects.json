@@ -3,56 +3,198 @@
   "projects": [
     {
       "published": true,
-      "name": "Warm Classic Apartment",
-      "slug": "warm-classic-apartment",
-      "description": "Светлый семейный интерьер, где мягкая классическая архитектура соединяется с современной мебелью, тёплой пудровой палитрой и деликатными латунными акцентами.",
-      "style": "Современная классика",
+      "name": "Тёплый модернизм",
+      "slug": "travertine-heritage",
+      "description": "Цельное пространство в травертине, тёмном дереве и металле. Классическая архитектура сохранена, а мебель и свет собраны в современную скульптурную композицию.",
+      "style": "Тёплый модернизм · Современная классика",
       "roomType": "Жилая квартира",
+      "typeLabel": "Интерьер · Жилая квартира",
       "category": "interior",
       "location": "Москва",
-      "tags": ["Жилой интерьер", "Концепция", "Комплектация"],
-      "seoTitle": "Warm Classic Apartment — проект интерьера | LAV Interiors",
-      "seoDescription": "Warm Classic Apartment — проект светлой семейной квартиры в современной классике от LAV Interiors. Интерьер, материалы и визуализации проекта.",
+      "tags": ["Концепция", "3D-визуализация", "Материалы"],
+      "seoTitle": "Тёплый модернизм (Travertine Heritage) — проект интерьера | LAV Interiors",
+      "seoDescription": "Проект квартиры в эстетике тёплого модернизма: натуральный травертин, американский орех, шлифованная сталь и классическая лепнина. LAV Interiors.",
+      "cover": {
+        "src": "/images/portfolio-hire/interior-06.webp",
+        "mobileSrc": "/images/portfolio-hire/interior-06-mobile.webp",
+        "width": 1600,
+        "height": 1200,
+        "alt": "Тёплый модернизм — коллаж проекта квартиры в травертине и орехе"
+      },
       "images": [
         {
-          "src": "/images/portfolio-hire/interior-02.webp",
-          "mobileSrc": "/images/portfolio-hire/interior-02-mobile.webp",
+          "src": "/images/projects/travertine-heritage/01-kitchen-dining.webp",
+          "mobileSrc": "/images/projects/travertine-heritage/01-kitchen-dining-mobile.webp",
+          "width": 1200,
+          "height": 1600,
+          "alt": "Тёплый модернизм — кухня-столовая с островом из стали, травертином и фасадами из ореха",
+          "layout": "portrait"
+        },
+        {
+          "src": "/images/projects/travertine-heritage/02-living-room.webp",
+          "mobileSrc": "/images/projects/travertine-heritage/02-living-room-mobile.webp",
+          "width": 1200,
+          "height": 1600,
+          "alt": "Тёплый модернизм — гостиная с классическим потолком, травертиновым объёмом и диваном букле",
+          "layout": "portrait"
+        },
+        {
+          "src": "/images/projects/travertine-heritage/03-bathroom.webp",
+          "mobileSrc": "/images/projects/travertine-heritage/03-bathroom-mobile.webp",
+          "width": 1200,
+          "height": 1600,
+          "alt": "Тёплый модернизм — ванная комната в травертине со стальной тумбой и отдельностоящей ванной",
+          "layout": "portrait"
+        },
+        {
+          "src": "/images/projects/travertine-heritage/04-home-office.webp",
+          "mobileSrc": "/images/projects/travertine-heritage/04-home-office-mobile.webp",
+          "width": 1200,
+          "height": 1600,
+          "alt": "Тёплый модернизм — кабинет с панелями из ореха и каминным порталом из травертина",
+          "layout": "portrait"
+        },
+        {
+          "src": "/images/projects/travertine-heritage/05-wardrobe.webp",
+          "mobileSrc": "/images/projects/travertine-heritage/05-wardrobe-mobile.webp",
+          "width": 1200,
+          "height": 1600,
+          "alt": "Тёплый модернизм — гардеробная с центральным островом и арочным зеркалом",
+          "layout": "portrait"
+        },
+        {
+          "src": "/images/projects/travertine-heritage/06-bedroom.webp",
+          "mobileSrc": "/images/projects/travertine-heritage/06-bedroom-mobile.webp",
+          "width": 1200,
+          "height": 1600,
+          "alt": "Тёплый модернизм — спальня с акцентной стеной из травертина и тёплым текстилем",
+          "layout": "portrait"
+        }
+      ]
+    },
+    {
+      "published": true,
+      "name": "Walnut Verde",
+      "slug": "walnut-verde",
+      "description": "Природный модернизм на сочетании глубокого американского ореха, выразительного зелёного камня и тактильной кожи. Архитектурные объёмы камина и встроенной мебели формируют цельный образ квартиры.",
+      "style": "Природный модернизм",
+      "roomType": "Жилая квартира",
+      "typeLabel": "Интерьер · Жилая квартира",
+      "category": "interior",
+      "location": "Москва",
+      "tags": ["Орех и мрамор", "Концепция", "3D-визуализация"],
+      "seoTitle": "Walnut Verde — интерьер в природном модернизме | LAV Interiors",
+      "seoDescription": "Walnut Verde — проект современной квартиры с американским орехом, зелёным мрамором и кожаными акцентами. Интерьер и 3D-визуализация LAV Interiors.",
+      "cover": {
+        "src": "/images/portfolio-hire/interior-walnut-verde.webp",
+        "mobileSrc": "/images/portfolio-hire/interior-walnut-verde-mobile.webp",
+        "width": 1600,
+        "height": 1200,
+        "alt": "Walnut Verde — коллаж проекта квартиры с американским орехом и зелёным мрамором"
+      },
+      "images": [
+        {
+          "src": "/images/projects/walnut-verde/01-living-room.webp",
+          "mobileSrc": "/images/projects/walnut-verde/01-living-room-mobile.webp",
+          "width": 896,
+          "height": 1200,
+          "alt": "Walnut Verde — гостиная с монолитным камином из зелёного камня, панелями из ореха и кожаным креслом",
+          "layout": "portrait"
+        },
+        {
+          "src": "/images/projects/walnut-verde/02-bedroom.webp",
+          "mobileSrc": "/images/projects/walnut-verde/02-bedroom-mobile.webp",
+          "width": 896,
+          "height": 1200,
+          "alt": "Walnut Verde — спальня с изголовьем из камня и ореха и оливковым кожаным креслом",
+          "layout": "portrait"
+        },
+        {
+          "src": "/images/projects/walnut-verde/03-home-office.webp",
+          "mobileSrc": "/images/projects/walnut-verde/03-home-office-mobile.webp",
+          "width": 896,
+          "height": 1200,
+          "alt": "Walnut Verde — кабинет с письменным столом из ореха, графичным текстильным панно и встроенным стеллажом",
+          "layout": "portrait"
+        },
+        {
+          "src": "/images/projects/walnut-verde/04-bathroom.webp",
+          "mobileSrc": "/images/projects/walnut-verde/04-bathroom-mobile.webp",
+          "width": 896,
+          "height": 1200,
+          "alt": "Walnut Verde — ванная комната с каменной консолью, круглым зеркалом и отдельностоящей ванной",
+          "layout": "portrait"
+        },
+        {
+          "src": "/images/projects/walnut-verde/05-wardrobe.webp",
+          "mobileSrc": "/images/projects/walnut-verde/05-wardrobe-mobile.webp",
+          "width": 896,
+          "height": 1200,
+          "alt": "Walnut Verde — гардеробная из ореха с островом под каменной столешницей",
+          "layout": "portrait"
+        }
+      ]
+    },
+    {
+      "published": true,
+      "name": "Контраст и пластика",
+      "slug": "contrast-and-plasticity",
+      "description": "Современный интерьер с глубоким тёмным деревом, белым скульптурным барельефом и выразительным мрамором. Выверенный баланс строгой графичности и классической пластики.",
+      "style": "Современная эклектика",
+      "roomType": "Апартаменты",
+      "typeLabel": "Интерьер · Апартаменты",
+      "category": "interior",
+      "location": "Москва",
+      "tags": ["Полный цикл", "Авторские детали", "Визуализация"],
+      "seoTitle": "Контраст и пластика — проект апартаментов | LAV Interiors",
+      "seoDescription": "Проект апартаментов на контрасте тёмного дерева, чёрного металла и классического белого рельефа. Дизайн и визуализация LAV Interiors.",
+      "cover": {
+        "src": "/images/portfolio-hire/interior-01.webp",
+        "mobileSrc": "/images/portfolio-hire/interior-01-mobile.webp",
+        "width": 1448,
+        "height": 1086,
+        "alt": "Контраст и пластика — коллаж проекта апартаментов с тёмным деревом и белым барельефом"
+      },
+      "images": [
+        {
+          "src": "/images/projects/contrast-and-plasticity/01-kitchen-living.webp",
+          "mobileSrc": "/images/projects/contrast-and-plasticity/01-kitchen-living-mobile.webp",
           "width": 1448,
           "height": 1086,
-          "alt": "Warm Classic Apartment — светлая гостиная в современной классике",
+          "alt": "Контраст и пластика — кухня-гостиная с фасадами из тёмного дуба, графичным островом и рельефным панно",
           "layout": "wide"
         },
         {
-          "src": "/images/portfolio-hire/interior-01.webp",
-          "mobileSrc": "/images/portfolio-hire/interior-01-mobile.webp",
+          "src": "/images/projects/contrast-and-plasticity/02-bedroom.webp",
+          "mobileSrc": "/images/projects/contrast-and-plasticity/02-bedroom-mobile.webp",
           "width": 1448,
           "height": 1086,
-          "alt": "Контрастная зона гостиной с тёмным деревом и светлым рельефом",
+          "alt": "Контраст и пластика — спальня с архитектурной нишей из тёмного дерева и гипсовым рельефом",
           "layout": "standard"
         },
         {
-          "src": "/images/portfolio-hire/interior-05.webp",
-          "mobileSrc": "/images/portfolio-hire/interior-05-mobile.webp",
+          "src": "/images/projects/contrast-and-plasticity/03-home-office.webp",
+          "mobileSrc": "/images/projects/contrast-and-plasticity/03-home-office-mobile.webp",
           "width": 1448,
           "height": 1086,
-          "alt": "Интерьер квартиры с латунными деталями и мягким текстилем",
+          "alt": "Контраст и пластика — рабочий кабинет с библиотекой и столом из тёмного дерева",
           "layout": "standard"
         },
         {
-          "src": "/images/portfolio-hire/interior-03.webp",
-          "mobileSrc": "/images/portfolio-hire/interior-03-mobile.webp",
+          "src": "/images/projects/contrast-and-plasticity/04-bathroom.webp",
+          "mobileSrc": "/images/projects/contrast-and-plasticity/04-bathroom-mobile.webp",
           "width": 1448,
           "height": 1086,
-          "alt": "Тёмная интерьерная композиция с натуральным деревом и камнем",
-          "layout": "wide"
+          "alt": "Контраст и пластика — ванная комната с матовой чёрной чашей ванны и рельефным декором",
+          "layout": "standard"
         },
         {
-          "src": "/images/portfolio-hire/interior-04.webp",
-          "mobileSrc": "/images/portfolio-hire/interior-04-mobile.webp",
+          "src": "/images/projects/contrast-and-plasticity/05-hallway.webp",
+          "mobileSrc": "/images/projects/contrast-and-plasticity/05-hallway-mobile.webp",
           "width": 1448,
           "height": 1086,
-          "alt": "Спокойная жилая зона в натуральной тёплой палитре",
-          "layout": "wide"
+          "alt": "Контраст и пластика — прихожая с консолью, тёплой подсветкой и мраморным полом",
+          "layout": "standard"
         }
       ]
     },
@@ -60,13 +202,22 @@
       "published": true,
       "name": "Ivory Marble",
       "slug": "ivory-marble",
-      "description": "Светлый интерьер в современной классике, построенный на выразительном рисунке мрамора, тонких латунных акцентах и мягкой пластике мебели. Единая палитра связывает кухню, гостиную, кабинет, спальню и ванную комнату в цельное пространство.",
+      "description": "Светлый интерьер в современной классике, построенный на выразительном рисунке мрамора, тонких латунных акцентах и мягкой пластике рифлёных фасадов. Единая палитра связывает кухню, гостиную, кабинет, спальню и ванную комнату в цельное пространство.",
       "style": "Современная классика",
       "roomType": "Жилая квартира",
+      "typeLabel": "Интерьер · Жилая квартира",
       "category": "interior",
+      "location": "Москва",
       "tags": ["Мрамор", "Латунь", "Современная классика"],
       "seoTitle": "Ivory Marble — интерьер в современной классике | LAV Interiors",
       "seoDescription": "Ivory Marble — светлый интерьер квартиры с выразительным мрамором, латунными деталями и современной классической архитектурой. Проект LAV Interiors.",
+      "cover": {
+        "src": "/images/portfolio-hire/interior-ivory-marble.webp",
+        "mobileSrc": "/images/portfolio-hire/interior-ivory-marble-mobile.webp",
+        "width": 1600,
+        "height": 1200,
+        "alt": "Ivory Marble — коллаж светлого интерьера квартиры с мрамором и латунью"
+      },
       "images": [
         {
           "src": "/images/projects/ivory-marble/01-kitchen.webp",
@@ -107,6 +258,384 @@
           "height": 1440,
           "alt": "Ivory Marble — светлая ванная комната с мрамором, камнем и латунной сантехникой",
           "layout": "portrait"
+        }
+      ]
+    },
+    {
+      "published": true,
+      "name": "Dark statement",
+      "slug": "dark-statement",
+      "description": "Выразительный тёмный интерьер с натуральным мореным дубом, чёрным мрамором с золотыми прожилками и сложным декоративным светом. Представительная камерная атмосфера без лишнего декора.",
+      "style": "Скульптурный модернизм",
+      "roomType": "Пентхаус",
+      "typeLabel": "Интерьер · Пентхаус",
+      "category": "interior",
+      "location": "Москва",
+      "tags": ["Премиум-сегмент", "Свет", "3D-визуализация"],
+      "seoTitle": "Dark statement (Graphite Bronze) — интерьер пентхауса | LAV Interiors",
+      "seoDescription": "Проект пентхауса Dark statement: тёмный мрамор, мореный дуб, латунный свет и тактильное букле. Дизайн и визуализация LAV Interiors.",
+      "cover": {
+        "src": "/images/portfolio-hire/interior-03.webp",
+        "mobileSrc": "/images/portfolio-hire/interior-03-mobile.webp",
+        "width": 1448,
+        "height": 1086,
+        "alt": "Dark statement — коллаж тёмного интерьера пентхауса с мрамором и латунью"
+      },
+      "images": [
+        {
+          "src": "/images/projects/dark-statement/02-dining.webp",
+          "mobileSrc": "/images/projects/dark-statement/02-dining-mobile.webp",
+          "width": 1448,
+          "height": 1086,
+          "alt": "Dark statement — столовая с мраморным столом и каскадной латунной люстрой",
+          "layout": "wide"
+        },
+        {
+          "src": "/images/projects/dark-statement/01-living-room.webp",
+          "mobileSrc": "/images/projects/dark-statement/01-living-room-mobile.webp",
+          "width": 1448,
+          "height": 1086,
+          "alt": "Dark statement — гостиная с креслами букле, графитовым диваном и столом из чёрного мрамора",
+          "layout": "standard"
+        },
+        {
+          "src": "/images/projects/dark-statement/03-bedroom.webp",
+          "mobileSrc": "/images/projects/dark-statement/03-bedroom-mobile.webp",
+          "width": 1448,
+          "height": 1086,
+          "alt": "Dark statement — спальня в тёмном дереве с мягким изголовьем и контурной подсветкой",
+          "layout": "standard"
+        },
+        {
+          "src": "/images/projects/dark-statement/04-wardrobe.webp",
+          "mobileSrc": "/images/projects/dark-statement/04-wardrobe-mobile.webp",
+          "width": 1448,
+          "height": 1086,
+          "alt": "Dark statement — гардеробная с островом из чёрного мрамора и латунным порталом зеркала",
+          "layout": "standard"
+        },
+        {
+          "src": "/images/projects/dark-statement/05-bathroom.webp",
+          "mobileSrc": "/images/projects/dark-statement/05-bathroom-mobile.webp",
+          "width": 1448,
+          "height": 1086,
+          "alt": "Dark statement — ванная комната в тёмном мраморе с матовой чашей ванны",
+          "layout": "standard"
+        }
+      ]
+    },
+    {
+      "published": true,
+      "name": "Natural balance",
+      "slug": "natural-balance",
+      "description": "Спокойный минимализм в натуральной палитре. Светлый дуб, мягкие фактуры льна и коньячной кожи, чистая геометрия и продуманное хранение формируют комфортный повседневный интерьер.",
+      "style": "Тёплый минимализм",
+      "roomType": "Квартира",
+      "typeLabel": "Интерьер · Квартира",
+      "category": "interior",
+      "location": "Москва",
+      "tags": ["Планировка", "Полный цикл", "Рабочие чертежи"],
+      "seoTitle": "Natural balance — интерьер квартиры в тёплом минимализме | LAV Interiors",
+      "seoDescription": "Natural balance — проект современной квартиры в светлом дубе и натуральных фактурах. Планировка, концепция и визуализация LAV Interiors.",
+      "cover": {
+        "src": "/images/portfolio-hire/interior-04.webp",
+        "mobileSrc": "/images/portfolio-hire/interior-04-mobile.webp",
+        "width": 1448,
+        "height": 1086,
+        "alt": "Natural balance — коллаж светлого минималистичного интерьера в дубе"
+      },
+      "images": [
+        {
+          "src": "/images/projects/natural-balance/01-kitchen-living.webp",
+          "mobileSrc": "/images/projects/natural-balance/01-kitchen-living-mobile.webp",
+          "width": 1200,
+          "height": 1600,
+          "alt": "Natural balance — кухня-гостиная в светлом дубе с линейным подвесным светильником",
+          "layout": "portrait"
+        },
+        {
+          "src": "/images/projects/natural-balance/02-home-office.webp",
+          "mobileSrc": "/images/projects/natural-balance/02-home-office-mobile.webp",
+          "width": 1200,
+          "height": 1600,
+          "alt": "Natural balance — кабинет с деревянными панелями, тёплой подсветкой и кожаным креслом",
+          "layout": "portrait"
+        },
+        {
+          "src": "/images/projects/natural-balance/03-bedroom.webp",
+          "mobileSrc": "/images/projects/natural-balance/03-bedroom-mobile.webp",
+          "width": 1200,
+          "height": 1600,
+          "alt": "Natural balance — спальня в светлом дереве с круглыми настенными бра",
+          "layout": "portrait"
+        },
+        {
+          "src": "/images/projects/natural-balance/04-wardrobe.webp",
+          "mobileSrc": "/images/projects/natural-balance/04-wardrobe-mobile.webp",
+          "width": 1200,
+          "height": 1600,
+          "alt": "Natural balance — гардеробная с островом под стеклянной столешницей и кожаным пуфом",
+          "layout": "portrait"
+        },
+        {
+          "src": "/images/projects/natural-balance/05-bathroom.webp",
+          "mobileSrc": "/images/projects/natural-balance/05-bathroom-mobile.webp",
+          "width": 1200,
+          "height": 1600,
+          "alt": "Natural balance — ванная комната со светлой тумбой, реечной стеной и отдельностоящей ванной",
+          "layout": "portrait"
+        }
+      ]
+    },
+    {
+      "published": true,
+      "name": "Warm Classic Apartment",
+      "slug": "warm-classic-apartment",
+      "description": "Светлый семейный интерьер, где мягкая классическая архитектура соединяется с современной мебелью, тёплой пудровой палитрой и деликатными латунными акцентами.",
+      "style": "Современная классика",
+      "roomType": "Жилая квартира",
+      "typeLabel": "Интерьер · Жилая квартира",
+      "category": "interior",
+      "location": "Москва",
+      "tags": ["Жилой интерьер", "Концепция", "Комплектация"],
+      "seoTitle": "Warm Classic Apartment — проект интерьера | LAV Interiors",
+      "seoDescription": "Warm Classic Apartment — проект светлой семейной квартиры в современной классике от LAV Interiors. Интерьер, материалы и визуализации проекта.",
+      "cover": {
+        "src": "/images/portfolio-hire/interior-02.webp",
+        "mobileSrc": "/images/portfolio-hire/interior-02-mobile.webp",
+        "width": 1448,
+        "height": 1086,
+        "alt": "Warm Classic Apartment — коллаж светлой семейной квартиры в современной классике"
+      },
+      "images": [
+        {
+          "src": "/images/projects/warm-classic-apartment/01-dining-kitchen.webp",
+          "mobileSrc": "/images/projects/warm-classic-apartment/01-dining-kitchen-mobile.webp",
+          "width": 1200,
+          "height": 1600,
+          "alt": "Warm Classic Apartment — кухня-столовая с круглым мраморным столом, латунными фасадами и люстрой",
+          "layout": "portrait"
+        },
+        {
+          "src": "/images/projects/warm-classic-apartment/02-living-room.webp",
+          "mobileSrc": "/images/projects/warm-classic-apartment/02-living-room-mobile.webp",
+          "width": 1200,
+          "height": 1600,
+          "alt": "Warm Classic Apartment — светлая гостиная с молдингами, кольцевыми светильниками и пудровыми креслами",
+          "layout": "portrait"
+        },
+        {
+          "src": "/images/projects/warm-classic-apartment/03-bedroom.webp",
+          "mobileSrc": "/images/projects/warm-classic-apartment/03-bedroom-mobile.webp",
+          "width": 1200,
+          "height": 1600,
+          "alt": "Warm Classic Apartment — спальня с классическими панелями, бархатной кроватью и арочным зеркалом",
+          "layout": "portrait"
+        },
+        {
+          "src": "/images/projects/warm-classic-apartment/04-home-office.webp",
+          "mobileSrc": "/images/projects/warm-classic-apartment/04-home-office-mobile.webp",
+          "width": 1200,
+          "height": 1600,
+          "alt": "Warm Classic Apartment — кабинет с латунными нишами, подсветкой и мраморным письменным столом",
+          "layout": "portrait"
+        },
+        {
+          "src": "/images/projects/warm-classic-apartment/05-bathroom.webp",
+          "mobileSrc": "/images/projects/warm-classic-apartment/05-bathroom-mobile.webp",
+          "width": 1200,
+          "height": 1600,
+          "alt": "Warm Classic Apartment — ванная комната с мраморной раковиной, латунной фурнитурой и пуфом",
+          "layout": "portrait"
+        }
+      ]
+    },
+    {
+      "published": true,
+      "name": "Light Oak & Bouclé",
+      "slug": "oak-and-boucle",
+      "description": "Воздушное панорамное пространство в молочных и песочных оттенках. Светлый дуб, мягкая пластика дивана букле, травертин и продуманные сценарии естественного и вечернего освещения.",
+      "style": "Современный минимализм",
+      "roomType": "Панорамная квартира",
+      "typeLabel": "Интерьер · Панорамная квартира",
+      "category": "interior",
+      "location": "Москва",
+      "tags": ["Светлый дуб", "Букле и камень", "3D-визуализация"],
+      "seoTitle": "Light Oak & Bouclé — интерьер панорамной квартиры | LAV Interiors",
+      "seoDescription": "Проект панорамной квартиры Light Oak & Bouclé: светлый дуб, мягкая мебель букле, натуральный камень и чистая современная архитектура. LAV Interiors.",
+      "cover": {
+        "src": "/images/portfolio-hire/interior-oak-boucle.webp",
+        "mobileSrc": "/images/portfolio-hire/interior-oak-boucle-mobile.webp",
+        "width": 1600,
+        "height": 1200,
+        "alt": "Light Oak & Bouclé — коллаж панорамной квартиры в светлом дубе и букле"
+      },
+      "images": [
+        {
+          "src": "/images/projects/oak-and-boucle/01-living-kitchen.webp",
+          "mobileSrc": "/images/projects/oak-and-boucle/01-living-kitchen-mobile.webp",
+          "width": 1600,
+          "height": 1200,
+          "alt": "Light Oak & Bouclé — панорамная кухня-гостиная с модульным диваном букле, обеденной группой и каменным островом",
+          "layout": "wide"
+        },
+        {
+          "src": "/images/projects/oak-and-boucle/02-bedroom.webp",
+          "mobileSrc": "/images/projects/oak-and-boucle/02-bedroom-mobile.webp",
+          "width": 1600,
+          "height": 1200,
+          "alt": "Light Oak & Bouclé — спальня в тёплых молочных тонах с кроватью букле и дизайнерскими подвесами",
+          "layout": "standard"
+        },
+        {
+          "src": "/images/projects/oak-and-boucle/03-home-office.webp",
+          "mobileSrc": "/images/projects/oak-and-boucle/03-home-office-mobile.webp",
+          "width": 1600,
+          "height": 1200,
+          "alt": "Light Oak & Bouclé — светлый кабинет у окна с рабочей консолью из дуба и мягким диваном",
+          "layout": "standard"
+        },
+        {
+          "src": "/images/projects/oak-and-boucle/04-bathroom.webp",
+          "mobileSrc": "/images/projects/oak-and-boucle/04-bathroom-mobile.webp",
+          "width": 1600,
+          "height": 1200,
+          "alt": "Light Oak & Bouclé — ванная комната с каменной чашей ванны у окна и подвесной консолью",
+          "layout": "standard"
+        },
+        {
+          "src": "/images/projects/oak-and-boucle/05-wardrobe.webp",
+          "mobileSrc": "/images/projects/oak-and-boucle/05-wardrobe-mobile.webp",
+          "width": 1600,
+          "height": 1200,
+          "alt": "Light Oak & Bouclé — гардеробная из светлого дуба с центральным островом и подсветкой полок",
+          "layout": "standard"
+        }
+      ]
+    },
+    {
+      "published": true,
+      "name": "Дом среди сосен",
+      "slug": "pine-forest-residence",
+      "description": "Современная загородная резиденция, вписанная в сосновый ландшафт: чистая горизонтальная геометрия, тёплое дерево, светлый камень, просторные террасы и приватный внутренний двор.",
+      "style": "Современная архитектура",
+      "roomType": "Загородный дом",
+      "typeLabel": "Экстерьер · Загородный дом",
+      "category": "exterior",
+      "location": "Подмосковье",
+      "tags": ["Архитектура", "Фасады", "Ландшафт"],
+      "seoTitle": "Дом среди сосен — архитектура и экстерьер загородной резиденции | LAV Interiors",
+      "seoDescription": "Архитектурная концепция и 3D-визуализация загородного дома среди сосен: светлый камень, дерево, панорамное остекление и ландшафт. LAV Interiors.",
+      "cover": {
+        "src": "/images/portfolio-hire/exterior-01.webp",
+        "mobileSrc": "/images/portfolio-hire/exterior-01-mobile.webp",
+        "width": 1600,
+        "height": 1200,
+        "alt": "Дом среди сосен — коллаж экстерьера современной загородной резиденции"
+      },
+      "images": [
+        {
+          "src": "/images/projects/pine-forest-residence/01-main-facade.webp",
+          "mobileSrc": "/images/projects/pine-forest-residence/01-main-facade-mobile.webp",
+          "width": 1600,
+          "height": 894,
+          "alt": "Дом среди сосен — главный фасад резиденции с панорамным остеклением и вечерней подсветкой",
+          "layout": "wide"
+        },
+        {
+          "src": "/images/projects/pine-forest-residence/02-terrace-view.webp",
+          "mobileSrc": "/images/projects/pine-forest-residence/02-terrace-view-mobile.webp",
+          "width": 1600,
+          "height": 888,
+          "alt": "Дом среди сосен — вид на террасу и лаунж-зону у дома",
+          "layout": "wide"
+        },
+        {
+          "src": "/images/projects/pine-forest-residence/03-courtyard.webp",
+          "mobileSrc": "/images/projects/pine-forest-residence/03-courtyard-mobile.webp",
+          "width": 1600,
+          "height": 894,
+          "alt": "Дом среди сосен — архитектура фасадов и ландшафтное озеленение участка",
+          "layout": "wide"
+        },
+        {
+          "src": "/images/projects/pine-forest-residence/04-evening-light.webp",
+          "mobileSrc": "/images/projects/pine-forest-residence/04-evening-light-mobile.webp",
+          "width": 1200,
+          "height": 1600,
+          "alt": "Дом среди сосен — камерный ракурс входной группы и фасада в сосновом лесу",
+          "layout": "portrait"
+        }
+      ]
+    },
+    {
+      "published": true,
+      "name": "Дом на закате",
+      "slug": "sunset-modern-house",
+      "description": "Выразительный архитектурный силуэт с двускатной кровлей и панорамным остеклением. Тёплый вечерний свет подчёркивает фактуру дерева, камня и связь интерьера с садом.",
+      "style": "Современное шале · Модернизм",
+      "roomType": "Частный дом",
+      "typeLabel": "Экстерьер · Частный дом",
+      "category": "exterior",
+      "location": "Подмосковье",
+      "tags": ["Архитектура", "Экстерьер", "Озеленение"],
+      "seoTitle": "Дом на закате — архитектура и визуализация частного дома | LAV Interiors",
+      "seoDescription": "Проект частного загородного дома с панорамным остеклением и двускатной кровлей. Архитектура, фасады и 3D-визуализация LAV Interiors.",
+      "cover": {
+        "src": "/images/portfolio-hire/exterior-02.webp",
+        "mobileSrc": "/images/portfolio-hire/exterior-02-mobile.webp",
+        "width": 1448,
+        "height": 1086,
+        "alt": "Дом на закате — коллаж экстерьера современного частного дома"
+      },
+      "images": [
+        {
+          "src": "/images/projects/sunset-modern-house/01-exterior.webp",
+          "mobileSrc": "/images/projects/sunset-modern-house/01-exterior-mobile.webp",
+          "width": 1600,
+          "height": 1200,
+          "alt": "Дом на закате — общий вид загородного дома в вечернем освещении",
+          "layout": "wide"
+        },
+        {
+          "src": "/images/projects/sunset-modern-house/02-main-facade.webp",
+          "mobileSrc": "/images/projects/sunset-modern-house/02-main-facade-mobile.webp",
+          "width": 1600,
+          "height": 1200,
+          "alt": "Дом на закате — главный фасад с панорамными окнами и террасой",
+          "layout": "standard"
+        },
+        {
+          "src": "/images/projects/sunset-modern-house/03-entrance.webp",
+          "mobileSrc": "/images/projects/sunset-modern-house/03-entrance-mobile.webp",
+          "width": 1600,
+          "height": 1200,
+          "alt": "Дом на закате — входная группа и архитектурная подсветка",
+          "layout": "standard"
+        },
+        {
+          "src": "/images/projects/sunset-modern-house/04-side-facade.webp",
+          "mobileSrc": "/images/projects/sunset-modern-house/04-side-facade-mobile.webp",
+          "width": 1600,
+          "height": 1200,
+          "alt": "Дом на закате — боковой фасад и ландшафтное окружение",
+          "layout": "standard"
+        },
+        {
+          "src": "/images/projects/sunset-modern-house/05-glazing.webp",
+          "mobileSrc": "/images/projects/sunset-modern-house/05-glazing-mobile.webp",
+          "width": 1600,
+          "height": 1200,
+          "alt": "Дом на закате — крупный план панорамного остекления и двускатной кровли",
+          "layout": "standard"
+        },
+        {
+          "src": "/images/projects/sunset-modern-house/06-interior-view.webp",
+          "mobileSrc": "/images/projects/sunset-modern-house/06-interior-view-mobile.webp",
+          "width": 1600,
+          "height": 1200,
+          "alt": "Дом на закате — вид из гостиной через панорамное остекление на участок",
+          "layout": "wide"
         }
       ]
     }
