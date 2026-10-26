@@ -29,6 +29,7 @@
 .page-interior .eyebrow{margin:0 0 14px;font-size:10px;font-weight:600;line-height:1.35;letter-spacing:.23em;text-transform:uppercase;color:#756a5d}
 .page-interior .eyebrow.light{color:rgba(255,255,255,.72)}
 .hero h1{margin:0;max-width:760px;font:500 clamp(54px,10vw,126px)/.78 var(--serif);letter-spacing:-.035em;text-transform:uppercase}
+.hero h1 .hero-role-h1{display:block;margin:28px 0 0;font:500 clamp(12px,1.3vw,15px)/1.55 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:#fff}
 .hero-role{margin:28px 0 0;font-size:clamp(12px,1.3vw,15px);font-weight:500;line-height:1.55;letter-spacing:.14em;text-transform:uppercase}
 .hero-copy{max-width:650px;margin:18px 0 0;font-size:15px;font-weight:400;line-height:1.76;color:rgba(255,255,255,.73)}
 .hero-actions,.contact-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
@@ -120,6 +121,29 @@
 .tool-cloud{display:flex;flex-wrap:wrap;gap:10px}
 .tool-cloud span{padding:14px 17px;border:1px solid rgba(26,23,20,.22);background:rgba(255,255,255,.2);font-size:10px;font-weight:600;letter-spacing:.13em;text-transform:uppercase}
 
+/* B2B Cooperation Formats & FAQ */
+.formats-section{background:var(--paper)}
+.formats-grid{display:grid;gap:24px;margin-top:20px}
+.format-card{padding:32px 28px;border:1px solid var(--line);background:var(--paper-alt);display:flex;flex-direction:column;justify-content:space-between;transition:transform .25s,background .25s}
+.format-card:hover{background:#f7f3ed;transform:translateY(-3px)}
+.format-card .format-tag{font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:#806d52;margin-bottom:14px;display:block}
+.format-card h3{margin:0 0 14px;font:500 26px/1.08 var(--serif);letter-spacing:-.01em;text-transform:uppercase}
+.format-card p{margin:0 0 18px;font-size:14px;line-height:1.74;color:var(--muted)}
+.format-meta{padding-top:16px;border-top:1px solid var(--line);font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink)}
+
+.expert-quote{margin:34px 0 0;padding:24px 28px;border-left:2px solid var(--accent);background:rgba(255,255,255,.38)}
+.expert-quote p{margin:0;font:italic 400 clamp(18px,2vw,23px)/1.45 var(--serif);color:var(--ink)}
+.expert-quote cite{display:block;margin-top:10px;font:600 10px/1.4 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:#6d6255;font-style:normal}
+
+.faq-section{background:var(--paper-alt)}
+.faq-list{display:grid;gap:18px}
+.faq-item{padding:28px 30px;border:1px solid var(--line);background:var(--paper)}
+.faq-item h3{margin:0 0 12px;font:500 clamp(22px,2.4vw,28px)/1.18 var(--serif);color:var(--ink)}
+.faq-item p{margin:0;font-size:14px;line-height:1.78;color:var(--muted)}
+.faq-item a,.about-copy a,.workflow-section a{text-decoration:underline;text-underline-offset:3px}
+
+.author-byline{margin-top:26px;padding-top:18px;border-top:1px solid var(--line);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#6d6255;display:flex;flex-wrap:wrap;gap:18px}
+
 .contact-section{position:relative;padding:100px 0;background:#11110f;color:#fff;overflow:hidden}
 .contact-section::after{content:"LAV";position:absolute;right:-.05em;bottom:-.28em;font:500 clamp(180px,35vw,520px)/1 var(--serif);color:rgba(255,255,255,.025);pointer-events:none}
 .contact-inner{position:relative;z-index:1}
@@ -157,6 +181,7 @@
   .portrait-wrap{width:300px;margin:0}
   .profile-facts div{padding:18px 14px}
   .service-grid{grid-template-columns:repeat(3,1fr)}
+  .formats-grid{grid-template-columns:repeat(3,1fr)}
   .workflow-grid{grid-template-columns:minmax(0,.9fr) minmax(440px,1.1fr);gap:8vw}
   .contact-section{padding:130px 0}
 }
