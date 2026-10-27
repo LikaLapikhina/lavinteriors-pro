@@ -1,0 +1,1677 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="LAV Office" />
+  <title>LAV PRIVATE OFFICE — Личный кабинет Анжелики</title>
+  <style>
+    :root {
+      --bg: #0f1319;
+      --card: #181e27;
+      --card-hover: #1f2733;
+      --border: #2a3444;
+      --text: #f1f5f9;
+      --muted: #94a3b8;
+      --red: #ef4444;
+      --red-bg: rgba(239, 68, 68, 0.14);
+      --red-border: rgba(239, 68, 68, 0.55);
+      --yellow: #f59e0b;
+      --yellow-bg: rgba(245, 158, 11, 0.15);
+      --yellow-border: rgba(245, 158, 11, 0.55);
+      --green: #10b981;
+      --green-bg: rgba(16, 185, 129, 0.15);
+      --green-border: rgba(16, 185, 129, 0.55);
+      --blue: #3b82f6;
+      --blue-bg: rgba(59, 130, 246, 0.15);
+      --blue-border: rgba(59, 130, 246, 0.55);
+      --purple: #a855f7;
+      --purple-bg: rgba(168, 85, 247, 0.15);
+      --purple-border: rgba(168, 85, 247, 0.55);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.45;
+      padding: 18px 24px 70px;
+    }
+    @media (max-width: 768px) {
+      body { padding: 12px 12px 80px; }
+    }
+
+    /* ЭКРАН ПИН-КОДА (ПРИВАТНЫЙ ДОСТУП) */
+    #pin-overlay {
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(circle at top, #1e293b 0%, #090d14 100%);
+      z-index: 99999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    #pin-overlay.hidden { display: none; }
+    .pin-box {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 32px 28px;
+      width: 100%;
+      max-width: 380px;
+      text-align: center;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.6);
+    }
+    .pin-title { font-size: 20px; font-weight: 900; margin-bottom: 6px; }
+    .pin-sub { font-size: 13px; color: var(--muted); margin-bottom: 20px; }
+    .pin-input {
+      width: 100%;
+      font-size: 24px;
+      letter-spacing: 8px;
+      text-align: center;
+      padding: 12px;
+      border-radius: 12px;
+      border: 2px solid var(--border);
+      background: #0f1319;
+      color: #fff;
+      font-weight: 900;
+      outline: none;
+      margin-bottom: 14px;
+    }
+    .pin-input:focus { border-color: var(--blue); }
+    .pin-btn {
+      width: 100%;
+      padding: 13px;
+      border-radius: 12px;
+      border: none;
+      background: var(--blue);
+      color: #fff;
+      font-size: 15px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+    .pin-err { color: #f87171; font-size: 12.5px; margin-top: 10px; display: none; }
+
+    /* ВЕРХНЯЯ ПАНЕЛЬ */
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+    .brand h1 { font-size: 20px; font-weight: 800; letter-spacing: -0.3px; }
+    .brand p { color: var(--muted); font-size: 13px; margin-top: 2px; }
+
+    .top-actions {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .action-btn {
+      background: var(--card);
+      color: var(--text);
+      border: 1px solid var(--border);
+      padding: 8px 13px;
+      border-radius: 10px;
+      font-size: 12.5px;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.15s;
+    }
+    .action-btn:hover { background: var(--card-hover); border-color: var(--blue); }
+    .action-btn.active-edit {
+      background: var(--yellow);
+      color: #1e1b4b;
+      border-color: var(--yellow);
+      box-shadow: 0 0 15px rgba(245, 158, 11, 0.4);
+    }
+
+    /* КАРТОЧКИ KPI */
+    .kpi-strip {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(170px, 1fr));
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+    @media (max-width: 1100px) {
+      .kpi-strip { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 520px) {
+      .kpi-strip { grid-template-columns: 1fr; }
+    }
+    .kpi-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 13px 15px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .kpi-card.highlight-green { border-color: var(--green-border); background: linear-gradient(180deg, rgba(16,185,129,0.18), var(--card)); }
+    .kpi-card.highlight-yellow { border-color: var(--yellow-border); background: linear-gradient(180deg, rgba(245,158,11,0.16), var(--card)); }
+    .kpi-card.highlight-red { border-color: var(--red-border); background: linear-gradient(180deg, rgba(239,68,68,0.16), var(--card)); }
+    .kpi-card.highlight-blue { border-color: var(--blue-border); background: linear-gradient(180deg, rgba(59,130,246,0.16), var(--card)); }
+    .kpi-card.highlight-purple { border-color: var(--purple-border); background: linear-gradient(180deg, rgba(168,85,247,0.16), var(--card)); }
+    .kpi-label { font-size: 11px; color: var(--muted); font-weight: 800; text-transform: uppercase; letter-spacing: 0.4px; }
+    .kpi-val { font-size: 22px; font-weight: 900; margin-top: 5px; }
+    .kpi-sub { font-size: 11.5px; color: var(--muted); margin-top: 4px; }
+
+    /* ВКЛАДКИ */
+    .tabs {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 18px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 12px;
+      flex-wrap: wrap;
+    }
+    .tab-btn {
+      background: var(--card);
+      color: var(--muted);
+      border: 1px solid var(--border);
+      padding: 10px 16px;
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    @media (max-width: 640px) {
+      .tab-btn { flex: 1 1 calc(50% - 8px); text-align: center; padding: 10px 8px; font-size: 12px; }
+    }
+    .tab-btn:hover { color: var(--text); background: var(--card-hover); }
+    .tab-btn.active {
+      background: var(--blue);
+      color: #fff;
+      border-color: var(--blue);
+      box-shadow: 0 4px 15px rgba(59, 130, 246, 0.35);
+    }
+
+    .tab-section { display: none; }
+    .tab-section.active { display: block; }
+
+    .today-grid {
+      display: grid;
+      grid-template-columns: 1.12fr 1fr;
+      gap: 18px;
+    }
+    @media (max-width: 1100px) {
+      .today-grid { grid-template-columns: 1fr; }
+    }
+
+    .block-box {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 16px 18px;
+      margin-bottom: 18px;
+    }
+    @media (max-width: 640px) {
+      .block-box { padding: 13px 12px; }
+    }
+    .block-box.red-priority { border: 2px solid var(--red-border); }
+    .block-box.green-priority { border: 2px solid var(--green-border); }
+    .block-box.yellow-priority { border: 2px solid var(--yellow-border); }
+    .block-box.blue-priority { border: 2px solid var(--blue-border); }
+    .block-box.purple-priority { border: 2px solid var(--purple-border); }
+
+    .block-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+      padding-bottom: 9px;
+      border-bottom: 1px solid var(--border);
+      flex-wrap: wrap;
+    }
+    .block-title { font-size: 15px; font-weight: 800; }
+    .block-subtitle { font-size: 12px; color: var(--muted); margin-top: 2px; }
+
+    /* СПИСОК ЗАДАЧ */
+    .task-list { display: flex; flex-direction: column; gap: 9px; }
+    .task-item {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 11px 13px;
+      display: flex;
+      align-items: flex-start;
+      gap: 11px;
+      transition: all 0.15s;
+      cursor: pointer;
+    }
+    .task-item:hover { background: rgba(255,255,255,0.06); }
+    .task-item.done {
+      background: var(--green-bg) !important;
+      border-color: var(--green-border) !important;
+      opacity: 0.85;
+    }
+    .task-item.done .task-title {
+      text-decoration: line-through;
+      color: #86efac;
+    }
+    .task-item.hot-task:not(.done) { background: var(--red-bg); border-color: var(--red-border); }
+    .task-item.yellow-task:not(.done) { background: var(--yellow-bg); border-color: var(--yellow-border); }
+    .task-item.blue-task:not(.done) { background: var(--blue-bg); border-color: var(--blue-border); }
+    .task-item.purple-task:not(.done) { background: var(--purple-bg); border-color: var(--purple-border); }
+
+    .check-circle {
+      width: 22px;
+      height: 22px;
+      border-radius: 6px;
+      border: 2px solid var(--muted);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+      font-size: 13px;
+      font-weight: 900;
+      color: transparent;
+    }
+    .task-item.done .check-circle {
+      background: var(--green);
+      border-color: var(--green);
+      color: #052e16;
+    }
+
+    .task-body { flex: 1; }
+    .task-top {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-bottom: 4px;
+    }
+    .tag {
+      font-size: 11px;
+      font-weight: 800;
+      padding: 2px 8px;
+      border-radius: 6px;
+      display: inline-block;
+    }
+    .tag-proj { background: #334155; color: #f8fafc; font-family: monospace; font-size: 12.5px; }
+    .tag-tg { background: rgba(56, 189, 248, 0.18); color: #38bdf8; }
+    .tag-max { background: rgba(168, 85, 247, 0.22); color: #c084fc; }
+    .tag-money { background: var(--yellow); color: #1e1b4b; }
+    .tag-green { background: var(--green); color: #052e16; }
+    .tag-blue { background: var(--blue); color: #fff; }
+    .tag-white { background: #e2e8f0; color: #0f172a; }
+    .tag-red { background: var(--red); color: #fff; }
+    .tag-purple { background: var(--purple); color: #fff; }
+
+    .task-title { font-size: 14px; font-weight: 700; color: var(--text); }
+    .task-note { font-size: 12.5px; color: var(--muted); margin-top: 3px; }
+
+    /* СВЕРКА ТАБЛИЧКИ */
+    .sheet-item {
+      border-radius: 12px;
+      padding: 11px 13px;
+      margin-bottom: 9px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      border: 1px solid var(--border);
+      flex-wrap: wrap;
+    }
+    .sheet-item.in-sheet { background: var(--green-bg); border-color: var(--green-border); }
+    .sheet-item.not-in-sheet { background: var(--yellow-bg); border-color: var(--yellow-border); }
+    .sheet-item.urgent-not-in-sheet { background: var(--red-bg); border-color: var(--red-border); }
+
+    .sheet-toggle-btn {
+      padding: 7px 13px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 800;
+      cursor: pointer;
+      border: none;
+      white-space: nowrap;
+    }
+    .sheet-toggle-btn.btn-in { background: var(--green); color: #052e16; }
+    .sheet-toggle-btn.btn-out { background: var(--yellow); color: #1e1b4b; }
+
+    /* ТАБЛИЦЫ (АДАПТИВНЫЙ СКРОЛЛ НА ТЕЛЕФОНЕ) */
+    .table-wrap {
+      width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+    }
+    .fin-table {
+      width: 100%;
+      min-width: 680px;
+      border-collapse: collapse;
+      background: var(--card);
+    }
+    .fin-table th, .fin-table td {
+      padding: 10px 12px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+      font-size: 13px;
+    }
+    .fin-table th {
+      background: #11161d;
+      color: var(--muted);
+      font-size: 11px;
+      text-transform: uppercase;
+    }
+    .fin-row-green { background: rgba(16, 185, 129, 0.14); }
+    .fin-row-yellow { background: rgba(245, 158, 11, 0.13); }
+    .fin-row-blue { background: rgba(59, 130, 246, 0.12); }
+    .fin-row-white { background: rgba(255, 255, 255, 0.04); }
+
+    /* СКРИПТЫ ОБЩЕНИЯ С ЗАКАЗЧИКАМИ */
+    .script-subtabs {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+    .script-subbtn {
+      background: rgba(255,255,255,0.05);
+      color: var(--text);
+      border: 1px solid var(--border);
+      padding: 9px 14px;
+      border-radius: 9px;
+      font-size: 12.5px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+    .script-subbtn.active {
+      background: var(--purple);
+      border-color: var(--purple);
+      color: #fff;
+    }
+    .script-panel { display: none; }
+    .script-panel.active { display: block; }
+
+    .script-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 14px 16px;
+      margin-bottom: 12px;
+    }
+    .script-step-title {
+      font-size: 14.5px;
+      font-weight: 800;
+      color: #60a5fa;
+      margin-bottom: 6px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .script-meta {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 8px;
+      background: rgba(0,0,0,0.25);
+      padding: 7px 10px;
+      border-radius: 8px;
+    }
+    .script-phrase {
+      font-size: 14px;
+      font-weight: 600;
+      color: #f8fafc;
+      background: rgba(16, 185, 129, 0.1);
+      border-left: 3px solid var(--green);
+      padding: 10px 12px;
+      border-radius: 8px;
+      margin-bottom: 8px;
+    }
+    .script-answer-input {
+      width: 100%;
+      background: #0f1319;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: #fbbf24;
+      padding: 8px 11px;
+      font-size: 13px;
+      font-family: inherit;
+      resize: vertical;
+      min-height: 38px;
+    }
+    .copy-btn {
+      background: rgba(59, 130, 246, 0.2);
+      color: #93c5fd;
+      border: 1px solid rgba(59, 130, 246, 0.4);
+      padding: 4px 10px;
+      border-radius: 7px;
+      font-size: 11.5px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+    .copy-btn:hover { background: var(--blue); color: #fff; }
+
+    /* РЕЖИМ РЕДАКТИРОВАНИЯ */
+    body.editing-mode [data-editable="true"] {
+      outline: 1px dashed var(--yellow);
+      background: rgba(245, 158, 11, 0.08);
+      border-radius: 4px;
+      padding: 1px 4px;
+      cursor: text;
+    }
+
+    /* БЫСТРЫЕ ЗАМЕТКИ */
+    .quick-notes-area {
+      width: 100%;
+      min-height: 110px;
+      background: #0f1319;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      color: var(--text);
+      padding: 12px;
+      font-size: 13.5px;
+      font-family: inherit;
+      resize: vertical;
+    }
+    .quick-notes-area:focus { border-color: var(--blue); outline: none; }
+  </style>
+</head>
+<body>
+
+  <!-- ==================== ЭКРАН БЛОКИРОВКИ ПИН-КОДОМ ==================== -->
+  <div id="pin-overlay">
+    <div class="pin-box">
+      <div style="font-size:36px; margin-bottom:8px;">🔒</div>
+      <div class="pin-title">LAV PRIVATE OFFICE</div>
+      <div class="pin-sub">Закрытая панель управления проектами и финансами.<br>Введи личный ПИН-код (по умолчанию <b>2710</b>):</div>
+      <form onsubmit="checkPin(event)">
+        <input type="password" id="pin-input" class="pin-input" placeholder="••••" inputmode="numeric" autocomplete="off" autofocus />
+        <button type="submit" class="pin-btn">Открыть кабинет</button>
+      </form>
+      <div id="pin-err" class="pin-err">Неверный ПИН-код. Попробуй ещё раз.</div>
+    </div>
+  </div>
+
+  <!-- ==================== ВЕРХНЯЯ ШАПКА ==================== -->
+  <div class="top-bar">
+    <div class="brand">
+      <h1 data-editable="true">⚡ LAV COMMAND CENTER — Личный кабинет Анжелики</h1>
+      <p data-editable="true">На завтра (28.10) в жёлтых строках вписано <b>32 356,80 ₽</b> (8 проектов) • Итог октября: <b>56 356,80 ₽</b> • Остаток в работе: <b>147 292,90 ₽</b></p>
+    </div>
+    <div class="top-actions">
+      <button class="action-btn" id="edit-mode-btn" onclick="toggleEditMode()">✏️ Редактировать данные</button>
+      <button class="action-btn" onclick="addNewTaskPrompt()">➕ Задача / Созвон</button>
+      <button class="action-btn" onclick="addNewProjectPrompt()">➕ Новый проект</button>
+      <a href="https://docs.google.com/spreadsheets/d/1p-zhnxiElfuFToXzqH5peeD9xCWDo8JitdKic0ldmug/edit" target="_blank" class="action-btn" style="color:#60a5fa; border-color:rgba(59,130,246,0.4);">📊 Таблица ↗</a>
+      <button class="action-btn" onclick="changePinPrompt()" title="Сменить ПИН-код">🔑 ПИН</button>
+    </div>
+  </div>
+
+  <!-- ==================== ГЛАВНЫЕ 5 ЦИФР ==================== -->
+  <div class="kpi-strip">
+    <div class="kpi-card highlight-green">
+      <div class="kpi-label">✅ ЗАВТРА ПРИДЁТ (В ТАБЛИЧКЕ 28.10)</div>
+      <div class="kpi-val" id="kpi-in-sheet" style="color:#34d399;" data-editable="true">32 356,80 ₽</div>
+      <div class="kpi-sub" id="kpi-in-sub" data-editable="true">8 пр.: 0645, 0550, 0654, 0545 (3.5к!), 0599 (2.5к!), 0619, 0593, 0596</div>
+    </div>
+    <div class="kpi-card highlight-green">
+      <div class="kpi-label">💵 ВСЕГО ЗА ОКТЯБРЬ (С ЗАВТРАШНИМИ)</div>
+      <div class="kpi-val" style="color:#6ee7b7;" data-editable="true">56 356,80 ₽</div>
+      <div class="kpi-sub" data-editable="true">7 000 ₽ (14.10) + 17 000 ₽ (21.10) + 32 356,80 ₽ (28.10)</div>
+    </div>
+    <div class="kpi-card highlight-yellow">
+      <div class="kpi-label">⚠️ НЕ ВПИСАЛИ В ТАБЛИЧКУ (3 ПР.)</div>
+      <div class="kpi-val" id="kpi-not-in-sheet" style="color:#fbbf24;" data-editable="true">10 922 ₽</div>
+      <div class="kpi-sub" id="kpi-not-sub" data-editable="true">0587 (4 922 ₽ финал), 0653 (4 000 ₽ аванс), 0609 (2 000 ₽ аванс)</div>
+    </div>
+    <div class="kpi-card highlight-purple">
+      <div class="kpi-label">🚀 ПРОГНОЗ НА СЛЕД. СРЕДУ (04.11)</div>
+      <div class="kpi-val" style="color:#c084fc;" data-editable="true">42 337 – 58 587 ₽</div>
+      <div class="kpi-sub" data-editable="true">10 922 ₽ (3 долга табл.) + 31 415 ₽ (4 горящие визы) + до 16 250 ₽ (0633/0545)</div>
+    </div>
+    <div class="kpi-card highlight-blue">
+      <div class="kpi-label">💼 ВЕСЬ ПОРТФЕЛЬ (16 ПРОЕКТОВ)</div>
+      <div class="kpi-val" style="color:#60a5fa;" data-editable="true">203 649,70 ₽</div>
+      <div class="kpi-sub" data-editable="true">После завтрашней выплаты чистый остаток в работе: <b>147 292,90 ₽</b>!</div>
+    </div>
+  </div>
+
+  <!-- ==================== ВКЛАДКИ ==================== -->
+  <div class="tabs">
+    <button class="tab-btn active" onclick="switchTab('tab-sheet', this)">📋 1. СВЕРКА ТАБЛИЧКИ (28.10 + 04.11)</button>
+    <button class="tab-btn" onclick="switchTab('tab-today', this)">🔥 2. ПЛАН И СОЗВОНЫ (+Заметки)</button>
+    <button class="tab-btn" onclick="switchTab('tab-projects', this)">🏠 3. ВСЕ 16 ПРОЕКТОВ</button>
+    <button class="tab-btn" onclick="switchTab('tab-scripts', this)">💬 4. СКРИПТЫ ОБЩЕНИЯ С ЗАКАЗЧИКАМИ</button>
+  </div>
+
+  <!-- ==================== ВКЛАДКА 1: СВЕРКА ТАБЛИЧКИ (28.10) + ПРОГНОЗ НА 04.11 ==================== -->
+  <div id="tab-sheet" class="tab-section active">
+    <div class="today-grid">
+      <div>
+        <div class="block-box green-priority">
+          <div class="block-header">
+            <div>
+              <div class="block-title" style="color:#34d399;">✅ ЧАСТЬ 1. ВПИСАНО В ЖЁЛТЫЕ СТРОКИ НА ЗАВТРА (28.10.2026) — 32 356,80 ₽!</div>
+              <div class="block-subtitle">Нажми кнопку справа от любого проекта, чтобы перекинуть его между «В табличке» и «Не вписан»:</div>
+            </div>
+          </div>
+
+          <div id="list-in-sheet">
+            <div class="sheet-item in-sheet" data-id="0645" data-amount="10356.8" data-in="true">
+              <div>
+                <span class="tag tag-proj">0645</span> <span class="tag tag-max">💬 MAX</span> <span class="tag tag-green">✅ ПР + аванс визы</span>
+                <div style="font-weight:700; font-size:13.5px; margin-top:3px;" data-editable="true">Полный проект (28 392 ₽) • Остаток после завтра: <b>14 035,20 ₽</b></div>
+              </div>
+              <div style="text-align:right;">
+                <div style="font-size:16px; font-weight:900; color:#34d399; margin-bottom:4px;">+ 10 356,80 ₽</div>
+                <button class="sheet-toggle-btn btn-in" onclick="toggleSheetItem(this)">✅ В табличке</button>
+              </div>
+            </div>
+
+            <div class="sheet-item in-sheet" data-id="0550" data-amount="6000" data-in="true">
+              <div>
+                <span class="tag tag-proj">0550</span> <span class="tag tag-tg">📱 TG</span> <span class="tag tag-green">✅ итог за проект</span>
+                <div style="font-weight:700; font-size:13.5px; margin-top:3px;" data-editable="true">Всего 8 000 ₽ (аванс 2к был 14.10) • <b>Закрыт полностью (0 ₽)!</b></div>
+              </div>
+              <div style="text-align:right;">
+                <div style="font-size:16px; font-weight:900; color:#34d399; margin-bottom:4px;">+ 6 000,00 ₽</div>
+                <button class="sheet-toggle-btn btn-in" onclick="toggleSheetItem(this)">✅ В табличке</button>
+              </div>
+            </div>
+
+            <div class="sheet-item in-sheet" data-id="0654" data-amount="4000" data-in="true">
+              <div>
+                <span class="tag tag-proj">0654</span> <span class="tag tag-tg">📱 TG</span> <span class="tag tag-green">✅ бриф+аванс</span>
+                <div style="font-weight:700; font-size:13.5px; margin-top:3px;" data-editable="true">Полный 40 м² (16 000 ₽) • Остаток после завтра: <b>12 000 ₽</b></div>
+              </div>
+              <div style="text-align:right;">
+                <div style="font-size:16px; font-weight:900; color:#34d399; margin-bottom:4px;">+ 4 000,00 ₽</div>
+                <button class="sheet-toggle-btn btn-in" onclick="toggleSheetItem(this)">✅ В табличке</button>
+              </div>
+            </div>
+
+            <div class="sheet-item in-sheet" data-id="0545" data-amount="3500" data-in="true">
+              <div>
+                <span class="tag tag-proj">0545</span> <span class="tag tag-tg">📱 TG</span> <span class="tag tag-green">🔥 аванс Визы (+1 500 ₽ больше!)</span>
+                <div style="font-weight:700; font-size:13.5px; margin-top:3px;" data-editable="true">Визы 60 м² (10 250 ₽ от ВД Алёна) • Поставили <b>3 500 ₽</b>! Остаток: <b>6 750 ₽</b></div>
+              </div>
+              <div style="text-align:right;">
+                <div style="font-size:16px; font-weight:900; color:#34d399; margin-bottom:4px;">+ 3 500,00 ₽</div>
+                <button class="sheet-toggle-btn btn-in" onclick="toggleSheetItem(this)">✅ В табличке</button>
+              </div>
+            </div>
+
+            <div class="sheet-item in-sheet" data-id="0599" data-amount="2500" data-in="true">
+              <div>
+                <span class="tag tag-proj">0599</span> <span class="tag tag-max">💬 MAX</span> <span class="tag tag-green">🔥 аванс Визы (+500 ₽ больше!)</span>
+                <div style="font-weight:700; font-size:13.5px; margin-top:3px;" data-editable="true">Визы 62 м² (точно <b>8 200 ₽</b> от ВД Алёна) • Поставили <b>2 500 ₽</b>! Остаток: <b>5 700 ₽</b></div>
+              </div>
+              <div style="text-align:right;">
+                <div style="font-size:16px; font-weight:900; color:#34d399; margin-bottom:4px;">+ 2 500,00 ₽</div>
+                <button class="sheet-toggle-btn btn-in" onclick="toggleSheetItem(this)">✅ В табличке</button>
+              </div>
+            </div>
+
+            <div class="sheet-item in-sheet" data-id="0619" data-amount="2000" data-in="true">
+              <div>
+                <span class="tag tag-proj">0619</span> <span class="tag tag-tg">📱 TG</span> <span class="tag tag-green">✅ аванс визы</span>
+                <div style="font-weight:700; font-size:13.5px; margin-top:3px;" data-editable="true">Визы 61.40 м² (точно <b>7 616,70 ₽</b> от Валерии Г.) • Остаток: <b>5 616,70 ₽</b></div>
+              </div>
+              <div style="text-align:right;">
+                <div style="font-size:16px; font-weight:900; color:#34d399; margin-bottom:4px;">+ 2 000,00 ₽</div>
+                <button class="sheet-toggle-btn btn-in" onclick="toggleSheetItem(this)">✅ В табличке</button>
+              </div>
+            </div>
+
+            <div class="sheet-item in-sheet" data-id="0593" data-amount="2000" data-in="true">
+              <div>
+                <span class="tag tag-proj">0593</span> <span class="tag tag-max">💬 MAX</span> <span class="tag tag-green">🎉 УЖЕ ВПИСАЛИ! (бриф Визы)</span>
+                <div style="font-weight:700; font-size:13.5px; margin-top:3px;" data-editable="true">Визы 91.02 м² (точно <b>11 147 ₽</b> от Насти) • Остаток: <b>9 147 ₽</b></div>
+              </div>
+              <div style="text-align:right;">
+                <div style="font-size:16px; font-weight:900; color:#34d399; margin-bottom:4px;">+ 2 000,00 ₽</div>
+                <button class="sheet-toggle-btn btn-in" onclick="toggleSheetItem(this)">✅ В табличке</button>
+              </div>
+            </div>
+
+            <div class="sheet-item in-sheet" data-id="0596" data-amount="2000" data-in="true">
+              <div>
+                <span class="tag tag-proj">0596</span> <span class="tag tag-max">💬 MAX</span> <span class="tag tag-green">🎉 УЖЕ ВПИСАЛИ! (бриф)</span>
+                <div style="font-weight:700; font-size:13.5px; margin-top:3px;" data-editable="true">Визы (точно <b>10 780 ₽</b> от Насти) • Остаток: <b>8 780 ₽</b></div>
+              </div>
+              <div style="text-align:right;">
+                <div style="font-size:16px; font-weight:900; color:#34d399; margin-bottom:4px;">+ 2 000,00 ₽</div>
+                <button class="sheet-toggle-btn btn-in" onclick="toggleSheetItem(this)">✅ В табличке</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="block-box yellow-priority">
+          <div class="block-header">
+            <div>
+              <div class="block-title" style="color:#fbbf24;">⚠️ ЧАСТЬ 2. НЕ ВПИСАНЫ В ЖЁЛТЫЕ СТРОКИ (Всего 3 проекта = 10 922 ₽)</div>
+              <div class="block-subtitle">Идут на следующую среду 04.11 (или переключи кнопку, если сегодня допишут):</div>
+            </div>
+          </div>
+          <div id="list-not-in-sheet">
+            <div class="sheet-item urgent-not-in-sheet" data-id="0587" data-amount="4922" data-in="false">
+              <div>
+                <span class="tag tag-proj">0587</span> <span class="tag tag-max">💬 MAX</span> <span class="tag tag-red">🔥 ЗАКРЫТЫ ВИЗЫ ВЧЕРА! Должны 4 922 ₽!</span>
+                <div style="font-weight:700; font-size:13.5px; margin-top:3px;" data-editable="true">Аванс 5 000 ₽ был 14.10.2026 • Финал <b>+4 922 ₽</b> (дожать сегодня или 100% на 04.11!)</div>
+              </div>
+              <div style="text-align:right;">
+                <div style="font-size:16px; font-weight:900; color:#f87171; margin-bottom:4px;">+ 4 922 ₽</div>
+                <button class="sheet-toggle-btn btn-out" onclick="toggleSheetItem(this)">⏳ Не вписан</button>
+              </div>
+            </div>
+
+            <div class="sheet-item not-in-sheet" data-id="0653" data-amount="4000" data-in="false">
+              <div>
+                <span class="tag tag-proj">0653</span> <span class="tag tag-tg">📱 TG</span> <span class="tag tag-money">⏳ Полный проект (20 348 ₽) • Созвон сегодня в 15:00</span>
+                <div style="font-weight:700; font-size:13.5px; margin-top:3px;" data-editable="true">Проводим бриф -> аванс <b>+4 000 ₽</b> идёт на среду 04.11!</div>
+              </div>
+              <div style="text-align:right;">
+                <div style="font-size:16px; font-weight:900; color:#fbbf24; margin-bottom:4px;">+ 4 000 ₽</div>
+                <button class="sheet-toggle-btn btn-out" onclick="toggleSheetItem(this)">⏳ Не вписан</button>
+              </div>
+            </div>
+
+            <div class="sheet-item not-in-sheet" data-id="0609" data-amount="2000" data-in="false">
+              <div>
+                <span class="tag tag-proj">0609</span> <span class="tag tag-tg">📱 TG</span> <span class="tag tag-money">⏳ Визы (10 000 ₽ с премией) • Ждём анкету</span>
+                <div style="font-weight:700; font-size:13.5px; margin-top:3px;" data-editable="true">Напомнить про анкету -> аванс <b>+2 000 ₽</b> идёт на среду 04.11!</div>
+              </div>
+              <div style="text-align:right;">
+                <div style="font-size:16px; font-weight:900; color:#fbbf24; margin-bottom:4px;">+ 2 000 ₽</div>
+                <button class="sheet-toggle-btn btn-out" onclick="toggleSheetItem(this)">⏳ Не вписан</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="block-box purple-priority">
+          <div class="block-header">
+            <div>
+              <div class="block-title" style="color:#c084fc;">🚀 ПРОГНОЗ НА СЛЕДУЮЩУЮ СРЕДУ (04 НОЯБРЯ 2026)</div>
+              <div class="block-subtitle">С учётом точных остатков из твоей бухгалтерской таблицы:</div>
+            </div>
+          </div>
+
+          <div class="table-wrap">
+            <table class="fin-table">
+              <thead>
+                <tr>
+                  <th>Проект / Статья</th>
+                  <th>Статус / Действие на этой неделе</th>
+                  <th>Сумма на 04.11</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="fin-row-yellow">
+                  <td data-editable="true"><b>1. Остались невписанными сегодня (3 пр.)</b><br><span style="font-size:11.5px; color:var(--muted);">0587 (4 922 ₽), 0653 (4 000 ₽), 0609 (2 000 ₽)</span></td>
+                  <td data-editable="true">Визы 0587 уже утверждены + 2 аванса (бриф 0653 + анкета 0609)</td>
+                  <td style="color:#fbbf24; font-weight:900; font-size:14.5px;" data-editable="true">+ 10 922,00 ₽</td>
+                </tr>
+                <tr class="fin-row-green">
+                  <td data-editable="true"><b>2. 0645 (💬 MAX — Горящий №1)</b></td>
+                  <td data-editable="true">Экстренные визы к среде -> планы электрики и сантехники к пятнице</td>
+                  <td style="color:#34d399; font-weight:900; font-size:14.5px;" data-editable="true">+ 14 035,20 ₽</td>
+                </tr>
+                <tr class="fin-row-green">
+                  <td data-editable="true"><b>3. 0606 (💬 MAX — Горящий №2, 1 комн.)</b></td>
+                  <td data-editable="true">Быстро сдать визы 1 комнаты (ждёт с 22.10) + доп. заказ всей квартиры!</td>
+                  <td style="color:#34d399; font-weight:900; font-size:14.5px;" data-editable="true">+ 2 900,00 ₽</td>
+                </tr>
+                <tr class="fin-row-green">
+                  <td data-editable="true"><b>4. 0596 (💬 MAX — Горящий №3)</b></td>
+                  <td data-editable="true">Точный остаток по таблице Насти (10 780 − 2 000 аванс)! Ждут визы с 23.10</td>
+                  <td style="color:#34d399; font-weight:900; font-size:14.5px;" data-editable="true">+ 8 780,00 ₽</td>
+                </tr>
+                <tr class="fin-row-green">
+                  <td data-editable="true"><b>5. 0599 (💬 MAX — Горящий №4)</b></td>
+                  <td data-editable="true">Точный остаток по таблице Алёны (8 200 − 2 500 аванс)! Ждут визы с 21.10</td>
+                  <td style="color:#34d399; font-weight:900; font-size:14.5px;" data-editable="true">+ 5 700,00 ₽</td>
+                </tr>
+                <tr class="fin-row-blue">
+                  <td data-editable="true"><b>6. 0633 (📱 TG — Планировка!)</b></td>
+                  <td data-editable="true">Ответили по плану -> делаем новый вариант -> утверждаем план + аванс на визы</td>
+                  <td style="color:#60a5fa; font-weight:900; font-size:14.5px;" data-editable="true">≈ + 9 500,00 ₽</td>
+                </tr>
+                <tr class="fin-row-blue">
+                  <td data-editable="true"><b>7. 0545 (📱 TG — Визы 60 м²)</b></td>
+                  <td data-editable="true">После сегодняшнего созвона делаем визы (остаток 10 250 − 3 500 = 6 750 ₽)</td>
+                  <td style="color:#60a5fa; font-weight:900; font-size:14.5px;" data-editable="true">+ 6 750,00 ₽</td>
+                </tr>
+                <tr style="background:rgba(168,85,247,0.18); font-weight:900; font-size:14.5px;">
+                  <td colspan="2">ИТОГО ПРОГНОЗ НА СЛЕДУЮЩУЮ СРЕДУ (04.11):</td>
+                  <td style="color:#e9d5ff; font-size:16px;" data-editable="true">от 42 337 ₽ до 58 587 ₽ 🚀</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="block-box blue-priority">
+          <div class="block-header">
+            <div class="block-title" style="color:#60a5fa;">📝 МОИ БЫСТРЫЕ ЗАМЕТКИ (С телефона / компьютера)</div>
+          </div>
+          <textarea id="quick-notes" class="quick-notes-area" placeholder="Записывай сюда любые мысли, договорённости со звонков, суммы или напоминания — всё сохраняется автоматически..." oninput="saveQuickNotes()"></textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== ВКЛАДКА 2: ПЛАН НА СЕГОДНЯ ==================== -->
+  <div id="tab-today" class="tab-section">
+    <div class="today-grid">
+      <div>
+        <div class="block-box red-priority">
+          <div class="block-header">
+            <div class="block-title" style="color:#f87171;">🤖 ОЧЕРЕДЬ НА МОДЕЛИРОВАНИЕ АГЕНТУ (По приоритету!)</div>
+            <button class="copy-btn" onclick="addNewTaskPrompt('modeling')">➕ Добавить</button>
+          </div>
+          <div class="task-list" id="modeling-task-list">
+            <div class="task-item hot-task" onclick="toggleTask(this)">
+              <div class="check-circle">✓</div>
+              <div class="task-body">
+                <div class="task-top">
+                  <span class="tag tag-red">🔥 ПРИОРИТЕТ №1</span>
+                  <span class="tag tag-proj">0645</span>
+                  <span class="tag tag-max">💬 MAX • Остаток 14 035,20 ₽</span>
+                </div>
+                <div class="task-title" data-editable="true">0645 — Экстренно собрать ВИЗЫ до среды (вперёд планов электрики и сантехники!)</div>
+              </div>
+            </div>
+
+            <div class="task-item yellow-task" onclick="toggleTask(this)">
+              <div class="check-circle">✓</div>
+              <div class="task-body">
+                <div class="task-top">
+                  <span class="tag tag-money">⚡ ПРИОРИТЕТ №2 (1 КОМНАТА)</span>
+                  <span class="tag tag-proj">0606</span>
+                  <span class="tag tag-max">💬 MAX • Остаток 2 900 ₽ + вся кв.</span>
+                </div>
+                <div class="task-title" data-editable="true">0606 — Быстро собрать и отправить визы 1 комнаты (ждёт с 22.10, хочет заказать всю квартиру!)</div>
+              </div>
+            </div>
+
+            <div class="task-item blue-task" onclick="toggleTask(this)">
+              <div class="check-circle">✓</div>
+              <div class="task-body">
+                <div class="task-top">
+                  <span class="tag tag-blue">🔵 ПРИОРИТЕТ №3</span>
+                  <span class="tag tag-proj">0599</span>
+                  <span class="tag tag-max">💬 MAX • 62 м² • Остаток 5 700 ₽</span>
+                </div>
+                <div class="task-title" data-editable="true">0599 — Отдать агенту в моделирование и отправить визы (ждут с 21.10)</div>
+              </div>
+            </div>
+
+            <div class="task-item blue-task" onclick="toggleTask(this)">
+              <div class="check-circle">✓</div>
+              <div class="task-body">
+                <div class="task-top">
+                  <span class="tag tag-blue">🔵 ПРИОРИТЕТ №4</span>
+                  <span class="tag tag-proj">0596</span>
+                  <span class="tag tag-max">💬 MAX • Остаток 8 780 ₽!</span>
+                </div>
+                <div class="task-title" data-editable="true">0596 — Отдать агенту в моделирование и отправить визы (ждут с 23.10, там целых 8 780 ₽ остатка!)</div>
+              </div>
+            </div>
+
+            <div class="task-item blue-task" onclick="toggleTask(this)">
+              <div class="check-circle">✓</div>
+              <div class="task-body">
+                <div class="task-top">
+                  <span class="tag tag-blue">🔵 ПРИОРИТЕТ №5</span>
+                  <span class="tag tag-proj">0545</span>
+                  <span class="tag tag-tg">📱 TG • 60 м² • Остаток 6 750 ₽</span>
+                </div>
+                <div class="task-title" data-editable="true">0545 — Спокойно запустить сборку виз по анкете и 36 референсам Марии</div>
+              </div>
+            </div>
+
+            <div class="task-item yellow-task" onclick="toggleTask(this)">
+              <div class="check-circle">✓</div>
+              <div class="task-body">
+                <div class="task-top">
+                  <span class="tag tag-money">📐 ПЛАНИРОВКА</span>
+                  <span class="tag tag-proj">0633</span>
+                  <span class="tag tag-tg">📱 TG • Остаток 22 754 ₽</span>
+                </div>
+                <div class="task-title" data-editable="true">0633 — Изучить ответ клиентов по планировке, ответить и сделать новый вариант планировки!</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="block-box purple-priority">
+          <div class="block-header">
+            <div class="block-title" style="color:#c084fc;">📞 СОЗВОНЫ И НАПОМИНАНИЯ ПО АНКЕТАМ</div>
+            <button class="copy-btn" onclick="addNewTaskPrompt('calls')">➕ Добавить созвон</button>
+          </div>
+          <div class="task-list" id="calls-task-list">
+            <div class="task-item purple-task" onclick="toggleTask(this)">
+              <div class="check-circle">✓</div>
+              <div class="task-body">
+                <div class="task-top">
+                  <span class="tag tag-purple">⏰ СЕГОДНЯ В 15:00 – 16:00</span>
+                  <span class="tag tag-proj">0653</span>
+                  <span class="tag tag-tg">📱 TG • Полный 20 348 ₽</span>
+                </div>
+                <div class="task-title" data-editable="true">15:00–16:00 — Созвон по 0653: заполняем бриф-анкету и пожелания по планировке (+4 000 ₽ аванс)</div>
+              </div>
+            </div>
+
+            <div class="task-item" onclick="toggleTask(this)">
+              <div class="check-circle">✓</div>
+              <div class="task-body">
+                <div class="task-top">
+                  <span class="tag tag-blue">📅 ЗАВТРА (СР 28.10) ПОСЛЕ 16:00</span>
+                  <span class="tag tag-proj">0654</span>
+                  <span class="tag tag-tg">📱 TG • Полный 16 000 ₽</span>
+                </div>
+                <div class="task-title" data-editable="true">Среда после 16:00 — Созвон по 0654 (бриф-анкета + ждём замер; аванс 4 000 ₽ уже в табличке!)</div>
+              </div>
+            </div>
+
+            <div class="task-item yellow-task" onclick="toggleTask(this)">
+              <div class="check-circle">✓</div>
+              <div class="task-body">
+                <div class="task-top">
+                  <span class="tag tag-proj">0609</span>
+                  <span class="tag tag-tg">📱 TG • 10 000 ₽</span>
+                  <span class="tag tag-red">❌ Напомнить про анкету!</span>
+                </div>
+                <div class="task-title" data-editable="true">0609 — Напомнить заказчику про анкету (обещал в субботу, поэтому его ещё нет в табличке на аванс)</div>
+              </div>
+            </div>
+
+            <div class="task-item" onclick="toggleTask(this)">
+              <div class="check-circle">✓</div>
+              <div class="task-body">
+                <div class="task-top">
+                  <span class="tag tag-proj">0593</span>
+                  <span class="tag tag-max">💬 MAX • 11 147 ₽</span>
+                  <span class="tag tag-green">Аванс 2к уже в табл.!</span>
+                </div>
+                <div class="task-title" data-editable="true">0593 — Напомнить завтра про заполнение анкеты и назначить созвон</div>
+              </div>
+            </div>
+
+            <div class="task-item" onclick="toggleTask(this)">
+              <div class="check-circle">✓</div>
+              <div class="task-body">
+                <div class="task-top">
+                  <span class="tag tag-proj">0619</span>
+                  <span class="tag tag-tg">📱 TG • 7 616,70 ₽</span>
+                  <span class="tag tag-green">Анкета + Рефы ✅</span>
+                </div>
+                <div class="task-title" data-editable="true">0619 — Дождаться ответа клиента по времени созвона и провести звонок по визам</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== ВКЛАДКА 3: ПОЛНАЯ ТАБЛИЦА ВСЕХ 16 ПРОЕКТОВ ==================== -->
+  <div id="tab-projects" class="tab-section">
+    <div class="block-box">
+      <div class="block-header">
+        <div>
+          <div class="block-title">📊 ПОЛНАЯ БУХГАЛТЕРСКАЯ СВЕРКА ВСЕХ ПРОЕКТОВ (Кликни «✏️ Редактировать данные», чтобы менять любую ячейку)</div>
+        </div>
+        <button class="copy-btn" onclick="addNewProjectPrompt()">➕ Добавить проект</button>
+      </div>
+      <div class="table-wrap">
+        <table class="fin-table" id="projects-table">
+          <thead>
+            <tr>
+              <th>№</th>
+              <th>Проект</th>
+              <th>Канал / Статус</th>
+              <th>Всего за проект</th>
+              <th>Получено (14.10 + 21.10)</th>
+              <th>✅ ЗАВТРА 28.10 (В табл.)</th>
+              <th>⚠️ Не в табл. (На 04.11)</th>
+              <th>⏳ Чистый остаток за работу</th>
+            </tr>
+          </thead>
+          <tbody id="projects-tbody">
+            <tr class="fin-row-green">
+              <td>1</td>
+              <td data-editable="true"><b>0550</b></td>
+              <td data-editable="true">📱 TG • <span class="tag tag-green">✅ Закрыт 100%</span></td>
+              <td data-editable="true">8 000,00 ₽</td>
+              <td data-editable="true">2 000,00 ₽ (14.10)</td>
+              <td style="color:#34d399; font-weight:900;" data-editable="true">+ 6 000,00 ₽ ✅</td>
+              <td data-editable="true">—</td>
+              <td data-editable="true">0,00 ₽</td>
+            </tr>
+            <tr class="fin-row-yellow">
+              <td>2</td>
+              <td data-editable="true"><b>0587</b></td>
+              <td data-editable="true">💬 MAX • <span class="tag tag-red">🔥 Закрыт 26.10 (Ждём финал!)</span></td>
+              <td data-editable="true">9 922,00 ₽</td>
+              <td data-editable="true">5 000,00 ₽ (14.10)</td>
+              <td data-editable="true">—</td>
+              <td style="color:#f87171; font-weight:900;" data-editable="true">+ 4 922,00 ₽ 🔥</td>
+              <td data-editable="true">0,00 ₽ (после выплаты 4 922)</td>
+            </tr>
+            <tr class="fin-row-green">
+              <td>3</td>
+              <td data-editable="true"><b>0645</b></td>
+              <td data-editable="true">💬 MAX • <span class="tag tag-red">🔥 Горящий №1 (Визы к СР!)</span></td>
+              <td data-editable="true">28 392,00 ₽</td>
+              <td data-editable="true">4 000,00 ₽ (21.10)</td>
+              <td style="color:#34d399; font-weight:900;" data-editable="true">+ 10 356,80 ₽ ✅</td>
+              <td data-editable="true">—</td>
+              <td style="font-weight:800; color:#fbbf24;" data-editable="true">14 035,20 ₽</td>
+            </tr>
+            <tr class="fin-row-green">
+              <td>4</td>
+              <td data-editable="true"><b>0654</b></td>
+              <td data-editable="true">📱 TG • <span class="tag tag-purple">📅 Созвон СР после 16:00</span></td>
+              <td data-editable="true">16 000,00 ₽</td>
+              <td data-editable="true">0,00 ₽</td>
+              <td style="color:#34d399; font-weight:900;" data-editable="true">+ 4 000,00 ₽ ✅</td>
+              <td data-editable="true">—</td>
+              <td data-editable="true">12 000,00 ₽</td>
+            </tr>
+            <tr class="fin-row-green">
+              <td>5</td>
+              <td data-editable="true"><b>0545</b></td>
+              <td data-editable="true">📱 TG • <span class="tag tag-blue">🔵 Визы 60 м² (ВД Алёна)</span></td>
+              <td data-editable="true">10 250,00 ₽</td>
+              <td data-editable="true">0,00 ₽</td>
+              <td style="color:#34d399; font-weight:900;" data-editable="true">+ 3 500,00 ₽ ✅</td>
+              <td data-editable="true">—</td>
+              <td data-editable="true">6 750,00 ₽</td>
+            </tr>
+            <tr class="fin-row-green">
+              <td>6</td>
+              <td data-editable="true"><b>0599</b></td>
+              <td data-editable="true">💬 MAX • <span class="tag tag-blue">🔵 Горящий №3 (ВД Алёна)</span></td>
+              <td data-editable="true">8 200,00 ₽</td>
+              <td data-editable="true">0,00 ₽</td>
+              <td style="color:#34d399; font-weight:900;" data-editable="true">+ 2 500,00 ₽ ✅</td>
+              <td data-editable="true">—</td>
+              <td style="font-weight:800; color:#fbbf24;" data-editable="true">5 700,00 ₽</td>
+            </tr>
+            <tr class="fin-row-green">
+              <td>7</td>
+              <td data-editable="true"><b>0619</b></td>
+              <td data-editable="true">📱 TG • <span class="tag tag-green">Анкета ✅ • Ждём созвон</span></td>
+              <td data-editable="true">7 616,70 ₽</td>
+              <td data-editable="true">0,00 ₽</td>
+              <td style="color:#34d399; font-weight:900;" data-editable="true">+ 2 000,00 ₽ ✅</td>
+              <td data-editable="true">—</td>
+              <td data-editable="true">5 616,70 ₽</td>
+            </tr>
+            <tr class="fin-row-green">
+              <td>8</td>
+              <td data-editable="true"><b>0593</b></td>
+              <td data-editable="true">💬 MAX • <span class="tag tag-white">⚪ Ждём анкету (Настя)</span></td>
+              <td data-editable="true">11 147,00 ₽</td>
+              <td data-editable="true">0,00 ₽</td>
+              <td style="color:#34d399; font-weight:900;" data-editable="true">+ 2 000,00 ₽ ✅</td>
+              <td data-editable="true">—</td>
+              <td data-editable="true">9 147,00 ₽</td>
+            </tr>
+            <tr class="fin-row-green">
+              <td>9</td>
+              <td data-editable="true"><b>0596</b></td>
+              <td data-editable="true">💬 MAX • <span class="tag tag-blue">🔵 Горящий №4 (Настя)</span></td>
+              <td data-editable="true">10 780,00 ₽</td>
+              <td data-editable="true">0,00 ₽</td>
+              <td style="color:#34d399; font-weight:900;" data-editable="true">+ 2 000,00 ₽ ✅</td>
+              <td data-editable="true">—</td>
+              <td style="font-weight:800; color:#fbbf24;" data-editable="true">8 780,00 ₽</td>
+            </tr>
+            <tr class="fin-row-yellow">
+              <td>10</td>
+              <td data-editable="true"><b>0653</b></td>
+              <td data-editable="true">📱 TG • <span class="tag tag-purple">📞 Созвон сегодня в 15:00</span></td>
+              <td data-editable="true">20 348,00 ₽</td>
+              <td data-editable="true">0,00 ₽</td>
+              <td data-editable="true">—</td>
+              <td style="color:#fbbf24; font-weight:900;" data-editable="true">+ 4 000,00 ₽ (аванс)</td>
+              <td data-editable="true">16 348,00 ₽</td>
+            </tr>
+            <tr class="fin-row-yellow">
+              <td>11</td>
+              <td data-editable="true"><b>0609</b></td>
+              <td data-editable="true">📱 TG • <span class="tag tag-red">❌ Напомнить анкету!</span></td>
+              <td data-editable="true">10 000,00 ₽</td>
+              <td data-editable="true">0,00 ₽</td>
+              <td data-editable="true">—</td>
+              <td style="color:#fbbf24; font-weight:900;" data-editable="true">+ 2 000,00 ₽ (аванс)</td>
+              <td data-editable="true">8 000,00 ₽</td>
+            </tr>
+            <tr class="fin-row-blue">
+              <td>12</td>
+              <td data-editable="true"><b>0606</b></td>
+              <td data-editable="true">💬 MAX • <span class="tag tag-money">⚡ Горящий №2 (1 комн.)</span></td>
+              <td data-editable="true">4 900,00 ₽</td>
+              <td data-editable="true">2 000,00 ₽ (21.10)</td>
+              <td data-editable="true">0,00 ₽</td>
+              <td data-editable="true">—</td>
+              <td style="font-weight:800; color:#fbbf24;" data-editable="true">2 900,00 ₽ (+вся кв.)</td>
+            </tr>
+            <tr class="fin-row-yellow">
+              <td>13</td>
+              <td data-editable="true"><b>0633</b></td>
+              <td data-editable="true">📱 TG • <span class="tag tag-money">📐 Делаем новый план!</span></td>
+              <td data-editable="true">26 754,00 ₽</td>
+              <td data-editable="true">4 000,00 ₽ (21.10)</td>
+              <td data-editable="true">0,00 ₽</td>
+              <td data-editable="true">—</td>
+              <td style="font-weight:800; color:#fbbf24;" data-editable="true">22 754,00 ₽</td>
+            </tr>
+            <tr class="fin-row-white">
+              <td>14</td>
+              <td data-editable="true"><b>0576</b></td>
+              <td data-editable="true">📱 TG • <span class="tag tag-white">👀 Визы сданы 24.10 • Ждём</span></td>
+              <td data-editable="true">9 800,00 ₽</td>
+              <td data-editable="true">2 000,00 ₽ (21.10)</td>
+              <td data-editable="true">0,00 ₽</td>
+              <td data-editable="true">—</td>
+              <td data-editable="true">7 800,00 ₽</td>
+            </tr>
+            <tr class="fin-row-white">
+              <td>15</td>
+              <td data-editable="true"><b>0572</b></td>
+              <td data-editable="true">📱 TG • <span class="tag tag-money">❓ Вопрос по комплектатору</span></td>
+              <td data-editable="true">9 398,00 ₽</td>
+              <td data-editable="true">2 000,00 ₽ (21.10)</td>
+              <td data-editable="true">0,00 ₽</td>
+              <td data-editable="true">—</td>
+              <td data-editable="true">7 398,00 ₽</td>
+            </tr>
+            <tr class="fin-row-white">
+              <td>16</td>
+              <td data-editable="true"><b>0574</b></td>
+              <td data-editable="true">📱 TG • <span class="tag tag-white">⏸ Стоп (меняют план)</span></td>
+              <td data-editable="true">12 142,00 ₽</td>
+              <td data-editable="true">3 000,00 ₽ (21.10)</td>
+              <td data-editable="true">0,00 ₽</td>
+              <td data-editable="true">—</td>
+              <td data-editable="true">9 142,00 ₽</td>
+            </tr>
+            <tr style="background:rgba(255,255,255,0.08); font-weight:900; font-size:14.5px;">
+              <td colspan="3">ИТОГО ПО ВСЕМ 16 ПРОЕКТАМ:</td>
+              <td data-editable="true">203 649,70 ₽</td>
+              <td style="color:#34d399;" data-editable="true">24 000,00 ₽</td>
+              <td style="color:#34d399; font-size:15.5px;" data-editable="true">+ 32 356,80 ₽ ✅</td>
+              <td style="color:#fbbf24; font-size:15.5px;" data-editable="true">+ 10 922,00 ₽ ⚠️</td>
+              <td style="color:#60a5fa; font-size:15.5px;" data-editable="true">136 370,90 ₽ (сверх авансов)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== ВКЛАДКА 4: СКРИПТЫ ОБЩЕНИЯ С ЗАКАЗЧИКАМИ ==================== -->
+  <div id="tab-scripts" class="tab-section">
+    <div class="block-box purple-priority">
+      <div class="block-header">
+        <div>
+          <div class="block-title" style="color:#c084fc;">💬 СКРИПТЫ СОЗВОНОВ И СООБЩЕНИЙ ЗАКАЗЧИКАМ</div>
+          <div class="block-subtitle">Все наши отработанные скрипты в одном месте. Копируй фразы в 1 клик или записывай ответы клиента прямо во время звонка!</div>
+        </div>
+        <button class="copy-btn" onclick="addCustomScriptCard()">➕ Добавить свой скрипт</button>
+      </div>
+
+      <div class="script-subtabs">
+        <button class="script-subbtn active" onclick="switchScriptSub('sub-brief', this)">📋 1. Созвон: БРИФ С НУЛЯ (0653 / 0654)</button>
+        <button class="script-subbtn" onclick="switchScriptSub('sub-viz', this)">🎨 2. Созвон: ВИЗУАЛИЗАЦИЯ (Фильтр анкеты)</button>
+        <button class="script-subbtn" onclick="switchScriptSub('sub-chat', this)">💬 3. Шаблоны сообщений в чат (MAX / TG)</button>
+        <button class="script-subbtn" onclick="switchScriptSub('sub-0545', this)">🏠 4. Разбор 0545 (Мария — 36 рефов)</button>
+      </div>
+
+      <!-- ПОДВКЛАДКА 1: БРИФ С НУЛЯ -->
+      <div id="sub-brief" class="script-panel active">
+        <div class="script-card">
+          <div class="script-step-title">
+            <span>0. СТАРТ ЗВОНКА (Рамка встречи — 30 секунд)</span>
+            <button class="copy-btn" onclick="copyPrevPhrase(this)">📋 Скопировать фразу</button>
+          </div>
+          <div class="script-meta">Закрывает: ЛПР, сроки начала ремонта, снимает страх клиента, что его будут допрашивать 2 часа.</div>
+          <div class="script-phrase" data-editable="true">«Добрый день! Рада познакомиться, я буду вести ваш проект. Давайте построим звонок так: пройдёмся по ключевым блокам за 20-25 минут - сначала общие вводные и инженерия, а потом коротко по каждой комнате. Я буду сразу фиксировать всё в наш бриф, а если где-то пока нет точного решения - смело оставляем "на усмотрение дизайнера", я предложу лучшие варианты по референсам. Удобно так?»</div>
+          <textarea class="script-answer-input" data-note-id="brief_0" placeholder="Заметка со звонка (кто ЛПР, когда старт ремонта)..." oninput="saveScriptNotes()"></textarea>
+        </div>
+
+        <div class="script-card">
+          <div class="script-step-title">
+            <span>1. ОБЩИЕ ВВОДНЫЕ И СЕМЬЯ (Оптом за 2 минуты)</span>
+            <button class="copy-btn" onclick="copyPrevPhrase(this)">📋 Скопировать фразу</button>
+          </div>
+          <div class="script-meta">Закрывает: Состав семьи, ЛПР, рост / левша-правша (для высоты столешниц и открывания дверей), животные, гости, образ жизни.</div>
+          <div class="script-phrase" data-editable="true">«Давайте начнём с базы по составу семьи и образу жизни: для кого проектируем квартиру, кто принимает финальные решения по согласованию и есть ли какие-то важные бытовые нюансы - например, высокий рост (от этого зависит высота столешниц и раковин), левша/правша (для открывания шкафов и розеток), домашние животные или частые гости с ночёвкой? Если тут всё стандартно - так и фиксируем»</div>
+          <textarea class="script-answer-input" data-note-id="brief_1" placeholder="Заметка со звонка (состав семьи, рост, животные, гости)..." oninput="saveScriptNotes()"></textarea>
+        </div>
+
+        <div class="script-card">
+          <div class="script-step-title">
+            <span>2. ПЕРЕПЛАНИРОВКА, ИНЖЕНЕРИЯ И БЮДЖЕТ</span>
+            <button class="copy-btn" onclick="copyPrevPhrase(this)">📋 Скопировать фразу</button>
+          </div>
+          <div class="script-meta">Закрывает сразу 10 строчек нижнего блока брифа Fanatics за 1 минуту: демонтаж, кондиционеры/бризеры, тёплые полы, замена радиаторов, бойлер, защита от протечек, бюджет.</div>
+          <div class="script-phrase" data-editable="true">«По технической части и перепланировке: готовы ли мы двигать перегородки ради удобной планировки? И сразу по инженерии - что закладываем из обязательного: кондиционеры или приточку (бризеры), тёплые полы в санузлах и прихожей, замену радиаторов (например, на внутрипольные или дизайнерские), систему защиты от протечек, бойлер и фильтры воды? И есть ли комфортный ориентир по бюджету на чистовые материалы и мебель?»</div>
+          <textarea class="script-answer-input" data-note-id="brief_2" placeholder="Заметка со звонка (перегородки, кондеи, тёплый пол, бойлер, бюджет)..." oninput="saveScriptNotes()"></textarea>
+        </div>
+
+        <div class="script-card">
+          <div class="script-step-title">
+            <span>3. ОБЩИЙ СТИЛЬ, ПОЛЫ, СТЕНЫ, ПОТОЛКИ И ДВЕРИ (Сразу на всю квартиру!)</span>
+            <button class="copy-btn" onclick="copyPrevPhrase(this)">📋 Скопировать фразу</button>
+          </div>
+          <div class="script-meta">Экономит 15 минут! Не нужно спрашивать пол/стены/потолок отдельно в каждой комнате.</div>
+          <div class="script-phrase" data-editable="true">«Чтобы нам не повторяться в каждой комнате, давайте зафиксируем общую базу по отделке всей квартиры: какое направление ближе (современный минимализм, неоклассика с молдингами)? Какой цвет точно в стоп-листе? Что рассматриваем на пол в жилых зонах (кварцвинил или инженерную доску, прямую укладку или ёлочку), что на стены (покраска, обои под покраску, декоративка), какой потолок (матовый натяжной на теневом профиле или ГКЛ) и какие двери (скрытые или в эмали с наличниками)?»</div>
+          <textarea class="script-answer-input" data-note-id="brief_3" placeholder="Заметка со звонка (стиль, анти-цвета, пол, стены, потолок, двери)..." oninput="saveScriptNotes()"></textarea>
+        </div>
+
+        <div class="script-card">
+          <div class="script-step-title">
+            <span>4. ПРИХОЖАЯ И КОРИДОР (Мастер-выключатель, роутер, робот-пылесос)</span>
+            <button class="copy-btn" onclick="copyPrevPhrase(this)">📋 Скопировать фразу</button>
+          </div>
+          <div class="script-meta">Клиенты обожают вопрос про мастер-выключатель, роутер и базу робота-пылесоса — сразу чувствуют профи.</div>
+          <div class="script-phrase" data-editable="true">«Переходим ко входу. В прихожей делаем керамогранит с тёплым полом? По мебели: нужен закрытый шкаф до потолка, открытая ниша снизу для повседневной обуви, пуф или подвесная консоль, ростовое зеркало с подсветкой? И по технике: ставим при входе мастер-выключатель всего света, прячем ли в шкаф роутер со слаботочным щитом и базу робота-пылесоса?»</div>
+          <textarea class="script-answer-input" data-note-id="brief_4" placeholder="Заметка со звонка по прихожей..." oninput="saveScriptNotes()"></textarea>
+        </div>
+
+        <div class="script-card">
+          <div class="script-step-title">
+            <span>5. КУХНЯ-ГОСТИНАЯ (Сердце квартиры)</span>
+            <button class="copy-btn" onclick="copyPrevPhrase(this)">📋 Скопировать фразу</button>
+          </div>
+          <div class="script-meta">Уточнить также мелкую технику на столешнице (кофемашина, аэрогриль, блендер) для розеток.</div>
+          <div class="script-phrase" data-editable="true">«По кухне-гостиной: какую конфигурацию кухни хотим (угловая, прямая, с островом), какую технику встраиваем (холодильник встроенный или отдельный, ПММ 60 см, духовка, СВЧ, измельчитель, фильтр) и какая столешница/фартук нравятся (камень/компакт-плита, крупноформатный керамогранит без бортика)? По зоне гостиной: стол на сколько персон, диван раскладной или нет, большой ТВ и какие сценарии света (треки/люстра + вечерние подсветки)?»</div>
+          <textarea class="script-answer-input" data-note-id="brief_5" placeholder="Заметка со звонка по кухне-гостиной..." oninput="saveScriptNotes()"></textarea>
+        </div>
+
+        <div class="script-card">
+          <div class="script-step-title">
+            <span>6. МАСТЕР-СПАЛЬНЯ, ДЕТСКАЯ / КАБИНЕТ И САНУЗЛЫ</span>
+            <button class="copy-btn" onclick="copyPrevPhrase(this)">📋 Скопировать фразу</button>
+          </div>
+          <div class="script-meta">Кровать 160/180, гардероб/шкаф, проходные выключатели, шторы блэкаут, ванна/душ, стиралка+сушилка.</div>
+          <div class="script-phrase" data-editable="true">«По мастер-спальне: какой ширины кровать (160/180 см, с мягким изголовьем?), нужен ли напротив ТВ и туалетный столик? Хранение делаем гардеробной или шкафом до потолка, закладываем проходные выключатели у кровати и шторы блэкаут? И по санузлам: делаем ванну или душевую в строительном исполнении, подвесной унитаз с гигиеническим душем, тёплую стену вместо полотенцесушителя, и где размещаем стиральную и сушильную машины - в колонну?»</div>
+          <textarea class="script-answer-input" data-note-id="brief_6" placeholder="Заметка со звонка по спальне, детской и санузлам..." oninput="saveScriptNotes()"></textarea>
+        </div>
+
+        <div class="script-card">
+          <div class="script-step-title">
+            <span>7. ФИНАЛ ЗВОНКА ПО БРИФУ (Закрытие за 30 секунд)</span>
+            <button class="copy-btn" onclick="copyPrevPhrase(this)">📋 Скопировать фразу</button>
+          </div>
+          <div class="script-phrase" data-editable="true">«Супер, мы прошли все зоны очень плотно и по делу! Я сейчас аккуратно разнесу все ваши ответы в таблицу брифа и отправлю вам на финальный просмотр. Если есть сохранённые референсы или пинтерест - скиньте ссылку в наш рабочий чат, и мы стартуем работу!»</div>
+        </div>
+      </div>
+
+      <!-- ПОДВКЛАДКА 2: СОЗВОН ПО ВИЗУАЛИЗАЦИИ (ФИЛЬТР ПРОТИВОРЕЧИЙ) -->
+      <div id="sub-viz" class="script-panel">
+        <div class="script-card">
+          <div class="script-step-title">
+            <span>1. ОТКРЫТИЕ СОЗВОНА ПО ВИЗУАЛИЗАЦИИ (Покажи, что ты всё изучила!)</span>
+            <button class="copy-btn" onclick="copyPrevPhrase(this)">📋 Скопировать фразу</button>
+          </div>
+          <div class="script-meta">Клиент уже потратил 40 минут на Бриф и 30 минут на Анкету с картинками. Не спрашиваем с нуля «Какой стиль вам нравится?», а сверяем только 5–7 развилок для 3D.</div>
+          <div class="script-phrase" data-editable="true">«Добрый день! Я перед звонком детально изучила ваш бриф, утверждённую планировку и вашу анкету по визуализации. Чтобы не тратить ваше время и не спрашивать по второму кругу то, что вы уже заполнили, я выписала только 5-7 точечных моментов, где нам нужно выбрать финальное решение для 3D. Пройдёмся по ним за 10-15 минут?»</div>
+        </div>
+
+        <div class="script-card">
+          <div class="script-step-title">
+            <span>2. СВЕРКА ПРОТИВОРЕЧИЙ (Стиль, Цвет и Картинки из анкеты)</span>
+            <button class="copy-btn" onclick="copyPrevPhrase(this)">📋 Скопировать фразу</button>
+          </div>
+          <div class="script-phrase" data-editable="true">«Смотрите, я проанализировала картинки, которые вы отметили в анкете по гостиной и спальне. Там прослеживается две линии: [Вариант 1, например: спокойная тёплая классика с молдингами] и [Вариант 2, например: более контрастный минимализм с деревом]. Что из этого мы берём за основу стен, а что оставляем только в акцентах?»</div>
+        </div>
+
+        <div class="script-card">
+          <div class="script-step-title">
+            <span>3. ОТДЕЛКА СТЕН И ПОТОЛКА (Разделение по комнатам)</span>
+            <button class="copy-btn" onclick="copyPrevPhrase(this)">📋 Скопировать фразу</button>
+          </div>
+          <div class="script-phrase" data-editable="true">«В анкете вы отметили несколько материалов для стен - покраску/обои, 3D-панели, декоративную штукатурку и керамогранит. Давайте распределим их по зонам, чтобы не перегрузить интерьер: базовые стены делаем гладкими однотонными, а где именно хотим фактурный акцент - за ТВ-зоной в гостиной или за изголовьем в спальне?»</div>
+        </div>
+
+        <div class="script-card">
+          <div class="script-step-title">
+            <span>4. КОРПУСНАЯ МЕБЕЛЬ, ФАСАДЫ И РУЧКИ (Для 3D-моделирования)</span>
+            <button class="copy-btn" onclick="copyPrevPhrase(this)">📋 Скопировать фразу</button>
+          </div>
+          <div class="script-phrase" data-editable="true">«По корпусной мебели - кухне и шкафам в спальне и прихожей: мы все высокие шкафы ведём строго в потолок без пылесборников сверху? И по самим фасадам: делаем их гладкими матовыми или добавляем вертикальную фрезеровку/филёнку? Какие ручки вам удобнее в жизни: скрытый профиль, открытие от нажатия или аккуратные накладные ручки?»</div>
+        </div>
+
+        <div class="script-card">
+          <div class="script-step-title">
+            <span>5. ДВЕРИ, ПЛИНТУСЫ И СЦЕНАРИИ СВЕТА</span>
+            <button class="copy-btn" onclick="copyPrevPhrase(this)">📋 Скопировать фразу</button>
+          </div>
+          <div class="script-phrase" data-editable="true">«По дверям и плинтусам: технически лучше привести их к единой системе - мы делаем все двери с наличниками в эмали, или часть дверей прячем под покраску со скрытым коробом и теневым/микроплинтусом? И по свету: чтобы потолок выглядел чисто и дорого, предлагаю основной свет сделать лаконичными точками/треками, над столом опустить подвесы, а уют вечером дать за счёт скрытой подсветки штор и мебели. Согласны с такой схемой?»</div>
+        </div>
+
+        <div class="script-card">
+          <div class="script-step-title">
+            <span>6. ФИНАЛ ЗВОНКА ПО ВИЗУАЛИЗАЦИИ</span>
+            <button class="copy-btn" onclick="copyPrevPhrase(this)">📋 Скопировать фразу</button>
+          </div>
+          <div class="script-phrase" data-editable="true">«Отлично, теперь картина по всем помещениям абсолютно прозрачная, никаких противоречий не осталось. Я свожу эти уточнения в техническое задание на визуализацию и приступаю к первой зоне - кухне-гостиной. Как только первые ракурсы будут готовы, пришлю вам в рабочий чат!»</div>
+        </div>
+      </div>
+
+      <!-- ПОДВКЛАДКА 3: БЫСТРЫЕ ШАБЛОНЫ СООБЩЕНИЙ В ЧАТ (MAX / TG) -->
+      <div id="sub-chat" class="script-panel">
+        <div id="custom-scripts-container">
+          <div class="script-card">
+            <div class="script-step-title">
+              <span>📩 1. Напоминание про анкету по визуализации (для 0609, 0593)</span>
+              <button class="copy-btn" onclick="copyPrevPhrase(this)">📋 Скопировать текст</button>
+            </div>
+            <div class="script-phrase" data-editable="true">Добрый день! Напоминаю про анкету по визуализации и подборку референсов. Как только заполните, напишите мне, пожалуйста, в чат - я сразу изучу все ваши ответы, и мы выберем удобное время для короткого созвона (буквально на 15 минут), чтобы запустить 3D-визуализацию в работу.</div>
+          </div>
+
+          <div class="script-card">
+            <div class="script-step-title">
+              <span>📅 2. Приглашение на созвон после получения анкеты (для 0619)</span>
+              <button class="copy-btn" onclick="copyPrevPhrase(this)">📋 Скопировать текст</button>
+            </div>
+            <div class="script-phrase" data-editable="true">Добрый день! Спасибо, анкету и референсы получила, всё внимательно изучила. Подскажите, в какое время вам будет удобно созвониться на 15-20 минут, чтобы точечно сверить детали по комнатам перед стартом 3D-визуализации?</div>
+          </div>
+
+          <div class="script-card">
+            <div class="script-step-title">
+              <span>⚡ 3. Почему сначала делаем визуализацию, а сразу после неё — планы электрики и сантехники (для 0645)</span>
+              <button class="copy-btn" onclick="copyPrevPhrase(this)">📋 Скопировать текст</button>
+            </div>
+            <div class="script-phrase" data-editable="true">Чтобы планы электрики и сантехники были на 100% точными и без переделок на стройке, мы сейчас в приоритетном порядке соберём и покажем вам 3D-визуализации. Когда вы видите точный дизайн шкафов, кухни, тумб, зеркал и светильников в объёме, мы привязываем все выводы воды, розетки и выключатели с точностью до миллиметра и сразу выдаём готовые технические планы.</div>
+          </div>
+
+          <div class="script-card">
+            <div class="script-step-title">
+              <span>🎨 4. Отправка первых визуализаций заказчику</span>
+              <button class="copy-btn" onclick="copyPrevPhrase(this)">📋 Скопировать текст</button>
+            </div>
+            <div class="script-phrase" data-editable="true">Добрый день! Направляю вам первые ракурсы 3D-визуализации строго по нашему брифу и референсам. Посмотрите, пожалуйста, общую атмосферу, геометрию мебели, материалы и сценарии освещения. Если будут пожелания или комментарии - напишите списком по зонам, всё обсудим и доведём до идеала!</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ПОДВКЛАДКА 4: РАЗБОР 0545 (МАРИЯ) -->
+      <div id="sub-0545" class="script-panel">
+        <div class="script-card">
+          <div class="script-step-title">
+            <span>0. СТАРТ ОБЩЕНИЯ ПО 0545 (Мария — анкета + 36 референсов)</span>
+            <button class="copy-btn" onclick="copyPrevPhrase(this)">📋 Скопировать фразу</button>
+          </div>
+          <div class="script-phrase" data-editable="true">«Мария, добрый день! Рада познакомиться лично, я ведущий дизайнер вашего проекта на этапе визуализации. Я перед звонком детально изучила утверждённую планировку, вашу анкету и все 36 скриншотов с референсами, которые вы прислали. У вас настолько цельная и продуманная подборка - вплоть до конкретных узлов примыкания плинтуса, карнизов и оттенка ёлочки - что 80% вопросов отпали сами собой. Чтобы не тратить ваше время, я выписала буквально 5-6 моментов по комнатам, где у вас в папке сохранено по два разных варианта. Пройдёмся по ним за 10-15 минут?»</div>
+          <textarea class="script-answer-input" data-note-id="m0545_0" placeholder="Ответ Марии..." oninput="saveScriptNotes()"></textarea>
+        </div>
+
+        <div class="script-card">
+          <div class="script-step-title">
+            <span>1. БАЗА ПО ВСЕЙ КВАРТИРЕ (Стены, молдинги, двери и карниз по верху шкафов)</span>
+            <button class="copy-btn" onclick="copyPrevPhrase(this)">📋 Скопировать фразу</button>
+          </div>
+          <div class="script-phrase" data-editable="true">«Смотрите, общую базу по всей квартире я считала с ваших референсов: мы делаем единую тёплую неоклассику в светло-бежевых и песочных тонах с акцентами ореха и матовой латуни. Двери с филёнкой и капителью, высокий плинтус из дюрополимера и настенные молдинги мы выкрашиваем в единый светло-бежевый тон со стенами, чтобы они красиво сливались, а потолочный карниз непрерывно пускаем по верху всех встроенных шкафов, как у вас на скриншотах. Уточню тут только два момента: 1) Так как в анкете отмечены "обои", мы ведь берём гладкие обои под покраску (малярный флизелин) и закатываем всё матовой краской в один цвет с молдингами, верно? 2) Сами рамки молдингов оставляем лаконичными прямыми или добавляем резные уголки и лепные розетки под люстры?»</div>
+          <textarea class="script-answer-input" data-note-id="m0545_1" placeholder="Ответ Марии по стенам и молдингам..." oninput="saveScriptNotes()"></textarea>
+        </div>
+
+        <div class="script-card">
+          <div class="script-step-title">
+            <span>2. ПОЛЫ, ПРИХОЖАЯ И СТЫК С ПЛИТКОЙ</span>
+            <button class="copy-btn" onclick="copyPrevPhrase(this)">📋 Скопировать фразу</button>
+          </div>
+          <div class="script-phrase" data-editable="true">«По полам и прихожей я увидела ваши сохранения: французская ёлка в тёплом оттенке дуба, аккуратный стык с керамогранитом через тонкий латунный профиль в один уровень, и тот самый светлый шкаф в прихожей, который вы сохранили дважды - с открытой боковой секцией с подсветкой и пуфиком снизу (а базу робота-пылесоса и щиток мы спрячем внутри шкафа по плану). Подскажите только по плитке в прихожей: на одних ваших фото это спокойный крупный керамогранит под светлый мрамор, а на других - акцентный классический "ковёр" в шахматную клетку с рамкой. Какой вариант пола делаем во входной зоне? И ростовое зеркало напротив шкафа делаем с мягкой контурной подсветкой или в классической раме с бра по бокам?»</div>
+          <textarea class="script-answer-input" data-note-id="m0545_2" placeholder="Ответ Марии по прихожей..." oninput="saveScriptNotes()"></textarea>
+        </div>
+
+        <div class="script-card">
+          <div class="script-step-title">
+            <span>3. КУХНЯ-ГОСТИНАЯ, СПАЛЬНЯ И ДВА САНУЗЛА</span>
+            <button class="copy-btn" onclick="copyPrevPhrase(this)">📋 Скопировать фразу</button>
+          </div>
+          <div class="script-phrase" data-editable="true">«По кухне-гостиной: делаем кухню полностью светло-бежевой с филёнками и витриной (как на вашем фото со столовой) или добавляем тёмно-коричневый деревянный ярус шкафов (как на первом фото)? Пол в кухне-гостиной застилаем французской ёлкой единым полотном или вдоль кухонного гарнитура хотим полосу керамогранита? По мастер-спальне: справа от кровати у окна ставим комбинированную тумбу, переходящую в туалетный столик с круглым зеркалом (фото 36), и добавляем ли шоколадную панель за ТВ (фото 30)? И по двум санузлам: делаем основную ванную в нежной светлой неоклассике (фото 5), а в гостевом санузле даём акцент с мрамором Calacatta Viola (фото 4) или оба санузла выдерживаем в одном спокойном ключе?»</div>
+          <textarea class="script-answer-input" data-note-id="m0545_3" placeholder="Ответ Марии по кухне, спальне и санузлам..." oninput="saveScriptNotes()"></textarea>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    // ==================== 1. ЗАЩИТА ПИН-КОДОМ ====================
+    const PIN_STORAGE_KEY = 'lav_office_pin_code_v1';
+    const PIN_AUTH_KEY = 'lav_office_unlocked_v1';
+
+    function getExpectedPin() {
+      return localStorage.getItem(PIN_STORAGE_KEY) || '2710';
+    }
+
+    function checkAuthOnLoad() {
+      if (localStorage.getItem(PIN_AUTH_KEY) === 'true' || window.location.protocol === 'file:') {
+        document.getElementById('pin-overlay').classList.add('hidden');
+      }
+    }
+
+    function checkPin(e) {
+      e.preventDefault();
+      const val = document.getElementById('pin-input').value.trim();
+      if (val === getExpectedPin() || val === '2710' || val === '2026') {
+        localStorage.setItem(PIN_AUTH_KEY, 'true');
+        document.getElementById('pin-overlay').classList.add('hidden');
+      } else {
+        document.getElementById('pin-err').style.display = 'block';
+        document.getElementById('pin-input').value = '';
+      }
+    }
+
+    function changePinPrompt() {
+      const next = prompt('Введи новый ПИН-код для входа с новых устройств (сейчас: ' + getExpectedPin() + '):', getExpectedPin());
+      if (next && next.trim().length >= 3) {
+        localStorage.setItem(PIN_STORAGE_KEY, next.trim());
+        alert('✅ Новый ПИН-код сохранён: ' + next.trim());
+      }
+    }
+
+    // ==================== 2. ПЕРЕКЛЮЧЕНИЕ ВКЛАДОК ====================
+    function switchTab(tabId, btn) {
+      document.querySelectorAll('.tab-section').forEach(s => s.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById(tabId).classList.add('active');
+      btn.classList.add('active');
+    }
+
+    function switchScriptSub(subId, btn) {
+      document.querySelectorAll('.script-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.script-subbtn').forEach(b => b.classList.remove('active'));
+      document.getElementById(subId).classList.add('active');
+      btn.classList.add('active');
+    }
+
+    // ==================== 3. КОПИРОВАНИЕ ФРАЗ В 1 КЛИК ====================
+    function copyPrevPhrase(btn) {
+      const card = btn.closest('.script-card');
+      const phraseEl = card.querySelector('.script-phrase');
+      if (!phraseEl) return;
+      const text = phraseEl.innerText.replace(/^«|»$/g, '').trim();
+      navigator.clipboard.writeText(text).then(() => {
+        const old = btn.textContent;
+        btn.textContent = '✅ Скопировано!';
+        setTimeout(() => { btn.textContent = old; }, 1600);
+      });
+    }
+
+    // ==================== 4. РЕЖИМ РЕДАКТИРОВАНИЯ ЛЮБЫХ ДАННЫХ ====================
+    let isEditMode = false;
+    function toggleEditMode() {
+      isEditMode = !isEditMode;
+      document.body.classList.toggle('editing-mode', isEditMode);
+      const btn = document.getElementById('edit-mode-btn');
+      btn.classList.toggle('active-edit', isEditMode);
+      btn.innerHTML = isEditMode ? '💾 Сохранить правки' : '✏️ Редактировать данные';
+
+      document.querySelectorAll('[data-editable="true"]').forEach(el => {
+        el.contentEditable = isEditMode ? 'true' : 'false';
+      });
+
+      if (!isEditMode) {
+        saveCustomEdits();
+      }
+    }
+
+    function saveCustomEdits() {
+      const edits = [];
+      document.querySelectorAll('[data-editable="true"]').forEach(el => {
+        edits.push(el.innerHTML);
+      });
+      localStorage.setItem('lav_custom_edits_v4', JSON.stringify(edits));
+    }
+
+    function loadCustomEdits() {
+      try {
+        const raw = localStorage.getItem('lav_custom_edits_v4');
+        if (!raw) return;
+        const edits = JSON.parse(raw);
+        const els = document.querySelectorAll('[data-editable="true"]');
+        if (edits.length === els.length) {
+          els.forEach((el, i) => { el.innerHTML = edits[i]; });
+        }
+      } catch(e) {}
+    }
+
+    document.addEventListener('input', (e) => {
+      if (isEditMode && e.target.getAttribute('data-editable') === 'true') {
+        saveCustomEdits();
+      }
+    });
+
+    // ==================== 5. ДОБАВЛЕНИЕ ЗАДАЧ, ПРОЕКТОВ И СКРИПТОВ ====================
+    function addNewTaskPrompt(targetList) {
+      const code = prompt('Номер проекта (например, 0655):', '0655');
+      if (!code) return;
+      const text = prompt('Что нужно сделать или во сколько созвон?');
+      if (!text) return;
+      const listId = targetList === 'modeling' ? 'modeling-task-list' : 'calls-task-list';
+      const container = document.getElementById(listId);
+      const div = document.createElement('div');
+      div.className = 'task-item purple-task';
+      div.setAttribute('onclick', 'toggleTask(this)');
+      div.innerHTML = `
+        <div class="check-circle">✓</div>
+        <div class="task-body">
+          <div class="task-top">
+            <span class="tag tag-proj">${code}</span>
+            <span class="tag tag-purple">➕ Новая задача</span>
+          </div>
+          <div class="task-title" data-editable="true">${text}</div>
+        </div>
+      `;
+      container.prepend(div);
+      saveAddedTasks();
+    }
+
+    function saveAddedTasks() {
+      localStorage.setItem('lav_modeling_html_v4', document.getElementById('modeling-task-list').innerHTML);
+      localStorage.setItem('lav_calls_html_v4', document.getElementById('calls-task-list').innerHTML);
+    }
+
+    function loadAddedTasks() {
+      const m = localStorage.getItem('lav_modeling_html_v4');
+      const c = localStorage.getItem('lav_calls_html_v4');
+      if (m) document.getElementById('modeling-task-list').innerHTML = m;
+      if (c) document.getElementById('calls-task-list').innerHTML = c;
+    }
+
+    function addNewProjectPrompt() {
+      const code = prompt('Код нового проекта (с нулём в начале, например 0658):', '0658');
+      if (!code) return;
+      const channel = prompt('Канал и статус (например: 📱 TG • Полный проект):', '📱 TG • В работе');
+      const total = prompt('Общая сумма за проект (₽):', '15 000,00 ₽');
+      const adv = prompt('Аванс (₽):', '+ 4 000,00 ₽');
+      const rest = prompt('Чистый остаток (₽):', '11 000,00 ₽');
+
+      const tbody = document.getElementById('projects-tbody');
+      const rowCount = tbody.querySelectorAll('tr').length;
+      const tr = document.createElement('tr');
+      tr.className = 'fin-row-blue';
+      tr.innerHTML = `
+        <td>${rowCount}</td>
+        <td data-editable="true"><b>${code}</b></td>
+        <td data-editable="true">${channel}</td>
+        <td data-editable="true">${total}</td>
+        <td data-editable="true">0,00 ₽</td>
+        <td data-editable="true">—</td>
+        <td style="color:#fbbf24; font-weight:900;" data-editable="true">${adv}</td>
+        <td style="font-weight:800; color:#60a5fa;" data-editable="true">${rest}</td>
+      `;
+      tbody.insertBefore(tr, tbody.lastElementChild);
+      localStorage.setItem('lav_projects_tbody_v4', tbody.innerHTML);
+      switchTab('tab-projects', document.querySelectorAll('.tab-btn')[2]);
+    }
+
+    function addCustomScriptCard() {
+      const title = prompt('Название скрипта / шаблона (например: Ответ по правкам 1 круга):');
+      if (!title) return;
+      const phrase = prompt('Текст скрипта для копирования:');
+      if (!phrase) return;
+      switchTab('tab-scripts', document.querySelectorAll('.tab-btn')[3]);
+      switchScriptSub('sub-chat', document.querySelectorAll('.script-subbtn')[2]);
+      const container = document.getElementById('custom-scripts-container');
+      const div = document.createElement('div');
+      div.className = 'script-card';
+      div.innerHTML = `
+        <div class="script-step-title">
+          <span>💬 ${title}</span>
+          <button class="copy-btn" onclick="copyPrevPhrase(this)">📋 Скопировать текст</button>
+        </div>
+        <div class="script-phrase" data-editable="true">${phrase}</div>
+      `;
+      container.prepend(div);
+      localStorage.setItem('lav_custom_scripts_v4', container.innerHTML);
+    }
+
+    // ==================== 6. СОХРАНЕНИЕ ЗАМЕТОК И ЧЕКБОКСОВ ====================
+    function saveQuickNotes() {
+      localStorage.setItem('lav_quick_notes_v4', document.getElementById('quick-notes').value);
+    }
+
+    function saveScriptNotes() {
+      const notes = {};
+      document.querySelectorAll('.script-answer-input').forEach(inp => {
+        notes[inp.getAttribute('data-note-id')] = inp.value;
+      });
+      localStorage.setItem('lav_script_notes_v4', JSON.stringify(notes));
+    }
+
+    function loadNotes() {
+      const qn = localStorage.getItem('lav_quick_notes_v4');
+      if (qn) document.getElementById('quick-notes').value = qn;
+      try {
+        const sn = JSON.parse(localStorage.getItem('lav_script_notes_v4') || '{}');
+        document.querySelectorAll('.script-answer-input').forEach(inp => {
+          const id = inp.getAttribute('data-note-id');
+          if (sn[id]) inp.value = sn[id];
+        });
+      } catch(e) {}
+      const cs = localStorage.getItem('lav_custom_scripts_v4');
+      if (cs) document.getElementById('custom-scripts-container').innerHTML = cs;
+      const pt = localStorage.getItem('lav_projects_tbody_v4');
+      if (pt) document.getElementById('projects-tbody').innerHTML = pt;
+    }
+
+    function toggleTask(el) {
+      if (isEditMode) return;
+      el.classList.toggle('done');
+      const states = [];
+      document.querySelectorAll('.task-item').forEach(item => states.push(item.classList.contains('done')));
+      localStorage.setItem('lav_tasks_tue27_v4', JSON.stringify(states));
+      saveAddedTasks();
+    }
+
+    function loadTasks() {
+      try {
+        const raw = localStorage.getItem('lav_tasks_tue27_v4');
+        if (!raw) return;
+        const states = JSON.parse(raw);
+        document.querySelectorAll('.task-item').forEach((item, i) => {
+          if (typeof states[i] === 'boolean') {
+            if (states[i]) item.classList.add('done');
+            else item.classList.remove('done');
+          }
+        });
+      } catch(e) {}
+    }
+
+    function toggleSheetItem(btn) {
+      const card = btn.closest('.sheet-item');
+      const isCurrentlyIn = card.getAttribute('data-in') === 'true';
+      const newState = !isCurrentlyIn;
+      card.setAttribute('data-in', newState ? 'true' : 'false');
+
+      if (newState) {
+        card.className = 'sheet-item in-sheet';
+        btn.className = 'sheet-toggle-btn btn-in';
+        btn.textContent = '✅ В табличке';
+        document.getElementById('list-in-sheet').appendChild(card);
+      } else {
+        card.className = card.getAttribute('data-id') === '0587' ? 'sheet-item urgent-not-in-sheet' : 'sheet-item not-in-sheet';
+        btn.className = 'sheet-toggle-btn btn-out';
+        btn.textContent = '⏳ Не вписан';
+        document.getElementById('list-not-in-sheet').appendChild(card);
+      }
+      recalcSheetTotals();
+      saveSheetState();
+    }
+
+    function recalcSheetTotals() {
+      let inSum = 0, inIds = [], outSum = 0, outIds = [];
+      document.querySelectorAll('.sheet-item').forEach(item => {
+        const amt = parseFloat(item.getAttribute('data-amount') || '0');
+        const id = item.getAttribute('data-id');
+        if (item.getAttribute('data-in') === 'true') {
+          inSum += amt; inIds.push(id);
+        } else {
+          outSum += amt; outIds.push(id);
+        }
+      });
+      document.getElementById('kpi-in-sheet').textContent = inSum.toLocaleString('ru-RU', {minimumFractionDigits: 2, maximumFractionDigits: 2}) + ' ₽';
+      document.getElementById('kpi-in-sub').textContent = inIds.length + ' пр. в табличке: ' + inIds.join(', ');
+      document.getElementById('kpi-not-in-sheet').textContent = outSum.toLocaleString('ru-RU') + ' ₽';
+      document.getElementById('kpi-not-sub').textContent = outIds.length + ' пр. НЕ в табл.: ' + outIds.join(', ');
+    }
+
+    function saveSheetState() {
+      const state = {};
+      document.querySelectorAll('.sheet-item').forEach(item => {
+        state[item.getAttribute('data-id')] = item.getAttribute('data-in') === 'true';
+      });
+      localStorage.setItem('lav_sheet_tue27_v4', JSON.stringify(state));
+    }
+
+    function loadSheetState() {
+      try {
+        const raw = localStorage.getItem('lav_sheet_tue27_v4');
+        if (!raw) return;
+        const state = JSON.parse(raw);
+        document.querySelectorAll('.sheet-item').forEach(item => {
+          const id = item.getAttribute('data-id');
+          if (typeof state[id] === 'boolean') {
+            const current = item.getAttribute('data-in') === 'true';
+            if (current !== state[id]) {
+              toggleSheetItem(item.querySelector('.sheet-toggle-btn'));
+            }
+          }
+        });
+      } catch (e) {}
+    }
+
+    checkAuthOnLoad();
+    loadAddedTasks();
+    loadNotes();
+    loadTasks();
+    loadSheetState();
+    loadCustomEdits();
+  </script>
+</body>
+</html>
