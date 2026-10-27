@@ -819,6 +819,170 @@
       box-shadow: 0 4px 15px rgba(16, 185, 129, 0.35);
       transition: all 0.15s;
     }
+
+
+    /* DRAG & DROP ЗОНА И ЧЕК-ЛИСТ ФАЙЛОВ ПРОЕКТА (БРИФ / АНКЕТА / ПЛАН / РЕФЫ) */
+    .files-status-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+      margin-bottom: 10px;
+      padding: 9px 12px;
+      background: rgba(15, 23, 42, 0.75);
+      border: 1px solid var(--border);
+      border-radius: 11px;
+    }
+    .file-chk-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 5px 10px;
+      border-radius: 8px;
+      font-size: 11.5px;
+      font-weight: 800;
+      cursor: pointer;
+      user-select: none;
+      transition: all 0.14s;
+    }
+    .file-chk-badge.has-file {
+      background: rgba(16, 185, 129, 0.18);
+      border: 1px solid rgba(16, 185, 129, 0.5);
+      color: #6ee7b7;
+    }
+    .file-chk-badge.missing-file {
+      background: rgba(239, 68, 68, 0.16);
+      border: 1px solid rgba(239, 68, 68, 0.45);
+      color: #fca5a5;
+    }
+    .dropzone-box {
+      border: 2px dashed rgba(168, 85, 247, 0.5);
+      background: rgba(168, 85, 247, 0.06);
+      border-radius: 12px;
+      padding: 12px 16px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.18s;
+      margin-bottom: 12px;
+    }
+    .dropzone-box:hover, .dropzone-box.dragover {
+      border-color: #34d399;
+      background: rgba(16, 185, 129, 0.12);
+    }
+    .viz-room-Split {
+      display: grid;
+      grid-template-columns: 1fr 1.35fr;
+      gap: 12px;
+      margin-top: 10px;
+    }
+    @media (max-width: 960px) {
+      .viz-room-Split { grid-template-columns: 1fr; }
+    }
+
+    /* КЛИКЕР БРИФА И ТЕХНИЧЕСКИЕ ШПАРГАЛКИ */
+    .brief-step-box {
+      background: rgba(255, 255, 255, 0.025);
+      border: 1px solid var(--border);
+      border-radius: 13px;
+      padding: 13px 15px;
+      margin-bottom: 12px;
+    }
+    .brief-human-q {
+      font-size: 14px;
+      font-weight: 800;
+      color: #fde68a;
+      background: rgba(245, 158, 11, 0.1);
+      border-left: 3px solid #f59e0b;
+      padding: 8px 12px;
+      border-radius: 8px;
+      margin-bottom: 8px;
+    }
+    .tech-hint-details {
+      background: rgba(59, 130, 246, 0.08);
+      border: 1px solid rgba(59, 130, 246, 0.35);
+      border-radius: 9px;
+      padding: 7px 11px;
+      margin-bottom: 9px;
+      font-size: 12px;
+      color: #dbeafe;
+    }
+    .tech-hint-details summary {
+      cursor: pointer;
+      font-weight: 800;
+      color: #60a5fa;
+      user-select: none;
+    }
+    .clicker-group {
+      margin-bottom: 8px;
+    }
+    .clicker-group-label {
+      font-size: 11.5px;
+      font-weight: 800;
+      color: #cbd5e1;
+      margin-bottom: 4px;
+    }
+    .clicker-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .b-chip {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      color: #f1f5f9;
+      padding: 5px 10px;
+      border-radius: 8px;
+      font-size: 11.5px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.12s;
+    }
+    .b-chip:hover {
+      border-color: #60a5fa;
+      background: rgba(59, 130, 246, 0.18);
+    }
+    .b-chip.active-bchip {
+      background: rgba(16, 185, 129, 0.25);
+      border-color: #10b981;
+      color: #6ee7b7;
+      box-shadow: 0 0 0 1px rgba(16, 185, 129, 0.3);
+    }
+    .brief-live-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+    }
+    .brief-live-table th, .brief-live-table td {
+      border: 1px solid var(--border);
+      padding: 6px 9px;
+      text-align: left;
+      vertical-align: top;
+    }
+    .brief-live-table th {
+      background: rgba(168, 85, 247, 0.16);
+      color: #e9d5ff;
+      font-weight: 800;
+    }
+    .brief-sec-row td {
+      background: rgba(59, 130, 246, 0.15);
+      color: #93c5fd;
+      font-weight: 900;
+      font-size: 12.5px;
+    }
+    .brief-cell-inp {
+      width: 100%;
+      background: transparent;
+      border: none;
+      color: #f8fafc;
+      font-size: 12px;
+      font-family: inherit;
+      outline: none;
+    }
+    .brief-cell-inp:focus {
+      background: rgba(255,255,255,0.06);
+      border-radius: 4px;
+    }
+
     .big-copy-prompt-btn:hover {
       transform: translateY(-1px);
       box-shadow: 0 6px 20px rgba(16, 185, 129, 0.5);
@@ -1164,11 +1328,11 @@
               <div class="check-circle">✓</div>
               <div class="task-body">
                 <div class="task-top">
-                  <span class="tag tag-red">🔥 ПРИОРИТЕТ №1</span>
+                  <span class="tag tag-red">🔥 ПРИОРИТЕТ №1 (Экстренно до отъезда в ПТ!)</span>
                   <span class="tag tag-proj">0645</span>
                   <span class="tag tag-max">💬 MAX • Остаток 14 035,20 ₽</span>
                 </div>
-                <div class="task-title" data-editable="true">0645 — Экстренно собрать ВИЗЫ до среды (вперёд планов электрики и сантехники!)</div>
+                <div class="task-title" data-editable="true">0645 — Собрать ВИЗЫ к среде (вперёд планов электрики и сантехники, чтобы выдать планы в ЧТ до пятницы!)</div>
               </div>
             </div>
 
@@ -1204,7 +1368,7 @@
                   <span class="tag tag-proj">0596</span>
                   <span class="tag tag-max">💬 MAX • Остаток 8 780 ₽!</span>
                 </div>
-                <div class="task-title" data-editable="true">0596 — Отдать агенту в моделирование и отправить визы (ждут с 23.10, там целых 8 780 ₽ остатка!)</div>
+                <div class="task-title" data-editable="true">0596 — Отдать агенту в моделирование и отправить визы (ждут с 23.10, остаток 8 780 ₽!)</div>
               </div>
             </div>
 
@@ -1212,11 +1376,23 @@
               <div class="check-circle">✓</div>
               <div class="task-body">
                 <div class="task-top">
-                  <span class="tag tag-blue">🔵 ПРИОРИТЕТ №5</span>
+                  <span class="tag tag-green">🆕 ПРИОРИТЕТ №5 (Созвонились сегодня!)</span>
+                  <span class="tag tag-proj">0593</span>
+                  <span class="tag tag-max">💬 MAX • 91.02 м² • Остаток 9 147 ₽!</span>
+                </div>
+                <div class="task-title" data-editable="true">0593 — Сегодня созвонились! Анкета есть, референсы есть -> передаём агенту в моделирование!</div>
+              </div>
+            </div>
+
+            <div class="task-item blue-task" onclick="toggleTask(this)">
+              <div class="check-circle">✓</div>
+              <div class="task-body">
+                <div class="task-top">
+                  <span class="tag tag-green">🆕 ПРИОРИТЕТ №6 (Созвонились сегодня!)</span>
                   <span class="tag tag-proj">0545</span>
                   <span class="tag tag-tg">📱 TG • 60 м² • Остаток 6 750 ₽</span>
                 </div>
-                <div class="task-title" data-editable="true">0545 — Спокойно запустить сборку виз по анкете и 36 референсам Марии</div>
+                <div class="task-title" data-editable="true">0545 — Сегодня созвонились с Марией! Анкета и 36 референсов есть -> передаём агенту в моделирование!</div>
               </div>
             </div>
 
@@ -1224,11 +1400,11 @@
               <div class="check-circle">✓</div>
               <div class="task-body">
                 <div class="task-top">
-                  <span class="tag tag-money">📐 ПЛАНИРОВКА</span>
+                  <span class="tag tag-money">📐 ПЛАНИРОВКА (Ждут ответ!)</span>
                   <span class="tag tag-proj">0633</span>
                   <span class="tag tag-tg">📱 TG • Остаток 22 754 ₽</span>
                 </div>
-                <div class="task-title" data-editable="true">0633 — Изучить ответ клиентов по планировке, ответить и сделать новый вариант планировки!</div>
+                <div class="task-title" data-editable="true">0633 — Ответить заказчикам по планировке и сделать новый вариант планировки!</div>
               </div>
             </div>
           </div>
@@ -1238,31 +1414,61 @@
       <div>
         <div class="block-box purple-priority">
           <div class="block-header">
-            <div class="block-title" style="color:#c084fc;">📞 СОЗВОНЫ И НАПОМИНАНИЯ ПО АНКЕТАМ</div>
+            <div>
+              <div class="block-title" style="color:#c084fc;">⏰ СОЗВОНЫ И ЛИЧНОЕ РАСПИСАНИЕ (ВТ 27.10 – ПТ 30.10 БЕЗ НАКЛАДОК!)</div>
+              <div class="block-subtitle">Чётко подписано: где БРИФ с нуля (Полный проект), а где ВИЗЫ по анкете + врачи и пятница:</div>
+            </div>
             <button class="copy-btn" onclick="addNewTaskPrompt('calls')">➕ Добавить созвон</button>
           </div>
           <div class="task-list" id="calls-task-list">
+            <div class="task-item hot-task" onclick="toggleTask(this)">
+              <div class="check-circle">✓</div>
+              <div class="task-body">
+                <div class="task-top">
+                  <span class="tag tag-red">🔥 СЕГОДНЯ (ВТ 27.10) в 15:00 – 15:40</span>
+                  <span class="tag tag-proj">0653</span>
+                  <span class="tag tag-tg">📱 TG • Полный 20 348 ₽</span>
+                  <span class="tag tag-money">📋 ЭТО БРИФ С НУЛЯ! (+4 000 ₽ аванс)</span>
+                </div>
+                <div class="task-title" data-editable="true">15:00 — Созвон по 0653 (БРИФ + ПЛАНИРОВКА с нуля!). Вкладка 3 -> «📋 1. Созвон: БРИФ С НУЛЯ»</div>
+              </div>
+            </div>
+
             <div class="task-item purple-task" onclick="toggleTask(this)">
               <div class="check-circle">✓</div>
               <div class="task-body">
                 <div class="task-top">
-                  <span class="tag tag-purple">⏰ СЕГОДНЯ В 15:00 – 16:00</span>
-                  <span class="tag tag-proj">0653</span>
-                  <span class="tag tag-tg">📱 TG • Полный 20 348 ₽</span>
+                  <span class="tag tag-purple">⏰ СЕГОДНЯ (ВТ 27.10) в 16:00 – 16:25</span>
+                  <span class="tag tag-proj">0609</span>
+                  <span class="tag tag-tg">📱 TG • Визы 10 000 ₽</span>
+                  <span class="tag tag-blue">🎨 ЭТО СОЗВОН ПО ВИЗАМ! (+2 000 ₽ аванс)</span>
                 </div>
-                <div class="task-title" data-editable="true">15:00–16:00 — Созвон по 0653: заполняем бриф-анкету и пожелания по планировке (+4 000 ₽ аванс)</div>
+                <div class="task-title" data-editable="true">16:00 (сразу после 0653!) — Созвон по 0609 (ВИЗУАЛИЗАЦИЯ). Просил после 15–16ч -> ставим на 16:00 без накладок!</div>
               </div>
             </div>
 
-            <div class="task-item" onclick="toggleTask(this)">
+            <div class="task-item purple-task" onclick="toggleTask(this)">
               <div class="check-circle">✓</div>
               <div class="task-body">
                 <div class="task-top">
-                  <span class="tag tag-blue">📅 ЗАВТРА (СР 28.10) ПОСЛЕ 16:00</span>
-                  <span class="tag tag-proj">0654</span>
-                  <span class="tag tag-tg">📱 TG • Полный 16 000 ₽</span>
+                  <span class="tag tag-purple">⏰ СЕГОДНЯ (ВТ 27.10) в 17:45 – 18:05</span>
+                  <span class="tag tag-proj">0619</span>
+                  <span class="tag tag-tg">📱 TG • Визы 61.40 м² (7 616,70 ₽)</span>
+                  <span class="tag tag-blue">🎨 ЭТО СОЗВОН ПО ВИЗАМ! (Аванс 2к в табл.)</span>
                 </div>
-                <div class="task-title" data-editable="true">Среда после 16:00 — Созвон по 0654 (бриф-анкета + ждём замер; аванс 4 000 ₽ уже в табличке!)</div>
+                <div class="task-title" data-editable="true">17:45 — Созвон по 0619 (ВИЗУАЛИЗАЦИЯ по готовой анкете и рефам). После звонка -> сразу в моделинг!</div>
+              </div>
+            </div>
+
+            <div class="task-item done" onclick="toggleTask(this)">
+              <div class="check-circle">✓</div>
+              <div class="task-body">
+                <div class="task-top">
+                  <span class="tag tag-green">✅ ПРОВЕДЕНО СЕГОДНЯ!</span>
+                  <span class="tag tag-proj">0593</span>
+                  <span class="tag tag-proj">0545</span>
+                </div>
+                <div class="task-title" data-editable="true">Созвоны по 0593 (MAX, 91.02 м²) и 0545 (TG, 60 м²) проведены! Анкеты и рефы есть -> оба переданы в очередь Агенту!</div>
               </div>
             </div>
 
@@ -1270,35 +1476,45 @@
               <div class="check-circle">✓</div>
               <div class="task-body">
                 <div class="task-top">
-                  <span class="tag tag-proj">0609</span>
-                  <span class="tag tag-tg">📱 TG • 10 000 ₽</span>
-                  <span class="tag tag-red">❌ Напомнить про анкету!</span>
+                  <span class="tag tag-red">🦷 ЗАВТРА (СРЕДА 28.10) в 13:00</span>
+                  <span class="tag tag-white">⛔ НЕ СТАВИТЬ СОЗВОНЫ 12:30–14:30!</span>
                 </div>
-                <div class="task-title" data-editable="true">0609 — Напомнить заказчику про анкету (обещал в субботу, поэтому его ещё нет в табличке на аванс)</div>
+                <div class="task-title" data-editable="true">Среда 28.10 в 13:00 — Запись в СТОМАТОЛОГИЮ (приём у стоматолога, ничего туда не планировать!)</div>
               </div>
             </div>
 
-            <div class="task-item" onclick="toggleTask(this)">
+            <div class="task-item blue-task" onclick="toggleTask(this)">
               <div class="check-circle">✓</div>
               <div class="task-body">
                 <div class="task-top">
-                  <span class="tag tag-proj">0593</span>
-                  <span class="tag tag-max">💬 MAX • 11 147 ₽</span>
-                  <span class="tag tag-green">Аванс 2к уже в табл.!</span>
+                  <span class="tag tag-blue">📅 ЗАВТРА (СРЕДА 28.10) с 16:00 до поздна</span>
+                  <span class="tag tag-proj">0654</span>
+                  <span class="tag tag-tg">📱 TG • Полный 40 м² (16 000 ₽)</span>
+                  <span class="tag tag-money">📋 ЭТО БРИФ С НУЛЯ! (Аванс 4к в табл.)</span>
                 </div>
-                <div class="task-title" data-editable="true">0593 — Напомнить завтра про заполнение анкеты и назначить созвон</div>
+                <div class="task-title" data-editable="true">Среда 28.10 после 16:00 — Созвон по 0654 (БРИФ + ПЛАНИРОВКА с нуля! Человек может с 16:00 до позднего вечера)</div>
               </div>
             </div>
 
-            <div class="task-item" onclick="toggleTask(this)">
+            <div class="task-item yellow-task" onclick="toggleTask(this)">
               <div class="check-circle">✓</div>
               <div class="task-body">
                 <div class="task-top">
-                  <span class="tag tag-proj">0619</span>
-                  <span class="tag tag-tg">📱 TG • 7 616,70 ₽</span>
-                  <span class="tag tag-green">Анкета + Рефы ✅</span>
+                  <span class="tag tag-red">💉 ЧЕТВЕРГ (29.10) в 12:00</span>
+                  <span class="tag tag-white">⛔ НЕ СТАВИТЬ СОЗВОНЫ 11:30–13:30!</span>
                 </div>
-                <div class="task-title" data-editable="true">0619 — Дождаться ответа клиента по времени созвона и провести звонок по визам</div>
+                <div class="task-title" data-editable="true">Четверг 29.10 в 12:00 — Запись на приём к ЭНДОКРИНОЛОГУ за инсулином (ничего случайно не ставить!)</div>
+              </div>
+            </div>
+
+            <div class="task-item hot-task" onclick="toggleTask(this)">
+              <div class="check-circle">✓</div>
+              <div class="task-body">
+                <div class="task-top">
+                  <span class="tag tag-red">🚗 ПЯТНИЦА (30.10) — ВЕСЬ ДЕНЬ ЗАНЯТ!</span>
+                  <span class="tag tag-white">⛔ НИЧЕГО НЕ ПЛАНИРОВАТЬ!</span>
+                </div>
+                <div class="task-title" data-editable="true">Пятница 30.10 — Поездка за ребёнком к бабушке (день полностью закрыт, все сдачи делаем во ВТ–ЧТ!)</div>
               </div>
             </div>
           </div>
@@ -1722,156 +1938,470 @@
     </div>
   </div>
 
-  <!-- ==================== ВКЛАДКА 4: СКРИПТЫ ОБЩЕНИЯ С ЗАКАЗЧИКАМИ ==================== -->
+
+  <!-- ==================== ВКЛАДКА 3: БРИФ-КЛИКЕР, АНКЕТА ВИЗУАЛИЗАЦИИ И БАЗА МАТЕРИАЛОВ (МСК) ==================== -->
   <div id="tab-scripts" class="tab-section">
     <div class="block-box purple-priority">
       <div class="block-header">
         <div>
-          <div class="block-title" style="color:#c084fc;">💬 СКРИПТЫ СОЗВОНОВ И СООБЩЕНИЙ ЗАКАЗЧИКАМ</div>
-          <div class="block-subtitle">Все наши отработанные скрипты в одном месте. Копируй фразы в 1 клик или записывай ответы клиента прямо во время звонка!</div>
+          <div class="block-title" style="color:#c084fc;">📋 ИНТЕРАКТИВНЫЙ БРИФ, АНКЕТА ВИЗУАЛИЗАЦИИ И ТЕХНИЧЕСКАЯ БАЗА (МОСКВА)</div>
+          <div class="block-subtitle">Никаких длинных роботских текстов: короткий человеческий вопрос -> кликаешь мышкой по кнопкам -> таблица Брифа компании и ТЗ агентам собираются сами!</div>
         </div>
-        <button class="copy-btn" onclick="addCustomScriptCard()">➕ Добавить свой скрипт</button>
+        <div style="display:flex; gap:8px; flex-wrap:wrap; align-items:center;">
+          <span style="font-size:12px; font-weight:800; color:#fbbf24;">Проект:</span>
+          <select id="brief-project-select" class="action-btn" style="background:#1e293b; color:#fff; border-color:var(--purple-border); font-weight:900;" onchange="onBriefProjectSelectChange(this.value)"></select>
+          <button class="action-btn" style="background:rgba(59,130,246,0.2); border-color:#60a5fa; color:#93c5fd;" onclick="openMaterialsInPopup()">🗔 Открыть Базу материалов в соседнем окне</button>
+        </div>
       </div>
 
       <div class="script-subtabs">
-        <button class="script-subbtn active" onclick="switchScriptSub('sub-brief', this)">📋 1. Созвон: БРИФ С НУЛЯ (0653 / 0654)</button>
-        <button class="script-subbtn" onclick="switchScriptSub('sub-viz', this)">🎨 2. Созвон: ВИЗУАЛИЗАЦИЯ (Фильтр анкеты)</button>
-        <button class="script-subbtn" onclick="switchScriptSub('sub-chat', this)">💬 3. Шаблоны сообщений в чат (MAX / TG)</button>
-        <button class="script-subbtn" onclick="switchScriptSub('sub-0545', this)">🏠 4. Разбор 0545 (Мария — 36 рефов)</button>
-        <button class="script-subbtn" style="border-color:var(--yellow-border); color:#fde68a;" onclick="switchScriptSub('sub-materials', this)">🧱 5. База материалов, работ и цен (Москва)</button>
+        <button class="script-subbtn active" onclick="switchScriptSub('sub-brief', this)">📋 1. БРИФ С НУЛЯ (Кликер созвона + Таблица компании)</button>
+        <button class="script-subbtn" onclick="switchScriptSub('sub-viz', this)">🎨 2. СОЗВОН ПО ВИЗАМ (Когда Бриф и Анкета уже есть)</button>
+        <button class="script-subbtn" style="border-color:var(--yellow-border); color:#fde68a;" onclick="switchScriptSub('sub-materials', this)">🧱 3. БАЗА МАТЕРИАЛОВ И ИНЖЕНЕРИИ (Ответы на «А что это?»)</button>
+        <button class="script-subbtn" onclick="switchScriptSub('sub-chat', this)">💬 4. Шаблоны сообщений в чат (MAX / TG)</button>
+        <button class="script-subbtn" onclick="switchScriptSub('sub-0545', this)">🏠 5. Разбор 0545 (Мария)</button>
       </div>
 
-      <!-- ПОДВКЛАДКА 1: БРИФ С НУЛЯ -->
+      <!-- ==================== ПОДВКЛАДКА 1: КЛИКЕР БРИФА С НУЛЯ (ТЫК-ТЫК-ТЫК МЫШКОЙ) ==================== -->
       <div id="sub-brief" class="script-panel active">
-        <div class="script-card">
-          <div class="script-step-title">
-            <span>0. СТАРТ ЗВОНКА (Рамка встречи — 30 секунд)</span>
-            <button class="copy-btn" onclick="copyPrevPhrase(this)">📋 Скопировать фразу</button>
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; margin-bottom:12px; padding:10px 14px; border-radius:11px; background:rgba(16,185,129,0.1); border:1px solid rgba(16,185,129,0.4);">
+          <div>
+            <div style="font-size:13.5px; font-weight:900; color:#6ee7b7;" id="brief-active-proj-banner">📞 Заполняем Бриф по проекту: 0653</div>
+            <div style="font-size:11.5px; color:#a7f3d0;">Нажимай на кнопки ответов во время разговора — они сразу заполняют официальную таблицу Брифа внизу и передаются агентам!</div>
           </div>
-          <div class="script-meta">Закрывает: ЛПР, сроки начала ремонта, снимает страх клиента, что его будут допрашивать 2 часа.</div>
-          <div class="script-phrase" data-editable="true">«Добрый день! Рада познакомиться, я буду вести ваш проект. Давайте построим звонок так: пройдёмся по ключевым блокам за 20-25 минут - сначала общие вводные и инженерия, а потом коротко по каждой комнате. Я буду сразу фиксировать всё в наш бриф, а если где-то пока нет точного решения - смело оставляем "на усмотрение дизайнера", я предложу лучшие варианты по референсам. Удобно так?»</div>
-          <textarea class="script-answer-input" data-note-id="brief_0" placeholder="Заметка со звонка (кто ЛПР, когда старт ремонта)..." oninput="saveScriptNotes()"></textarea>
+          <div style="display:flex; gap:8px; flex-wrap:wrap;">
+            <button class="action-btn" style="background:var(--purple); border-color:var(--purple); color:#fff;" onclick="syncBriefToProjectPassport()">🚀 Перенести ответы в Паспорт проекта (Агентам)</button>
+            <button class="action-btn" style="background:var(--green); border-color:var(--green); color:#fff;" onclick="downloadOfficialCompanyBriefCSV()">📥 Скачать готовый Бриф компании (.CSV для Excel)</button>
+          </div>
         </div>
 
-        <div class="script-card">
-          <div class="script-step-title">
-            <span>1. ОБЩИЕ ВВОДНЫЕ И СЕМЬЯ (Оптом за 2 минуты)</span>
-            <button class="copy-btn" onclick="copyPrevPhrase(this)">📋 Скопировать фразу</button>
+        <!-- БЛОК 1: ОБЪЕКТ, СЕМЬЯ И ОБРАЗ ЖИЗНИ -->
+        <div class="brief-step-box">
+          <div style="font-size:13px; font-weight:900; color:#c084fc; margin-bottom:6px;">ШАГ 1. ЗНАКОМСТВО, СЕМЬЯ И ОБЩЕЕ ПРЕДСТАВЛЕНИЕ О КВАРТИРЕ</div>
+          <div class="brief-human-q">
+            🗣️ <b>Как спросить коротко и живо:</b> «Расскажите, пожалуйста, немного о квартире и о себе: кто будет проживать, какие у вас общие представления по комнатам и что важно учесть в быту?»
           </div>
-          <div class="script-meta">Закрывает: Состав семьи, ЛПР, рост / левша-правша (для высоты столешниц и открывания дверей), животные, гости, образ жизни.</div>
-          <div class="script-phrase" data-editable="true">«Давайте начнём с базы по составу семьи и образу жизни: для кого проектируем квартиру, кто принимает финальные решения по согласованию и есть ли какие-то важные бытовые нюансы - например, высокий рост (от этого зависит высота столешниц и раковин), левша/правша (для открывания шкафов и розеток), домашние животные или частые гости с ночёвкой? Если тут всё стандартно - так и фиксируем»</div>
-          <textarea class="script-answer-input" data-note-id="brief_1" placeholder="Заметка со звонка (состав семьи, рост, животные, гости)..." oninput="saveScriptNotes()"></textarea>
+
+          <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap:8px; margin-bottom:10px;">
+            <input type="text" id="bf-addr" class="script-answer-input" style="min-height:34px;" placeholder="📍 Адрес / ЖК (напр. ЖК Остров)" oninput="setBriefRow('Адрес объекта недвижимого имущества (жилого помещения) (далее – Объект):', this.value)">
+            <input type="text" id="bf-area" class="script-answer-input" style="min-height:34px;" placeholder="📐 Общий метраж и этаж (напр. 62 м², 8/24 эт.)" oninput="setBriefRow('Общий метраж Объекта', this.value)">
+            <input type="text" id="bf-keys" class="script-answer-input" style="min-height:34px;" placeholder="🔑 Ключи / Когда замер? (напр. Ключи на руках)" oninput="setBriefRow('Когда мы можем назначить замер? Или когда планируется получение ключей', this.value)">
+          </div>
+
+          <div class="clicker-group">
+            <div class="clicker-group-label">👨‍👩‍👧‍👦 Кто проживает + Кто ЛПР:</div>
+            <div class="clicker-chips">
+              <button class="b-chip" onclick="clickBriefChip(this, 'Количество проживающих и кто (состав семьи)', '1 человек')">1 человек</button>
+              <button class="b-chip" onclick="clickBriefChip(this, 'Количество проживающих и кто (состав семьи)', 'Семейная пара (2 человека)')">Семейная пара</button>
+              <button class="b-chip" onclick="clickBriefChip(this, 'Количество проживающих и кто (состав семьи)', 'Семья с 1 ребёнком')">Семья с 1 ребёнком</button>
+              <button class="b-chip" onclick="clickBriefChip(this, 'Количество проживающих и кто (состав семьи)', 'Семья с 2 детьми')">Семья с 2 детьми</button>
+              <button class="b-chip" onclick="clickBriefChip(this, 'Кто является ЛПР?', 'Заказчица')">ЛПР: Заказчица</button>
+              <button class="b-chip" onclick="clickBriefChip(this, 'Кто является ЛПР?', 'Заказчик')">ЛПР: Заказчик</button>
+              <button class="b-chip" onclick="clickBriefChip(this, 'Кто является ЛПР?', 'Совместно')">ЛПР: Вместе</button>
+            </div>
+          </div>
+
+          <div class="clicker-group">
+            <div class="clicker-group-label">✋ Правша/левша, рост, домашние животные, гости:</div>
+            <div class="clicker-chips">
+              <button class="b-chip" onclick="clickBriefChip(this, 'Члены семьи левша/правша', 'Правши')">Все правши</button>
+              <button class="b-chip" onclick="clickBriefChip(this, 'Члены семьи левша/правша', 'Есть левша')">Есть левша</button>
+              <button class="b-chip" onclick="clickBriefChip(this, 'Отличительные особенности членов семьи (рост, вес, маломобильность)', 'Стандартный рост, без особенностей')">Рост стандартный</button>
+              <button class="b-chip" onclick="clickBriefChip(this, 'Отличительные особенности членов семьи (рост, вес, маломобильность)', 'Высокий рост (учесть высоту столешницы/душа)')">Высокий рост</button>
+              <button class="b-chip" onclick="clickBriefChip(this, 'Домашние животные? Если да, то что нужно учесть?', 'Животных нет')">Животных нет</button>
+              <button class="b-chip" onclick="clickBriefChip(this, 'Домашние животные? Если да, то что нужно учесть?', 'Кошка (предусмотреть место под лоток, миски и износостойкую обивку)')">🐱 Есть кошка (лоток+миски)</button>
+              <button class="b-chip" onclick="clickBriefChip(this, 'Домашние животные? Если да, то что нужно учесть?', 'Собака (предусмотреть место под миски и мытьё лап)')">🐶 Есть собака</button>
+              <button class="b-chip" onclick="clickBriefChip(this, 'Часто ли бывают гости? Остаются ночевать? Нужно ли предусмотреть дополнительное спальное место?', 'Гости редко, без ночёвки')">Гости без ночёвки</button>
+              <button class="b-chip" onclick="clickBriefChip(this, 'Часто ли бывают гости? Остаются ночевать? Нужно ли предусмотреть дополнительное спальное место?', 'Бывают гости с ночёвкой — нужен раскладной диван в гостиной')">Гости ночуют (раскладной диван)</button>
+            </div>
+          </div>
+
+          <div class="clicker-group">
+            <div class="clicker-group-label">🧱 Перепланировка (перегородки), назначение комнат и хобби/работа из дома:</div>
+            <div class="clicker-chips">
+              <button class="b-chip" onclick="clickBriefChip(this, 'Рассматриваете ли перепланировку? Демонтаж стен?', 'Да, готовы двигать перегородки (монтаж/демонтаж) для удобной планировки')">Двигаем перегородки (монтаж/демонтаж)</button>
+              <button class="b-chip" onclick="clickBriefChip(this, 'Рассматриваете ли перепланировку? Демонтаж стен?', 'Без глобального сноса стен, в существующих границах')">Оставляем стены как есть</button>
+              <button class="b-chip" onclick="clickBriefChip(this, 'Назначение комнат?', 'Прихожая, кухня-гостиная, мастер-спальня, санузел')">Евродвушка (Кухня-гост + Спальня)</button>
+              <button class="b-chip" onclick="clickBriefChip(this, 'Назначение комнат?', 'Прихожая, кухня-гостиная, мастер-спальня, детская комната, ванная и санузел')">Евротрёшка (+Детская)</button>
+              <button class="b-chip" onclick="clickBriefChip(this, 'Назначение комнат?', 'Прихожая, кухня-гостиная, спальня, кабинет/гостевая, санузлы')">Евротрёшка (+Кабинет)</button>
+              <button class="b-chip" onclick="clickBriefChip(this, 'Хобби, профессии, образ жизни? Все что требуется учесть при разработке проекта.', 'Удалённая работа из дома (нужно удобное рабочее место)')">💻 Работа из дома (раб. место)</button>
+              <button class="b-chip" onclick="clickBriefChip(this, 'Хобби, профессии, образ жизни? Все что требуется учесть при разработке проекта.', 'Много готовят дома')">🍳 Любят готовить</button>
+              <button class="b-chip" onclick="clickBriefChip(this, 'Имеются ли предметы декора, мебели, растений, которые нужно включить в дизайн-проект?', 'Нет, вся мебель и декор закупаются с нуля')">Вся мебель новая с нуля</button>
+            </div>
+          </div>
         </div>
 
-        <div class="script-card">
-          <div class="script-step-title">
-            <span>2. ПЕРЕПЛАНИРОВКА, ИНЖЕНЕРИЯ И БЮДЖЕТ</span>
-            <button class="copy-btn" onclick="copyPrevPhrase(this)">📋 Скопировать фразу</button>
+        <!-- БЛОК 2: СТИЛЬ, ТАБУ И БЮДЖЕТ -->
+        <div class="brief-step-box">
+          <div style="font-size:13px; font-weight:900; color:#c084fc; margin-bottom:6px;">ШАГ 2. СТИЛЬ, ЦВЕТА, ЧТО НЕ НРАВИТСЯ И ВИЛКА БЮДЖЕТА</div>
+          <div class="brief-human-q">
+            🗣️ <b>Как спросить коротко и живо:</b> «По стилю и атмосфере: какие оттенки вам ближе, чего категорически не хочется видеть в квартире? И подскажите по бюджету на чистовые и мебель — мы к нему жёстко не привязываемся, но есть ли какая-то комфортная вилка для ориентира?»
           </div>
-          <div class="script-meta">Закрывает сразу 10 строчек нижнего блока брифа Fanatics за 1 минуту: демонтаж, кондиционеры/бризеры, тёплые полы, замена радиаторов, бойлер, защита от протечек, бюджет.</div>
-          <div class="script-phrase" data-editable="true">«По технической части и перепланировке: готовы ли мы двигать перегородки ради удобной планировки? И сразу по инженерии - что закладываем из обязательного: кондиционеры или приточку (бризеры), тёплые полы в санузлах и прихожей, замену радиаторов (например, на внутрипольные или дизайнерские), систему защиты от протечек, бойлер и фильтры воды? И есть ли комфортный ориентир по бюджету на чистовые материалы и мебель?»</div>
-          <textarea class="script-answer-input" data-note-id="brief_2" placeholder="Заметка со звонка (перегородки, кондеи, тёплый пол, бойлер, бюджет)..." oninput="saveScriptNotes()"></textarea>
+          <details class="tech-hint-details">
+            <summary>💡 Если клиент спросит: «А мы вообще не понимаем, сколько это сейчас стоит в Москве — какие ориентиры?» (нажми)</summary>
+            <div style="margin-top:5px; line-height:1.45;">
+              • <b>Базовый комфортный уровень</b> (хороший ламинат/кварцвинил, обои под покраску, натяжной потолок, стандартные двери и корпусная мебель без сложных фрезеровок): около <b>45–60 тыс. ₽/м²</b> на чистовые материалы, свет, сантехнику и мебель (на 60 м² ≈ 2,7–3,5 млн ₽).<br>
+              • <b>Средний Комфорт+</b> (скрытые двери или высокая эмаль, теневой потолок, инженерная доска/ёлочка, вся мебель на заказ в потолок, каменная столешница): около <b>70–100 тыс. ₽/м²</b> (на 60 м² ≈ 4,2–6 млн ₽).
+            </div>
+          </details>
+
+          <div class="clicker-group">
+            <div class="clicker-group-label">🎨 Стиль и Эмоциональное видение интерьера:</div>
+            <div class="clicker-chips">
+              <button class="b-chip" onclick="clickBriefChip(this, 'Общие пожелания по стилю всех помещений', 'Современный минимализм, чистые линии')">Современный минимализм</button>
+              <button class="b-chip" onclick="clickBriefChip(this, 'Общие пожелания по стилю всех помещений', 'Тёплый современный стиль (светло-бежевый, кашемир, натуральное дерево)')">Тёплый современный (беж + дерево)</button>
+              <button class="b-chip" onclick="clickBriefChip(this, 'Общие пожелания по стилю всех помещений', 'Светлая неоклассика (молдинги, филёнки, тёплая гамма)')">Светлая неоклассика</button>
+              <button class="b-chip" onclick="clickBriefChip(this, 'Общие пожелания по стилю всех помещений', 'Современный стиль с графитовыми и древесными акцентами')">Современный с тёмными акцентами</button>
+              <button class="b-chip" onclick="clickBriefChip(this, 'Эмоциональное виденье будущего интерьера', 'Уютный, тёплый, светлый, обволакивающий')">Эмоции: Уютный и тёплый</button>
+              <button class="b-chip" onclick="clickBriefChip(this, 'Эмоциональное виденье будущего интерьера', 'Воздушный, просторный, максимум закрытого хранения без визуального шума')">Эмоции: Просторный + максимум хранения</button>
+            </div>
+          </div>
+
+          <div class="clicker-group">
+            <div class="clicker-group-label">⛔ Что НЕ хотелось бы видеть (Табу) + Проблемные места:</div>
+            <div class="clicker-chips">
+              <button class="b-chip" onclick="clickBriefChip(this, 'Что не хотелось бы видеть в интерьере?', 'Яркие кислотные цвета')">Без ярких кричащих цветов</button>
+              <button class="b-chip" onclick="clickBriefChip(this, 'Что не хотелось бы видеть в интерьере?', 'Золото и блестящую латунь')">Без золота и латуни</button>
+              <button class="b-chip" onclick="clickBriefChip(this, 'Что не хотелось бы видеть в интерьере?', 'Чёрную сантехнику и тёмные мрачные стены')">Без чёрной сантехники и мрака</button>
+              <button class="b-chip" onclick="clickBriefChip(this, 'Что не хотелось бы видеть в интерьере?', 'Лофт, грубый бетон, открытые полки-пылесборники')">Без лофта и открытых пылесборников</button>
+              <button class="b-chip" onclick="clickBriefChip(this, 'Проблемные места в интерьере', 'Нехватка мест хранения — нужно задействовать каждый сантиметр')">Проблема: Нужно максимум хранения</button>
+              <button class="b-chip" onclick="clickBriefChip(this, 'Проблемные места в интерьере', 'Узкий коридор / мало естественного света')">Проблема: Тёмный/узкий коридор</button>
+              <button class="b-chip" onclick="clickBriefChip(this, 'Проблемные места в интерьере', 'Особых проблемных мест нет')">Проблемных мест нет</button>
+            </div>
+          </div>
+
+          <div class="clicker-group">
+            <div class="clicker-group-label">💰 Предварительный бюджет на чистовые материалы (мебель, свет, сантехника, двери):</div>
+            <div class="clicker-chips">
+              <button class="b-chip" onclick="clickBriefChip(this, 'Предварительный бюджет на чистовые материалы ( мебель, свет, сантехника, двери)', 'Точный бюджет пока не определён — ориентир на оптимальное соотношение цена/качество')">Не определён (оптимально цена/качество)</button>
+              <button class="b-chip" onclick="clickBriefChip(this, 'Предварительный бюджет на чистовые материалы ( мебель, свет, сантехника, двери)', 'Базовый сегмент: до 2 – 2,5 млн руб.')">До 2 – 2,5 млн ₽</button>
+              <button class="b-chip" onclick="clickBriefChip(this, 'Предварительный бюджет на чистовые материалы ( мебель, свет, сантехника, двери)', 'Средний сегмент (Комфорт): 3 – 4,5 млн руб.')">3 – 4,5 млн ₽ (Комфорт)</button>
+              <button class="b-chip" onclick="clickBriefChip(this, 'Предварительный бюджет на чистовые материалы ( мебель, свет, сантехника, двери)', 'Комфорт+ / Бизнес: от 5 млн руб.')">От 5+ млн ₽ (Комфорт+)</button>
+            </div>
+          </div>
         </div>
 
-        <div class="script-card">
-          <div class="script-step-title">
-            <span>3. ОБЩИЙ СТИЛЬ, ПОЛЫ, СТЕНЫ, ПОТОЛКИ И ДВЕРИ (Сразу на всю квартиру!)</span>
-            <button class="copy-btn" onclick="copyPrevPhrase(this)">📋 Скопировать фразу</button>
+        <!-- БЛОК 3: ИНЖЕНЕРИЯ (КОНДИЦИОНЕРЫ, ПРИТОЧКА/БРИЗЕР, ТЁПЛЫЕ ПОЛЫ, РАДИАТОРЫ, ОКНА) -->
+        <div class="brief-step-box">
+          <div style="font-size:13px; font-weight:900; color:#c084fc; margin-bottom:6px;">ШАГ 3. ИНЖЕНЕРИЯ: КОНДИЦИОНЕРЫ, ТЁПЛЫЙ ПОЛ, ОКНА, РАДИАТОРЫ И ЛОДЖИЯ</div>
+          <div class="brief-human-q">
+            🗣️ <b>Как спросить коротко и живо:</b> «По инженерии: в каких комнатах ставим кондиционеры, где хотелось бы сделать тёплый пол, и планируете ли менять радиаторы, окна или входную дверь от застройщика?»
           </div>
-          <div class="script-meta">Экономит 15 минут! Не нужно спрашивать пол/стены/потолок отдельно в каждой комнате.</div>
-          <div class="script-phrase" data-editable="true">«Чтобы нам не повторяться в каждой комнате, давайте зафиксируем общую базу по отделке всей квартиры: какое направление ближе (современный минимализм, неоклассика с молдингами)? Какой цвет точно в стоп-листе? Что рассматриваем на пол в жилых зонах (кварцвинил или инженерную доску, прямую укладку или ёлочку), что на стены (покраска, обои под покраску, декоративка), какой потолок (матовый натяжной на теневом профиле или ГКЛ) и какие двери (скрытые или в эмали с наличниками)?»</div>
-          <textarea class="script-answer-input" data-note-id="brief_3" placeholder="Заметка со звонка (стиль, анти-цвета, пол, стены, потолок, двери)..." oninput="saveScriptNotes()"></textarea>
+          <details class="tech-hint-details">
+            <summary>💡 Шпаргалка: Если спросят «Что такое приточка/бризер?», «Куда вешать кондиционер?» и «Зачем менять радиаторы?» (нажми)</summary>
+            <div style="margin-top:6px; line-height:1.48;">
+              • <b>Кондиционер vs Бризер vs Приточная вентиляция:</b><br>
+              &nbsp;&nbsp;1) <b>Кондиционер (сплит-система)</b> — охлаждает воздух летом и греет в межсезонье, но <i>не берёт свежий воздух с улицы</i> (гоняет воздух комнаты по кругу).<br>
+              &nbsp;&nbsp;2) <b>Бризер</b> — компактный настенный прибор у окна (размером с лист А3): бурится аккуратное отверстие в фасадной стене, он забирает воздух с улицы, чистит фильтрами от пыли/пыльцы и подогревает зимой. Окна можно не открывать — нет шума дороги и сквозняков.<br>
+              &nbsp;&nbsp;3) <b>Приточная вентиляция</b> — большая канальная установка под потолком (в санузле/гардеробной) с разводкой труб по всем комнатам. Съедает 15–20 см потолка и стоит от 450–700 тыс. ₽.<br>
+              • <b>Где правильно располагать кондиционер:</b> Нельзя вешать так, чтобы поток дул прямо на кровать, диван или рабочий стол! В <b>спальне</b> вешаем над входной дверью или над проходом у шкафа (чтобы дул вдоль ног мимо кровати), а в <b>гостиной</b> — над ТВ-зоной или в простенке у окна.<br>
+              • <b>Где и зачем менять радиаторы:</b> От застройщика часто стоят дешёвые конвекторы с трубами из пола (мешают укладке пола и уборке роботом-пылесосом). Мы рекомендуем переделать выводы труб <b>из стены</b> и поставить лаконичные <b>трубчатые радиаторы</b> (под окном или вертикальные на узком простенке), а перед панорамными окнами в пол — <b>внутрипольные конвекторы</b>.
+            </div>
+          </details>
+
+          <div class="clicker-group">
+            <div class="clicker-group-label">❄️ Кондиционеры и Вентиляция:</div>
+            <div class="clicker-chips">
+              <button class="b-chip" onclick="clickBriefChip(this, 'Нужны ли кондиционеры? Если да, то в каких помещениях?', 'Да, в кухне-гостиной и спальне')">Кондиционеры: Гостиная + Спальня</button>
+              <button class="b-chip" onclick="clickBriefChip(this, 'Нужны ли кондиционеры? Если да, то в каких помещениях?', 'Да, во всех жилых комнатах и кухне-гостиной')">Во всех комнатах</button>
+              <button class="b-chip" onclick="clickBriefChip(this, 'Нужны ли кондиционеры? Если да, то в каких помещениях?', 'Только в кухне-гостиной')">Только в гостиной</button>
+              <button class="b-chip" onclick="clickBriefChip(this, 'Нужны ли кондиционеры? Если да, то в каких помещениях?', 'Не нужны')">Кондиционеры не нужны</button>
+              <button class="b-chip" onclick="clickBriefChip(this, 'Если не кондиционеры, а система вентиляции - то отметьте данный пункт', 'Без приточной вентиляции (достаточно кондиционеров)')">Без приточки</button>
+              <button class="b-chip" onclick="clickBriefChip(this, 'Если не кондиционеры, а система вентиляции - то отметьте данный пункт', 'Предусмотреть бризеры (приточные очистители воздуха) в спальне/детской')">+ Бризеры на стену</button>
+              <button class="b-chip" onclick="clickBriefChip(this, 'Если не кондиционеры, а система вентиляции - то отметьте данный пункт', 'Приточная система вентиляции')">+ Канальная приточка</button>
+            </div>
+          </div>
+
+          <div class="clicker-group">
+            <div class="clicker-group-label">🔥 Тёплые полы (где хотелось бы):</div>
+            <div class="clicker-chips">
+              <button class="b-chip" onclick="clickBriefChip(this, 'Нужны ли тёплые полы? Если да, то в каких помещениях?', 'В прихожей (входная зона до шкафа) и в санузлах')">Прихожая (до шкафа) + Санузлы</button>
+              <button class="b-chip" onclick="clickBriefChip(this, 'Нужны ли тёплые полы? Если да, то в каких помещениях?', 'Только в санузлах')">Только в санузлах</button>
+              <button class="b-chip" onclick="clickBriefChip(this, 'Нужны ли тёплые полы? Если да, то в каких помещениях?', 'В прихожей, санузлах и зоне кухни')">Прихожая + Санузлы + Кухня</button>
+              <button class="b-chip" onclick="clickBriefChip(this, 'Нужны ли тёплые полы? Если да, то в каких помещениях?', 'На утеплённой лоджии')">+ На лоджии</button>
+              <button class="b-chip" onclick="clickBriefChip(this, 'Нужны ли тёплые полы? Если да, то в каких помещениях?', 'Тёплые полы не нужны')">Не нужны</button>
+            </div>
+          </div>
+
+          <div class="clicker-group">
+            <div class="clicker-group-label">🪟 Замена окон, входной двери, радиаторов + Плита + Лоджия:</div>
+            <div class="clicker-chips">
+              <button class="b-chip" onclick="clickBriefChip(this, 'Планируется ли замена оконных рам, входной двери, радиаторов?', 'Окна и входную дверь оставляем от застройщика (на двери меняем внутреннюю МДФ-накладку)')">Окна и дверь не меняем (только МДФ-накладку)</button>
+              <button class="b-chip" onclick="clickBriefChip(this, 'Планируется ли замена оконных рам, входной двери, радиаторов?', 'Меняем входную дверь')">Меняем входную дверь</button>
+              <button class="b-chip" onclick="clickBriefChip(this, 'Планируется ли замена оконных рам, входной двери, радиаторов?', 'Меняем радиаторы отопления на современные трубчатые/дизайнерские')">Меняем радиаторы</button>
+              <button class="b-chip" onclick="clickBriefChip(this, 'Планируется ли замена оконных рам, входной двери, радиаторов?', 'Внутрипольные конвекторы у панорамных окон')">Внутрипольные конвекторы</button>
+              <button class="b-chip" onclick="clickBriefChip(this, 'Планируется ли замена оконных рам, входной двери, радиаторов?', 'Радиаторы от застройщика не меняем')">Радиаторы оставляем</button>
+              <button class="b-chip" onclick="clickBriefChip(this, 'Газовая или электрическая плита?', 'Электрическая (индукционная)')">Плита: Электрическая (индукция)</button>
+              <button class="b-chip" onclick="clickBriefChip(this, 'Газовая или электрическая плита?', 'Газовая')">Плита: Газовая</button>
+              <button class="b-chip" onclick="clickBriefChip(this, 'Планируется ли утепление лоджии? Как планируете использовать?', 'Лоджии нет')">Лоджии нет</button>
+              <button class="b-chip" onclick="clickBriefChip(this, 'Планируется ли утепление лоджии? Как планируете использовать?', 'Утепляем лоджию (под кабинет / лаунж-зону / хранение)')">Лоджию утепляем</button>
+              <button class="b-chip" onclick="clickBriefChip(this, 'Планируется ли утепление лоджии? Как планируете использовать?', 'Лоджию не утепляем (холодная)')">Лоджию не утепляем</button>
+            </div>
+          </div>
         </div>
 
-        <div class="script-card">
-          <div class="script-step-title">
-            <span>4. ПРИХОЖАЯ И КОРИДОР (Мастер-выключатель, роутер, робот-пылесос)</span>
-            <button class="copy-btn" onclick="copyPrevPhrase(this)">📋 Скопировать фразу</button>
+        <!-- БЛОК 4: БАЗОВАЯ ОТДЕЛКА ПО КВАРТИРЕ (1 КЛИК ЗАПОЛНЯЕТ СРАЗУ ВСЕ ЖИЛЫЕ КОМНАТЫ В ТАБЛИЦЕ БРИФА!) -->
+        <div class="brief-step-box">
+          <div style="font-size:13px; font-weight:900; color:#c084fc; margin-bottom:6px;">ШАГ 4. ОТДЕЛКА ПО КВАРТИРЕ (Нажми 1 раз — проставится сразу во все комнаты Брифа!)</div>
+          <div class="brief-human-q">
+            🗣️ <b>Как спросить коротко и живо:</b> «По базовой отделке: что вам ближе на пол (кварцвинил, ламинат или инженерная доска), на стены (покраска или обои под покраску) и какой потолок (натяжной или гипсокартон)? Если где-то сомневаетесь — оставим "на усмотрение дизайнера".»
           </div>
-          <div class="script-meta">Клиенты обожают вопрос про мастер-выключатель, роутер и базу робота-пылесоса — сразу чувствуют профи.</div>
-          <div class="script-phrase" data-editable="true">«Переходим ко входу. В прихожей делаем керамогранит с тёплым полом? По мебели: нужен закрытый шкаф до потолка, открытая ниша снизу для повседневной обуви, пуф или подвесная консоль, ростовое зеркало с подсветкой? И по технике: ставим при входе мастер-выключатель всего света, прячем ли в шкаф роутер со слаботочным щитом и базу робота-пылесоса?»</div>
-          <textarea class="script-answer-input" data-note-id="brief_4" placeholder="Заметка со звонка по прихожей..." oninput="saveScriptNotes()"></textarea>
+          <details class="tech-hint-details">
+            <summary>💡 Шпаргалка: Натяжной vs Гипсокартон, Кварцвинил vs Ламинат, Покраска vs Малярный флизелин (нажми)</summary>
+            <div style="margin-top:6px; line-height:1.48;">
+              • <b>Потолок (Натяжной vs ГКЛ):</b> Матовый натяжной на <b>теневом профиле EuroKraab</b> визуально 1-в-1 как дорогой крашеный гипсокартон (чёткий чёрный теневой зазор по периметру без резиновой заглушки), но в 2 раза дешевле ГКЛ, ставится за 2 дня, не даёт трещин при усадке дома и спасает от потопа сверху!<br>
+              • <b>Стены (Чистая покраска vs Обои под покраску):</b> Гладкий плотный <b>малярный флизелин под покраску</b> выглядит как идеально окрашенная матовая стена без швов, но в отличие от чистой шпаклёвки удерживает микротрещины новостройки и стоит дешевле в подготовке.<br>
+              • <b>Пол (Кварцвинил LVT/SPC vs Ламинат vs Инженерка):</b> Клеевой кварцвинил (LVT) на 100% не боится воды, не цокает и укладывается единым контуром без порожков во всей квартире (даже ёлочкой). Замковый ламинат боится стоячей воды и требует порожков в дверях.
+            </div>
+          </details>
+
+          <div class="clicker-group">
+            <div class="clicker-group-label">🪵 Пол во всех комнатах (Прихожая, Кухня-гостиная, Спальня, 2-я комната):</div>
+            <div class="clicker-chips">
+              <button class="b-chip" onclick="applyBulkFinish('Пол', 'на усмотрение дизайнера', this)">На усмотрение дизайнера</button>
+              <button class="b-chip" onclick="applyBulkFinish('Пол', 'Кварцвинил единым контуром без порожков', this)">Кварцвинил единым контуром</button>
+              <button class="b-chip" onclick="applyBulkFinish('Пол', 'Кварцвинил / ламинат раскладкой «ёлочка»', this)">Ёлочка (кварцвинил / ламинат)</button>
+              <button class="b-chip" onclick="applyBulkFinish('Пол', 'Ламинат под натуральное дерево', this)">Ламинат (прямая укладка)</button>
+              <button class="b-chip" onclick="applyBulkFinish('Пол', 'Инженерная доска / паркет', this)">Инженерная доска</button>
+              <button class="b-chip" onclick="clickBriefChip(this, 'Коридор/Прихожая::Пол', 'Керамогранит во входной зоне (с тёплым полом) + переход в основное покрытие')">В прихожей у входа — керамогранит</button>
+            </div>
+          </div>
+
+          <div class="clicker-group">
+            <div class="clicker-group-label">🧱 Стены во всех комнатах:</div>
+            <div class="clicker-chips">
+              <button class="b-chip" onclick="applyBulkFinish('Cтены', 'на усмотрение дизайнера', this)">На усмотрение дизайнера</button>
+              <button class="b-chip" onclick="applyBulkFinish('Cтены', 'Гладкие обои под покраску (малярный флизелин)', this)">Обои под покраску (малярный флизелин)</button>
+              <button class="b-chip" onclick="applyBulkFinish('Cтены', 'Покраска по стеклохолсту', this)">Чистая покраска</button>
+              <button class="b-chip" onclick="applyBulkFinish('Cтены', 'Обои однотонные + акцентные панели', this)">Готовые обои + панели</button>
+              <button class="b-chip" onclick="applyBulkFinish('Детали', 'Декоративные молдинги в цвет стен / 3D-панели в акцентных зонах', this)">+ Молдинги / стеновые панели</button>
+            </div>
+          </div>
+
+          <div class="clicker-group">
+            <div class="clicker-group-label">☁️ Потолок, Двери и Освещение по квартире:</div>
+            <div class="clicker-chips">
+              <button class="b-chip" onclick="applyBulkFinish('Потолок', 'на усмотрение дизайнера', this)">Потолок: На усмотрение дизайнера</button>
+              <button class="b-chip" onclick="applyBulkFinish('Потолок', 'Матовый натяжной потолок на теневом профиле EuroKraab + скрытые ниши для штор', this)">Натяжной на теневом профиле EuroKraab</button>
+              <button class="b-chip" onclick="applyBulkFinish('Потолок', 'Матовый натяжной потолок + декоративный потолочный карниз по периметру', this)">Натяжной + потолочный карниз</button>
+              <button class="b-chip" onclick="applyBulkFinish('Потолок', 'Гипсокартон (ГКЛ) под покраску с теневым профилем', this)">Гипсокартон (ГКЛ)</button>
+              <button class="b-chip" onclick="clickBriefChip(this, 'Коридор/Прихожая::Двери', 'Двери в эмали с наличниками + плинтус дюрополимер/МДФ')">Двери с наличниками + плинтус МДФ/дюрополимер</button>
+              <button class="b-chip" onclick="clickBriefChip(this, 'Коридор/Прихожая::Двери', 'Двери скрытого монтажа под покраску + теневой/микроплинтус')">Скрытые двери + теневой/микроплинтус</button>
+              <button class="b-chip" onclick="applyBulkFinish('Освещение', 'Точечный/трековый свет + подвесы и скрытая тёплая LED-подсветка ниш и штор (3000K)', this)">Свет: Точки/треки + тёплая подсветка 3000K</button>
+              <button class="b-chip" onclick="applyBulkFinish('Освещение', 'Люстры + бра + точечные светильники и мягкая подсветка', this)">Свет: Люстры + бра + точки</button>
+            </div>
+          </div>
         </div>
 
-        <div class="script-card">
-          <div class="script-step-title">
-            <span>5. КУХНЯ-ГОСТИНАЯ (Сердце квартиры)</span>
-            <button class="copy-btn" onclick="copyPrevPhrase(this)">📋 Скопировать фразу</button>
+        <!-- БЛОК 5: БЫСТРЫЙ ЧЕК-ЛИСТ ПО КОМНАТАМ (МЕБЕЛЬ И ТЕХНИКА — ТЫК-ТЫК-ТЫК) -->
+        <div class="brief-step-box">
+          <div style="font-size:13px; font-weight:900; color:#c084fc; margin-bottom:6px;">ШАГ 5. БЫСТРЫЙ ЧЕК-ЛИСТ ПО КОМНАТАМ (Мебель, Кухня, Сантехника — просто нажимай!)</div>
+          <div class="brief-human-q">
+            🗣️ <b>Как спросить коротко и живо:</b> «И давайте за 3 минуты пробежимся по наполнению комнат: что обязательно нужно в прихожей, какая техника на кухне (посудомойка 45 или 60, холодильник встроенный?), какая кровать в спальне и ванна или душ в санузле?»
           </div>
-          <div class="script-meta">Уточнить также мелкую технику на столешнице (кофемашина, аэрогриль, блендер) для розеток.</div>
-          <div class="script-phrase" data-editable="true">«По кухне-гостиной: какую конфигурацию кухни хотим (угловая, прямая, с островом), какую технику встраиваем (холодильник встроенный или отдельный, ПММ 60 см, духовка, СВЧ, измельчитель, фильтр) и какая столешница/фартук нравятся (камень/компакт-плита, крупноформатный керамогранит без бортика)? По зоне гостиной: стол на сколько персон, диван раскладной или нет, большой ТВ и какие сценарии света (треки/люстра + вечерние подсветки)?»</div>
-          <textarea class="script-answer-input" data-note-id="brief_5" placeholder="Заметка со звонка по кухне-гостиной..." oninput="saveScriptNotes()"></textarea>
+
+          <div class="clicker-group">
+            <div class="clicker-group-label">🚪 1. Прихожая / Коридор:</div>
+            <div class="clicker-chips">
+              <button class="b-chip" onclick="clickBriefChip(this, 'Коридор/Прихожая::Мебель', 'на усмотрение дизайнера (обувница, зеркало, пуф, шкаф)')">По умолчанию (шкаф, пуф, обувница, зеркало)</button>
+              <button class="b-chip" onclick="clickBriefChip(this, 'Коридор/Прихожая::Мебель', 'Встроенный шкаф в потолок с местом под пуфик')">Шкаф в потолок + место под пуф</button>
+              <button class="b-chip" onclick="clickBriefChip(this, 'Коридор/Прихожая::Мебель', 'Подвесная консоль + ростовое зеркало с подсветкой')">Подвесная консоль + ростовое зеркало</button>
+              <button class="b-chip" onclick="clickBriefChip(this, 'Коридор/Прихожая::Пожелания по электрике', 'Мастер-выключатель у входа, розетка под базу робота-пылесоса и роутер в шкафу')">Электрика: Мастер-выключатель + робот-пылесос + роутер</button>
+            </div>
+          </div>
+
+          <div class="clicker-group">
+            <div class="clicker-group-label">🍽️ 2. Кухня и Кухня-гостиная (Техника, ПММ 450/600, Холодильник, Стол):</div>
+            <div class="clicker-chips">
+              <button class="b-chip" onclick="clickBriefChip(this, 'Кухня/кухня-гостиная::Кухонный гарнитур', 'В потолок с антресолями, фасады МДФ')">Кухня в потолок</button>
+              <button class="b-chip" onclick="clickBriefChip(this, 'Кухня/кухня-гостиная::Фартук кухни', 'Крупноформатный керамогранит')">Фартук: Керамогранит</button>
+              <button class="b-chip" onclick="clickBriefChip(this, 'Кухня/кухня-гостиная::Мебель', 'Встроенный холодильник')">Холодильник: Встроенный</button>
+              <button class="b-chip" onclick="clickBriefChip(this, 'Кухня/кухня-гостиная::Мебель', 'Отдельностоящий холодильник')">Холодильник: Не встроенный (отдельный)</button>
+              <button class="b-chip" onclick="clickBriefChip(this, 'Кухня/кухня-гостиная::Мебель', 'Посудомойка (ПММ) 600 мм')">ПММ 600 мм</button>
+              <button class="b-chip" onclick="clickBriefChip(this, 'Кухня/кухня-гостиная::Мебель', 'Посудомойка (ПММ) 450 мм')">ПММ 450 мм</button>
+              <button class="b-chip" onclick="clickBriefChip(this, 'Кухня/кухня-гостиная::Мебель', 'Духовой шкаф + встроенная СВЧ в колонне, индукционная варочная панель, встроенная вытяжка')">Духовка + СВЧ в колонне + Варочная + Вытяжка</button>
+              <button class="b-chip" onclick="clickBriefChip(this, 'Кухня/кухня-гостиная::Мебель', 'Кухонный остров / барная стойка')">+ Остров / барная</button>
+              <button class="b-chip" onclick="clickBriefChip(this, 'Кухня/кухня-гостиная::Мебель', 'Обеденный стол со стульями + диван и ТВ-зона в гостиной')">Стол со стульями + Диван + ТВ-зона</button>
+              <button class="b-chip" onclick="clickBriefChip(this, 'Кухня/кухня-гостиная::Дополнительные комментарии', 'Фильтр для питьевой воды + измельчитель отходов (диспоузер)')">+ Фильтр воды и диспоузер</button>
+            </div>
+          </div>
+
+          <div class="clicker-group">
+            <div class="clicker-group-label">🛏️ 3. Спальня и 4. Вторая комната (Детская / Кабинет):</div>
+            <div class="clicker-chips">
+              <button class="b-chip" onclick="clickBriefChip(this, 'Спальня::Мебель', 'Кровать 160×200 с подъёмным механизмом, 2 прикроватные тумбы, шкаф в потолок')">Спальня: Кровать 160×200 + тумбы + шкаф</button>
+              <button class="b-chip" onclick="clickBriefChip(this, 'Спальня::Мебель', 'Кровать 180×200 с подъёмным механизмом, 2 прикроватные тумбы, шкаф в потолок')">Спальня: Кровать 180×200 + тумбы + шкаф</button>
+              <button class="b-chip" onclick="clickBriefChip(this, 'Спальня::Мебель', 'Туалетный столик с зеркалом и подсветкой')">+ Туалетный столик</button>
+              <button class="b-chip" onclick="clickBriefChip(this, 'Спальня::Мебель', 'Рабочее место в спальне')">+ Рабочий стол в спальне</button>
+              <button class="b-chip" onclick="clickBriefChip(this, 'Спальня::Мебель', 'ТВ напротив кровати')">+ ТВ в спальне</button>
+              <button class="b-chip" onclick="clickBriefChip(this, 'Спальня::Декор/текстиль', 'Шторы блэкаут в нише с подсветкой')">Шторы блэкаут</button>
+              <button class="b-chip" onclick="clickBriefChip(this, 'Спальня::Пожелания по электрике', 'Проходные выключатели света у кровати + розетки у тумб')">Электрика: Проходные выключатели у кровати</button>
+              <button class="b-chip" onclick="clickBriefChip(this, 'Вторая комната ::Мебель', 'на усмотрение дизайнера (кровать/диван, шкаф, рабочее место у окна)')">2-я комната: Кровать/диван + шкаф + раб. стол</button>
+              <button class="b-chip" onclick="clickBriefChip(this, 'Вторая комната ::Мебель', 'Второй комнаты нет')">2-й комнаты нет</button>
+            </div>
+          </div>
+
+          <div class="clicker-group">
+            <div class="clicker-group-label">🚿 5. Ванная комната и Санузел:</div>
+            <div class="clicker-chips">
+              <button class="b-chip" onclick="clickBriefChip(this, 'Ванная комната::Мебель', 'Ванна 170–180 см, тумба с раковиной, зеркало с подсветкой, подвесной унитаз с инсталляцией и гиг. душем')">Ванна + тумба с раковиной + инсталляция</button>
+              <button class="b-chip" onclick="clickBriefChip(this, 'Ванная комната::Мебель', 'Душевая в строительном исполнении со стеклянной перегородкой, тумба с раковиной, зеркало, инсталляция с гиг. душем')">Душевая в строит. исполнении + тумба + инсталляция</button>
+              <button class="b-chip" onclick="clickBriefChip(this, 'Ванная комната::Мебель', 'Колонна: стиральная + сушильная машины в пенале')">Колонна: Стиральная + Сушильная</button>
+              <button class="b-chip" onclick="clickBriefChip(this, 'Ванная комната::Мебель', 'Стиральная машина')">Только стиральная машина</button>
+              <button class="b-chip" onclick="clickBriefChip(this, 'Ванная комната::Мебель', 'Шкаф для хранения над инсталляцией до потолка')">+ Шкаф над инсталляцией</button>
+              <button class="b-chip" onclick="clickBriefChip(this, 'Ванная комната::Пожелания по электрике', 'Подсветка зеркала и ниш, розетки у зеркала (фен/бритва), эл. полотенцесушитель / тёплая стена, вывод под бойлер и защиту от протечек')">Электрика СУ: Розетки у зеркала + эл.полотенчик + бойлер</button>
+            </div>
+          </div>
         </div>
 
-        <div class="script-card">
-          <div class="script-step-title">
-            <span>6. МАСТЕР-СПАЛЬНЯ, ДЕТСКАЯ / КАБИНЕТ И САНУЗЛЫ</span>
-            <button class="copy-btn" onclick="copyPrevPhrase(this)">📋 Скопировать фразу</button>
+        <!-- ГОТОВАЯ ОФИЦИАЛЬНАЯ ТАБЛИЦА БРИФА КОМПАНИИ (1-В-1 ПО ТВОЕМУ CSV) -->
+        <div class="brief-step-box" style="border-color:var(--green-border); background:rgba(16,185,129,0.05);">
+          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; margin-bottom:8px;">
+            <div>
+              <div style="font-size:14px; font-weight:900; color:#6ee7b7;">📊 ГОТОВАЯ ТАБЛИЦА БРИФА КОМПАНИИ (Заполняется автоматически от твоих кликов!)</div>
+              <div style="font-size:11.5px; color:var(--muted);">Все 75+ строк официального шаблона компании. Можно подправить любую ячейку вручную и сразу выгрузить файл:</div>
+            </div>
+            <div style="display:flex; gap:8px; flex-wrap:wrap;">
+              <button class="action-btn" style="background:var(--purple); border-color:var(--purple); color:#fff;" onclick="syncBriefToProjectPassport()">🚀 Перенести в Паспорт проекта (Агентам)</button>
+              <button class="action-btn" style="background:var(--green); border-color:var(--green); color:#fff;" onclick="downloadOfficialCompanyBriefCSV()">📥 Скачать Бриф_XXXX.csv (Для загрузки в компанию)</button>
+            </div>
           </div>
-          <div class="script-meta">Кровать 160/180, гардероб/шкаф, проходные выключатели, шторы блэкаут, ванна/душ, стиралка+сушилка.</div>
-          <div class="script-phrase" data-editable="true">«По мастер-спальне: какой ширины кровать (160/180 см, с мягким изголовьем?), нужен ли напротив ТВ и туалетный столик? Хранение делаем гардеробной или шкафом до потолка, закладываем проходные выключатели у кровати и шторы блэкаут? И по санузлам: делаем ванну или душевую в строительном исполнении, подвесной унитаз с гигиеническим душем, тёплую стену вместо полотенцесушителя, и где размещаем стиральную и сушильную машины - в колонну?»</div>
-          <textarea class="script-answer-input" data-note-id="brief_6" placeholder="Заметка со звонка по спальне, детской и санузлам..." oninput="saveScriptNotes()"></textarea>
-        </div>
-
-        <div class="script-card">
-          <div class="script-step-title">
-            <span>7. ФИНАЛ ЗВОНКА ПО БРИФУ (Закрытие за 30 секунд)</span>
-            <button class="copy-btn" onclick="copyPrevPhrase(this)">📋 Скопировать фразу</button>
+          <div style="max-height:380px; overflow-y:auto; border:1px solid var(--border); border-radius:10px;">
+            <table class="brief-live-table" id="official-brief-live-table"></table>
           </div>
-          <div class="script-phrase" data-editable="true">«Супер, мы прошли все зоны очень плотно и по делу! Я сейчас аккуратно разнесу все ваши ответы в таблицу брифа и отправлю вам на финальный просмотр. Если есть сохранённые референсы или пинтерест - скиньте ссылку в наш рабочий чат, и мы стартуем работу!»</div>
         </div>
       </div>
 
-      <!-- ПОДВКЛАДКА 2: СОЗВОН ПО ВИЗУАЛИЗАЦИИ (ФИЛЬТР ПРОТИВОРЕЧИЙ) -->
+
+      <!-- ==================== ПОДВКЛАДКА 2: СОЗВОН ПО ВИЗУАЛИЗАЦИИ (АНКЕТА + DRAG&DROP + ПОКОМНАТНЫЙ РАЗБОР) ==================== -->
       <div id="sub-viz" class="script-panel">
-        <div class="script-card">
-          <div class="script-step-title">
-            <span>1. ОТКРЫТИЕ СОЗВОНА ПО ВИЗУАЛИЗАЦИИ (Покажи, что ты всё изучила!)</span>
-            <button class="copy-btn" onclick="copyPrevPhrase(this)">📋 Скопировать фразу</button>
-          </div>
-          <div class="script-meta">Клиент уже потратил 40 минут на Бриф и 30 минут на Анкету с картинками. Не спрашиваем с нуля «Какой стиль вам нравится?», а сверяем только 5–7 развилок для 3D.</div>
-          <div class="script-phrase" data-editable="true">«Добрый день! Я перед звонком детально изучила ваш бриф, утверждённую планировку и вашу анкету по визуализации. Чтобы не тратить ваше время и не спрашивать по второму кругу то, что вы уже заполнили, я выписала только 5-7 точечных моментов, где нам нужно выбрать финальное решение для 3D. Пройдёмся по ним за 10-15 минут?»</div>
+
+        <!-- 1. ЧЕК-ЛИСТ ИСХОДНИКОВ ПРОЕКТА (ЕСТЬ ЛИ АНКЕТА, БРИФ, ПЛАН И РЕФЕРЕНСЫ?) + DRAG & DROP -->
+        <div class="files-status-bar">
+          <span style="font-size:12px; font-weight:900; color:#e9d5ff;">📂 Чек-лист исходников проекта (нажми чтобы отметить или перетащи файлы ниже):</span>
+          <span class="file-chk-badge" id="fchk-plan" onclick="toggleProjFileFlag('hasPlan')">📐 Планировка</span>
+          <span class="file-chk-badge" id="fchk-brief" onclick="toggleProjFileFlag('hasBrief')">📋 Готовый Бриф</span>
+          <span class="file-chk-badge" id="fchk-anketa" onclick="toggleProjFileFlag('hasAnketa')">🎨 Анкета Визуализации</span>
+          <span class="file-chk-badge" id="fchk-refs" onclick="toggleProjFileFlag('hasRefs')">🖼️ Референсы клиента</span>
+          <button class="copy-btn" style="margin-left:auto; background:rgba(239,68,68,0.18); color:#fca5a5; border-color:rgba(239,68,68,0.45);" onclick="copyAskLeadDesignerForAnketa()">📩 Запросить Анкету/Бриф у ВД</button>
         </div>
 
-        <div class="script-card">
-          <div class="script-step-title">
-            <span>2. СВЕРКА ПРОТИВОРЕЧИЙ (Стиль, Цвет и Картинки из анкеты)</span>
-            <button class="copy-btn" onclick="copyPrevPhrase(this)">📋 Скопировать фразу</button>
-          </div>
-          <div class="script-phrase" data-editable="true">«Смотрите, я проанализировала картинки, которые вы отметили в анкете по гостиной и спальне. Там прослеживается две линии: [Вариант 1, например: спокойная тёплая классика с молдингами] и [Вариант 2, например: более контрастный минимализм с деревом]. Что из этого мы берём за основу стен, а что оставляем только в акцентах?»</div>
+        <!-- УВЕДОМЛЕНИЕ ЕСЛИ НЕТ АНКЕТЫ -->
+        <div id="missing-anketa-alert" style="display:none; margin-bottom:10px; padding:9px 13px; border-radius:10px; background:rgba(239,68,68,0.12); border:1px solid rgba(239,68,68,0.45); color:#fecaca; font-size:12px; font-weight:700;">
+          ⚠️ <b>По этому проекту ещё НЕ загружена Анкета визуализации!</b> Ты можешь: 1) нажать кнопку справа вверху и запросить её у ведущего дизайнера, 2) перетащить файл Анкеты/Брифа в поле ниже, ИЛИ 3) проводить созвон прямо сейчас по вкладкам помещений ниже без анкеты!
         </div>
 
-        <div class="script-card">
-          <div class="script-step-title">
-            <span>3. ОТДЕЛКА СТЕН И ПОТОЛКА (Разделение по комнатам)</span>
-            <button class="copy-btn" onclick="copyPrevPhrase(this)">📋 Скопировать фразу</button>
+        <!-- DRAG & DROP ЗОНА ДЛЯ БРИФА, АНКЕТЫ, ПЛАНИРОВКИ И РЕФЕРЕНСОВ -->
+        <div class="dropzone-box" id="viz-dropzone" onclick="document.getElementById('viz-file-input').click()" ondragover="onVizDragOver(event)" ondragleave="onVizDragLeave(event)" ondrop="onVizDrop(event)">
+          <input type="file" id="viz-file-input" multiple style="display:none;" onchange="handleUploadedProjectFiles(this.files)">
+          <div style="font-size:13.5px; font-weight:900; color:#e9d5ff;">📥 Перетащи сюда файлы проекта (Drag & Drop) или кликни для выбора:</div>
+          <div style="font-size:11.5px; color:var(--muted); margin-top:3px;">
+            Поддерживаются: <b>Готовый Бриф (<code>.csv</code>, <code>.xlsx</code>, <code>.txt</code>)</b> • <b>Анкета по визуализации (<code>.pdf</code>)</b> • <b>Планировка (<code>.pdf</code>, <code>.png</code>, <code>.jpg</code>)</b> • <b>Референсы</b>
           </div>
-          <div class="script-phrase" data-editable="true">«В анкете вы отметили несколько материалов для стен - покраску/обои, 3D-панели, декоративную штукатурку и керамогранит. Давайте распределим их по зонам, чтобы не перегрузить интерьер: базовые стены делаем гладкими однотонными, а где именно хотим фактурный акцент - за ТВ-зоной в гостиной или за изголовьем в спальне?»</div>
+          <div id="uploaded-files-list-view" style="margin-top:6px; font-size:11.5px; color:#6ee7b7; font-weight:800;"></div>
         </div>
 
-        <div class="script-card">
-          <div class="script-step-title">
-            <span>4. КОРПУСНАЯ МЕБЕЛЬ, ФАСАДЫ И РУЧКИ (Для 3D-моделирования)</span>
-            <button class="copy-btn" onclick="copyPrevPhrase(this)">📋 Скопировать фразу</button>
-          </div>
-          <div class="script-phrase" data-editable="true">«По корпусной мебели - кухне и шкафам в спальне и прихожей: мы все высокие шкафы ведём строго в потолок без пылесборников сверху? И по самим фасадам: делаем их гладкими матовыми или добавляем вертикальную фрезеровку/филёнку? Какие ручки вам удобнее в жизни: скрытый профиль, открытие от нажатия или аккуратные накладные ручки?»</div>
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; margin-bottom:12px;">
+          <button class="action-btn" style="background:rgba(168,85,247,0.22); border-color:var(--purple-border); color:#f3e8ff;" onclick="copyPromptToParseAnketaAndBrief()">
+            🤖 Скопировать задачу Агенту: «Прочитай Анкету и Бриф в папке проекта и разложи мне выжимку по комнатам!»
+          </button>
+          <button class="action-btn" style="background:var(--green); border-color:var(--green); color:#fff;" onclick="switchTab('tab-work', document.querySelectorAll('.tab-btn')[1])">
+            🚀 Перейти в Проекты и отправить задачу Агенту на 3D
+          </button>
         </div>
 
-        <div class="script-card">
-          <div class="script-step-title">
-            <span>5. ДВЕРИ, ПЛИНТУСЫ И СЦЕНАРИИ СВЕТА</span>
-            <button class="copy-btn" onclick="copyPrevPhrase(this)">📋 Скопировать фразу</button>
+        <!-- 2. СТАРТ ЗВОНКА ПО ВИЗУАЛИЗАЦИИ (КОРОТКАЯ ПРОФЕССИОНАЛЬНАЯ ФРАЗА В 2 ВАРИАНТАХ: С АНКЕТОЙ / БЕЗ АНКЕТЫ) -->
+        <div class="brief-step-box" style="border-color:var(--purple-border);">
+          <div style="font-size:13px; font-weight:900; color:#c084fc; margin-bottom:6px;">ШАГ 1. КАК НАЧАТЬ СОЗВОН ПО ВИЗУАЛИЗАЦИИ (Естественно, коротко и профессионально):</div>
+          <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px;">
+            <div style="background:rgba(16,185,129,0.07); border:1px solid rgba(16,185,129,0.35); border-radius:10px; padding:10px 12px;">
+              <div style="font-size:11.5px; font-weight:900; color:#6ee7b7; margin-bottom:4px; display:flex; justify-content:space-between;">
+                <span>✅ ВАРИАНТ А: Если Анкета и/или Референсы ЕСТЬ</span>
+                <button class="copy-btn" style="padding:2px 7px; font-size:10.5px;" onclick="navigator.clipboard.writeText(this.parentElement.nextElementSibling.innerText)">📋 Копировать</button>
+              </div>
+              <div style="font-size:12.5px; color:#f8fafc; line-height:1.45;">
+                «Добрый день! Я внимательно изучила вашу анкету и референсы. Давайте мы сейчас быстренько пробежимся по каждому помещению квартиры: то, что вы уже указали в анкете, я зафиксировала, чтобы нам не повторяться, и по каждой комнате обсудим ваши визуальные пожелания, материалы и декоративные элементы для 3D!»
+              </div>
+            </div>
+
+            <div style="background:rgba(245,158,11,0.07); border:1px solid rgba(245,158,11,0.35); border-radius:10px; padding:10px 12px;">
+              <div style="font-size:11.5px; font-weight:900; color:#fde68a; margin-bottom:4px; display:flex; justify-content:space-between;">
+                <span>⚡ ВАРИАНТ Б: Если Анкеты НЕТ (идем по планировке)</span>
+                <button class="copy-btn" style="padding:2px 7px; font-size:10.5px;" onclick="navigator.clipboard.writeText(this.parentElement.nextElementSibling.innerText)">📋 Копировать</button>
+              </div>
+              <div style="font-size:12.5px; color:#f8fafc; line-height:1.45;">
+                «Добрый день! Давайте мы сейчас быстренько пробежимся с вами по каждому помещению по нашей утверждённой планировке — обсудим ваши визуальные пожелания по каждой зоне, какие нравятся материалы, фасады мебели, освещение и декоративные элементы, чтобы всё точно воплотить в 3D!»
+              </div>
+            </div>
           </div>
-          <div class="script-phrase" data-editable="true">«По дверям и плинтусам: технически лучше привести их к единой системе - мы делаем все двери с наличниками в эмали, или часть дверей прячем под покраску со скрытым коробом и теневым/микроплинтусом? И по свету: чтобы потолок выглядел чисто и дорого, предлагаю основной свет сделать лаконичными точками/треками, над столом опустить подвесы, а уют вечером дать за счёт скрытой подсветки штор и мебели. Согласны с такой схемой?»</div>
         </div>
 
-        <div class="script-card">
-          <div class="script-step-title">
-            <span>6. ФИНАЛ ЗВОНКА ПО ВИЗУАЛИЗАЦИИ</span>
-            <button class="copy-btn" onclick="copyPrevPhrase(this)">📋 Скопировать фразу</button>
+        <!-- 3. ПОКОМНАТНЫЙ ПРОХОД НА СОЗВОНЕ ПО ВИЗУАЛИЗАЦИИ (СЛЕВА — ЧТО УЖЕ ЕСТЬ В АНКЕТЕ/БРИФЕ, СПРАВА — ЧТО СПРОСИТЬ И КНОПКИ ТЫК-ТЫК) -->
+        <div class="brief-step-box">
+          <div style="font-size:13px; font-weight:900; color:#c084fc; margin-bottom:6px;">
+            ШАГ 2. ИДЁМ ПО КАЖДОМУ ПОМЕЩЕНИЮ (Слева видно что УЖЕ есть в анкете/брифе — не спрашиваем повторно! Справа — кликаем визуал):
           </div>
-          <div class="script-phrase" data-editable="true">«Отлично, теперь картина по всем помещениям абсолютно прозрачная, никаких противоречий не осталось. Я свожу эти уточнения в техническое задание на визуализацию и приступаю к первой зоне - кухне-гостиной. Как только первые ракурсы будут готовы, пришлю вам в рабочий чат!»</div>
+
+          <div class="room-tabs" id="viz-call-room-tabs">
+            <button class="room-btn active" onclick="selectVizCallRoom('hall', this)">1. Прихожая / Коридор</button>
+            <button class="room-btn" onclick="selectVizCallRoom('kitchen', this)">2. Кухня-гостиная</button>
+            <button class="room-btn" onclick="selectVizCallRoom('bedroom', this)">3. Мастер-спальня</button>
+            <button class="room-btn" onclick="selectVizCallRoom('kids', this)">4. Детская / Кабинет</button>
+            <button class="room-btn" onclick="selectVizCallRoom('bath', this)">5. Ванная комната</button>
+            <button class="room-btn" onclick="selectVizCallRoom('wc', this)">6. Гостевой СУ / Постирочная</button>
+          </div>
+
+          <div class="viz-room-Split">
+            <!-- ЛЕВАЯ КОЛОНКА: ЧТО УЖЕ ЕСТЬ ИЗ БРИФА И АНКЕТЫ (ЧТОБЫ НЕ ПОВТОРЯТЬСЯ!) -->
+            <div class="zone-green" style="padding:12px 14px; border-width:1px;">
+              <div style="font-size:12.5px; font-weight:900; color:#6ee7b7; margin-bottom:6px;">
+                ✅ ЧТО УЖЕ ИЗВЕСТНО ИЗ БРИФА / АНКЕТЫ ПО ЭТОЙ КОМНАТЕ:
+              </div>
+              <div style="font-size:11px; color:#a7f3d0; margin-bottom:6px;">
+                Это НЕ нужно спрашивать с нуля — просто подтверди или спроси только то, где ниже стоит прочерк:
+              </div>
+              <div id="viz-known-summary-box" style="font-size:12.2px; color:#f8fafc; line-height:1.5; background:rgba(0,0,0,0.3); padding:10px; border-radius:9px; border:1px solid rgba(16,185,129,0.3); min-height:140px; white-space:pre-wrap;"></div>
+            </div>
+
+            <!-- ПРАВАЯ КОЛОНКА: ЖИВАЯ ФРАЗА ПО КОМНАТЕ + БЫСТРЫЕ КНОПКИ ВИЗУАЛА (ТЫК-ТЫК-ТЫК) -->
+            <div class="zone-blue" style="margin-bottom:0;">
+              <div style="font-size:12.5px; font-weight:900; color:#93c5fd; margin-bottom:6px;" id="viz-room-question-header">
+                🗣️ Как спросить по этой комнате + Быстрые кнопки визуала:
+              </div>
+              <div class="brief-human-q" id="viz-room-human-phrase" style="font-size:13px; margin-bottom:8px;"></div>
+
+              <div style="font-size:11.5px; font-weight:800; color:#60a5fa; margin-bottom:4px;">🖱️ Нажимай мышкой то, что говорит заказчик по визуалу комнаты (сразу летит в ТЗ агенту!):</div>
+              <div class="clicker-chips" id="viz-room-quick-chips" style="margin-bottom:8px;"></div>
+
+              <div style="font-size:11.5px; font-weight:800; color:#fde68a; margin-bottom:4px;">✍️ Визуальные пожелания по этой комнате (сохраняется прямо в Паспорт комнаты для агентов):</div>
+              <textarea id="viz-room-notes-box" class="script-answer-input" style="min-height:85px;" placeholder="Кликай по кнопкам выше или допиши 2 слова (какой цвет фасадов, какая стена акцентная, какой декор)..." oninput="saveVizRoomNoteToPassport()"></textarea>
+            </div>
+          </div>
         </div>
+      </div>
+
+      <!-- ==================== ПОДВКЛАДКА 3: БАЗА МАТЕРИАЛОВ, ИНЖЕНЕРИИ И ЦЕН (МОСКВА 2026) ==================== -->
+      <div id="sub-materials" class="script-panel">
+        <div class="script-card" style="border-color:#60a5fa; background:rgba(59,130,246,0.08);">
+          <div class="script-step-title">
+            <span style="color:#93c5fd;">❄️ 0. ВЕНТИЛЯЦИЯ И ОТОПЛЕНИЕ: Приточка vs Бризер vs Кондиционер + Где вешать кондей и радиаторы</span>
+            <button class="copy-btn" onclick="copyPrevPhrase(this)">📋 Скопировать объяснение</button>
+          </div>
+          <div class="script-meta">
+            • <b>Кондиционер (сплит-система, от 45–80 тыс. ₽ с монтажом за точку):</b> Только охлаждает или подогревает воздух, который <i>уже находится внутри комнаты</i>. Кислород с улицы он НЕ подаёт!<br>
+            • <b>Бризер (приточный очиститель воздуха на стену, 40–75 тыс. ₽ под ключ):</b> Вешается на фасадную стену у окна (в алмазное отверстие Ø130 мм). Подаёт свежий воздух с улицы при закрытых окнах, очищает его от выхлопных газов/пыльцы и подогревает зимой до +20..25°C. Не съедает высоту потолка!<br>
+            • <b>Приточная вентиляция (канальная по всей квартире, от 450–700 тыс. ₽):</b> Большая установка в подсобке/санузле + воздуховоды под потолком во все комнаты. Требует опуска потолка на 150–200 мм.<br>
+            • <b>ГДЕ ПРАВИЛЬНО ВЕШАТЬ КОНДИЦИОНЕР:</b> Главное правило — поток холодного воздуха <b>не должен дуть прямо на человека</b> (на кровать, диван или рабочий стол).<br>
+              1) <b>В спальне:</b> вешаем <b>над входной дверью</b> или <b>над проходом напротив шкафа</b> (чтобы воздух шёл вдоль изножья кровати, не задевая подушки).<br>
+              2) <b>В гостиной:</b> вешаем <b>над ТВ-зоной</b> (тогда он дует в проход перед диваном, или используем кондиционер с режимом рассеивания WindFree) либо в простенке у окна.<br>
+            • <b>ЗАМЕНА И РАСПОЛОЖЕНИЕ РАДИАТОРОВ:</b> Штатные батареи от застройщика часто подключены трубами из пола (мешают чистовому полу, плинтусу и роботу-пылесосу). Их меняют на:<br>
+              1) <b>Стальные трубчатые радиаторы (Zehnder, Arbonia, КЗТО, 25–55 тыс. ₽)</b> с выводом труб <b>из стены</b> (пол под батареей абсолютно свободный!). Ставятся под подоконником (ширина радиатора должна быть минимум 70% ширины окна для тепловой завесы) или в <b>вертикальном исполнении (высота 180 см)</b> на узком простенке рядом с окном.<br>
+              2) <b>Внутрипольные конвекторы (35–80 тыс. ₽):</b> встраиваются в стяжку пола вдоль панорамных окон в пол или выхода на балкон (решётка в один уровень с паркетом/кварцвинилом).
+          </div>
+          <div class="script-phrase" data-editable="true">«Смотрите, в чём разница: обычный кондиционер охлаждает воздух внутри комнаты, но свежий кислород с улицы не подаёт. Если не хочется открывать окна из-за шума и пыли, лучшее локальное решение без занижения потолков - поставить настенный бризер: он подаёт с улицы отфильтрованный и подогретый свежий воздух. А сами кондиционеры мы всегда размещаем так, чтобы холодный поток не попадал на кровать или диван - например, в спальне убираем блок над входной дверью, а радиаторы переводим на подключение из стены, чтобы под ними свободно проезжал робот-пылесос»</div>
+        </div>
+
+
       </div>
 
       <!-- ПОДВКЛАДКА 3: БЫСТРЫЕ ШАБЛОНЫ СООБЩЕНИЙ В ЧАТ (MAX / TG) -->
@@ -1910,6 +2440,46 @@
           </div>
         </div>
       </div>
+
+      <!-- ПОДВКЛАДКА 4: РАЗБОР 0545 (МАРИЯ) -->
+      <div id="sub-0545" class="script-panel">
+        <div class="script-card">
+          <div class="script-step-title">
+            <span>0. СТАРТ ОБЩЕНИЯ ПО 0545 (Мария — анкета + 36 референсов)</span>
+            <button class="copy-btn" onclick="copyPrevPhrase(this)">📋 Скопировать фразу</button>
+          </div>
+          <div class="script-phrase" data-editable="true">«Мария, добрый день! Рада познакомиться лично, я ведущий дизайнер вашего проекта на этапе визуализации. Я перед звонком детально изучила утверждённую планировку, вашу анкету и все 36 скриншотов с референсами, которые вы прислали. У вас настолько цельная и продуманная подборка - вплоть до конкретных узлов примыкания плинтуса, карнизов и оттенка ёлочки - что 80% вопросов отпали сами собой. Чтобы не тратить ваше время, я выписала буквально 5-6 моментов по комнатам, где у вас в папке сохранено по два разных варианта. Пройдёмся по ним за 10-15 минут?»</div>
+          <textarea class="script-answer-input" data-note-id="m0545_0" placeholder="Ответ Марии..." oninput="saveScriptNotes()"></textarea>
+        </div>
+
+        <div class="script-card">
+          <div class="script-step-title">
+            <span>1. БАЗА ПО ВСЕЙ КВАРТИРЕ (Стены, молдинги, двери и карниз по верху шкафов)</span>
+            <button class="copy-btn" onclick="copyPrevPhrase(this)">📋 Скопировать фразу</button>
+          </div>
+          <div class="script-phrase" data-editable="true">«Смотрите, общую базу по всей квартире я считала с ваших референсов: мы делаем единую тёплую неоклассику в светло-бежевых и песочных тонах с акцентами ореха и матовой латуни. Двери с филёнкой и капителью, высокий плинтус из дюрополимера и настенные молдинги мы выкрашиваем в единый светло-бежевый тон со стенами, чтобы они красиво сливались, а потолочный карниз непрерывно пускаем по верху всех встроенных шкафов, как у вас на скриншотах. Уточню тут только два момента: 1) Так как в анкете отмечены "обои", мы ведь берём гладкие обои под покраску (малярный флизелин) и закатываем всё матовой краской в один цвет с молдингами, верно? 2) Сами рамки молдингов оставляем лаконичными прямыми или добавляем резные уголки и лепные розетки под люстры?»</div>
+          <textarea class="script-answer-input" data-note-id="m0545_1" placeholder="Ответ Марии по стенам и молдингам..." oninput="saveScriptNotes()"></textarea>
+        </div>
+
+        <div class="script-card">
+          <div class="script-step-title">
+            <span>2. ПОЛЫ, ПРИХОЖАЯ И СТЫК С ПЛИТКОЙ</span>
+            <button class="copy-btn" onclick="copyPrevPhrase(this)">📋 Скопировать фразу</button>
+          </div>
+          <div class="script-phrase" data-editable="true">«По полам и прихожей я увидела ваши сохранения: французская ёлка в тёплом оттенке дуба, аккуратный стык с керамогранитом через тонкий латунный профиль в один уровень, и тот самый светлый шкаф в прихожей, который вы сохранили дважды - с открытой боковой секцией с подсветкой и пуфиком снизу (а базу робота-пылесоса и щиток мы спрячем внутри шкафа по плану). Подскажите только по плитке в прихожей: на одних ваших фото это спокойный крупный керамогранит под светлый мрамор, а на других - акцентный классический "ковёр" в шахматную клетку с рамкой. Какой вариант пола делаем во входной зоне? И ростовое зеркало напротив шкафа делаем с мягкой контурной подсветкой или в классической раме с бра по бокам?»</div>
+          <textarea class="script-answer-input" data-note-id="m0545_2" placeholder="Ответ Марии по прихожей..." oninput="saveScriptNotes()"></textarea>
+        </div>
+
+        <div class="script-card">
+          <div class="script-step-title">
+            <span>3. КУХНЯ-ГОСТИНАЯ, СПАЛЬНЯ И ДВА САНУЗЛА</span>
+            <button class="copy-btn" onclick="copyPrevPhrase(this)">📋 Скопировать фразу</button>
+          </div>
+          <div class="script-phrase" data-editable="true">«По кухне-гостиной: делаем кухню полностью светло-бежевой с филёнками и витриной (как на вашем фото со столовой) или добавляем тёмно-коричневый деревянный ярус шкафов (как на первом фото)? Пол в кухне-гостиной застилаем французской ёлкой единым полотном или вдоль кухонного гарнитура хотим полосу керамогранита? По мастер-спальне: справа от кровати у окна ставим комбинированную тумбу, переходящую в туалетный столик с круглым зеркалом (фото 36), и добавляем ли шоколадную панель за ТВ (фото 30)? И по двум санузлам: делаем основную ванную в нежной светлой неоклассике (фото 5), а в гостевом санузле даём акцент с мрамором Calacatta Viola (фото 4) или оба санузла выдерживаем в одном спокойном ключе?»</div>
+          <textarea class="script-answer-input" data-note-id="m0545_3" placeholder="Ответ Марии по кухне, спальне и санузлам..." oninput="saveScriptNotes()"></textarea>
+        </div>
+      </div>
+
 
       <!-- ПОДВКЛАДКА 4: РАЗБОР 0545 (МАРИЯ) -->
       <div id="sub-0545" class="script-panel">
@@ -2045,6 +2615,7 @@
     </div>
   </div>
 
+
   <script>
     // ==================== 1. ЗАЩИТА ПИН-КОДОМ ====================
     const PIN_STORAGE_KEY = 'lav_office_pin_code_v1';
@@ -2178,13 +2749,13 @@
     }
 
     function saveAddedTasks() {
-      localStorage.setItem('lav_modeling_html_v4', document.getElementById('modeling-task-list').innerHTML);
-      localStorage.setItem('lav_calls_html_v4', document.getElementById('calls-task-list').innerHTML);
+      localStorage.setItem('lav_modeling_html_v6', document.getElementById('modeling-task-list').innerHTML);
+      localStorage.setItem('lav_calls_html_v6', document.getElementById('calls-task-list').innerHTML);
     }
 
     function loadAddedTasks() {
-      const m = localStorage.getItem('lav_modeling_html_v4');
-      const c = localStorage.getItem('lav_calls_html_v4');
+      const m = localStorage.getItem('lav_modeling_html_v6');
+      const c = localStorage.getItem('lav_calls_html_v6');
       if (m) document.getElementById('modeling-task-list').innerHTML = m;
       if (c) document.getElementById('calls-task-list').innerHTML = c;
     }
@@ -2271,13 +2842,13 @@
       el.classList.toggle('done');
       const states = [];
       document.querySelectorAll('.task-item').forEach(item => states.push(item.classList.contains('done')));
-      localStorage.setItem('lav_tasks_tue27_v4', JSON.stringify(states));
+      localStorage.setItem('lav_tasks_tue27_v6', JSON.stringify(states));
       saveAddedTasks();
     }
 
     function loadTasks() {
       try {
-        const raw = localStorage.getItem('lav_tasks_tue27_v4');
+        const raw = localStorage.getItem('lav_tasks_tue27_v6');
         if (!raw) return;
         const states = JSON.parse(raw);
         document.querySelectorAll('.task-item').forEach((item, i) => {
@@ -2354,7 +2925,7 @@
 
 
     // ==================== 7. КАЛЕНДАРЬ (ОКТЯБРЬ, НОЯБРЬ, ДЕКАБРЬ 2026) ====================
-    const CAL_STORAGE_KEY = 'lav_calendar_events_2026_v1';
+    const CAL_STORAGE_KEY = 'lav_calendar_events_2026_v2';
     const CAL_NOTES_KEY = 'lav_calendar_daynotes_2026_v1';
     let currentCalMonth = 9; // 9 = Октябрь, 10 = Ноябрь, 11 = Декабрь
     let selectedCalDateKey = '2026-10-27';
@@ -2363,16 +2934,23 @@
       '2026-10-14': [{ text: '💰 Выплата: 7 000 ₽', type: 'ev-pay' }],
       '2026-10-21': [{ text: '💰 Выплата: 17 000 ₽', type: 'ev-pay' }],
       '2026-10-27': [
-        { text: '📞 15:00 Созвон 0653 (Бриф)', type: 'ev-call' },
-        { text: '🔥 Визы: 0645, 0606, 0599', type: 'ev-hot' }
+        { text: '📞 15:00 — 0653 (БРИФ с нуля)', type: 'ev-call' },
+        { text: '📞 16:00 — 0609 (ВИЗЫ созвон)', type: 'ev-call' },
+        { text: '📞 17:45 — 0619 (ВИЗЫ созвон)', type: 'ev-call' },
+        { text: '🔥 Моделинг: 0645, 0606, 0599, 0596, 0593, 0545', type: 'ev-hot' }
       ],
       '2026-10-28': [
+        { text: '🦷 13:00 СТОМАТОЛОГ (занято!)', type: 'ev-hot' },
+        { text: '📞 с 16:00 — 0654 (БРИФ с нуля)', type: 'ev-call' },
         { text: '💰 Выплата: 32 356,80 ₽ (8 пр.)', type: 'ev-pay' },
-        { text: '📞 После 16:00 Созвон 0654', type: 'ev-call' },
         { text: '🔥 Сдать визы 0645', type: 'ev-hot' }
       ],
+      '2026-10-29': [
+        { text: '💉 12:00 ЭНДОКРИНОЛОГ (за инсулином)', type: 'ev-hot' },
+        { text: '📐 0645 Планы электрики/сантех до ПТ!', type: 'ev-hot' }
+      ],
       '2026-10-30': [
-        { text: '📐 0645 Планы электрики/сантех', type: 'ev-hot' }
+        { text: '🚗 ВЕСЬ ДЕНЬ ЗАНЯТ: За ребёнком к бабушке!', type: 'ev-hot' }
       ],
       '2026-11-04': [
         { text: '💰 Выплата: прогноз 42–58к ₽', type: 'ev-pay' }
@@ -2525,7 +3103,7 @@
 
 
     // ==================== 8. ПРОЕКТЫ В РАБОТЕ И ИНТЕРАКТИВНЫЙ КОНСТРУКТОР ПРОМПТОВ АГЕНТАМ ====================
-    const WORK_PROJECTS_KEY = 'lav_work_projects_db_v2';
+    const WORK_PROJECTS_KEY = 'lav_work_projects_db_v3';
     let currentWorkProjId = '0645';
     let currentWorkRoomKey = 'hall';
     let currentAgentStage = 'modeling'; // modeling | texturing | placement | fixes
@@ -2833,15 +3411,15 @@
         folder: 'D:\\ФАНАТИКС\\0654', voiceDump: '', baseStyle: '', baseFloor: '', baseWalls: '', baseCeiling: 'Чистовой потолок с учётом опуска 3000 мм', baseFamily: '', rooms: {}
       },
       {
-        id: '0619', name: 'Визы 61.4 м² (Валерия Г.)', channel: '📱 TG', format: '🎨 Только Визы', price: '7 616,70 ₽', status: '✅ Анкета + Рефы есть • Ждём время созвона', closed: false,
+        id: '0619', name: 'Визы 61.4 м² (Валерия Г.)', channel: '📱 TG', format: '🎨 Только Визы', price: '7 616,70 ₽', status: '📞 Сегодня в 17:45 — Созвон по ВИЗАМ!', closed: false,
         folder: 'D:\\ФАНАТИКС\\0619', voiceDump: '', baseStyle: '', baseFloor: '', baseWalls: '', baseCeiling: 'Чистовой потолок с учётом опуска 3000 мм', baseFamily: '', rooms: {}
       },
       {
-        id: '0609', name: 'Визы с премией', channel: '📱 TG', format: '🎨 Только Визы', price: '10 000 ₽', status: '⏳ Напомнить про заполнение анкеты', closed: false,
+        id: '0609', name: 'Визы с премией', channel: '📱 TG', format: '🎨 Только Визы', price: '10 000 ₽', status: '📞 Сегодня в 16:00 — Созвон по ВИЗАМ!', closed: false,
         folder: 'D:\\ФАНАТИКС\\0609', voiceDump: '', baseStyle: '', baseFloor: '', baseWalls: '', baseCeiling: '', baseFamily: '', rooms: {}
       },
       {
-        id: '0593', name: 'Визы 91 м² (Настя)', channel: '💬 MAX', format: '🎨 Только Визы', price: '11 147 ₽', status: '⏳ Напомнить про анкету и назначить созвон', closed: false,
+        id: '0593', name: 'Визы 91 м² (Настя)', channel: '💬 MAX', format: '🎨 Только Визы', price: '11 147 ₽', status: '🤖 Созвонились 27.10 • Анкета+Рефы есть -> В МОДЕЛИНГ!', closed: false,
         folder: 'D:\\ФАНАТИКС\\0593', voiceDump: '', baseStyle: '', baseFloor: '', baseWalls: '', baseCeiling: '', baseFamily: '', rooms: {}
       },
       {
@@ -3374,6 +3952,358 @@
 
     renderCalendar(9, null);
     renderWorkProjectsGrid();
+
+    // ==================== 9. ИНТЕРАКТИВНЫЙ БРИФ КОМПАНИИ (КЛИКЕР ПО ПРОЕКТАМ + CSV ВЫГРУЗКА 1-В-1) ====================
+    const BRIEF_DB_STORAGE_KEY = 'lav_official_brief_per_proj_v1';
+
+    // Точная структура официального Брифа компании из присланного шаблона
+    const OFFICIAL_BRIEF_TEMPLATE_ROWS = [
+      { sec: 'Коридор/Прихожая', q: 'Пол', def: 'на усмотрение дизайнера' },
+      { sec: 'Коридор/Прихожая', q: 'Cтены', def: 'на усмотрение дизайнера' },
+      { sec: 'Коридор/Прихожая', q: 'Потолок', def: 'на усмотрение дизайнера' },
+      { sec: 'Коридор/Прихожая', q: 'Детали', def: 'на усмотрение дизайнера' },
+      { sec: 'Коридор/Прихожая', q: 'Мебель', def: 'на усмотрение дизайнера (обувница, зеркало, пуф, шкаф)' },
+      { sec: 'Коридор/Прихожая', q: 'Освещение', def: 'на усмотрение дизайнера' },
+      { sec: 'Коридор/Прихожая', q: 'Двери', def: 'на усмотрение дизайнера' },
+      { sec: 'Коридор/Прихожая', q: 'Пожелания по электрике', def: '' },
+      { sec: 'Коридор/Прихожая', q: 'Дополнительные комментарии', def: '' },
+      { sec: 'Коридор/Прихожая', q: 'Ссылка на референсы', def: '' },
+
+      { sec: 'Кухня/кухня-гостиная', q: 'Пол', def: 'на усмотрение дизайнера' },
+      { sec: 'Кухня/кухня-гостиная', q: 'Cтены', def: 'на усмотрение дизайнера' },
+      { sec: 'Кухня/кухня-гостиная', q: 'Потолок', def: 'на усмотрение дизайнера' },
+      { sec: 'Кухня/кухня-гостиная', q: 'Мебель', def: 'на усмотрение дизайнера(свч,духовой шкаф, пмм, встроенный или отдельностоящий холодильник) остров/стол' },
+      { sec: 'Кухня/кухня-гостиная', q: 'Освещение', def: 'на усмотрение дизайнера' },
+      { sec: 'Кухня/кухня-гостиная', q: 'Кухонный гарнитур', def: 'на усмотрение дизайнера' },
+      { sec: 'Кухня/кухня-гостиная', q: 'Фартук кухни', def: 'керамогранит' },
+      { sec: 'Кухня/кухня-гостиная', q: 'Пожелания по электрике', def: 'на усмотрение дизайнера' },
+      { sec: 'Кухня/кухня-гостиная', q: 'Дополнительные комментарии', def: 'Диспоузер, фильтры для воды?' },
+      { sec: 'Кухня/кухня-гостиная', q: 'Ссылка на референсы', def: '' },
+
+      { sec: 'Спальня', q: 'Пол', def: 'на усмотрение дизайнера' },
+      { sec: 'Спальня', q: 'Cтены', def: 'на усмотрение дизайнера' },
+      { sec: 'Спальня', q: 'Потолок', def: 'на усмотрение дизайнера' },
+      { sec: 'Спальня', q: 'Мебель', def: 'Кровать, тумбы, шкаф, рабочее место или туалетный столик' },
+      { sec: 'Спальня', q: 'Освещение', def: 'на усмотрение дизайнера' },
+      { sec: 'Спальня', q: 'Декор/текстиль', def: 'на усмотрение дизайнера' },
+      { sec: 'Спальня', q: 'Детали', def: '' },
+      { sec: 'Спальня', q: 'Пожелания по электрике', def: '' },
+      { sec: 'Спальня', q: 'Дополнительные комментарии', def: '' },
+      { sec: 'Спальня', q: 'Ссылка на референсы', def: '' },
+
+      { sec: 'Ванная комната', q: 'Пол', def: 'керамогранит' },
+      { sec: 'Ванная комната', q: 'Cтены', def: 'керамогранит' },
+      { sec: 'Ванная комната', q: 'Потолок', def: 'на усмотрение дизайнера' },
+      { sec: 'Ванная комната', q: 'Мебель', def: 'ванна/душ, стиральная машинка,раковина с тумбой,зеркало' },
+      { sec: 'Ванная комната', q: 'Освещение', def: 'на усмотрение дизайнера' },
+      { sec: 'Ванная комната', q: 'Пожелания по электрике', def: 'на усмотрение дизайнера' },
+      { sec: 'Ванная комната', q: 'Дополнительные комментарии', def: '' },
+      { sec: 'Ванная комната', q: 'Ссылка на референсы', def: '' },
+
+      { sec: 'Вторая комната ', q: 'Пол', def: 'на усмотрение дизайнера' },
+      { sec: 'Вторая комната ', q: 'Cтены', def: 'на усмотрение дизайнера' },
+      { sec: 'Вторая комната ', q: 'Потолок', def: 'на усмотрение дизайнера' },
+      { sec: 'Вторая комната ', q: 'Мебель', def: 'на усмотрение дизайнера' },
+      { sec: 'Вторая комната ', q: 'Освещение', def: 'на усмотрение дизайнера' },
+      { sec: 'Вторая комната ', q: 'Декор/текстиль', def: 'на усмотрение дизайнера' },
+      { sec: 'Вторая комната ', q: 'Детали', def: '' },
+      { sec: 'Вторая комната ', q: 'Пожелания по электрике', def: '' },
+      { sec: 'Вторая комната ', q: 'Дополнительные комментарии', def: '' },
+      { sec: 'Вторая комната ', q: 'Ссылка на референсы', def: '' },
+
+      { sec: 'Общие вопросы по объекту', q: 'Проблемные места в интерьере', def: '' },
+      { sec: 'Общие вопросы по объекту', q: 'Что не хотелось бы видеть в интерьере?', def: '' },
+      { sec: 'Общие вопросы по объекту', q: 'Общие пожелания по стилю всех помещений', def: '' },
+      { sec: 'Общие вопросы по объекту', q: 'Эмоциональное виденье будущего интерьера', def: '' },
+      { sec: 'Общие вопросы по объекту', q: 'Когда мы можем назначить замер? Или когда планируется получение ключей', def: '' },
+      { sec: 'Общие вопросы по объекту', q: 'Кто является ЛПР?', def: '' },
+
+      { sec: 'Личная информация', q: 'Количество проживающих и кто (состав семьи)', def: '' },
+      { sec: 'Личная информация', q: 'Члены семьи левша/правша', def: 'Правши' },
+      { sec: 'Личная информация', q: 'Отличительные особенности членов семьи (рост, вес, маломобильность)', def: '' },
+      { sec: 'Личная информация', q: 'Домашние животные? Если да, то что нужно учесть?', def: '' },
+      { sec: 'Личная информация', q: 'Рассматриваете ли перепланировку? Демонтаж стен?', def: '' },
+      { sec: 'Личная информация', q: 'Предварительный бюджет на чистовые материалы ( мебель, свет, сантехника, двери)', def: '' },
+      { sec: 'Личная информация', q: 'Сколько этажей в доме?', def: '' },
+      { sec: 'Личная информация', q: 'На каком этаже находится квартира?', def: '' },
+      { sec: 'Личная информация', q: 'Нужны ли кондиционеры? Если да, то в каких помещениях?', def: '' },
+      { sec: 'Личная информация', q: 'Если не кондиционеры, а система вентиляции - то отметьте данный пункт', def: '' },
+      { sec: 'Личная информация', q: 'Нужны ли тёплые полы? Если да, то в каких помещениях?', def: '' },
+      { sec: 'Личная информация', q: 'Часто ли бывают гости? Остаются ночевать? Нужно ли предусмотреть дополнительное спальное место?', def: '' },
+      { sec: 'Личная информация', q: 'Назначение комнат?', def: '' },
+      { sec: 'Личная информация', q: 'Газовая или электрическая плита?', def: 'Электрическая' },
+      { sec: 'Личная информация', q: 'Планируется ли замена оконных рам, входной двери, радиаторов?', def: '' },
+      { sec: 'Личная информация', q: 'Планируется ли утепление лоджии? Как планируете использовать?', def: '' },
+      { sec: 'Личная информация', q: 'Хобби, профессии, образ жизни? Все что требуется учесть при разработке проекта.', def: '' },
+      { sec: 'Личная информация', q: 'Имеются ли предметы декора, мебели, растений, которые нужно включить в дизайн-проект?', def: '' },
+
+      { sec: 'Информация по объекту', q: 'Адрес объекта недвижимого имущества (жилого помещения) (далее – Объект):', def: '' },
+      { sec: 'Информация по объекту', q: 'Общий метраж Объекта', def: '' },
+      { sec: 'Информация по объекту', q: 'Зоны, требующие дизайна', def: 'Вся квартира' },
+      { sec: 'Информация по объекту', q: 'Зоны, не требующие дизайна (части Объекта (помещения), в отношении которых дизайн интерьера не разрабатывается и не включается в Дизайн-проект)', def: 'Нет' }
+    ];
+
+    function getBriefAllDB() {
+      try {
+        const raw = localStorage.getItem(BRIEF_DB_STORAGE_KEY);
+        if (raw) return JSON.parse(raw);
+      } catch(e) {}
+      return {};
+    }
+
+    function saveBriefAllDB(db) {
+      localStorage.setItem(BRIEF_DB_STORAGE_KEY, JSON.stringify(db));
+    }
+
+    function getProjectBriefMap(projId) {
+      const db = getBriefAllDB();
+      if (!db[projId]) {
+        const initial = {};
+        OFFICIAL_BRIEF_TEMPLATE_ROWS.forEach(r => {
+          initial[r.sec + '::' + r.q] = r.def;
+        });
+        db[projId] = initial;
+        saveBriefAllDB(db);
+      }
+      return db[projId];
+    }
+
+    function saveProjectBriefMap(projId, map) {
+      const db = getBriefAllDB();
+      db[projId] = map;
+      saveBriefAllDB(db);
+    }
+
+    function initBriefProjectSelector() {
+      const sel = document.getElementById('brief-project-select');
+      if (!sel) return;
+      const list = getWorkProjects();
+      // По умолчанию ставим 0653 (сегодняшний созвон по брифу в 15:00!) или текущий проект
+      if (!list.find(x => x.id === currentWorkProjId)) currentWorkProjId = '0653';
+      sel.innerHTML = list.filter(x => !x.closed).map(p => `
+        <option value="${p.id}" ${p.id === '0653' ? 'selected' : ''}>${p.id} — ${p.name} (${p.format})</option>
+      `).join('');
+      if (list.find(x => x.id === '0653')) {
+        sel.value = '0653';
+      }
+      renderOfficialBriefLiveTable();
+    }
+
+    function getSelectedBriefProjId() {
+      const sel = document.getElementById('brief-project-select');
+      return (sel && sel.value) ? sel.value : currentWorkProjId;
+    }
+
+    function onBriefProjectSelectChange(projId) {
+      currentWorkProjId = projId;
+      document.querySelectorAll('.b-chip.active-bchip').forEach(b => b.classList.remove('active-bchip'));
+      renderOfficialBriefLiveTable();
+      renderWorkProjectsGrid();
+      if (typeof renderVizFileChecklist === "function") { renderVizFileChecklist(); renderVizRoomKnownAndControls(); }
+    }
+
+    function renderOfficialBriefLiveTable() {
+      const projId = getSelectedBriefProjId();
+      const list = getWorkProjects();
+      const p = list.find(x => x.id === projId);
+      const banner = document.getElementById('brief-active-proj-banner');
+      if (banner) {
+        banner.textContent = `📞 Заполняем Бриф по проекту: ${projId}` + (p ? ` (${p.name} • ${p.format})` : '');
+      }
+
+      const map = getProjectBriefMap(projId);
+      const tbl = document.getElementById('official-brief-live-table');
+      if (!tbl) return;
+
+      let html = `<thead><tr><th style="width:42%;">Вопрос официального Брифа компании</th><th>Ответ по проекту ${projId} (редактируется)</th></tr></thead><tbody>`;
+      let lastSec = '';
+      OFFICIAL_BRIEF_TEMPLATE_ROWS.forEach((r, idx) => {
+        if (r.sec !== lastSec) {
+          lastSec = r.sec;
+          html += `<tr class="brief-sec-row"><td colspan="2">📂 ${r.sec}</td></tr>`;
+        }
+        const key = r.sec + '::' + r.q;
+        const val = (map[key] !== undefined) ? map[key] : r.def;
+        const safeVal = String(val || '').replace(/"/g, '&quot;');
+        html += `
+          <tr>
+            <td style="color:#cbd5e1; font-weight:700;">${r.q}</td>
+            <td><input class="brief-cell-inp" data-bkey="${key}" value="${safeVal}" oninput="onBriefCellManualInput(this)"></td>
+          </tr>
+        `;
+      });
+      html += `</tbody>`;
+      tbl.innerHTML = html;
+    }
+
+    function onBriefCellManualInput(inp) {
+      const projId = getSelectedBriefProjId();
+      const map = getProjectBriefMap(projId);
+      map[inp.getAttribute('data-bkey')] = inp.value;
+      saveProjectBriefMap(projId, map);
+    }
+
+    function findFullBriefKey(shortOrFullKey) {
+      if (shortOrFullKey.includes('::')) return shortOrFullKey;
+      const found = OFFICIAL_BRIEF_TEMPLATE_ROWS.find(r => r.q === shortOrFullKey);
+      return found ? (found.sec + '::' + found.q) : ('Личная информация::' + shortOrFullKey);
+    }
+
+    function setBriefRow(shortOrFullKey, value) {
+      const projId = getSelectedBriefProjId();
+      const map = getProjectBriefMap(projId);
+      const fullKey = findFullBriefKey(shortOrFullKey);
+      map[fullKey] = value;
+      saveProjectBriefMap(projId, map);
+      renderOfficialBriefLiveTable();
+    }
+
+    function clickBriefChip(btn, shortOrFullKey, textVal) {
+      btn.classList.toggle('active-bchip');
+      const projId = getSelectedBriefProjId();
+      const map = getProjectBriefMap(projId);
+      const fullKey = findFullBriefKey(shortOrFullKey);
+      let cur = map[fullKey] || '';
+
+      // Если стояла дефолтная заглушка "на усмотрение дизайнера...", заменяем её на конкретный выбор
+      if (cur.startsWith('на усмотрение дизайнера') || cur === 'Кровать, тумбы, шкаф, рабочее место или туалетный столик' || cur === 'ванна/душ, стиральная машинка,раковина с тумбой,зеркало' || cur === 'Диспоузер, фильтры для воды?') {
+        if (!textVal.startsWith('на усмотрение дизайнера')) {
+          cur = '';
+        }
+      }
+
+      if (btn.classList.contains('active-bchip')) {
+        if (!cur.includes(textVal)) {
+          map[fullKey] = cur ? (cur + ', ' + textVal) : textVal;
+        }
+      } else {
+        const parts = cur.split(', ').filter(x => x !== textVal && x.trim() !== '');
+        map[fullKey] = parts.join(', ');
+      }
+      saveProjectBriefMap(projId, map);
+      renderOfficialBriefLiveTable();
+    }
+
+    function applyBulkFinish(fieldName, textVal, btn) {
+      if (btn) btn.classList.toggle('active-bchip');
+      const projId = getSelectedBriefProjId();
+      const map = getProjectBriefMap(projId);
+      const rooms = ['Коридор/Прихожая', 'Кухня/кухня-гостиная', 'Спальня', 'Вторая комната '];
+      if (fieldName === 'Потолок' || fieldName === 'Освещение') {
+        rooms.push('Ванная комната');
+      }
+      rooms.forEach(sec => {
+        const key = sec + '::' + fieldName;
+        if (map[key] !== undefined) {
+          map[key] = textVal;
+        }
+      });
+      saveProjectBriefMap(projId, map);
+      renderOfficialBriefLiveTable();
+    }
+
+    function syncBriefToProjectPassport() {
+      const projId = getSelectedBriefProjId();
+      const map = getProjectBriefMap(projId);
+      const list = getWorkProjects();
+      const p = list.find(x => x.id === projId);
+      if (!p) return;
+
+      p.baseStyle = `Стиль: ${map['Общие вопросы по объекту::Общие пожелания по стилю всех помещений'] || ''} | Эмоции: ${map['Общие вопросы по объекту::Эмоциональное виденье будущего интерьера'] || ''} | ТАБУ: ${map['Общие вопросы по объекту::Что не хотелось бы видеть в интерьере?'] || ''}`;
+      p.baseFloor = `Пол: ${map['Кухня/кухня-гостиная::Пол'] || ''} | Прихожая: ${map['Коридор/Прихожая::Пол'] || ''} | Тёплый пол: ${map['Личная информация::Нужны ли тёплые полы? Если да, то в каких помещениях?'] || ''}`;
+      p.baseWalls = `Стены: ${map['Кухня/кухня-гостиная::Cтены'] || ''} | Детали: ${map['Коридор/Прихожая::Детали'] || ''} | Двери: ${map['Коридор/Прихожая::Двери'] || ''}`;
+      p.baseCeiling = `Потолок (с учётом опуска 3000–3050 мм): ${map['Кухня/кухня-гостиная::Потолок'] || ''} | Свет: ${map['Кухня/кухня-гостиная::Освещение'] || ''} | Кондиционеры: ${map['Личная информация::Нужны ли кондиционеры? Если да, то в каких помещениях?'] || ''} | Окна/радиаторы: ${map['Личная информация::Планируется ли замена оконных рам, входной двери, радиаторов?'] || ''}`;
+      p.baseFamily = `Семья: ${map['Личная информация::Количество проживающих и кто (состав семьи)'] || ''} | ЛПР: ${map['Общие вопросы по объекту::Кто является ЛПР?'] || ''} | Животные: ${map['Личная информация::Домашние животные? Если да, то что нужно учесть?'] || ''} | Бюджет: ${map['Личная информация::Предварительный бюджет на чистовые материалы ( мебель, свет, сантехника, двери)'] || ''}`;
+
+      if (!p.rooms) p.rooms = {};
+      p.rooms.hall = {
+        joinery: `Мебель: ${map['Коридор/Прихожая::Мебель'] || ''} | Электрика: ${map['Коридор/Прихожая::Пожелания по электрике'] || ''}`,
+        finish: `Пол: ${map['Коридор/Прихожая::Пол'] || ''}, Стены: ${map['Коридор/Прихожая::Cтены'] || ''}, Двери: ${map['Коридор/Прихожая::Двери'] || ''}. Строго по планировке.`,
+        refs: map['Коридор/Прихожая::Ссылка на референсы'] || '',
+        stages: (p.rooms.hall && p.rooms.hall.stages) || {}
+      };
+      p.rooms.kitchen = {
+        joinery: `Кухня: ${map['Кухня/кухня-гостиная::Кухонный гарнитур'] || ''} | Наполнение и мебель: ${map['Кухня/кухня-гостиная::Мебель'] || ''} | Фартук: ${map['Кухня/кухня-гостиная::Фартук кухни'] || ''} | Доп: ${map['Кухня/кухня-гостиная::Дополнительные комментарии'] || ''}`,
+        finish: `Пол: ${map['Кухня/кухня-гостиная::Пол'] || ''}, Стены: ${map['Кухня/кухня-гостиная::Cтены'] || ''}. Строго по планировке.`,
+        refs: map['Кухня/кухня-гостиная::Ссылка на референсы'] || '',
+        stages: (p.rooms.kitchen && p.rooms.kitchen.stages) || {}
+      };
+      p.rooms.bedroom = {
+        joinery: `Мебель: ${map['Спальня::Мебель'] || ''} | Электрика: ${map['Спальня::Пожелания по электрике'] || ''}`,
+        finish: `Пол: ${map['Спальня::Пол'] || ''}, Стены: ${map['Спальня::Cтены'] || ''}, Текстиль: ${map['Спальня::Декор/текстиль'] || ''}. Строго по планировке.`,
+        refs: map['Спальня::Ссылка на референсы'] || '',
+        stages: (p.rooms.bedroom && p.rooms.bedroom.stages) || {}
+      };
+      p.rooms.kids = {
+        joinery: `Мебель: ${map['Вторая комната ::Мебель'] || ''} | Электрика: ${map['Вторая комната ::Пожелания по электрике'] || ''}`,
+        finish: `Пол: ${map['Вторая комната ::Пол'] || ''}, Стены: ${map['Вторая комната ::Cтены'] || ''}. Строго по планировке.`,
+        refs: map['Вторая комната ::Ссылка на референсы'] || '',
+        stages: (p.rooms.kids && p.rooms.kids.stages) || {}
+      };
+      p.rooms.bath = {
+        joinery: `Мебель и сантехника: ${map['Ванная комната::Мебель'] || ''} | Электрика: ${map['Ванная комната::Пожелания по электрике'] || ''}`,
+        finish: `Пол: ${map['Ванная комната::Пол'] || ''}, Стены: ${map['Ванная комната::Cтены'] || ''}. Строго по планировке.`,
+        refs: map['Ванная комната::Ссылка на референсы'] || '',
+        stages: (p.rooms.bath && p.rooms.bath.stages) || {}
+      };
+
+      saveWorkProjects(list);
+      currentWorkProjId = projId;
+      renderWorkProjectsGrid();
+      alert(`✅ Все ответы Брифа успешно перенесены в Паспорт проекта ${projId}! Теперь можно сразу открывать комнаты во вкладке «🚀 2. ПРОЕКТЫ В РАБОТЕ» и копировать промпты агентам.`);
+    }
+
+    function downloadOfficialCompanyBriefCSV() {
+      const projId = getSelectedBriefProjId();
+      const map = getProjectBriefMap(projId);
+
+      // Формируем CSV 1-в-1 по структуре компании
+      const csvRows = [
+        ['Для примера в опросник уже внесены варианты ответов. Можно в графе оставлять ответ "на усмотрение дизайнера", тогда мы подберем лучшее решение исходя из Ваших референсов.', '']
+      ];
+
+      let lastSec = '';
+      OFFICIAL_BRIEF_TEMPLATE_ROWS.forEach(r => {
+        if (r.sec !== lastSec) {
+          lastSec = r.sec;
+          csvRows.push([r.sec, '']);
+        }
+        const key = r.sec + '::' + r.q;
+        const val = (map[key] !== undefined) ? map[key] : r.def;
+        csvRows.push([r.q, val]);
+      });
+
+      // Генерируем CSV с разделителем запятая (как в твоём исходном файле) и с точкой с запятой для русского Excel
+      const csvContent = '\uFEFF' + csvRows.map(row => row.map(c => {
+        const s = String(c || '');
+        if (s.includes(',') || s.includes('"') || s.includes('\n') || s.includes(';')) {
+          return '"' + s.replace(/"/g, '""') + '"';
+        }
+        return s;
+      }).join(';')).join('\r\n');
+
+      const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `Бриф_${projId}.csv`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    }
+
+    function openMaterialsInPopup() {
+      const win = window.open(window.location.href.split('#')[0] + '#materials-popup', 'lav_materials_window', 'width=680,height=860,left=820,top=60');
+    }
+
+    initBriefProjectSelector();
+    if (window.location.hash === '#materials-popup') {
+      setTimeout(() => {
+        switchTab('tab-scripts', document.querySelectorAll('.tab-btn')[2]);
+        switchScriptSub('sub-materials', document.querySelectorAll('.script-subbtn')[2]);
+      }, 120);
+    }
+
 
     checkAuthOnLoad();
     loadAddedTasks();
