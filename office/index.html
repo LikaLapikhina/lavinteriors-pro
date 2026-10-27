@@ -2354,6 +2354,9 @@
           <button class="action-btn" style="background:rgba(168,85,247,0.22); border-color:var(--purple-border); color:#f3e8ff;" onclick="copyPromptToParseAnketaAndBrief()">
             🤖 Скопировать задачу Агенту: «Прочитай Анкету и Бриф в папке проекта и разложи мне выжимку по комнатам!»
           </button>
+          <button class="action-btn" style="background:rgba(245,158,11,0.22); border-color:#fbbf24; color:#fde68a;" onclick="copyPromptToActualizeRefLinks()">
+            🔗 Скопировать задачу Агенту: «Проверь папку референсов, посмотри каждое фото глазами и привяжи прямые ссылки к каждому узлу!»
+          </button>
           <button class="action-btn" style="background:var(--green); border-color:var(--green); color:#fff;" onclick="switchTab('tab-work', document.querySelectorAll('.tab-btn')[1])">
             🚀 Перейти в Проекты и отправить задачу Агенту на 3D
           </button>
@@ -2505,12 +2508,20 @@
               <!-- ФИОЛЕТОВАЯ ЗОНА: РЕФЕРЕНСЫ ПО ЭТОМУ ПОМЕЩЕНИЮ (ЕСЛИ ЕСТЬ) -->
               <div class="zone-purple">
                 <div style="font-size:13px; font-weight:900; color:#e9d5ff; margin-bottom:4px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:4px;">
-                  <span>🟣 РЕФЕРЕНСЫ ФОРМЫ И ВИЗУАЛА ПО КОМНАТЕ (Если есть у заказчика)</span>
-                  <button class="copy-btn" style="font-size:11px; padding:3px 8px;" onclick="copyRoomRefFolderPath()">📁 Скопировать путь к папке рефов</button>
+                  <span>🟣 ПРЯМЫЕ ССЫЛКИ НА ФАЙЛЫ РЕФЕРЕНСОВ ПО КОМНАТЕ (ШАГ 0: read_file!)</span>
+                  <div style="display:flex; gap:5px; flex-wrap:wrap;">
+                    <button class="copy-btn" style="font-size:10.5px; padding:3px 7px; border-color:#fbbf24; color:#fde68a;" onclick="copyPromptToActualizeRefLinks()" title="Скопировать промпт агенту, чтобы он просмотрел все фото в папке референсов и привязал точные пути к каждому узлу">🔗 Задать Агенту актуализировать ссылки</button>
+                    <button class="copy-btn" style="font-size:10.5px; padding:3px 7px;" onclick="copyRoomRefFolderPath()">📁 Путь к папке</button>
+                  </div>
                 </div>
                 <div id="room-ref-folder-hint" style="font-size:11.5px; color:#c084fc; margin-bottom:6px; font-family:monospace;">Папка: D:\ФАНАТИКС\0606\Референсы_по_комнатам\02_Кухня_Гостиная</div>
 
-                <div style="font-size:11px; color:var(--muted); margin-bottom:4px;">Нажми кнопку ниже (если референсов нет — нажми первую кнопку!):</div>
+                <div id="room-ref-files-box" style="margin-bottom:6px; display:none;">
+                  <div style="font-size:11px; font-weight:800; color:#fde68a; margin-bottom:4px;">📎 Конкретные файлы-эталоны этой комнаты (нажми на файл, чтобы вставить прямую ссылку в задание узла!):</div>
+                  <div class="plus-chips-wrap" id="room-ref-files-chips" style="margin-bottom:4px;"></div>
+                </div>
+
+                <div style="font-size:11px; color:var(--muted); margin-bottom:4px;">Быстрые пометки по референсам (если референсов нет — нажми первую кнопку!):</div>
                 <div class="plus-chips-wrap">
                   <button class="plus-chip plus-chip-purple" style="border-color:#fbbf24; color:#fde68a;" onclick="setNoRefsForRoom()">🚫 Референсов от заказчика НЕТ (строго по планировке!)</button>
                   <button class="plus-chip plus-chip-purple" onclick="appendRefTag('Форма фасадов и фрезеровка/молдинги — точно как на референсе (НЕ копировать потолочный свет с фото референса!)')">+ Форма фасадов как на рефе (свет с рефа не копировать!)</button>
@@ -3480,7 +3491,7 @@
 
 
     // ==================== 8. ПРОЕКТЫ В РАБОТЕ И ИНТЕРАКТИВНЫЙ КОНСТРУКТОР ПРОМПТОВ АГЕНТАМ ====================
-    const WORK_PROJECTS_KEY = 'lav_work_projects_db_v6';
+    const WORK_PROJECTS_KEY = 'lav_work_projects_db_v7';
     let currentWorkProjId = '0545';
     let currentWorkRoomKey = 'hall';
     var currentVizRoomKey = 'hall';
@@ -4120,8 +4131,8 @@
       try {
         const raw = localStorage.getItem(WORK_PROJECTS_KEY);
         if (raw) return JSON.parse(raw);
-        // Migrate user progress (stages, customNote, texNotes) from v5 if present
-        const oldRaw = localStorage.getItem('lav_work_projects_db_v5');
+        // Migrate user progress (stages) from v6 or v5 while loading updated reference links in joinery/refs/texNotes
+        const oldRaw = localStorage.getItem('lav_work_projects_db_v6') || localStorage.getItem('lav_work_projects_db_v5');
         const fresh = JSON.parse(JSON.stringify(DEFAULT_WORK_PROJECTS));
         if (oldRaw) {
           const oldList = JSON.parse(oldRaw);
@@ -4129,10 +4140,8 @@
             const op = oldList.find(x => x.id === fp.id);
             if (op && op.rooms && fp.rooms) {
               Object.keys(fp.rooms).forEach(rk => {
-                if (op.rooms[rk]) {
-                  if (op.rooms[rk].stages) fp.rooms[rk].stages = op.rooms[rk].stages;
-                  if (op.rooms[rk].customNote) fp.rooms[rk].customNote = op.rooms[rk].customNote;
-                  if (op.rooms[rk].texNotes) fp.rooms[rk].texNotes = op.rooms[rk].texNotes;
+                if (op.rooms[rk] && op.rooms[rk].stages) {
+                  fp.rooms[rk].stages = op.rooms[rk].stages;
                 }
               });
             }
@@ -4584,7 +4593,51 @@
       }
 
       renderRoomSpecificPlusChips();
+      renderRoomRefFilesChips(p, r);
       rebuildLiveAgentPrompt();
+    }
+
+    function extractRoomRefFilePaths(p, r) {
+      const found = [];
+      const addPath = (pt) => {
+        if (!pt) return;
+        const clean = pt.trim().replace(/^["'«]+|["'».,;)]+$/g, '');
+        if (clean && !found.includes(clean)) found.push(clean);
+      };
+      if (r && Array.isArray(r.refFiles)) {
+        r.refFiles.forEach(addPath);
+      }
+      const blob = [r && r.refs ? r.refs : '', r && r.joinery ? r.joinery : '', r && r.texNotes ? r.texNotes : ''].join('\n');
+      const regex = /D:\\ФАНАТИКС\\[^"\r\n|»]+?\.(?:webp|jpg|jpeg|png|pdf)/gi;
+      let m;
+      while ((m = regex.exec(blob)) !== null) {
+        addPath(m[0]);
+      }
+      return found;
+    }
+
+    function renderRoomRefFilesChips(p, r) {
+      const box = document.getElementById('room-ref-files-box');
+      const wrap = document.getElementById('room-ref-files-chips');
+      if (!box || !wrap) return;
+      const files = extractRoomRefFilePaths(p, r);
+      if (!files.length) {
+        box.style.display = 'none';
+        wrap.innerHTML = '';
+        return;
+      }
+      box.style.display = 'block';
+      wrap.innerHTML = files.map((fp, i) => {
+        const base = fp.split('\\').pop();
+        const safeFp = fp.replace(/\\/g, '\\\\').replace(/'/g, "\\'");
+        return `<button class="plus-chip plus-chip-purple" style="border-color:#fde68a; color:#fef08a; font-size:11px;" onclick="insertExactRefLinkIntoJoinery('${safeFp}')" title="Вставить прямую ссылку на файл ${base} в задание моделирования">+ 📎 ${base}</button>`;
+      }).join('');
+    }
+
+    function insertExactRefLinkIntoJoinery(filePath) {
+      const tag = `[Эталон узла -> ОБЯЗАТЕЛЬНО открой через read_file: "${filePath}"]`;
+      appendJoineryTag(tag);
+      appendRefTag(filePath);
     }
 
     function saveCurrentWorkProject() {
@@ -4656,11 +4709,27 @@
       const customNoteVal = (r.customNote || (document.getElementById('rm-custom-note') ? document.getElementById('rm-custom-note').value : '') || '').trim();
       const texNotesVal = (r.texNotes || (document.getElementById('rm-tex-notes') ? document.getElementById('rm-tex-notes').value : '') || '').trim();
 
+      const exactRefFiles = extractRoomRefFilePaths(p, r);
+
       let promptLines = [];
       promptLines.push(`Подключись к проекту ${p.id} (${p.name || ''}) в открытом Homestyler (порт 9222).`);
       promptLines.push(`Работаем ТОЛЬКО в помещении: «${roomTitle}» (локальные изменения: не перестраивай и не стирай другие комнаты!).`);
       promptLines.push(`ЗАДАЧА — ${stageTitles[currentAgentStage]}`);
       promptLines.push(``);
+
+      if (!noRefs) {
+        promptLines.push(`0. ⛔ ШАГ 0 — ОБЯЗАТЕЛЬНЫЙ ПРОСМОТР ЧЕРТЕЖА ПЛАНИРОВКИ И ТОЧНЫХ ФАЙЛОВ РЕФЕРЕНСОВ ЧЕРЕЗ read_file ПЕРЕД НАПИСАНИЕМ КОДА (КАТЕГОРИЧЕСКИ ЗАПРЕЩЕНО ДЕЛАТЬ РАНДОМ!):`);
+        promptLines.push(`   • Прежде чем писать хотя бы одну строчку JS-кода (HSJoinery / webCADDocument), ты ОБЯЗАН первым действием вызвать инструмент read_file и посмотреть ГЛАЗАМИ чертёж планировки и КАЖДЫЙ конкретный графический файл-референс этой комнаты!`);
+        promptLines.push(`   • Запрещено угадывать «из головы» фрезеровку фасадов (neoclassic_1step, capsule_v и др.), форму ручек, ножки консолей, пересечение консоли с зеркалом или конфигурацию угловых шкафов — всё это чётко отрисовано на привязанных ниже файлах референсов:`);
+        if (exactRefFiles.length > 0) {
+          exactRefFiles.forEach((fp, idx) => {
+            promptLines.push(`     [${idx + 1}] ОБЯЗАТЕЛЬНО открой через read_file: "${fp}"`);
+          });
+        } else {
+          promptLines.push(`     [1] ОБЯЗАТЕЛЬНО просканируй и открой через read_file все фото в папке комнаты: "${roomRefPath}"`);
+        }
+        promptLines.push(``);
+      }
 
       if (currentAgentStage === 'modeling') {
         promptLines.push(`1. ИСХОДНИКИ И РАЗМЕРЫ (НА ЭТАПЕ МОДЕЛИРОВАНИЯ РАБОТАЕМ ТОЛЬКО С ГЕОМЕТРИЕЙ, РАЗМЕРАМИ И ФОРМОЙ БЕЗ ТЕКСТУРИРОВАНИЯ ПОЛА/СТЕН):`);
@@ -5876,9 +5945,21 @@
       const folder = (p && p.folder) ? p.folder : (`D:\\ФАНАТИКС\\${projId}`);
       const uploaded = (p && p.fileFlags && p.fileFlags.uploadedFiles && p.fileFlags.uploadedFiles.length > 0) ? p.fileFlags.uploadedFiles.join(', ') : 'все файлы Бриф, Анкета, Планировка и Референсы';
 
-      const promptText = `Подключись к папке проекта ${projId}: ${folder} (файлы: ${uploaded}).\n\nЗАДАЧА ПЕРЕД МОИМ СОЗВОНОМ С ЗАКАЗЧИКОМ:\n1. Прочитай готовый Бриф (если есть), Анкету по визуализации (.pdf) и Планировку через read_file.\n2. Сделай мне чёткую выжимку без воды и сразу внеси её в карточку проекта ${projId} на lavinteriors.pro/office/ по каждому помещению (Прихожая, Кухня-гостиная, Спальня, Детская/Кабинет, Ванная, Санузел):\n   - Что УЖЕ выбрано клиентом в брифе и анкете (чтобы я НЕ спрашивала это по второму кругу на звонке!);\n   - Где в анкете или референсах есть пробелы/противоречия (список из 4–5 конкретных вопросов, которые мне нужно уточнить на созвоне по каждой комнате).`;
+      const promptText = `Подключись к папке проекта ${projId}: ${folder} (файлы: ${uploaded}).\n\nЗАДАЧА ПЕРЕД МОИМ СОЗВОНОМ С ЗАКАЗЧИКОМ (С ОБЯЗАТЕЛЬНОЙ ПРИВЯЗКОЙ ПРЯМЫХ ССЫЛОК НА ФАЙЛЫ РЕФЕРЕНСОВ!):\n1. Прочитай готовый Бриф (если есть), Анкету по визуализации (.pdf), Планировку и открой ГЛАЗАМИ через read_file КАЖДУЮ картинку референса в папке ${folder}\\Референсы_по_комнатам.\n2. Сделай чёткую выжимку без воды и сразу внеси её в карточку проекта ${projId} в D:\\lav-site\\_github_lavinteriors_pro\\office\\index.html по каждому помещению (Прихожая, Кухня-гостиная, Спальня, Детская/Кабинет, Ванная, Санузел):\n   - Что УЖЕ выбрано клиентом в брифе и анкете;\n   - ⛔ ЖЁСТКОЕ ПРАВИЛО ПО РЕФЕРЕНСАМ: в полях joinery, texNotes и refs КАТЕГОРИЧЕСКИ ЗАПРЕЩЕНО писать размытые фразы вроде «как на референсе» без точного пути! Прямо внутри каждого пункта мебели/фрезеровки/ручек/консоли пропиши ПОЛНЫЙ ПУТЬ к конкретному файлу референса (например: [Эталон узла -> открой через read_file: "${folder}\\Референсы_по_комнатам\\..."]) и подробно опиши словами, какая именно там фрезеровка, форма ручек, ножки и примыкание!\n   - Список из 4–5 конкретных вопросов для созвона по каждой комнате.`;
       navigator.clipboard.writeText(promptText).then(() => {
-        alert('✅ Команда для ИИ-агента скопирована! Вставь её в наш чат — и я за 30 секунд разберу всю анкету и бриф по полочкам.');
+        alert('✅ Команда для ИИ-агента скопирована! Вставь её в чат — агент разберёт бриф, анкету и привяжет прямые ссылки на каждый файл референса.');
+      });
+    }
+
+    function copyPromptToActualizeRefLinks() {
+      const projId = currentWorkProjId || getSelectedBriefProjId();
+      const list = getWorkProjects();
+      const p = list.find(x => x.id === projId);
+      const folder = (p && p.folder) ? p.folder : (`D:\\ФАНАТИКС\\${projId}`);
+
+      const promptText = `Подключись к папке проекта ${projId}: ${folder} и файлу панели управления D:\\lav-site\\_github_lavinteriors_pro\\office\\index.html.\n\nЗАДАЧА — АКТУАЛИЗАЦИЯ ПРЯМЫХ ССЫЛОК НА ФАЙЛЫ РЕФЕРЕНСОВ В КАЖДОМ УЗЛЕ ПРОЕКТА ${projId}:\n1. Просканируй все подпапки референсов в ${folder}\\Референсы_по_комнатам (или ${folder}\\референсы) и ОБЯЗАТЕЛЬНО открой КАЖДЫЙ графический файл глазами через инструмент read_file.\n2. Внимательно изучи, что именно изображено на каждом референсе: какая точная фрезеровка фасадов (neoclassic_1step, capsule_v и др.), какая форма накладных или профильных ручек, какая конструкция шкафа/кухни/консоли/тумбы, как пересекаются зеркало и подвесная консоль, какие ножки у столика, какая раскладка плитки.\n3. Обнови карточку проекта ${projId} в D:\\lav-site\\_github_lavinteriors_pro\\office\\index.html (и мастер-бриф в папке проекта):\n   - Прямо внутри КАЖДОГО пункта joinery (столярка), texNotes (текстурирование) и refs по каждой комнате пропиши ПРЯМУЮ ССЫЛКУ (полный абсолютный путь D:\\ФАНАТИКС\\${projId}\\...) на соответствующий файл референса + точное геометрическое описание узла, чтобы агент при моделировании открывал конкретный файл через read_file и никогда не делал рандом!\n   - Увеличь версию WORK_PROJECTS_KEY (с миграцией stages) и запушь изменения на GitHub.`;
+      navigator.clipboard.writeText(promptText).then(() => {
+        alert('✅ Задача Агенту на актуализацию прямых ссылок на референсы скопирована в буфер обмена!');
       });
     }
 
