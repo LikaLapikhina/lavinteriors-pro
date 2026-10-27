@@ -484,6 +484,201 @@
       resize: vertical;
     }
     .quick-notes-area:focus { border-color: var(--blue); outline: none; }
+
+    /* КАЛЕНДАРЬ (ОКТЯБРЬ - НОЯБРЬ - ДЕКАБРЬ) */
+    .cal-controls {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .cal-month-btn {
+      background: rgba(255,255,255,0.05);
+      color: var(--text);
+      border: 1px solid var(--border);
+      padding: 7px 14px;
+      border-radius: 9px;
+      font-size: 12.5px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+    .cal-month-btn.active {
+      background: var(--blue);
+      border-color: var(--blue);
+      color: #fff;
+    }
+    .cal-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 6px;
+      margin-top: 12px;
+    }
+    .cal-weekday {
+      text-align: center;
+      font-size: 11px;
+      font-weight: 800;
+      color: var(--muted);
+      padding: 4px 0;
+      text-transform: uppercase;
+    }
+    .cal-day {
+      background: rgba(255,255,255,0.025);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      min-height: 76px;
+      padding: 6px 7px;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.15s;
+    }
+    .cal-day:hover { border-color: var(--blue); background: rgba(59,130,246,0.08); }
+    .cal-day.empty { background: transparent; border-color: transparent; cursor: default; min-height: 30px; }
+    .cal-day.today { border: 2px solid var(--yellow); background: rgba(245,158,11,0.12); }
+    .cal-day.payday { border-color: var(--green-border); background: rgba(16,185,129,0.08); }
+    .cal-day.selected-day { outline: 2px solid var(--purple); background: rgba(168,85,247,0.15); }
+    .cal-day-num {
+      font-size: 12.5px;
+      font-weight: 900;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .cal-events-mini {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      margin-top: 4px;
+    }
+    .cal-ev-pill {
+      font-size: 10.5px;
+      font-weight: 700;
+      padding: 2px 5px;
+      border-radius: 5px;
+      background: rgba(59,130,246,0.22);
+      color: #93c5fd;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .cal-ev-pill.ev-call { background: rgba(168,85,247,0.28); color: #e9d5ff; }
+    .cal-ev-pill.ev-pay { background: rgba(16,185,129,0.25); color: #6ee7b7; }
+    .cal-ev-pill.ev-hot { background: rgba(239,68,68,0.25); color: #fca5a5; }
+    @media (max-width: 680px) {
+      .cal-day { min-height: 58px; padding: 4px; }
+      .cal-ev-pill { font-size: 9.5px; padding: 1px 3px; }
+    }
+
+    /* КАРТОЧКИ ПРОЕКТОВ В РАБОТЕ И ПЕРЕДАЧА АГЕНТАМ */
+    .work-filter-bar {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 14px;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .proj-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+    .work-proj-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 13px 15px;
+      cursor: pointer;
+      transition: all 0.15s;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 8px;
+    }
+    .work-proj-card:hover { border-color: var(--blue); background: rgba(255,255,255,0.055); }
+    .work-proj-card.active-selected {
+      border: 2px solid var(--purple);
+      background: rgba(168,85,247,0.12);
+      box-shadow: 0 6px 20px rgba(168,85,247,0.22);
+    }
+    .room-tabs {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin: 12px 0;
+    }
+    .room-btn {
+      background: rgba(255,255,255,0.05);
+      color: var(--text);
+      border: 1px solid var(--border);
+      padding: 7px 12px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+    .room-btn.active {
+      background: var(--blue);
+      border-color: var(--blue);
+      color: #fff;
+    }
+    .passport-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+    @media (max-width: 820px) {
+      .passport-grid { grid-template-columns: 1fr; }
+    }
+    .field-box {
+      background: rgba(0,0,0,0.28);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 8px 11px;
+    }
+    .field-label {
+      font-size: 11px;
+      font-weight: 800;
+      color: #93c5fd;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+      display: flex;
+      justify-content: space-between;
+    }
+    .field-input {
+      width: 100%;
+      background: transparent;
+      border: none;
+      color: var(--text);
+      font-size: 13px;
+      font-family: inherit;
+      resize: vertical;
+      min-height: 36px;
+      outline: none;
+    }
+    .agent-micro-bar {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 8px;
+      margin-top: 10px;
+    }
+    .micro-btn {
+      background: rgba(168, 85, 247, 0.16);
+      border: 1px solid rgba(168, 85, 247, 0.45);
+      color: #f3e8ff;
+      padding: 9px 11px;
+      border-radius: 10px;
+      font-size: 12px;
+      font-weight: 800;
+      cursor: pointer;
+      text-align: left;
+      transition: all 0.15s;
+    }
+    .micro-btn:hover { background: var(--purple); color: #fff; }
+
   </style>
 </head>
 <body>
@@ -511,8 +706,7 @@
     <div class="top-actions">
       <button class="action-btn" id="edit-mode-btn" onclick="toggleEditMode()">✏️ Редактировать данные</button>
       <button class="action-btn" onclick="addNewTaskPrompt()">➕ Задача / Созвон</button>
-      <button class="action-btn" onclick="addNewProjectPrompt()">➕ Новый проект</button>
-      <a href="https://docs.google.com/spreadsheets/d/1p-zhnxiElfuFToXzqH5peeD9xCWDo8JitdKic0ldmug/edit" target="_blank" class="action-btn" style="color:#60a5fa; border-color:rgba(59,130,246,0.4);">📊 Таблица ↗</a>
+      <button class="action-btn" style="border-color:var(--purple-border); color:#e9d5ff;" onclick="switchTab('tab-work', document.querySelectorAll('.tab-btn')[2]); openNewWorkProjectModal();">➕ Взять проект в работу</button>
       <button class="action-btn" onclick="changePinPrompt()" title="Сменить ПИН-код">🔑 ПИН</button>
     </div>
   </div>
@@ -548,14 +742,15 @@
 
   <!-- ==================== ВКЛАДКИ ==================== -->
   <div class="tabs">
-    <button class="tab-btn active" onclick="switchTab('tab-sheet', this)">📋 1. СВЕРКА ТАБЛИЧКИ (28.10 + 04.11)</button>
-    <button class="tab-btn" onclick="switchTab('tab-today', this)">🔥 2. ПЛАН И СОЗВОНЫ (+Заметки)</button>
-    <button class="tab-btn" onclick="switchTab('tab-projects', this)">🏠 3. ВСЕ 16 ПРОЕКТОВ</button>
-    <button class="tab-btn" onclick="switchTab('tab-scripts', this)">💬 4. СКРИПТЫ ОБЩЕНИЯ С ЗАКАЗЧИКАМИ</button>
+    <button class="tab-btn active" onclick="switchTab('tab-today', this)">📅 1. СЕГОДНЯ, КАЛЕНДАРЬ И СОЗВОНЫ</button>
+    <button class="tab-btn" onclick="switchTab('tab-work', this)">🚀 2. ПРОЕКТЫ В РАБОТЕ (+ПЕРЕДАЧА АГЕНТАМ)</button>
+    <button class="tab-btn" onclick="switchTab('tab-scripts', this)">💬 3. СКРИПТЫ И БАЗА МАТЕРИАЛОВ (МСК)</button>
+    <button class="tab-btn" onclick="switchTab('tab-sheet', this)">💵 4. ВЫПЛАТЫ (28.10 + 04.11)</button>
+    <button class="tab-btn" onclick="switchTab('tab-projects', this)">📊 5. ФИНАНСЫ: ВСЕ 16 ПРОЕКТОВ</button>
   </div>
 
   <!-- ==================== ВКЛАДКА 1: СВЕРКА ТАБЛИЧКИ (28.10) + ПРОГНОЗ НА 04.11 ==================== -->
-  <div id="tab-sheet" class="tab-section active">
+  <div id="tab-sheet" class="tab-section">
     <div class="today-grid">
       <div>
         <div class="block-box green-priority">
@@ -775,7 +970,42 @@
   </div>
 
   <!-- ==================== ВКЛАДКА 2: ПЛАН НА СЕГОДНЯ ==================== -->
-  <div id="tab-today" class="tab-section">
+  <div id="tab-today" class="tab-section active">
+
+    <!-- КАЛЕНДАРЬ ОКТЯБРЬ - НОЯБРЬ - ДЕКАБРЬ 2026 -->
+    <div class="block-box blue-priority" style="margin-bottom:18px;">
+      <div class="block-header">
+        <div>
+          <div class="block-title" style="color:#60a5fa;">📅 КАЛЕНДАРЬ ПЛАНОВ, СОЗВОНОВ И ВЫПЛАТ (ОКТЯБРЬ – НОЯБРЬ – ДЕКАБРЬ 2026)</div>
+          <div class="block-subtitle">Кликни на любую дату, чтобы посмотреть или записать созвон, дедлайн или план на день:</div>
+        </div>
+        <div class="cal-controls">
+          <button class="cal-month-btn active" onclick="renderCalendar(9, this)">Октябрь 2026</button>
+          <button class="cal-month-btn" onclick="renderCalendar(10, this)">Ноябрь 2026</button>
+          <button class="cal-month-btn" onclick="renderCalendar(11, this)">Декабрь 2026</button>
+        </div>
+      </div>
+
+      <div class="today-grid" style="grid-template-columns: 1.5fr 1fr; align-items: start;">
+        <div>
+          <div class="cal-grid" id="cal-weekdays">
+            <div class="cal-weekday">Пн</div><div class="cal-weekday">Вт</div><div class="cal-weekday">Ср 💰</div>
+            <div class="cal-weekday">Чт</div><div class="cal-weekday">Пт</div><div class="cal-weekday">Сб</div><div class="cal-weekday">Вс</div>
+          </div>
+          <div class="cal-grid" id="cal-days-grid"></div>
+        </div>
+
+        <div class="block-box" style="margin-bottom:0; background:rgba(0,0,0,0.28);">
+          <div class="block-header" style="margin-bottom:8px; padding-bottom:6px;">
+            <div class="block-title" id="selected-date-title" style="color:#fbbf24; font-size:14px;">📌 27 Октября 2026 (Сегодня)</div>
+            <button class="copy-btn" onclick="addCalEventPrompt()">➕ Записать на этот день</button>
+          </div>
+          <div id="selected-date-events" class="task-list" style="margin-bottom:10px;"></div>
+          <textarea id="selected-date-note" class="script-answer-input" style="min-height:70px;" placeholder="Быстрая запись на выбранный день (сохраняется автоматически)..." oninput="saveSelectedDayNote()"></textarea>
+        </div>
+      </div>
+    </div>
+
     <div class="today-grid">
       <div>
         <div class="block-box red-priority">
@@ -931,7 +1161,136 @@
     </div>
   </div>
 
-  <!-- ==================== ВКЛАДКА 3: ПОЛНАЯ ТАБЛИЦА ВСЕХ 16 ПРОЕКТОВ ==================== -->
+
+  <!-- ==================== ВКЛАДКА 3: ПРОЕКТЫ В РАБОТЕ И ПЕРЕДАЧА АГЕНТАМ ==================== -->
+  <div id="tab-work" class="tab-section">
+    <div class="block-box purple-priority">
+      <div class="block-header">
+        <div>
+          <div class="block-title" style="color:#c084fc;">🚀 ПРОЕКТЫ В РАБОТЕ — ЕДИНАЯ БАЗА (БРИФ + АНКЕТА + ПЕРЕДАЧА АГЕНТАМ ПО КОМНАТАМ)</div>
+          <div class="block-subtitle">Здесь только рабочая информация без бухгалтерской каши. Закрытые проекты убраны вниз. Выбери проект или добавь новый:</div>
+        </div>
+        <div style="display:flex; gap:8px; flex-wrap:wrap;">
+          <button class="action-btn" style="background:var(--purple); border-color:var(--purple); color:#fff;" onclick="openNewWorkProjectModal()">➕ Взять проект в работу</button>
+          <button class="action-btn" onclick="exportCurrentBriefCSV()">📥 Выгрузить Бриф (Excel .CSV)</button>
+        </div>
+      </div>
+
+      <!-- СЕТКА АКТИВНЫХ ПРОЕКТОВ В РАБОТЕ -->
+      <div class="proj-cards-grid" id="active-work-projects-grid"></div>
+
+      <!-- ПАСПОРТ ВЫБРАННОГО ПРОЕКТА И ПЕРЕДАЧА АГЕНТАМ -->
+      <div class="block-box" id="project-passport-box" style="background:rgba(0,0,0,0.22); border-color:var(--purple-border); margin-bottom:14px;">
+        <div class="block-header">
+          <div>
+            <div class="block-title" id="passport-proj-title" style="font-size:16.5px; color:#f8fafc;">📂 Паспорт проекта: 0545 (Мария • Визы 60 м²)</div>
+            <div class="block-subtitle" id="passport-proj-sub">Надиктовывай голосом заметки со звонка или заполняй по комнатам — и копируй готовые микро-задачи для агентов в 1 клик!</div>
+          </div>
+          <div style="display:flex; gap:6px; flex-wrap:wrap;">
+            <button class="copy-btn" onclick="changeWorkProjectFormat()">🔄 Формат / Статус</button>
+            <button class="copy-btn" onclick="changeWorkProjectPrice()">💰 Стоимость / ❓</button>
+            <button class="copy-btn" style="border-color:var(--green-border); color:#6ee7b7;" onclick="markWorkProjectClosed()">✅ Убрать в закрытые</button>
+          </div>
+        </div>
+
+        <!-- БЛОК 1: ГОЛОСОВАЯ ЧИТКА / ЗАМЕТКИ РУЧКОЙ СО ЗВОНКА -->
+        <div class="field-box" style="margin-bottom:12px; border-color:rgba(245,158,11,0.45); background:rgba(245,158,11,0.06);">
+          <div class="field-label" style="color:#fbbf24;">
+            <span>🎙️ 1. БЫСТРАЯ ЧИТКА ГОЛОСОМ ПОСЛЕ СОЗВОНА (ИЛИ ТЕКСТ ЗАПИСИ ЗВОНКА)</span>
+            <button class="copy-btn" onclick="copyVoiceToAgentParse()">🤖 Скопировать для ИИ: «Разнеси мою читку по комнатам и в Бриф»</button>
+          </div>
+          <textarea id="wp-voice-dump" class="field-input" style="min-height:68px; color:#fde68a;" placeholder="Записала ручкой на звонке? Просто надиктуй сюда голосом всё подряд: например, «На полу ламинат ёлочкой, тёплый пол в прихожей до шкафа, потолок натяжной теневой, в спальне кровать 180...» — и нажми кнопку справа, чтобы мы за секунду разложили всё по полочкам!" oninput="saveCurrentWorkProject()"></textarea>
+        </div>
+
+        <!-- БЛОК 2: ОБЩАЯ БАЗА ПО ВСЕЙ КВАРТИРЕ (ЧТОБЫ НЕ ПОВТОРЯТЬ В КАЖДОЙ КОМНАТЕ) -->
+        <div style="font-size:13px; font-weight:800; color:#60a5fa; margin-bottom:8px;">🏠 2. ОБЩАЯ ТЕХНИЧЕСКАЯ И ВИЗУАЛЬНАЯ БАЗА ПО ВСЕЙ КВАРТИРЕ:</div>
+        <div class="passport-grid">
+          <div class="field-box">
+            <div class="field-label">🎨 Стиль, палитра и Стоп-цвета</div>
+            <textarea id="wp-base-style" class="field-input" placeholder="Стиль, основные цвета, металл (латунь/хром/чёрный), что категорически нельзя..." oninput="saveCurrentWorkProject()"></textarea>
+          </div>
+          <div class="field-box">
+            <div class="field-label">🪵 Напольное покрытие + Тёплый пол</div>
+            <textarea id="wp-base-floor" class="field-input" placeholder="Кварцвинил / ламинат / инженерка, раскладка (ёлка/прямая), где керамогранит и где границы тёплого пола..." oninput="saveCurrentWorkProject()"></textarea>
+          </div>
+          <div class="field-box">
+            <div class="field-label">🧱 Стены, Плинтус и Двери</div>
+            <textarea id="wp-base-walls" class="field-input" placeholder="Покраска / обои под покраску / молдинги; плинтус (дюрополимер/теневой/скрытый); двери (скрытые/наличники, высота)..." oninput="saveCurrentWorkProject()"></textarea>
+          </div>
+          <div class="field-box">
+            <div class="field-label">💡 Потолок, Свет (3000K/4000K), Окна и Инженерия</div>
+            <textarea id="wp-base-ceiling" class="field-input" placeholder="Потолок (ГКЛ/натяжной, высота 3000 мм, карниз/теневой, ниши штор), свет, конвекторы/радиаторы, откосы/подоконники..." oninput="saveCurrentWorkProject()"></textarea>
+          </div>
+          <div class="field-box">
+            <div class="field-label">👨‍👩‍👧‍👦 Состав семьи, ЛПР, Рост, Животные, Бюджет</div>
+            <textarea id="wp-base-family" class="field-input" placeholder="Кто живёт, кто ЛПР, правша/левша, рост, робот-пылесос, бойлер, кондиционеры, бюджет..." oninput="saveCurrentWorkProject()"></textarea>
+          </div>
+          <div class="field-box">
+            <div class="field-label">📁 Папка проекта на диске (План + Референсы)</div>
+            <textarea id="wp-base-folder" class="field-input" placeholder="Например: D:\ФАНАТИКС\0545 (план + папка Референсы)" oninput="saveCurrentWorkProject()"></textarea>
+          </div>
+        </div>
+
+        <!-- БЛОК 3: ПОКОМНАТНЫЙ РАЗБОР + ПЕРЕДАЧА МИКРО-ЗАДАЧ АГЕНТАМ -->
+        <div style="font-size:13px; font-weight:800; color:#34d399; margin: 12px 0 6px;">🚪 3. ПОМЕЩЕНИЯ ПРОЕКТА (ВЫБЕРИ КОМНАТУ -> ЗАПОЛНИ -> СКОПИРУЙ МИКРО-ЗАДАЧУ АГЕНТУ):</div>
+        <div class="room-tabs" id="wp-room-tabs">
+          <button class="room-btn active" onclick="selectWorkRoom('hall', this)">1. Прихожая / Коридор</button>
+          <button class="room-btn" onclick="selectWorkRoom('kitchen', this)">2. Кухня-гостиная</button>
+          <button class="room-btn" onclick="selectWorkRoom('bedroom', this)">3. Мастер-спальня</button>
+          <button class="room-btn" onclick="selectWorkRoom('kids', this)">4. Детская / Кабинет</button>
+          <button class="room-btn" onclick="selectWorkRoom('bath', this)">5. Ванная комната</button>
+          <button class="room-btn" onclick="selectWorkRoom('wc', this)">6. Гостевой СУ / Постирочная</button>
+        </div>
+
+        <div class="passport-grid">
+          <div class="field-box">
+            <div class="field-label">🗄️ Корпусная мебель (Шкафы, Кухня, Тумбы — для DIY)</div>
+            <textarea id="rm-joinery" class="field-input" style="min-height:64px;" placeholder="Какие шкафы/кухня, до потолка ли, фасады (гладкие МДФ / фрезеровка / филёнка), какие ручки, открытые полки, пуф, ниша под робот-пылесос и щиток..." oninput="saveCurrentRoomData()"></textarea>
+          </div>
+          <div class="field-box">
+            <div class="field-label">🛋️ Готовая мебель, Сантехника и Техника (3D Sky Pro)</div>
+            <textarea id="rm-models" class="field-input" style="min-height:64px;" placeholder="Диван, кровать (160/180), стол, стулья, ванна/душ, унитаз, раковина, стиралка+сушка, холодильник, духовка, ПММ, ТВ..." oninput="saveCurrentRoomData()"></textarea>
+          </div>
+          <div class="field-box">
+            <div class="field-label">🧱 Особенности отделки этой комнаты (Пол, Стены, Акценты)</div>
+            <textarea id="rm-finish" class="field-input" style="min-height:54px;" placeholder="Где плитка/ковёр, где тёплый пол (например: до шкафа), какая акцентная стена (панели/молдинги/керамогранит/обои), зеркало..." oninput="saveCurrentRoomData()"></textarea>
+          </div>
+          <div class="field-box">
+            <div class="field-label">💡 Свет, Электрика и Номера фото-референсов комнаты</div>
+            <textarea id="rm-refs" class="field-input" style="min-height:54px;" placeholder="Люстра/треки/точки, бра, подсветка ниш и штор, мастер-выключатель. Какие файлы референсов смотреть агенту (например: фото 12, 19, 36)..." oninput="saveCurrentRoomData()"></textarea>
+          </div>
+        </div>
+
+        <!-- ПАНЕЛЬ ГЕНЕРАЦИИ МИКРО-ЗАДАЧ ДЛЯ АГЕНТА (МАЛЕНЬКИМИ ПАЧКАМИ БЕЗ ОШИБОК!) -->
+        <div style="background:rgba(168,85,247,0.1); border:1px solid var(--purple-border); border-radius:12px; padding:12px 14px; margin-top:8px;">
+          <div style="font-size:12.5px; font-weight:900; color:#e9d5ff; margin-bottom:4px;">
+            ⚡ СКОПИРОВАТЬ ЧЁТКУЮ МИКРО-ЗАДАЧУ АГЕНТУ ПО ЭТОЙ КОМНАТЕ (Со всеми тех. правилами в 1 клик):
+          </div>
+          <div style="font-size:11.5px; color:var(--muted); margin-bottom:8px;">
+            Агент не запутается и не зависнет: каждая кнопка формирует узкую задачу на 1 конкретный шаг с путями к файлам, высотой потолка 3000–3050 мм, отступами 2–3 мм и проверкой скриншотом.
+          </div>
+          <div class="agent-micro-bar">
+            <button class="micro-btn" onclick="copyAgentMicroPrompt('step1_shell')">🧱 Шаг 1 (Homestyler): Полы, тёплый пол, стены, потолок и плинтус комнаты</button>
+            <button class="micro-btn" onclick="copyAgentMicroPrompt('step2_joinery')">🗄️ Шаг 2 (Homestyler DIY): Смоделировать шкаф / кухню / тумбу (HSJoinery)</button>
+            <button class="micro-btn" onclick="copyAgentMicroPrompt('step3_skypro')">🛋️ Шаг 3 (3D Sky Pro): Найти и расставить мебель, сантехнику и свет</button>
+            <button class="micro-btn" onclick="copyAgentMicroPrompt('step4_texture')">🎨 Шаг 4 (Image-Gen): Сгенерировать бесшовную текстуру 4K по рефу</button>
+            <button class="micro-btn" onclick="copyAgentMicroPrompt('step5_archicad')">📐 Шаг 5 (ArchiCAD): Расставить размеры в рамке / привязки по комнате</button>
+            <button class="micro-btn" style="background:rgba(16,185,129,0.2); border-color:var(--green-border); color:#a7f3d0;" onclick="copyAgentMicroPrompt('full_room')">📋 Полная сводка по комнате (Всё ТЗ сразу)</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- СПИСОК ЗАКРЫТЫХ / ОСТАНОВЛЕННЫХ ПРОЕКТОВ (УБРАНЫ ВНИЗ) -->
+      <details style="margin-top:16px; background:rgba(255,255,255,0.02); border:1px solid var(--border); border-radius:12px; padding:10px 14px;">
+        <summary style="cursor:pointer; font-weight:800; font-size:13px; color:var(--muted);">
+          📦 Архив закрытых и остановленных проектов (Убраны с глаз, кликни чтобы развернуть)
+        </summary>
+        <div class="proj-cards-grid" id="closed-work-projects-grid" style="margin-top:12px; margin-bottom:0;"></div>
+      </details>
+    </div>
+  </div>
+
+  <!-- ==================== ВКЛАДКА 5: ПОЛНАЯ ТАБЛИЦА ВСЕХ 16 ПРОЕКТОВ ==================== -->
   <div id="tab-projects" class="tab-section">
     <div class="block-box">
       <div class="block-header">
@@ -1145,6 +1504,7 @@
         <button class="script-subbtn" onclick="switchScriptSub('sub-viz', this)">🎨 2. Созвон: ВИЗУАЛИЗАЦИЯ (Фильтр анкеты)</button>
         <button class="script-subbtn" onclick="switchScriptSub('sub-chat', this)">💬 3. Шаблоны сообщений в чат (MAX / TG)</button>
         <button class="script-subbtn" onclick="switchScriptSub('sub-0545', this)">🏠 4. Разбор 0545 (Мария — 36 рефов)</button>
+        <button class="script-subbtn" style="border-color:var(--yellow-border); color:#fde68a;" onclick="switchScriptSub('sub-materials', this)">🧱 5. База материалов, работ и цен (Москва)</button>
       </div>
 
       <!-- ПОДВКЛАДКА 1: БРИФ С НУЛЯ -->
@@ -1355,6 +1715,98 @@
           <textarea class="script-answer-input" data-note-id="m0545_3" placeholder="Ответ Марии по кухне, спальне и санузлам..." oninput="saveScriptNotes()"></textarea>
         </div>
       </div>
+
+      <!-- ПОДВКЛАДКА 5: БАЗА МАТЕРИАЛОВ, РАБОТ И СРАВНЕНИЙ (МОСКВА 2026) -->
+      <div id="sub-materials" class="script-panel">
+        <div class="script-card" style="border-color:var(--yellow-border); background:rgba(245,158,11,0.06);">
+          <div class="script-step-title">
+            <span style="color:#fbbf24;">🏗️ 1. ОРИЕНТИРЫ СТОИМОСТИ РЕМОНТА И СТРОИТЕЛЬНЫХ РАБОТ ПО МОСКВЕ (2026)</span>
+            <button class="copy-btn" onclick="copyPrevPhrase(this)">📋 Скопировать ориентир клиенту</button>
+          </div>
+          <div class="script-meta">
+            <b>Отдельно работы мастеров (черновые + чистовые руки):</b><br>
+            • Базовый комфорт (без сложной инженерии и теневых профилей): <b>35 000 – 45 000 ₽/м²</b><br>
+            • Качественный дизайн-ремонт (скрытые двери, запилы 45°, коллекторная сантехника, покраска): <b>50 000 – 70 000 ₽/м²</b><br>
+            • Премиум / сложная классика и умный дом: <b>от 80 000 ₽/м²</b><br>
+            <b>Черновые материалы + инженерия (смеси, электрика, трассы, сантехника в стене):</b> ещё <b>25 000 – 40 000 ₽/м²</b>.<br>
+            <b>Итого весь ремонт «под ключ» с чистовыми и мебелью в Москве:</b> Базовый <b>110–140 тыс. ₽/м²</b> • Комфорт+ <b>150–220 тыс. ₽/м²</b> • Бизнес <b>от 250 тыс. ₽/м²</b>.
+          </div>
+          <div class="script-phrase" data-editable="true">«Если ориентироваться по реальным ценам Москвы на 2026 год: сами строительные работы по дизайн-проекту обычно выходят в вилке 45–65 тыс. руб. за квадратный метр, плюс около 30–35 тыс. руб./м² уходит на черновые материалы и внутреннюю инженерию. Остальной бюджет - это уже чистовые материалы, сантехника, свет и корпусная мебель, где мы можем гибко регулировать стоимость аналогами»</div>
+        </div>
+
+        <div class="script-card">
+          <div class="script-step-title">
+            <span>🪵 2. НАПОЛЬНЫЕ ПОКРЫТИЯ: Кварцвинил (LVT / SPC) vs Ламинат vs Инженерная доска vs Паркет</span>
+            <button class="copy-btn" onclick="copyPrevPhrase(this)">📋 Скопировать объяснение</button>
+          </div>
+          <div class="script-meta">
+            • <b>Ламинат:</b> Материал 1 800–3 500 ₽/м² + укладка 700–1 000 ₽/м². <i>Плюсы:</i> тёплый тактильно, не боится падения предметов. <i>Минусы:</i> боится стоячей воды, гулкий (цокает), обязательно нужны порожки в дверях, с тёплым полом греть выше 27°C нельзя.<br>
+            • <b>Кварцвинил замковый (SPC — каменно-полимерный):</b> Материал 2 500–4 500 ₽/м² + укладка 900–1 300 ₽/м². <i>Нюанс:</i> 100% водостойкий, но жёсткий — требует идеально ровной стяжки (перепад не более 2 мм на 2 м), иначе замки со временем хрустят; при сильном локальном нагреве тёплым полом может выгибаться.<br>
+            • <b>Кварцвинил клеевой (LVT):</b> Материал 2 500–4 500 ₽/м² + подготовка наливного пола и приклейка 1 800–2 500 ₽/м². <i>Плюсы:</i> лучший вариант для укладки единым контуром без порожков и под ёлочку! Не скрипит, идеально дружит с тёплым полом, легко заменить 1 плашку.<br>
+            • <b>Инженерная доска (клеевая) / Паркет:</b> Материал 6 500–14 000+ ₽/м² + фанера/клей/укладка 3 000–5 000 ₽/м². <i>Плюсы:</i> натуральное живое дерево, статус, стык с плиткой в один уровень через пробку/герметик без порожков. <i>Минусы:</i> боится луж и когтей крупных собак, требует влажности воздуха 40–60% зимой (увлажнитель).
+          </div>
+          <div class="script-phrase" data-editable="true">«Если хочется уложить пол единым контуром по всей квартире без дверных порожков и тем более раскладкой "французская или английская ёлка", лучше всего работает либо клеевой кварцвинил (он на 100% не боится воды и отлично дружит с тёплым полом), либо клеевая инженерная доска, если хочется тактильно натурального дерева. Замковый ламинат и замковый SPC при больших площадях требуют технологических разрывов у дверей»</div>
+        </div>
+
+        <div class="script-card">
+          <div class="script-step-title">
+            <span>🧱 3. СТЕНЫ И ТРЕЩИНЫ: Покраска vs Обои под покраску (флизелин) vs Готовые обои</span>
+            <button class="copy-btn" onclick="copyPrevPhrase(this)">📋 Скопировать объяснение</button>
+          </div>
+          <div class="script-meta">
+            • <b>Почему готовые обои за рулон часто дороже, но в круг выходят выгоднее или сопоставимо:</b> Под готовые обои нужна подготовка стен базового уровня <b>К2–К3</b> (шпаклёвка без стеклохолста и без финишной супер-шлифовки под лампу Лосева — работа ~1 200–1 800 ₽/м² + поклейка 800–1 200 ₽/м²). Но сами хорошие дизайнерские обои стоят 5 000–15 000 ₽ за рулон (на стену остаются стыки каждые 53/106 см, углы легко зацепить).<br>
+            • <b>Обои под покраску (малярный флизелин плотностью 130–150 г/м²):</b> Сам рулон (25 м²) стоит недорого (3 000–5 000 ₽), подготовка стен проще, чем под чистую покраску, а плотный флизелин сдерживает микротрещины усадки новостройки! И стену всегда можно локально подкрасить валиком за 5 минут.<br>
+            • <b>Чистая покраска по стеклохолсту («паутинке»):</b> Самый дорогой вариант по работе (подготовка <b>К4</b>: штукатурка, базовая шпаклёвка, поклейка стеклохолста, 2 слоя финишной пасты Шитрок, шлифовка под проявочный свет, грунт и 2 слоя краски = <b>3 500 – 5 500 ₽/м²</b> только за руки + материалы).<br>
+            • <b>Откуда берутся трещины на стенах:</b> В первые 2–3 года монолитный дом даёт усадку, а перегородки из газоблока/ПГП дышат от перепада влажности. Чтобы трещин не было, под покраску обязательно клеят либо <b>стеклохолст с финишной шпаклёвкой</b>, либо <b>плотный малярный флизелин под покраску</b>, а на примыкании разнородных материалов делают теневой шов или акриловый герметик.
+          </div>
+          <div class="script-phrase" data-editable="true">«Смотрите, в чём тут главный строительный нюанс: готовые обои сами по себе в закупке дороже за рулон, но под них нужна простая подготовка стен, правда остаются видимые швы и их нельзя подкрасить, если задели мебелью. А гладкие обои под покраску (плотный малярный флизелин) работают сразу в двух направлениях: они армируют стену и удерживают усадочные микротрещины дома, дают идеально матовую бесшовную стену и позволяют в любой момент обновить или подкрасить участок за 10 минут»</div>
+        </div>
+
+        <div class="script-card">
+          <div class="script-step-title">
+            <span>☁️ 4. ПОТОЛКИ: Натяжной (обычный / теневой EuroKraab) vs Гипсокартон (ГКЛ)</span>
+            <button class="copy-btn" onclick="copyPrevPhrase(this)">📋 Скопировать объяснение</button>
+          </div>
+          <div class="script-meta">
+            • <b>Натяжной со стандартной вставкой (заглушкой):</b> 1 800–2 500 ₽/м² под ключ. Быстро, бюджетно, спасает от залива сверху, но по периметру видна резиновая ресничка-заглушка (кроме случая, когда её закрывают декоративным потолочным карнизом).<br>
+            • <b>Натяжной на теневом профиле (EuroKraab):</b> 3 800–5 500 ₽/м² под ключ. Чёрный жёсткий профиль даёт ровный теневой зазор 6 мм по периметру — визуально не отличить от дорогого гипсокартона, но монтируется за 2 дня без пыли и никогда не даст трещин!<br>
+            • <b>Гипсокартон (ГКЛ в 2 слоя по металлокаркасу со стеклохолстом и покраской):</b> 6 500–10 000 ₽/м² (работа + материалы). Делается долго (2–3 недели малярки), съедает 7–10 см высоты, боится протечек сверху, но незаменим при очень сложных гипсовых карнизах и безрамных гипсовых светильниках.
+          </div>
+          <div class="script-phrase" data-editable="true">«По потолку сейчас есть два отличных решения: если мы делаем классику с потолочным карнизом, то под карниз спокойно ставится премиальный матовый натяжной потолок - карниз полностью перекрывает стык, это в 2.5 раза быстрее и дешевле гипсокартона и защищает от протечек. А если стиль современный без карнизов - ставим натяжной на теневом профиле EuroKraab: визуально он выглядит один в один как дорогой крашеный гипсокартон, но никогда не треснет при усадке дома»</div>
+        </div>
+
+        <div class="script-card">
+          <div class="script-step-title">
+            <span>📐 5. ПЛИНТУСЫ И ДВЕРИ: Теневой / Скрытый плинтус и Скрытые двери vs Наличники</span>
+            <button class="copy-btn" onclick="copyPrevPhrase(this)">📋 Скопировать объяснение</button>
+          </div>
+          <div class="script-meta">
+            • <b>Накладной плинтус из дюрополимера / МДФ:</b> Плинтус 500–1 200 ₽/пог.м + монтаж с покраской 600–900 ₽/пог.м. Ставится в самом конце ремонта, перекрывает зазор пола, к нему легко примыкают обычные двери с наличниками.<br>
+            • <b>Плинтус скрытого монтажа / Теневой плинтус:</b> Алюминиевый профиль + вставка 1 800–3 500 ₽/пог.м + сложный монтаж в штрабу и вытягивание штукатурки заподлицо 2 000–3 500 ₽/пог.м. <i>Важно:</i> требует установки скрытого профиля ещё на черновом этапе и идеального выравнивания стен по маякам до самого пола. Идеальная пара к дверям скрытого монтажа!<br>
+            • <b>Микроплинтус (щелевой L-профиль):</b> 900–1 500 ₽/пог.м + установка за 5 минут в зазор между полом и стеной без штробления стен! Но требует ровного низа стены и аккуратной подрезки пола.<br>
+            • <b>Двери с наличниками vs Двери скрытого монтажа (Invisible):</b> Обычные двери (полотно + короб + наличники = от 25–45 тыс. ₽ + простая установка в конце ремонта 6–8 тыс. ₽). Скрытые двери (алюминиевый короб ставится на черновом этапе до шпаклёвки, маляры выводят откосы с сеткой и уголками = сама дверь от 35–60 тыс. ₽ + установка и малярка откосов ещё 12–18 тыс. ₽ на каждый проём).
+          </div>
+          <div class="script-phrase" data-editable="true">«Двери и плинтус всегда работают в одной технической связке: если мы выбираем двери с классическими наличниками, то к ним идеально подходит накладной плинтус из ударопрочного дюрополимера, выкрашенный в цвет стен или дверей - он ставится в самом конце ремонта и не раздувает смету. А если хотим двери скрытого монтажа вровень со стеной, то под них нужно закладывать либо теневой/скрытый плинтус (он монтируется ещё на этапе штукатурки), либо лаконичный микроплинтус»</div>
+        </div>
+
+        <div class="script-card">
+          <div class="script-step-title">
+            <span>🪟 6. ОКНА, ОТКОСЫ, ПОДОКОННИКИ И СТЕam-ПАНЕЛИ (МДФ / Бамбуковые / Гипс)</span>
+            <button class="copy-btn" onclick="copyPrevPhrase(this)">📋 Скопировать объяснение</button>
+          </div>
+          <div class="script-meta">
+            • <b>Откосы окон:</b> Самый эстетичный и доступный вариант — тёплые <b>оштукатуренные откосы (или ГКЛВ с утеплением пенополистиролом) под покраску моющейся краской</b> с обязательным профилем примыкания к раме окна (чтобы не было трещины по контуру рамы). Сэндвич-панели пластиковые дешевят интерьер, а откосы в МДФ/шпоне стоят от 25–40 тыс. ₽ за окно.<br>
+            • <b>Подоконники:</b> Пластик (ПВХ) — бюджетно, но желтеет и дешевит; <b>МДФ/ЛДСП в ламинации под дерево или камень</b> — тёплый и уютный средний сегмент; <b>Керамогранит с запилом 45°</b> или <b>Акриловый/Кварцевый камень</b> — вечный, не боится воды от цветов и солнца (от 15–35 тыс. ₽ за окно), либо вариант <b>«без ушек и без вылета»</b> вровень со стеной.<br>
+            • <b>Декоративные панели на стены:</b><br>
+              1) <b>Дюрополимерные 3D-панели / рейки (Orac Decor, HiWood):</b> 3 500–6 500 ₽/м², лёгкий монтаж на клей, красятся в любой цвет стен, не боятся ударов.<br>
+              2) <b>Бамбуковые / древесно-угольные широкоформатные панели (2.8×1.2 м):</b> быстро закрывают большую стену без швов (лист 8 000–16 000 ₽), гнутся, влагостойкие, есть под шпон, камень и металл.<br>
+              3) <b>Столярные МДФ-панели в шпоне или эмали на заказ:</b> премиум-сегмент (от 14 000–25 000 ₽/м²), делаются мебельщиками вместе со шкафами.<br>
+              4) <b>Гипсовые 3D-панели:</b> сами панели недорогие (2 500–4 000 ₽/м²), но очень дорогая малярная доводка швов (затирка каждого стыка вручную стоит дороже самих панелей) и они хрупкие на скол.
+          </div>
+          <div class="script-phrase" data-editable="true">«По окнам самое чистое и практичное решение - сделать утеплённые откосы под покраску в цвет стен через специальный профиль примыкания к раме, чтобы никогда не появлялась волосяная трещина. А если вы хотите вообще без выступающего подоконника или с аккуратным каменным/керамогранитным подоконником без боковых "ушек" - это выглядит максимально современно и не мешает шторам»</div>
+        </div>
+      </div>
+
 
     </div>
   </div>
@@ -1665,6 +2117,681 @@
         });
       } catch (e) {}
     }
+
+
+    // ==================== 7. КАЛЕНДАРЬ (ОКТЯБРЬ, НОЯБРЬ, ДЕКАБРЬ 2026) ====================
+    const CAL_STORAGE_KEY = 'lav_calendar_events_2026_v1';
+    const CAL_NOTES_KEY = 'lav_calendar_daynotes_2026_v1';
+    let currentCalMonth = 9; // 9 = Октябрь, 10 = Ноябрь, 11 = Декабрь
+    let selectedCalDateKey = '2026-10-27';
+
+    const DEFAULT_CAL_EVENTS = {
+      '2026-10-14': [{ text: '💰 Выплата: 7 000 ₽', type: 'ev-pay' }],
+      '2026-10-21': [{ text: '💰 Выплата: 17 000 ₽', type: 'ev-pay' }],
+      '2026-10-27': [
+        { text: '📞 15:00 Созвон 0653 (Бриф)', type: 'ev-call' },
+        { text: '🔥 Визы: 0645, 0606, 0599', type: 'ev-hot' }
+      ],
+      '2026-10-28': [
+        { text: '💰 Выплата: 32 356,80 ₽ (8 пр.)', type: 'ev-pay' },
+        { text: '📞 После 16:00 Созвон 0654', type: 'ev-call' },
+        { text: '🔥 Сдать визы 0645', type: 'ev-hot' }
+      ],
+      '2026-10-30': [
+        { text: '📐 0645 Планы электрики/сантех', type: 'ev-hot' }
+      ],
+      '2026-11-04': [
+        { text: '💰 Выплата: прогноз 42–58к ₽', type: 'ev-pay' }
+      ],
+      '2026-11-11': [{ text: '💰 Среда выплат', type: 'ev-pay' }],
+      '2026-11-18': [{ text: '💰 Среда выплат', type: 'ev-pay' }],
+      '2026-11-25': [{ text: '💰 Среда выплат', type: 'ev-pay' }],
+      '2026-12-02': [{ text: '💰 Среда выплат', type: 'ev-pay' }],
+      '2026-12-09': [{ text: '💰 Среда выплат', type: 'ev-pay' }],
+      '2026-12-16': [{ text: '💰 Среда выплат', type: 'ev-pay' }],
+      '2026-12-23': [{ text: '💰 Среда выплат', type: 'ev-pay' }],
+      '2026-12-30': [{ text: '💰 Финальная выплата года', type: 'ev-pay' }]
+    };
+
+    function getCalEvents() {
+      try {
+        const raw = localStorage.getItem(CAL_STORAGE_KEY);
+        if (raw) return JSON.parse(raw);
+      } catch(e) {}
+      return JSON.parse(JSON.stringify(DEFAULT_CAL_EVENTS));
+    }
+
+    function saveCalEvents(data) {
+      localStorage.setItem(CAL_STORAGE_KEY, JSON.stringify(data));
+    }
+
+    function renderCalendar(monthIndex, btn) {
+      currentCalMonth = monthIndex;
+      if (btn) {
+        document.querySelectorAll('.cal-month-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+      }
+      const grid = document.getElementById('cal-days-grid');
+      if (!grid) return;
+      grid.innerHTML = '';
+
+      const year = 2026;
+      const firstDay = new Date(year, monthIndex, 1);
+      const daysInMonth = new Date(year, monthIndex + 1, 0).getDate();
+      let startOffset = firstDay.getDay() - 1;
+      if (startOffset < 0) startOffset = 6; // Пн = 0 ... Вс = 6
+
+      for (let i = 0; i < startOffset; i++) {
+        const empty = document.createElement('div');
+        empty.className = 'cal-day empty';
+        grid.appendChild(empty);
+      }
+
+      const eventsMap = getCalEvents();
+      const notesMap = JSON.parse(localStorage.getItem(CAL_NOTES_KEY) || '{}');
+      const mStr = String(monthIndex + 1).padStart(2, '0');
+
+      for (let d = 1; d <= daysInMonth; d++) {
+        const dStr = String(d).padStart(2, '0');
+        const dateKey = `${year}-${mStr}-${dStr}`;
+        const cell = document.createElement('div');
+        const dow = new Date(year, monthIndex, d).getDay(); // 3 = Среда
+        let cls = 'cal-day';
+        if (dateKey === '2026-10-27') cls += ' today';
+        else if (dow === 3) cls += ' payday';
+        if (dateKey === selectedCalDateKey) cls += ' selected-day';
+        cell.className = cls;
+        cell.onclick = () => selectCalDate(dateKey);
+
+        const dayEvents = eventsMap[dateKey] || [];
+        const hasNote = notesMap[dateKey] && notesMap[dateKey].trim().length > 0;
+
+        let pillsHtml = '';
+        dayEvents.slice(0, 3).forEach(ev => {
+          pillsHtml += `<div class="cal-ev-pill ${ev.type || ''}">${ev.text}</div>`;
+        });
+        if (dayEvents.length > 3) {
+          pillsHtml += `<div class="cal-ev-pill">+ ещё ${dayEvents.length - 3}</div>`;
+        }
+
+        cell.innerHTML = `
+          <div class="cal-day-num">
+            <span>${d}</span>
+            <span style="font-size:10px;">${dateKey === '2026-10-27' ? '🔥 СЕГОДНЯ' : (hasNote ? '📝' : (dow === 3 ? '💵' : ''))}</span>
+          </div>
+          <div class="cal-events-mini">${pillsHtml}</div>
+        `;
+        grid.appendChild(cell);
+      }
+      renderSelectedCalDatePanel();
+    }
+
+    function selectCalDate(dateKey) {
+      selectedCalDateKey = dateKey;
+      renderCalendar(currentCalMonth, null);
+    }
+
+    function renderSelectedCalDatePanel() {
+      const titleEl = document.getElementById('selected-date-title');
+      const listEl = document.getElementById('selected-date-events');
+      const noteEl = document.getElementById('selected-date-note');
+      if (!titleEl || !listEl || !noteEl) return;
+
+      const parts = selectedCalDateKey.split('-');
+      const monthsRu = ['Января','Февраля','Марта','Апреля','Мая','Июня','Июля','Августа','Сентября','Октября','Ноября','Декабря'];
+      const mName = monthsRu[parseInt(parts[1], 10) - 1];
+      titleEl.textContent = `📌 ${parseInt(parts[2], 10)} ${mName} ${parts[0]}` + (selectedCalDateKey === '2026-10-27' ? ' (Сегодня)' : '');
+
+      const eventsMap = getCalEvents();
+      const dayEvents = eventsMap[selectedCalDateKey] || [];
+      if (dayEvents.length === 0) {
+        listEl.innerHTML = `<div style="font-size:12px; color:var(--muted); padding:6px 0;">На этот день пока нет записей. Нажми «➕ Записать на этот день» или напиши заметку ниже.</div>`;
+      } else {
+        listEl.innerHTML = dayEvents.map((ev, idx) => `
+          <div class="task-item" style="padding:8px 10px; justify-content:space-between; align-items:center;">
+            <div style="font-size:13px; font-weight:700;">${ev.text}</div>
+            <button class="copy-btn" style="padding:2px 7px; font-size:11px; background:rgba(239,68,68,0.2); color:#fca5a5; border-color:rgba(239,68,68,0.4);" onclick="deleteCalEvent(${idx})">✕</button>
+          </div>
+        `).join('');
+      }
+
+      const notesMap = JSON.parse(localStorage.getItem(CAL_NOTES_KEY) || '{}');
+      noteEl.value = notesMap[selectedCalDateKey] || '';
+    }
+
+    function addCalEventPrompt() {
+      const txt = prompt('Что ставим на ' + selectedCalDateKey + '? (Например: 📞 14:00 Созвон 0619 или 🔥 Сдать визы 0599):');
+      if (!txt || !txt.trim()) return;
+      let type = '';
+      if (txt.toLowerCase().includes('созвон') || txt.includes('📞')) type = 'ev-call';
+      else if (txt.toLowerCase().includes('выплат') || txt.includes('₽') || txt.includes('💰')) type = 'ev-pay';
+      else if (txt.toLowerCase().includes('сдать') || txt.toLowerCase().includes('виз') || txt.includes('🔥')) type = 'ev-hot';
+
+      const eventsMap = getCalEvents();
+      if (!eventsMap[selectedCalDateKey]) eventsMap[selectedCalDateKey] = [];
+      eventsMap[selectedCalDateKey].push({ text: txt.trim(), type });
+      saveCalEvents(eventsMap);
+      renderCalendar(currentCalMonth, null);
+    }
+
+    function deleteCalEvent(idx) {
+      const eventsMap = getCalEvents();
+      if (!eventsMap[selectedCalDateKey]) return;
+      eventsMap[selectedCalDateKey].splice(idx, 1);
+      saveCalEvents(eventsMap);
+      renderCalendar(currentCalMonth, null);
+    }
+
+    function saveSelectedDayNote() {
+      const notesMap = JSON.parse(localStorage.getItem(CAL_NOTES_KEY) || '{}');
+      notesMap[selectedCalDateKey] = document.getElementById('selected-date-note').value;
+      localStorage.setItem(CAL_NOTES_KEY, JSON.stringify(notesMap));
+    }
+
+    // ==================== 8. ПРОЕКТЫ В РАБОТЕ И ГЕНЕРАТОР МИКРО-ЗАДАЧ АГЕНТАМ ====================
+    const WORK_PROJECTS_KEY = 'lav_work_projects_db_v1';
+    let currentWorkProjId = '0545';
+    let currentWorkRoomKey = 'hall';
+
+    const ROOM_NAMES_RU = {
+      hall: 'Помещение 1: Прихожая и Коридор',
+      kitchen: 'Помещение 2: Кухня-гостиная',
+      bedroom: 'Помещение 3: Мастер-спальня',
+      kids: 'Помещение 4: Детская / Кабинет',
+      bath: 'Помещение 5: Ванная комната',
+      wc: 'Помещение 6: Гостевой санузел / Постирочная'
+    };
+
+    const DEFAULT_WORK_PROJECTS = [
+      {
+        id: '0645', name: 'Королёв, Солнечная', channel: '💬 MAX', format: '📋 Полный проект', price: '28 392 ₽', status: '🔥 Горящий №1: Визы к среде -> Электрика к пятнице', closed: false,
+        folder: 'D:\ФАНАТИКС\0645',
+        voiceDump: 'Экстренно делаем сначала 3D-визы, чтобы сразу после утверждения выдать точные планы электрики и сантехники к пятнице.',
+        baseStyle: 'Современный функциональный стиль', baseFloor: '', baseWalls: '', baseCeiling: 'Чистовой потолок 3000 мм', baseFamily: '',
+        rooms: {}
+      },
+      {
+        id: '0606', name: '1 комната (+вся кв.)', channel: '💬 MAX', format: '🎨 Только Визы', price: '4 900 ₽ (+вся кв.)', status: '⚡ Горящий №2: Сдать визы 1 комн. (ждёт с 22.10)', closed: false,
+        folder: 'D:\ФАНАТИКС\0606', voiceDump: '', baseStyle: '', baseFloor: '', baseWalls: '', baseCeiling: '', baseFamily: '', rooms: {}
+      },
+      {
+        id: '0599', name: 'Александра (62 м², ВД Алёна)', channel: '💬 MAX', format: '🎨 Только Визы', price: '8 200 ₽', status: '🔵 Горящий №3: Моделирование (ждут с 21.10)', closed: false,
+        folder: 'D:\ФАНАТИКС\0599',
+        voiceDump: 'Бриф_0599 заполнен: семейная пара + 2 школьников (м 6 лет, д 10 лет). Светлый уютный интерьер, сантехника оружейная сталь (не чёрная!). Пол везде ламинат английская ёлка, в СУ керамогранит с тёплым полом.',
+        baseStyle: 'Светлый уютный современный интерьер. Сантехника — оружейная сталь. Стоп: чёрная сантехника, сильное гендерное разделение в детской.',
+        baseFloor: 'Ламинат «английская ёлка» во всех жилых и прихожей; керамогранит + тёплый пол в санузле.',
+        baseWalls: 'Обои однотонные + акцентные панели. Двери стандартные с наличниками, кухня без двери.',
+        baseCeiling: 'Натяжной потолок во всех помещениях. Электрокарнизы в кухне-гостиной и спальне.',
+        baseFamily: 'ЛПР Александра. Пара + 2 детей (6 и 10 лет), правши. Синтезатор (85×30×80 см — розетка!). Кондиционеры: гостиная над ТВ, спальня над раб. столом, детская.',
+        rooms: {
+          hall: {
+            joinery: 'Шкаф с фасадами в пол (снизу открытая ниша/хранение грязной обуви). Эл.щит над дверью не переносим — обыграть. Внутри предусмотреть зарядку для ручного и робота-пылесоса.',
+            models: 'Пуф/обувница, домофон слева от двери.',
+            finish: 'Пол — ламинат английская ёлка. Длинную стену справа обыграть декором/панелями.',
+            refs: 'Смотреть D:\ФАНАТИКС\0599\Бриф_0599.xlsx'
+          },
+          kitchen: {
+            joinery: 'Кухонный гарнитур угловой до потолка (бюджет кухни до 500 тыс. ₽).',
+            models: 'Встроенный холодильник, ПММ 45 см, духовой шкаф, СВЧ, варочная панель электрическая, фильтр для воды, диван в гостиной (раскладной для гостей).',
+            finish: 'Пол ламинат английская ёлка, стены однотонные обои + панели. Без двери.',
+            refs: 'Электрокарниз, кондиционер над ТВ, вывод настенного света и розетки на открытую террасу.'
+          },
+          bedroom: {
+            joinery: 'Шкаф до потолка, навесные прикроватные тумбы, рабочий стол.',
+            models: 'Кровать 160×200 см.',
+            finish: 'Ламинат английская ёлка, однотонные обои + акцент.',
+            refs: 'Шторы, тюль, электрокарниз, кондиционер над рабочим столом.'
+          },
+          kids: {
+            joinery: '2 рабочих места для двух школьников + школьное хранение, шкаф.',
+            models: 'Кровати для мальчика (6 лет) и девочки (10 лет), синтезатор 85×30×80 см.',
+            finish: 'Зонирование пространства, нейтральная гамма без резкого гендерного деления.',
+            refs: 'Розетка под синтезатор, кондиционер.'
+          },
+          bath: {
+            joinery: 'Тумба под раковину, полки со стороны инсталляции, люк доступа к коммуникациям.',
+            models: 'Ванна 70×175 см (уже есть у клиентов!), инсталляция, сантехника цвет оружейная сталь.',
+            finish: 'Пол керамогранит + тёплый пол. Стены керамогранит + акцентная стена плитка кабанчик.',
+            refs: ''
+          }
+        }
+      },
+      {
+        id: '0596', name: 'Проект от Насти', channel: '💬 MAX', format: '🎨 Только Визы', price: '10 780 ₽', status: '🔵 Горящий №4: Собрать визы (ждут с 23.10)', closed: false,
+        folder: 'D:\ФАНАТИКС\0596', voiceDump: '', baseStyle: '', baseFloor: '', baseWalls: '', baseCeiling: '', baseFamily: '', rooms: {}
+      },
+      {
+        id: '0545', name: 'Мария (60 м², ВД Алёна)', channel: '📱 TG', format: '🎨 Только Визы', price: '10 250 ₽', status: '🔵 Приоритет №5: Анкета + 36 рефов готовы к сборке', closed: false,
+        folder: 'D:\ФАНАТИКС\0545',
+        voiceDump: 'Мария прислала анкету (47 стр.) и 36 эталонных референсов. Тёплая светлая неоклассика: песочный, светло-бежевый, акценты ореха и матового золота. Все помещения в одном стиле.',
+        baseStyle: 'Тёплая неоклассика: светло-бежевый, песочный, коричневый/орех. Металл: матовое золото. Стоп: любые яркие цвета, лофт, холодный бетон/штукатурка.',
+        baseFloor: 'Французская ёлка (тёплый дуб) + керамогранит под светлый камень (стык в один уровень через тонкий профиль матовое золото).',
+        baseWalls: 'Обои (малярный флизелин под покраску) + декоративные молдинги в цвет стен + керамогранит. Плинтус: высокий дюрополимер в цвет стен. Двери: неоклассика с филёнкой и капителью (вариант №3 в анкете).',
+        baseCeiling: 'Белый матовый натяжной + красивый декоративный потолочный карниз (переходит на верх встроенных шкафов) + ниши для штор. Свет: 3000K тёплый, точки круглые + люстры в кухне, спальнях и ванной + бра в коридоре и у кровати + подсветка кухни и мягкая подсветка в спальне. Внутрипольные конвекторы, окна без подоконников (откосы штукатурка).',
+        baseFamily: 'ЛПР Мария. Баланс красоты и практичности. В спальнях 100% блэкаут ровные шторы. Над обеденным столом 1 картина.',
+        rooms: {
+          hall: {
+            joinery: 'Встроенный шкаф в потолок под потолочным карнизом в светло-бежевой эмали с неоклассической филёнкой + открытая боковая секция с полками и тёплой подсветкой + мягкий пуфик снизу (по рефам Марии). Внутри шкафа база робота-пылесоса и щиток.',
+            models: 'Ростовое зеркало напротив шкафа, бра в коридоре.',
+            finish: 'Керамогранит (уточнить: спокойный мрамор или классический ковёр с рамкой), стык с французской ёлкой через латунный профиль.',
+            refs: 'Папка D:\ФАНАТИКС\0545\Референсы + план D:\ФАНАТИКС\0545\545 Итог планировка.pdf'
+          },
+          kitchen: {
+            joinery: 'Кухня в потолок с классической/неоклассической фрезеровкой и витриной с подсветкой, фартук и столешница керамогранит под камень без бортика.',
+            models: 'Обеденный стол + мягкие стулья, 1 картина над столом, люстра над зоной кухни/столовой, диван в гостиной (в анкете отмечены гостиные №2, 4, 6, 7, 8, 22).',
+            finish: 'Пол французская ёлка, стены светло-бежевые с молдингами, ТВ-зона с мраморной/акцентной панелью и подвесной тумбой.',
+            refs: 'Гостиные в анкете №2, 4, 6, 7, 8, 22 + папка D:\ФАНАТИКС\0545\Референсы'
+          },
+          bedroom: {
+            joinery: 'Шкафы в потолок с филёнкой и карнизом сверху; справа у окна тумба, переходящая в подвесной туалетный столик с круглым зеркалом (фото 36).',
+            models: 'Кровать с мягким изголовьем, бра у кровати, люстра в спальне, ровные шторы 100% блэкаут.',
+            finish: 'Спальня №6 в анкете: светлая неоклассика с молдингами, мягкая подсветка (чтобы не подчёркивала пыль).',
+            refs: 'Спальня №6 в анкете + фото 30, 36 в D:\ФАНАТИКС\0545\Референсы'
+          },
+          bath: {
+            joinery: 'Тумба с каменной столешницей (из анкеты стр. 3: «Каменная столешница в ванне»), шкафчик над инсталляцией.',
+            models: 'Ванна, подвесной унитаз, смесители матовое золото, люстра в ванной.',
+            finish: 'Санузлы №5 и №9 в анкете (светлый мрамор + тёплая подсветка) и рефы фото 4, 5.',
+            refs: 'СУ №5, №9 в анкете + фото 4, 5 в D:\ФАНАТИКС\0545\Референсы'
+          }
+        }
+      },
+      {
+        id: '0653', name: 'Созвон сегодня в 15:00', channel: '📱 TG', format: '📋 Полный проект', price: '20 348 ₽', status: '📞 Сегодня 15:00 — проводим Бриф с нуля', closed: false,
+        folder: 'D:\ФАНАТИКС\0653', voiceDump: '', baseStyle: '', baseFloor: '', baseWalls: '', baseCeiling: '', baseFamily: '', rooms: {}
+      },
+      {
+        id: '0654', name: 'Полный 40 м² (Созвон СР)', channel: '📱 TG', format: '📋 Полный проект', price: '16 000 ₽', status: '📅 Созвон завтра (СР 28.10) после 16:00', closed: false,
+        folder: 'D:\ФАНАТИКС\0654', voiceDump: '', baseStyle: '', baseFloor: '', baseWalls: '', baseCeiling: '', baseFamily: '', rooms: {}
+      },
+      {
+        id: '0633', name: 'Планировка + Визы', channel: '📱 TG', format: '📋 Полный проект', price: '26 754 ₽', status: '📐 Делаем новый вариант планировки по ответу клиента', closed: false,
+        folder: 'D:\ФАНАТИКС\0633', voiceDump: '', baseStyle: '', baseFloor: '', baseWalls: '', baseCeiling: '', baseFamily: '', rooms: {}
+      },
+      {
+        id: '0619', name: 'Визы 61.4 м² (Валерия Г.)', channel: '📱 TG', format: '🎨 Только Визы', price: '7 616,70 ₽', status: '✅ Анкета + Рефы есть • Ждём время созвона', closed: false,
+        folder: 'D:\ФАНАТИКС\0619', voiceDump: '', baseStyle: '', baseFloor: '', baseWalls: '', baseCeiling: '', baseFamily: '', rooms: {}
+      },
+      {
+        id: '0609', name: 'Визы с премией', channel: '📱 TG', format: '🎨 Только Визы', price: '10 000 ₽', status: '⏳ Напомнить про заполнение анкеты', closed: false,
+        folder: 'D:\ФАНАТИКС\0609', voiceDump: '', baseStyle: '', baseFloor: '', baseWalls: '', baseCeiling: '', baseFamily: '', rooms: {}
+      },
+      {
+        id: '0593', name: 'Визы 91 м² (Настя)', channel: '💬 MAX', format: '🎨 Только Визы', price: '11 147 ₽', status: '⏳ Напомнить про анкету и назначить созвон', closed: false,
+        folder: 'D:\ФАНАТИКС\0593', voiceDump: '', baseStyle: '', baseFloor: '', baseWalls: '', baseCeiling: '', baseFamily: '', rooms: {}
+      },
+      {
+        id: '0576', name: 'Визы сданы 24.10', channel: '📱 TG', format: '🎨 Только Визы', price: '9 800 ₽', status: '👀 Визы отправлены 24.10 • Ждём обратную связь', closed: false,
+        folder: 'D:\ФАНАТИКС\0567', voiceDump: '', baseStyle: '', baseFloor: '', baseWalls: '', baseCeiling: '', baseFamily: '', rooms: {}
+      },
+      {
+        id: '0572', name: 'Вопрос по комплектатору', channel: '📱 TG', format: '🎨 Только Визы', price: '9 398 ₽', status: '❓ Уточнение по комплектатору', closed: false,
+        folder: 'D:\ФАНАТИКС\0572', voiceDump: '', baseStyle: '', baseFloor: '', baseWalls: '', baseCeiling: '', baseFamily: '', rooms: {}
+      },
+      {
+        id: '0550', name: 'Закрытый проект', channel: '📱 TG', format: '🎨 Только Визы', price: '8 000 ₽', status: '✅ Полностью закрыт (100%)', closed: true,
+        folder: '', voiceDump: '', baseStyle: '', baseFloor: '', baseWalls: '', baseCeiling: '', baseFamily: '', rooms: {}
+      },
+      {
+        id: '0587', name: 'Визы утверждены 26.10', channel: '💬 MAX', format: '🎨 Только Визы', price: '9 922 ₽', status: '✅ Визы закрыты 26.10 (ждём финальную выплату)', closed: true,
+        folder: 'D:\ФАНАТИКС\0587', voiceDump: '', baseStyle: '', baseFloor: '', baseWalls: '', baseCeiling: '', baseFamily: '', rooms: {}
+      },
+      {
+        id: '0574', name: 'Пауза (меняют план)', channel: '📱 TG', format: '🎨 Только Визы', price: '12 142 ₽', status: '⏸ На паузе (переделывают планировку)', closed: true,
+        folder: '', voiceDump: '', baseStyle: '', baseFloor: '', baseWalls: '', baseCeiling: '', baseFamily: '', rooms: {}
+      }
+    ];
+
+    function getWorkProjects() {
+      try {
+        const raw = localStorage.getItem(WORK_PROJECTS_KEY);
+        if (raw) return JSON.parse(raw);
+      } catch(e) {}
+      return JSON.parse(JSON.stringify(DEFAULT_WORK_PROJECTS));
+    }
+
+    function saveWorkProjects(list) {
+      localStorage.setItem(WORK_PROJECTS_KEY, JSON.stringify(list));
+    }
+
+    function renderWorkProjectsGrid() {
+      const list = getWorkProjects();
+      const activeGrid = document.getElementById('active-work-projects-grid');
+      const closedGrid = document.getElementById('closed-work-projects-grid');
+      if (!activeGrid || !closedGrid) return;
+
+      activeGrid.innerHTML = '';
+      closedGrid.innerHTML = '';
+
+      list.forEach(p => {
+        const card = document.createElement('div');
+        card.className = 'work-proj-card' + (p.id === currentWorkProjId ? ' active-selected' : '');
+        card.onclick = () => selectWorkProject(p.id);
+
+        const isFull = p.format && p.format.includes('Полный');
+        const fmtClass = isFull ? 'tag-purple' : 'tag-blue';
+        const priceUnknown = !p.price || p.price.includes('❓') || p.price.toLowerCase().includes('уточн');
+        const priceTagClass = priceUnknown ? 'tag-money' : 'tag-green';
+
+        card.innerHTML = `
+          <div>
+            <div style="display:flex; justify-content:space-between; align-items:center; gap:6px; flex-wrap:wrap; margin-bottom:6px;">
+              <div>
+                <span class="tag tag-proj">${p.id}</span>
+                <span class="tag ${p.channel.includes('MAX') ? 'tag-max' : 'tag-tg'}">${p.channel}</span>
+                <span class="tag ${fmtClass}">${p.format || '🎨 Только Визы'}</span>
+              </div>
+              <span class="tag ${priceTagClass}">${p.price || '❓ Уточняется'}</span>
+            </div>
+            <div style="font-size:14px; font-weight:800; color:var(--text);">${p.name || ('Проект ' + p.id)}</div>
+            <div style="font-size:12px; color:var(--muted); margin-top:3px;">${p.status || 'В работе'}</div>
+          </div>
+        `;
+
+        if (p.closed) closedGrid.appendChild(card);
+        else activeGrid.appendChild(card);
+      });
+
+      loadSelectedWorkProjectIntoForm();
+    }
+
+    function selectWorkProject(id) {
+      currentWorkProjId = id;
+      renderWorkProjectsGrid();
+      document.getElementById('project-passport-box').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    function loadSelectedWorkProjectIntoForm() {
+      const list = getWorkProjects();
+      const p = list.find(x => x.id === currentWorkProjId) || list[0];
+      if (!p) return;
+      currentWorkProjId = p.id;
+
+      document.getElementById('passport-proj-title').innerHTML = `📂 Паспорт проекта: <span class="tag tag-proj" style="font-size:15px;">${p.id}</span> ${p.name || ''} • <span class="tag tag-purple">${p.format || '🎨 Только Визы'}</span> • <span class="tag tag-money">${p.price || '❓ Уточняется'}</span>`;
+      document.getElementById('passport-proj-sub').textContent = p.status || 'Заполняй базу голосом или по комнатам и передавай микро-задачи агентам в 1 клик';
+
+      document.getElementById('wp-voice-dump').value = p.voiceDump || '';
+      document.getElementById('wp-base-style').value = p.baseStyle || '';
+      document.getElementById('wp-base-floor').value = p.baseFloor || '';
+      document.getElementById('wp-base-walls').value = p.baseWalls || '';
+      document.getElementById('wp-base-ceiling').value = p.baseCeiling || '';
+      document.getElementById('wp-base-family').value = p.baseFamily || '';
+      document.getElementById('wp-base-folder').value = p.folder || (`D:\ФАНАТИКС\${p.id}`);
+
+      loadSelectedRoomIntoForm(p);
+    }
+
+    function selectWorkRoom(roomKey, btn) {
+      currentWorkRoomKey = roomKey;
+      if (btn) {
+        document.querySelectorAll('#wp-room-tabs .room-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+      }
+      const list = getWorkProjects();
+      const p = list.find(x => x.id === currentWorkProjId);
+      if (p) loadSelectedRoomIntoForm(p);
+    }
+
+    function loadSelectedRoomIntoForm(p) {
+      const r = (p.rooms && p.rooms[currentWorkRoomKey]) ? p.rooms[currentWorkRoomKey] : {};
+      document.getElementById('rm-joinery').value = r.joinery || '';
+      document.getElementById('rm-models').value = r.models || '';
+      document.getElementById('rm-finish').value = r.finish || '';
+      document.getElementById('rm-refs').value = r.refs || '';
+    }
+
+    function saveCurrentWorkProject() {
+      const list = getWorkProjects();
+      const p = list.find(x => x.id === currentWorkProjId);
+      if (!p) return;
+      p.voiceDump = document.getElementById('wp-voice-dump').value;
+      p.baseStyle = document.getElementById('wp-base-style').value;
+      p.baseFloor = document.getElementById('wp-base-floor').value;
+      p.baseWalls = document.getElementById('wp-base-walls').value;
+      p.baseCeiling = document.getElementById('wp-base-ceiling').value;
+      p.baseFamily = document.getElementById('wp-base-family').value;
+      p.folder = document.getElementById('wp-base-folder').value;
+      saveWorkProjects(list);
+    }
+
+    function saveCurrentRoomData() {
+      const list = getWorkProjects();
+      const p = list.find(x => x.id === currentWorkProjId);
+      if (!p) return;
+      if (!p.rooms) p.rooms = {};
+      p.rooms[currentWorkRoomKey] = {
+        joinery: document.getElementById('rm-joinery').value,
+        models: document.getElementById('rm-models').value,
+        finish: document.getElementById('rm-finish').value,
+        refs: document.getElementById('rm-refs').value
+      };
+      saveWorkProjects(list);
+    }
+
+    function openNewWorkProjectModal() {
+      const id = prompt('Номер нового проекта (например: 0658):', '0658');
+      if (!id) return;
+      const name = prompt('Имя клиента / ЖК / метраж (например: Анна • 54 м²):', 'Новый проект');
+      const fmtChoice = prompt('Формат проекта — введи 1, 2 или 3:\n1 = 📋 Полный проект (Бриф + План + Визы)\n2 = 🎨 Только Визы (Анкета + 3D)\n3 = 📐 Планировка / Чертежи', '2');
+      let format = '🎨 Только Визы';
+      if (fmtChoice === '1') format = '📋 Полный проект';
+      else if (fmtChoice === '3') format = '📐 Планировка / Чертежи';
+
+      const chChoice = prompt('Канал связи — введи 1 (📱 TG) или 2 (💬 MAX):', '1');
+      const channel = chChoice === '2' ? '💬 MAX' : '📱 TG';
+
+      const priceInput = prompt('Стоимость проекта в ₽ (или оставь пустым / напиши «?», если пока непонятно):', '❓ Уточняется');
+      const price = (!priceInput || priceInput.trim() === '?' || priceInput.trim() === '') ? '❓ Уточняется' : priceInput.trim();
+
+      const status = prompt('Текущий этап / задача (например: Ждём созвон по брифу):', 'В работе');
+
+      const list = getWorkProjects();
+      list.unshift({
+        id: id.trim(),
+        name: name || ('Проект ' + id),
+        channel,
+        format,
+        price,
+        status: status || 'В работе',
+        closed: false,
+        folder: `D:\ФАНАТИКС\${id.trim()}`,
+        voiceDump: '', baseStyle: '', baseFloor: '', baseWalls: '', baseCeiling: '', baseFamily: '',
+        rooms: {}
+      });
+      currentWorkProjId = id.trim();
+      saveWorkProjects(list);
+      renderWorkProjectsGrid();
+    }
+
+    function changeWorkProjectFormat() {
+      const list = getWorkProjects();
+      const p = list.find(x => x.id === currentWorkProjId);
+      if (!p) return;
+      const fmtChoice = prompt('Выбери формат (1 = 📋 Полный проект, 2 = 🎨 Только Визы, 3 = 📐 Чертежи):', p.format.includes('Полный') ? '1' : '2');
+      if (fmtChoice === '1') p.format = '📋 Полный проект';
+      else if (fmtChoice === '2') p.format = '🎨 Только Визы';
+      else if (fmtChoice === '3') p.format = '📐 Планировка / Чертежи';
+      const newStatus = prompt('Статус / что ждём по проекту:', p.status);
+      if (newStatus !== null) p.status = newStatus;
+      saveWorkProjects(list);
+      renderWorkProjectsGrid();
+    }
+
+    function changeWorkProjectPrice() {
+      const list = getWorkProjects();
+      const p = list.find(x => x.id === currentWorkProjId);
+      if (!p) return;
+      const val = prompt('Впиши стоимость проекта (или напиши «?», чтобы поставить плашку «❓ Уточняется»):', p.price);
+      if (val === null) return;
+      p.price = (val.trim() === '?' || val.trim() === '') ? '❓ Уточняется' : val.trim();
+      saveWorkProjects(list);
+      renderWorkProjectsGrid();
+    }
+
+    function markWorkProjectClosed() {
+      const list = getWorkProjects();
+      const p = list.find(x => x.id === currentWorkProjId);
+      if (!p) return;
+      p.closed = !p.closed;
+      if (p.closed) p.status = '✅ Закрыт / В архиве';
+      saveWorkProjects(list);
+      const firstActive = list.find(x => !x.closed);
+      if (firstActive) currentWorkProjId = firstActive.id;
+      renderWorkProjectsGrid();
+    }
+
+    function copyVoiceToAgentParse() {
+      const list = getWorkProjects();
+      const p = list.find(x => x.id === currentWorkProjId);
+      if (!p) return;
+      const promptText = `Проанализируй мою голосовую читку / заметки со звонка по проекту ${p.id} (${p.name}, формат: ${p.format}, папка: ${p.folder || ('D:\\\\ФАНАТИКС\\\\' + p.id)}):\n\n---\n${p.voiceDump || '(текст читки)'}\n---\n\nЗадача:\n1. Разложи эту информацию без потерь по структуре нашего Паспорта проекта в lavinteriors.pro/office/ (Общая база квартиры + по каждому помещению отдельно).\n2. Сформируй заполненную таблицу Бриф_${p.id}.xlsx на 85 строк для загрузки в карточку компании.`;
+      navigator.clipboard.writeText(promptText).then(() => {
+        alert('✅ Промпт для разбора голосовой читки скопирован! Просто вставь его в наш чат с ИИ.');
+      });
+    }
+
+    function copyAgentMicroPrompt(stepType) {
+      const list = getWorkProjects();
+      const p = list.find(x => x.id === currentWorkProjId);
+      if (!p) return;
+      const r = (p.rooms && p.rooms[currentWorkRoomKey]) ? p.rooms[currentWorkRoomKey] : {};
+      const roomTitle = ROOM_NAMES_RU[currentWorkRoomKey] || currentWorkRoomKey;
+      const folder = p.folder || `D:\ФАНАТИКС\${p.id}`;
+
+      const header = `🎯 МИКРО-ЗАДАЧА ДЛЯ АГЕНТА | ПРОЕКТ ${p.id} (${p.name})
+📍 ПОМЕЩЕНИЕ: ${roomTitle}
+📁 ПАПКА ПРОЕКТА И ЧЕРТЕЖЕЙ: ${folder}
+🖼️ РЕФЕРЕНСЫ ЭТОЙ КОМНАТЫ: ${r.refs || 'см. папку Референсы в папке проекта'}
+
+--- ОБЩАЯ БАЗА КВАРТИРЫ ---
+• Стиль и палитра: ${p.baseStyle || 'см. анкету и рефы'}
+• Полы и тёплый пол: ${p.baseFloor || 'см. описание комнаты'}
+• Стены, плинтус, двери: ${p.baseWalls || 'см. описание комнаты'}
+• Потолок и свет: ${p.baseCeiling || 'Чистовой потолок 3000–3050 мм'}`;
+
+      let taskBody = '';
+      if (stepType === 'step1_shell') {
+        taskBody = `
+
+🔨 КОНКРЕТНАЯ ЗАДАЧА (ШАГ 1 — ОТДЕЛКА, ПОЛ, ПОТОЛОК И ПЛИНТУС В HOMESTYLER):
+Работаем ТОЛЬКО в помещении «${roomTitle}» (не трогай и не перестраивай остальные комнаты!).
+1. Проверь план в ${folder} и референсы комнаты (${r.refs || 'в папке проекта'}) через read_file.
+2. Настрой отделку помещения «${roomTitle}»:
+   - Пол и тёплый пол: ${r.finish || p.baseFloor || 'по референсу'}
+   - Стены и молдинги/акценты: ${r.finish || p.baseWalls || 'по референсу'}
+   - Потолок (высота 3000–3050 мм): построй контур ГКЛ/натяжного потолка и карниза/теневого профиля строго с обходом всех высоких шкафов и шторных ниш!
+3. В конце обязательно вызови createModelMeshAsync() с waitForStableDom: false и сделай проверочный скриншот через take_screenshot.`;
+      } else if (stepType === 'step2_joinery') {
+        taskBody = `
+
+🔨 КОНКРЕТНАЯ ЗАДАЧА (ШАГ 2 — СТОЛЯРКА И КОРПУСНАЯ МЕБЕЛЬ В HOMESTYLER DIY):
+Работаем ТОЛЬКО в помещении «${roomTitle}». Подключи библиотеку:
+if (!window.HSJoinery) (0, eval)(await (await fetch('http://127.0.0.1:3033/hs-joinery.js')).text());
+
+Что моделируем в этом помещении:
+• Корпусная мебель: ${r.joinery || 'встроенный шкаф / тумба до потолка по планировке и рефам'}
+
+ОБЯЗАТЕЛЬНЫЕ ТЕХНИЧЕСКИЕ ПРАВИЛА СБОРКИ (С первого раза без ошибок!):
+1. Ориентация: используй HSJoinery.createWallFrame(x1, y1, x2, y2, [roomCenterX, roomCenterY]), чтобы глубина +d шла строго внутрь комнаты.
+2. Реальный конструктив: каркас ЛДСП 18 мм (HSJoinery.buildRealCarcass), высота встроенных шкафов строго до чистового потолка (3000–3050 мм).
+3. Фасады и ручки: отступ 2 мм от корпуса, зазоры между дверьми 2–3 мм, скругление торцов МДФ 2.5 мм (для классики/неоклассики используй HSJoinery.buildClassicMilledFacade, для гладких — HSJoinery.buildMdfFacadeWithHandle).
+4. Дробная группировка (DiyInstance) для перекраски в 1 клик: отдельно «Корпус», «Фасады», «Ручки», «Столешница», «LED подсветка».
+5. После построения вызови createModelMeshAsync() и проверь результат глазами через take_screenshot!`;
+      } else if (stepType === 'step3_skypro') {
+        taskBody = `
+
+🔨 КОНКРЕТНАЯ ЗАДАЧА (ШАГ 3 — ПОДБОР И РАССТАНОВКА МОДЕЛЕЙ ИЗ 3D SKY PRO):
+Работаем ТОЛЬКО в помещении «${roomTitle}». Не рисуй сантехнику, мягкую мебель и бытовую технику кубиками в DIY!
+
+Что нужно найти в базе 3D Sky Pro (127.0.0.1:3033 или tg_ondemand.py по #тегам), проверить глазами по превью через read_file и расставить по плану:
+• Мебель, техника и сантехника комнаты: ${r.models || 'см. план и референсы комнаты'}
+• Освещение и декор: ${r.refs || 'по референсам'}
+
+После вставки моделей проверь их масштаб, высоту от пола и ориентацию к стенам через take_screenshot!`;
+      } else if (stepType === 'step4_texture') {
+        taskBody = `
+
+🔨 КОНКРЕТНАЯ ЗАДАЧА (ШАГ 4 — ГЕНЕРАЦИЯ БЕСШОВНОЙ ТЕКСТУРЫ 4K):
+Посмотри через read_file референсы помещения «${roomTitle}» в папке ${folder} (${r.refs || ''}).
+Вызови субагента image-generator (TypeName: "image-generator") для генерации бесшовной плитки/шпона/мрамора/текстиля под наш референс:
+Промпт: seamless tileable texture, flat even lighting, orthographic top-down view, 4k material — под цвет и фактуру: ${r.finish || p.baseStyle || 'по референсу'}.`;
+      } else if (stepType === 'step5_archicad') {
+        taskBody = `
+
+🔨 КОНКРЕТНАЯ ЗАДАЧА (ШАГ 5 — ARCHICAD МИКРО-ЗАДАЧА ПО ПОМЕЩЕНИЮ «${roomTitle}»):
+Подключись к открытому проекту ArchiCAD.
+Задача по помещению «${roomTitle}» (Проект ${p.id}):
+1. Проверь выделенную область / контур помещения.
+2. Расставь чистые цепочки размеров и привязки мебели/выводов строго по нашим данным:
+   - Корпусная мебель и ниши: ${r.joinery || 'по плану'}
+   - Оборудование и сантехника: ${r.models || 'по плану'}
+   - Электрика, тёплый пол и свет: ${r.finish || ''} | ${r.refs || ''}
+3. Сделай скриншот окна ArchiCAD для проверки читаемости без нахлёстов текста!`;
+      } else {
+        taskBody = `
+
+📋 ПОЛНОЕ ТЕХНИЧЕСКОЕ ЗАДАНИЕ ПО ПОМЕЩЕНИЮ «${roomTitle}»:
+• Корпусная мебель (DIY): ${r.joinery || '—'}
+• Готовые модели и техника (3D Sky Pro): ${r.models || '—'}
+• Отделка пола и стен комнаты: ${r.finish || '—'}
+• Свет, электрика и референсы: ${r.refs || '—'}
+
+Выполняй сборку пошагово: сначала геометрия и столярка через window.HSJoinery (высота до потолка 3000–3050 мм, ЛДСП 18 мм, зазоры фасадов 2–3 мм, отдельные группы материалов), затем модели из 3D Sky Pro, и обязательно проверь сцену через take_screenshot!`;
+      }
+
+      const fullPrompt = header + taskBody;
+      navigator.clipboard.writeText(fullPrompt).then(() => {
+        alert(`✅ Промпт для агента (${roomTitle}) скопирован в буфер обмена!`);
+      });
+    }
+
+    function exportCurrentBriefCSV() {
+      const list = getWorkProjects();
+      const p = list.find(x => x.id === currentWorkProjId);
+      if (!p) return;
+      const rHall = (p.rooms && p.rooms.hall) || {};
+      const rKit = (p.rooms && p.rooms.kitchen) || {};
+      const rBed = (p.rooms && p.rooms.bedroom) || {};
+      const rKids = (p.rooms && p.rooms.kids) || {};
+      const rBath = (p.rooms && p.rooms.bath) || {};
+
+      const rows = [
+        ['Раздел / Вопрос брифа компании', 'Ответ клиента (Проект ' + p.id + ')'],
+        ['Коридор/Прихожая — Пол', rHall.finish || p.baseFloor || ''],
+        ['Коридор/Прихожая — Стены', rHall.finish || p.baseWalls || ''],
+        ['Коридор/Прихожая — Потолок', p.baseCeiling || ''],
+        ['Коридор/Прихожая — Мебель', (rHall.joinery || '') + ' ' + (rHall.models || '')],
+        ['Коридор/Прихожая — Освещение и электрика', rHall.refs || ''],
+        ['Кухня-гостиная — Пол', rKit.finish || p.baseFloor || ''],
+        ['Кухня-гостиная — Стены', rKit.finish || p.baseWalls || ''],
+        ['Кухня-гостиная — Потолок', p.baseCeiling || ''],
+        ['Кухня-гостиная — Гарнитур и Мебель', (rKit.joinery || '') + ' ' + (rKit.models || '')],
+        ['Кухня-гостиная — Освещение и электрика', rKit.refs || ''],
+        ['Спальня — Пол', rBed.finish || p.baseFloor || ''],
+        ['Спальня — Стены', rBed.finish || p.baseWalls || ''],
+        ['Спальня — Мебель', (rBed.joinery || '') + ' ' + (rBed.models || '')],
+        ['Спальня — Освещение и текстиль', rBed.refs || ''],
+        ['Детская / Кабинет — Мебель и отделка', (rKids.joinery || '') + ' ' + (rKids.models || '') + ' ' + (rKids.finish || '')],
+        ['Санузел — Пол и стены', rBath.finish || 'Керамогранит'],
+        ['Санузел — Сантехника и мебель', (rBath.joinery || '') + ' ' + (rBath.models || '')],
+        ['Общие пожелания по стилю и стоп-лист', p.baseStyle || ''],
+        ['Состав семьи, ЛПР, животные, инженерия и бюджет', p.baseFamily || ''],
+        ['Заметки со звонка (Голосовая читка)', p.voiceDump || '']
+      ];
+
+      const csvContent = '\uFEFF' + rows.map(e => e.map(cell => '"' + String(cell || '').replace(/"/g, '""') + '"').join(';')).join('\r\n');
+      const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `Бриф_${p.id}.csv`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    }
+
+    renderCalendar(9, null);
+    renderWorkProjectsGrid();
 
     checkAuthOnLoad();
     loadAddedTasks();
