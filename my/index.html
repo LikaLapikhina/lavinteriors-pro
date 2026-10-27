@@ -679,6 +679,152 @@
     }
     .micro-btn:hover { background: var(--purple); color: #fff; }
 
+    /* ЦВЕТОВЫЕ БЛОКИ КОНСТРУКТОРА АГЕНТОВ (ЧТОБЫ НЕ ТЕРЯТЬСЯ В ИНФОРМАЦИИ) */
+    .stage-Switch-bar {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .stage-pill {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      padding: 10px 12px;
+      border-radius: 11px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.03);
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .stage-pill.active-stage {
+      border-color: #60a5fa;
+      background: rgba(59, 130, 246, 0.18);
+      box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.35);
+    }
+    .stage-pill.done-stage {
+      border-color: rgba(16, 185, 129, 0.55);
+      background: rgba(16, 185, 129, 0.12);
+    }
+    .stage-title-txt {
+      font-size: 12.5px;
+      font-weight: 800;
+      color: var(--text);
+    }
+    .stage-check-lbl {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 11px;
+      font-weight: 800;
+      color: #6ee7b7;
+      background: rgba(16, 185, 129, 0.16);
+      padding: 3px 7px;
+      border-radius: 6px;
+      border: 1px solid rgba(16, 185, 129, 0.35);
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .color-zone-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+    @media (max-width: 960px) {
+      .color-zone-grid { grid-template-columns: 1fr; }
+    }
+    .zone-yellow {
+      background: rgba(245, 158, 11, 0.07);
+      border: 1px solid rgba(245, 158, 11, 0.45);
+      border-radius: 12px;
+      padding: 12px 14px;
+    }
+    .zone-purple {
+      background: rgba(168, 85, 247, 0.07);
+      border: 1px solid rgba(168, 85, 247, 0.45);
+      border-radius: 12px;
+      padding: 12px 14px;
+    }
+    .zone-blue {
+      background: rgba(59, 130, 246, 0.07);
+      border: 1px solid rgba(59, 130, 246, 0.45);
+      border-radius: 12px;
+      padding: 12px 14px;
+      margin-bottom: 12px;
+    }
+    .zone-green {
+      background: rgba(16, 185, 129, 0.09);
+      border: 2px solid rgba(16, 185, 129, 0.65);
+      border-radius: 14px;
+      padding: 14px 16px;
+    }
+    .plus-chips-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 6px;
+      margin-bottom: 8px;
+    }
+    .plus-chip {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #f8fafc;
+      padding: 6px 10px;
+      border-radius: 8px;
+      font-size: 11.5px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.14s;
+    }
+    .plus-chip:hover {
+      background: var(--blue);
+      border-color: var(--blue);
+      color: #fff;
+      transform: translateY(-1px);
+    }
+    .plus-chip.selected-chip {
+      background: rgba(16, 185, 129, 0.25);
+      border-color: #10b981;
+      color: #a7f3d0;
+    }
+    .plus-chip-purple:hover {
+      background: var(--purple);
+      border-color: var(--purple);
+    }
+    .auto-rule-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 12px;
+      color: #e2e8f0;
+      padding: 5px 8px;
+      border-radius: 8px;
+      background: rgba(0,0,0,0.22);
+      margin-bottom: 5px;
+    }
+    .big-copy-prompt-btn {
+      background: linear-gradient(135deg, #10b981, #059669);
+      color: #ffffff;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 900;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 4px 15px rgba(16, 185, 129, 0.35);
+      transition: all 0.15s;
+    }
+    .big-copy-prompt-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(16, 185, 129, 0.5);
+    }
+
+
   </style>
 </head>
 <body>
@@ -1162,128 +1308,216 @@
   </div>
 
 
-  <!-- ==================== ВКЛАДКА 3: ПРОЕКТЫ В РАБОТЕ И ПЕРЕДАЧА АГЕНТАМ ==================== -->
+  <!-- ==================== ВКЛАДКА 2: ПРОЕКТЫ В РАБОТЕ И КОНСТРУКТОР ПРОМПТОВ АГЕНТАМ ==================== -->
   <div id="tab-work" class="tab-section">
     <div class="block-box purple-priority">
       <div class="block-header">
         <div>
-          <div class="block-title" style="color:#c084fc;">🚀 ПРОЕКТЫ В РАБОТЕ — ЕДИНАЯ БАЗА (БРИФ + АНКЕТА + ПЕРЕДАЧА АГЕНТАМ ПО КОМНАТАМ)</div>
-          <div class="block-subtitle">Здесь только рабочая информация без бухгалтерской каши. Закрытые проекты убраны вниз. Выбери проект или добавь новый:</div>
+          <div class="block-title" style="color:#c084fc;">🚀 ПРОЕКТЫ В РАБОТЕ — БЫСТРАЯ ОТПРАВКА ЗАДАЧ АГЕНТАМ ПО ПОМЕЩЕНИЯМ</div>
+          <div class="block-subtitle">Выбери проект -> выбери комнату -> нажми нужные кнопки «+» -> скопируй готовый промпт агенту в 1 клик!</div>
         </div>
         <div style="display:flex; gap:8px; flex-wrap:wrap;">
           <button class="action-btn" style="background:var(--purple); border-color:var(--purple); color:#fff;" onclick="openNewWorkProjectModal()">➕ Взять проект в работу</button>
-          <button class="action-btn" onclick="exportCurrentBriefCSV()">📥 Выгрузить Бриф (Excel .CSV)</button>
+          <button class="action-btn" onclick="exportCurrentBriefCSV()">📥 Выгрузить Бриф (.CSV)</button>
         </div>
       </div>
 
       <!-- СЕТКА АКТИВНЫХ ПРОЕКТОВ В РАБОТЕ -->
       <div class="proj-cards-grid" id="active-work-projects-grid"></div>
 
-      <!-- ПАСПОРТ ВЫБРАННОГО ПРОЕКТА И ПЕРЕДАЧА АГЕНТАМ -->
-      <div class="block-box" id="project-passport-box" style="background:rgba(0,0,0,0.22); border-color:var(--purple-border); margin-bottom:14px;">
-        <div class="block-header">
+      <!-- РАБОЧЕЕ ОКНО ВЫБРАННОГО ПРОЕКТА -->
+      <div class="block-box" id="project-passport-box" style="background:rgba(0,0,0,0.24); border-color:var(--purple-border); margin-bottom:14px;">
+        <!-- КОМПАКТНАЯ ШАПКА ПРОЕКТА -->
+        <div class="block-header" style="margin-bottom:10px; padding-bottom:10px;">
           <div>
-            <div class="block-title" id="passport-proj-title" style="font-size:16.5px; color:#f8fafc;">📂 Паспорт проекта: 0545 (Мария • Визы 60 м²)</div>
-            <div class="block-subtitle" id="passport-proj-sub">Надиктовывай голосом заметки со звонка или заполняй по комнатам — и копируй готовые микро-задачи для агентов в 1 клик!</div>
+            <div class="block-title" id="passport-proj-title" style="font-size:17px; color:#f8fafc;">📂 Проект 0545</div>
+            <div class="block-subtitle" id="passport-proj-sub" style="margin-top:3px;">Папка: D:\\ФАНАТИКС\\0545</div>
           </div>
-          <div style="display:flex; gap:6px; flex-wrap:wrap;">
+          <div style="display:flex; gap:6px; flex-wrap:wrap; align-items:center;">
+            <button class="copy-btn" style="background:rgba(245,158,11,0.16); color:#fde68a; border-color:rgba(245,158,11,0.4);" onclick="toggleVoiceAndBasePanel()">🎙️ Голосовая читка / Общая база квартиры ▾</button>
             <button class="copy-btn" onclick="changeWorkProjectFormat()">🔄 Формат / Статус</button>
             <button class="copy-btn" onclick="changeWorkProjectPrice()">💰 Стоимость / ❓</button>
-            <button class="copy-btn" style="border-color:var(--green-border); color:#6ee7b7;" onclick="markWorkProjectClosed()">✅ Убрать в закрытые</button>
+            <button class="copy-btn" style="border-color:var(--green-border); color:#6ee7b7;" onclick="markWorkProjectClosed()">✅ В архив</button>
           </div>
         </div>
 
-        <!-- БЛОК 1: ГОЛОСОВАЯ ЧИТКА / ЗАМЕТКИ РУЧКОЙ СО ЗВОНКА -->
-        <div class="field-box" style="margin-bottom:12px; border-color:rgba(245,158,11,0.45); background:rgba(245,158,11,0.06);">
-          <div class="field-label" style="color:#fbbf24;">
-            <span>🎙️ 1. БЫСТРАЯ ЧИТКА ГОЛОСОМ ПОСЛЕ СОЗВОНА (ИЛИ ТЕКСТ ЗАПИСИ ЗВОНКА)</span>
-            <button class="copy-btn" onclick="copyVoiceToAgentParse()">🤖 Скопировать для ИИ: «Разнеси мою читку по комнатам и в Бриф»</button>
+        <!-- СКРЫВАЕМЫЙ БЛОК: ГОЛОСОВАЯ ЧИТКА СО ЗВОНКА + ОБЩАЯ БАЗА КВАРТИРЫ (НЕ МЕШАЕТ ПЕРЕД ГЛАЗАМИ, ОТКРЫВАЕТСЯ ПО КНОПКЕ) -->
+        <div id="collapsible-voice-base" style="display:none; margin-bottom:14px; padding:12px; border-radius:12px; background:rgba(255,255,255,0.02); border:1px dashed var(--border);">
+          <div class="field-box" style="margin-bottom:10px; border-color:rgba(245,158,11,0.45); background:rgba(245,158,11,0.06);">
+            <div class="field-label" style="color:#fbbf24;">
+              <span>🎙️ БЫСТРАЯ ЧИТКА ГОЛОСОМ ПОСЛЕ СОЗВОНА (Надиктуй всё подряд своими словами)</span>
+              <button class="copy-btn" onclick="copyVoiceToAgentParse()">🤖 Скопировать промпт: «Разнеси мою читку по комнатам и в Бриф»</button>
+            </div>
+            <textarea id="wp-voice-dump" class="field-input" style="min-height:60px; color:#fde68a;" placeholder="Записала ручкой на звонке? Надиктуй сюда голосом всё подряд — и нажми кнопку справа, чтобы ИИ сам разнёс всё по комнатам!" oninput="saveCurrentWorkProject()"></textarea>
           </div>
-          <textarea id="wp-voice-dump" class="field-input" style="min-height:68px; color:#fde68a;" placeholder="Записала ручкой на звонке? Просто надиктуй сюда голосом всё подряд: например, «На полу ламинат ёлочкой, тёплый пол в прихожей до шкафа, потолок натяжной теневой, в спальне кровать 180...» — и нажми кнопку справа, чтобы мы за секунду разложили всё по полочкам!" oninput="saveCurrentWorkProject()"></textarea>
+
+          <div style="font-size:12px; font-weight:800; color:#60a5fa; margin-bottom:6px;">🏠 ОБЩАЯ БАЗА ПО ВСЕЙ КВАРТИРЕ (Автоматически подставляется в промпты комнат):</div>
+          <div class="passport-grid" style="margin-bottom:0;">
+            <div class="field-box">
+              <div class="field-label">🎨 Стиль, цвета и ТАБУ</div>
+              <textarea id="wp-base-style" class="field-input" oninput="saveCurrentWorkProject(); rebuildLiveAgentPrompt();"></textarea>
+            </div>
+            <div class="field-box">
+              <div class="field-label">🪵 Пол и тёплый пол</div>
+              <textarea id="wp-base-floor" class="field-input" oninput="saveCurrentWorkProject(); rebuildLiveAgentPrompt();"></textarea>
+            </div>
+            <div class="field-box">
+              <div class="field-label">🧱 Стены, плинтус, двери</div>
+              <textarea id="wp-base-walls" class="field-input" oninput="saveCurrentWorkProject(); rebuildLiveAgentPrompt();"></textarea>
+            </div>
+            <div class="field-box">
+              <div class="field-label">☁️ Потолок, опуск, свет, окна</div>
+              <textarea id="wp-base-ceiling" class="field-input" oninput="saveCurrentWorkProject(); rebuildLiveAgentPrompt();"></textarea>
+            </div>
+            <div class="field-box">
+              <div class="field-label">👨‍👩‍👧‍👦 Семья, ЛПР, животные, бюджет</div>
+              <textarea id="wp-base-family" class="field-input" oninput="saveCurrentWorkProject(); rebuildLiveAgentPrompt();"></textarea>
+            </div>
+            <div class="field-box">
+              <div class="field-label">📁 Папка проекта и файл планировки</div>
+              <textarea id="wp-base-folder" class="field-input" oninput="saveCurrentWorkProject(); rebuildLiveAgentPrompt();"></textarea>
+            </div>
+          </div>
         </div>
 
-        <!-- БЛОК 2: ОБЩАЯ БАЗА ПО ВСЕЙ КВАРТИРЕ (ЧТОБЫ НЕ ПОВТОРЯТЬ В КАЖДОЙ КОМНАТЕ) -->
-        <div style="font-size:13px; font-weight:800; color:#60a5fa; margin-bottom:8px;">🏠 2. ОБЩАЯ ТЕХНИЧЕСКАЯ И ВИЗУАЛЬНАЯ БАЗА ПО ВСЕЙ КВАРТИРЕ:</div>
-        <div class="passport-grid">
-          <div class="field-box">
-            <div class="field-label">🎨 Стиль, палитра и Стоп-цвета</div>
-            <textarea id="wp-base-style" class="field-input" placeholder="Стиль, основные цвета, металл (латунь/хром/чёрный), что категорически нельзя..." oninput="saveCurrentWorkProject()"></textarea>
-          </div>
-          <div class="field-box">
-            <div class="field-label">🪵 Напольное покрытие + Тёплый пол</div>
-            <textarea id="wp-base-floor" class="field-input" placeholder="Кварцвинил / ламинат / инженерка, раскладка (ёлка/прямая), где керамогранит и где границы тёплого пола..." oninput="saveCurrentWorkProject()"></textarea>
-          </div>
-          <div class="field-box">
-            <div class="field-label">🧱 Стены, Плинтус и Двери</div>
-            <textarea id="wp-base-walls" class="field-input" placeholder="Покраска / обои под покраску / молдинги; плинтус (дюрополимер/теневой/скрытый); двери (скрытые/наличники, высота)..." oninput="saveCurrentWorkProject()"></textarea>
-          </div>
-          <div class="field-box">
-            <div class="field-label">💡 Потолок, Свет (3000K/4000K), Окна и Инженерия</div>
-            <textarea id="wp-base-ceiling" class="field-input" placeholder="Потолок (ГКЛ/натяжной, высота 3000 мм, карниз/теневой, ниши штор), свет, конвекторы/радиаторы, откосы/подоконники..." oninput="saveCurrentWorkProject()"></textarea>
-          </div>
-          <div class="field-box">
-            <div class="field-label">👨‍👩‍👧‍👦 Состав семьи, ЛПР, Рост, Животные, Бюджет</div>
-            <textarea id="wp-base-family" class="field-input" placeholder="Кто живёт, кто ЛПР, правша/левша, рост, робот-пылесос, бойлер, кондиционеры, бюджет..." oninput="saveCurrentWorkProject()"></textarea>
-          </div>
-          <div class="field-box">
-            <div class="field-label">📁 Папка проекта на диске (План + Референсы)</div>
-            <textarea id="wp-base-folder" class="field-input" placeholder="Например: D:\ФАНАТИКС\0545 (план + папка Референсы)" oninput="saveCurrentWorkProject()"></textarea>
-          </div>
-        </div>
-
-        <!-- БЛОК 3: ПОКОМНАТНЫЙ РАЗБОР + ПЕРЕДАЧА МИКРО-ЗАДАЧ АГЕНТАМ -->
-        <div style="font-size:13px; font-weight:800; color:#34d399; margin: 12px 0 6px;">🚪 3. ПОМЕЩЕНИЯ ПРОЕКТА (ВЫБЕРИ КОМНАТУ -> ЗАПОЛНИ -> СКОПИРУЙ МИКРО-ЗАДАЧУ АГЕНТУ):</div>
+        <!-- ШАГ 1: ВЫБЕРИ ПОМЕЩЕНИЕ -->
+        <div style="font-size:12.5px; font-weight:900; color:#c084fc; margin-bottom:6px;">🚪 ШАГ 1. ВЫБЕРИ ПОМЕЩЕНИЕ ПРОЕКТА:</div>
         <div class="room-tabs" id="wp-room-tabs">
-          <button class="room-btn active" onclick="selectWorkRoom('hall', this)">1. Прихожая / Коридор</button>
-          <button class="room-btn" onclick="selectWorkRoom('kitchen', this)">2. Кухня-гостиная</button>
-          <button class="room-btn" onclick="selectWorkRoom('bedroom', this)">3. Мастер-спальня</button>
-          <button class="room-btn" onclick="selectWorkRoom('kids', this)">4. Детская / Кабинет</button>
-          <button class="room-btn" onclick="selectWorkRoom('bath', this)">5. Ванная комната</button>
-          <button class="room-btn" onclick="selectWorkRoom('wc', this)">6. Гостевой СУ / Постирочная</button>
+          <button class="room-btn active" onclick="selectWorkRoom('hall', this)">1. Прихожая / Коридор <span id="rbadge-hall"></span></button>
+          <button class="room-btn" onclick="selectWorkRoom('kitchen', this)">2. Кухня-гостиная <span id="rbadge-kitchen"></span></button>
+          <button class="room-btn" onclick="selectWorkRoom('bedroom', this)">3. Мастер-спальня <span id="rbadge-bedroom"></span></button>
+          <button class="room-btn" onclick="selectWorkRoom('kids', this)">4. Детская / Кабинет <span id="rbadge-kids"></span></button>
+          <button class="room-btn" onclick="selectWorkRoom('bath', this)">5. Ванная комната <span id="rbadge-bath"></span></button>
+          <button class="room-btn" onclick="selectWorkRoom('wc', this)">6. Гостевой СУ / Постирочная <span id="rbadge-wc"></span></button>
         </div>
 
-        <div class="passport-grid">
-          <div class="field-box">
-            <div class="field-label">🗄️ Корпусная мебель (Шкафы, Кухня, Тумбы — для DIY)</div>
-            <textarea id="rm-joinery" class="field-input" style="min-height:64px;" placeholder="Какие шкафы/кухня, до потолка ли, фасады (гладкие МДФ / фрезеровка / филёнка), какие ручки, открытые полки, пуф, ниша под робот-пылесос и щиток..." oninput="saveCurrentRoomData()"></textarea>
+        <!-- ШАГ 2: ВЫБЕРИ ЭТАП РАБОТЫ ПО КОМНАТЕ И ОТМЕТЬ ГАЛОЧКОЙ ЧТО УЖЕ ОТПРАВЛЕНО АГЕНТУ -->
+        <div style="font-size:12.5px; font-weight:900; color:#60a5fa; margin-bottom:6px;">⚡ ШАГ 2. КАКОЙ ЭТАП ОТПРАВЛЯЕМ АГЕНТУ СЕЙЧАС (Галочка = уже отдали в работу):</div>
+        <div class="stage-Switch-bar">
+          <div class="stage-pill active-stage" id="stage-pill-modeling" onclick="selectAgentStage('modeling')">
+            <span class="stage-title-txt">🔨 1. Моделирование (Мебель + Потолок)</span>
+            <label class="stage-check-lbl" onclick="event.stopPropagation();">
+              <input type="checkbox" id="st-chk-modeling" onchange="toggleStageDone('modeling', this.checked)"> Готово
+            </label>
           </div>
-          <div class="field-box">
-            <div class="field-label">🛋️ Готовая мебель, Сантехника и Техника (3D Sky Pro)</div>
-            <textarea id="rm-models" class="field-input" style="min-height:64px;" placeholder="Диван, кровать (160/180), стол, стулья, ванна/душ, унитаз, раковина, стиралка+сушка, холодильник, духовка, ПММ, ТВ..." oninput="saveCurrentRoomData()"></textarea>
+          <div class="stage-pill" id="stage-pill-texturing" onclick="selectAgentStage('texturing')">
+            <span class="stage-title-txt">🎨 2. Текстурирование (4K + Наложение)</span>
+            <label class="stage-check-lbl" onclick="event.stopPropagation();">
+              <input type="checkbox" id="st-chk-texturing" onchange="toggleStageDone('texturing', this.checked)"> Готово
+            </label>
           </div>
-          <div class="field-box">
-            <div class="field-label">🧱 Особенности отделки этой комнаты (Пол, Стены, Акценты)</div>
-            <textarea id="rm-finish" class="field-input" style="min-height:54px;" placeholder="Где плитка/ковёр, где тёплый пол (например: до шкафа), какая акцентная стена (панели/молдинги/керамогранит/обои), зеркало..." oninput="saveCurrentRoomData()"></textarea>
+          <div class="stage-pill" id="stage-pill-placement" onclick="selectAgentStage('placement')">
+            <span class="stage-title-txt">🛋️ 3. Расстановка 3D (Мебель, Свет, Декор)</span>
+            <label class="stage-check-lbl" onclick="event.stopPropagation();">
+              <input type="checkbox" id="st-chk-placement" onchange="toggleStageDone('placement', this.checked)"> Готово
+            </label>
           </div>
-          <div class="field-box">
-            <div class="field-label">💡 Свет, Электрика и Номера фото-референсов комнаты</div>
-            <textarea id="rm-refs" class="field-input" style="min-height:54px;" placeholder="Люстра/треки/точки, бра, подсветка ниш и штор, мастер-выключатель. Какие файлы референсов смотреть агенту (например: фото 12, 19, 36)..." oninput="saveCurrentRoomData()"></textarea>
+          <div class="stage-pill" id="stage-pill-fixes" onclick="selectAgentStage('fixes')">
+            <span class="stage-title-txt">🔧 4. Правки по комнате</span>
+            <label class="stage-check-lbl" onclick="event.stopPropagation();">
+              <input type="checkbox" id="st-chk-fixes" onchange="toggleStageDone('fixes', this.checked)"> Готово
+            </label>
           </div>
         </div>
 
-        <!-- ПАНЕЛЬ ГЕНЕРАЦИИ МИКРО-ЗАДАЧ ДЛЯ АГЕНТА (МАЛЕНЬКИМИ ПАЧКАМИ БЕЗ ОШИБОК!) -->
-        <div style="background:rgba(168,85,247,0.1); border:1px solid var(--purple-border); border-radius:12px; padding:12px 14px; margin-top:8px;">
-          <div style="font-size:12.5px; font-weight:900; color:#e9d5ff; margin-bottom:4px;">
-            ⚡ СКОПИРОВАТЬ ЧЁТКУЮ МИКРО-ЗАДАЧУ АГЕНТУ ПО ЭТОЙ КОМНАТЕ (Со всеми тех. правилами в 1 клик):
+        <!-- ЦВЕТНЫЕ КАРТОЧКИ ДАННЫХ КОМНАТЫ: ЖЁЛТАЯ (ЧТО СКАЗАЛА ЗАКАЗЧИЦА + ПЛАН) И ФИОЛЕТОВАЯ (РЕФЕРЕНСЫ КОМНАТЫ) -->
+        <div class="color-zone-grid">
+          <!-- ЖЁЛТАЯ ЗОНА: ЧТО ХОЧЕТ ЗАКАЗЧИЦА И ПЛАНИРОВКА -->
+          <div class="zone-yellow">
+            <div style="font-size:13px; font-weight:900; color:#fbbf24; margin-bottom:6px; display:flex; justify-content:space-between; align-items:center;">
+              <span>🟡 ПАМЯТЬ ПО КОМНАТЕ: ЧТО ОБСУДИЛИ И ЧТО НА ПЛАНЕ</span>
+              <span style="font-size:11px; color:var(--muted);">Сохраняется авто</span>
+            </div>
+            <div style="font-size:11.5px; color:#fde68a; margin-bottom:4px; font-weight:700;">1. Что моделируем / пожелания заказчицы по этой комнате:</div>
+            <textarea id="rm-joinery" class="script-answer-input" style="min-height:66px; margin-bottom:8px; border-color:rgba(245,158,11,0.35);" placeholder="Например: длинный шкаф в потолок с молдингами и врезными профильными ручками, место под пуфик, тумба-консоль..." oninput="saveCurrentRoomData(); rebuildLiveAgentPrompt();"></textarea>
+
+            <div style="font-size:11.5px; color:#fde68a; margin-bottom:4px; font-weight:700;">2. Сверка с планировкой (или что поменяли на созвоне / правки):</div>
+            <textarea id="rm-finish" class="script-answer-input" style="min-height:48px; border-color:rgba(245,158,11,0.35);" placeholder="По умолчанию: Строго по планировочному решению! Если что-то сдвинули на созвоне или есть правки — впиши сюда..." oninput="saveCurrentRoomData(); rebuildLiveAgentPrompt();"></textarea>
+          </div>
+
+          <!-- ФИОЛЕТОВАЯ ЗОНА: РЕФЕРЕНСЫ ПО ЭТОМУ ПОМЕЩЕНИЮ -->
+          <div class="zone-purple">
+            <div style="font-size:13px; font-weight:900; color:#e9d5ff; margin-bottom:4px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:4px;">
+              <span>🟣 РЕФЕРЕНСЫ ПО ЭТОЙ КОМНАТЕ (Папка + Комментарии агенту)</span>
+              <button class="copy-btn" style="font-size:11px; padding:3px 8px;" onclick="copyRoomRefFolderPath()">📁 Скопировать путь к папке рефов</button>
+            </div>
+            <div id="room-ref-folder-hint" style="font-size:11.5px; color:#c084fc; margin-bottom:6px; font-family:monospace;">Папка: D:\\ФАНАТИКС\\0545\\Референсы_по_комнатам\\01_Прихожая_Коридор</div>
+
+            <div style="font-size:11px; color:var(--muted); margin-bottom:4px;">Нажми «+», чтобы быстро подписать агенту, что именно берём с референса:</div>
+            <div class="plus-chips-wrap">
+              <button class="plus-chip plus-chip-purple" onclick="appendRefTag('Фасады и фрезеровка/молдинги — точно как на референсе')">+ Фасады как на рефе</button>
+              <button class="plus-chip plus-chip-purple" onclick="appendRefTag('Врезные профильные ручки — как на референсе')">+ Ручки как на рефе</button>
+              <button class="plus-chip plus-chip-purple" onclick="appendRefTag('Форма шкафа и ниша для пуфика — как на референсе')">+ Ниша под пуфик как на рефе</button>
+              <button class="plus-chip plus-chip-purple" onclick="appendRefTag('Оттенок дерева/шпона и цвет МДФ — как на референсе')">+ Цвет/шпон как на рефе</button>
+              <button class="plus-chip plus-chip-purple" onclick="appendRefTag('Зеркало и контурная подсветка — как на референсе')">+ Зеркало/свет как на рефе</button>
+              <button class="plus-chip plus-chip-purple" onclick="appendRefTag('Раскладка плитки/керамогранита — как на референсе')">+ Плитка как на рефе</button>
+              <button class="plus-chip plus-chip-purple" onclick="appendRefTag('Референсов от клиента нет — делаем в стиле проекта строго по планировке')">+ Рефов нет (по плану)</button>
+            </div>
+            <textarea id="rm-refs" class="script-answer-input" style="min-height:54px; border-color:rgba(168,85,247,0.35);" placeholder="Какие файлы референсов смотреть агенту и что с них взять (или нажми кнопки + выше)..." oninput="saveCurrentRoomData(); rebuildLiveAgentPrompt();"></textarea>
+            <input type="hidden" id="rm-models" value="">
+          </div>
+        </div>
+
+        <!-- СИНЯЯ ЗОНА: НАЖИМАЙ КНОПКИ «+ ПЛЮС», ЧТОБЫ СОБРАТЬ ЗАДАНИЕ АГЕНТУ БЕЗ РУЧНОЙ ПИСАНИНЫ -->
+        <div class="zone-blue">
+          <div style="font-size:13.5px; font-weight:900; color:#93c5fd; margin-bottom:4px;">
+            🔵 ШАГ 3. КОНСТРУКТОР ЗАДАНИЯ АГЕНТУ — ПРОСТО НАЖИМАЙ «+ ПЛЮС» (Ничего не нужно писать вручную!)
           </div>
           <div style="font-size:11.5px; color:var(--muted); margin-bottom:8px;">
-            Агент не запутается и не зависнет: каждая кнопка формирует узкую задачу на 1 конкретный шаг с путями к файлам, высотой потолка 3000–3050 мм, отступами 2–3 мм и проверкой скриншотом.
+            Нажимай на плашки ниже — они сразу добавляют правильные профессиональные формулировки в задачу этой комнаты:
           </div>
-          <div class="agent-micro-bar">
-            <button class="micro-btn" onclick="copyAgentMicroPrompt('step1_shell')">🧱 Шаг 1 (Homestyler): Полы, тёплый пол, стены, потолок и плинтус комнаты</button>
-            <button class="micro-btn" onclick="copyAgentMicroPrompt('step2_joinery')">🗄️ Шаг 2 (Homestyler DIY): Смоделировать шкаф / кухню / тумбу (HSJoinery)</button>
-            <button class="micro-btn" onclick="copyAgentMicroPrompt('step3_skypro')">🛋️ Шаг 3 (3D Sky Pro): Найти и расставить мебель, сантехнику и свет</button>
-            <button class="micro-btn" onclick="copyAgentMicroPrompt('step4_texture')">🎨 Шаг 4 (Image-Gen): Сгенерировать бесшовную текстуру 4K по рефу</button>
-            <button class="micro-btn" onclick="copyAgentMicroPrompt('step5_archicad')">📐 Шаг 5 (ArchiCAD): Расставить размеры в рамке / привязки по комнате</button>
-            <button class="micro-btn" style="background:rgba(16,185,129,0.2); border-color:var(--green-border); color:#a7f3d0;" onclick="copyAgentMicroPrompt('full_room')">📋 Полная сводка по комнате (Всё ТЗ сразу)</button>
+
+          <!-- 3.1 УЗЛЫ ПОТОЛКА И ВЫСОТЫ МЕБЕЛИ -->
+          <div style="font-size:12px; font-weight:800; color:#60a5fa; margin-top:4px;">☁️ 1) Потолок, опуск потолка и мебель «в потолок»:</div>
+          <div class="plus-chips-wrap">
+            <button class="plus-chip" onclick="appendJoineryTag('Всю мебель в потолок строить НЕ до чернового перекрытия, а строго с учётом опуска потолка (до чистовой отметки H = 3000–3050 мм).')">+ Учесть опуск потолка для шкафов (H=3000-3050)</button>
+            <button class="plus-chip" onclick="appendJoineryTag('Смоделировать чистовой потолок с теневым профилем EuroKraab (30×30 мм), аккуратно огибая по контуру все высокие шкафы и ниши штор.')">+ Потолок с теневым профилем (огибает шкафы)</button>
+            <button class="plus-chip" onclick="appendJoineryTag('По периметру потолка смоделировать декоративный потолочный карниз / молдинг (переходящий на верх встроенных шкафов в потолок).')">+ Потолочный карниз / молдинг по периметру</button>
+            <button class="plus-chip" onclick="appendJoineryTag('По периметру потолка смоделировать теневую LED-подсветку.')">+ Теневая LED-подсветка потолка по периметру</button>
+            <button class="plus-chip" onclick="appendJoineryTag('У окна оставить скрытую карнизную нишу в потолке под шторы со встроенной LED-подсветкой.')">+ Скрытая ниша под шторы с подсветкой</button>
           </div>
+
+          <!-- 3.2 ИНДИВИДУАЛЬНЫЕ КНОПКИ «+» ПОД ВЫБРАННУЮ КОМНАТУ -->
+          <div style="font-size:12px; font-weight:800; color:#60a5fa; margin-top:8px;" id="room-specific-chips-title">🗄️ 2) Быстрые элементы для этой комнаты (нажми «+», чтобы добавить):</div>
+          <div class="plus-chips-wrap" id="room-specific-chips"></div>
+
+          <!-- 3.3 ОБЯЗАТЕЛЬНЫЕ АВТО-ПРАВИЛА (ЧТОБЫ АГЕНТ НЕ МОДЕЛИЛ ЛИШНЕГО И ДЕЛАЛ РЕАЛЬНЫЙ КОНСТРУКТИВ) -->
+          <div style="font-size:12px; font-weight:800; color:#fca5a5; margin-top:10px; margin-bottom:6px;">🛡️ 3) Жёсткие авто-правила для агента (Вшиты в промпт автоматически):</div>
+          <label class="auto-rule-row">
+            <input type="checkbox" id="rule-real-carcass" checked onchange="rebuildLiveAgentPrompt()">
+            <span><b>Реальный конструктив для реализации:</b> корпус из листов ЛДСП 18 мм (<code>HSJoinery.buildRealCarcass</code>), цоколь, фасады МДФ с зазорами 2–3 мм и скруглением торцов 2.5 мм, дробная группировка <code>DiyInstance</code> (отдельно Корпус, Фасады, Ручки, Столешница, Зеркало, Стекло, Подсветка).</span>
+          </label>
+          <label class="auto-rule-row">
+            <input type="checkbox" id="rule-ceiling-gap" checked onchange="rebuildLiveAgentPrompt()">
+            <span><b>Учёт опуска потолка и планировки:</b> вся корпусная мебель до потолка строится строго до чистового потолка (3000–3050 мм с учётом опуска ГКЛ/натяжного потолка), а расположение и габариты сверяются с Планировочным решением в папке проекта!</span>
+          </label>
+          <label class="auto-rule-row">
+            <input type="checkbox" id="rule-no-sanitary" checked onchange="rebuildLiveAgentPrompt()">
+            <span><b style="color:#fca5a5;">⛔ НЕ моделировать лишнего примитивами в DIY:</b> категорически НЕ моделировать смесители, кнопку инсталляции унитаза, чашу унитаза, чашу ванны, стиральную и сушильную машины, духовку, СВЧ, варочную панель, ТВ, стулья, кровати и диваны — под встроенную технику оставляем чистые ниши в корпусе, а сами приборы ставим готовыми 3D-моделями!</span>
+          </label>
+        </div>
+
+        <!-- ЗЕЛЁНАЯ ЗОНА: ГОТОВЫЙ ПРОМПТ АГЕНТУ С БОЛЬШОЙ КНОПКОЙ КОПИРОВАНИЯ -->
+        <div class="zone-green">
+          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:8px;">
+            <div>
+              <div style="font-size:14.5px; font-weight:900; color:#6ee7b7;" id="live-prompt-header-title">📋 ГОТОВЫЙ ПРОМПТ АГЕНТУ (Сформирован автоматически)</div>
+              <div style="font-size:11.5px; color:#a7f3d0;">Проверь или дополни 1 словом при желании — и нажми большую зелёную кнопку справа:</div>
+            </div>
+            <div style="display:flex; gap:8px; flex-wrap:wrap;">
+              <button class="big-copy-prompt-btn" onclick="copyLiveAgentPromptAndMark()">
+                📋 СКОПИРОВАТЬ ПРОМПТ АГЕНТУ
+              </button>
+            </div>
+          </div>
+          <textarea id="live-agent-prompt-box" class="script-answer-input" style="min-height:210px; font-family:monospace; font-size:12.2px; line-height:1.48; background:rgba(0,0,0,0.45); color:#f8fafc; border-color:rgba(16,185,129,0.5);"></textarea>
         </div>
       </div>
 
       <!-- СПИСОК ЗАКРЫТЫХ / ОСТАНОВЛЕННЫХ ПРОЕКТОВ (УБРАНЫ ВНИЗ) -->
       <details style="margin-top:16px; background:rgba(255,255,255,0.02); border:1px solid var(--border); border-radius:12px; padding:10px 14px;">
         <summary style="cursor:pointer; font-weight:800; font-size:13px; color:var(--muted);">
-          📦 Архив закрытых и остановленных проектов (Убраны с глаз, кликни чтобы развернуть)
+          📦 Архив закрытых и остановленных проектов (0550, 0587, 0574 — убраны с глаз, кликни чтобы развернуть)
         </summary>
         <div class="proj-cards-grid" id="closed-work-projects-grid" style="margin-top:12px; margin-bottom:0;"></div>
       </details>
@@ -2288,157 +2522,343 @@
       localStorage.setItem(CAL_NOTES_KEY, JSON.stringify(notesMap));
     }
 
-    // ==================== 8. ПРОЕКТЫ В РАБОТЕ И ГЕНЕРАТОР МИКРО-ЗАДАЧ АГЕНТАМ ====================
-    const WORK_PROJECTS_KEY = 'lav_work_projects_db_v1';
-    let currentWorkProjId = '0545';
+
+
+    // ==================== 8. ПРОЕКТЫ В РАБОТЕ И ИНТЕРАКТИВНЫЙ КОНСТРУКТОР ПРОМПТОВ АГЕНТАМ ====================
+    const WORK_PROJECTS_KEY = 'lav_work_projects_db_v2';
+    let currentWorkProjId = '0645';
     let currentWorkRoomKey = 'hall';
+    let currentAgentStage = 'modeling'; // modeling | texturing | placement | fixes
 
     const ROOM_NAMES_RU = {
       hall: 'Помещение 1: Прихожая и Коридор',
       kitchen: 'Помещение 2: Кухня-гостиная',
       bedroom: 'Помещение 3: Мастер-спальня',
-      kids: 'Помещение 4: Детская / Кабинет',
+      kids: 'Помещение 4: Детская / Кабинет / Гостевая',
       bath: 'Помещение 5: Ванная комната',
       wc: 'Помещение 6: Гостевой санузел / Постирочная'
     };
 
+    const ROOM_SUBFOLDER_MAP = {
+      hall: '01_Прихожая_Коридор',
+      kitchen: '02_Кухня_Гостиная',
+      bedroom: '03_Мастер_Спальня',
+      kids: '04_Детская_Кабинет',
+      bath: '05_Ванная_Комната',
+      wc: '06_Санузел_Постирочная'
+    };
+
+    // Индивидуальные кнопки «+ Плюс» для каждого помещения, чтобы Анжелика не писала вручную!
+    const ROOM_PLUS_PRESETS = {
+      hall: [
+        { label: '+ Длинный шкаф в потолок', text: 'Смоделировать длинный встроенный шкаф в потолок (с учётом опуска чистового потолка) строго по размерам на планировке.' },
+        { label: '+ Место/ниша для пуфика в шкафу', text: 'В шкафу предусмотреть открытую нишу с сидушкой для пуфика, обувницей снизу и аккуратными крючками (крючки в отдельной группе).' },
+        { label: '+ Фасады с молдингами / фрезеровкой', text: 'Фасады шкафа выполнить с неоклассической/классической ступенчатой фрезеровкой (молдингами) через HSJoinery.buildClassicMilledFacade.' },
+        { label: '+ Гладкие фасады МДФ', text: 'Фасады шкафа сделать гладкими матовыми из МДФ с зазорами 2–3 мм и скруглением торцов 2.5 мм.' },
+        { label: '+ Врезные профильные ручки на всю высоту', text: 'Смоделировать интегрированные врезные вертикальные профильные ручки на всю высоту фасадов (в отдельной группе «Ручки»).' },
+        { label: '+ Подвесная консоль / обувница', text: 'Смоделировать подвесную консоль / тумбу с выдвижным ящиком строго в месте по планировочному решению.' },
+        { label: '+ Ростовое зеркало с подсветкой', text: 'Смоделировать ростовое зеркало от пола до чистового потолка (отдельно рама, отдельно зеркальное полотно «Зеркало», отдельно скрытая контурная LED-подсветка без боковых кубиков).' },
+        { label: '+ Внутри шкафа: робот-пылесос + щиток', text: 'В нижней части шкафа учесть нишу без цоколя под базу робота-пылесоса и доступ к эл.щитку и роутеру.' },
+        { label: '+ Скрытая дверь в кладовую / гардероб', text: 'Дверцы в кладовую/нишу выставить строго заподлицо с плоскостью стены коридора под покраску в цвет стен.' }
+      ],
+      kitchen: [
+        { label: '+ Кухня в потолок с антресолями', text: 'Смоделировать кухонный гарнитур в потолок (до чистовой отметки потолка с учётом опуска) с верхними антресолями строго по габаритам плана.' },
+        { label: '+ Пеналы под холодильник и Духовку+СВЧ', text: 'Смоделировать высокие пеналы: секцию под встроенный холодильник и колонну с открытыми эргономичными нишами под духовой шкаф и СВЧ (саму технику в DIY НЕ моделировать!).' },
+        { label: '+ Тонкая каменная столешница 20мм без швов', text: 'Столешницу (16–20 мм) построить единым полигоном с вырезом под мойку (extrudePolyZ с holes) — без единого поперечного шва на камне!' },
+        { label: '+ Профильные ручки Gola', text: 'На нижних базах и верхних шкафах смоделировать интегрированные профильные ручки Gola (в отдельной группе «Ручки»), зазоры фасадов 2–3 мм.' },
+        { label: '+ Фасады кухни с фрезеровкой + витрина', text: 'Фасады кухни выполнить со ступенчатой фрезеровкой/филёнкой + секцию витрины со стеклом в тонкой рамке и внутренней подсветкой.' },
+        { label: '+ Врезная LED рабочей зоны (заподлицо)', text: 'Утопить врезной LED-профиль заподлицо в дно верхних шкафов (паз 12–15 мм, без торчащих вниз полос и без пересечений в углу!).' },
+        { label: '+ Кухонный остров / барная стойка', text: 'Смоделировать кухонный остров по привязкам планировочного решения (отдельно корпус, фасады и каменная столешница).' },
+        { label: '+ ТВ-зона: подвесная тумба + панели', text: 'В гостиной зоне смоделировать подвесную ТВ-тумбу и декоративные стеновые панели/рейки до чистового потолка (сам телевизор в DIY НЕ моделировать — ставим 3D-моделью!).' },
+        { label: '+ Стеллаж-витрина в гостиной', text: 'Рядом с ТВ-тумбой смоделировать стеллаж-витрину со стеклянными фасадами и тёплой врезной подсветкой полок.' }
+      ],
+      bedroom: [
+        { label: '+ Встроенный шкаф в потолок', text: 'Смоделировать встроенный распашной шкаф до чистового потолка (с учётом опуска потолка) плотно от стены до стены без щелей.' },
+        { label: '+ Открытый торцевой стеллаж над тумбой', text: 'ВАЖНЫЙ УЗЕЛ: чтобы крайняя дверца шкафа не упиралась в прикроватную тумбу, сделать крайнюю секцию у кровати (400–450 мм) с открытыми полками над уровнем тумбы!' },
+        { label: '+ Врезные профильные ручки во всю высоту', text: 'На фасадах шкафа смоделировать вертикальные врезные профильные ручки на всю высоту дверей (в отдельной группе).' },
+        { label: '+ Фасады шкафа с молдингами / филёнкой', text: 'Фасады шкафа выполнить с аккуратной неоклассической фрезеровкой/молдингами.' },
+        { label: '+ Подвесные прикроватные тумбы', text: 'Смоделировать подвесные прикроватные тумбы с выдвижным ящиком и зазором фасада 2–3 мм строго по плану (кровать НЕ моделировать — ставим 3D-моделью!).' },
+        { label: '+ Панели / рейки / изголовье за кроватью', text: 'За изголовьем кровати смоделировать акцентную композицию из стеновых панелей / реек / молдингов со скрытой подсветкой до чистового потолка.' },
+        { label: '+ Подвесной туалетный столик + зеркало', text: 'Смоделировать подвесной туалетный столик (переходящий из тумбы/консоли) и зеркало с мягкой подсветкой.' },
+        { label: '+ ТВ-консоль / комод напротив кровати', text: 'Напротив кровати смоделировать подвесную консоль / комод по размерам планировки.' }
+      ],
+      kids: [
+        { label: '+ Шкаф в потолок в светлой гамме', text: 'Смоделировать встроенный шкаф до чистового потолка в светлой гамме с зазорами фасадов 2–3 мм и профильными ручками.' },
+        { label: '+ Рабочая зона у окна (шкафы по бокам)', text: 'У окна смоделировать боковые стеллажи/шкафы рабочей зоны (сам письменный стол и кресло НЕ моделировать примитивами — поставим 3D-моделью!).' },
+        { label: '+ Комод / система хранения для школы', text: 'Смоделировать комод и открытые/закрытые полки для хранения книг и вещей по плану.' },
+        { label: '+ Мягкие стеновые панели у кровати/дивана', text: 'Смоделировать защитные мягкие стеновые панели вдоль спального места.' }
+      ],
+      bath: [
+        { label: '+ Подвесная тумба под раковину', text: 'Смоделировать подвесную тумбу под раковину по ширине из планировки (выдвижные ящики с зазором 2–3 мм, скруглением торцов и интегрированной профильной ручкой).' },
+        { label: '+ Раковина из керамогранита со щелевым сливом', text: 'Столешницу с интегрированной раковиной из керамогранита со скошенным дном и щелевым сливом построить через HSJoinery.buildPorcelainSlopedDrainSink единым полигоном без лишних швов!' },
+        { label: '+ Тумба со столешницей под 3D-раковину', text: 'Смоделировать тумбу с цельной каменной столешницей под установку готовой 3D-модели раковины (саму чашу раковины и смеситель в DIY НЕ моделировать!).' },
+        { label: '+ Шкаф над инсталляцией унитаза в потолок', text: 'Смоделировать зашивку короба инсталляции в керамограните, а выше до чистового потолка — встроенный шкафчик с дверцами (и открытой нишей со стеклянными полками и врезной LED-подсветкой). Унитаз и кнопку смыва в DIY НЕ моделировать!' },
+        { label: '+ Экран под ванну с нишей для ног и LED', text: 'В зоне встроенной ванны смоделировать экран из керамогранита с нишей для ног и нижней LED-подсветкой, а торец до стены зашить полкой/коробом из керамогранита (саму чашу ванны и смесители НЕ моделировать — вставим 3D-модель!).' },
+        { label: '+ Душевая перегородка + строительный поддон с трапом', text: 'Смоделировать душевую перегородку (тонкий профиль 15–20 мм + стекло + дверца с ручкой) и строительный поддон из керамогранита с узкими бортиками и металлическим трапом — всё в отдельных группах!' },
+        { label: '+ Полки с подсветкой внутри душевой', text: 'В нише внутри душевой смоделировать полки из керамогранита с врезной влагозащищённой LED-подсветкой для шампуней.' },
+        { label: '+ Зеркало с контурной подсветкой', text: 'Над тумбой смоделировать зеркало (отдельно группа «Зеркало», отдельно рама и скрытая подсветка за зеркалом без боковых кубиков).' }
+      ],
+      wc: [
+        { label: '+ Пенал под стиральную + сушильную машину (БЕЗ цоколя снизу!)', text: 'Смоделировать мебельный пенал под колонну СМ+СШМ: ВАЖНО — под стиральной машиной НЕТ нижнего цоколя (стоит прямо на полу z=0..850), над ней выдвижная полка под корзину для белья, выше (z=920..1770) открытая ниша под сушильную машину, и сверху до чистового потолка закрытый шкаф. Сами кубики стиралки и сушилки с барабанами НЕ моделировать!' },
+        { label: '+ Хоз. шкаф + отсек под бойлер/коллектор', text: 'Рядом с колонной СМ+СШМ смоделировать хозяйственный шкаф до чистового потолка (под швабру, пылесос, химию и доступ к водонагревателю/коллекторному узлу).' },
+        { label: '+ Тумба / столешница с раковиной', text: 'Смоделировать подвесную тумбу со столешницей по размеру из плана (смеситель и чашу раковины в DIY НЕ моделировать!).' },
+        { label: '+ Шкаф над инсталляцией унитаза до потолка', text: 'Смоделировать короб инсталляции и шкафчик над ним до чистового потолка (унитаз, гигиенический душ и кнопку смыва НЕ моделировать — ставим 3D-моделями!).' },
+        { label: '+ Душевая в строительном исполнении', text: 'Смоделировать стеклянную душевую перегородку в тонком профиле и строительный поддон из керамогранита с трапом.' },
+        { label: '+ Зеркало с подсветкой', text: 'Над раковиной смоделировать зеркало со скрытой контурной подсветкой.' }
+      ]
+    };
+
     const DEFAULT_WORK_PROJECTS = [
       {
-        id: '0645', name: 'Королёв, Солнечная', channel: '💬 MAX', format: '📋 Полный проект', price: '28 392 ₽', status: '🔥 Горящий №1: Визы к среде -> Электрика к пятнице', closed: false,
-        folder: 'D:\ФАНАТИКС\0645',
-        voiceDump: 'Экстренно делаем сначала 3D-визы, чтобы сразу после утверждения выдать точные планы электрики и сантехники к пятнице.',
-        baseStyle: 'Современный функциональный стиль', baseFloor: '', baseWalls: '', baseCeiling: 'Чистовой потолок 3000 мм', baseFamily: '',
-        rooms: {}
+        id: '0645', name: 'Королёв, ул. Солнечная (52.21 м²)', channel: '💬 MAX', format: '📋 Полный проект', price: '28 392 ₽', status: '🔥 Горящий №1: Визы к среде -> Электрика к пятнице', closed: false,
+        folder: 'D:\\ФАНАТИКС\\0645',
+        voiceDump: 'Экстренно делаем сначала 3D-визы (Коридор 3.43 м², Гардероб 2.16 м², Кухня-гостиная 24.10 м², Спальня 17.43 м², СУ 5.09 м²), чтобы сразу после утверждения выдать планы электрики и сантехники.',
+        baseStyle: 'Современный функциональный стиль (референсы 1.webp..17.webp в папке D:\\ФАНАТИКС\\0645)',
+        baseFloor: 'Единый контур кварцвинил/ламинат в жилых + керамогранит в СУ и входной зоне',
+        baseWalls: 'Покраска / малярный флизелин под покраску',
+        baseCeiling: 'Черновая высота H=3110 мм -> чистовой потолок H=3000–3030 мм с теневым профилем EuroKraab и скрытыми нишами для штор',
+        baseFamily: 'Г.о. Королёв, мкр. Первомайский, ул. Солнечная, д.2, к.1, кв.216 (52.21 м²)',
+        rooms: {
+          hall: {
+            joinery: '01 Коридор (3.43 м²) + 02 Гардеробная (2.16 м², 1285×1708 мм): открытая эргономичная система хранения до чистового потолка в гардеробной + консоль/зеркало в коридоре, обыграть эл.щиток (h=1560).',
+            finish: 'Строго по плану D:\\ФАНАТИКС\\0645\\0645,Московская_область,_г_о_Королёв,_мкр_Первомайский,_ул_Солнечная (1).pdf',
+            refs: 'Смотреть референсы 1.webp – 17.webp в папке D:\\ФАНАТИКС\\0645',
+            stages: { modeling: false, texturing: false, placement: false, fixes: false }
+          },
+          kitchen: {
+            joinery: '03 Кухня-гостиная (24.10 м²): угловая/прямая кухня в потолок с пеналами под встроенную технику + ТВ-зона в гостиной по плану.',
+            finish: 'Строго по планировочному решению в папке D:\\ФАНАТИКС\\0645',
+            refs: 'Референсы 1.webp – 17.webp в D:\\ФАНАТИКС\\0645',
+            stages: { modeling: false, texturing: false, placement: false, fixes: false }
+          },
+          bedroom: {
+            joinery: '04 Спальня (17.43 м², эркерное окно 5755 мм): встроенный шкаф в потолок, подвесные прикроватные тумбы, оформление зоны изголовья и ТВ-зоны.',
+            finish: 'Строго по планировочному решению в папке D:\\ФАНАТИКС\\0645',
+            refs: 'Референсы в D:\\ФАНАТИКС\\0645',
+            stages: { modeling: false, texturing: false, placement: false, fixes: false }
+          },
+          bath: {
+            joinery: '05 Санузел (5.09 м²): подвесная тумба под раковину, шкаф над инсталляцией унитаза до чистового потолка, пенал/ниша под СМ, экран ванны / душевая.',
+            finish: 'Строго по планировочному решению в папке D:\\ФАНАТИКС\\0645',
+            refs: 'Референсы в D:\\ФАНАТИКС\\0645',
+            stages: { modeling: false, texturing: false, placement: false, fixes: false }
+          }
+        }
       },
       {
         id: '0606', name: '1 комната (+вся кв.)', channel: '💬 MAX', format: '🎨 Только Визы', price: '4 900 ₽ (+вся кв.)', status: '⚡ Горящий №2: Сдать визы 1 комн. (ждёт с 22.10)', closed: false,
-        folder: 'D:\ФАНАТИКС\0606', voiceDump: '', baseStyle: '', baseFloor: '', baseWalls: '', baseCeiling: '', baseFamily: '', rooms: {}
+        folder: 'D:\\ФАНАТИКС\\0606', voiceDump: '', baseStyle: '', baseFloor: '', baseWalls: '', baseCeiling: 'Чистовой потолок с учётом опуска 3000 мм', baseFamily: '', rooms: {}
       },
       {
-        id: '0599', name: 'Александра (62 м², ВД Алёна)', channel: '💬 MAX', format: '🎨 Только Визы', price: '8 200 ₽', status: '🔵 Горящий №3: Моделирование (ждут с 21.10)', closed: false,
-        folder: 'D:\ФАНАТИКС\0599',
+        id: '0599', name: 'Александра (62 м², ВД Алёна)', channel: '💬 MAX', format: '🎨 Только Визы', price: '8 200 ₽', status: '🔵 Горящий №3: Моделирование по Бриф_0599.xlsx', closed: false,
+        folder: 'D:\\ФАНАТИКС\\0599',
         voiceDump: 'Бриф_0599 заполнен: семейная пара + 2 школьников (м 6 лет, д 10 лет). Светлый уютный интерьер, сантехника оружейная сталь (не чёрная!). Пол везде ламинат английская ёлка, в СУ керамогранит с тёплым полом.',
-        baseStyle: 'Светлый уютный современный интерьер. Сантехника — оружейная сталь. Стоп: чёрная сантехника, сильное гендерное разделение в детской.',
+        baseStyle: 'Светлый уютный современный интерьер. Сантехника — оружейная сталь. ТАБУ: чёрная сантехника, резкое гендерное разделение в детской.',
         baseFloor: 'Ламинат «английская ёлка» во всех жилых и прихожей; керамогранит + тёплый пол в санузле.',
-        baseWalls: 'Обои однотонные + акцентные панели. Двери стандартные с наличниками, кухня без двери.',
-        baseCeiling: 'Натяжной потолок во всех помещениях. Электрокарнизы в кухне-гостиной и спальне.',
+        baseWalls: 'Обои однотонные + акцентные панели. Двери с наличниками, кухня без двери.',
+        baseCeiling: 'Натяжной потолок во всех помещениях (учесть опуск потолка для всей мебели в потолок!). Электрокарнизы в кухне-гостиной и спальне.',
         baseFamily: 'ЛПР Александра. Пара + 2 детей (6 и 10 лет), правши. Синтезатор (85×30×80 см — розетка!). Кондиционеры: гостиная над ТВ, спальня над раб. столом, детская.',
         rooms: {
           hall: {
-            joinery: 'Шкаф с фасадами в пол (снизу открытая ниша/хранение грязной обуви). Эл.щит над дверью не переносим — обыграть. Внутри предусмотреть зарядку для ручного и робота-пылесоса.',
-            models: 'Пуф/обувница, домофон слева от двери.',
-            finish: 'Пол — ламинат английская ёлка. Длинную стену справа обыграть декором/панелями.',
-            refs: 'Смотреть D:\ФАНАТИКС\0599\Бриф_0599.xlsx'
+            joinery: 'Шкаф в потолок с фасадами в пол (снизу открытая полка/хранение грязной обуви). Внутри база и розетка для ручного и робота-пылесоса. Эл.щит над входной дверью не переносим — аккуратно обыграть.',
+            finish: 'Пол — ламинат английская ёлка. Длинную стену справа обыграть панелями/декором. Строго по плану.',
+            refs: 'Бриф D:\\ФАНАТИКС\\0599\\Бриф_0599.xlsx + папка D:\\ФАНАТИКС\\0599\\рефы заказчика',
+            stages: { modeling: false, texturing: false, placement: false, fixes: false }
           },
           kitchen: {
-            joinery: 'Кухонный гарнитур угловой до потолка (бюджет кухни до 500 тыс. ₽).',
-            models: 'Встроенный холодильник, ПММ 45 см, духовой шкаф, СВЧ, варочная панель электрическая, фильтр для воды, диван в гостиной (раскладной для гостей).',
-            finish: 'Пол ламинат английская ёлка, стены однотонные обои + панели. Без двери.',
-            refs: 'Электрокарниз, кондиционер над ТВ, вывод настенного света и розетки на открытую террасу.'
+            joinery: 'Угловой кухонный гарнитур до чистового потолка (с учётом опуска натяжного потолка). Пенал под встроенный холодильник, колонна под духовку и СВЧ, ниша под ПММ 45 см. ТВ-зона в гостиной.',
+            finish: 'Пол — ламинат английская ёлка, стены однотонные обои + акцентные панели. Кухня без двери.',
+            refs: 'Электрокарниз в нише потолка, кондиционер над ТВ, вывод света и розетки на открытую террасу.',
+            stages: { modeling: false, texturing: false, placement: false, fixes: false }
           },
           bedroom: {
-            joinery: 'Шкаф до потолка, навесные прикроватные тумбы, рабочий стол.',
-            models: 'Кровать 160×200 см.',
-            finish: 'Ламинат английская ёлка, однотонные обои + акцент.',
-            refs: 'Шторы, тюль, электрокарниз, кондиционер над рабочим столом.'
+            joinery: 'Встроенный шкаф до чистового потолка, подвесные прикроватные тумбы (под кровать 160×200), рабочее место со столом.',
+            finish: 'Ламинат английская ёлка, однотонные обои + акцентная стена за изголовьем. Электрокарниз в нише потолка.',
+            refs: 'Кондиционер над рабочим столом.',
+            stages: { modeling: false, texturing: false, placement: false, fixes: false }
           },
           kids: {
-            joinery: '2 рабочих места для двух школьников + школьное хранение, шкаф.',
-            models: 'Кровати для мальчика (6 лет) и девочки (10 лет), синтезатор 85×30×80 см.',
-            finish: 'Зонирование пространства, нейтральная гамма без резкого гендерного деления.',
-            refs: 'Розетка под синтезатор, кондиционер.'
+            joinery: 'Детская для двух школьников (м 6 лет и д 10 лет): 2 рабочих места + система хранения учебников + вместительный шкаф в потолок. Место под синтезатор 85×30×80 см.',
+            finish: 'Нейтральная светлая гамма с продуманным зонированием без резкого деления на синее/розовое.',
+            refs: 'Розетка у синтезатора, кондиционер.',
+            stages: { modeling: false, texturing: false, placement: false, fixes: false }
           },
           bath: {
-            joinery: 'Тумба под раковину, полки со стороны инсталляции, люк доступа к коммуникациям.',
-            models: 'Ванна 70×175 см (уже есть у клиентов!), инсталляция, сантехника цвет оружейная сталь.',
-            finish: 'Пол керамогранит + тёплый пол. Стены керамогранит + акцентная стена плитка кабанчик.',
-            refs: ''
+            joinery: 'Подвесная тумба под раковину, шкаф и полки со стороны инсталляции унитаза до чистового потолка (с люком доступа к коммуникациям), экран под ванну 175×70 см.',
+            finish: 'Пол — керамогранит с тёплым полом. Стены — керамогранит + акцентная стена из плитки кабанчик. Сантехника — оружейная сталь (НЕ чёрная!).',
+            refs: 'Ванна 175×70 см ставится 3D-моделью, смесители и кнопку инсталляции в DIY не моделировать!',
+            stages: { modeling: false, texturing: false, placement: false, fixes: false }
           }
         }
       },
       {
         id: '0596', name: 'Проект от Насти', channel: '💬 MAX', format: '🎨 Только Визы', price: '10 780 ₽', status: '🔵 Горящий №4: Собрать визы (ждут с 23.10)', closed: false,
-        folder: 'D:\ФАНАТИКС\0596', voiceDump: '', baseStyle: '', baseFloor: '', baseWalls: '', baseCeiling: '', baseFamily: '', rooms: {}
+        folder: 'D:\\ФАНАТИКС\\0596', voiceDump: '', baseStyle: '', baseFloor: '', baseWalls: '', baseCeiling: 'Чистовой потолок с учётом опуска 3000 мм', baseFamily: '', rooms: {}
       },
       {
-        id: '0545', name: 'Мария (60 м², ВД Алёна)', channel: '📱 TG', format: '🎨 Только Визы', price: '10 250 ₽', status: '🔵 Приоритет №5: Анкета + 36 рефов готовы к сборке', closed: false,
-        folder: 'D:\ФАНАТИКС\0545',
-        voiceDump: 'Мария прислала анкету (47 стр.) и 36 эталонных референсов. Тёплая светлая неоклассика: песочный, светло-бежевый, акценты ореха и матового золота. Все помещения в одном стиле.',
-        baseStyle: 'Тёплая неоклассика: светло-бежевый, песочный, коричневый/орех. Металл: матовое золото. Стоп: любые яркие цвета, лофт, холодный бетон/штукатурка.',
-        baseFloor: 'Французская ёлка (тёплый дуб) + керамогранит под светлый камень (стык в один уровень через тонкий профиль матовое золото).',
-        baseWalls: 'Обои (малярный флизелин под покраску) + декоративные молдинги в цвет стен + керамогранит. Плинтус: высокий дюрополимер в цвет стен. Двери: неоклассика с филёнкой и капителью (вариант №3 в анкете).',
-        baseCeiling: 'Белый матовый натяжной + красивый декоративный потолочный карниз (переходит на верх встроенных шкафов) + ниши для штор. Свет: 3000K тёплый, точки круглые + люстры в кухне, спальнях и ванной + бра в коридоре и у кровати + подсветка кухни и мягкая подсветка в спальне. Внутрипольные конвекторы, окна без подоконников (откосы штукатурка).',
-        baseFamily: 'ЛПР Мария. Баланс красоты и практичности. В спальнях 100% блэкаут ровные шторы. Над обеденным столом 1 картина.',
+        id: '0545', name: 'Мария (60 м², ВД Алёна)', channel: '📱 TG', format: '🎨 Только Визы', price: '10 250 ₽', status: '🔵 Приоритет №5: Анкета + 36 рефов + План готовы к моделированию', closed: false,
+        folder: 'D:\\ФАНАТИКС\\0545',
+        voiceDump: 'Мария прислала анкету (47 стр.) и 36 референсов + итоговую планировку 545 Итог планировка.pdf. Тёплая светлая неоклассика: песочный, светло-бежевый, акценты ореха и матового золота.',
+        baseStyle: 'Тёплая неоклассика: светло-бежевый, песочный, тёплый орех. Металл: матовое золото. ТАБУ: яркие кричащие цвета, лофт, серый бетон.',
+        baseFloor: 'Французская ёлка (тёплый дуб) + керамогранит под светлый мрамор (стык через тонкий профиль матовое золото).',
+        baseWalls: 'Малярный флизелин под покраску в тёплый светло-бежевый + молдинги в цвет стен. Плинтус: высокий дюрополимер в цвет стен. Двери: неоклассика с филёнкой.',
+        baseCeiling: 'Белый матовый натяжной потолок (с опуском до H=3000 мм) + декоративный потолочный карниз по периметру (переходит на верх шкафов в потолок!) + скрытые ниши для штор. Свет 3000K тёплый.',
+        baseFamily: 'ЛПР Мария. План: D:\\ФАНАТИКС\\0545\\545 Итог планировка.pdf (зелёным на плане выделена вся индивидуальная мебель для моделирования!).',
         rooms: {
           hall: {
-            joinery: 'Встроенный шкаф в потолок под потолочным карнизом в светло-бежевой эмали с неоклассической филёнкой + открытая боковая секция с полками и тёплой подсветкой + мягкий пуфик снизу (по рефам Марии). Внутри шкафа база робота-пылесоса и щиток.',
-            models: 'Ростовое зеркало напротив шкафа, бра в коридоре.',
-            finish: 'Керамогранит (уточнить: спокойный мрамор или классический ковёр с рамкой), стык с французской ёлкой через латунный профиль.',
-            refs: 'Папка D:\ФАНАТИКС\0545\Референсы + план D:\ФАНАТИКС\0545\545 Итог планировка.pdf'
+            joinery: 'По плану «545 Итог планировка.pdf»: встроенный шкаф 2080×780 мм до чистового потолка (под потолочным карнизом) с неоклассической фрезеровкой/молдингами и врезными профильными ручками. Внутри шкафа: отсек под робот-пылесос + эл.щиток и роутер. Напротив у входа — ростовое зеркало.',
+            finish: 'Строго по плану D:\\ФАНАТИКС\\0545\\545 Итог планировка.pdf. На стенах молдинги в цвет стен.',
+            refs: 'Папка D:\\ФАНАТИКС\\0545\\Референсы (36 фото Марии — фасады с филёнкой и тёплой подсветкой)',
+            stages: { modeling: false, texturing: false, placement: false, fixes: false }
           },
           kitchen: {
-            joinery: 'Кухня в потолок с классической/неоклассической фрезеровкой и витриной с подсветкой, фартук и столешница керамогранит под камень без бортика.',
-            models: 'Обеденный стол + мягкие стулья, 1 картина над столом, люстра над зоной кухни/столовой, диван в гостиной (в анкете отмечены гостиные №2, 4, 6, 7, 8, 22).',
-            finish: 'Пол французская ёлка, стены светло-бежевые с молдингами, ТВ-зона с мраморной/акцентной панелью и подвесной тумбой.',
-            refs: 'Гостиные в анкете №2, 4, 6, 7, 8, 22 + папка D:\ФАНАТИКС\0545\Референсы'
+            joinery: 'По плану «545 Итог планировка.pdf»: угловая кухня в потолок — левое крыло 2050×600 мм (встроенный холодильник, колонна СВЧ+духовой шкаф+аэрогриль, мойка с диспоузером), нижнее крыло 2600×600 мм (ПММ 600, варочная индукция, встроенная вытяжка). В гостиной у окна: стеллаж-витрина 800×400 мм + подвесная ТВ-тумба/комод 2000×300 мм.',
+            finish: 'Строго по плану D:\\ФАНАТИКС\\0545\\545 Итог планировка.pdf. Фартук и столешница — светлый керамогранит под камень единым полигоном без бортика.',
+            refs: 'Гостиные №2, 4, 6, 7, 8, 22 в анкете D:\\ФАНАТИКС\\0545\\0545 (2).pdf + папка D:\\ФАНАТИКС\\0545\\Референсы',
+            stages: { modeling: false, texturing: false, placement: false, fixes: false }
           },
           bedroom: {
-            joinery: 'Шкафы в потолок с филёнкой и карнизом сверху; справа у окна тумба, переходящая в подвесной туалетный столик с круглым зеркалом (фото 36).',
-            models: 'Кровать с мягким изголовьем, бра у кровати, люстра в спальне, ровные шторы 100% блэкаут.',
-            finish: 'Спальня №6 в анкете: светлая неоклассика с молдингами, мягкая подсветка (чтобы не подчёркивала пыль).',
-            refs: 'Спальня №6 в анкете + фото 30, 36 в D:\ФАНАТИКС\0545\Референсы'
+            joinery: 'По плану «545 Итог планировка.pdf»: 1) встроенный шкаф вдоль правой стены 3080×600 мм (секции 700 + 1880 + 500 мм) до чистового потолка под карнизом; 2) второй шкаф у входа 1560×400 мм + ростовое зеркало; 3) напротив кровати подвесная консоль/ТВ-зона (2190 + 748 мм). Кровать 1600×2000 с подъёмным механизмом ставим 3D-моделью!',
+            finish: 'Светлая неоклассика с молдингами и мягкой подсветкой по плану 545 Итог планировка.pdf.',
+            refs: 'Спальня №6 в анкете + фото 30, 36 в D:\\ФАНАТИКС\\0545\\Референсы',
+            stages: { modeling: false, texturing: false, placement: false, fixes: false }
+          },
+          kids: {
+            joinery: 'По плану «545 Итог планировка.pdf» (центральная комната): 1) встроенный шкаф вдоль левой стены 3050×600 мм (три секции: 1000 + 1100 + 950 мм) в потолок; 2) рабочая/ТВ-система у окна 1580 мм (780 + 800 мм) под встроенный ТВ 50 дюймов на кронштейне. Диван 2200×900 ставим 3D-моделью!',
+            finish: 'Строго по плану D:\\ФАНАТИКС\\0545\\545 Итог планировка.pdf.',
+            refs: 'Папка D:\\ФАНАТИКС\\0545\\Референсы',
+            stages: { modeling: false, texturing: false, placement: false, fixes: false }
           },
           bath: {
-            joinery: 'Тумба с каменной столешницей (из анкеты стр. 3: «Каменная столешница в ванне»), шкафчик над инсталляцией.',
-            models: 'Ванна, подвесной унитаз, смесители матовое золото, люстра в ванной.',
-            finish: 'Санузлы №5 и №9 в анкете (светлый мрамор + тёплая подсветка) и рефы фото 4, 5.',
-            refs: 'СУ №5, №9 в анкете + фото 4, 5 в D:\ФАНАТИКС\0545\Референсы'
+            joinery: 'По плану «545 Итог планировка.pdf» (центральная ванная): 1) подвесная тумба с каменной столешницей и раковиной 1000×400 мм + зеркало с подсветкой; 2) шкаф над инсталляцией унитаза до чистового потолка; 3) экран под ванну 1700×700 мм + торцевые полочки 300×200 мм. Смесители, унитаз, гиг.душ, кнопку смыва и чашу ванны НЕ моделировать!',
+            finish: 'Керамогранит под светлый мрамор, тёплая стена у ванны. Строго по плану 545 Итог планировка.pdf.',
+            refs: 'Санузлы №5 и №9 в анкете + фото 4, 5 в D:\\ФАНАТИКС\\0545\\Референсы',
+            stages: { modeling: false, texturing: false, placement: false, fixes: false }
+          },
+          wc: {
+            joinery: 'По плану «545 Итог планировка.pdf» (левый санузел-постирочная): 1) единый блок 1600×650 мм по верхней стене: колонна стиральная + сушильная машины (БЕЗ цоколя под СМ!), секция с корзиной для белья (500 мм) и хоз. шкаф (450 мм) до чистового потолка; 2) столешница с тумбой под раковину 1580×450 мм вдоль левой стены; 3) шкаф над инсталляцией унитаза и коллекторным узлом/водонагревателем + зеркало.',
+            finish: 'Строго по плану D:\\ФАНАТИКС\\0545\\545 Итог планировка.pdf.',
+            refs: 'Папка D:\\ФАНАТИКС\\0545\\Референсы (саму стиралку, сушилку, унитаз и смесители в DIY НЕ моделировать!)',
+            stages: { modeling: false, texturing: false, placement: false, fixes: false }
+          }
+        }
+      },
+      {
+        id: '0567', name: 'Вернадского 80 (78.6 м², Правки 0576)', channel: '📱 TG', format: '🎨 Только Визы', price: '9 800 ₽', status: '🔧 Мастер-бриф готов (D:\\ФАНАТИКС\\0567\\PROJECT_0567_MASTER_BRIEF.md)', closed: false,
+        folder: 'D:\\ФАНАТИКС\\0567',
+        voiceDump: 'Чистовой потолок H=3050 мм (опуск ГКЛ 150 мм от 3200 мм) + теневой профиль EuroKRAAB 30×30 мм. Чёрный микроплинтус. Никакого золота и розового!',
+        baseStyle: 'Современный тёмный минимализм: графит, серый микроцемент, тёплый орех/дуб, хвойно-зелёный акцент. ТАБУ: золото/латунь, розовый цвет.',
+        baseFloor: 'Инженерная доска / паркет ёлочкой + широкоформатный керамогранит.',
+        baseWalls: 'Декоративная штукатурка / микроцемент + шпон ореха + 3D рейки. Чёрный микроплинтус, скрытые двери.',
+        baseCeiling: 'ГКЛ с опуском 150 мм -> чистовая отметка H = 3050 мм + теневой профиль EuroKRAAB 30×30 мм + скрытые ниши под шторы с подсветкой у 7 панорамных окон. Свет 4000K.',
+        baseFamily: 'Мастер-бриф: D:\\ФАНАТИКС\\0567\\PROJECT_0567_MASTER_BRIEF.md, План: D:\\ФАНАТИКС\\0567\\0576-plan-7 (1).png',
+        rooms: {
+          hall: {
+            joinery: 'Прихожая (6.0 м²) + Коридор (8.2 м²) + Кладовая (0.62 м²) + Гардеробная (4.4 м²): 1) угловой шкаф с нишей-скамьёй до H=3050 мм, крючки в отд. группе; 2) подвесная консоль вплотную к углу + ростовое зеркало до H=3050 мм правее; 3) скрытые дверцы в кладовую заподлицо со стеной + Г-образные полки внутри; 4) в гардеробной открытая система хранения (3 секции по 512 мм по центру + крылья 1170 мм, фасады только у ящиков!).',
+            finish: 'Строго по плану D:\\ФАНАТИКС\\0567\\0576-plan-7 (1).png и файлу PROJECT_0567_MASTER_BRIEF.md.',
+            refs: 'Папка D:\\ФАНАТИКС\\0567\\референсы и D:\\ФАНАТИКС\\0567\\МОИ РЕФЕРЕНСЫ',
+            stages: { modeling: true, texturing: false, placement: false, fixes: false }
+          },
+          kitchen: {
+            joinery: 'Кухня-гостиная (18.8 м²): угловая кухня до H=3050 мм. В правой колонне опустить нишу под духовку и СВЧ на эргономичную высоту (сами блоки техники удалить из DIY!). Каменная столешница единым полигоном без швов + глубокая мойка. Ручки Gola, врезная LED заподлицо в дно шкафов. ТВ-зона до H=3050 мм (плоский куб ТВ удалить!).',
+            finish: 'Строго по плану D:\\ФАНАТИКС\\0567\\0576-plan-7 (1).png',
+            refs: 'D:\\ФАНАТИКС\\0567\\PROJECT_0567_MASTER_BRIEF.md',
+            stages: { modeling: true, texturing: false, placement: false, fixes: false }
+          },
+          bedroom: {
+            joinery: 'Мастер-спальня (15.6 м²): встроенный шкаф в нише 2635×600 мм до H=3050 мм — крайнюю левую секцию (400–450 мм) сделать открытым стеллажом над прикроватной тумбой, чтобы дверца не упиралась! Вертикальные профильные ручки на всю высоту. Треугольную нишу у входа закрыть скрытой дверцей заподлицо со стеной.',
+            finish: 'Текстуру тёмного дуба сделать 100% бесшовной без горизонтального шва.',
+            refs: 'D:\\ФАНАТИКС\\0567\\PROJECT_0567_MASTER_BRIEF.md',
+            stages: { modeling: true, texturing: false, placement: false, fixes: false }
+          },
+          kids: {
+            joinery: 'Детская (13.4 м²): в светлой гамме (светло-серый / тёплый кашемир + дерево). Оставить только 2 корпусных изделия по плану: 1) 4-створчатый шкаф справа от входа 2290×600 мм до H=3050 мм с профильными ручками; 2) низкий комод/стеллаж по левой стене 1200×400 мм. Письменный стол у окна ставим готовой 3D-моделью!',
+            finish: 'Строго по плану D:\\ФАНАТИКС\\0567\\0576-plan-7 (1).png',
+            refs: 'D:\\ФАНАТИКС\\0567\\PROJECT_0567_MASTER_BRIEF.md',
+            stages: { modeling: true, texturing: false, placement: false, fixes: false }
+          },
+          bath: {
+            joinery: 'Мастер-санузел (6.5 м²): 1) реечная тумба 1250 мм + столешница с раковиной из керамогранита со щелевым сливом единым полигоном без швов + чистое зеркало; 2) экран встроенной ванны 1600×700 с нишей для ног и LED + зашивка выступа до угла коробом из керамогранита (чашу ванны убрать из DIY!); 3) душевая 1200×1000 с поддоном и трапом + зашивка инсталляции со стеклянными полками и шкафчиком до H=3050 мм.',
+            finish: 'Строго по плану D:\\ФАНАТИКС\\0567\\0576-plan-7 (1).png',
+            refs: 'D:\\ФАНАТИКС\\0567\\PROJECT_0567_MASTER_BRIEF.md',
+            stages: { modeling: true, texturing: false, placement: false, fixes: false }
+          },
+          wc: {
+            joinery: 'Постирочная (2.0 м²) + Гостевой СУ (3.4 м²): В постирочной по северной стене (3 секции по 600 мм): справа пенал под СМ+СШМ БЕЗ нижнего цоколя под стиралкой + выдвижная полка под корзину + шкаф до H=3050 мм; слева тумба под 3D-мойку и верхний шкаф до H=3050 мм (боковой стеллаж 300 мм удалить!). В гостевом СУ: тумба 850 мм с профильной ручкой, трапециевидная душевая со скошенным входом и полками с LED внутри ниши, над инсталляцией стеклянные полки с LED + шкафчик до H=3050 мм.',
+            finish: 'Строго по плану D:\\ФАНАТИКС\\0567\\0576-plan-7 (1).png',
+            refs: 'D:\\ФАНАТИКС\\0567\\PROJECT_0567_MASTER_BRIEF.md',
+            stages: { modeling: true, texturing: false, placement: false, fixes: false }
+          }
+        }
+      },
+      {
+        id: '0633', name: 'Евродвушка 69.5 м² (План + Визы)', channel: '📱 TG', format: '📋 Полный проект', price: '26 754 ₽', status: '📐 Планировка (2 варианта в D:\\ФАНАТИКС\\0633) + Дизайн-референсы.pdf', closed: false,
+        folder: 'D:\\ФАНАТИКС\\0633',
+        voiceDump: 'В папке D:\\ФАНАТИКС\\0633 лежат: 0633 25.10 Планировочные решения.pdf (2 варианта), Дизайн-референсы.pdf и файл ArchiCAD .pln.',
+        baseStyle: 'См. D:\\ФАНАТИКС\\0633\\Дизайн-референсы.pdf',
+        baseFloor: '', baseWalls: '', baseCeiling: 'Чистовой потолок с учётом опуска 3000 мм + скрытые ниши для штор по радиусному эркеру', baseFamily: '',
+        rooms: {
+          hall: {
+            joinery: 'Прихожая (10.58 м² / 7.44 м²): шкафы для одежды (1200×600 и 1130×450), колонна под стиральную и сушильную машины 600×600 + полки.',
+            finish: 'Строго по утверждённому варианту в D:\\ФАНАТИКС\\0633\\0633 25.10 Планировочные решения.pdf',
+            refs: 'D:\\ФАНАТИКС\\0633\\Дизайн-референсы.pdf',
+            stages: { modeling: false, texturing: false, placement: false, fixes: false }
+          },
+          kitchen: {
+            joinery: 'Кухня-гостиная с радиусным панорамным остеклением (22.46 м²): прямая кухня 600+600+1250+450+700 мм + кухонный остров 1600×950 (или круглый стол 1200) + ТВ-тумба 1870×350 и шкаф-витрина 1800×600.',
+            finish: 'По плану D:\\ФАНАТИКС\\0633\\0633 25.10 Планировочные решения.pdf',
+            refs: 'D:\\ФАНАТИКС\\0633\\Дизайн-референсы.pdf',
+            stages: { modeling: false, texturing: false, placement: false, fixes: false }
+          },
+          bedroom: {
+            joinery: 'Спальня (10.45–12.61 м²): встроенный шкаф в потолок (1760+440×600 мм), прикроватные тумбы по 400 мм (кровать 1600×2000), комод 1500×350 и туалетный столик 900×450 у окна.',
+            finish: 'По плану D:\\ФАНАТИКС\\0633\\0633 25.10 Планировочные решения.pdf',
+            refs: 'D:\\ФАНАТИКС\\0633\\Дизайн-референсы.pdf',
+            stages: { modeling: false, texturing: false, placement: false, fixes: false }
+          },
+          bath: {
+            joinery: 'Санузел (3.72–4.03 м²): тумба с раковиной 980×550 мм, короб инсталляции + шкаф до потолка и ниша с полками, душ в строительном исполнении 2050×900 мм (или ванна 1800×700).',
+            finish: 'По плану D:\\ФАНАТИКС\\0633\\0633 25.10 Планировочные решения.pdf',
+            refs: 'D:\\ФАНАТИКС\\0633\\Дизайн-референсы.pdf',
+            stages: { modeling: false, texturing: false, placement: false, fixes: false }
           }
         }
       },
       {
         id: '0653', name: 'Созвон сегодня в 15:00', channel: '📱 TG', format: '📋 Полный проект', price: '20 348 ₽', status: '📞 Сегодня 15:00 — проводим Бриф с нуля', closed: false,
-        folder: 'D:\ФАНАТИКС\0653', voiceDump: '', baseStyle: '', baseFloor: '', baseWalls: '', baseCeiling: '', baseFamily: '', rooms: {}
+        folder: 'D:\\ФАНАТИКС\\0653', voiceDump: '', baseStyle: '', baseFloor: '', baseWalls: '', baseCeiling: 'Чистовой потолок с учётом опуска 3000 мм', baseFamily: '', rooms: {}
       },
       {
         id: '0654', name: 'Полный 40 м² (Созвон СР)', channel: '📱 TG', format: '📋 Полный проект', price: '16 000 ₽', status: '📅 Созвон завтра (СР 28.10) после 16:00', closed: false,
-        folder: 'D:\ФАНАТИКС\0654', voiceDump: '', baseStyle: '', baseFloor: '', baseWalls: '', baseCeiling: '', baseFamily: '', rooms: {}
-      },
-      {
-        id: '0633', name: 'Планировка + Визы', channel: '📱 TG', format: '📋 Полный проект', price: '26 754 ₽', status: '📐 Делаем новый вариант планировки по ответу клиента', closed: false,
-        folder: 'D:\ФАНАТИКС\0633', voiceDump: '', baseStyle: '', baseFloor: '', baseWalls: '', baseCeiling: '', baseFamily: '', rooms: {}
+        folder: 'D:\\ФАНАТИКС\\0654', voiceDump: '', baseStyle: '', baseFloor: '', baseWalls: '', baseCeiling: 'Чистовой потолок с учётом опуска 3000 мм', baseFamily: '', rooms: {}
       },
       {
         id: '0619', name: 'Визы 61.4 м² (Валерия Г.)', channel: '📱 TG', format: '🎨 Только Визы', price: '7 616,70 ₽', status: '✅ Анкета + Рефы есть • Ждём время созвона', closed: false,
-        folder: 'D:\ФАНАТИКС\0619', voiceDump: '', baseStyle: '', baseFloor: '', baseWalls: '', baseCeiling: '', baseFamily: '', rooms: {}
+        folder: 'D:\\ФАНАТИКС\\0619', voiceDump: '', baseStyle: '', baseFloor: '', baseWalls: '', baseCeiling: 'Чистовой потолок с учётом опуска 3000 мм', baseFamily: '', rooms: {}
       },
       {
         id: '0609', name: 'Визы с премией', channel: '📱 TG', format: '🎨 Только Визы', price: '10 000 ₽', status: '⏳ Напомнить про заполнение анкеты', closed: false,
-        folder: 'D:\ФАНАТИКС\0609', voiceDump: '', baseStyle: '', baseFloor: '', baseWalls: '', baseCeiling: '', baseFamily: '', rooms: {}
+        folder: 'D:\\ФАНАТИКС\\0609', voiceDump: '', baseStyle: '', baseFloor: '', baseWalls: '', baseCeiling: '', baseFamily: '', rooms: {}
       },
       {
         id: '0593', name: 'Визы 91 м² (Настя)', channel: '💬 MAX', format: '🎨 Только Визы', price: '11 147 ₽', status: '⏳ Напомнить про анкету и назначить созвон', closed: false,
-        folder: 'D:\ФАНАТИКС\0593', voiceDump: '', baseStyle: '', baseFloor: '', baseWalls: '', baseCeiling: '', baseFamily: '', rooms: {}
-      },
-      {
-        id: '0576', name: 'Визы сданы 24.10', channel: '📱 TG', format: '🎨 Только Визы', price: '9 800 ₽', status: '👀 Визы отправлены 24.10 • Ждём обратную связь', closed: false,
-        folder: 'D:\ФАНАТИКС\0567', voiceDump: '', baseStyle: '', baseFloor: '', baseWalls: '', baseCeiling: '', baseFamily: '', rooms: {}
+        folder: 'D:\\ФАНАТИКС\\0593', voiceDump: '', baseStyle: '', baseFloor: '', baseWalls: '', baseCeiling: '', baseFamily: '', rooms: {}
       },
       {
         id: '0572', name: 'Вопрос по комплектатору', channel: '📱 TG', format: '🎨 Только Визы', price: '9 398 ₽', status: '❓ Уточнение по комплектатору', closed: false,
-        folder: 'D:\ФАНАТИКС\0572', voiceDump: '', baseStyle: '', baseFloor: '', baseWalls: '', baseCeiling: '', baseFamily: '', rooms: {}
+        folder: 'D:\\ФАНАТИКС\\0572', voiceDump: '', baseStyle: '', baseFloor: '', baseWalls: '', baseCeiling: '', baseFamily: '', rooms: {}
       },
       {
         id: '0550', name: 'Закрытый проект', channel: '📱 TG', format: '🎨 Только Визы', price: '8 000 ₽', status: '✅ Полностью закрыт (100%)', closed: true,
-        folder: '', voiceDump: '', baseStyle: '', baseFloor: '', baseWalls: '', baseCeiling: '', baseFamily: '', rooms: {}
+        folder: 'D:\\ФАНАТИКС\\0550', voiceDump: '', baseStyle: '', baseFloor: '', baseWalls: '', baseCeiling: '', baseFamily: '', rooms: {}
       },
       {
         id: '0587', name: 'Визы утверждены 26.10', channel: '💬 MAX', format: '🎨 Только Визы', price: '9 922 ₽', status: '✅ Визы закрыты 26.10 (ждём финальную выплату)', closed: true,
-        folder: 'D:\ФАНАТИКС\0587', voiceDump: '', baseStyle: '', baseFloor: '', baseWalls: '', baseCeiling: '', baseFamily: '', rooms: {}
+        folder: 'D:\\ФАНАТИКС\\0587', voiceDump: '', baseStyle: '', baseFloor: '', baseWalls: '', baseCeiling: '', baseFamily: '', rooms: {}
       },
       {
         id: '0574', name: 'Пауза (меняют план)', channel: '📱 TG', format: '🎨 Только Визы', price: '12 142 ₽', status: '⏸ На паузе (переделывают планировку)', closed: true,
-        folder: '', voiceDump: '', baseStyle: '', baseFloor: '', baseWalls: '', baseCeiling: '', baseFamily: '', rooms: {}
+        folder: 'D:\\ФАНАТИКС\\0574', voiceDump: '', baseStyle: '', baseFloor: '', baseWalls: '', baseCeiling: '', baseFamily: '', rooms: {}
       }
     ];
 
@@ -2452,6 +2872,12 @@
 
     function saveWorkProjects(list) {
       localStorage.setItem(WORK_PROJECTS_KEY, JSON.stringify(list));
+    }
+
+    function toggleVoiceAndBasePanel() {
+      const el = document.getElementById('collapsible-voice-base');
+      if (!el) return;
+      el.style.display = (el.style.display === 'none' || !el.style.display) ? 'block' : 'none';
     }
 
     function renderWorkProjectsGrid() {
@@ -2484,7 +2910,7 @@
               <span class="tag ${priceTagClass}">${p.price || '❓ Уточняется'}</span>
             </div>
             <div style="font-size:14px; font-weight:800; color:var(--text);">${p.name || ('Проект ' + p.id)}</div>
-            <div style="font-size:12px; color:var(--muted); margin-top:3px;">${p.status || 'В работе'}</div>
+            <div style="font-size:11.5px; color:var(--muted); margin-top:3px;">${p.status || 'В работе'}</div>
           </div>
         `;
 
@@ -2501,23 +2927,39 @@
       document.getElementById('project-passport-box').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
 
+    function updateRoomBadges(p) {
+      ['hall','kitchen','bedroom','kids','bath','wc'].forEach(rk => {
+        const badgeEl = document.getElementById('rbadge-' + rk);
+        if (!badgeEl) return;
+        const r = (p.rooms && p.rooms[rk]) ? p.rooms[rk] : {};
+        const st = r.stages || {};
+        const doneCount = ['modeling','texturing','placement','fixes'].filter(k => st[k]).length;
+        if (doneCount === 4) badgeEl.innerHTML = ' <span style="color:#6ee7b7;">✅ 4/4</span>';
+        else if (doneCount > 0) badgeEl.innerHTML = ` <span style="color:#fde68a;">⚡ ${doneCount}/4</span>`;
+        else if (r.joinery && r.joinery.trim()) badgeEl.innerHTML = ' <span style="color:#c084fc;">• ТЗ</span>';
+        else badgeEl.innerHTML = '';
+      });
+    }
+
     function loadSelectedWorkProjectIntoForm() {
       const list = getWorkProjects();
       const p = list.find(x => x.id === currentWorkProjId) || list[0];
       if (!p) return;
       currentWorkProjId = p.id;
 
-      document.getElementById('passport-proj-title').innerHTML = `📂 Паспорт проекта: <span class="tag tag-proj" style="font-size:15px;">${p.id}</span> ${p.name || ''} • <span class="tag tag-purple">${p.format || '🎨 Только Визы'}</span> • <span class="tag tag-money">${p.price || '❓ Уточняется'}</span>`;
-      document.getElementById('passport-proj-sub').textContent = p.status || 'Заполняй базу голосом или по комнатам и передавай микро-задачи агентам в 1 клик';
+      const folder = p.folder || (`D:\\ФАНАТИКС\\${p.id}`);
+      document.getElementById('passport-proj-title').innerHTML = `📂 Проект <span class="tag tag-proj" style="font-size:15px;">${p.id}</span> ${p.name || ''} • <span class="tag tag-purple">${p.format || '🎨 Только Визы'}</span> • <span class="tag tag-money">${p.price || '❓ Уточняется'}</span>`;
+      document.getElementById('passport-proj-sub').innerHTML = `📁 Папка проекта: <code style="color:#93c5fd;">${folder}</code> • Статус: <b>${p.status || 'В работе'}</b>`;
 
       document.getElementById('wp-voice-dump').value = p.voiceDump || '';
       document.getElementById('wp-base-style').value = p.baseStyle || '';
       document.getElementById('wp-base-floor').value = p.baseFloor || '';
       document.getElementById('wp-base-walls').value = p.baseWalls || '';
-      document.getElementById('wp-base-ceiling').value = p.baseCeiling || '';
+      document.getElementById('wp-base-ceiling').value = p.baseCeiling || 'Чистовой потолок 3000–3050 мм (с учётом опуска потолка)';
       document.getElementById('wp-base-family').value = p.baseFamily || '';
-      document.getElementById('wp-base-folder').value = p.folder || (`D:\ФАНАТИКС\${p.id}`);
+      document.getElementById('wp-base-folder').value = folder;
 
+      updateRoomBadges(p);
       loadSelectedRoomIntoForm(p);
     }
 
@@ -2532,12 +2974,118 @@
       if (p) loadSelectedRoomIntoForm(p);
     }
 
+    function selectAgentStage(stageKey) {
+      currentAgentStage = stageKey;
+      ['modeling','texturing','placement','fixes'].forEach(k => {
+        const pill = document.getElementById('stage-pill-' + k);
+        if (pill) {
+          if (k === stageKey) pill.classList.add('active-stage');
+          else pill.classList.remove('active-stage');
+        }
+      });
+      rebuildLiveAgentPrompt();
+    }
+
+    function toggleStageDone(stageKey, isChecked) {
+      const list = getWorkProjects();
+      const p = list.find(x => x.id === currentWorkProjId);
+      if (!p) return;
+      if (!p.rooms) p.rooms = {};
+      if (!p.rooms[currentWorkRoomKey]) p.rooms[currentWorkRoomKey] = {};
+      if (!p.rooms[currentWorkRoomKey].stages) p.rooms[currentWorkRoomKey].stages = {};
+      p.rooms[currentWorkRoomKey].stages[stageKey] = isChecked;
+      saveWorkProjects(list);
+
+      const pill = document.getElementById('stage-pill-' + stageKey);
+      if (pill) {
+        if (isChecked) pill.classList.add('done-stage');
+        else pill.classList.remove('done-stage');
+      }
+      updateRoomBadges(p);
+    }
+
+    function renderRoomSpecificPlusChips() {
+      const wrap = document.getElementById('room-specific-chips');
+      const titleEl = document.getElementById('room-specific-chips-title');
+      if (!wrap) return;
+      const roomName = ROOM_NAMES_RU[currentWorkRoomKey] || '';
+      if (titleEl) titleEl.textContent = `🗄️ 2) Быстрые узлы для комнаты «${roomName}» (нажми «+», чтобы добавить в задание):`;
+
+      const presets = ROOM_PLUS_PRESETS[currentWorkRoomKey] || ROOM_PLUS_PRESETS.hall;
+      wrap.innerHTML = presets.map((item, idx) => `
+        <button class="plus-chip" onclick="appendJoineryPreset(${idx})">${item.label}</button>
+      `).join('');
+    }
+
+    function appendJoineryPreset(idx) {
+      const presets = ROOM_PLUS_PRESETS[currentWorkRoomKey] || ROOM_PLUS_PRESETS.hall;
+      const item = presets[idx];
+      if (!item) return;
+      appendJoineryTag(item.text);
+    }
+
+    function appendJoineryTag(text) {
+      const box = document.getElementById('rm-joinery');
+      if (!box) return;
+      const cur = box.value.trim();
+      if (!cur.includes(text)) {
+        box.value = cur ? (cur + '\\n• ' + text) : ('• ' + text);
+      }
+      saveCurrentRoomData();
+      rebuildLiveAgentPrompt();
+    }
+
+    function appendRefTag(text) {
+      const box = document.getElementById('rm-refs');
+      if (!box) return;
+      const cur = box.value.trim();
+      if (!cur.includes(text)) {
+        box.value = cur ? (cur + ' | ' + text) : text;
+      }
+      saveCurrentRoomData();
+      rebuildLiveAgentPrompt();
+    }
+
+    function copyRoomRefFolderPath() {
+      const list = getWorkProjects();
+      const p = list.find(x => x.id === currentWorkProjId);
+      if (!p) return;
+      const folder = p.folder || (`D:\\ФАНАТИКС\\${p.id}`);
+      const sub = ROOM_SUBFOLDER_MAP[currentWorkRoomKey] || '01_Прихожая_Коридор';
+      const fullPath = `${folder}\\Референсы_по_комнатам\\${sub}`;
+      navigator.clipboard.writeText(fullPath).then(() => {
+        alert('✅ Путь к папке референсов комнаты скопирован:\\n' + fullPath);
+      });
+    }
+
     function loadSelectedRoomIntoForm(p) {
       const r = (p.rooms && p.rooms[currentWorkRoomKey]) ? p.rooms[currentWorkRoomKey] : {};
       document.getElementById('rm-joinery').value = r.joinery || '';
       document.getElementById('rm-models').value = r.models || '';
-      document.getElementById('rm-finish').value = r.finish || '';
+      document.getElementById('rm-finish').value = r.finish || 'Строго по планировочному решению в папке проекта.';
       document.getElementById('rm-refs').value = r.refs || '';
+
+      const folder = p.folder || (`D:\\ФАНАТИКС\\${p.id}`);
+      const sub = ROOM_SUBFOLDER_MAP[currentWorkRoomKey] || '01_Прихожая_Коридор';
+      const hintEl = document.getElementById('room-ref-folder-hint');
+      if (hintEl) hintEl.textContent = `Папка референсов комнаты: ${folder}\\Референсы_по_комнатам\\${sub}`;
+
+      const stages = r.stages || {};
+      ['modeling','texturing','placement','fixes'].forEach(k => {
+        const chk = document.getElementById('st-chk-' + k);
+        const pill = document.getElementById('stage-pill-' + k);
+        const isDone = !!stages[k];
+        if (chk) chk.checked = isDone;
+        if (pill) {
+          if (isDone) pill.classList.add('done-stage');
+          else pill.classList.remove('done-stage');
+          if (k === currentAgentStage) pill.classList.add('active-stage');
+          else pill.classList.remove('active-stage');
+        }
+      });
+
+      renderRoomSpecificPlusChips();
+      rebuildLiveAgentPrompt();
     }
 
     function saveCurrentWorkProject() {
@@ -2559,20 +3107,118 @@
       const p = list.find(x => x.id === currentWorkProjId);
       if (!p) return;
       if (!p.rooms) p.rooms = {};
+      const prevStages = (p.rooms[currentWorkRoomKey] && p.rooms[currentWorkRoomKey].stages) ? p.rooms[currentWorkRoomKey].stages : {};
       p.rooms[currentWorkRoomKey] = {
         joinery: document.getElementById('rm-joinery').value,
         models: document.getElementById('rm-models').value,
         finish: document.getElementById('rm-finish').value,
-        refs: document.getElementById('rm-refs').value
+        refs: document.getElementById('rm-refs').value,
+        stages: prevStages
       };
       saveWorkProjects(list);
+      updateRoomBadges(p);
+    }
+
+    function rebuildLiveAgentPrompt() {
+      const list = getWorkProjects();
+      const p = list.find(x => x.id === currentWorkProjId);
+      if (!p) return;
+      const r = (p.rooms && p.rooms[currentWorkRoomKey]) ? p.rooms[currentWorkRoomKey] : {};
+      const roomTitle = ROOM_NAMES_RU[currentWorkRoomKey] || currentWorkRoomKey;
+      const folder = p.folder || `D:\\ФАНАТИКС\\${p.id}`;
+      const sub = ROOM_SUBFOLDER_MAP[currentWorkRoomKey] || '01_Прихожая_Коридор';
+      const roomRefPath = `${folder}\\Референсы_по_комнатам\\${sub}`;
+
+      const ruleRealCarcass = document.getElementById('rule-real-carcass') ? document.getElementById('rule-real-carcass').checked : true;
+      const ruleCeilingGap = document.getElementById('rule-ceiling-gap') ? document.getElementById('rule-ceiling-gap').checked : true;
+      const ruleNoSanitary = document.getElementById('rule-no-sanitary') ? document.getElementById('rule-no-sanitary').checked : true;
+
+      const stageTitles = {
+        modeling: 'ЭТАП 1: МОДЕЛИРОВАНИЕ КОРПУСНОЙ МЕБЕЛИ И ПОТОЛКА В HOMESTYLER (DIY)',
+        texturing: 'ЭТАП 2: ГЕНЕРАЦИЯ 4K ТЕКСТУР И ТЕКСТУРИРОВАНИЕ ПОМЕЩЕНИЯ',
+        placement: 'ЭТАП 3: ПОДБОР И РАССТАНОВКА ГОТОВЫХ 3D-МОДЕЛЕЙ (МЕБЕЛЬ, САНТЕХНИКА, ТЕХНИКА, СВЕТ)',
+        fixes: 'ЭТАП 4: ВНЕСЕНИЕ ТОЧЕЧНЫХ ПРАВОК ПО ПОМЕЩЕНИЮ'
+      };
+
+      const headerTitleEl = document.getElementById('live-prompt-header-title');
+      if (headerTitleEl) {
+        headerTitleEl.textContent = `📋 ГОТОВЫЙ ПРОМПТ АГЕНТУ • Проект ${p.id} • ${roomTitle} (${stageTitles[currentAgentStage].split(':')[0]})`;
+      }
+
+      let promptLines = [];
+      promptLines.push(`Подключись к проекту ${p.id} (${p.name || ''}) в открытом Homestyler (порт 9222).`);
+      promptLines.push(`Работаем ТОЛЬКО в помещении: «${roomTitle}» (не перестраивай и не стирай другие комнаты!).`);
+      promptLines.push(`ЗАДАЧА — ${stageTitles[currentAgentStage]}:`);
+      promptLines.push(``);
+      promptLines.push(`1. СВЕРКА С ПЛАНИРОВКОЙ И РЕФЕРЕНСАМИ (ОБЯЗАТЕЛЬНО ПРОСМОТРИ ГЛАЗАМИ ЧЕРЕЗ read_file ПЕРЕД РАБОТОЙ):`);
+      promptLines.push(`   • Папка проекта и планировочное решение: ${folder}`);
+      promptLines.push(`   • Привязка к планировке / изменения: ${r.finish || 'Строго по планировочному решению в папке проекта (зелёная зона индивидуальной мебели)!'}`);
+      promptLines.push(`   • Референсы комнаты и что с них берём: ${r.refs || 'см. общую папку проекта и ' + roomRefPath}`);
+      if (p.baseStyle) promptLines.push(`   • Стиль, палитра и табу по квартире: ${p.baseStyle}`);
+      if (p.baseCeiling) promptLines.push(`   • Потолок и высота: ${p.baseCeiling}`);
+      promptLines.push(``);
+
+      if (currentAgentStage === 'modeling') {
+        promptLines.push(`2. ЧТО НУЖНО СМОДЕЛИРОВАТЬ В ПОМЕЩЕНИИ «${roomTitle}»:`);
+        promptLines.push(`${r.joinery || '• Смоделировать всю корпусную мебель индивидуального изготовления и потолок в этом помещении строго по планировочному решению и референсам.'}`);
+        promptLines.push(``);
+        promptLines.push(`3. ОБЯЗАТЕЛЬНЫЕ ПРАВИЛА КОНСТРУКТИВА И ЧИСТОТЫ МОДЕЛИРОВАНИЯ:`);
+        promptLines.push(`   • Подключи помощник столярных узлов: if (!window.HSJoinery) (0, eval)(await (await fetch('http://127.0.0.1:3033/hs-joinery.js')).text());`);
+        if (ruleCeilingGap) {
+          promptLines.push(`   • МЕБЕЛЬ В ПОТОЛОК И ОПУСК ПОТОЛКА: всю высокую мебель «в потолок» строим НЕ до чернового перекрытия, а с учётом опуска натяжного/ГКЛ потолка (до чистовой отметки H = 3000–3050 мм). При моделировании потолка покажи выбранный профиль (теневой EuroKraab 30×30 мм / потолочный карниз / теневую LED-подсветку / скрытую нишу под шторы), аккуратно огибая все высокие шкафы!`);
+        }
+        if (ruleRealCarcass) {
+          promptLines.push(`   • РЕАЛЬНЫЙ КОНСТРУКТИВ ПОД РЕАЛИЗАЦИЮ: ориентация внутрь комнаты через HSJoinery.createWallFrame(x1, y1, x2, y2, [roomCenterX, roomCenterY]); реальный корпус из листов ЛДСП 18 мм (HSJoinery.buildRealCarcass) с цоколем; фасады МДФ с отступом 2 мм, зазорами между дверцами 2–3 мм и фаской/скруглением торцов 2.5 мм. Дробная группировка DiyInstance для перекраски в 1 клик: отдельно «Корпус», «Фасады», «Ручки», «Столешница», «Зеркало», «Стекло», «Врезная LED подсветка».`);
+        }
+        if (ruleNoSanitary) {
+          promptLines.push(`   • ⛔ НЕ МОДЕЛИРУЙ ЛИШНЕГО ПРИМИТИВАМИ: категорически НЕ моделируй в DIY смесители, кнопку инсталляции унитаза, чашу унитаза, чашу ванны, стиральную и сушильную машины, духовку, СВЧ, варочную панель, телевизор, стулья, кровати и диваны — под встроенную технику оставляй чистые открытые ниши в корпусе (под стиральной машиной БЕЗ нижнего цоколя!), а сами приборы мы ставим готовыми 3D-моделями!`);
+        }
+        promptLines.push(`   • В конце скрипта вызови createModelMeshAsync() (с waitForStableDom: false) и ОБЯЗАТЕЛЬНО сделай скриншот результата через take_screenshot для визуальной самопроверки!`);
+      } else if (currentAgentStage === 'texturing') {
+        promptLines.push(`2. ЧТО ТЕКСТУРИРУЕМ И ГЕНЕРИРУЕМ В ПОМЕЩЕНИИ «${roomTitle}»:`);
+        promptLines.push(`   • Посмотри референсы комнаты (${r.refs || roomRefPath}) через read_file.`);
+        promptLines.push(`   • Пол: ${p.baseFloor || r.finish || 'по референсу и брифам'}`);
+        promptLines.push(`   • Стены и панели: ${p.baseWalls || r.finish || 'по референсу'}`);
+        promptLines.push(`   • Материалы корпусной мебели и фасадов: ${r.joinery || 'по референсу'}`);
+        promptLines.push(`   • Для сложных текстур (шпон дерева, мрамор, керамогранит, букле) сгенерируй бесшовные 4K текстуры через invoke_subagent (TypeName: "image-generator", промпт: "seamless tileable texture, flat even lighting, orthographic top-down view, 4k material"), наложи их по группам DiyInstance и проверь через take_screenshot, чтобы не было видимых швов тайлинга!`);
+      } else if (currentAgentStage === 'placement') {
+        promptLines.push(`2. ЧТО НАЙТИ В БАЗЕ 3D SKY PRO И РАССТАВИТЬ В ПОМЕЩЕНИИ «${roomTitle}»:`);
+        promptLines.push(`   • Сверяйся с планировочным решением в папке ${folder}, чтобы каждый предмет встал точно на своё место и нужным размером!`);
+        promptLines.push(`   • Описание помещения и оборудования: ${r.joinery || ''}`);
+        promptLines.push(`   • Дополнительно по свету и референсам: ${r.refs || ''}`);
+        promptLines.push(`   • Ищи подходящие готовые модели через локальный каталог 3D Sky Pro (http://127.0.0.1:3033/api/search) или живой поиск в Telegram-канале через tg_ondemand.py по #тегам (#диван, #кровать, #стол, #стул, #смеситель, #унитаз, #раковина, #ванна, #кнопкаСмыва, #стиральнаяМашина, #сушка, #духовка, #люстры, #бра, #треки, #шторы, #ковры, #декоративныйНабор).`);
+        promptLines.push(`   • Обязательно открой превью найденных моделей через read_file, сравни с нашим референсом, вставь в сцену и проверь масштаб, высоту от пола и разворот к стене через take_screenshot!`);
+      } else if (currentAgentStage === 'fixes') {
+        promptLines.push(`2. СПИСОК ТОЧЕЧНЫХ ПРАВОК ПО ПОМЕЩЕНИЮ «${roomTitle}»:`);
+        promptLines.push(`${r.finish || '• См. замечания ниже:'}`);
+        promptLines.push(`${r.joinery || ''}`);
+        promptLines.push(``);
+        promptLines.push(`3. ПРАВИЛА ВНЕСЕНИЯ ПРАВОК:`);
+        promptLines.push(`   • Не стирай всю комнату или сцену целиком — вноси изменения точечно именно в те группы/узлы, которые нужно поправить!`);
+        promptLines.push(`   • Проверь отсутствие щелей у стен, зазоры фасадов 2–3 мм, высоту до чистового потолка и отсутствие самодельных примитивов сантехники/техники.`);
+        promptLines.push(`   • После правки вызови createModelMeshAsync() и покажи результат через take_screenshot!`);
+      }
+
+      const promptBox = document.getElementById('live-agent-prompt-box');
+      if (promptBox) promptBox.value = promptLines.join('\\n');
+    }
+
+    function copyLiveAgentPromptAndMark() {
+      const promptBox = document.getElementById('live-agent-prompt-box');
+      if (!promptBox) return;
+      navigator.clipboard.writeText(promptBox.value).then(() => {
+        toggleStageDone(currentAgentStage, true);
+        const chk = document.getElementById('st-chk-' + currentAgentStage);
+        if (chk) chk.checked = true;
+        alert(`✅ Готовый промпт для агента скопирован в буфер обмена! Этап отмечен галочкой как отправленный в работу.`);
+      });
     }
 
     function openNewWorkProjectModal() {
       const id = prompt('Номер нового проекта (например: 0658):', '0658');
       if (!id) return;
       const name = prompt('Имя клиента / ЖК / метраж (например: Анна • 54 м²):', 'Новый проект');
-      const fmtChoice = prompt('Формат проекта — введи 1, 2 или 3:\n1 = 📋 Полный проект (Бриф + План + Визы)\n2 = 🎨 Только Визы (Анкета + 3D)\n3 = 📐 Планировка / Чертежи', '2');
+      const fmtChoice = prompt('Формат проекта — введи 1, 2 или 3:\\n1 = 📋 Полный проект (Бриф + План + Визы)\\n2 = 🎨 Только Визы (Анкета + 3D)\\n3 = 📐 Планировка / Чертежи', '2');
       let format = '🎨 Только Визы';
       if (fmtChoice === '1') format = '📋 Полный проект';
       else if (fmtChoice === '3') format = '📐 Планировка / Чертежи';
@@ -2594,7 +3240,7 @@
         price,
         status: status || 'В работе',
         closed: false,
-        folder: `D:\ФАНАТИКС\${id.trim()}`,
+        folder: `D:\\ФАНАТИКС\\${id.trim()}`,
         voiceDump: '', baseStyle: '', baseFloor: '', baseWalls: '', baseCeiling: '', baseFamily: '',
         rooms: {}
       });
@@ -2644,7 +3290,7 @@
       const list = getWorkProjects();
       const p = list.find(x => x.id === currentWorkProjId);
       if (!p) return;
-      const promptText = `Проанализируй мою голосовую читку / заметки со звонка по проекту ${p.id} (${p.name}, формат: ${p.format}, папка: ${p.folder || ('D:\\\\ФАНАТИКС\\\\' + p.id)}):\n\n---\n${p.voiceDump || '(текст читки)'}\n---\n\nЗадача:\n1. Разложи эту информацию без потерь по структуре нашего Паспорта проекта в lavinteriors.pro/office/ (Общая база квартиры + по каждому помещению отдельно).\n2. Сформируй заполненную таблицу Бриф_${p.id}.xlsx на 85 строк для загрузки в карточку компании.`;
+      const promptText = `Проанализируй мою голосовую читку / заметки со звонка по проекту ${p.id} (${p.name}, формат: ${p.format}, папка: ${p.folder || ('D:\\\\\\\\ФАНАТИКС\\\\\\\\' + p.id)}):\\n\\n---\\n${p.voiceDump || '(текст читки)'}\\n---\\n\\nЗадача:\\n1. Разложи эту информацию без потерь по структуре нашего Паспорта проекта в lavinteriors.pro/office/ (Общая база квартиры + по каждому помещению отдельно).\\n2. Сформируй заполненную таблицу Бриф_${p.id}.xlsx на 85 строк для загрузки в карточку компании.`;
       navigator.clipboard.writeText(promptText).then(() => {
         alert('✅ Промпт для разбора голосовой читки скопирован! Просто вставь его в наш чат с ИИ.');
       });
@@ -2656,87 +3302,23 @@
       if (!p) return;
       const r = (p.rooms && p.rooms[currentWorkRoomKey]) ? p.rooms[currentWorkRoomKey] : {};
       const roomTitle = ROOM_NAMES_RU[currentWorkRoomKey] || currentWorkRoomKey;
-      const folder = p.folder || `D:\ФАНАТИКС\${p.id}`;
+      const folder = p.folder || `D:\\ФАНАТИКС\\${p.id}`;
 
-      const header = `🎯 МИКРО-ЗАДАЧА ДЛЯ АГЕНТА | ПРОЕКТ ${p.id} (${p.name})
-📍 ПОМЕЩЕНИЕ: ${roomTitle}
-📁 ПАПКА ПРОЕКТА И ЧЕРТЕЖЕЙ: ${folder}
-🖼️ РЕФЕРЕНСЫ ЭТОЙ КОМНАТЫ: ${r.refs || 'см. папку Референсы в папке проекта'}
-
---- ОБЩАЯ БАЗА КВАРТИРЫ ---
-• Стиль и палитра: ${p.baseStyle || 'см. анкету и рефы'}
-• Полы и тёплый пол: ${p.baseFloor || 'см. описание комнаты'}
-• Стены, плинтус, двери: ${p.baseWalls || 'см. описание комнаты'}
-• Потолок и свет: ${p.baseCeiling || 'Чистовой потолок 3000–3050 мм'}`;
+      const header = `🎯 МИКРО-ЗАДАЧА ДЛЯ АГЕНТА | ПРОЕКТ ${p.id} (${p.name})\n📍 ПОМЕЩЕНИЕ: ${roomTitle}\n📁 ПАПКА ПРОЕКТА И ЧЕРТЕЖЕЙ: ${folder}\n🖼️ РЕФЕРЕНСЫ ЭТОЙ КОМНАТЫ: ${r.refs || 'см. папку Референсы в папке проекта'}\n\n--- ОБЩАЯ БАЗА КВАРТИРЫ ---\n• Стиль и палитра: ${p.baseStyle || 'см. анкету и рефы'}\n• Полы и тёплый пол: ${p.baseFloor || 'см. описание комнаты'}\n• Стены, плинтус, двери: ${p.baseWalls || 'см. описание комнаты'}\n• Потолок и свет: ${p.baseCeiling || 'Чистовой потолок 3000–3050 мм'}`;
 
       let taskBody = '';
       if (stepType === 'step1_shell') {
-        taskBody = `
-
-🔨 КОНКРЕТНАЯ ЗАДАЧА (ШАГ 1 — ОТДЕЛКА, ПОЛ, ПОТОЛОК И ПЛИНТУС В HOMESTYLER):
-Работаем ТОЛЬКО в помещении «${roomTitle}» (не трогай и не перестраивай остальные комнаты!).
-1. Проверь план в ${folder} и референсы комнаты (${r.refs || 'в папке проекта'}) через read_file.
-2. Настрой отделку помещения «${roomTitle}»:
-   - Пол и тёплый пол: ${r.finish || p.baseFloor || 'по референсу'}
-   - Стены и молдинги/акценты: ${r.finish || p.baseWalls || 'по референсу'}
-   - Потолок (высота 3000–3050 мм): построй контур ГКЛ/натяжного потолка и карниза/теневого профиля строго с обходом всех высоких шкафов и шторных ниш!
-3. В конце обязательно вызови createModelMeshAsync() с waitForStableDom: false и сделай проверочный скриншот через take_screenshot.`;
+        taskBody = `\n\n🔨 КОНКРЕТНАЯ ЗАДАЧА (ШАГ 1 — ОТДЕЛКА, ПОЛ, ПОТОЛОК И ПЛИНТУС В HOMESTYLER):\nРаботаем ТОЛЬКО в помещении «${roomTitle}» (не трогай и не перестраивай остальные комнаты!).\n1. Проверь план в ${folder} и референсы комнаты (${r.refs || 'в папке проекта'}) через read_file.\n2. Настрой отделку помещения «${roomTitle}»:\n   - Пол и тёплый пол: ${r.finish || p.baseFloor || 'по референсу'}\n   - Стены и молдинги/акценты: ${r.finish || p.baseWalls || 'по референсу'}\n   - Потолок (высота 3000–3050 мм): построй контур ГКЛ/натяжного потолка и карниза/теневого профиля строго с обходом всех высоких шкафов и шторных ниш!\n3. В конце обязательно вызови createModelMeshAsync() с waitForStableDom: false и сделай проверочный скриншот через take_screenshot.`;
       } else if (stepType === 'step2_joinery') {
-        taskBody = `
-
-🔨 КОНКРЕТНАЯ ЗАДАЧА (ШАГ 2 — СТОЛЯРКА И КОРПУСНАЯ МЕБЕЛЬ В HOMESTYLER DIY):
-Работаем ТОЛЬКО в помещении «${roomTitle}». Подключи библиотеку:
-if (!window.HSJoinery) (0, eval)(await (await fetch('http://127.0.0.1:3033/hs-joinery.js')).text());
-
-Что моделируем в этом помещении:
-• Корпусная мебель: ${r.joinery || 'встроенный шкаф / тумба до потолка по планировке и рефам'}
-
-ОБЯЗАТЕЛЬНЫЕ ТЕХНИЧЕСКИЕ ПРАВИЛА СБОРКИ (С первого раза без ошибок!):
-1. Ориентация: используй HSJoinery.createWallFrame(x1, y1, x2, y2, [roomCenterX, roomCenterY]), чтобы глубина +d шла строго внутрь комнаты.
-2. Реальный конструктив: каркас ЛДСП 18 мм (HSJoinery.buildRealCarcass), высота встроенных шкафов строго до чистового потолка (3000–3050 мм).
-3. Фасады и ручки: отступ 2 мм от корпуса, зазоры между дверьми 2–3 мм, скругление торцов МДФ 2.5 мм (для классики/неоклассики используй HSJoinery.buildClassicMilledFacade, для гладких — HSJoinery.buildMdfFacadeWithHandle).
-4. Дробная группировка (DiyInstance) для перекраски в 1 клик: отдельно «Корпус», «Фасады», «Ручки», «Столешница», «LED подсветка».
-5. После построения вызови createModelMeshAsync() и проверь результат глазами через take_screenshot!`;
+        taskBody = `\n\n🔨 КОНКРЕТНАЯ ЗАДАЧА (ШАГ 2 — СТОЛЯРКА И КОРПУСНАЯ МЕБЕЛЬ В HOMESTYLER DIY):\nРаботаем ТОЛЬКО в помещении «${roomTitle}». Подключи библиотеку:\nif (!window.HSJoinery) (0, eval)(await (await fetch('http://127.0.0.1:3033/hs-joinery.js')).text());\n\nЧто моделируем в этом помещении:\n• Корпусная мебель: ${r.joinery || 'встроенный шкаф / тумба до потолка по планировке и рефам'}\n\nОБЯЗАТЕЛЬНЫЕ ТЕХНИЧЕСКИЕ ПРАВИЛА СБОРКИ (С первого раза без ошибок!):\n1. Ориентация: используй HSJoinery.createWallFrame(x1, y1, x2, y2, [roomCenterX, roomCenterY]), чтобы глубина +d шла строго внутрь комнаты.\n2. Реальный конструктив: каркас ЛДСП 18 мм (HSJoinery.buildRealCarcass), высота встроенных шкафов строго до чистового потолка (3000–3050 мм).\n3. Фасады и ручки: отступ 2 мм от корпуса, зазоры между дверьми 2–3 мм, скругление торцов МДФ 2.5 мм (для классики/неоклассики используй HSJoinery.buildClassicMilledFacade, для гладких — HSJoinery.buildMdfFacadeWithHandle).\n4. Дробная группировка (DiyInstance) для перекраски в 1 клик: отдельно «Корпус», «Фасады», «Ручки», «Столешница», «LED подсветка».\n5. После построения вызови createModelMeshAsync() и проверь результат глазами через take_screenshot!`;
       } else if (stepType === 'step3_skypro') {
-        taskBody = `
-
-🔨 КОНКРЕТНАЯ ЗАДАЧА (ШАГ 3 — ПОДБОР И РАССТАНОВКА МОДЕЛЕЙ ИЗ 3D SKY PRO):
-Работаем ТОЛЬКО в помещении «${roomTitle}». Не рисуй сантехнику, мягкую мебель и бытовую технику кубиками в DIY!
-
-Что нужно найти в базе 3D Sky Pro (127.0.0.1:3033 или tg_ondemand.py по #тегам), проверить глазами по превью через read_file и расставить по плану:
-• Мебель, техника и сантехника комнаты: ${r.models || 'см. план и референсы комнаты'}
-• Освещение и декор: ${r.refs || 'по референсам'}
-
-После вставки моделей проверь их масштаб, высоту от пола и ориентацию к стенам через take_screenshot!`;
+        taskBody = `\n\n🔨 КОНКРЕТНАЯ ЗАДАЧА (ШАГ 3 — ПОДБОР И РАССТАНОВКА МОДЕЛЕЙ ИЗ 3D SKY PRO):\nРаботаем ТОЛЬКО в помещении «${roomTitle}». Не рисуй сантехнику, мягкую мебель и бытовую технику кубиками в DIY!\n\nЧто нужно найти в базе 3D Sky Pro (127.0.0.1:3033 или tg_ondemand.py по #тегам), проверить глазами по превью через read_file и расставить по плану:\n• Мебель, техника и сантехника комнаты: ${r.models || 'см. план и референсы комнаты'}\n• Освещение и декор: ${r.refs || 'по референсам'}\n\nПосле вставки моделей проверь их масштаб, высоту от пола и ориентацию к стенам через take_screenshot!`;
       } else if (stepType === 'step4_texture') {
-        taskBody = `
-
-🔨 КОНКРЕТНАЯ ЗАДАЧА (ШАГ 4 — ГЕНЕРАЦИЯ БЕСШОВНОЙ ТЕКСТУРЫ 4K):
-Посмотри через read_file референсы помещения «${roomTitle}» в папке ${folder} (${r.refs || ''}).
-Вызови субагента image-generator (TypeName: "image-generator") для генерации бесшовной плитки/шпона/мрамора/текстиля под наш референс:
-Промпт: seamless tileable texture, flat even lighting, orthographic top-down view, 4k material — под цвет и фактуру: ${r.finish || p.baseStyle || 'по референсу'}.`;
+        taskBody = `\n\n🔨 КОНКРЕТНАЯ ЗАДАЧА (ШАГ 4 — ГЕНЕРАЦИЯ БЕСШОВНОЙ ТЕКСТУРЫ 4K):\nПосмотри через read_file референсы помещения «${roomTitle}» в папке ${folder} (${r.refs || ''}).\nВызови субагента image-generator (TypeName: "image-generator") для генерации бесшовной плитки/шпона/мрамора/текстиля под наш референс:\nПромпт: seamless tileable texture, flat even lighting, orthographic top-down view, 4k material — под цвет и фактуру: ${r.finish || p.baseStyle || 'по референсу'}.`;
       } else if (stepType === 'step5_archicad') {
-        taskBody = `
-
-🔨 КОНКРЕТНАЯ ЗАДАЧА (ШАГ 5 — ARCHICAD МИКРО-ЗАДАЧА ПО ПОМЕЩЕНИЮ «${roomTitle}»):
-Подключись к открытому проекту ArchiCAD.
-Задача по помещению «${roomTitle}» (Проект ${p.id}):
-1. Проверь выделенную область / контур помещения.
-2. Расставь чистые цепочки размеров и привязки мебели/выводов строго по нашим данным:
-   - Корпусная мебель и ниши: ${r.joinery || 'по плану'}
-   - Оборудование и сантехника: ${r.models || 'по плану'}
-   - Электрика, тёплый пол и свет: ${r.finish || ''} | ${r.refs || ''}
-3. Сделай скриншот окна ArchiCAD для проверки читаемости без нахлёстов текста!`;
+        taskBody = `\n\n🔨 КОНКРЕТНАЯ ЗАДАЧА (ШАГ 5 — ARCHICAD МИКРО-ЗАДАЧА ПО ПОМЕЩЕНИЮ «${roomTitle}»):\nПодключись к открытому проекту ArchiCAD.\nЗадача по помещению «${roomTitle}» (Проект ${p.id}):\n1. Проверь выделенную область / контур помещения.\n2. Расставь чистые цепочки размеров и привязки мебели/выводов строго по нашим данным:\n   - Корпусная мебель и ниши: ${r.joinery || 'по плану'}\n   - Оборудование и сантехника: ${r.models || 'по плану'}\n   - Электрика, тёплый пол и свет: ${r.finish || ''} | ${r.refs || ''}\n3. Сделай скриншот окна ArchiCAD для проверки читаемости без нахлёстов текста!`;
       } else {
-        taskBody = `
-
-📋 ПОЛНОЕ ТЕХНИЧЕСКОЕ ЗАДАНИЕ ПО ПОМЕЩЕНИЮ «${roomTitle}»:
-• Корпусная мебель (DIY): ${r.joinery || '—'}
-• Готовые модели и техника (3D Sky Pro): ${r.models || '—'}
-• Отделка пола и стен комнаты: ${r.finish || '—'}
-• Свет, электрика и референсы: ${r.refs || '—'}
-
-Выполняй сборку пошагово: сначала геометрия и столярка через window.HSJoinery (высота до потолка 3000–3050 мм, ЛДСП 18 мм, зазоры фасадов 2–3 мм, отдельные группы материалов), затем модели из 3D Sky Pro, и обязательно проверь сцену через take_screenshot!`;
+        taskBody = `\n\n📋 ПОЛНОЕ ТЕХНИЧЕСКОЕ ЗАДАНИЕ ПО ПОМЕЩЕНИЮ «${roomTitle}»:\n• Корпусная мебель (DIY): ${r.joinery || '—'}\n• Готовые модели и техника (3D Sky Pro): ${r.models || '—'}\n• Отделка пола и стен комнаты: ${r.finish || '—'}\n• Свет, электрика и референсы: ${r.refs || '—'}\n\nВыполняй сборку пошагово: сначала геометрия и столярка через window.HSJoinery (высота до потолка 3000–3050 мм, ЛДСП 18 мм, зазоры фасадов 2–3 мм, отдельные группы материалов), затем модели из 3D Sky Pro, и обязательно проверь сцену через take_screenshot!`;
       }
 
       const fullPrompt = header + taskBody;
@@ -2779,7 +3361,7 @@ if (!window.HSJoinery) (0, eval)(await (await fetch('http://127.0.0.1:3033/hs-jo
         ['Заметки со звонка (Голосовая читка)', p.voiceDump || '']
       ];
 
-      const csvContent = '\uFEFF' + rows.map(e => e.map(cell => '"' + String(cell || '').replace(/"/g, '""') + '"').join(';')).join('\r\n');
+      const csvContent = '\\uFEFF' + rows.map(e => e.map(cell => '"' + String(cell || '').replace(/"/g, '""') + '"').join(';')).join('\\r\\n');
       const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
