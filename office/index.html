@@ -1537,7 +1537,7 @@
         </div>
         <div style="display:flex; gap:8px; flex-wrap:wrap;">
           <button class="action-btn" style="background:var(--purple); border-color:var(--purple); color:#fff;" onclick="openNewWorkProjectModal()">➕ Взять проект в работу</button>
-          <button class="action-btn" onclick="exportCurrentBriefCSV()">📥 Выгрузить Бриф (.CSV)</button>
+          <button class="action-btn" onclick="downloadOfficialCompanyBriefCSV()">📥 Выгрузить Бриф (.CSV)</button>
         </div>
       </div>
 
@@ -3380,7 +3380,7 @@
 
 
     // ==================== 8. ПРОЕКТЫ В РАБОТЕ И ИНТЕРАКТИВНЫЙ КОНСТРУКТОР ПРОМПТОВ АГЕНТАМ ====================
-    const WORK_PROJECTS_KEY = 'lav_work_projects_db_v2';
+    const WORK_PROJECTS_KEY = 'lav_work_projects_db_v3';
     let currentWorkProjId = '0653';
     let currentWorkRoomKey = 'hall';
     let currentAgentStage = 'modeling';
