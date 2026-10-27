@@ -3209,28 +3209,39 @@
 
 
     // ==================== 7. КАЛЕНДАРЬ (ОКТЯБРЬ, НОЯБРЬ, ДЕКАБРЬ 2026) ====================
-    const CAL_STORAGE_KEY = 'lav_calendar_events_2026_v1';
+    const CAL_STORAGE_KEY = 'lav_calendar_events_2026_v9';
     const CAL_NOTES_KEY = 'lav_calendar_daynotes_2026_v1';
     let currentCalMonth = 9; // 9 = Октябрь, 10 = Ноябрь, 11 = Декабрь
     let selectedCalDateKey = '2026-10-27';
 
-    const DEFAULT_CAL_EVENTS = {
+        const DEFAULT_CAL_EVENTS = {
       '2026-10-14': [{ text: '💰 Выплата: 7 000 ₽', type: 'ev-pay' }],
       '2026-10-21': [{ text: '💰 Выплата: 17 000 ₽', type: 'ev-pay' }],
       '2026-10-27': [
-        { text: '📞 15:00 Созвон 0653 (Бриф)', type: 'ev-call' },
-        { text: '🔥 Визы: 0645, 0606, 0599', type: 'ev-hot' }
+        { text: '✅ Утро: Созвон 0545 (Визы — Мария)', type: 'ev-call' },
+        { text: '✅ День: Созвон 0593 (Визы — 91 м²)', type: 'ev-call' },
+        { text: '📞 15:00 Созвон 0653 (Платон — БРИФ БТИ)', type: 'ev-call' },
+        { text: '📞 16:00 Созвон 0609 (Дмитрий — ВИЗЫ)', type: 'ev-call' },
+        { text: '💬 16:00 Написать Диане (0619) подтвердить 17:45', type: 'ev-hot' },
+        { text: '📞 17:45 Созвон 0619 (Виталий и Диана — ВИЗЫ)', type: 'ev-call' },
+        { text: '🔥 В моделинг: 0645, 0606, 0599, 0596, 0593, 0545', type: 'ev-hot' }
       ],
       '2026-10-28': [
-        { text: '💰 Выплата: 32 356,80 ₽ (8 пр.)', type: 'ev-pay' },
-        { text: '📞 После 16:00 Созвон 0654', type: 'ev-call' },
-        { text: '🔥 Сдать визы 0645', type: 'ev-hot' }
+        { text: '🦷 13:00 СТОМАТОЛОГ (12:30–14:30 НЕ ЗАНИМАТЬ!)', type: 'ev-hot' },
+        { text: '📞 с 16:00 Созвон 0654 (Сергей — БРИФ 40 м²)', type: 'ev-call' },
+        { text: '💰 Выплата: 32 356,80 ₽ (8 проектов)', type: 'ev-pay' },
+        { text: '🔥 Сдать визы 0645 и 0606', type: 'ev-hot' }
+      ],
+      '2026-10-29': [
+        { text: '💉 12:00 ЭНДОКРИНОЛОГ за инсулином (11:30–13:30 занято!)', type: 'ev-hot' },
+        { text: '📐 0645 Сдать планы электрики и сантехники до ПТ!', type: 'ev-hot' }
       ],
       '2026-10-30': [
-        { text: '📐 0645 Планы электрики/сантех', type: 'ev-hot' }
+        { text: '🚗 ВЕСЬ ДЕНЬ ЗАНЯТ: Поездка за ребёнком к бабушке!', type: 'ev-hot' },
+        { text: '⛔ НИЧЕГО НЕ ПЛАНИРОВАТЬ НА ПЯТНИЦУ!', type: 'ev-hot' }
       ],
       '2026-11-04': [
-        { text: '💰 Выплата: прогноз 42–58к ₽', type: 'ev-pay' }
+        { text: '💰 Выплата: прогноз 51–67к ₽', type: 'ev-pay' }
       ],
       '2026-11-11': [{ text: '💰 Среда выплат', type: 'ev-pay' }],
       '2026-11-18': [{ text: '💰 Среда выплат', type: 'ev-pay' }],
@@ -3296,11 +3307,11 @@
         const hasNote = notesMap[dateKey] && notesMap[dateKey].trim().length > 0;
 
         let pillsHtml = '';
-        dayEvents.slice(0, 3).forEach(ev => {
+        dayEvents.slice(0, 7).forEach(ev => {
           pillsHtml += `<div class="cal-ev-pill ${ev.type || ''}">${ev.text}</div>`;
         });
-        if (dayEvents.length > 3) {
-          pillsHtml += `<div class="cal-ev-pill">+ ещё ${dayEvents.length - 3}</div>`;
+        if (dayEvents.length > 7) {
+          pillsHtml += `<div class="cal-ev-pill">+ ещё ${dayEvents.length - 7}</div>`;
         }
 
         cell.innerHTML = `
