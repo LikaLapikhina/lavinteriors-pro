@@ -1089,7 +1089,7 @@
   <div class="top-bar">
     <div class="brand">
       <h1 data-editable="true">⚡ LAV COMMAND CENTER — Личный кабинет Анжелики</h1>
-      <p data-editable="true">На завтра (28.10) в жёлтых строках вписано <b>42 278,80 ₽</b> (10 проектов: +0587 финал и +0609 5к!) • Итог октября: <b>66 278,80 ₽</b> • Остаток в работе: <b>137 370,90 ₽</b></p>
+      <p data-editable="true">Сегодня (28.10) выплата <b>42 278,80 ₽</b> (10 проектов) • Итог октября: <b>66 278,80 ₽</b> • В работе 17 проектов (+новый <b>0589</b> 120 м²): остаток <b>152 370,90 ₽</b></p>
     </div>
     <div class="top-actions">
       <button class="action-btn" id="edit-mode-btn" onclick="toggleEditMode()">✏️ Редактировать данные</button>
@@ -1112,19 +1112,19 @@
       <div class="kpi-sub" data-editable="true">7 000 ₽ (14.10) + 17 000 ₽ (21.10) + 42 278,80 ₽ (28.10)</div>
     </div>
     <div class="kpi-card highlight-yellow">
-      <div class="kpi-label">⚠️ НЕ В ТАБЛИЧКЕ (ТОЛЬКО 1 АВАНС)</div>
-      <div class="kpi-val" id="kpi-not-in-sheet" style="color:#fbbf24;" data-editable="true">4 000 ₽</div>
-      <div class="kpi-sub" id="kpi-not-sub" data-editable="true">Только 0653 (4 000 ₽ бриф+аванс на 04.11) — 0587 и 0609 УЖЕ ВПИСАЛИ!</div>
+      <div class="kpi-label">⏳ АВАНСЫ НА СЛЕД. НЕДЕЛЮ (04.11)</div>
+      <div class="kpi-val" id="kpi-not-in-sheet" style="color:#fbbf24;" data-editable="true">6 000 ₽</div>
+      <div class="kpi-sub" id="kpi-not-sub" data-editable="true">2 пр. на 04.11: 0653 (4 000 ₽ бриф+аванс) + 0589 (2 000 ₽ аванс визы 120 м²)</div>
     </div>
     <div class="kpi-card highlight-purple">
       <div class="kpi-label">🚀 ПРОГНОЗ НА СЛЕД. СРЕДУ (04.11)</div>
-      <div class="kpi-val" style="color:#c084fc;" data-editable="true">35 415 – 51 665 ₽</div>
-      <div class="kpi-sub" data-editable="true">4 000 ₽ (аванс 0653) + 31 415 ₽ (4 горящие визы) + до 16 250 ₽ (0633/0545)</div>
+      <div class="kpi-val" style="color:#c084fc;" data-editable="true">37 415 – 53 665 ₽</div>
+      <div class="kpi-sub" data-editable="true">6 000 ₽ (авансы 0653 + 0589) + 31 415 ₽ (4 горящие визы) + до 16 250 ₽ (0633/0545)</div>
     </div>
     <div class="kpi-card highlight-blue">
-      <div class="kpi-label">💼 ВЕСЬ ПОРТФЕЛЬ (16 ПРОЕКТОВ)</div>
-      <div class="kpi-val" style="color:#60a5fa;" data-editable="true">203 649,70 ₽</div>
-      <div class="kpi-sub" data-editable="true">После завтрашней выплаты чистый остаток в работе: <b>137 370,90 ₽</b>!</div>
+      <div class="kpi-label">💼 ВЕСЬ ПОРТФЕЛЬ (17 ПРОЕКТОВ)</div>
+      <div class="kpi-val" style="color:#60a5fa;" data-editable="true">218 649,70 ₽</div>
+      <div class="kpi-sub" data-editable="true">С новым 0589 (15 000 ₽) чистый остаток в работе: <b>152 370,90 ₽</b>!</div>
     </div>
   </div>
 
@@ -1134,7 +1134,7 @@
     <button class="tab-btn" onclick="switchTab('tab-work', this)">🚀 2. ПРОЕКТЫ В РАБОТЕ (+ПЕРЕДАЧА АГЕНТАМ)</button>
     <button class="tab-btn" onclick="switchTab('tab-scripts', this)">💬 3. СКРИПТЫ И БАЗА МАТЕРИАЛОВ (МСК)</button>
     <button class="tab-btn" onclick="switchTab('tab-sheet', this)">💵 4. ВЫПЛАТЫ (28.10 + 04.11)</button>
-    <button class="tab-btn" onclick="switchTab('tab-projects', this)">📊 5. ФИНАНСЫ: ВСЕ 16 ПРОЕКТОВ</button>
+    <button class="tab-btn" onclick="switchTab('tab-projects', this)">📊 5. ФИНАНСЫ: ВСЕ 17 ПРОЕКТОВ</button>
   </div>
 
   <!-- ==================== ВКЛАДКА 1: СВЕРКА ТАБЛИЧКИ (28.10) + ПРОГНОЗ НА 04.11 ==================== -->
@@ -1265,8 +1265,8 @@
         <div class="block-box yellow-priority">
           <div class="block-header">
             <div>
-              <div class="block-title" style="color:#fbbf24;">⚠️ ЧАСТЬ 2. НЕ В ТАБЛИЧКЕ НА ЗАВТРА (Только 1 новый проект = 4 000 ₽)</div>
-              <div class="block-subtitle">Идёт в следующую ведомость на среду 04.11:</div>
+              <div class="block-title" style="color:#fbbf24;">⏳ ЧАСТЬ 2. АВАНСЫ НА СЛЕДУЮЩУЮ СРЕДУ 04.11 (2 новых проекта = 6 000 ₽)</div>
+              <div class="block-subtitle">Идут в следующую ведомость на среду 04.11:</div>
             </div>
           </div>
           <div id="list-not-in-sheet">
@@ -1277,7 +1277,18 @@
               </div>
               <div style="text-align:right;">
                 <div style="font-size:16px; font-weight:900; color:#fbbf24; margin-bottom:4px;">+ 4 000 ₽</div>
-                <button class="sheet-toggle-btn btn-out" onclick="toggleSheetItem(this)">⏳ Не вписан</button>
+                <button class="sheet-toggle-btn btn-out" onclick="toggleSheetItem(this)">⏳ На 04.11</button>
+              </div>
+            </div>
+
+            <div class="sheet-item not-in-sheet" data-id="0589" data-amount="2000" data-in="false">
+              <div>
+                <span class="tag tag-proj">0589</span> <span class="tag tag-tg">📱 TG</span> <span class="tag tag-purple">🆕 Визы 120 м² (≈ 15 000 ₽ • по сетке 16 400 ₽) • Взяла 28.10</span>
+                <div style="font-weight:700; font-size:13.5px; margin-top:3px;" data-editable="true">Ждём анкету -> созвон -> аванс <b>+2 000 ₽</b> на среду 04.11! Остаток: <b>13 000 ₽</b></div>
+              </div>
+              <div style="text-align:right;">
+                <div style="font-size:16px; font-weight:900; color:#fbbf24; margin-bottom:4px;">+ 2 000 ₽</div>
+                <button class="sheet-toggle-btn btn-out" onclick="toggleSheetItem(this)">⏳ На 04.11</button>
               </div>
             </div>
           </div>
@@ -1304,9 +1315,9 @@
               </thead>
               <tbody>
                 <tr class="fin-row-yellow">
-                  <td data-editable="true"><b>1. Остались невписанными сегодня (3 пр.)</b><br><span style="font-size:11.5px; color:var(--muted);">0587 (4 922 ₽), 0653 (4 000 ₽), 0609 (2 000 ₽)</span></td>
-                  <td data-editable="true">Визы 0587 уже утверждены + 2 аванса (бриф 0653 + анкета 0609)</td>
-                  <td style="color:#fbbf24; font-weight:900; font-size:14.5px;" data-editable="true">+ 10 922,00 ₽</td>
+                  <td data-editable="true"><b>1. Авансы по новым проектам (2 пр.)</b><br><span style="font-size:11.5px; color:var(--muted);">0653 (4 000 ₽ бриф+аванс) + 0589 (2 000 ₽ аванс визы 120 м²)</span></td>
+                  <td data-editable="true">Бриф 0653 + получение анкеты и созвон по новому 0589 (120 м²)</td>
+                  <td style="color:#fbbf24; font-weight:900; font-size:14.5px;" data-editable="true">+ 6 000,00 ₽</td>
                 </tr>
                 <tr class="fin-row-green">
                   <td data-editable="true"><b>2. 0645 (💬 MAX — Горящий №1)</b></td>
@@ -1340,7 +1351,7 @@
                 </tr>
                 <tr style="background:rgba(168,85,247,0.18); font-weight:900; font-size:14.5px;">
                   <td colspan="2">ИТОГО ПРОГНОЗ НА СЛЕДУЮЩУЮ СРЕДУ (04.11):</td>
-                  <td style="color:#e9d5ff; font-size:16px;" data-editable="true">от 42 337 ₽ до 58 587 ₽ 🚀</td>
+                  <td style="color:#e9d5ff; font-size:16px;" data-editable="true">от 37 415 ₽ до 53 665 ₽ 🚀</td>
                 </tr>
               </tbody>
             </table>
@@ -2851,13 +2862,23 @@
               <td data-editable="true">—</td>
               <td data-editable="true">9 142,00 ₽</td>
             </tr>
+            <tr class="fin-row-yellow">
+              <td>17</td>
+              <td data-editable="true"><b>0589</b></td>
+              <td data-editable="true">📱 TG • <span class="tag tag-purple">🆕 Визы 120 м² (Ждём анкету -> созвон)</span></td>
+              <td data-editable="true">15 000,00 ₽ <span style="font-size:11px; color:var(--muted);">(сетка: 16 400 ₽)</span></td>
+              <td data-editable="true">0,00 ₽</td>
+              <td data-editable="true">—</td>
+              <td style="color:#fbbf24; font-weight:900;" data-editable="true">+ 2 000,00 ₽ (аванс 04.11)</td>
+              <td style="font-weight:800; color:#60a5fa;" data-editable="true">13 000,00 ₽</td>
+            </tr>
             <tr style="background:rgba(255,255,255,0.08); font-weight:900; font-size:14.5px;">
-              <td colspan="3">ИТОГО ПО ВСЕМ 16 ПРОЕКТАМ (В ОКТЯБРЕ: 66 278,80 ₽):</td>
-              <td data-editable="true">203 649,70 ₽</td>
+              <td colspan="3">ИТОГО ПО ВСЕМ 17 ПРОЕКТАМ (В ОКТЯБРЕ: 66 278,80 ₽):</td>
+              <td data-editable="true">218 649,70 ₽</td>
               <td style="color:#34d399;" data-editable="true">24 000,00 ₽</td>
               <td style="color:#34d399; font-size:15.5px;" data-editable="true">+ 42 278,80 ₽ ✅</td>
-              <td style="color:#fbbf24; font-size:15.5px;" data-editable="true">+ 4 000,00 ₽ ⚠️</td>
-              <td style="color:#60a5fa; font-size:15.5px;" data-editable="true">133 370,90 ₽ (всего остаток: 137 370,90 ₽)</td>
+              <td style="color:#fbbf24; font-size:15.5px;" data-editable="true">+ 6 000,00 ₽ ⏳</td>
+              <td style="color:#60a5fa; font-size:15.5px;" data-editable="true">146 370,90 ₽ (всего остаток: 152 370,90 ₽)</td>
             </tr>
           </tbody>
         </table>
@@ -3087,12 +3108,12 @@
       document.querySelectorAll('[data-editable="true"]').forEach(el => {
         edits.push(el.innerHTML);
       });
-      localStorage.setItem('lav_custom_edits_v10', JSON.stringify(edits));
+      localStorage.setItem('lav_custom_edits_v11', JSON.stringify(edits));
     }
 
     function loadCustomEdits() {
       try {
-        const raw = localStorage.getItem('lav_custom_edits_v10');
+        const raw = localStorage.getItem('lav_custom_edits_v11');
         if (!raw) return;
         const edits = JSON.parse(raw);
         const els = document.querySelectorAll('[data-editable="true"]');
@@ -3168,7 +3189,7 @@
         <td style="font-weight:800; color:#60a5fa;" data-editable="true">${rest}</td>
       `;
       tbody.insertBefore(tr, tbody.lastElementChild);
-      localStorage.setItem('lav_projects_tbody_v10', tbody.innerHTML);
+      localStorage.setItem('lav_projects_tbody_v11', tbody.innerHTML);
       switchTab('tab-projects', document.querySelectorAll('.tab-btn')[2]);
     }
 
@@ -3218,7 +3239,7 @@
       } catch(e) {}
       const cs = localStorage.getItem('lav_custom_scripts_v4');
       if (cs) document.getElementById('custom-scripts-container').innerHTML = cs;
-      const pt = localStorage.getItem('lav_projects_tbody_v10');
+      const pt = localStorage.getItem('lav_projects_tbody_v11');
       if (pt) document.getElementById('projects-tbody').innerHTML = pt;
     }
 
@@ -3288,12 +3309,12 @@
       document.querySelectorAll('.sheet-item').forEach(item => {
         state[item.getAttribute('data-id')] = item.getAttribute('data-in') === 'true';
       });
-      localStorage.setItem('lav_sheet_tue27_v10', JSON.stringify(state));
+      localStorage.setItem('lav_sheet_wed28_v11', JSON.stringify(state));
     }
 
     function loadSheetState() {
       try {
-        const raw = localStorage.getItem('lav_sheet_tue27_v10');
+        const raw = localStorage.getItem('lav_sheet_wed28_v11');
         if (!raw) return;
         const state = JSON.parse(raw);
         document.querySelectorAll('.sheet-item').forEach(item => {
@@ -4338,6 +4359,15 @@
         }
       },
       {
+        id: '0589', name: 'Визы 120 м² (взяла 28.10)', channel: '📱 TG', format: '🎨 Только Визы', price: '15 000 ₽', status: '⏳ Взяла 28.10 • Ждём анкету от заказчика -> проведём созвон (аванс на 04.11)', closed: false,
+        folder: 'D:\\ФАНАТИКС\\0589',
+        voiceDump: 'Новый проект 0589 (120 м², только визуализации), взяла в работу 28.10.2026. Оплата около 15 000 ₽ (по стандартной сетке 120 м² = 16 400 ₽). Сейчас ждём от заказчика заполненную анкету по визуализации, после чего проведём созвон. Аванс (2 000 ₽) пойдёт в ведомость на следующую неделю (04.11).',
+        baseStyle: 'Ждём заполненную анкету и референсы от заказчика',
+        baseFloor: '', baseWalls: '', baseCeiling: 'Чистовой потолок с учётом опуска 3000–3050 мм',
+        baseFamily: 'Площадь 120 м². Взяла в работу 28.10.2026. Аванс на следующую неделю (04.11).',
+        rooms: {}
+      },
+      {
         id: '0572', name: 'Вопрос по комплектатору', channel: '📱 TG', format: '🎨 Только Визы', price: '9 398 ₽', status: '❓ Уточнение по комплектатору', closed: false,
         folder: 'D:\\ФАНАТИКС\\0572', voiceDump: '', baseStyle: '', baseFloor: '', baseWalls: '', baseCeiling: '', baseFamily: '', rooms: {}
       },
@@ -4362,7 +4392,9 @@
           const parsed = JSON.parse(raw);
           DEFAULT_WORK_PROJECTS.forEach(dp => {
             const ep = parsed.find(x => x.id === dp.id);
-            if (ep && (!ep.rooms || Object.keys(ep.rooms).length === 0) && dp.rooms && Object.keys(dp.rooms).length > 0) {
+            if (!ep) {
+              parsed.splice(parsed.length - 3, 0, JSON.parse(JSON.stringify(dp)));
+            } else if ((!ep.rooms || Object.keys(ep.rooms).length === 0) && dp.rooms && Object.keys(dp.rooms).length > 0) {
               Object.assign(ep, dp);
             }
           });
