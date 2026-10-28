@@ -2668,16 +2668,17 @@
               <!-- ФИОЛЕТОВАЯ ЗОНА: СТРОГАЯ КАРТА ПАПОК «МОЙ КАБИНЕТ -> ИЗБРАННОЕ» (ЧТОБЫ АГЕНТ НИКОГДА НЕ ПУТАЛ ПАПКИ!) -->
               <div class="zone-purple" style="border-color:rgba(168,85,247,0.55);">
                 <div style="font-size:13px; font-weight:900; color:#e9d5ff; margin-bottom:6px;">
-                  🟣 КАРТА ПАПОК «МОЙ КАБИНЕТ → ИЗБРАННОЕ» (Строгое правило по комнатам)
+                  🟣 КАРТА ПАПОК «МОЙ КАБИНЕТ → ИЗБРАННОЕ» (База «по умолчанию» + по комнатам)
                 </div>
                 <div style="font-size:11.3px; color:#d8b4fe; margin-bottom:8px; line-height:1.45;">
+                  • ⭐ <b>«по умолчанию»</b> (<code>fid: 28463658</code>, <code>HSJoinery.DEFAULT_PROJECT_MODELS</code>) → <b>ГЛАВНЫЕ БАЗОВЫЕ МОДЕЛИ В КАЖДЫЙ ПРОЕКТ</b> (варочная панель, духовка+СВЧ, мойка со смесителем, ТВ, кондиционер, входная дверь с глазком, межкомнатная дверь <code>55 2300</code>, тюль+блэкаут+жалюзи, внутрипольный конвектор, накладная раковина со смесителем, душ с водой, унитаз с кнопкой/гиг.душем/бумагой/ёршиком, стиралка+сушилка Bosch). <span style="color:#6ee7b7;">Не искать в каталоге — брать сразу отсюда (группы можно разгруппировывать <code>ungroup: true</code>)!</span><br>
                   • <b>«Декор - Декор для полок»</b> (<code>fid: 28480394</code>, 1070+ шт.) → тумбочки, консоли (духи в прихожей), журнальные столики, полки в <b>Прихожей, Гостиной, Спальне, Кабинете</b>. <span style="color:#fca5a5;">(НЕ для кухни и НЕ для санузла!)</span><br>
                   • <b>«Растения - Букеты»</b> (<code>28480396</code>) и <b>«Растения - Озеленение»</b> (<code>28480397</code>) → букеты <b>на обеденные столы</b> (реже журнальные столики).<br>
                   • <b>«Растения - Растения»</b> (<code>28480305</code>, два раза «растения»!) → <b>зелёные напольные растения</b> в кашпо и зелёные букеты (подогнать по размеру).<br>
                   • <b>«Кухня - Декор для кухни»</b> (<code>28480297</code>) → витрины, полочки и столешница <b>строго на Кухне</b>.<br>
                   • <b>«Декор - Книги»</b> (<code>28480289</code>) → полки в <b>детских подростков</b> и <b>кабинетах</b> (в спальне много книг не ставить!).<br>
                   • <b>«Санузел - Декор для санузла»</b> (<code>28480273</code>) → баночки, дозаторы, полотенца, бумага <b>СТРОГО ТОЛЬКО в санузлах!</b> <span style="color:#fca5a5;">(ЗАПРЕЩЕНО ставить в прихожей/гостиной!)</span><br>
-                  • <b>«Санузел - Сантехника»</b> (<code>28480274</code>) → смесители, раковины, душевые стойки, унитазы.<br>
+                  • <b>«Санузел - Сантехника»</b> (<code>28480274</code>) → дополнительные смесители, раковины, душевые стойки, унитазы.<br>
                   • <b>«Прачечная - Наполнение прачечной»</b> (<code>28480352</code>) → банки, порошки, хознужды, полотенца для прачечных и кладовых.<br>
                   • <b>«Гардероб - Одежда»</b> (<code>28480340</code>) → плечики, складная одежда, сумки, обувь, коробки, чемоданы (гардеробные + входные кладовые/шкафы).<br>
                   • <b>«Детская комната - Детский»</b> (<code>28480337</code>) → игрушки только для малышей (не для подростков!).
@@ -2691,10 +2692,20 @@
                 🔵 ШАГ 3. КОНСТРУКТОР НАПОЛНЕНИЯ И ДЕКОРА КОМНАТЫ — НАЖИМАЙ «+ ПЛЮС» В 1 КЛИК
               </div>
               <div style="font-size:11.5px; color:var(--muted); margin-bottom:8px;">
-                Нажимай на плашки ниже — они сразу добавляют точное указание агенту, из какой папки <b>«Мой кабинет → Избранное»</b> взять модели вразнобой и поставить их строго лицом вперёд:
+                Нажимай на плашки ниже — они сразу добавляют точное указание агенту, какую базовую модель взять из <b>«по умолчанию»</b> и из какой папки <b>«Мой кабинет → Избранное»</b> взять декор вразнобой:
               </div>
 
-              <div style="font-size:12px; font-weight:800; color:#60a5fa; margin-top:4px;">🏺 1) Декор по папкам «Мой кабинет → Избранное» (вразнобой, не повторяя первые модели!):</div>
+              <div style="font-size:12px; font-weight:800; color:#fde68a; margin-top:4px;">⭐ 1) Главные базовые модели в каждый проект (папка «Избранное → по умолчанию», <code>fid: 28463658</code> — НЕ искать в каталоге!):</div>
+              <div class="plus-chips-wrap" style="margin-bottom:8px;">
+                <button class="plus-chip" style="border-color:#fbbf24; color:#fde68a;" onclick="appendPlacementTag('Из папки «Избранное -> по умолчанию» (fid: 28463658) поставить базовую технику кухни: варочную поверхность Set_Asko 1 (ключ cooktop, seekId: 6e7e5a66-072b-4d01-b287-3f5d8a1b6c08), колонну духовка+СВЧ (ключ oven_microwave, seekId: 51295004-e3e0-4bba-819c-6efd45ab4481) и группу кухонной раковины со смесителем (ключ kitchen_sink_set, seekId: 1dd3d8b6-a3cf-43a9-a243-3e7782fb5da1 — разгруппировать ungroup: true и подогнать мойку 3b14a132-13a5-4bb3-8d00-7ea9f472bb98 под вырез столешницы!).')">+ 🍳 Кухня: плита + духовка/СВЧ + мойка со смесителем («по умолчанию»)</button>
+                <button class="plus-chip" style="border-color:#fbbf24; color:#fde68a;" onclick="appendPlacementTag('Из папки «Избранное -> по умолчанию» (fid: 28463658) поставить базовый телевизор (ключ tv, seekId: 50e133d0-cf25-44d5-96dd-e145af366bdb — подогнать под размер) и настенный кондиционер (ключ air_conditioner, seekId: b4ff0a07-b6eb-4df7-a84c-a939894745ad).')">+ 📺 Телевизор + ❄️ Кондиционер («по умолчанию»)</button>
+                <button class="plus-chip" style="border-color:#fbbf24; color:#fde68a;" onclick="appendPlacementTag('Из папки «Избранное -> по умолчанию» (fid: 28463658) повесить на окно базовый тюль (ключ curtain_tulle, seekId: a3b71a1e-2cca-472c-aab3-c369eac176eb) + шторы блэкаут (ключ curtain_blackout, seekId: ecaeff49-c16c-4da5-9c5d-7c95ea5a3437), а в пол перед панорамным окном поставить внутрипольный конвектор (ключ floor_convector, seekId: bbf509c9-a2e3-48d7-af8b-cfea59ce3cf8).')">+ 🪟 Шторы (Тюль + Блэкаут) + Внутрипольный конвектор («по умолчанию»)</button>
+                <button class="plus-chip" style="border-color:#fbbf24; color:#fde68a;" onclick="appendPlacementTag('Из папки «Избранное -> по умолчанию» (fid: 28463658) поставить двери: входную дверь с глазком «дверь 2» (ключ entry_door, seekId: 69de6309-139a-45c5-ae98-3e582394508d) и межкомнатные двери «55 2300» (ключ interior_door, seekId: 11b3ed92-f962-42fd-81ba-5897dd6cf580).')">+ 🚪 Входная дверь («дверь 2») + Межкомнатные («55 2300»)</button>
+                <button class="plus-chip" style="border-color:#fbbf24; color:#fde68a;" onclick="appendPlacementTag('Из папки «Избранное -> по умолчанию» (fid: 28463658) поставить базовую сантехнику: комплект унитаза с кнопкой, гигиеническим душем, бумагой и ёршиком (ключ toilet_full_set, seekId: d3307a4c-558d-4b6f-94ab-1ae898366e03 — при необходимости разгруппировать ungroup: true), душевую стойку со струями воды (ключ shower_set_with_water, seekId: 1a60f73b-c4df-40b9-a3f0-839e290e7085) и накладную раковину (ключ bath_vessel_sink_set 72eaee08-4ba9-41ea-9465-1f3e45dfe043 или отдельно чашу bath_vessel_sink_only 5ef4c12b-926e-480f-b31c-77ee2b36f181).')">+ 🚿 Базовая сантехника: Унитаз (комплект) + Душ с водой + Раковина («по умолчанию»)</button>
+                <button class="plus-chip" style="border-color:#fbbf24; color:#fde68a;" onclick="appendPlacementTag('Из папки «Избранное -> по умолчанию» (fid: 28463658) поставить стиральную машину Bosch (ключ washing_machine, seekId: 5e1c20f9-4c90-405b-9223-bcdc02d8377d) и сушильную машину Bosch (ключ tumble_dryer, seekId: e73f998c-0007-4bca-bb77-25bcdb40e73c).')">+ 🧺 Стиральная + Сушильная машины Bosch («по умолчанию»)</button>
+              </div>
+
+              <div style="font-size:12px; font-weight:800; color:#60a5fa; margin-top:4px;">🏺 2) Декор и растения по папкам «Мой кабинет → Избранное» (вразнобой, не повторяя первые модели!):</div>
               <div class="plus-chips-wrap">
                 <button class="plus-chip" onclick="appendPlacementTag('Расставить базовый декор на тумбочки / консоль / столик / открытые полки СТРОГО из папки Избранного «Декор - Декор для полок» (fid: 28480394) вразнобой (sampleFavoriteModels) и развернуть каждую модель лицом вперёд в комнату!')"><span style="color:#fde68a;">+ 🏺 Декор для полок / тумбочек / консоли</span> («Декор - Декор для полок»)</button>
                 <button class="plus-chip" onclick="appendPlacementTag('Поставить красивое зелёное растение (напольное растение в кашпо или зелёный букет) СТРОГО из папки Избранного «Растения - Растения» (fid: 28480305, два раза слово Растения!), аккуратно подогнать по размеру и повернуть лицом в комнату!')"><span style="color:#6ee7b7;">+ 🌿 Зелёное растение</span> («Растения - Растения» два раза!)</button>
@@ -5240,8 +5251,24 @@
       } else if (currentAgentStage === 'placement') {
         const favGuide = getRoomFavoriteFoldersGuide(currentWorkRoomKey, roomTitle);
         promptLines.push(`1. ЧЁТКАЯ КАРТА ПАПОК «МОЙ КАБИНЕТ -> ИЗБРАННОЕ» В HOMESTYLER ДЛЯ ПОМЕЩЕНИЯ «${roomTitle}» (СТРОГО ПО НАЗНАЧЕНИЮ КОМНАТ!):`);
-        promptLines.push(`   • Подключи помощник HSJoinery (в нём уже встроена вся карта папок Избранного HSJoinery.FAVORITE_FOLDERS, рандомизатор sampleFavoriteModels и авто-разворот лицом вперёд placeFavoriteModel):`);
+        promptLines.push(`   • Подключи помощник HSJoinery (в нём уже встроены базовые модели проекта HSJoinery.DEFAULT_PROJECT_MODELS, вся карта папок Избранного HSJoinery.FAVORITE_FOLDERS, рандомизатор sampleFavoriteModels и авто-разворот лицом вперёд placeFavoriteModel):`);
         promptLines.push(`     if (!window.HSJoinery) (0, eval)(await (await fetch('http://127.0.0.1:3033/hs-joinery.js')).text());`);
+        promptLines.push(`   • ⭐ 0) ПЕРВООЧЕРЕДНАЯ БАЗОВАЯ ПАПКА «по умолчанию» (fid: 28463658, HSJoinery.DEFAULT_PROJECT_MODELS) — ГЛАВНЫЕ МОДЕЛИ В КАЖДЫЙ ПРОЕКТ (НЕ ИСКАТЬ В КАТАЛОГЕ И НЕ МОДЕЛИРОВАТЬ ВРУЧНУЮ!):`);
+        promptLines.push(`     - Вызывай await window.HSJoinery.placeFavoriteModel('<ключ_или_seekId>', { frame, sMm, dMm, zMm, ungroup: true/false }):`);
+        promptLines.push(`       • Варочная поверхность (ключ 'cooktop'): seekId '6e7e5a66-072b-4d01-b287-3f5d8a1b6c08' (Set_Asko 1, 560×490×7 мм)`);
+        promptLines.push(`       • Духовка + СВЧ в колонну (ключ 'oven_microwave'): seekId '51295004-e3e0-4bba-819c-6efd45ab4481' (596×608×982 мм)`);
+        promptLines.push(`       • Кухонная раковина + смеситель (ключ 'kitchen_sink_set'): группа seekId '1dd3d8b6-a3cf-43a9-a243-3e7782fb5da1' (можно разгруппировать { ungroup: true }, отдельно мойка 'kitchen_sink_only' -> '3b14a132-13a5-4bb3-8d00-7ea9f472bb98' подгоняется под индивидуальный вырез столешницы; отдельно кухонный смеситель 'kitchen_faucet' -> '5af1f675-87d3-4878-a313-f096187915fe')`);
+        promptLines.push(`       • Телевизор (ключ 'tv'): seekId '50e133d0-cf25-44d5-96dd-e145af366bdb' (масштабировать под нужную диагональ, не выдумывать другие ТВ!)`);
+        promptLines.push(`       • Кондиционер настенный (ключ 'air_conditioner'): seekId 'b4ff0a07-b6eb-4df7-a84c-a939894745ad' (837×200×313 мм)`);
+        promptLines.push(`       • Внутрипольный конвектор (ключ 'floor_convector'): seekId 'bbf509c9-a2e3-48d7-af8b-cfea59ce3cf8' (исходник 'f3dd1512-9392-4c31-8f96-f1c38e791f6f', 271×2970×5 мм в пол перед панорамными окнами)`);
+        promptLines.push(`       • Входная дверь с глазком (ключ 'entry_door'): seekId '69de6309-139a-45c5-ae98-3e582394508d' (дверь 2)`);
+        promptLines.push(`       • Межкомнатная дверь (ключ 'interior_door'): seekId '11b3ed92-f962-42fd-81ba-5897dd6cf580' (55 2300, скрытая / с наличниками)`);
+        promptLines.push(`       • Шторы: Тюль ('curtain_tulle' -> 'a3b71a1e-2cca-472c-aab3-c369eac176eb'), Портьеры Blackout ('curtain_blackout' -> 'ecaeff49-c16c-4da5-9c5d-7c95ea5a3437'), Жалюзи ('window_blinds' -> '45108571-2fec-428a-9fd3-c46ffb51cb26')`);
+        promptLines.push(`       • Раковина накладная + смеситель из стены (ключ 'bath_vessel_sink_set'): группа seekId '72eaee08-4ba9-41ea-9465-1f3e45dfe043' (если смеситель не из стены — разгруппировать или взять отдельно чашу раковины 'bath_vessel_sink_only' -> '5ef4c12b-926e-480f-b31c-77ee2b36f181')`);
+        promptLines.push(`       • Душевая стойка со встроенным смесителем и струями воды (ключ 'shower_set_with_water'): группа seekId '1a60f73b-c4df-40b9-a3f0-839e290e7085'`);
+        promptLines.push(`       • Комплект унитаза (ключ 'toilet_full_set'): группа seekId 'd3307a4c-558d-4b6f-94ab-1ae898366e03' (унитаз '998b042f...' + кнопка '4d947867...' + гиг. душ '4c397679...' + бумага '9b83f701...' + ёршик 'f7894ec6...'; при необходимости разгруппировать { ungroup: true })`);
+        promptLines.push(`       • Стиральная и сушильная машины Bosch: стиралка ('washing_machine' -> '5e1c20f9-4c90-405b-9223-bcdc02d8377d'), сушилка ('tumble_dryer' -> 'e73f998c-0007-4bca-bb77-25bcdb40e73c')`);
+        promptLines.push(`       • Также проверь await window.HSJoinery.getDefaultFolderModels() на случай новых добавленных моделей в «по умолчанию» (fid: 28463658).`);
         promptLines.push(`   • 📂 ИЗ КАКИХ ИМЕННО ПАПОК «МОЙ КАБИНЕТ -> ИЗБРАННОЕ» БРАТЬ ДЕКОР, РАСТЕНИЯ И САНТЕХНИКУ ДЛЯ КОМНАТЫ «${roomTitle}»:`);
         favGuide.lines.forEach(ln => promptLines.push(ln));
         promptLines.push(`   • 📋 ПОЛНЫЙ СПРАВОЧНИК ПАПОК «МОЙ КАБИНЕТ -> ИЗБРАННОЕ» ПОЛЬЗОВАТЕЛЯ (с точными ID папок fid для NWTK.mtop.Catalog.getFavProducts / HSJoinery.sampleFavoriteModels):`);
