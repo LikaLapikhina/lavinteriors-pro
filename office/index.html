@@ -1083,7 +1083,128 @@
       var ovNow = document.getElementById('pin-overlay');
       if (ovNow) ovNow.classList.add('hidden');
     }
+
+    // ==================== АВТО-СИНХРОНИЗАЦИЯ ПК ↔ НОУТБУК ====================
+    (function initLavCloudSync() {
+      var origSetItem = localStorage.setItem.bind(localStorage);
+      var syncTimer = null;
+      var activeSkyOrigin = 'http://127.0.0.1:3033';
+
+      async function resolveSkyOrigin() {
+        try {
+          var c = new AbortController();
+          var t = setTimeout(function(){ c.abort(); }, 1000);
+          var r = await fetch('http://127.0.0.1:3033/api/batch/status?t=' + Date.now(), { signal: c.signal });
+          clearTimeout(t);
+          if (r.ok) { activeSkyOrigin = 'http://127.0.0.1:3033'; return activeSkyOrigin; }
+        } catch(e) {}
+        try {
+          var ep = await (await fetch('./skypro-endpoint.json?t=' + Date.now())).json();
+          if (ep && ep.tunnelUrl) {
+            activeSkyOrigin = ep.tunnelUrl.replace(/\/+$/, '');
+            var linkEl = document.getElementById('laptop-skypro-viewer-link');
+            if (linkEl) { linkEl.href = activeSkyOrigin + '/viewer'; linkEl.textContent = activeSkyOrigin + '/viewer'; }
+          }
+        } catch(e2) {}
+        return activeSkyOrigin;
+      }
+
+      async function pullCloudState(forceReloadUI) {
+        await resolveSkyOrigin();
+        var stateData = null;
+        try {
+          var r = await fetch(activeSkyOrigin + '/api/office-state?t=' + Date.now());
+          if (r.ok) stateData = await r.json();
+        } catch(e) {}
+        if (!stateData || Object.keys(stateData).length === 0) {
+          try {
+            var r2 = await fetch('./cloud_state.json?t=' + Date.now());
+            if (r2.ok) stateData = await r2.json();
+          } catch(e2) {}
+        }
+        if (stateData && typeof stateData === 'object') {
+          var changed = false;
+          var isFirstBootOnLaptop = !localStorage.getItem('lav_work_projects_db_v7');
+          Object.keys(stateData).forEach(function(k) {
+            if (k.startsWith('lav_') && stateData[k]) {
+              if (isFirstBootOnLaptop || forceReloadUI || !localStorage.getItem(k)) {
+                origSetItem(k, stateData[k]);
+                changed = true;
+              }
+            }
+          });
+          if (changed && (isFirstBootOnLaptop || forceReloadUI)) {
+            if (typeof renderWorkProjectsGrid === 'function') renderWorkProjectsGrid();
+            if (typeof renderCalendar === 'function') renderCalendar();
+          }
+        }
+      }
+
+      localStorage.setItem = function(k, v) {
+        origSetItem(k, v);
+        if (k && k.startsWith('lav_')) {
+          clearTimeout(syncTimer);
+          syncTimer = setTimeout(async function() {
+            try {
+              var payload = {};
+              for (var i = 0; i < localStorage.length; i++) {
+                var key = localStorage.key(i);
+                if (key && key.startsWith('lav_')) payload[key] = localStorage.getItem(key);
+              }
+              await fetch(activeSkyOrigin + '/api/office-state', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+              });
+            } catch(e) {}
+          }, 800);
+        }
+      };
+
+      window.__pullLavCloudState = pullCloudState;
+      window.addEventListener('DOMContentLoaded', function() { pullCloudState(false); });
+    })();
+
+    function openLaptopSetupModal() {
+      var m = document.getElementById('laptop-setup-modal');
+      if (m) m.style.display = 'flex';
+    }
   </script>
+
+  <!-- ==================== МОДАЛЬНОЕ ОКНО: НОУТБУК И ОБЛАКО 3DSKY ==================== -->
+  <div id="laptop-setup-modal" style="display:none;position:fixed;inset:0;z-index:99999;background:rgba(5,8,17,0.86);backdrop-filter:blur(8px);align-items:center;justify-content:center;padding:20px;">
+    <div style="background:#111827;border:1px solid #374151;border-radius:16px;max-width:680px;width:100%;padding:24px;color:#f9fafb;box-shadow:0 20px 50px rgba(0,0,0,0.6);font-family:Inter,sans-serif;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+        <h2 style="margin:0;font-size:19px;font-weight:800;color:#60a5fa;">💻 Работа с Ноутбука (3DSky Pro + Воркспейс + Antigravity)</h2>
+        <button onclick="document.getElementById('laptop-setup-modal').style.display='none'" style="background:none;border:none;color:#9ca3af;font-size:22px;cursor:pointer;">✕</button>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:14px;font-size:13.5px;line-height:1.5;">
+        <div style="background:#1f2937;border:1px solid #374151;border-radius:10px;padding:14px;">
+          <div style="font-weight:700;color:#34d399;margin-bottom:6px;">1️⃣ Кнопка «⚡ 3DSky Панель» внутри Homestyler на ноутбуке (за 2 секунды):</div>
+          <div style="color:#d1d5db;margin-bottom:10px;">Зажми синюю кнопку ниже левой кнопкой мыши и <b>перетащи её на панель закладок браузера</b> на ноутбуке. Когда откроешь любой проект в <b>3d.homestyler.com</b>, просто нажми на эту закладку — сразу откроется вся твоя панель <b>3DSky Pro + Спецматериалы (5 880+ моделей)</b>:</div>
+          <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
+            <a href="javascript:(async function(){try{var c=new AbortController();var t=setTimeout(function(){c.abort();},1200);var r=await fetch('http://127.0.0.1:3033/homestyler-panel.js?t='+Date.now(),{signal:c.signal});clearTimeout(t);if(r.ok){window.__SKYPRO_SERVER_ORIGIN__='http://127.0.0.1:3033';(0,eval)(await r.text());return;}}catch(e){}try{var ep=await (await fetch('https://lavinteriors.pro/office/skypro-endpoint.json?t='+Date.now())).json();if(ep&&ep.tunnelUrl){window.__SKYPRO_SERVER_ORIGIN__=ep.tunnelUrl.replace(/\/+$/,'');var r2=await fetch(window.__SKYPRO_SERVER_ORIGIN__+'/homestyler-panel.js?t='+Date.now());(0,eval)(await r2.text());return;}}catch(e2){}alert('Не удалось подключиться к 3DSky серверу ПК');})();void(0);" style="background:#2563eb;color:#fff;padding:8px 14px;border-radius:8px;font-weight:700;text-decoration:none;border:1px solid #93c5fd;display:inline-block;">⚡ 3DSky Панель (Зажми и перетащи в закладки)</a>
+            <a id="laptop-skypro-viewer-link" href="https://dim-benjamin-with-designs.trycloudflare.com/viewer" target="_blank" style="color:#93c5fd;font-weight:600;text-decoration:underline;">Открыть веб-каталог 3DSky Studio ↗</a>
+          </div>
+        </div>
+
+        <div style="background:#1f2937;border:1px solid #374151;border-radius:10px;padding:14px;">
+          <div style="font-weight:700;color:#c084fc;margin-bottom:6px;">2️⃣ Полная настройка Antigravity + Расширения на ноутбуке в 1 клик:</div>
+          <div style="color:#d1d5db;margin-bottom:8px;">Когда установишь и откроешь <b>Antigravity</b> на ноутбуке, просто отправь агенту в чат (или вставь в PowerShell) эту команду — она за 5 секунд скачает все твои правила <code>lav-design-core</code>, скилл <code>homestyler-studio</code> со всеми референсами ручек/фасадов/раковин, расширение браузера и мост <code>127.0.0.1:3033</code>:</div>
+          <div style="display:flex;gap:8px;align-items:center;">
+            <input id="laptop-ps-cmd" readonly value="irm https://lavinteriors.pro/office/setup-laptop.ps1 | iex" style="flex:1;background:#0b0f19;border:1px solid #4b5563;color:#6ee7b7;padding:8px 10px;border-radius:6px;font-family:Consolas,monospace;font-size:12.5px;">
+            <button onclick="navigator.clipboard.writeText(document.getElementById('laptop-ps-cmd').value);this.textContent='✅ Скопировано!';" style="background:#8b5cf6;color:#fff;border:none;padding:8px 14px;border-radius:6px;font-weight:700;cursor:pointer;white-space:nowrap;">📋 Скопировать</button>
+          </div>
+        </div>
+
+        <div style="display:flex;justify-content:space-between;align-items:center;background:#111827;border:1px dashed #374151;border-radius:8px;padding:10px 14px;">
+          <span style="color:#9ca3af;font-size:12.5px;">🔄 Сортировка, брифы и проекты синхронизируются с ПК автоматически.</span>
+          <button onclick="window.__pullLavCloudState && window.__pullLavCloudState(true); this.textContent='✅ Синхронизировано с ПК!';" style="background:#059669;color:#fff;border:none;padding:6px 12px;border-radius:6px;font-weight:600;cursor:pointer;font-size:12px;">🔄 Обновить данные с ПК сейчас</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- ==================== ВЕРХНЯЯ ШАПКА ==================== -->
   <div class="top-bar">
@@ -1092,6 +1213,8 @@
       <p data-editable="true">Сегодня (28.10) выплата <b>42 278,80 ₽</b> (10 проектов) • Итог октября: <b>66 278,80 ₽</b> • В работе 17 проектов (+новый <b>0589</b> 120 м²): остаток <b>152 370,90 ₽</b></p>
     </div>
     <div class="top-actions">
+      <a href="javascript:(async function(){try{var c=new AbortController();var t=setTimeout(function(){c.abort();},1200);var r=await fetch('http://127.0.0.1:3033/homestyler-panel.js?t='+Date.now(),{signal:c.signal});clearTimeout(t);if(r.ok){window.__SKYPRO_SERVER_ORIGIN__='http://127.0.0.1:3033';(0,eval)(await r.text());return;}}catch(e){}try{var ep=await (await fetch('https://lavinteriors.pro/office/skypro-endpoint.json?t='+Date.now())).json();if(ep&&ep.tunnelUrl){window.__SKYPRO_SERVER_ORIGIN__=ep.tunnelUrl.replace(/\/+$/,'');var r2=await fetch(window.__SKYPRO_SERVER_ORIGIN__+'/homestyler-panel.js?t='+Date.now());(0,eval)(await r2.text());return;}}catch(e2){}alert('Не удалось подключиться к 3DSky серверу ПК');})();void(0);" class="action-btn" style="background:linear-gradient(135deg,#2563eb,#1d4ed8);border-color:#60a5fa;color:#fff;text-decoration:none;font-weight:700;" title="Зажми левой кнопкой мыши и перетащи на панель закладок браузера! Внутри Homestyler 1 клик по закладке откроет панель 3DSky Pro">⚡ 3DSky Панель</a>
+      <button class="action-btn" style="border-color:#34d399;color:#6ee7b7;font-weight:700;" onclick="openLaptopSetupModal()">💻 Ноутбук (1 клик)</button>
       <button class="action-btn" id="edit-mode-btn" onclick="toggleEditMode()">✏️ Редактировать данные</button>
       <button class="action-btn" onclick="addNewTaskPrompt()">➕ Задача / Созвон</button>
       <button class="action-btn" style="border-color:var(--purple-border); color:#e9d5ff;" onclick="switchTab('tab-work', document.querySelectorAll('.tab-btn')[2]); openNewWorkProjectModal();">➕ Взять проект в работу</button>
