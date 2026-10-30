@@ -1236,18 +1236,18 @@
     </div>
     <div class="kpi-card highlight-yellow">
       <div class="kpi-label">⏳ АВАНСЫ НА СЛЕД. НЕДЕЛЮ (04.11)</div>
-      <div class="kpi-val" id="kpi-not-in-sheet" style="color:#fbbf24;" data-editable="true">16 000 ₽</div>
-      <div class="kpi-sub" id="kpi-not-sub" data-editable="true">5 пр. на 04.11: 0653 (4к) + 0589 (2к) + 0637 (4к) + 0631 (4к) + 0613 (2к) = 16 000 ₽</div>
+      <div class="kpi-val" id="kpi-not-in-sheet" style="color:#fbbf24;" data-editable="true">18 000 ₽</div>
+      <div class="kpi-sub" id="kpi-not-sub" data-editable="true">6 пр. на 04.11: 0653 (4к) + 0589 (2к) + 0637 (4к) + 0631 (4к) + 0613 (2к) + 0600 (2к) = 18 000 ₽</div>
     </div>
     <div class="kpi-card highlight-purple">
       <div class="kpi-label">🚀 ПРОГНОЗ НА СЛЕД. СРЕДУ (04.11)</div>
-      <div class="kpi-val" style="color:#c084fc;" data-editable="true">47 415 – 63 665 ₽</div>
-      <div class="kpi-sub" data-editable="true">16 000 ₽ (авансы 0653+0589+0637+0631+0613) + 31 415 ₽ (4 горящие визы) + до 16 250 ₽ (0633/0545)</div>
+      <div class="kpi-val" style="color:#c084fc;" data-editable="true">49 415 – 65 665 ₽</div>
+      <div class="kpi-sub" data-editable="true">18 000 ₽ (авансы 0653+0589+0637+0631+0613+0600) + 31 415 ₽ (4 горящие визы) + до 16 250 ₽ (0633/0545)</div>
     </div>
     <div class="kpi-card highlight-blue">
-      <div class="kpi-label">💼 ВЕСЬ ПОРТФЕЛЬ (20 ПРОЕКТОВ)</div>
-      <div class="kpi-val" style="color:#60a5fa;" data-editable="true">286 845,74 ₽</div>
-      <div class="kpi-sub" data-editable="true">20 проектов (18 в работе)! Чистый остаток к получению: <b>220 566,94 ₽</b>!</div>
+      <div class="kpi-label">💼 ВЕСЬ ПОРТФЕЛЬ (21 ПРОЕКТ)</div>
+      <div class="kpi-val" style="color:#60a5fa;" data-editable="true">293 445,74 ₽</div>
+      <div class="kpi-sub" data-editable="true">21 проект (19 в работе)! Чистый остаток к получению: <b>227 166,94 ₽</b>!</div>
     </div>
   </div>
 
@@ -1257,7 +1257,7 @@
     <button class="tab-btn" onclick="switchTab('tab-work', this)">🚀 2. ПРОЕКТЫ В РАБОТЕ (+ПЕРЕДАЧА АГЕНТАМ)</button>
     <button class="tab-btn" onclick="switchTab('tab-scripts', this)">💬 3. СКРИПТЫ И БАЗА МАТЕРИАЛОВ (МСК)</button>
     <button class="tab-btn" onclick="switchTab('tab-sheet', this)">💵 4. ВЫПЛАТЫ (28.10 + 04.11)</button>
-    <button class="tab-btn" onclick="switchTab('tab-projects', this)">📊 5. ФИНАНСЫ: ВСЕ 20 ПРОЕКТОВ</button>
+    <button class="tab-btn" onclick="switchTab('tab-projects', this)">📊 5. ФИНАНСЫ: ВСЕ 21 ПРОЕКТ</button>
   </div>
 
   <!-- ==================== ВКЛАДКА 1: СВЕРКА ТАБЛИЧКИ (28.10) + ПРОГНОЗ НА 04.11 ==================== -->
@@ -1388,7 +1388,7 @@
         <div class="block-box yellow-priority">
           <div class="block-header">
             <div>
-              <div class="block-title" style="color:#fbbf24;">⏳ ЧАСТЬ 2. АВАНСЫ НА СЛЕДУЮЩУЮ СРЕДУ 04.11 (5 новых проектов = 16 000 ₽)</div>
+              <div class="block-title" style="color:#fbbf24;">⏳ ЧАСТЬ 2. АВАНСЫ НА СЛЕДУЮЩУЮ СРЕДУ 04.11 (6 новых проектов = 18 000 ₽)</div>
               <div class="block-subtitle">Идут в следующую ведомость на среду 04.11:</div>
             </div>
           </div>
@@ -1441,6 +1441,17 @@
               <div>
                 <span class="tag tag-proj">0613</span> <span class="tag tag-tg">📱 TG</span> <span class="tag tag-purple">🆕 Визы 73 м² (= 12 100,00 ₽) • Новый проект 30.10</span>
                 <div style="font-weight:700; font-size:13.5px; margin-top:3px;" data-editable="true">Ждём анкету и рефы -> созвон -> аванс <b>+2 000 ₽</b> на среду 04.11! Остаток: <b>10 100,00 ₽</b></div>
+              </div>
+              <div style="text-align:right;">
+                <div style="font-size:16px; font-weight:900; color:#fbbf24; margin-bottom:4px;">+ 2 000 ₽</div>
+                <button class="sheet-toggle-btn btn-out" onclick="toggleSheetItem(this)">⏳ На 04.11</button>
+              </div>
+            </div>
+
+            <div class="sheet-item not-in-sheet" data-id="0600" data-amount="2000" data-in="false">
+              <div>
+                <span class="tag tag-proj">0600</span> <span class="tag tag-tg">📱 TG</span> <span class="tag tag-purple">🆕 Визы 33 м² (= 6 600,00 ₽) • Ждём пока анкету</span>
+                <div style="font-weight:700; font-size:13.5px; margin-top:3px;" data-editable="true">Ждём пока анкету -> созвон -> аванс <b>+2 000 ₽</b> на среду 04.11! Остаток: <b>4 600,00 ₽</b></div>
               </div>
               <div style="text-align:right;">
                 <div style="font-size:16px; font-weight:900; color:#fbbf24; margin-bottom:4px;">+ 2 000 ₽</div>
@@ -1735,6 +1746,18 @@
               </div>
             </div>
 
+            <div class="task-item purple-task" onclick="toggleTask(this)">
+              <div class="check-circle">✓</div>
+              <div class="task-body">
+                <div class="task-top">
+                  <span class="tag tag-purple">🆕 НОВЫЙ ПРОЕКТ (ЖДЁМ ПОКА АНКЕТУ)</span>
+                  <span class="tag tag-proj">0600</span>
+                  <span class="tag tag-tg">📱 TG • Визы 33 м² (6 600 ₽ • +2 000 ₽ аванс на 04.11)</span>
+                </div>
+                <div class="task-title" data-editable="true">0600 (33 м², 6 600 ₽ — «Ждём пока анкету») — Дождаться анкеты от заказчика в D:\ФАНАТИКС\0600 и провести созвон (+2 000 ₽ аванс на 04.11, остаток 4 600 ₽)</div>
+              </div>
+            </div>
+
             <div class="task-item" onclick="toggleTask(this)">
               <div class="check-circle">✓</div>
               <div class="task-body">
@@ -1781,13 +1804,13 @@
       <!-- БЫСТРЫЙ ФИЛЬТР ПО СРОЧНОСТИ И ДЕДЛАЙНАМ -->
       <div style="display:flex; gap:8px; flex-wrap:wrap; align-items:center; margin-bottom:12px; padding:10px 12px; border-radius:10px; background:rgba(0,0,0,0.28); border:1px solid rgba(255,255,255,0.08);">
         <span style="font-size:12px; font-weight:900; color:#e2e8f0;">⏱️ ФИЛЬТР ПО СРОКАМ:</span>
-        <button class="copy-btn dl-filter-btn" style="background:rgba(168,85,247,0.28); border-color:#c084fc; font-weight:800;" onclick="filterWorkProjectsByTier('all', this)">🔥 Все активные (18)</button>
+        <button class="copy-btn dl-filter-btn" style="background:rgba(168,85,247,0.28); border-color:#c084fc; font-weight:800;" onclick="filterWorkProjectsByTier('all', this)">🔥 Все активные (19)</button>
         <button class="copy-btn dl-filter-btn" style="color:#fecaca; border-color:rgba(239,68,68,0.45);" onclick="filterWorkProjectsByTier('today_work', this)">🚨 СЕГОДНЯ / ЗАВТРА: Сдать визы/план и 10:00 созвон (6)</button>
-        <button class="copy-btn dl-filter-btn" style="color:#e9d5ff; border-color:rgba(168,85,247,0.45);" onclick="filterWorkProjectsByTier('today_calls', this)">📞 СЕГОДНЯ: Вечерний созвон 20:00 и Написать (4)</button>
+        <button class="copy-btn dl-filter-btn" style="color:#e9d5ff; border-color:rgba(168,85,247,0.45);" onclick="filterWorkProjectsByTier('today_calls', this)">📞 СЕГОДНЯ: Вечерний созвон 20:00 и Написать (5)</button>
         <button class="copy-btn dl-filter-btn" style="color:#fde68a; border-color:rgba(245,158,11,0.45);" onclick="filterWorkProjectsByTier('mon_tue', this)">🎨 ПН–СР (02–04.11): Очередь Виз и Планов (5)</button>
         <button class="copy-btn dl-filter-btn" style="color:#bfdbfe; border-color:rgba(59,130,246,0.45);" onclick="filterWorkProjectsByTier('waiting', this)">⏳ Ждём сцену / обмер / След. неделя (3)</button>
         <button class="copy-btn dl-filter-btn" style="color:#f472b6; border-color:rgba(244,114,182,0.45);" onclick="filterWorkProjectsByTier('ch_max', this)">💬 Только MAX (7 пр.)</button>
-        <button class="copy-btn dl-filter-btn" style="color:#38bdf8; border-color:rgba(56,189,248,0.45);" onclick="filterWorkProjectsByTier('ch_tg', this)">📱 Только Telegram (11 пр.)</button>
+        <button class="copy-btn dl-filter-btn" style="color:#38bdf8; border-color:rgba(56,189,248,0.45);" onclick="filterWorkProjectsByTier('ch_tg', this)">📱 Только Telegram (12 пр.)</button>
       </div>
 
       <!-- СЕТКА АКТИВНЫХ ПРОЕКТОВ В РАБОТЕ -->
@@ -3226,13 +3249,23 @@
               <td style="color:#fbbf24; font-weight:900;" data-editable="true">+ 2 000,00 ₽ (аванс 04.11)</td>
               <td style="font-weight:800; color:#60a5fa;" data-editable="true">10 100,00 ₽</td>
             </tr>
+            <tr class="fin-row-yellow">
+              <td>21</td>
+              <td data-editable="true"><b>0600</b></td>
+              <td data-editable="true">📱 TG • <span class="tag tag-purple">🆕 Визы 33 м² («Ждём пока анкету» -> созвон!)</span></td>
+              <td data-editable="true">6 600,00 ₽ <span style="font-size:11px; color:var(--muted);">(33 м² визы)</span></td>
+              <td data-editable="true">0,00 ₽</td>
+              <td data-editable="true">—</td>
+              <td style="color:#fbbf24; font-weight:900;" data-editable="true">+ 2 000,00 ₽ (аванс 04.11)</td>
+              <td style="font-weight:800; color:#60a5fa;" data-editable="true">4 600,00 ₽</td>
+            </tr>
             <tr style="background:rgba(255,255,255,0.08); font-weight:900; font-size:14.5px;">
-              <td colspan="3">ИТОГО ПО ВСЕМ 20 ПРОЕКТАМ (В ОКТЯБРЕ ПОЛУЧЕНО: 66 278,80 ₽):</td>
-              <td data-editable="true">286 845,74 ₽</td>
+              <td colspan="3">ИТОГО ПО ВСЕМ 21 ПРОЕКТАМ (В ОКТЯБРЕ ПОЛУЧЕНО: 66 278,80 ₽):</td>
+              <td data-editable="true">293 445,74 ₽</td>
               <td style="color:#34d399;" data-editable="true">24 000,00 ₽</td>
               <td style="color:#34d399; font-size:15.5px;" data-editable="true">+ 42 278,80 ₽ ✅</td>
-              <td style="color:#fbbf24; font-size:15.5px;" data-editable="true">+ 16 000,00 ₽ ⏳</td>
-              <td style="color:#60a5fa; font-size:15.5px;" data-editable="true">204 566,94 ₽ (всего остаток: 220 566,94 ₽)</td>
+              <td style="color:#fbbf24; font-size:15.5px;" data-editable="true">+ 18 000,00 ₽ ⏳</td>
+              <td style="color:#60a5fa; font-size:15.5px;" data-editable="true">209 166,94 ₽ (всего остаток: 227 166,94 ₽)</td>
             </tr>
           </tbody>
         </table>
@@ -3462,12 +3495,12 @@
       document.querySelectorAll('[data-editable="true"]').forEach(el => {
         edits.push(el.innerHTML);
       });
-      localStorage.setItem('lav_custom_edits_v12', JSON.stringify(edits));
+      localStorage.setItem('lav_custom_edits_v13', JSON.stringify(edits));
     }
 
     function loadCustomEdits() {
       try {
-        const raw = localStorage.getItem('lav_custom_edits_v12');
+        const raw = localStorage.getItem('lav_custom_edits_v13');
         if (!raw) return;
         const edits = JSON.parse(raw);
         const els = document.querySelectorAll('[data-editable="true"]');
@@ -3509,13 +3542,13 @@
     }
 
     function saveAddedTasks() {
-      localStorage.setItem('lav_modeling_html_v5', document.getElementById('modeling-task-list').innerHTML);
-      localStorage.setItem('lav_calls_html_v5', document.getElementById('calls-task-list').innerHTML);
+      localStorage.setItem('lav_modeling_html_v6', document.getElementById('modeling-task-list').innerHTML);
+      localStorage.setItem('lav_calls_html_v6', document.getElementById('calls-task-list').innerHTML);
     }
 
     function loadAddedTasks() {
-      const m = localStorage.getItem('lav_modeling_html_v5');
-      const c = localStorage.getItem('lav_calls_html_v5');
+      const m = localStorage.getItem('lav_modeling_html_v6');
+      const c = localStorage.getItem('lav_calls_html_v6');
       if (m) document.getElementById('modeling-task-list').innerHTML = m;
       if (c) document.getElementById('calls-task-list').innerHTML = c;
     }
@@ -3543,7 +3576,7 @@
         <td style="font-weight:800; color:#60a5fa;" data-editable="true">${rest}</td>
       `;
       tbody.insertBefore(tr, tbody.lastElementChild);
-      localStorage.setItem('lav_projects_tbody_v12', tbody.innerHTML);
+      localStorage.setItem('lav_projects_tbody_v13', tbody.innerHTML);
       switchTab('tab-projects', document.querySelectorAll('.tab-btn')[2]);
     }
 
@@ -3593,7 +3626,7 @@
       } catch(e) {}
       const cs = localStorage.getItem('lav_custom_scripts_v4');
       if (cs) document.getElementById('custom-scripts-container').innerHTML = cs;
-      const pt = localStorage.getItem('lav_projects_tbody_v12');
+      const pt = localStorage.getItem('lav_projects_tbody_v13');
       if (pt) document.getElementById('projects-tbody').innerHTML = pt;
     }
 
@@ -3883,7 +3916,7 @@
 
 
     // ==================== 8. ПРОЕКТЫ В РАБОТЕ И ИНТЕРАКТИВНЫЙ КОНСТРУКТОР ПРОМПТОВ АГЕНТАМ ====================
-    const WORK_PROJECTS_KEY = 'lav_work_projects_db_v11';
+    const WORK_PROJECTS_KEY = 'lav_work_projects_db_v12';
     let currentWorkProjId = '0545';
     let currentWorkRoomKey = 'hall';
     var currentVizRoomKey = 'hall';
@@ -4592,7 +4625,7 @@
                   }
             },
             "deadline": "🔥 СРОК: СЕГОДНЯ (ПТ 30.10) — Быстро собрать и отправить хотя бы Кухню-Гостиную (1 этаж)!",
-            "deadlineColor": "#ef4444",
+            "deadlineColor": "red",
             "infoAudit": "✅ ПОЛНЫЙ КОМПЛЕКТ: План 1-2 эт. + Бриф + Архикад PLN (1 эт.) + Рефы + ТЗ созвона"
       },
       {
@@ -4637,77 +4670,43 @@
       },
       {
             "id": "0613",
+            "name": "Визы 73 м² (взяла 30.10 • Ждём анкету)",
             "channel": "📱 TG",
-            "format": "🎨 Только Визы (73 м²)",
-            "status": "🆕 НОВЫЙ ПРОЕКТ (73 м² = 12 100 ₽) • Ждём анкету и рефы -> созвон!",
-            "deadline": "📲 СРОК: Получить анкету / рефы и провести созвон (-> +2 000 ₽ аванс на 04.11)",
-            "deadlineColor": "purple",
-            "infoAudit": "⚠️ Папка D:\\ФАНАТИКС\\0613 создана (0 файлов): загрузить планировку, анкету и референсы",
+            "format": "🎨 Только Визы",
             "price": "12 100 ₽ (аванс +2 000 ₽ на 04.11, остаток 10 100 ₽)",
-            "questionMark": false,
+            "status": "🆕 НОВЫЙ ПРОЕКТ (73 м² = 12 100 ₽) • Ждём анкету и рефы -> созвон!",
             "closed": false,
             "folder": "D:\\ФАНАТИКС\\0613",
             "voiceDump": "Новый проект 0613 (73 м², оплата 12 100 ₽, 3D-визуализация). Папка D:\\ФАНАТИКС\\0613 готова. Получаем от заказчика планировку, анкету и референсы, проводим первичный созвон (аванс +2 000 ₽ в ведомость на 04.11, остаток за визы 10 100 ₽).",
-            "base": {
-                  "style": "Уточнить по анкете и референсам на созвоне",
-                  "floor": "Уточнить по анкете",
-                  "walls": "Уточнить по анкете",
-                  "ceiling": "Чистый белый матовый потолок без чёрных рамок по умолчанию",
-                  "family": "Квартира 73 м² (уточнить состав семьи на созвоне)",
-                  "folder": "D:\\ФАНАТИКС\\0613 (закинуть планировку, анкету и рефы)"
-            },
-            "rooms": [
-                  {
-                        "id": "hall",
-                        "name": "1. Прихожая и коридор",
-                        "area": "По плану (73 м²)",
-                        "stage": "Этап 0: Ждём анкету и план",
-                        "task": "Провести первичный созвон по анкете и собрать коробку",
-                        "notes": "Уточнить наполнение прихожей на созвоне.",
-                        "refs": "D:\\ФАНАТИКС\\0613",
-                        "done": false
-                  },
-                  {
-                        "id": "kitchen_living",
-                        "name": "2. Кухня-гостиная",
-                        "area": "По плану (73 м²)",
-                        "stage": "Этап 0: Ждём анкету и план",
-                        "task": "Провести созвон по анкете",
-                        "notes": "Уточнить фасады кухни, технику, фартук, стол и диван.",
-                        "refs": "D:\\ФАНАТИКС\\0613",
-                        "done": false
-                  },
-                  {
-                        "id": "bedroom",
-                        "name": "3. Мастер-спальня",
-                        "area": "По плану (73 м²)",
-                        "stage": "Этап 0: Ждём анкету и план",
-                        "task": "Провести созвон по анкете",
-                        "notes": "Уточнить кровать, шкафы, макияжную зону и ТВ.",
-                        "refs": "D:\\ФАНАТИКС\\0613",
-                        "done": false
-                  },
-                  {
-                        "id": "room2",
-                        "name": "4. Детская / Кабинет / 2-я спальня",
-                        "area": "По плану (73 м²)",
-                        "stage": "Этап 0: Ждём анкету и план",
-                        "task": "Провести созвон по анкете",
-                        "notes": "Уточнить назначение комнаты и мебель.",
-                        "refs": "D:\\ФАНАТИКС\\0613",
-                        "done": false
-                  },
-                  {
-                        "id": "bath",
-                        "name": "5. Ванная и Санузел",
-                        "area": "По плану (73 м²)",
-                        "stage": "Этап 0: Ждём анкету и план",
-                        "task": "Провести созвон по анкете",
-                        "notes": "Уточнить плитку, тумбу, раковину, ванну/душ и стиральную машину.",
-                        "refs": "D:\\ФАНАТИКС\\0613",
-                        "done": false
-                  }
-            ]
+            "baseStyle": "Ждём заполненную анкету и референсы от заказчика",
+            "baseFloor": "",
+            "baseWalls": "",
+            "baseCeiling": "Чистый белый матовый потолок без чёрных рамок по умолчанию",
+            "baseFamily": "Площадь 73 м². Взяла в работу 30.10.2026. Аванс +2 000 ₽ на 04.11.",
+            "rooms": {},
+            "deadline": "📲 СРОК: Получить анкету / рефы и провести созвон (-> +2 000 ₽ аванс на 04.11)",
+            "deadlineColor": "purple",
+            "infoAudit": "⚠️ Папка D:\\ФАНАТИКС\\0613 создана: ждём планировку, анкету и референсы"
+      },
+      {
+            "id": "0600",
+            "name": "Визы 33 м² • Ждём пока анкету",
+            "channel": "📱 TG",
+            "format": "🎨 Только Визы",
+            "price": "6 600 ₽ (аванс +2 000 ₽ на 04.11, остаток 4 600 ₽)",
+            "status": "🆕 НОВЫЙ ПРОЕКТ (33 м² = 6 600 ₽) • Ждём пока анкету -> созвон!",
+            "closed": false,
+            "folder": "D:\\ФАНАТИКС\\0600",
+            "voiceDump": "Новый проект 0600 (33 м², оплата 6 600 ₽, только 3D-визуализация). Название/статус: «Ждём пока анкету». Папка D:\\ФАНАТИКС\\0600 создана. Как только заказчик пришлёт анкету и референсы — проведём созвон (аванс +2 000 ₽ на 04.11, остаток за визы 4 600 ₽).",
+            "baseStyle": "Ждём заполненную анкету и референсы от заказчика",
+            "baseFloor": "",
+            "baseWalls": "",
+            "baseCeiling": "Чистый белый матовый потолок без чёрных рамок по умолчанию",
+            "baseFamily": "Площадь 33 м². Взяла в работу 30.10.2026. Ждём пока анкету.",
+            "rooms": {},
+            "deadline": "📲 СРОК: Ждём анкету от заказчика -> провести созвон (-> +2 000 ₽ аванс на 04.11)",
+            "deadlineColor": "purple",
+            "infoAudit": "⚠️ Папка D:\\ФАНАТИКС\\0600 создана: ждём анкету, планировку и референсы"
       },
       {
             "id": "0653",
