@@ -1124,7 +1124,7 @@
         }
         if (stateData && typeof stateData === 'object') {
           var changed = false;
-          var isFirstBootOnLaptop = !localStorage.getItem('lav_work_projects_db_v8') || localStorage.getItem('lav_work_projects_db_v7');
+          var isFirstBootOnLaptop = !localStorage.getItem('lav_work_projects_db_v9') || localStorage.getItem('lav_work_projects_db_v8') || localStorage.getItem('lav_work_projects_db_v7');
           Object.keys(stateData).forEach(function(k) {
             if (k.startsWith('lav_') && stateData[k]) {
               if (isFirstBootOnLaptop || forceReloadUI || !localStorage.getItem(k)) {
@@ -1236,18 +1236,18 @@
     </div>
     <div class="kpi-card highlight-yellow">
       <div class="kpi-label">⏳ АВАНСЫ НА СЛЕД. НЕДЕЛЮ (04.11)</div>
-      <div class="kpi-val" id="kpi-not-in-sheet" style="color:#fbbf24;" data-editable="true">14 000 ₽</div>
-      <div class="kpi-sub" id="kpi-not-sub" data-editable="true">4 пр. на 04.11: 0653 (4к) + 0589 (2к) + 0637 (4к) + 0631 (4к) = 14 000 ₽</div>
+      <div class="kpi-val" id="kpi-not-in-sheet" style="color:#fbbf24;" data-editable="true">16 000 ₽</div>
+      <div class="kpi-sub" id="kpi-not-sub" data-editable="true">5 пр. на 04.11: 0653 (4к) + 0589 (2к) + 0637 (4к) + 0631 (4к) + 0613 (2к) = 16 000 ₽</div>
     </div>
     <div class="kpi-card highlight-purple">
       <div class="kpi-label">🚀 ПРОГНОЗ НА СЛЕД. СРЕДУ (04.11)</div>
-      <div class="kpi-val" style="color:#c084fc;" data-editable="true">45 415 – 61 665 ₽</div>
-      <div class="kpi-sub" data-editable="true">14 000 ₽ (авансы 0653+0589+0637+0631) + 31 415 ₽ (4 горящие визы) + до 16 250 ₽ (0633/0545)</div>
+      <div class="kpi-val" style="color:#c084fc;" data-editable="true">47 415 – 63 665 ₽</div>
+      <div class="kpi-sub" data-editable="true">16 000 ₽ (авансы 0653+0589+0637+0631+0613) + 31 415 ₽ (4 горящие визы) + до 16 250 ₽ (0633/0545)</div>
     </div>
     <div class="kpi-card highlight-blue">
-      <div class="kpi-label">💼 ВЕСЬ ПОРТФЕЛЬ (19 ПРОЕКТОВ)</div>
-      <div class="kpi-val" style="color:#60a5fa;" data-editable="true">274 745,74 ₽</div>
-      <div class="kpi-sub" data-editable="true">19 проектов (17 в работе)! Чистый остаток к получению: <b>208 466,94 ₽</b>!</div>
+      <div class="kpi-label">💼 ВЕСЬ ПОРТФЕЛЬ (20 ПРОЕКТОВ)</div>
+      <div class="kpi-val" style="color:#60a5fa;" data-editable="true">286 845,74 ₽</div>
+      <div class="kpi-sub" data-editable="true">20 проектов (18 в работе)! Чистый остаток к получению: <b>220 566,94 ₽</b>!</div>
     </div>
   </div>
 
@@ -1257,7 +1257,7 @@
     <button class="tab-btn" onclick="switchTab('tab-work', this)">🚀 2. ПРОЕКТЫ В РАБОТЕ (+ПЕРЕДАЧА АГЕНТАМ)</button>
     <button class="tab-btn" onclick="switchTab('tab-scripts', this)">💬 3. СКРИПТЫ И БАЗА МАТЕРИАЛОВ (МСК)</button>
     <button class="tab-btn" onclick="switchTab('tab-sheet', this)">💵 4. ВЫПЛАТЫ (28.10 + 04.11)</button>
-    <button class="tab-btn" onclick="switchTab('tab-projects', this)">📊 5. ФИНАНСЫ: ВСЕ 19 ПРОЕКТОВ</button>
+    <button class="tab-btn" onclick="switchTab('tab-projects', this)">📊 5. ФИНАНСЫ: ВСЕ 20 ПРОЕКТОВ</button>
   </div>
 
   <!-- ==================== ВКЛАДКА 1: СВЕРКА ТАБЛИЧКИ (28.10) + ПРОГНОЗ НА 04.11 ==================== -->
@@ -1388,7 +1388,7 @@
         <div class="block-box yellow-priority">
           <div class="block-header">
             <div>
-              <div class="block-title" style="color:#fbbf24;">⏳ ЧАСТЬ 2. АВАНСЫ НА СЛЕДУЮЩУЮ СРЕДУ 04.11 (4 новых проекта = 14 000 ₽)</div>
+              <div class="block-title" style="color:#fbbf24;">⏳ ЧАСТЬ 2. АВАНСЫ НА СЛЕДУЮЩУЮ СРЕДУ 04.11 (5 новых проектов = 16 000 ₽)</div>
               <div class="block-subtitle">Идут в следующую ведомость на среду 04.11:</div>
             </div>
           </div>
@@ -1433,6 +1433,17 @@
               </div>
               <div style="text-align:right;">
                 <div style="font-size:16px; font-weight:900; color:#fbbf24; margin-bottom:4px;">+ 4 000 ₽</div>
+                <button class="sheet-toggle-btn btn-out" onclick="toggleSheetItem(this)">⏳ На 04.11</button>
+              </div>
+            </div>
+
+            <div class="sheet-item not-in-sheet" data-id="0613" data-amount="2000" data-in="false">
+              <div>
+                <span class="tag tag-proj">0613</span> <span class="tag tag-tg">📱 TG</span> <span class="tag tag-purple">🆕 Визы 73 м² (= 12 100,00 ₽) • Новый проект 30.10</span>
+                <div style="font-weight:700; font-size:13.5px; margin-top:3px;" data-editable="true">Ждём анкету и рефы -> созвон -> аванс <b>+2 000 ₽</b> на среду 04.11! Остаток: <b>10 100,00 ₽</b></div>
+              </div>
+              <div style="text-align:right;">
+                <div style="font-size:16px; font-weight:900; color:#fbbf24; margin-bottom:4px;">+ 2 000 ₽</div>
                 <button class="sheet-toggle-btn btn-out" onclick="toggleSheetItem(this)">⏳ На 04.11</button>
               </div>
             </div>
@@ -1706,9 +1717,21 @@
                 <div class="task-top">
                   <span class="tag tag-purple">📲 СЕГОДНЯ НАПОМНИТЬ ПРО АНКЕТУ</span>
                   <span class="tag tag-proj">0589</span>
-                  <span class="tag tag-tg">📱 TG • Визы 120 м² (15 000 ₽)</span>
+                  <span class="tag tag-max">💬 MAX • Визы 120 м² (15 000 ₽)</span>
                 </div>
                 <div class="task-title" data-editable="true">0589 — Напомнить заказчику про заполнение анкеты и назначить созвон (чтобы аванс +2 000 ₽ вошёл на 04.11)</div>
+              </div>
+            </div>
+
+            <div class="task-item purple-task" onclick="toggleTask(this)">
+              <div class="check-circle">✓</div>
+              <div class="task-body">
+                <div class="task-top">
+                  <span class="tag tag-purple">🆕 НОВЫЙ ПРОЕКТ (ПОДКЛЮЧЁН СЕГОДНЯ!)</span>
+                  <span class="tag tag-proj">0613</span>
+                  <span class="tag tag-tg">📱 TG • Визы 73 м² (12 100 ₽ • +2 000 ₽ аванс на 04.11)</span>
+                </div>
+                <div class="task-title" data-editable="true">0613 (73 м², 12 100 ₽) — Получить анкету, планировку и референсы в D:\ФАНАТИКС\0613 и провести созвон (+2 000 ₽ аванс на 04.11, остаток 10 100 ₽)</div>
               </div>
             </div>
 
@@ -1758,13 +1781,13 @@
       <!-- БЫСТРЫЙ ФИЛЬТР ПО СРОЧНОСТИ И ДЕДЛАЙНАМ -->
       <div style="display:flex; gap:8px; flex-wrap:wrap; align-items:center; margin-bottom:12px; padding:10px 12px; border-radius:10px; background:rgba(0,0,0,0.28); border:1px solid rgba(255,255,255,0.08);">
         <span style="font-size:12px; font-weight:900; color:#e2e8f0;">⏱️ ФИЛЬТР ПО СРОКАМ:</span>
-        <button class="copy-btn dl-filter-btn" style="background:rgba(168,85,247,0.28); border-color:#c084fc; font-weight:800;" onclick="filterWorkProjectsByTier('all', this)">🔥 Все активные (17)</button>
+        <button class="copy-btn dl-filter-btn" style="background:rgba(168,85,247,0.28); border-color:#c084fc; font-weight:800;" onclick="filterWorkProjectsByTier('all', this)">🔥 Все активные (18)</button>
         <button class="copy-btn dl-filter-btn" style="color:#fecaca; border-color:rgba(239,68,68,0.45);" onclick="filterWorkProjectsByTier('today_work', this)">🚨 СЕГОДНЯ / ЗАВТРА: Сдать визы/план и 10:00 созвон (6)</button>
-        <button class="copy-btn dl-filter-btn" style="color:#e9d5ff; border-color:rgba(168,85,247,0.45);" onclick="filterWorkProjectsByTier('today_calls', this)">📞 СЕГОДНЯ: Вечерний созвон 20:00 и Написать (3)</button>
+        <button class="copy-btn dl-filter-btn" style="color:#e9d5ff; border-color:rgba(168,85,247,0.45);" onclick="filterWorkProjectsByTier('today_calls', this)">📞 СЕГОДНЯ: Вечерний созвон 20:00 и Написать (4)</button>
         <button class="copy-btn dl-filter-btn" style="color:#fde68a; border-color:rgba(245,158,11,0.45);" onclick="filterWorkProjectsByTier('mon_tue', this)">🎨 ПН–СР (02–04.11): Очередь Виз и Планов (5)</button>
         <button class="copy-btn dl-filter-btn" style="color:#bfdbfe; border-color:rgba(59,130,246,0.45);" onclick="filterWorkProjectsByTier('waiting', this)">⏳ Ждём сцену / обмер / След. неделя (3)</button>
         <button class="copy-btn dl-filter-btn" style="color:#f472b6; border-color:rgba(244,114,182,0.45);" onclick="filterWorkProjectsByTier('ch_max', this)">💬 Только MAX (7 пр.)</button>
-        <button class="copy-btn dl-filter-btn" style="color:#38bdf8; border-color:rgba(56,189,248,0.45);" onclick="filterWorkProjectsByTier('ch_tg', this)">📱 Только Telegram (10 пр.)</button>
+        <button class="copy-btn dl-filter-btn" style="color:#38bdf8; border-color:rgba(56,189,248,0.45);" onclick="filterWorkProjectsByTier('ch_tg', this)">📱 Только Telegram (11 пр.)</button>
       </div>
 
       <!-- СЕТКА АКТИВНЫХ ПРОЕКТОВ В РАБОТЕ -->
@@ -2714,6 +2737,23 @@
 
           <!-- ==================== ПАНЕЛЬ ЭТАПА 1: МОДЕЛИРОВАНИЕ (И ТОЧЕЧНЫЕ ПРАВКИ / 3D) ==================== -->
           <div id="stage-panel-modeling">
+            <!-- БАННЕР ЭТАПА 4: ХИРУРГИЧЕСКИЕ ТОЧЕЧНЫЕ ПРАВКИ ПО ГРУППАМ DiyInstance (ПОКАЗЫВАЕТСЯ НА ЭТАПЕ 4) -->
+            <div id="stage-fixes-surgical-banner" style="display:none; margin-bottom:12px; padding:12px 14px; border-radius:12px; border:1.5px solid #f43f5e; background:rgba(244,63,94,0.10);">
+              <div style="font-size:13.5px; font-weight:900; color:#fda4af; margin-bottom:4px;">
+                🔧 РЕЖИМ ХИРУРГИЧЕСКИХ ТОЧЕЧНЫХ ПРАВОК (ЭТАП 4 — МЕНЯЕМ ТОЛЬКО ВЫБРАННЫЙ УЗЕЛ ЗА 5 СЕКУНД!)
+              </div>
+              <div style="font-size:11.5px; color:#fecdd3; margin-bottom:8px; line-height:1.45;">
+                Нажми на кнопку узла ниже или впиши правку в зелёное поле <b>«🎙️ ДОПОЛНИТЬ ОТ СЕБЯ»</b> выше. Агенту будет отправлен <b>жёсткий запрет</b> на перестройку комнаты целиком — он заменит только конкретную именованную группу <code>DiyInstance</code>, сохранив всю остальную сцену!
+              </div>
+              <div class="plus-chips-wrap">
+                <button class="plus-chip" style="border-color:#fb7185; color:#ffe4e6;" onclick="appendCustomDictationTag('ТОЧЕЧНАЯ ПРАВКА ФАСАДОВ: перестроить ТОЛЬКО группу фасадов шкафа/кухни на плоскую сканди-рамку scandi_shaker (корпус, потолок и остальные предметы НЕ ТРОГАТЬ!).')">+ 🎯 Поправить ТОЛЬКО фрезеровку фасадов (scandi_shaker)</button>
+                <button class="plus-chip" style="border-color:#fb7185; color:#ffe4e6;" onclick="appendCustomDictationTag('ТОЧЕЧНАЯ ПРАВКА ОБУВНИЦЫ: перестроить ТОЛЬКО секцию 960 мм на 3 яруса обувницы по 280 мм (z=60..900 мм) + распашные дверцы выше (остальную прихожую НЕ ТРОГАТЬ!).')">+ 🎯 Поправить ТОЛЬКО обувницу (3 яруса по 280 мм)</button>
+                <button class="plus-chip" style="border-color:#fb7185; color:#ffe4e6;" onclick="appendCustomDictationTag('ТОЧЕЧНАЯ ПРАВКА ПОТОЛКА И СВЕТА: убрать чёрный теневой профиль по периметру потолка и заменить чёрные двойные споты на аккуратные одинарные круглые точки в сатиновой оружейной стали (мебель НЕ ТРОГАТЬ!).')">+ 🎯 Убрать чёрный профиль потолка и чёрные двойные споты</button>
+                <button class="plus-chip" style="border-color:#fb7185; color:#ffe4e6;" onclick="appendCustomDictationTag('ТОЧЕЧНАЯ ПРАВКА ГАРДЕРОБНОЙ: перестроить ТОЛЬКО наполнение гардеробной 04 с реальными полками opts.shelvesZ, свободным доступом в углы, ящиками по 200 мм и хозблоком (спальню НЕ ТРОГАТЬ!).')">+ 🎯 Поправить ТОЛЬКО полки, углы и ящики гардеробной</button>
+                <button class="plus-chip" style="border-color:#fb7185; color:#ffe4e6;" onclick="appendCustomDictationTag('ТОЧЕЧНАЯ ПРАВКА РУЧЕК ДЕТСКОЙ: опустить ТОЛЬКО группу ручек шкафа в детской на эргономичную высоту z = 580..1180 мм под рост ребёнка 6 лет (шкаф и столы НЕ ТРОГАТЬ!).')">+ 🎯 Опустить ТОЛЬКО ручки шкафа в детской (z=580..1180)</button>
+                <button class="plus-chip" style="border-color:#fb7185; color:#ffe4e6;" onclick="appendCustomDictationTag('ТОЧЕЧНОЕ УДАЛЕНИЕ ЛИШНЕГО: удалить ТОЛЬКО лишние настенные молдинги / лишний DIY-стол у зеркала, не перестраивая остальные группы комнаты!')">+ 🎯 Удалить ТОЛЬКО лишние молдинги / лишний стол</button>
+              </div>
+            </div>
             <!-- ЦВЕТНЫЕ КАРТОЧКИ ДАННЫХ КОМНАТЫ: ЖЁЛТАЯ (ГЕОМЕТРИЯ И ПЛАНИРОВКА) И ФИОЛЕТОВАЯ (РЕФЕРЕНСЫ ФОРМЫ) -->
             <div class="color-zone-grid">
               <!-- ЖЁЛТАЯ ЗОНА: ЧТО И КАКОЙ ФОРМЫ МОДЕЛИРУЕМ В «МОДЕЛИРОВАНИИ ИНТЕРЬЕРА» + ПРИВЯЗКА К ПЛАНИРОВКЕ -->
@@ -3176,13 +3216,23 @@
               <td style="color:#fbbf24; font-weight:900;" data-editable="true">+ 4 000,00 ₽ (бриф+аванс 04.11)</td>
               <td style="font-weight:800; color:#60a5fa;" data-editable="true">27 558,80 ₽</td>
             </tr>
+            <tr class="fin-row-yellow">
+              <td>20</td>
+              <td data-editable="true"><b>0613</b></td>
+              <td data-editable="true">📱 TG • <span class="tag tag-purple">🆕 Визы 73 м² (Ждём анкету и рефы -> созвон!)</span></td>
+              <td data-editable="true">12 100,00 ₽ <span style="font-size:11px; color:var(--muted);">(73 м² визы)</span></td>
+              <td data-editable="true">0,00 ₽</td>
+              <td data-editable="true">—</td>
+              <td style="color:#fbbf24; font-weight:900;" data-editable="true">+ 2 000,00 ₽ (аванс 04.11)</td>
+              <td style="font-weight:800; color:#60a5fa;" data-editable="true">10 100,00 ₽</td>
+            </tr>
             <tr style="background:rgba(255,255,255,0.08); font-weight:900; font-size:14.5px;">
-              <td colspan="3">ИТОГО ПО ВСЕМ 19 ПРОЕКТАМ (В ОКТЯБРЕ ПОЛУЧЕНО: 66 278,80 ₽):</td>
-              <td data-editable="true">274 745,74 ₽</td>
+              <td colspan="3">ИТОГО ПО ВСЕМ 20 ПРОЕКТАМ (В ОКТЯБРЕ ПОЛУЧЕНО: 66 278,80 ₽):</td>
+              <td data-editable="true">286 845,74 ₽</td>
               <td style="color:#34d399;" data-editable="true">24 000,00 ₽</td>
               <td style="color:#34d399; font-size:15.5px;" data-editable="true">+ 42 278,80 ₽ ✅</td>
-              <td style="color:#fbbf24; font-size:15.5px;" data-editable="true">+ 14 000,00 ₽ ⏳</td>
-              <td style="color:#60a5fa; font-size:15.5px;" data-editable="true">194 466,94 ₽ (всего остаток: 208 466,94 ₽)</td>
+              <td style="color:#fbbf24; font-size:15.5px;" data-editable="true">+ 16 000,00 ₽ ⏳</td>
+              <td style="color:#60a5fa; font-size:15.5px;" data-editable="true">204 566,94 ₽ (всего остаток: 220 566,94 ₽)</td>
             </tr>
           </tbody>
         </table>
@@ -3412,12 +3462,12 @@
       document.querySelectorAll('[data-editable="true"]').forEach(el => {
         edits.push(el.innerHTML);
       });
-      localStorage.setItem('lav_custom_edits_v11', JSON.stringify(edits));
+      localStorage.setItem('lav_custom_edits_v12', JSON.stringify(edits));
     }
 
     function loadCustomEdits() {
       try {
-        const raw = localStorage.getItem('lav_custom_edits_v11');
+        const raw = localStorage.getItem('lav_custom_edits_v12');
         if (!raw) return;
         const edits = JSON.parse(raw);
         const els = document.querySelectorAll('[data-editable="true"]');
@@ -3459,13 +3509,13 @@
     }
 
     function saveAddedTasks() {
-      localStorage.setItem('lav_modeling_html_v4', document.getElementById('modeling-task-list').innerHTML);
-      localStorage.setItem('lav_calls_html_v4', document.getElementById('calls-task-list').innerHTML);
+      localStorage.setItem('lav_modeling_html_v5', document.getElementById('modeling-task-list').innerHTML);
+      localStorage.setItem('lav_calls_html_v5', document.getElementById('calls-task-list').innerHTML);
     }
 
     function loadAddedTasks() {
-      const m = localStorage.getItem('lav_modeling_html_v4');
-      const c = localStorage.getItem('lav_calls_html_v4');
+      const m = localStorage.getItem('lav_modeling_html_v5');
+      const c = localStorage.getItem('lav_calls_html_v5');
       if (m) document.getElementById('modeling-task-list').innerHTML = m;
       if (c) document.getElementById('calls-task-list').innerHTML = c;
     }
@@ -3493,7 +3543,7 @@
         <td style="font-weight:800; color:#60a5fa;" data-editable="true">${rest}</td>
       `;
       tbody.insertBefore(tr, tbody.lastElementChild);
-      localStorage.setItem('lav_projects_tbody_v11', tbody.innerHTML);
+      localStorage.setItem('lav_projects_tbody_v12', tbody.innerHTML);
       switchTab('tab-projects', document.querySelectorAll('.tab-btn')[2]);
     }
 
@@ -3543,7 +3593,7 @@
       } catch(e) {}
       const cs = localStorage.getItem('lav_custom_scripts_v4');
       if (cs) document.getElementById('custom-scripts-container').innerHTML = cs;
-      const pt = localStorage.getItem('lav_projects_tbody_v11');
+      const pt = localStorage.getItem('lav_projects_tbody_v12');
       if (pt) document.getElementById('projects-tbody').innerHTML = pt;
     }
 
@@ -3833,7 +3883,7 @@
 
 
     // ==================== 8. ПРОЕКТЫ В РАБОТЕ И ИНТЕРАКТИВНЫЙ КОНСТРУКТОР ПРОМПТОВ АГЕНТАМ ====================
-    const WORK_PROJECTS_KEY = 'lav_work_projects_db_v9';
+    const WORK_PROJECTS_KEY = 'lav_work_projects_db_v11';
     let currentWorkProjId = '0545';
     let currentWorkRoomKey = 'hall';
     var currentVizRoomKey = 'hall';
@@ -4128,7 +4178,7 @@
             "baseFamily": "",
             "rooms": {
                   "hall": {
-                        "joinery": "С помощью инструмента «Моделирование интерьера» в Прихожей (10.58 м² / 7.44,94 м²): шкафы для одежды (1200×600 и 1130×450), колонна под стиральную и сушильную машины 600×600 (без нижнего цоколя под СМ!) + полки. Каждый предмет — в своих узких группах!",
+                        "joinery": "С помощью инструмента «Моделирование интерьера» в Прихожей (10.58 м² / 7.44 м²): шкафы для одежды (1200×600 и 1130×450), колонна под стиральную и сушильную машины 600×600 (без нижнего цоколя под СМ!) + полки. Каждый предмет — в своих узких группах!",
                         "finish": "Строго по утверждённому варианту в D:\\ФАНАТИКС\\0633\\0633 25.10 Планировочные решения.pdf",
                         "refs": "D:\\ФАНАТИКС\\0633\\Дизайн-референсы.pdf",
                         "stages": {
@@ -4357,7 +4407,7 @@
             "baseFloor": "",
             "baseWalls": "",
             "baseCeiling": "Чистовой потолок 3000–3050 мм (с учётом опуска потолка)",
-            "baseFamily": "Двухкомнатная квартира 44,94 м², тариф Стандарт (Полный проект).",
+            "baseFamily": "Двухкомнатная квартира 44 м², тариф Стандарт (Полный проект).",
             "rooms": {}
       },
       {
@@ -4595,6 +4645,80 @@
             "deadline": "📲 СРОК: СЕГОДНЯ — Напомнить в MAX про анкету и назначить созвон (-> +2 000 ₽ аванс на 04.11)",
             "deadlineColor": "purple",
             "infoAudit": "⚠️ План 0589-plan-3.pdf в D:\\ФАНАТИКС\\0589 есть; ждём заполненную анкету и рефы от клиента"
+      },
+      {
+            "id": "0613",
+            "channel": "📱 TG",
+            "format": "🎨 Только Визы (73 м²)",
+            "status": "🆕 НОВЫЙ ПРОЕКТ (73 м² = 12 100 ₽) • Ждём анкету и рефы -> созвон!",
+            "deadline": "📲 СРОК: Получить анкету / рефы и провести созвон (-> +2 000 ₽ аванс на 04.11)",
+            "deadlineColor": "purple",
+            "infoAudit": "⚠️ Папка D:\\ФАНАТИКС\\0613 создана (0 файлов): загрузить планировку, анкету и референсы",
+            "price": "12 100 ₽ (аванс +2 000 ₽ на 04.11, остаток 10 100 ₽)",
+            "questionMark": false,
+            "closed": false,
+            "folder": "D:\\ФАНАТИКС\\0613",
+            "voiceDump": "Новый проект 0613 (73 м², оплата 12 100 ₽, 3D-визуализация). Папка D:\\ФАНАТИКС\\0613 готова. Получаем от заказчика планировку, анкету и референсы, проводим первичный созвон (аванс +2 000 ₽ в ведомость на 04.11, остаток за визы 10 100 ₽).",
+            "base": {
+                  "style": "Уточнить по анкете и референсам на созвоне",
+                  "floor": "Уточнить по анкете",
+                  "walls": "Уточнить по анкете",
+                  "ceiling": "Чистый белый матовый потолок без чёрных рамок по умолчанию",
+                  "family": "Квартира 73 м² (уточнить состав семьи на созвоне)",
+                  "folder": "D:\\ФАНАТИКС\\0613 (закинуть планировку, анкету и рефы)"
+            },
+            "rooms": [
+                  {
+                        "id": "hall",
+                        "name": "1. Прихожая и коридор",
+                        "area": "По плану (73 м²)",
+                        "stage": "Этап 0: Ждём анкету и план",
+                        "task": "Провести первичный созвон по анкете и собрать коробку",
+                        "notes": "Уточнить наполнение прихожей на созвоне.",
+                        "refs": "D:\\ФАНАТИКС\\0613",
+                        "done": false
+                  },
+                  {
+                        "id": "kitchen_living",
+                        "name": "2. Кухня-гостиная",
+                        "area": "По плану (73 м²)",
+                        "stage": "Этап 0: Ждём анкету и план",
+                        "task": "Провести созвон по анкете",
+                        "notes": "Уточнить фасады кухни, технику, фартук, стол и диван.",
+                        "refs": "D:\\ФАНАТИКС\\0613",
+                        "done": false
+                  },
+                  {
+                        "id": "bedroom",
+                        "name": "3. Мастер-спальня",
+                        "area": "По плану (73 м²)",
+                        "stage": "Этап 0: Ждём анкету и план",
+                        "task": "Провести созвон по анкете",
+                        "notes": "Уточнить кровать, шкафы, макияжную зону и ТВ.",
+                        "refs": "D:\\ФАНАТИКС\\0613",
+                        "done": false
+                  },
+                  {
+                        "id": "room2",
+                        "name": "4. Детская / Кабинет / 2-я спальня",
+                        "area": "По плану (73 м²)",
+                        "stage": "Этап 0: Ждём анкету и план",
+                        "task": "Провести созвон по анкете",
+                        "notes": "Уточнить назначение комнаты и мебель.",
+                        "refs": "D:\\ФАНАТИКС\\0613",
+                        "done": false
+                  },
+                  {
+                        "id": "bath",
+                        "name": "5. Ванная и Санузел",
+                        "area": "По плану (73 м²)",
+                        "stage": "Этап 0: Ждём анкету и план",
+                        "task": "Провести созвон по анкете",
+                        "notes": "Уточнить плитку, тумбу, раковину, ванну/душ и стиральную машину.",
+                        "refs": "D:\\ФАНАТИКС\\0613",
+                        "done": false
+                  }
+            ]
       },
       {
             "id": "0653",
@@ -5256,7 +5380,7 @@
           });
           return merged;
         }
-        const oldRaw = localStorage.getItem('lav_work_projects_db_v8') || localStorage.getItem('lav_work_projects_db_v7') || localStorage.getItem('lav_work_projects_db_v6') || localStorage.getItem('lav_work_projects_db_v5');
+        const oldRaw = localStorage.getItem('lav_work_projects_db_v10') || localStorage.getItem('lav_work_projects_db_v9') || localStorage.getItem('lav_work_projects_db_v9') || localStorage.getItem('lav_work_projects_db_v8') || localStorage.getItem('lav_work_projects_db_v7') || localStorage.getItem('lav_work_projects_db_v6') || localStorage.getItem('lav_work_projects_db_v5');
         const fresh = JSON.parse(JSON.stringify(DEFAULT_WORK_PROJECTS));
         if (oldRaw) {
           const oldList = JSON.parse(oldRaw);
@@ -5828,6 +5952,8 @@
       const modPanel = document.getElementById('stage-panel-modeling');
       const texPanel = document.getElementById('stage-panel-texturing');
       const plcPanel = document.getElementById('stage-panel-placement');
+      const fixesBanner = document.getElementById('stage-fixes-surgical-banner');
+      if (fixesBanner) fixesBanner.style.display = (currentAgentStage === 'fixes') ? 'block' : 'none';
       if (modPanel && texPanel) {
         modPanel.style.display = (currentAgentStage === 'modeling' || currentAgentStage === 'fixes') ? 'block' : 'none';
         texPanel.style.display = (currentAgentStage === 'texturing') ? 'block' : 'none';
@@ -5930,26 +6056,66 @@
       updateRoomBadges(p);
     }
 
+    function getRoomSpecificConstructiveRules(roomKey) {
+      const refRoot = 'C:\\Users\\Анжелика\\.gemini\\config\\skills\\homestyler-studio\\references';
+      const commonConstructive = [
+        `   • 📐 КОНСТРУКТИВ ШКАФОВ И ФАСАДОВ (ЭТАЛОНЫ В ${refRoot}):`,
+        `     - Корпуса ЛДСП 18 мм строй через HSJoinery.buildRealCarcass(frame, s0, s1, totalDepth, z0, z1, dec, opts) с обязательным массивом внутренних полок opts.shelvesZ (глубина корпуса и полок строго одинаковая depthCarcass = totalDepth - 20 мм, а фасады — накладные СПЕРЕДИ на d = depthCarcass + 2 .. totalDepth, чтобы полки никогда не прорезали двери!).`,
+        `     - Визуальные эталоны фасадов и ручек (при необходимости сверь через read_file): фрезеровка — ${refRoot}\\facades\\01..03 (пресет 'scandi_shaker' для плоской сканди-рамки в 2 уровня без центрального островка; 'neoclassic_1step' для классической филёнки с островком), дизайнерские и профильные ручки — ${refRoot}\\handles\\01..06. На всех антресолях — строго без ручек (push-to-open, никаких коротких ручек 150 мм!).`,
+        `   • ☁️ ПОТОЛОК, СВЕТ И ЧИСТОТА ЭТАПА 1:`,
+        `     - Строй чистый белый потолок заподлицо со стенами (аккуратно огибая шкафы в потолок и шторные ниши). ⛔ Запрещено лепить по умолчанию чёрный профиль 30×30 по периметру потолка и чёрные двойные споты — ставь строго те светильники (форма и цвет корпуса), которые указаны в ТЗ комнаты!`,
+        `     - ⛔ На Этапе 1 (Моделирование) запрещено красить мебель в яркие цвета (строй строго в нейтральных студийных тонах HSJoinery.ERGONOMICS.STUDIO_NEUTRAL_COLORS) и запрещено рисовать в DIY розетки, выключатели, бытовую технику, сантехнику и мягкую мебель (они ставятся готовыми 3D-моделями на Этапе 3).`
+      ];
+
+      const specific = {
+        hall: [
+          `   • 🚪 СПЕЦИФИКА ПРИХОЖЕЙ (ОБЯЗАТЕЛЬНО):`,
+          `     - Если в ТЗ есть обувница — высота каждого яруса обуви строго 280 мм (3 яруса = z = 60..900 мм от цоколя), фасады и ручки обувницы и шкафа строго по ТЗ комнаты.`,
+          `     - Если между Прихожей и Кухней-гостиной открытый проём без двери — строй единый непрерывный потолок без перемычки между ними.`
+        ],
+        kitchen: [
+          `   • 🍽️ СПЕЦИФИКА КУХНИ-ГОСТИНОЙ (ОБЯЗАТЕЛЬНО):`,
+          `     - В высоких пеналах под встроенную духовку и СВЧ оставляй чистые открытые ниши в корпусе (саму технику примитивами в DIY не моделировать!), в закрытых секциях и пеналах передавай массив полок opts.shelvesZ.`,
+          `     - Верхние навесные шкафы и антресоли — строго без накладных ручек (push-to-open + врезной LED-профиль в дне верхних шкафов).`,
+          `     - Столешница (16–20 мм) — единым полигоном с вырезом holes под мойку без швов.`
+        ],
+        bedroom: [
+          `   • 🛏️ СПЕЦИФИКА СПАЛЬНИ И ГАРДЕРОБНОЙ (ОБЯЗАТЕЛЬНО):`,
+          `     - ⛔ С фото референса кровати/спальни бери ТОЛЬКО целевой предмет (запрещено копировать с чужого фото фоновые рамочные молдинги на стенах!). Положение туалетного/рабочего столика бери строго по плану Л2!`,
+          `     - В Гардеробной: 1) обязательно передавай массив полок opts.shelvesZ в каждый шкаф (чтобы реальные полки 18 мм построились под каждой лентой LED!); 2) обеспечь свободный доступ в угловые секции (смежный корпус не должен перекрывать вход в угол!); 3) ящики делай высотой 180–220 мм; 4) хозблок строй с opts: { noBottom: true } (открытая ниша на полу z=0..280 мм под базу робота-пылесоса + высокий отсек под вертикальный пылесос + выдвижная гладильная доска на z=820..980 мм).`
+        ],
+        kids: [
+          `   • 🧸 СПЕЦИФИКА ДЕТСКОЙ (ОБЯЗАТЕЛЬНО):`,
+          `     - На детском распашном шкафу вертикальные ручки располагай на эргономичной детской высоте z = 580..1180 мм от пола (под рост ребёнка).`,
+          `     - Не моделируй в DIY лишние столы, синтезаторы, кровати и пуфы, которых нет в списке столярки — оставь под них свободное место по плану Л2 для Этапа 3!`
+        ],
+        bath: [
+          `   • 🚿 СПЕЦИФИКА САНУЗЛА И ЭТАЛОН РАКОВИНЫ ИЗ КЕРАМОГРАНИТА (ОБЯЗАТЕЛЬНО):`,
+          `     - Эталон раковины из керамогранита со скошенным дном и щелевым лотком слива: ОБЯЗАТЕЛЬНО открой через read_file "${refRoot}\\sinks\\01_porcelain_sloped_slot_drain_sink.jpg" и вызывай готовый метод HSJoinery.buildPorcelainSlopedDrainSink(frame, s0, s1, d0, d1, zTop, opts) (строит идеально гладкое наклонное дно одним боковым полигоном sidePoly без ступенек и продольный лоток слива 40 мм у задней стенки!).`,
+          `     - Шкаф над инсталляцией унитаза — до потолка, фасады без ручек (push-to-open), внутри полки через opts.shelvesZ.`,
+          `     - ⛔ Унитаз, кнопку смыва, смесители, лейку душа, чашу ванны и стиральную/сушильную машины в DIY примитивами НЕ рисовать (в колонне СМ+СШМ строим только мебельный корпус-нишу, а сами машинки ставим готовыми 3D-моделями на Этапе 3).`
+        ]
+      };
+
+      return [...(specific[roomKey] || specific.hall), ...commonConstructive];
+    }
+
     function rebuildLiveAgentPrompt() {
       const list = getWorkProjects();
       const p = list.find(x => x.id === currentWorkProjId);
       if (!p) return;
       const r = (p.rooms && p.rooms[currentWorkRoomKey]) ? p.rooms[currentWorkRoomKey] : {};
       const roomTitle = (typeof getActiveRoomTitle === 'function') ? getActiveRoomTitle(p, currentWorkRoomKey) : (ROOM_NAMES_RU[currentWorkRoomKey] || currentWorkRoomKey);
-      const folder = p.folder || `D:\\ФАНАТИКС\\${p.id}`;
+      const folder = p.folder || `D:\ФАНАТИКС\${p.id}`;
       const rSubObj = (p && p.rooms && p.rooms[currentWorkRoomKey]) ? p.rooms[currentWorkRoomKey] : {};
       const sub = rSubObj.subfolder || ROOM_SUBFOLDER_MAP[currentWorkRoomKey] || '01_Прихожая_Коридор';
-      const roomRefPath = `${folder}\\Референсы_по_комнатам\\${sub}`;
-
-      const ruleRealCarcass = document.getElementById('rule-real-carcass') ? document.getElementById('rule-real-carcass').checked : true;
-      const ruleCeilingGap = document.getElementById('rule-ceiling-gap') ? document.getElementById('rule-ceiling-gap').checked : true;
-      const ruleNoSanitary = document.getElementById('rule-no-sanitary') ? document.getElementById('rule-no-sanitary').checked : true;
+      const roomRefPath = `${folder}\Референсы_по_комнатам\${sub}`;
 
       const stageTitles = {
-        modeling: 'ЭТАП 1: МОДЕЛИРОВАНИЕ КОРПУСНОЙ МЕБЕЛИ, ИЗДЕЛИЙ И ПОТОЛКА С ПОМОЩЬЮ ИНСТРУМЕНТА «МОДЕЛИРОВАНИЕ ИНТЕРЬЕРА» (webCADDocument / HSJoinery)',
-        texturing: 'ЭТАП 2: ТЕКСТУРИРОВАНИЕ ПОМЕЩЕНИЯ («ПЛИТОЧНЫЙ ПОЛ / ПЛИТОЧНЫЙ НАСТИЛ» + ПАПКИ ИЗБРАННОГО + ВКЛАДКА «ПРЕМИУМ» + СОХРАНЕНИЕ БЕСШОВНЫХ ТЕКСТУР В «МОИ ТЕКСТУРЫ»)',
-        placement: 'ЭТАП 3: ПОДБОР И РАССТАНОВКА ГОТОВЫХ 3D-МОДЕЛЕЙ ИЗ БАЗЫ 3D SKY PRO (МЕБЕЛЬ, САНТЕХНИКА, ТЕХНИКА, СВЕТ, ДЕКОР)',
-        fixes: 'ЭТАП 4: ВНЕСЕНИЕ ТОЧЕЧНЫХ ПРАВОК ПО ПОМЕЩЕНИЮ'
+        modeling: 'ЭТАП 1: МОДЕЛИРОВАНИЕ ГЕОМЕТРИИ ПОМЕЩЕНИЯ В «МОДЕЛИРОВАНИИ ИНТЕРЬЕРА» (HSJoinery)',
+        texturing: 'ЭТАП 2: ТЕКСТУРИРОВАНИЕ ПОМЕЩЕНИЯ («ПЛИТОЧНЫЙ НАСТИЛ» + МАТЕРИАЛЫ БЕЗ ИЗМЕНЕНИЯ ГЕОМЕТРИИ)',
+        placement: 'ЭТАП 3: РАССТАНОВКА ГОТОВЫХ 3D-МОДЕЛЕЙ, СВЕТА И ДЕКОРА',
+        fixes: 'ЭТАП 4: ХИРУРГИЧЕСКИЕ ТОЧЕЧНЫЕ ПРАВКИ УКАЗАННЫХ ГРУПП DiyInstance (С СОХРАНЕНИЕМ ОСТАЛЬНОЙ СЦЕНЫ)'
       };
 
       const headerTitleEl = document.getElementById('live-prompt-header-title');
@@ -5961,192 +6127,114 @@
       const noRefs = (!refsVal || refsVal.toLowerCase().includes('референсов от заказчика нет') || refsVal.toLowerCase().includes('рефов нет') || (p.fileFlags && p.fileFlags.hasRefs === false));
       const customNoteVal = (r.customNote || (document.getElementById('rm-custom-note') ? document.getElementById('rm-custom-note').value : '') || '').trim();
       const texNotesVal = (r.texNotes || (document.getElementById('rm-tex-notes') ? document.getElementById('rm-tex-notes').value : '') || '').trim();
-
       const exactRefFiles = extractRoomRefFilePaths(p, r);
 
       let promptLines = [];
-      promptLines.push(`Подключись к проекту ${p.id} (${p.name || ''}) в открытом Homestyler (порт 9222).`);
-      promptLines.push(`Работаем ТОЛЬКО в помещении: «${roomTitle}» (локальные изменения: не перестраивай и не стирай другие комнаты!).`);
-      promptLines.push(`ЗАДАЧА — ${stageTitles[currentAgentStage]}`);
+      promptLines.push(`Проект ${p.id} (${p.name || ''}) • Homestyler (порт 9222)`);
+      promptLines.push(`Помещение: «${roomTitle}» | ${stageTitles[currentAgentStage]}`);
       promptLines.push(``);
 
-      if (!noRefs) {
-        promptLines.push(`0. ⛔ ШАГ 0 — ОБЯЗАТЕЛЬНЫЙ ПРОСМОТР ЧЕРТЕЖА ПЛАНИРОВКИ И ТОЧНЫХ ФАЙЛОВ РЕФЕРЕНСОВ ЧЕРЕЗ read_file ПЕРЕД НАПИСАНИЕМ КОДА (КАТЕГОРИЧЕСКИ ЗАПРЕЩЕНО ДЕЛАТЬ РАНДОМ!):`);
-        promptLines.push(`   • Прежде чем писать хотя бы одну строчку JS-кода (HSJoinery / webCADDocument), ты ОБЯЗАН первым действием вызвать инструмент read_file и посмотреть ГЛАЗАМИ чертёж планировки и КАЖДЫЙ конкретный графический файл-референс этой комнаты!`);
-        promptLines.push(`   • Запрещено угадывать «из головы» фрезеровку фасадов (neoclassic_1step, capsule_v и др.), форму ручек, ножки консолей, пересечение консоли с зеркалом или конфигурацию угловых шкафов — всё это чётко отрисовано на привязанных ниже файлах референсов:`);
-        if (exactRefFiles.length > 0) {
-          exactRefFiles.forEach((fp, idx) => {
-            promptLines.push(`     [${idx + 1}] ОБЯЗАТЕЛЬНО открой через read_file: "${fp}"`);
-          });
-        } else {
-          promptLines.push(`     [1] ОБЯЗАТЕЛЬНО просканируй и открой через read_file все фото в папке комнаты: "${roomRefPath}"`);
-        }
-        promptLines.push(``);
-      }
-
       if (currentAgentStage === 'modeling') {
-        promptLines.push(`1. ИСХОДНИКИ И РАЗМЕРЫ (НА ЭТАПЕ МОДЕЛИРОВАНИЯ РАБОТАЕМ ТОЛЬКО С ГЕОМЕТРИЕЙ, РАЗМЕРАМИ И ФОРМОЙ БЕЗ ТЕКСТУРИРОВАНИЯ ПОЛА/СТЕН):`);
-        promptLines.push(`   • Инструмент работы: делай всю корпусную мебель, изделия индивидуального изготовления (включая остров/стол, если указано), панели/молдинги и потолок СТРОГО с помощью инструмента «Моделирование интерьера» (webCADDocument / window.HSJoinery).`);
-        promptLines.push(`   • Папка проекта и планировочное решение (откуда брать что где стоит и точные габариты): ${folder}`);
-        promptLines.push(`   • Привязка к планировке: ${r.finish || 'Строго по планировочному решению в папке проекта (прочитай чертёж через read_file перед началом работы и сверь ширину × глубину × высоту каждого изделия)!'}`);
-        if (noRefs) {
-          promptLines.push(`   • Референсы от заказчика: Референсов от заказчика по этому проекту НЕТ — не выдумывай их и не трать время на поиск картинок! Опирайся строго на планировочное решение в папке ${folder} и детальное геометрическое описание ниже.`);
-        } else {
-          promptLines.push(`   • Референсы формы изделий (посмотри через read_file ТОЛЬКО для понимания формы фасадов/ручек/узлов; КАТЕГОРИЧЕСКИ НЕ копируй с чужих фото референсов мебели потолочный свет или планировку!): ${refsVal}`);
-        }
-        if (p.baseCeiling) {
-          promptLines.push(`   • Потолок, опуск потолка и подсветки: ${p.baseCeiling}`);
-        }
-        promptLines.push(``);
-
         if (customNoteVal) {
-          promptLines.push(`📌 ДОПОЛНИТЕЛЬНЫЕ УКАЗАНИЯ ДИЗАЙНЕРА (ВЫПОЛНИТЬ В ПЕРВУЮ ОЧЕРЕДЬ!):`);
+          promptLines.push(`🔥 ГЛАВНОЕ УКАЗАНИЕ ДИЗАЙНЕРА ПО ЭТОЙ КОМНАТЕ:`);
           promptLines.push(`${customNoteVal}`);
           promptLines.push(``);
         }
 
-        promptLines.push(`2. ЧТО И КАКОЙ ФОРМЫ НУЖНО СМОДЕЛИРОВАТЬ С ПОМОЩЬЮ «МОДЕЛИРОВАНИЯ ИНТЕРЬЕРА» В ПОМЕЩЕНИИ «${roomTitle}»:`);
-        promptLines.push(`${r.joinery || '• С помощью инструмента «Моделирование интерьера» смоделировать всю корпусную мебель индивидуального изготовления и потолок в этом помещении строго по размерам из планировочного решения.'}`);
+        promptLines.push(`1. РАЗВЁРНУТОЕ ТЗ НА МОДЕЛИРОВАНИЕ ПОМЕЩЕНИЯ «${roomTitle}» (ЧТО, ГДЕ И КАКИМИ РАЗМЕРАМИ СТРОИМ):`);
+        promptLines.push(`${r.joinery || '• Смоделировать корпусную мебель индивидуального изготовления и потолок в этом помещении по размерам из планировочного решения Л2.'}`);
+        if (p.baseCeiling) {
+          promptLines.push(`• Потолок и освещение комнаты: ${p.baseCeiling}`);
+        }
         promptLines.push(``);
 
-        promptLines.push(`3. ЖЁСТКИЕ ПРАВИЛА КОНСТРУКТИВА, СВЕТА, РУЧЕК И УЗКОЙ ГРУППИРОВКИ В «МОДЕЛИРОВАНИИ ИНТЕРЬЕРА»:`);
-        promptLines.push(`   • Подключи помощник столярных узлов в 1 строку и сразу получи webCADDocument через HSJoinery.ensureDiyDoc():`);
+        promptLines.push(`2. ЧЕРТЁЖ ПЛАНИРОВКИ И ЦЕЛЕВЫЕ РЕФЕРЕНСЫ КОНКРЕТНО ЭТОЙ КОМНАТЫ (посмотри через read_file перед сборкой):`);
+        promptLines.push(`   • План с размерами (Л2): ${r.finish || folder}`);
+        if (noRefs) {
+          promptLines.push(`   • Референсов от заказчика нет — строим строго по размерам плана и п. 1 выше.`);
+        } else {
+          promptLines.push(`   • Целевые элементы с референсов комнаты (бери с фото только указанный предмет/форму): ${refsVal}`);
+          if (exactRefFiles.length > 0) {
+            exactRefFiles.forEach((fp, idx) => {
+              promptLines.push(`     [${idx + 1}] "${fp}"`);
+            });
+          } else {
+            promptLines.push(`     [1] Папка референсов комнаты: "${roomRefPath}"`);
+          }
+        }
+        promptLines.push(``);
+
+        promptLines.push(`3. ТЕХНИЧЕСКИЙ СТАНДАРТ БЫСТРОЙ СБОРКИ (НОРМАТИВ: 1 ПАКЕТНЫЙ СКРИПТ ЗА 2–3 МИНУТЫ) И КОНТРОЛЬ СОХРАННОСТИ:`);
+        promptLines.push(`   • В начале скрипта подключи движок столярных узлов:`);
         promptLines.push(`     if (!window.HSJoinery) (0, eval)(await (await fetch('http://127.0.0.1:3033/hs-joinery.js')).text());`);
-        promptLines.push(`     const { pmModel, webCADDocument } = await window.HSJoinery.ensureDiyDoc();`);
-        if (ruleCeilingGap) {
-          promptLines.push(`   • МЕБЕЛЬ В ПОТОЛОК, ПОТОЛОЧНЫЙ КАРНИЗ ДЛЯ ШТОР И МАТЕМАТИЧЕСКАЯ ГЕОМЕТРИЯ СВЕТА:`);
-          promptLines.push(`     1) Всю высокую мебель «в потолок» строим с учётом опуска потолка (до чистовой отметки H = 3000–3050 мм). Потолок и теневой профиль (30×30 мм) должны аккуратно огибать по контуру все высокие шкафы, пеналы и шторные ниши.`);
-          promptLines.push(`     2) Внутри каждой скрытой потолочной ниши под шторы ОБЯЗАТЕЛЬНО смоделируй аккуратный профиль потолочного карниза (шины) для штор + врезную LED-подсветку ниши.`);
-          promptLines.push(`     3) ⛔ НИКАКОГО ХАОТИЧНОГО РАЗБРОСА ТОЧЕЧНЫХ СВЕТИЛЬНИКОВ НА ПОТОЛКЕ! Вычисляй координаты точечных светильников и световых линий строго математически — вдоль центральных осей симметрии СВОБОДНОГО потолка (после вычета глубины шкафов 600 мм), ровными прямыми рядами с одинаковым шагом (800–1200 мм) строго по центрам проходов и функциональных зон!`);
-          promptLines.push(`   • ⛔ КАТЕГОРИЧЕСКИЙ ЗАПРЕТ НА МАЛЕНЬКИЕ КОРОТКИЕ НАКЛАДНЫЕ РУЧКИ (100–200 мм):`);
-          promptLines.push(`     - Никогда не лепи маленькие короткие ручки-скобы на шкафы, витрины, тумбы или шкафчики санузла!`);
-          promptLines.push(`     - На верхних навесных шкафах кухни, на всех антресолях и на шкафчиках над инсталляцией унитаза — СТРОГО БЕЗ РУЧЕК (push-to-open или свес фасада).`);
-          promptLines.push(`     - На нижних базах кухни, ящиках тумб и высоких распашных дверях шкафов/пеналов — используй интегрированные профильные ручки (type: 'vert_profile' / 'top_profile' / Gola) или современные тонкие длинные ручки.`);
-        }
-        if (ruleRealCarcass) {
-          promptLines.push(`   • 📐 ЗАКОНЫ НАСТОЯЩЕГО МЕБЕЛЬНОГО КОНСТРУКТИВА (НАКЛАДНЫЕ ФАСАДЫ ПОВЕРХ КОРПУСА, ПОЛКИ ВРОВЕНЬ С КОРПУСОМ, 0 КОЛЛИЗИЙ!):`);
-          promptLines.push(`     1) ЕДИНАЯ ГЛУБИНА КОРПУСА И ПОЛОК (depthCarcass = totalDepth - 20 мм): если общая глубина шкафа/пенала/тумбы по плану равна D (например 600 или 650 мм), то боковины, дно, крышка и ВСЕ внутренние/разделительные полки строятся СТРОГО одинаковой глубины d = 0 .. depthCarcass (где depthCarcass = D - 20 мм).`);
-          promptLines.push(`     2) ПОЛКИ СТРОГО МЕЖДУ БОКОВИНАМИ И ВРОВЕНЬ С КОРПУСОМ: любая полка (включая полку и выдвижную доску между СМ и СШМ) имеет ширину строго s = s0 + 18 .. s1 - 18 и глубину d = 0 .. depthCarcass (используй HSJoinery.buildInternalShelf). КАТЕГОРИЧЕСКИ ЗАПРЕЩЕНО делать полки короче боковин корпуса или выпускать их сквозь двери!`);
-          promptLines.push(`     3) ВСЕ ФАСАДЫ — СТРОГО НАКЛАДНЫЕ ПЕРЕД КОРПУСОМ (d = depthCarcass + 2 .. depthCarcass + 20): двери и ящики накладываются СПЕРЕДИ поверх торцов боковин, дна, крышки и полок с техническим зазором 2 мм (используй HSJoinery.buildOverlayDoors / buildMdfFacadeWithHandle). КАТЕГОРИЧЕСКИ ЗАПРЕЩЕНО утапливать фасады внутрь между боковинами (чтобы боковины торчали вперёд дальше дверей) и ЗАПРЕЩЕНО допускать наезд/врезание фасадов в полки или короб инсталляции!`);
-          promptLines.push(`     4) ДЛЯ ПЕНАЛА СМ+СШМ И ШКАФА НАД ИНСТАЛЛЯЦИЕЙ используй готовые безошибочные сборщики: HSJoinery.buildLaundryColumn(...) (без нижнего цоколя под СМ, полка СМ/СШМ вровень с корпусом 0..depthCarcass без ручек, верхние двери накладные без ручек) и HSJoinery.buildOverToiletCabinet(...) (шкаф над инсталляцией с единой глубиной полок и боковин и накладными фасадами без ручек).`);
-          promptLines.push(`     5) БОКОВОЙ ЦОКОЛЬ И РАМКИ БЕЗ ЛИНИЙ СТЫКОВ: у открытых видимых торцов шкафов обязательно закрывай боковой цоколь (sidePlinthLeft / sidePlinthRight в HSJoinery.buildRealCarcass), а рамки витрин/молдингов/зеркал строй единым полигоном через frame.hollowFrame(s0, s1, z0, z1, frameW, d0, d1) без угловых швов.`);
-          promptLines.push(`   • ⚠️ ДРОБНАЯ И УЗКАЯ ЛОКАЛЬНАЯ ГРУППИРОВКА (DiyInstance) СТРОГО ПО ЗОНАМ И ТИПАМ ФАСАДОВ:`);
-          promptLines.push(`     - На кухне ОБЯЗАТЕЛЬНО разделяй фасады на отдельные группы DiyInstance: 1) «Корпус кухни», 2) «Нижние фасады кухни», 3) «Верхние фасады кухни», 4) «Фасады антресолей кухни», 5) «Фасады высоких пеналов», 6) «Ручки кухни», 7) «Столешница кухни», 8) «Фартук кухни», 9) «LED кухни» — потому что нижние базы, верхние шкафы, антресоли и пеналы часто красятся в разные материалы!`);
-          promptLines.push(`     - У каждого предмета в комнате (кухонный остров, обеденный стол, ТВ-тумба, витрина, шкаф, тумба санузла, пенал СМ+СШМ, шкаф над инсталляцией) должны быть СВОИ отдельные группы DiyInstance. КАТЕГОРИЧЕСКИ ЗАПРЕЩЕНО группировать фасад со столом или объединять детали разных предметов в одну группу!`);
-        }
-        if (ruleNoSanitary) {
-          promptLines.push(`   • ⛔ НЕ МОДЕЛИРУЙ РОЗЕТКИ, САНТЕХНИКУ И ТЕХНИКУ ПРИМИТИВАМИ В DIY: категорически НЕ моделируй в DIY розетки/выключатели на стенах, смесители, кнопку смыва, унитаз, чашу ванны, стиральную и сушильную машины, духовку, СВЧ, варочную панель, телевизор, мягкие стулья, кровати и диваны — под встроенную технику оставляй чистые открытые ниши в корпусе (под стиральной машиной БЕЗ нижнего цоколя!), а сами приборы ставятся готовыми 3D-моделями на Этапе 3.`);
-        }
-        promptLines.push(`   • 💾 СОХРАНЕНИЕ СКРИПТА И САМОПРОВЕРКА: сохрани написанный JS-скрипт построения комнаты в папку проекта (${folder}\\build_${currentWorkRoomKey}.js), вызови createModelMeshAsync() (с waitForStableDom: false) и ОБЯЗАТЕЛЬНО сделай скриншот результата через take_screenshot для визуальной самопроверки!`);
+        promptLines.push(`   • Используй HSJoinery.createWallFrame(x1, y1, x2, y2, [roomCenterX, roomCenterY]) для автоматической ориентации шкафов внутрь комнаты с первой попытки (без долгого ручного подбора координат).`);
+        const roomSpecLines = getRoomSpecificConstructiveRules(currentWorkRoomKey);
+        roomSpecLines.forEach(ln => promptLines.push(ln));
+        promptLines.push(`   • Создавай отдельные именованные группы DiyInstance под каждый предмет и материал (отдельно Корпус, Фасады, Ручки, Столешница, Зеркало, Стекло, LED, Потолок, Светильники) в нейтральных студийных тонах HSJoinery.ERGONOMICS.STUDIO_NEUTRAL_COLORS.`);
+        promptLines.push(`   • ⚡ СКОРОСТЬ БЕЗ ЗАВИСАНИЙ: в evaluate_script передавай waitForStableDom: false, а createModelMeshAsync() вызывай ТОЛЬКО для созданных/изменённых групп этой комнаты (не пересчитывай все группы других комнат квартиры!).`);
+        promptLines.push(`   • 🛡️ ПРОВЕРКА ЦЕЛОСТНОСТИ: перед запуском зафиксируй список существующих групп других комнат, а после запуска убедись, что ни одна соседняя комната/группа не затронута, сохрани скрипт в ${folder}\build_${currentWorkRoomKey}.js и сделай 1 проверочный take_screenshot.`);
 
       } else if (currentAgentStage === 'texturing') {
-        promptLines.push(`1. ЧЁТКАЯ КАРТА БИБЛИОТЕК И ИНСТРУМЕНТОВ ТЕКСТУРИРОВАНИЯ В HOMESTYLER (ЭТАП 2 — ПОМЕЩЕНИЕ «${roomTitle}»):`);
-        promptLines.push(`   • 🧱 1) ПОЛ И ВЕСЬ КЕРАМОГРАНИТ (СТЕНЫ, ФАРТУК, САНУЗЕЛ) — СТРОГО ЧЕРЕЗ «ПЛИТОЧНЫЙ ПОЛ / ПЛИТОЧНЫЙ НАСТИЛ»:`);
-        promptLines.push(`     - Все напольные покрытия (инженерная доска, паркет ёлочкой/прямая палуба, ламинат, кварцвинил, керамогранит) и ВЕСЬ керамогранит/плитку на стенах, фартуке кухни и в санузлах укладывай СТРОГО через нативный инструмент «Плиточный пол / Плиточный настил» (MixPave) с загрузкой бесшовной текстуры!`);
-        promptLines.push(`   • ✨ 2) МЕТАЛЛЫ — НИКОГДА НЕ ГЕНЕРИРОВАТЬ! БРАТЬ ТОЛЬКО ИЗ «МОДЕЛИРОВАНИЕ ИНТЕРЬЕРА -> ПРЕМИУМ -> МЕТАЛЛ»:`);
-        promptLines.push(`     - В разделе «Премиум -> Металл» уже есть идеальные латунь (например Stainless Steel Drawbench 24, ID 55143064), хром, чёрный металл, матовый металл и брашированная сталь. Не трать время на генерацию металлов!`);
-        promptLines.push(`   • 🪞 3) СТЕКЛО И ЗЕРКАЛА — БРАТЬ СТРОГО ИЗ НАШЕЙ СТУДИИ SKYPRO (homestyler_panel.js / папки «2D - Стекло» и «2D - Спецматериалы»):`);
-        promptLines.push(`     - Используй специализированные шейдеры нашей студии SkyPro: «🪞 2D - Зеркало (Реальное отражение)» (seekId: 27a2024b-f46b-4c3e-8491-236c7a55990e), «🥂 2D - Стекло Прозрачное» (seekId: 1f9ddc12-654b-4067-8f13-eb82ba008198), «🪟 2D - Стекло Рифлёное» (seekId: cc667d16-6216-4154-a6a9-f45d3f53b258), «🍷 Стекло Цветное (3dsky)».`);
-        promptLines.push(`   • 🛋️ 4) ТКАНЬ, ПЛАСТИК И БАЗОВЫЙ КАМЕНЬ — ИЗ ВКЛАДКИ «МОДЕЛИРОВАНИЕ ИНТЕРЬЕРА -> ПРЕМИУМ»:`);
-        promptLines.push(`     - Ткани и пластик бери готовыми из «Премиум -> Ткань / Пластик» (там отличная база). Базовый камень можно брать из «Премиум -> Камень» либо генерировать под конкретный референс.`);
-        promptLines.push(`   • 🌳 5) ДЕРЕВО — НЕ БРАТЬ ИЗ «ПРЕМИУМ -> ДЕРЕВО»! ИСПОЛЬЗОВАТЬ И ПОПОЛНЯТЬ ЛИЧНУЮ БИБЛИОТЕКУ В «МОЙ -> ИЗБРАННОЕ»:`);
-        promptLines.push(`     - Стандартное дерево в «Премиум -> Дерево» некрасивое — НЕ используй его! Сначала проверь личную библиотеку пользователя в «Мой -> Избранное» (папки: «2D - Argile краска», «2D - farrow-ball краска», «2D дерево», «2D штукатурка», «2D керамогранит», «дизайнерские обои»).`);
-        promptLines.push(`     - Интересные текстуры дерева, СВЕЖЕГО керамогранита/камня (чтобы обновить и пополнить библиотеку!), дизайнерских обоев, картин и ковров генерируй через image-generator (для покрытий — строго 100% БЕСШОВНЫМИ без пятен тайлинга, 4K не нужно, достаточно 1024px) и ОБЯЗАТЕЛЬНО загружай и добавляй их прямо в соответствующие папки «Мой -> Избранное» пользователя в Homestyler, чтобы библиотека пополнялась и текстуры никогда не слетали после F5!`);
-        promptLines.push(``);
-
         if (customNoteVal) {
-          promptLines.push(`📌 ДОПОЛНИТЕЛЬНЫЕ УКАЗАНИЯ ДИЗАЙНЕРА ПО ТЕКСТУРИРОВАНИЮ ЭТОЙ КОМНАТЫ:`);
+          promptLines.push(`🔥 ГЛАВНОЕ УКАЗАНИЕ ДИЗАЙНЕРА ПО ТЕКСТУРИРОВАНИЮ ЭТОЙ КОМНАТЫ:`);
           promptLines.push(`${customNoteVal}`);
           promptLines.push(``);
         }
 
-        promptLines.push(`2. ЧТО ИМЕННО ТЕКСТУРИРУЕМ В ПОМЕЩЕНИИ «${roomTitle}» (НЕ ВЫДУМЫВАТЬ ТОГО, ЧЕГО НЕТ В ТЗ!):`);
-        promptLines.push(`   • Информация по материалам конкретно этой комнаты:`);
-        promptLines.push(`     ${texNotesVal || 'Отдельных уточнений по материалам конкретно этой комнаты нет — не выдумывать от себя, опираться строго на общую палитру проекта ниже!'}`);
-        promptLines.push(`   • Общий стиль, палитра и СТРОГИЕ ТАБУ проекта: ${p.baseStyle || 'см. паспорт проекта'}`);
-        promptLines.push(`   • Пол (через «Плиточный пол / Плиточный настил»): ${p.baseFloor || 'по паспорту проекта'}`);
-        promptLines.push(`   • Стены, керамогранит и двери: ${p.baseWalls || 'по паспорту проекта'}`);
+        promptLines.push(`1. ЧТО И КАКИМИ МАТЕРИАЛАМИ ТЕКСТУРИРУЕМ В ПОМЕЩЕНИИ «${roomTitle}»:`);
+        promptLines.push(`   • Детали материалов по комнате: ${texNotesVal || 'Опирайся на палитру проекта ниже.'}`);
+        promptLines.push(`   • Общая палитра и цветовые ограничения проекта: ${p.baseStyle || 'см. паспорт проекта'}`);
+        promptLines.push(`   • Пол (через «Плиточный настил» MixPave): ${p.baseFloor || 'по паспорту проекта'}`);
+        promptLines.push(`   • Стены, фартук/керамогранит и двери: ${p.baseWalls || 'по паспорту проекта'}`);
         if (!noRefs) {
-          promptLines.push(`   • Референсы комнаты (просмотри через read_file для точного попадания в оттенки дерева/камня/эмали): ${refsVal || roomRefPath}`);
+          promptLines.push(`   • Референсы оттенков комнаты: ${refsVal || roomRefPath}`);
         }
-        promptLines.push(`   • Покраска узких групп мебели (DiyInstance): аккуратно раскрась раздельные группы («Корпус», «Нижние фасады», «Верхние фасады», «Фасады антресолей», «Фасады пеналов», «Ручки», «Столешница», «Фартук», «Остров», «Стол», «Зеркало», «Стекло», «LED»), сохрани проект в Homestyler и покажи результат через take_screenshot!`);
+        promptLines.push(``);
+
+        promptLines.push(`2. ОТКУДА БРАТЬ МАТЕРИАЛЫ И КОНТРОЛЬ СОХРАННОСТИ ГЕОМЕТРИИ:`);
+        promptLines.push(`   • Геометрию групп DiyInstance НЕ перестраивать и НЕ сдвигать — меняем только материалы/текстуры!`);
+        promptLines.push(`   • Напольные покрытия и плитку/керамогранит на стенах укладывай через «Плиточный настил» (MixPave).`);
+        promptLines.push(`   • Металлы — из «Премиум -> Металл»; Стекло и Зеркало — из студии SkyPro (зеркало 27a2024b-f46b-4c3e-8491-236c7a55990e, прозрачное стекло 1f9ddc12-654b-4067-8f13-eb82ba008198); Краска и дерево — из папок «Мой -> Избранное» (2D - Argile краска, 2D - farrow-ball краска, 2D дерево, 2D штукатурка, 2D керамогранит, дизайнерские обои).`);
+        promptLines.push(`   • После покраски групп этой комнаты вызови createModelMeshAsync() (waitForStableDom: false) только для изменённых групп и сделай take_screenshot.`);
 
       } else if (currentAgentStage === 'placement') {
         const favGuide = getRoomFavoriteFoldersGuide(currentWorkRoomKey, roomTitle);
-        promptLines.push(`1. ЧЁТКАЯ КАРТА ПАПОК «МОЙ КАБИНЕТ -> ИЗБРАННОЕ» В HOMESTYLER ДЛЯ ПОМЕЩЕНИЯ «${roomTitle}» (СТРОГО ПО НАЗНАЧЕНИЮ КОМНАТ!):`);
-        promptLines.push(`   • Подключи помощник HSJoinery (в нём уже встроены базовые модели проекта HSJoinery.DEFAULT_PROJECT_MODELS, вся карта папок Избранного HSJoinery.FAVORITE_FOLDERS, рандомизатор sampleFavoriteModels и авто-разворот лицом вперёд placeFavoriteModel):`);
-        promptLines.push(`     if (!window.HSJoinery) (0, eval)(await (await fetch('http://127.0.0.1:3033/hs-joinery.js')).text());`);
-        promptLines.push(`   • ⭐ 0) ПЕРВООЧЕРЕДНАЯ БАЗОВАЯ ПАПКА «по умолчанию» (fid: 28463658, HSJoinery.DEFAULT_PROJECT_MODELS) — ГЛАВНЫЕ МОДЕЛИ В КАЖДЫЙ ПРОЕКТ (НЕ ИСКАТЬ В КАТАЛОГЕ И НЕ МОДЕЛИРОВАТЬ ВРУЧНУЮ!):`);
-        promptLines.push(`     - Вызывай await window.HSJoinery.placeFavoriteModel('<ключ_или_seekId>', { frame, sMm, dMm, zMm, ungroup: true/false }):`);
-        promptLines.push(`       • Варочная поверхность (ключ 'cooktop'): seekId '6e7e5a66-072b-4d01-b287-3f5d8a1b6c08' (Set_Asko 1, 560×490×7 мм)`);
-        promptLines.push(`       • Духовка + СВЧ в колонну (ключ 'oven_microwave'): seekId '51295004-e3e0-4bba-819c-6efd45ab4481' (596×608×982 мм)`);
-        promptLines.push(`       • Кухонная раковина + смеситель (ключ 'kitchen_sink_set'): группа seekId '1dd3d8b6-a3cf-43a9-a243-3e7782fb5da1' (можно разгруппировать { ungroup: true }, отдельно мойка 'kitchen_sink_only' -> '3b14a132-13a5-4bb3-8d00-7ea9f472bb98' подгоняется под индивидуальный вырез столешницы; отдельно кухонный смеситель 'kitchen_faucet' -> '5af1f675-87d3-4878-a313-f096187915fe')`);
-        promptLines.push(`       • Телевизор (ключ 'tv'): seekId '50e133d0-cf25-44d5-96dd-e145af366bdb' (масштабировать под нужную диагональ, не выдумывать другие ТВ!)`);
-        promptLines.push(`       • Кондиционер настенный (ключ 'air_conditioner'): seekId 'b4ff0a07-b6eb-4df7-a84c-a939894745ad' (837×200×313 мм)`);
-        promptLines.push(`       • Внутрипольный конвектор (ключ 'floor_convector'): seekId 'bbf509c9-a2e3-48d7-af8b-cfea59ce3cf8' (исходник 'f3dd1512-9392-4c31-8f96-f1c38e791f6f', 271×2970×5 мм в пол перед панорамными окнами)`);
-        promptLines.push(`       • Входная дверь с глазком (ключ 'entry_door'): seekId '69de6309-139a-45c5-ae98-3e582394508d' (дверь 2)`);
-        promptLines.push(`       • Межкомнатная дверь (ключ 'interior_door'): seekId '11b3ed92-f962-42fd-81ba-5897dd6cf580' (55 2300, скрытая / с наличниками)`);
-        promptLines.push(`       • Шторы: Тюль ('curtain_tulle' -> 'a3b71a1e-2cca-472c-aab3-c369eac176eb'), Портьеры Blackout ('curtain_blackout' -> 'ecaeff49-c16c-4da5-9c5d-7c95ea5a3437'), Жалюзи ('window_blinds' -> '45108571-2fec-428a-9fd3-c46ffb51cb26')`);
-        promptLines.push(`       • Раковина накладная + смеситель из стены (ключ 'bath_vessel_sink_set'): группа seekId '72eaee08-4ba9-41ea-9465-1f3e45dfe043' (если смеситель не из стены — разгруппировать или взять отдельно чашу раковины 'bath_vessel_sink_only' -> '5ef4c12b-926e-480f-b31c-77ee2b36f181')`);
-        promptLines.push(`       • Душевая стойка со встроенным смесителем и струями воды (ключ 'shower_set_with_water'): группа seekId '1a60f73b-c4df-40b9-a3f0-839e290e7085'`);
-        promptLines.push(`       • Комплект унитаза (ключ 'toilet_full_set'): группа seekId 'd3307a4c-558d-4b6f-94ab-1ae898366e03' (унитаз '998b042f...' + кнопка '4d947867...' + гиг. душ '4c397679...' + бумага '9b83f701...' + ёршик 'f7894ec6...'; при необходимости разгруппировать { ungroup: true })`);
-        promptLines.push(`       • Стиральная и сушильная машины Bosch: стиралка ('washing_machine' -> '5e1c20f9-4c90-405b-9223-bcdc02d8377d'), сушилка ('tumble_dryer' -> 'e73f998c-0007-4bca-bb77-25bcdb40e73c')`);
-        promptLines.push(`       • Также проверь await window.HSJoinery.getDefaultFolderModels() на случай новых добавленных моделей в «по умолчанию» (fid: 28463658).`);
-        promptLines.push(`   • 📂 ИЗ КАКИХ ИМЕННО ПАПОК «МОЙ КАБИНЕТ -> ИЗБРАННОЕ» БРАТЬ ДЕКОР, РАСТЕНИЯ И САНТЕХНИКУ ДЛЯ КОМНАТЫ «${roomTitle}»:`);
-        favGuide.lines.forEach(ln => promptLines.push(ln));
-        promptLines.push(`   • 📋 ПОЛНЫЙ СПРАВОЧНИК ПАПОК «МОЙ КАБИНЕТ -> ИЗБРАННОЕ» ПОЛЬЗОВАТЕЛЯ (с точными ID папок fid для NWTK.mtop.Catalog.getFavProducts / HSJoinery.sampleFavoriteModels):`);
-        promptLines.push(`     1) «Декор - Декор для полок» (fid: 28480394, 1070+ моделей) — главный базовый декор на тумбочки, консоли (например духи в прихожей), журнальные столики, ТВ-тумбы и полки в Прихожей, Гостиной, Спальне, Кабинете. (НЕ для кухни и НЕ для санузла!).`);
-        promptLines.push(`     2) «Растения - Букеты» (fid: 28480396) и «Растения - Озеленение» (fid: 28480397) — букеты и вазы в первую очередь НА ОБЕДЕННЫЕ СТОЛЫ (реже на журнальные столики).`);
-        promptLines.push(`     3) «Растения - Растения» (fid: 28480305 — два раза слово Растения!) — зелёные НАПОЛЬНЫЕ РАСТЕНИЯ в кашпо и зелёные букеты. Если сказано «поставить зелёное растение» — брать СТРОГО из этой папки (fid: 28480305) и подогнать по размеру!`);
-        promptLines.push(`     4) «Кухня - Декор для кухни» (fid: 28480297) — посуда, бокалы в стеклянные витрины кухни, открытые полки кухни и декор на кухонную столешницу.`);
-        promptLines.push(`     5) «Декор - Книги» (fid: 28480289) — книги на полки для детских комнат подростков/школьников и кабинетов (в спальне много книг не ставить — там «Декор - Декор для полок»).`);
-        promptLines.push(`     6) «Санузел - Декор для санузла» (fid: 28480273) — баночки, дозаторы, полотенца, туалетная бумага СТРОГО ТОЛЬКО для санузлов и ванных комнат! (КАТЕГОРИЧЕСКИ ЗАПРЕЩЕНО ставить их в шкафчики прихожей, гостиной или спальни!).`);
-        promptLines.push(`     7) «Санузел - Сантехника» (fid: 28480274, плюс «Санузел - Душевая» 28480272 и «Санузел - Полотенцесушители» 28480387) — смесители, раковины, душевые стойки, унитазы, полотенцесушители.`);
-        promptLines.push(`     8) «Прачечная - Наполнение прачечной» (fid: 28480352) — банки для стирки, хознужды, порошки, полотенца, запасы бумаги для прачечных и хозкладовых.`);
-        promptLines.push(`     9) «Гардероб - Одежда» (fid: 28480340) — одежда на плечиках, сложенная одежда, сумки, обувь, декоративные коробки, чемоданы (для гардеробных и входных кладовых/шкафов прихожей).`);
-        promptLines.push(`     10) «Детская комната - Детский» (fid: 28480337) — игрушки и декор ТОЛЬКО для малышей (не для подростков!).`);
-        promptLines.push(``);
-
         if (customNoteVal) {
-          promptLines.push(`📌 ДОПОЛНИТЕЛЬНЫЕ УКАЗАНИЯ ДИЗАЙНЕРА (ВЫПОЛНИТЬ В ПЕРВУЮ ОЧЕРЕДЬ!):`);
+          promptLines.push(`🔥 ГЛАВНОЕ УКАЗАНИЕ ДИЗАЙНЕРА ПО РАССТАНОВКЕ В ЭТОЙ КОМНАТЕ:`);
           promptLines.push(`${customNoteVal}`);
           promptLines.push(``);
         }
 
-        promptLines.push(`2. ЧТО ИМЕННО РАССТАВИТЬ В ПОМЕЩЕНИИ «${roomTitle}»:`);
-        promptLines.push(`   • Папка проекта и планировочное решение: ${folder}`);
-        promptLines.push(`   • Привязка к плану: ${r.finish || 'Строго по планировочному решению в папке проекта!'}`);
+        promptLines.push(`1. СПИСОК ГОТОВЫХ 3D-МОДЕЛЕЙ, ТЕХНИКИ И ДЕКОРА ДЛЯ ПОМЕЩЕНИЯ «${roomTitle}» (по плану ${r.finish || folder}):`);
+        promptLines.push(`${r.models || 'Расставить модели, технику и декор по плану Л2.'}`);
         if (p.baseStyle) {
-          promptLines.push(`   • Палитра, металл фурнитуры и ТАБУ: ${p.baseStyle}`);
+          promptLines.push(`   • Палитра и ограничения по декору: ${p.baseStyle}`);
         }
-        promptLines.push(`   • Список готовых 3D-моделей, сантехники, техники, растений и декора по комнате:`);
-        promptLines.push(`     ${r.models || r.joinery || 'Расставить модели, сантехнику и декор по полкам/столам/консолям строго по назначению помещения из соответствующих папок «Мой кабинет -> Избранное».'}`);
         promptLines.push(``);
 
-        promptLines.push(`3. ЖЁСТКИЕ ТЕХНИЧЕСКИЕ ПРАВИЛА ВЫБОРКИ ВРАЗНОБОЙ И РАЗВОРОТА МОДЕЛЕЙ СТРОГО ЛИЦОМ ВПЕРЁД:`);
-        promptLines.push(`   • 🎲 1) БРАТЬ МОДЕЛИ ВРАЗНОБОЙ (НЕ СТАВИТЬ ТОЛЬКО ПЕРВЫЕ МОДЕЛИ С ВЕРХУШКИ ПАПКИ!):`);
-        promptLines.push(`     - Категорически запрещено из проекта в проект брать только первые 3–5 моделей с offset: 0! Пользователь постоянно пополняет папки Избранного новыми моделями.`);
-        promptLines.push(`     - Вызывай: const sample = await window.HSJoinery.sampleFavoriteModels(fid, 15); — функция сама узнает актуальный размер папки и вернёт перемешанную выборку со случайным смещением со всей глубины папки. Подбирай модели, подходящие по смыслу и цветовой гамме!`);
-        promptLines.push(`   • 👀 2) СТРОГИЙ РАЗВОРОТ ВСЕХ МОДЕЛЕЙ ЛИЦОМ ВПЕРЁД В КОМНАТУ (HSJoinery.placeFavoriteModel / calcForwardRotation):`);
-        promptLines.push(`     - Каждая поставленная на полку, консоль, тумбочку или у стены модель ОБЯЗАНА смотреть строго ЛИЦОМ ВПЕРЁД в комнату (по вектору нормали стены/полки frame.nx, frame.ny), а не спиной или боком!`);
-        promptLines.push(`     - Используй готовый метод: await window.HSJoinery.placeFavoriteModel(seekId, { frame, sMm, dMm, zMm, rotOffsetDeg: 0 }); — он автоматически ставит модель точно на высоту полки zMm и вычисляет угол ZRotation = atan2(-frame.nx, -frame.ny) * 180 / PI.`);
-        promptLines.push(`     - Если нужна крупная отдельностоящая мебель/техника, которой нет в папках Избранного — дополнительно используй локальный каталог 3D Sky Pro (http://127.0.0.1:3033/api/search) или tg_ondemand.py по #тегам.`);
-        promptLines.push(`   • 📸 3) ОБЯЗАТЕЛЬНАЯ САМОПРОВЕРКА СКРИНШОТОМ (take_screenshot):`);
-        promptLines.push(`     - После расстановки декора, растений и сантехники ОБЯЗАТЕЛЬНО сделай прицельный скриншот полок/консоли/стола через take_screenshot и глазами проверь, что все модели стоят ровно на поверхности (не висят в воздухе и не утоплены) и развёрнуты ЛИЦОМ ВПЕРЁД!`);
-
+        promptLines.push(`2. ПАПКИ «ИЗБРАННОГО» И БАЗА 3D SKY PRO ДЛЯ ЭТОЙ КОМНАТЫ:`);
+        promptLines.push(`   • Подключи HSJoinery: if (!window.HSJoinery) (0, eval)(await (await fetch('http://127.0.0.1:3033/hs-joinery.js')).text());`);
+        promptLines.push(`   • Базовые модели (HSJoinery.DEFAULT_PROJECT_MODELS, папка fid: 28463658) ставь через await HSJoinery.placeFavoriteModel('<ключ>', { frame, sMm, dMm, zMm }).`);
+        favGuide.lines.forEach(ln => promptLines.push(ln));
+        promptLines.push(`   • Декор из папок Избранного бери вразнобой через HSJoinery.sampleFavoriteModels(fid, 12), каждую модель разворачивай строго лицом в комнату, существующую DIY-мебель НЕ трогай! В конце покажи результат через take_screenshot.`);
 
       } else if (currentAgentStage === 'fixes') {
-        promptLines.push(`1. СПИСОК ТОЧЕЧНЫХ ПРАВОК ПО ПОМЕЩЕНИЮ «${roomTitle}»:`);
+        promptLines.push(`1. 🎯 СПИСОК ТОЧЕЧНЫХ ПРАВОК В ПОМЕЩЕНИИ «${roomTitle}» (МЕНЯЕМ ТОЛЬКО ЭТИ УЗЛЫ):`);
         if (customNoteVal) {
           promptLines.push(`${customNoteVal}`);
+        } else {
+          promptLines.push(`(Впиши в поле «Дополнить от себя» выше или выбери кнопками, какие именно 1–2 группы нужно поправить в комнате «${roomTitle}»)`);
         }
-        promptLines.push(`${r.finish || ''}`);
-        promptLines.push(`${r.joinery || ''}`);
         promptLines.push(``);
-        promptLines.push(`2. ПРАВИЛА ВНЕСЕНИЯ ПРАВОК:`);
-        promptLines.push(`   • Не стирай всю комнату или сцену целиком — вноси изменения точечно именно в те узкие группы/узлы, которые нужно поправить!`);
-        promptLines.push(`   • Проверь законы настоящего мебельного конструктива: единая глубина боковин и полок (0..depthCarcass, полки строго s0+18..s1-18 без укороченных полок!), все фасады СТРОГО НАКЛАДНЫЕ перед корпусом (d = depthCarcass+2..depthCarcass+20 без утопленных внутрь боковин дверей и без коллизий/наездов на полки), отсутствие маленьких коротких ручек, наличие бокового цоколя у открытых торцов шкафов, отсутствие угловых линий на рамках (frame.hollowFrame), ровная геометрия света по осям потолка и раздельная группировка каждого предмета.`);
-        promptLines.push(`   • После правки вызови createModelMeshAsync() и покажи результат через take_screenshot!`);
+        promptLines.push(`2. СПРАВОЧНЫЕ РАЗМЕРЫ И КОНСТРУКТИВ УЗЛОВ КОМНАТЫ «${roomTitle}»:`);
+        promptLines.push(`${r.joinery || ''}`);
+        const roomSpecLines = getRoomSpecificConstructiveRules(currentWorkRoomKey);
+        roomSpecLines.forEach(ln => promptLines.push(ln));
+        promptLines.push(``);
+        promptLines.push(`3. 🛡️ ЖЁСТКИЙ КОНТРОЛЬ СОХРАННОСТИ ОСТАЛЬНОЙ СЦЕНЫ (СВЕРКА ДО И ПОСЛЕ + БЫСТРЫЙ ПРОГОН ЗА 1–2 МИН):`);
+        promptLines.push(`   • ШАГ А (Снимок «ДО»): перед изменением прочитай список всех существующих групп DiyInstance в сцене и зафиксируй их id, имена и габариты (boundingBox). Группы, которые НЕ указаны в п. 1 выше, считаются ЗАМОРОЖЕННЫМИ (LOCKED) — их удалять, пересоздавать или двигать нельзя!`);
+        promptLines.push(`   • ШАГ Б (Точечная замена): удали старый экземпляр ТОЛЬКО целевой исправляемой группы DiyInstance и построй на её месте обновлённую группу за 1 вызов evaluate_script (с waitForStableDom: false).`);
+        promptLines.push(`   • ШАГ В (Быстрое обновление и сверка «ПОСЛЕ»): вызови createModelMeshAsync() ТОЛЬКО для изменённых групп (не пересчитывай всю квартиру!), проверь, что все замороженные группы комнаты остались на своих местах без изменений, обнови скрипт ${folder}\build_${currentWorkRoomKey}.js и сделай 1 скриншот take_screenshot.`);
       }
 
       const promptBox = document.getElementById('live-agent-prompt-box');
@@ -6240,9 +6328,10 @@
       const list = getWorkProjects();
       const p = list.find(x => x.id === currentWorkProjId);
       if (!p) return;
-      const promptText = `Проанализируй мою голосовую читку / заметки со звонка по проекту ${p.id} (${p.name}, формат: ${p.format}, папка: ${p.folder || ('D:\\ФАНАТИКС\\' + p.id)}):\n\n---\n${p.voiceDump || '(текст читки)'}\n---\n\nЗадача:\n1. Разложи эту информацию без потерь по структуре нашего Паспорта проекта в lavinteriors.pro/office/ (Общая база квартиры + по каждому помещению отдельно).\n2. Сформируй заполненную таблицу Бриф_${p.id}.xlsx на 85 строк для загрузки в карточку компании.`;
+      const folder = p.folder || ('D:\\ФАНАТИКС\\' + p.id);
+      const promptText = `Ты — Главный Агент-Архитектор и Хранитель памяти проекта ${p.id} (${p.name}, папка: ${folder}).\nТвоя задача — освободить меня от необходимости держать в голове все детали проекта и сформировать в нашем Офисе (D:\\lav-site\\_github_lavinteriors_pro\\office\\index.html) ИДЕАЛЬНО ЧЁТКОЕ, РАЗВЁРНУТОЕ И ПОЗИТИВНОЕ ЗАДАНИЕ по каждой комнате для Моделирующего агента (без воды и без миллиона запретов!).\n\nВот моя голосовая читка / вводные по созвону:\n---\n${p.voiceDump || '(прочитай файлы проекта в папке ' + folder + ')'}\n---\n\nКАК ТЫ ДОЛЖЕН ПРОРАБОТАТЬ ПРОЕКТ ${p.id}:\n1. ИЕРАРХИЯ ИСТОЧНИКОВ (ЧТО ГЛАВНЕЕ):\n   • Приоритет №1: Моя голосовая читка созвона и мои комментарии (это финальное решение!).\n   • Приоритет №2: Чертёж планировочного решения (лист Л2 с размерами) в папке ${folder}. Все привязки по стенам и порядок предметов бери строго с плана Л2 (старый первичный Бриф не может перебивать план Л2!).\n   • Приоритет №3: Фото референсов в ${folder}\\Референсы_по_комнатам — привязывай к каждому узлу прямой путь к файлу референса и пиши ПРЯМО И ПОЗИТИВНО, какой именно элемент берём с этого фото (например: «Кровать в пол с мягкими бортами по референсу ...», «Плоская сканди-рамка фасадов 'scandi_shaker' по референсу ...»).\n   • Приоритет №4 и №5: Анкета и первичный Бриф — только для тех деталей, которых нет в созвоне и на плане Л2.\n\n2. ВЕДЕНИЕ ПАСПОРТА И ИСТОРИИ РЕШЕНИЙ ПРОЕКТА (${folder}\\PROJECT_${p.id}_MASTER_BRIEF.md):\n   • Зафиксируй в мастер-брифе по каждой комнате:\n     а) Что именно строим и какие точные габариты по стенам;\n     б) Что заказчик / я явно просили НЕ делать (например: без подсветки в этой нише, без крючков, без чёрного профиля на потолке);\n     в) Историю правок и список замороженных узлов (LOCKED), которые в 3D-сцене уже сделаны правильно и которые при следующих правках трогать нельзя.\n\n3. КАК ЗАПОЛНИТЬ ПОЛЕ joinery КАЖДОЙ КОМНАТЫ В office/index.html ДЛЯ МОДЕЛИРУЮЩЕГО АГЕНТА:\n   • Моделирующий агент не должен гадать или читать 100 запретов! Напиши ему для каждой комнаты развёрнутый пошаговый план сборки по стенам:\n     - точный порядок модулей вдоль каждой стены с размерами Ш×Г×В и высотами Z;\n     - какую именно функцию window.HSJoinery вызвать для каждого узла: buildRealCarcass с точным массивом полок opts.shelvesZ (чтобы полки были под каждой LED-лентой!), buildClassicMilledFacade(..., 'scandi_shaker') или buildMdfFacadeWithHandle, для раковины из керамогранита — обязательно HSJoinery.buildPorcelainSlopedDrainSink(...), для обувницы — ярусы по 280 мм, для детского шкафа — ручки на высоте z=580..1180 мм;\n     - где именно есть LED-подсветка, а где её нет;\n     - какой потолок и какие точечные светильники (форма и цвет корпуса) построить в комнате.\n   • Сохрани изменения в D:\\lav-site\\_github_lavinteriors_pro\\office\\index.html, обнови версию WORK_PROJECTS_KEY и запушь на GitHub.`;
       navigator.clipboard.writeText(promptText).then(() => {
-        alert('✅ Промпт для разбора голосовой читки скопирован! Просто вставь его в наш чат с ИИ.');
+        alert('✅ Промпт для Агента-Архитектора проекта (формирование развёрнутого ТЗ в Офисе + Паспорт решений) скопирован!');
       });
     }
 
