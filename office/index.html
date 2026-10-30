@@ -1124,7 +1124,7 @@
         }
         if (stateData && typeof stateData === 'object') {
           var changed = false;
-          var isFirstBootOnLaptop = !localStorage.getItem('lav_work_projects_db_v7');
+          var isFirstBootOnLaptop = !localStorage.getItem('lav_work_projects_db_v8') || localStorage.getItem('lav_work_projects_db_v7');
           Object.keys(stateData).forEach(function(k) {
             if (k.startsWith('lav_') && stateData[k]) {
               if (isFirstBootOnLaptop || forceReloadUI || !localStorage.getItem(k)) {
@@ -1210,7 +1210,7 @@
   <div class="top-bar">
     <div class="brand">
       <h1 data-editable="true">⚡ LAV COMMAND CENTER — Личный кабинет Анжелики</h1>
-      <p data-editable="true">Сегодня (28.10) выплата <b>42 278,80 ₽</b> (10 проектов) • Итог октября: <b>66 278,80 ₽</b> • В работе 17 активных проектов из 19 (+новые <b>0638</b> и <b>0631</b>): чистый остаток <b>187 970,90 ₽</b></p>
+      <p data-editable="true">Сегодня (28.10) выплата <b>42 278,80 ₽</b> (10 проектов) • Итог октября: <b>66 278,80 ₽</b> • В работе 17 активных проектов из 19 (+новые <b>0637</b> и <b>0631</b>): чистый остаток <b>208 466,94 ₽</b></p>
     </div>
     <div class="top-actions">
       <a href="javascript:(async function(){try{var c=new AbortController();var t=setTimeout(function(){c.abort();},1200);var r=await fetch('http://127.0.0.1:3033/homestyler-panel.js?t='+Date.now(),{signal:c.signal});clearTimeout(t);if(r.ok){window.__SKYPRO_SERVER_ORIGIN__='http://127.0.0.1:3033';(0,eval)(await r.text());return;}}catch(e){}try{var ep=await (await fetch('https://lavinteriors.pro/office/skypro-endpoint.json?t='+Date.now())).json();if(ep&&ep.tunnelUrl){window.__SKYPRO_SERVER_ORIGIN__=ep.tunnelUrl.replace(/\/+$/,'');var r2=await fetch(window.__SKYPRO_SERVER_ORIGIN__+'/homestyler-panel.js?t='+Date.now());(0,eval)(await r2.text());return;}}catch(e2){}alert('Не удалось подключиться к 3DSky серверу ПК');})();void(0);" class="action-btn" style="background:linear-gradient(135deg,#2563eb,#1d4ed8);border-color:#60a5fa;color:#fff;text-decoration:none;font-weight:700;" title="Зажми левой кнопкой мыши и перетащи на панель закладок браузера! Внутри Homestyler 1 клик по закладке откроет панель 3DSky Pro">⚡ 3DSky Панель</a>
@@ -1237,17 +1237,17 @@
     <div class="kpi-card highlight-yellow">
       <div class="kpi-label">⏳ АВАНСЫ НА СЛЕД. НЕДЕЛЮ (04.11)</div>
       <div class="kpi-val" id="kpi-not-in-sheet" style="color:#fbbf24;" data-editable="true">14 000 ₽</div>
-      <div class="kpi-sub" id="kpi-not-sub" data-editable="true">4 пр. на 04.11: 0653 (4к) + 0589 (2к) + 0638 (4к) + 0631 (4к) = 14 000 ₽</div>
+      <div class="kpi-sub" id="kpi-not-sub" data-editable="true">4 пр. на 04.11: 0653 (4к) + 0589 (2к) + 0637 (4к) + 0631 (4к) = 14 000 ₽</div>
     </div>
     <div class="kpi-card highlight-purple">
       <div class="kpi-label">🚀 ПРОГНОЗ НА СЛЕД. СРЕДУ (04.11)</div>
       <div class="kpi-val" style="color:#c084fc;" data-editable="true">45 415 – 61 665 ₽</div>
-      <div class="kpi-sub" data-editable="true">14 000 ₽ (авансы 0653+0589+0638+0631) + 31 415 ₽ (4 горящие визы) + до 16 250 ₽ (0633/0545)</div>
+      <div class="kpi-sub" data-editable="true">14 000 ₽ (авансы 0653+0589+0637+0631) + 31 415 ₽ (4 горящие визы) + до 16 250 ₽ (0633/0545)</div>
     </div>
     <div class="kpi-card highlight-blue">
       <div class="kpi-label">💼 ВЕСЬ ПОРТФЕЛЬ (19 ПРОЕКТОВ)</div>
-      <div class="kpi-val" style="color:#60a5fa;" data-editable="true">254 249,70 ₽</div>
-      <div class="kpi-sub" data-editable="true">19 проектов (17 в работе)! Чистый остаток к получению: <b>187 970,90 ₽</b>!</div>
+      <div class="kpi-val" style="color:#60a5fa;" data-editable="true">274 745,74 ₽</div>
+      <div class="kpi-sub" data-editable="true">19 проектов (17 в работе)! Чистый остаток к получению: <b>208 466,94 ₽</b>!</div>
     </div>
   </div>
 
@@ -1406,7 +1406,7 @@
 
             <div class="sheet-item not-in-sheet" data-id="0589" data-amount="2000" data-in="false">
               <div>
-                <span class="tag tag-proj">0589</span> <span class="tag tag-tg">📱 TG</span> <span class="tag tag-purple">🆕 Визы 120 м² (≈ 15 000 ₽ • по сетке 16 400 ₽) • Взяла 28.10</span>
+                <span class="tag tag-proj">0589</span> <span class="tag tag-max">💬 MAX</span> <span class="tag tag-purple">🆕 Визы 120 м² (≈ 15 000 ₽ • по сетке 16 400 ₽) • Взяла 28.10</span>
                 <div style="font-weight:700; font-size:13.5px; margin-top:3px;" data-editable="true">Ждём анкету -> созвон -> аванс <b>+2 000 ₽</b> на среду 04.11! Остаток: <b>13 000 ₽</b></div>
               </div>
               <div style="text-align:right;">
@@ -1415,10 +1415,10 @@
               </div>
             </div>
 
-            <div class="sheet-item not-in-sheet" data-id="0638" data-amount="4000" data-in="false">
+            <div class="sheet-item not-in-sheet" data-id="0637" data-amount="4000" data-in="false">
               <div>
-                <span class="tag tag-proj">0638</span> <span class="tag tag-max">💬 MAX</span> <span class="tag tag-purple">🆕 Полный проект 44 м² (Стандарт ≈ 17 600 ₽) • Созвон СЕГОДНЯ в 20:00!</span>
-                <div style="font-weight:700; font-size:13.5px; margin-top:3px;" data-editable="true">Проводим созвон в 20:00 + заполняем Бриф -> аванс <b>+4 000 ₽</b> на среду 04.11! Остаток: <b>13 600 ₽</b></div>
+                <span class="tag tag-proj">0637</span> <span class="tag tag-max">💬 MAX</span> <span class="tag tag-purple">🆕 Полный проект 44,94 м² (Стандарт 44,94 м² = 24 537,24 ₽) • Созвон СЕГОДНЯ в 20:00!</span>
+                <div style="font-weight:700; font-size:13.5px; margin-top:3px;" data-editable="true">Проводим созвон в 20:00 + заполняем Бриф -> аванс <b>+4 000 ₽</b> на среду 04.11! Остаток: <b>20 537,24 ₽</b></div>
               </div>
               <div style="text-align:right;">
                 <div style="font-size:16px; font-weight:900; color:#fbbf24; margin-bottom:4px;">+ 4 000 ₽</div>
@@ -1428,8 +1428,8 @@
 
             <div class="sheet-item not-in-sheet" data-id="0631" data-amount="4000" data-in="false">
               <div>
-                <span class="tag tag-proj">0631</span> <span class="tag tag-tg">📱 TG</span> <span class="tag tag-purple">🆕 Полный проект (≈ 18 000 ₽) • Написать сегодня и провести созвон!</span>
-                <div style="font-weight:700; font-size:13.5px; margin-top:3px;" data-editable="true">Договариваемся сегодня о звонке + Бриф -> аванс <b>+4 000 ₽</b> на среду 04.11! Остаток: <b>14 000 ₽</b></div>
+                <span class="tag tag-proj">0631</span> <span class="tag tag-tg">📱 TG</span> <span class="tag tag-purple">🆕 Полный проект 57,8 м² (= 31 558,80 ₽) • Написать сегодня и провести созвон!</span>
+                <div style="font-weight:700; font-size:13.5px; margin-top:3px;" data-editable="true">Договариваемся сегодня о звонке + Бриф -> аванс <b>+4 000 ₽</b> на среду 04.11! Остаток: <b>27 558,80 ₽</b></div>
               </div>
               <div style="text-align:right;">
                 <div style="font-size:16px; font-weight:900; color:#fbbf24; margin-bottom:4px;">+ 4 000 ₽</div>
@@ -1669,10 +1669,10 @@
               <div class="task-body">
                 <div class="task-top">
                   <span class="tag tag-purple">⏰ СЕГОДНЯ В 20:00 МСК (НОВЫЙ!)</span>
-                  <span class="tag tag-proj">0638</span>
-                  <span class="tag tag-max">💬 MAX • Полный проект (Стандарт, 2-комн. 44 м²)</span>
+                  <span class="tag tag-proj">0637</span>
+                  <span class="tag tag-max">💬 MAX • Полный проект (Стандарт, 2-комн. 44,94 м²)</span>
                 </div>
-                <div class="task-title" data-editable="true">20:00 — Первичный созвон по новому проекту 0638 (44 м²): заполнить Бриф под планировку (+4 000 ₽ аванс на 04.11)</div>
+                <div class="task-title" data-editable="true">20:00 — Первичный созвон по новому проекту 0637 (44,94 м²): заполнить Бриф под планировку (+4 000 ₽ аванс на 04.11)</div>
               </div>
             </div>
 
@@ -1763,6 +1763,8 @@
         <button class="copy-btn dl-filter-btn" style="color:#e9d5ff; border-color:rgba(168,85,247,0.45);" onclick="filterWorkProjectsByTier('today_calls', this)">📞 СЕГОДНЯ: Вечерний созвон 20:00 и Написать (3)</button>
         <button class="copy-btn dl-filter-btn" style="color:#fde68a; border-color:rgba(245,158,11,0.45);" onclick="filterWorkProjectsByTier('mon_tue', this)">🎨 ПН–СР (02–04.11): Очередь Виз и Планов (5)</button>
         <button class="copy-btn dl-filter-btn" style="color:#bfdbfe; border-color:rgba(59,130,246,0.45);" onclick="filterWorkProjectsByTier('waiting', this)">⏳ Ждём сцену / обмер / След. неделя (3)</button>
+        <button class="copy-btn dl-filter-btn" style="color:#f472b6; border-color:rgba(244,114,182,0.45);" onclick="filterWorkProjectsByTier('ch_max', this)">💬 Только MAX (7 пр.)</button>
+        <button class="copy-btn dl-filter-btn" style="color:#38bdf8; border-color:rgba(56,189,248,0.45);" onclick="filterWorkProjectsByTier('ch_tg', this)">📱 Только Telegram (10 пр.)</button>
       </div>
 
       <!-- СЕТКА АКТИВНЫХ ПРОЕКТОВ В РАБОТЕ -->
@@ -3147,8 +3149,8 @@
             <tr class="fin-row-yellow">
               <td>17</td>
               <td data-editable="true"><b>0589</b></td>
-              <td data-editable="true">📱 TG • <span class="tag tag-purple">🆕 Визы 120 м² (Напомнить анкету -> созвон)</span></td>
-              <td data-editable="true">15 000,00 ₽ <span style="font-size:11px; color:var(--muted);">(сетка: 16 400 ₽)</span></td>
+              <td data-editable="true">💬 MAX • <span class="tag tag-purple">🆕 Визы 120 м² (Напомнить анкету -> созвон)</span></td>
+              <td data-editable="true">15 000,00 ₽ <span style="font-size:11px; color:var(--muted);">(сетка 5%: 14 700 ₽)</span></td>
               <td data-editable="true">0,00 ₽</td>
               <td data-editable="true">—</td>
               <td style="color:#fbbf24; font-weight:900;" data-editable="true">+ 2 000,00 ₽ (аванс 04.11)</td>
@@ -3156,31 +3158,31 @@
             </tr>
             <tr class="fin-row-yellow">
               <td>18</td>
-              <td data-editable="true"><b>0638</b></td>
-              <td data-editable="true">💬 MAX • <span class="tag tag-purple">🆕 Полный проект 44 м² (Созвон СЕГОДНЯ в 20:00!)</span></td>
-              <td data-editable="true">17 600,00 ₽ <span style="font-size:11px; color:var(--muted);">(Стандарт 44 м²)</span></td>
+              <td data-editable="true"><b>0637</b></td>
+              <td data-editable="true">💬 MAX • <span class="tag tag-purple">🆕 Полный проект 44,94 м² (Созвон СЕГОДНЯ в 20:00!)</span></td>
+              <td data-editable="true">24 537,24 ₽ <span style="font-size:11px; color:var(--muted);">(44,94 м² × 546 ₽)</span></td>
               <td data-editable="true">0,00 ₽</td>
               <td data-editable="true">—</td>
               <td style="color:#fbbf24; font-weight:900;" data-editable="true">+ 4 000,00 ₽ (бриф+аванс 04.11)</td>
-              <td style="font-weight:800; color:#60a5fa;" data-editable="true">13 600,00 ₽</td>
+              <td style="font-weight:800; color:#60a5fa;" data-editable="true">20 537,24 ₽</td>
             </tr>
             <tr class="fin-row-yellow">
               <td>19</td>
               <td data-editable="true"><b>0631</b></td>
               <td data-editable="true">📱 TG • <span class="tag tag-purple">🆕 Полный проект (Написать сегодня -> созвон!)</span></td>
-              <td data-editable="true">18 000,00 ₽ <span style="font-size:11px; color:var(--muted);">(ориентир)</span></td>
+              <td data-editable="true">31 558,80 ₽ <span style="font-size:11px; color:var(--muted);">(57,8 м² × 546 ₽)</span></td>
               <td data-editable="true">0,00 ₽</td>
               <td data-editable="true">—</td>
               <td style="color:#fbbf24; font-weight:900;" data-editable="true">+ 4 000,00 ₽ (бриф+аванс 04.11)</td>
-              <td style="font-weight:800; color:#60a5fa;" data-editable="true">14 000,00 ₽</td>
+              <td style="font-weight:800; color:#60a5fa;" data-editable="true">27 558,80 ₽</td>
             </tr>
             <tr style="background:rgba(255,255,255,0.08); font-weight:900; font-size:14.5px;">
               <td colspan="3">ИТОГО ПО ВСЕМ 19 ПРОЕКТАМ (В ОКТЯБРЕ ПОЛУЧЕНО: 66 278,80 ₽):</td>
-              <td data-editable="true">254 249,70 ₽</td>
+              <td data-editable="true">274 745,74 ₽</td>
               <td style="color:#34d399;" data-editable="true">24 000,00 ₽</td>
               <td style="color:#34d399; font-size:15.5px;" data-editable="true">+ 42 278,80 ₽ ✅</td>
               <td style="color:#fbbf24; font-size:15.5px;" data-editable="true">+ 14 000,00 ₽ ⏳</td>
-              <td style="color:#60a5fa; font-size:15.5px;" data-editable="true">173 970,90 ₽ (всего остаток: 187 970,90 ₽)</td>
+              <td style="color:#60a5fa; font-size:15.5px;" data-editable="true">194 466,94 ₽ (всего остаток: 208 466,94 ₽)</td>
             </tr>
           </tbody>
         </table>
@@ -3633,7 +3635,7 @@
 
 
     // ==================== 7. КАЛЕНДАРЬ (ОКТЯБРЬ, НОЯБРЬ, ДЕКАБРЬ 2026) ====================
-    const CAL_STORAGE_KEY = 'lav_calendar_events_2026_v11';
+    const CAL_STORAGE_KEY = 'lav_calendar_events_2026_v12';
     const CAL_NOTES_KEY = 'lav_calendar_daynotes_2026_v1';
     let currentCalMonth = 9; // 9 = Октябрь, 10 = Ноябрь, 11 = Декабрь
     let selectedCalDateKey = '2026-10-30';
@@ -3653,11 +3655,11 @@
       '2026-10-29': [
         { text: '💉 12:00 ЭНДОКРИНОЛОГ за инсулином', type: 'ev-hot' },
         { text: '💬 0645 дал ОС и комментарии -> созвон в 10:00!', type: 'ev-call' },
-        { text: '🆕 Добавили 0638 (44 м², Полный) и 0631 (Полный)', type: 'ev-plan' }
+        { text: '🆕 Добавили 0637 (44,94 м², Полный) и 0631 (Полный)', type: 'ev-plan' }
       ],
       '2026-10-30': [
         { text: '📞 10:00 Созвон 0645 (решить: вперёд чертежи или визы!)', type: 'ev-call' },
-        { text: '📞 20:00 Созвон 0638 (НОВЫЙ Полный 44 м² — Бриф!)', type: 'ev-call' },
+        { text: '📞 20:00 Созвон 0637 (НОВЫЙ Полный 44,94 м² — Бриф!)', type: 'ev-call' },
         { text: '🚨 0633 СРОЧНО отправить планировку (ждут с 26.10!)', type: 'ev-hot' },
         { text: '🔥 0606 Доделать 1 комн. в Homestyler и отправить!', type: 'ev-hot' },
         { text: '🔥 0572 (1 комн.) и 0599 (прихожая в работе) — сдать ПТ–СБ!', type: 'ev-hot' },
@@ -3679,7 +3681,7 @@
         { text: '🎨 0619 Выдать визы без созвона (анкета+рефы полные)', type: 'ev-plan' }
       ],
       '2026-11-04': [
-        { text: '💰 Выплата: авансы 14 000 ₽ (0653, 0589, 0638, 0631) + закрытые этапы!', type: 'ev-pay' },
+        { text: '💰 Выплата: авансы 14 000 ₽ (0653, 0589, 0637, 0631) + закрытые этапы!', type: 'ev-pay' },
         { text: '🎨 0619 / 0574 / 0596 Сдача визуализаций по мере готовности коробок', type: 'ev-plan' },
         { text: '🔧 0576 (0567) Сложные клиенты: разобрать вопросы под 1-й круг правок', type: 'ev-call' }
       ],
@@ -3831,7 +3833,7 @@
 
 
     // ==================== 8. ПРОЕКТЫ В РАБОТЕ И ИНТЕРАКТИВНЫЙ КОНСТРУКТОР ПРОМПТОВ АГЕНТАМ ====================
-    const WORK_PROJECTS_KEY = 'lav_work_projects_db_v8';
+    const WORK_PROJECTS_KEY = 'lav_work_projects_db_v9';
     let currentWorkProjId = '0545';
     let currentWorkRoomKey = 'hall';
     var currentVizRoomKey = 'hall';
@@ -4126,7 +4128,7 @@
             "baseFamily": "",
             "rooms": {
                   "hall": {
-                        "joinery": "С помощью инструмента «Моделирование интерьера» в Прихожей (10.58 м² / 7.44 м²): шкафы для одежды (1200×600 и 1130×450), колонна под стиральную и сушильную машины 600×600 (без нижнего цоколя под СМ!) + полки. Каждый предмет — в своих узких группах!",
+                        "joinery": "С помощью инструмента «Моделирование интерьера» в Прихожей (10.58 м² / 7.44,94 м²): шкафы для одежды (1200×600 и 1130×450), колонна под стиральную и сушильную машины 600×600 (без нижнего цоколя под СМ!) + полки. Каждый предмет — в своих узких группах!",
                         "finish": "Строго по утверждённому варианту в D:\\ФАНАТИКС\\0633\\0633 25.10 Планировочные решения.pdf",
                         "refs": "D:\\ФАНАТИКС\\0633\\Дизайн-референсы.pdf",
                         "stages": {
@@ -4339,23 +4341,23 @@
             "infoAudit": "✅ Инфа 100% полная: план + бриф + все рефы по комнатам в D:\\ФАНАТИКС\\0599"
       },
       {
-            "id": "0638",
-            "name": "🆕 Двушка 44 м² (Тариф Стандарт — Полный проект)",
+            "id": "0637",
+            "name": "🆕 Двушка 44.94 м² (Тариф Стандарт — Полный проект)",
             "channel": "💬 MAX",
             "format": "📋 Полный проект",
-            "price": "17 600 ₽ (аванс 4к на 04.11)",
-            "status": "📞 Новый проект (добавили вчера, 2-комн. 44 м², Стандарт). СЕГОДНЯ в 20:00 созвон с заказчиком по Брифу!",
-            "deadline": "📞 СРОК: СЕГОДНЯ в 20:00 — Созвон с заказчиком (заполнить Бриф под планировку 44 м²)",
+            "price": "24 537,24 ₽ (аванс 4к на 04.11)",
+            "status": "📞 Новый полный проект в MAX (Стандарт 44.94 м² × 546 ₽ = 24 537,24 ₽). СЕГОДНЯ в 20:00 созвон по Брифу!",
+            "deadline": "📞 СРОК: СЕГОДНЯ в 20:00 — Созвон с заказчиком (заполнить Бриф 44.94 м² -> +4 000 ₽ аванс на 04.11)",
             "deadlineColor": "purple",
-            "infoAudit": "⚠️ Папка D:\\ФАНАТИКС\\0638 создана — закинь туда план БТИ/обмер из чата MAX перед звонком в 20:00",
+            "infoAudit": "⚠️ Папка D:\\ФАНАТИКС\\0637 создана — закинь туда план БТИ/обмер из чата MAX к 20:00",
             "closed": false,
-            "folder": "D:\\ФАНАТИКС\\0638",
-            "voiceDump": "Новый полный проект 0638 в MAX (тариф Стандарт, двухкомнатная квартира 44 м²). Добавили в чат вчера, только начали работу. Договорились созвониться сегодня вечером в 20:00 МСК — заполняем первичный Бриф под планировочное решение.",
+            "folder": "D:\\ФАНАТИКС\\0637",
+            "voiceDump": "Новый полный проект 0637 в MAX (тариф Стандарт, двухкомнатная квартира 44.94 м²). Стоимость договора со скидкой 30%: 44.94 × 2730 = 122 686,20 ₽. Мои 20% (44.94 × 546 ₽/м²) = 24 537,24 ₽ (1-й платёж Бриф+Аванс = 4 000 ₽ на 04.11, остаток по этапам = 20 537,24 ₽). Сегодня в 20:00 созвон с заказчиком!",
             "baseStyle": "",
             "baseFloor": "",
             "baseWalls": "",
             "baseCeiling": "Чистовой потолок 3000–3050 мм (с учётом опуска потолка)",
-            "baseFamily": "Двухкомнатная квартира 44 м², тариф Стандарт (Полный проект).",
+            "baseFamily": "Двухкомнатная квартира 44,94 м², тариф Стандарт (Полный проект).",
             "rooms": {}
       },
       {
@@ -4556,17 +4558,17 @@
       },
       {
             "id": "0631",
-            "name": "🆕 Полный проект (Назначить первичный созвон)",
+            "name": "🆕 Полный проект 57.8 м² (Тариф Стандарт — Назначить созвон)",
             "channel": "📱 TG",
             "format": "📋 Полный проект",
-            "price": "~18 000 ₽ (аванс 4к на 04.11)",
-            "status": "📲 Новый полный проект в TG. Вчера не прочитала сообщение -> сегодня написать повторно и назначить созвон!",
-            "deadline": "📲 СРОК: СЕГОДНЯ — Написать повторно в TG, договориться о времени и провести созвон по Брифу",
+            "price": "31 558,80 ₽ (аванс 4к на 04.11)",
+            "status": "📲 Новый полный проект в TG (Стандарт 57.8 м² × 546 ₽ = 31 558,80 ₽). Написать повторно и провести созвон!",
+            "deadline": "📲 СРОК: СЕГОДНЯ — Написать повторно в TG и провести созвон по Брифу (-> +4 000 ₽ аванс на 04.11)",
             "deadlineColor": "purple",
-            "infoAudit": "❌ Папка D:\\ФАНАТИКС\\0631 пустая — нужен обмерный план/БТИ и площадь квартиры из чата TG",
+            "infoAudit": "⚠️ Площадь 57.8 м² и расчёт (31 558,80 ₽) внесены! В папку D:\\ФАНАТИКС\\0631 нужен план БТИ/обмер из TG",
             "closed": false,
             "folder": "D:\\ФАНАТИКС\\0631",
-            "voiceDump": "Новый полный проект 0631 в Telegram. Вчера написала заказчице по поводу созвона — она ещё не прочитала и не ответила. Задача на сегодня: написать повторно, согласовать время и провести созвон по Брифу.",
+            "voiceDump": "Новый полный проект 0631 в Telegram (тариф Стандарт, 57.8 м²). Стоимость договора со скидкой 30%: 57.8 × 2730 = 157 794 ₽. Мои 20% (57.8 × 546 ₽/м²) = 31 558,80 ₽ (1-й платёж Бриф+Аванс = 4 000 ₽ на 04.11, остаток по этапам = 27 558,80 ₽). Сегодня написать повторно и назначить созвон.",
             "baseStyle": "",
             "baseFloor": "",
             "baseWalls": "",
@@ -4576,11 +4578,11 @@
       },
       {
             "id": "0589",
-            "name": "Визы 120 м² (взяла 28.10)",
-            "channel": "📱 TG",
+            "name": "Визы 120 м² (взяла 28.10 • Стандарт 5%)",
+            "channel": "💬 MAX",
             "format": "🎨 Только Визы",
-            "price": "15 000 ₽",
-            "status": "📲 Визы 120 м² (взяла 28.10). План есть -> напомнить заказчику про анкету и назначить созвон!",
+            "price": "15 000 ₽ (сетка: 14 700 ₽)",
+            "status": "📲 В MAX! Визы 120 м² (взяла 28.10). План есть -> напомнить заказчику про анкету и назначить созвон!",
             "closed": false,
             "folder": "D:\\ФАНАТИКС\\0589",
             "voiceDump": "Новый проект 0589 (120 м², только визуализации), взяла в работу 28.10.2026. Оплата около 15 000 ₽ (по стандартной сетке 120 м² = 16 400 ₽). Сейчас ждём от заказчика заполненную анкету по визуализации, после чего проведём созвон. Аванс (2 000 ₽) пойдёт в ведомость на следующую неделю (04.11).",
@@ -4590,7 +4592,7 @@
             "baseCeiling": "Чистовой потолок с учётом опуска 3000–3050 мм",
             "baseFamily": "Площадь 120 м². Взяла в работу 28.10.2026. Аванс на следующую неделю (04.11).",
             "rooms": {},
-            "deadline": "📲 СРОК: СЕГОДНЯ — Напомнить про анкету и назначить созвон (чтобы аванс +2 000 ₽ вошёл на 04.11)",
+            "deadline": "📲 СРОК: СЕГОДНЯ — Напомнить в MAX про анкету и назначить созвон (-> +2 000 ₽ аванс на 04.11)",
             "deadlineColor": "purple",
             "infoAudit": "⚠️ План 0589-plan-3.pdf в D:\\ФАНАТИКС\\0589 есть; ждём заполненную анкету и рефы от клиента"
       },
@@ -5090,7 +5092,7 @@
       },
       {
             "id": "0567",
-            "name": "Вернадского 80 (78.6 м², Правки 0576)",
+            "name": "0576 (0567) • Вернадского 80 (78.6 м² — Сложные клиенты)",
             "channel": "📱 TG",
             "format": "🎨 Только Визы",
             "price": "9 800 ₽",
@@ -5254,7 +5256,7 @@
           });
           return merged;
         }
-        const oldRaw = localStorage.getItem('lav_work_projects_db_v7') || localStorage.getItem('lav_work_projects_db_v6') || localStorage.getItem('lav_work_projects_db_v5');
+        const oldRaw = localStorage.getItem('lav_work_projects_db_v8') || localStorage.getItem('lav_work_projects_db_v7') || localStorage.getItem('lav_work_projects_db_v6') || localStorage.getItem('lav_work_projects_db_v5');
         const fresh = JSON.parse(JSON.stringify(DEFAULT_WORK_PROJECTS));
         if (oldRaw) {
           const oldList = JSON.parse(oldRaw);
@@ -5300,6 +5302,8 @@
           if (currentDeadlineFilter === 'today_calls' && p.deadlineColor !== 'purple') return;
           if (currentDeadlineFilter === 'mon_tue' && p.deadlineColor !== 'amber') return;
           if (currentDeadlineFilter === 'waiting' && p.deadlineColor !== 'blue') return;
+          if (currentDeadlineFilter === 'ch_max' && !p.channel.includes('MAX')) return;
+          if (currentDeadlineFilter === 'ch_tg' && !p.channel.includes('TG')) return;
         }
 
         const card = document.createElement('div');
@@ -5335,7 +5339,7 @@
             <div>
               <div style="display:flex; justify-content:space-between; align-items:center; gap:6px; flex-wrap:wrap; margin-bottom:6px;">
                 <div>
-                  <span class="tag tag-proj">${p.id}</span>
+                  <span class="tag tag-proj">${p.id === "0567" ? "0576 (0567)" : p.id}</span>
                   <span class="tag ${p.channel.includes('MAX') ? 'tag-max' : 'tag-tg'}">${p.channel}</span>
                   <span class="tag ${fmtClass}">${p.format || '🎨 Только Визы'}</span>
                 </div>
