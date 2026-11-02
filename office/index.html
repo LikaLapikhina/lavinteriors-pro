@@ -1124,7 +1124,7 @@
         }
         if (stateData && typeof stateData === 'object') {
           var changed = false;
-          var isFirstBootOnLaptop = !localStorage.getItem('lav_work_projects_db_v9') || localStorage.getItem('lav_work_projects_db_v8') || localStorage.getItem('lav_work_projects_db_v7');
+          var isFirstBootOnLaptop = !localStorage.getItem('lav_work_projects_db_v14') || localStorage.getItem('lav_work_projects_db_v8') || localStorage.getItem('lav_work_projects_db_v7');
           Object.keys(stateData).forEach(function(k) {
             if (k.startsWith('lav_') && stateData[k]) {
               if (isFirstBootOnLaptop || forceReloadUI || !localStorage.getItem(k)) {
@@ -1210,7 +1210,7 @@
   <div class="top-bar">
     <div class="brand">
       <h1 data-editable="true">⚡ LAV COMMAND CENTER — Личный кабинет Анжелики</h1>
-      <p data-editable="true">Сегодня (28.10) выплата <b>42 278,80 ₽</b> (10 проектов) • Итог октября: <b>66 278,80 ₽</b> • В работе 17 активных проектов из 19 (+новые <b>0637</b> и <b>0631</b>): чистый остаток <b>208 466,94 ₽</b></p>
+      <p data-editable="true">Понедельник <b>02.11.2026</b> • В портфеле <b>21 проект</b> (18 в активной работе + 1 СТОП <b>0599</b> + 2 закрыты) • В среду <b>04.11</b> выплата авансов (<b>18 000 ₽</b>) + этапы • Остаток по портфелю: <b>227 166,94 ₽</b></p>
     </div>
     <div class="top-actions">
       <a href="javascript:(async function(){try{var c=new AbortController();var t=setTimeout(function(){c.abort();},1200);var r=await fetch('http://127.0.0.1:3033/homestyler-panel.js?t='+Date.now(),{signal:c.signal});clearTimeout(t);if(r.ok){window.__SKYPRO_SERVER_ORIGIN__='http://127.0.0.1:3033';(0,eval)(await r.text());return;}}catch(e){}try{var ep=await (await fetch('https://lavinteriors.pro/office/skypro-endpoint.json?t='+Date.now())).json();if(ep&&ep.tunnelUrl){window.__SKYPRO_SERVER_ORIGIN__=ep.tunnelUrl.replace(/\/+$/,'');var r2=await fetch(window.__SKYPRO_SERVER_ORIGIN__+'/homestyler-panel.js?t='+Date.now());(0,eval)(await r2.text());return;}}catch(e2){}alert('Не удалось подключиться к 3DSky серверу ПК');})();void(0);" class="action-btn" style="background:linear-gradient(135deg,#2563eb,#1d4ed8);border-color:#60a5fa;color:#fff;text-decoration:none;font-weight:700;" title="Зажми левой кнопкой мыши и перетащи на панель закладок браузера! Внутри Homestyler 1 клик по закладке откроет панель 3DSky Pro">⚡ 3DSky Панель</a>
@@ -1546,8 +1546,8 @@
           <div class="block-subtitle">Кликни на любую дату, чтобы посмотреть или записать созвон, дедлайн или план на день:</div>
         </div>
         <div class="cal-controls">
-          <button class="cal-month-btn active" onclick="renderCalendar(9, this)">Октябрь 2026</button>
-          <button class="cal-month-btn" onclick="renderCalendar(10, this)">Ноябрь 2026</button>
+          <button class="cal-month-btn" onclick="renderCalendar(9, this)">Октябрь 2026</button>
+          <button class="cal-month-btn active" onclick="renderCalendar(10, this)">Ноябрь 2026</button>
           <button class="cal-month-btn" onclick="renderCalendar(11, this)">Декабрь 2026</button>
         </div>
       </div>
@@ -1779,127 +1779,6 @@
                   <span class="tag tag-max">💬 MAX • Александра 61.61 м² (аванс 2 500 ₽ получен)</span>
                 </div>
                 <div class="task-title" data-editable="true">0599 — 31.10 отправлены визы (кухня, спальня, комната; прихожая и СУ собраны). Клиенты отказались от сотрудничества -> СТОП, не тратим время</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-      </div>
-
-      <div>
-        <div class="block-box purple-priority">
-          <div class="block-header">
-            <div class="block-title" style="color:#c084fc;">📞 СОЗВОНЫ СЕГОДНЯ И ЖЁСТКИЕ ЗАПРОСЫ В ЧАТАХ</div>
-            <button class="copy-btn" onclick="addNewTaskPrompt('calls')">➕ Добавить созвон</button>
-          </div>
-          <div class="task-list" id="calls-task-list">
-            <div class="task-item hot-task" onclick="toggleTask(this)">
-              <div class="check-circle">✓</div>
-              <div class="task-body">
-                <div class="task-top">
-                  <span class="tag tag-red">⏰ СЕГОДНЯ В 10:00 МСК</span>
-                  <span class="tag tag-proj">0645</span>
-                  <span class="tag tag-max">💬 MAX • Королёв 52.65 м² • Остаток 14 035 ₽</span>
-                </div>
-                <div class="task-title" data-editable="true">10:00 — Созвон по 0645 (в СР отправили кухню-гостиную, прихожую и СУ, вчера дал комментарии). Спросить: что делаем вперёд — чертежи (сантехника/электрика) или доделываем визы?</div>
-              </div>
-            </div>
-
-            <div class="task-item purple-task" onclick="toggleTask(this)">
-              <div class="check-circle">✓</div>
-              <div class="task-body">
-                <div class="task-top">
-                  <span class="tag tag-purple">⏰ СЕГОДНЯ В 20:00 МСК (НОВЫЙ!)</span>
-                  <span class="tag tag-proj">0637</span>
-                  <span class="tag tag-max">💬 MAX • Полный проект (Стандарт, 2-комн. 44,94 м²)</span>
-                </div>
-                <div class="task-title" data-editable="true">20:00 — Первичный созвон по новому проекту 0637 (44,94 м²): заполнить Бриф под планировку (+4 000 ₽ аванс на 04.11)</div>
-              </div>
-            </div>
-
-            <div class="task-item hot-task" onclick="toggleTask(this)">
-              <div class="check-circle">✓</div>
-              <div class="task-body">
-                <div class="task-top">
-                  <span class="tag tag-red">🚨 СЕГОДНЯ ЖЁСТКО ВЫБИТЬ МОДЕЛЬ!</span>
-                  <span class="tag tag-proj">0596</span>
-                  <span class="tag tag-max">💬 MAX • Таунхаус 132 м² • Остаток 8 780 ₽</span>
-                </div>
-                <div class="task-title" data-editable="true">0596 — Созвон был 23.10, клиенты ждут, а нам до сих пор НЕ передали обмеры и 3D-модель таунхауса! Сегодня в течение дня жёстко выбить!</div>
-              </div>
-            </div>
-
-            <div class="task-item yellow-task" onclick="toggleTask(this)">
-              <div class="check-circle">✓</div>
-              <div class="task-body">
-                <div class="task-top">
-                  <span class="tag tag-purple">📲 СЕГОДНЯ НАПИСАТЬ ПОВТОРНО (НОВЫЙ!)</span>
-                  <span class="tag tag-proj">0631</span>
-                  <span class="tag tag-tg">📱 TG • Полный проект (+4 000 ₽ аванс на 04.11)</span>
-                </div>
-                <div class="task-title" data-editable="true">0631 — Вчера не прочитала и не ответила -> написать сегодня ещё раз, договориться и провести созвон по Брифу</div>
-              </div>
-            </div>
-
-            <div class="task-item yellow-task" onclick="toggleTask(this)">
-              <div class="check-circle">✓</div>
-              <div class="task-body">
-                <div class="task-top">
-                  <span class="tag tag-purple">📲 СЕГОДНЯ НАПОМНИТЬ ПРО АНКЕТУ</span>
-                  <span class="tag tag-proj">0589</span>
-                  <span class="tag tag-max">💬 MAX • Визы 120 м² (15 000 ₽)</span>
-                </div>
-                <div class="task-title" data-editable="true">0589 — Напомнить заказчику про заполнение анкеты и назначить созвон (чтобы аванс +2 000 ₽ вошёл на 04.11)</div>
-              </div>
-            </div>
-
-            <div class="task-item purple-task" onclick="toggleTask(this)">
-              <div class="check-circle">✓</div>
-              <div class="task-body">
-                <div class="task-top">
-                  <span class="tag tag-purple">🆕 НОВЫЙ ПРОЕКТ (ПОДКЛЮЧЁН СЕГОДНЯ!)</span>
-                  <span class="tag tag-proj">0613</span>
-                  <span class="tag tag-tg">📱 TG • Визы 73 м² (12 100 ₽ • +2 000 ₽ аванс на 04.11)</span>
-                </div>
-                <div class="task-title" data-editable="true">0613 (73 м², 12 100 ₽) — Получить анкету, планировку и референсы в D:\ФАНАТИКС\0613 и провести созвон (+2 000 ₽ аванс на 04.11, остаток 10 100 ₽)</div>
-              </div>
-            </div>
-
-            <div class="task-item purple-task" onclick="toggleTask(this)">
-              <div class="check-circle">✓</div>
-              <div class="task-body">
-                <div class="task-top">
-                  <span class="tag tag-purple">🆕 НОВЫЙ ПРОЕКТ (ЖДЁМ ПОКА АНКЕТУ)</span>
-                  <span class="tag tag-proj">0600</span>
-                  <span class="tag tag-tg">📱 TG • Визы 33 м² (6 600 ₽ • +2 000 ₽ аванс на 04.11)</span>
-                </div>
-                <div class="task-title" data-editable="true">0600 (33 м², 6 600 ₽ — «Ждём пока анкету») — Дождаться анкеты от заказчика в D:\ФАНАТИКС\0600 и провести созвон (+2 000 ₽ аванс на 04.11, остаток 4 600 ₽)</div>
-              </div>
-            </div>
-
-            <div class="task-item" onclick="toggleTask(this)">
-              <div class="check-circle">✓</div>
-              <div class="task-body">
-                <div class="task-top">
-                  <span class="tag tag-blue">⏳ ЖДЁМ ОТ КОМПЛЕКТАТОРОВ / ЗАМЕРЩИКОВ</span>
-                  <span class="tag tag-proj">0574 • 0654</span>
-                  <span class="tag tag-tg">📱 TG</span>
-                </div>
-                <div class="task-title" data-editable="true">0574 — Снят с паузы, ждём передачу 3D-сцены! • 0654 — Созвон провели, все рефы и стиль 100% понятны, ждём только обмер!</div>
-              </div>
-            </div>
-
-            <div class="task-item" onclick="toggleTask(this)">
-              <div class="check-circle">✓</div>
-              <div class="task-body">
-                <div class="task-top">
-                  <span class="tag tag-white">⏸ НА СЛЕДУЮЩУЮ НЕДЕЛЮ (СЛОЖНЫЕ)</span>
-                  <span class="tag tag-proj">0576 / 0567</span>
-                  <span class="tag tag-tg">📱 TG • Осталось 2 круга правок</span>
-                </div>
-                <div class="task-title" data-editable="true">0576 (Вернадского 80) — Вчера забраковали визы по их же рефам. Эту неделю не трогаем, на след. неделе разбираемся с их вопросами</div>
               </div>
             </div>
           </div>
@@ -3616,12 +3495,12 @@
       document.querySelectorAll('[data-editable="true"]').forEach(el => {
         edits.push(el.innerHTML);
       });
-      localStorage.setItem('lav_custom_edits_v14', JSON.stringify(edits));
+      localStorage.setItem('lav_custom_edits_v15', JSON.stringify(edits));
     }
 
     function loadCustomEdits() {
       try {
-        const raw = localStorage.getItem('lav_custom_edits_v14');
+        const raw = localStorage.getItem('lav_custom_edits_v15');
         if (!raw) return;
         const edits = JSON.parse(raw);
         const els = document.querySelectorAll('[data-editable="true"]');
@@ -3663,13 +3542,13 @@
     }
 
     function saveAddedTasks() {
-      localStorage.setItem('lav_modeling_html_v7', document.getElementById('modeling-task-list').innerHTML);
-      localStorage.setItem('lav_calls_html_v7', document.getElementById('calls-task-list').innerHTML);
+      localStorage.setItem('lav_modeling_html_v8', document.getElementById('modeling-task-list').innerHTML);
+      localStorage.setItem('lav_calls_html_v8', document.getElementById('calls-task-list').innerHTML);
     }
 
     function loadAddedTasks() {
-      const m = localStorage.getItem('lav_modeling_html_v7');
-      const c = localStorage.getItem('lav_calls_html_v7');
+      const m = localStorage.getItem('lav_modeling_html_v8');
+      const c = localStorage.getItem('lav_calls_html_v8');
       if (m) document.getElementById('modeling-task-list').innerHTML = m;
       if (c) document.getElementById('calls-task-list').innerHTML = c;
     }
@@ -3697,7 +3576,7 @@
         <td style="font-weight:800; color:#60a5fa;" data-editable="true">${rest}</td>
       `;
       tbody.insertBefore(tr, tbody.lastElementChild);
-      localStorage.setItem('lav_projects_tbody_v14', tbody.innerHTML);
+      localStorage.setItem('lav_projects_tbody_v15', tbody.innerHTML);
       switchTab('tab-projects', document.querySelectorAll('.tab-btn')[2]);
     }
 
@@ -3747,7 +3626,7 @@
       } catch(e) {}
       const cs = localStorage.getItem('lav_custom_scripts_v4');
       if (cs) document.getElementById('custom-scripts-container').innerHTML = cs;
-      const pt = localStorage.getItem('lav_projects_tbody_v14');
+      const pt = localStorage.getItem('lav_projects_tbody_v15');
       if (pt) document.getElementById('projects-tbody').innerHTML = pt;
     }
 
@@ -3839,55 +3718,61 @@
 
 
     // ==================== 7. КАЛЕНДАРЬ (ОКТЯБРЬ, НОЯБРЬ, ДЕКАБРЬ 2026) ====================
-    const CAL_STORAGE_KEY = 'lav_calendar_events_2026_v12';
-    const CAL_NOTES_KEY = 'lav_calendar_daynotes_2026_v1';
-    let currentCalMonth = 9; // 9 = Октябрь, 10 = Ноябрь, 11 = Декабрь
-    let selectedCalDateKey = '2026-10-30';
+    const CAL_STORAGE_KEY = 'lav_calendar_events_2026_v13';
+    const CAL_NOTES_KEY = 'lav_calendar_daynotes_2026_v2';
+    let currentCalMonth = 10; // 9 = Октябрь, 10 = Ноябрь, 11 = Декабрь
+    let selectedCalDateKey = '2026-11-02';
 
     const DEFAULT_CAL_EVENTS = {
       '2026-10-14': [{ text: '💰 Выплата: 7 000 ₽', type: 'ev-pay' }],
-      '2026-10-21': [{ text: '💰 Выплата: 17 000 ₽', type: 'ev-pay' }],
+      '2026-10-21': [
+        { text: '💰 Выплата: 17 000 ₽', type: 'ev-pay' },
+        { text: '✅ Созвон 0599 проведён', type: 'ev-call' }
+      ],
+      '2026-10-23': [
+        { text: '✅ Созвон 0596 (Таунхаус 132 м²) проведён', type: 'ev-call' }
+      ],
       '2026-10-27': [
-        { text: '✅ Созвоны проведены: 0545, 0593, 0653, 0609, 0572', type: 'ev-call' }
+        { text: '✅ Созвоны проведены: 0545, 0593, 0572 + перешли к визам 0619', type: 'ev-call' }
       ],
       '2026-10-28': [
         { text: '💰 Выплата получена: 42 278,80 ₽ (10 проектов!)', type: 'ev-pay' },
-        { text: '🦷 13:00 СТОМАТОЛОГ', type: 'ev-hot' },
-        { text: '✅ Созвон 0654 проведён (рефы есть, ждём обмер)', type: 'ev-call' },
-        { text: '✅ Отправлены визы 0645 (кухня-гостиная, прихожая, СУ)', type: 'ev-hot' }
+        { text: '✅ Отправлены первые визы 0645', type: 'ev-hot' },
+        { text: '📩 0589 обещал заполнить анкету и рефы', type: 'ev-plan' }
       ],
       '2026-10-29': [
-        { text: '💉 12:00 ЭНДОКРИНОЛОГ за инсулином', type: 'ev-hot' },
-        { text: '💬 0645 дал ОС и комментарии -> созвон в 10:00!', type: 'ev-call' },
-        { text: '🆕 Добавили 0637 (44,94 м², Полный) и 0631 (Полный)', type: 'ev-plan' }
+        { text: '✅ Проведены созвоны: 0653 (Платон), 0609 (Дмитрий), 0576 (1-е визы), 0654', type: 'ev-call' }
       ],
       '2026-10-30': [
-        { text: '📞 10:00 Созвон 0645 (решить: вперёд чертежи или визы!)', type: 'ev-call' },
-        { text: '📞 20:00 Созвон 0637 (НОВЫЙ Полный 44,94 м² — Бриф!)', type: 'ev-call' },
-        { text: '🚨 0633 СРОЧНО отправить планировку (ждут с 26.10!)', type: 'ev-hot' },
-        { text: '🔥 0606 Доделать 1 комн. в Homestyler и отправить!', type: 'ev-hot' },
-        { text: '🔥 0572 (1 комн.) и 0599 (прихожая в работе) — сдать ПТ–СБ!', type: 'ev-hot' },
-        { text: '🚨 0596 Жёстко выбить обмеры и 3D-модель таунхауса!', type: 'ev-hot' },
-        { text: '📲 Написать 0631 (созвон) и 0589 (анкета + созвон)', type: 'ev-call' }
+        { text: '✅ Проведены созвоны: 0645, 0637 (44.94 м²), 0613 (73 м²)', type: 'ev-call' },
+        { text: '✅ Отправлены визы 0606 (23.6 м²) и 1-й этаж 0596 (Таунхаус)', type: 'ev-hot' },
+        { text: '✅ Отправлена планировка 0633 и визы 0572', type: 'ev-plan' }
       ],
       '2026-10-31': [
-        { text: '🔥 0599 Финальная сдача виз (обещано на ПТ–СБ!)', type: 'ev-hot' },
-        { text: '🔥 0572 Сдать визы 1 комнаты (если не ушли в ПТ)', type: 'ev-hot' }
+        { text: '✅ Доотправлен 1-й этаж 0596 (получены подробные правки)', type: 'ev-hot' },
+        { text: '🛑 0599 Отправлены визы (клиент отказался от сотрудничества — СТОП)', type: 'ev-hot' }
       ],
       '2026-11-02': [
-        { text: '📐 0653 Отправить 2 варианта планировки по БТИ!', type: 'ev-plan' },
-        { text: '🎨 0545 Сдать визы 60 м² (созвон был 27.10)', type: 'ev-hot' },
-        { text: '🎨 0593 Сдать визы 91 м² (созвон был 27.10)', type: 'ev-hot' },
-        { text: '🎨 0609 Сдать визы ЖК Сити Бэй (Дмитрий)', type: 'ev-hot' }
+        { text: '🔥 В 1-Ю ОЧЕРЕДЬ: Планировка старому заказчику + правки плана 0633!', type: 'ev-hot' },
+        { text: '🔥 СЕГОДНЯ СДАТЬ: 0645 (правки + спальня/гардероб) и 0606 (микро-правки)!', type: 'ev-hot' },
+        { text: '🚨 0596 Правки 1-го этажа по списку + сборка 2-го этажа', type: 'ev-hot' },
+        { text: '📐 0653 Сделать планировочные решения Платону по БТИ', type: 'ev-plan' },
+        { text: '📲 НАПИСАТЬ В ЧАТЫ: 0572 (ОС по визам), 0576 (итоги+рефы), 0613 (стены), 0589 и 0600 (анкета)', type: 'ev-call' }
       ],
       '2026-11-03': [
-        { text: '🎨 0545 / 0593 / 0609 Дослать визы (ПН–ВТ дедлайн)', type: 'ev-hot' },
-        { text: '🎨 0619 Выдать визы без созвона (анкета+рефы полные)', type: 'ev-plan' }
+        { text: '📞 20:00 МСК — СОЗВОН по 0631 (Светлана, Полный проект 57.8 м²)!', type: 'ev-call' },
+        { text: '🎨 Очередь виз (ждут с 27.10!): 0593 (91 м²), 0619 (48 м²), 0545 (60 м²)', type: 'ev-hot' },
+        { text: '🔥 0596 Досдать 1–2 этаж + 0653 Планировка', type: 'ev-hot' }
       ],
       '2026-11-04': [
-        { text: '💰 Выплата: авансы 14 000 ₽ (0653, 0589, 0637, 0631) + закрытые этапы!', type: 'ev-pay' },
-        { text: '🎨 0619 / 0574 / 0596 Сдача визуализаций по мере готовности коробок', type: 'ev-plan' },
-        { text: '🔧 0576 (0567) Сложные клиенты: разобрать вопросы под 1-й круг правок', type: 'ev-call' }
+        { text: '💰 СРЕДА ВЫПЛАТ: Авансы + закрытые этапы (0633, 0606, 0645 и др.)!', type: 'ev-pay' },
+        { text: '🎨 Очередь виз: 0609 (Дмитрий 53.8 м²) и 0574 (Андрей 2-эт. дом)', type: 'ev-plan' }
+      ],
+      '2026-11-05': [
+        { text: '📏 0637 Ожидаем замер квартиры (44.94 м²) в ЧТ–ПТ -> планировка', type: 'ev-plan' }
+      ],
+      '2026-11-06': [
+        { text: '🎨 0613 Сдача визуализаций 73 м² (неделя после созвона 30.10)', type: 'ev-plan' }
       ],
       '2026-11-11': [{ text: '💰 Среда выплат', type: 'ev-pay' }],
       '2026-11-18': [{ text: '💰 Среда выплат', type: 'ev-pay' }],
@@ -4037,7 +3922,7 @@
 
 
     // ==================== 8. ПРОЕКТЫ В РАБОТЕ И ИНТЕРАКТИВНЫЙ КОНСТРУКТОР ПРОМПТОВ АГЕНТАМ ====================
-    const WORK_PROJECTS_KEY = 'lav_work_projects_db_v13';
+    const WORK_PROJECTS_KEY = 'lav_work_projects_db_v14';
     let currentWorkProjId = '0633';
     let currentWorkRoomKey = 'hall';
     var currentVizRoomKey = 'hall';
@@ -5499,7 +5384,7 @@
           });
           return merged;
         }
-        const oldRaw = localStorage.getItem('lav_work_projects_db_v10') || localStorage.getItem('lav_work_projects_db_v9') || localStorage.getItem('lav_work_projects_db_v9') || localStorage.getItem('lav_work_projects_db_v8') || localStorage.getItem('lav_work_projects_db_v7') || localStorage.getItem('lav_work_projects_db_v6') || localStorage.getItem('lav_work_projects_db_v5');
+        const oldRaw = localStorage.getItem('lav_work_projects_db_v10') || localStorage.getItem('lav_work_projects_db_v14') || localStorage.getItem('lav_work_projects_db_v14') || localStorage.getItem('lav_work_projects_db_v8') || localStorage.getItem('lav_work_projects_db_v7') || localStorage.getItem('lav_work_projects_db_v6') || localStorage.getItem('lav_work_projects_db_v5');
         const fresh = JSON.parse(JSON.stringify(DEFAULT_WORK_PROJECTS));
         if (oldRaw) {
           const oldList = JSON.parse(oldRaw);
