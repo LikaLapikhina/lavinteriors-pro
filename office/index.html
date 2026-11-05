@@ -1264,90 +1264,90 @@
 
   <!-- ==================== ВКЛАДКА 1: СВЕРКА ТАБЛИЧКИ (28.10) + ПРОГНОЗ НА 04.11 ==================== -->
 
-  <!-- ==================== ВКЛАДКА: ОБЩЕНИЕ С АГЕНТАМИ (ГОТОВЫЕ ПРОМПТЫ ПО РОЛЯМ, ПРАВКИ, С НУЛЯ И /GOAL) ==================== -->
+  <!-- ==================== ВКЛАДКА: ОБЩЕНИЕ С АГЕНТАМИ (УНИВЕРСАЛЬНЫЕ ПРОМПТЫ ПО РОЛЯМ: С НУЛЯ, ПРАВКИ И /GOAL) ==================== -->
   <div id="tab-agents-hub" class="tab-section">
     <div class="block-box purple-priority" style="border-width:2px;">
       <div class="block-header">
         <div>
-          <div class="block-title" style="color:#e9d5ff; font-size:18px;">🤖 ОБЩЕНИЕ С АГЕНТАМИ — ГОТОВЫЕ ШПАРГАЛКИ И ПРОМПТЫ ПО РОЛЯМ (С НУЛЯ, ПРАВКИ И /GOAL)</div>
+          <div class="block-title" style="color:#e9d5ff; font-size:18px;">🤖 ОБЩЕНИЕ С АГЕНТАМИ — УНИВЕРСАЛЬНЫЕ ШПАРГАЛКИ И ПРОМПТЫ ПО РОЛЯМ</div>
           <div class="block-subtitle" style="margin-top:4px; color:#cbd5e1;">
-            Выбери проект вверху -> выбери режим работы -> нажми <b>«📋 Скопировать имя чата»</b> (коротко: 1–2 слова + номер) и <b>«📋 СКОПИРОВАТЬ ПРОМПТ»</b>! Все скиллы, пути к папкам и жёсткие правила вшиты автоматически.
+            Никакой привязки к конкретным проектам: все промпты <b>универсальные</b> и подходят для любого проекта! Просто выбери нужного агента ниже и нажми <b>«📋 СКОПИРОВАТЬ ПРОМПТ»</b> (при желании впиши номер папки в поле справа, чтобы он подставился автоматически).
           </div>
-        </div>
-        <div style="display:flex; gap:8px; flex-wrap:wrap;">
-          <button class="action-btn" style="background:rgba(16,185,129,0.2); border-color:#10b981; color:#6ee7b7;" onclick="selectAgentsHubProject('0545'); switchAgentsHubMode('fixes');">🔥 Тест сейчас: Проект 0545 (Правки + Дизайнер)</button>
-          <button class="action-btn" style="background:rgba(59,130,246,0.2); border-color:#60a5fa; color:#bfdbfe;" onclick="selectAgentsHubProject('0593'); switchAgentsHubMode('scratch');">📐 Проект 0593 (Новая планировка с нуля)</button>
         </div>
       </div>
 
-      <!-- ПАНЕЛЬ 1: ВЫБОР ПРОЕКТА И КОМНАТ -->
-      <div style="background:rgba(15,23,42,0.85); border:1px solid var(--border); border-radius:14px; padding:14px 16px; margin-bottom:14px;">
-        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:10px;">
-          <div style="font-size:13.5px; font-weight:900; color:#fde68a;">
-            📂 ШАГ 1. ВЫБЕРИ ПРОЕКТ (Все пути <code>D:\\ФАНАТИКС\\XXXX</code>, планировки и названия чатов обновляются мгновенно):
-          </div>
-          <div style="display:flex; align-items:center; gap:8px;">
-            <span style="font-size:12px; color:var(--muted); font-weight:700;">Быстрый выбор из всех 25 проектов:</span>
-            <select id="ah-project-select" style="background:#0f1319; color:#fff; border:1px solid #a855f7; border-radius:8px; padding:6px 12px; font-size:13px; font-weight:800;" onchange="selectAgentsHubProject(this.value)"></select>
-          </div>
-        </div>
-
-        <!-- БЫСТРЫЕ ПЛАШКИ ГЛАВНЫХ ПРОЕКТОВ -->
-        <div class="plus-chips-wrap" id="ah-quick-proj-pills" style="margin-bottom:10px;"></div>
-
-        <!-- СТАТУС ВЫБРАННОГО ПРОЕКТА И ВЫБОР ПОМЕЩЕНИЙ ДЛЯ ТОЧЕЧНЫХ ПРАВОК -->
-        <div style="display:grid; grid-template-columns:1.15fr 1fr; gap:12px; align-items:start;">
-          <div style="background:rgba(168,85,247,0.08); border:1px solid rgba(168,85,247,0.4); border-radius:10px; padding:10px 12px;">
-            <div style="font-size:12px; font-weight:900; color:#e9d5ff; margin-bottom:4px;" id="ah-proj-summary-title">📌 Контекст проекта 0545:</div>
-            <div style="font-size:12px; color:#f1f5f9; line-height:1.45;" id="ah-proj-summary-desc"></div>
+      <!-- КОМПАКТНАЯ ПАНЕЛЬ НАСТРОЙКИ (НЕОБЯЗАТЕЛЬНЫЙ НОМЕР ПАПКИ + ЧЕКБОКСЫ КОМНАТ ДЛЯ ТОЧЕЧНЫХ ПРАВОК) -->
+      <div style="background:rgba(15,23,42,0.88); border:1px solid var(--border); border-radius:14px; padding:12px 16px; margin-bottom:14px;">
+        <div style="display:grid; grid-template-columns:1fr 1.35fr; gap:14px; align-items:start;">
+          <!-- ЛЕВАЯ КОЛОНКА: НЕОБЯЗАТЕЛЬНЫЙ НОМЕР ПРОЕКТА И КОРОТКИЕ ИМЕНА ЧАТОВ -->
+          <div style="background:rgba(16,185,129,0.07); border:1px solid rgba(16,185,129,0.4); border-radius:10px; padding:10px 12px;">
+            <div style="display:flex; align-items:center; justify-content:space-between; gap:8px; flex-wrap:wrap; margin-bottom:8px;">
+              <span style="font-size:12.5px; font-weight:900; color:#6ee7b7;">🏷️ Короткие имена чатов (1–2 слова):</span>
+              <div style="display:flex; align-items:center; gap:6px;">
+                <span style="font-size:11.5px; color:#cbd5e1;">Папка/ID (необяз.):</span>
+                <input type="text" id="ah-optional-proj-id" class="script-answer-input" style="width:110px; min-height:28px; padding:3px 8px; font-size:12.5px; font-weight:800; color:#fde68a;" placeholder="напр. 0619" oninput="renderAgentsHubPrompts()">
+              </div>
+            </div>
+            <div style="display:flex; flex-wrap:wrap; gap:6px;" id="ah-short-chat-names-bar"></div>
           </div>
 
-          <div style="background:rgba(59,130,246,0.08); border:1px solid rgba(59,130,246,0.4); border-radius:10px; padding:10px 12px;">
-            <div style="font-size:12px; font-weight:900; color:#93c5fd; margin-bottom:5px;">
-              🚪 Какие помещения затрагиваем (для Концептуалиста и Моделлера при правках — то, что НЕ отмечено, агенты НЕ ТРОГАЮТ!):
+          <!-- ПРАВАЯ КОЛОНКА: КАКИЕ КОМНАТЫ ТРОГАЕМ ПРИ ПРАВКАХ + СВОЯ РЕМАРКА -->
+          <div style="background:rgba(59,130,246,0.07); border:1px solid rgba(59,130,246,0.4); border-radius:10px; padding:10px 12px;">
+            <div style="font-size:12px; font-weight:900; color:#93c5fd; margin-bottom:6px;">
+              🚪 Если вносим ПРАВКИ — отметь только те комнаты, которые нужно поправить (остальные комнаты агенты трогать НЕ будут):
             </div>
             <div style="display:flex; flex-wrap:wrap; gap:6px; margin-bottom:8px;" id="ah-rooms-checkboxes">
-              <label class="stage-check-lbl" style="background:rgba(59,130,246,0.2); border-color:#60a5fa; color:#e0f2fe;"><input type="checkbox" class="ah-room-chk" value="Вся квартира целиком (все помещения по Плану Л2)" onchange="onAhRoomAllToggle(this)"> 🏠 Вся квартира</label>
-              <label class="stage-check-lbl"><input type="checkbox" class="ah-room-chk" value="01. Прихожая и Коридор" onchange="renderAgentsHubPrompts()"> 1. Прихожая</label>
-              <label class="stage-check-lbl"><input type="checkbox" class="ah-room-chk" value="02. Кухня-гостиная" checked onchange="renderAgentsHubPrompts()"> 2. Кухня-гостиная</label>
-              <label class="stage-check-lbl"><input type="checkbox" class="ah-room-chk" value="03. Мастер-спальня" checked onchange="renderAgentsHubPrompts()"> 3. Спальня</label>
-              <label class="stage-check-lbl"><input type="checkbox" class="ah-room-chk" value="04. Вторая спальня / Детская / Гостевая" checked onchange="renderAgentsHubPrompts()"> 4. Детская/Гостевая</label>
-              <label class="stage-check-lbl"><input type="checkbox" class="ah-room-chk" value="05. Основная ванная комната" checked onchange="renderAgentsHubPrompts()"> 5. Ванная</label>
-              <label class="stage-check-lbl"><input type="checkbox" class="ah-room-chk" value="06. Гостевой санузел / Постирочная" checked onchange="renderAgentsHubPrompts()"> 6. Гостевой СУ</label>
+              <label class="stage-check-lbl" style="background:rgba(59,130,246,0.2); border-color:#60a5fa; color:#e0f2fe;"><input type="checkbox" class="ah-room-chk" value="Все помещения по Плану Л2 (или все комнаты, указанные в списке правок)" checked onchange="onAhRoomAllToggle(this)"> 🏠 Все помещения по ТЗ / Правкам</label>
+              <label class="stage-check-lbl"><input type="checkbox" class="ah-room-chk" value="Прихожая и Коридор" onchange="onAhSingleRoomToggle()"> 1. Прихожая</label>
+              <label class="stage-check-lbl"><input type="checkbox" class="ah-room-chk" value="Кухня-гостиная" onchange="onAhSingleRoomToggle()"> 2. Кухня-гостиная</label>
+              <label class="stage-check-lbl"><input type="checkbox" class="ah-room-chk" value="Мастер-спальня" onchange="onAhSingleRoomToggle()"> 3. Спальня</label>
+              <label class="stage-check-lbl"><input type="checkbox" class="ah-room-chk" value="Детская / Гостевая / Кабинет" onchange="onAhSingleRoomToggle()"> 4. Детская/Гостевая</label>
+              <label class="stage-check-lbl"><input type="checkbox" class="ah-room-chk" value="Основная ванная комната" onchange="onAhSingleRoomToggle()"> 5. Ванная</label>
+              <label class="stage-check-lbl"><input type="checkbox" class="ah-room-chk" value="Гостевой санузел / Постирочная" onchange="onAhSingleRoomToggle()"> 6. Гостевой СУ</label>
+              <label class="stage-check-lbl"><input type="checkbox" class="ah-room-chk" value="Гардеробная" onchange="onAhSingleRoomToggle()"> 7. Гардеробная</label>
             </div>
-            <input type="text" id="ah-custom-user-note" class="script-answer-input" style="min-height:34px; font-size:12px;" placeholder="✍️ Дописать от себя (напр.: Прихожую не меняем, особое внимание на полки в гостиной и оба санузла)..." oninput="renderAgentsHubPrompts()">
+            <input type="text" id="ah-custom-user-note" class="script-answer-input" style="min-height:32px; font-size:12px;" placeholder="✍️ Дописать свою заметку в промпт (необязательно)..." oninput="renderAgentsHubPrompts()">
           </div>
         </div>
       </div>
 
-      <!-- ПАНЕЛЬ 2: СТРОГИЙ СТАНДАРТ КОРОТКИХ НАЗВАНИЙ ЧАТОВ (1–2 СЛОВА + НОМЕР ПРОЕКТА) -->
-      <div style="background:rgba(16,185,129,0.08); border:1px solid rgba(16,185,129,0.45); border-radius:12px; padding:10px 14px; margin-bottom:16px;">
-        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
-          <div style="font-size:12.5px; font-weight:900; color:#6ee7b7;">
-            🏷️ КОРОТКИЕ НАЗВАНИЯ НОВЫХ ЧАТОВ (1–2 слова + номер проекта — нажми на кнопку, чтобы скопировать имя чата):
+      <!-- БЫСТРЫЙ ФИЛЬТР ПО РОЛЯМ И СИТУАЦИЯМ (ЧТОБЫ НИЧЕГО НЕ ТЕРЯЛОСЬ И ВСЕ 8 РОЛЕЙ БЫЛИ НА ЛАДОНИ) -->
+      <div style="background:rgba(0,0,0,0.28); border:1px solid var(--border); border-radius:12px; padding:10px 14px; margin-bottom:14px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:8px;">
+          <div style="font-size:12.5px; font-weight:900; color:#fde68a;">⚡ БЫСТРЫЙ ФИЛЬТР ПО АГЕНТАМ (все 8 ролей по порядку ведения проекта):</div>
+          <div style="display:flex; gap:6px; flex-wrap:wrap;" id="ah-situation-filter-bar">
+            <button class="plus-chip selected-chip" id="ah-sit-all" onclick="setAhSituationFilter('all')">🌟 Показать все варианты (С нуля + Правки + /goal)</button>
+            <button class="plus-chip" id="ah-sit-scratch" onclick="setAhSituationFilter('scratch')">🆕 Только: Проект с нуля</button>
+            <button class="plus-chip" id="ah-sit-fixes" onclick="setAhSituationFilter('fixes')">🔧 Только: Внесение правок (точечно)</button>
+            <button class="plus-chip" id="ah-sit-goal" onclick="setAhSituationFilter('goal')">🚀 Только: Автономные /goal (Куратору и Дизайнеру)</button>
           </div>
-          <span style="font-size:11px; color:#a7f3d0;">Это правило также жёстко вшито в первую строчку каждого промпта ниже!</span>
         </div>
-        <div style="display:flex; flex-wrap:wrap; gap:7px; margin-top:8px;" id="ah-short-chat-names-bar"></div>
+        <div style="display:flex; flex-wrap:wrap; gap:6px;" id="ah-role-filter-bar">
+          <button class="plus-chip selected-chip" id="ah-role-all" onclick="setAhRoleFilter('all')">📋 Все 8 ролей подряд</button>
+          <button class="plus-chip" id="ah-role-curator" onclick="setAhRoleFilter('curator')">1️⃣ Куратор (ТЗ, Правки, ОТК и /goal)</button>
+          <button class="plus-chip" id="ah-role-windows" onclick="setAhRoleFilter('windows')">2️⃣ Окна и Проёмы (Этап 0 в Homestyler)</button>
+          <button class="plus-chip" id="ah-role-designer" onclick="setAhRoleFilter('designer')">3️⃣ Дизайнер (С нуля, Правки и /goal)</button>
+          <button class="plus-chip" id="ah-role-blender" onclick="setAhRoleFilter('blender')">4️⃣ Мастер Блендер (3D-концепты)</button>
+          <button class="plus-chip" id="ah-role-modeler" onclick="setAhRoleFilter('modeler')">5️⃣ Моделлер (Корпусная мебель)</button>
+          <button class="plus-chip" id="ah-role-ceilings" onclick="setAhRoleFilter('ceilings')">6️⃣ Потолки и Свет</button>
+          <button class="plus-chip" id="ah-role-complect" onclick="setAhRoleFilter('complect')">7️⃣ Комплектатор (Мебель, Свет, Техника)</button>
+          <button class="plus-chip" id="ah-role-decorator" onclick="setAhRoleFilter('decorator')">8️⃣ Декоратор (Только декор полок и уют)</button>
+        </div>
       </div>
 
-      <!-- ПАНЕЛЬ 3: ПЕРЕКЛЮЧАТЕЛЬ 3 РЕЖИМОВ ВОРКФЛОУ -->
-      <div class="proj-inner-modes" style="margin-bottom:16px;">
-        <button class="proj-mode-btn active-pmode-anketa" id="ah-mode-btn-fixes" onclick="switchAgentsHubMode('fixes')">
-          🔧 1. ВНЕСЕНИЕ ПРАВОК И УЛУЧШЕНИЕ ДИЗАЙНА (По готовым проектам: 0545, 0645, 0596, 0606 и др.)
-        </button>
-        <button class="proj-mode-btn" id="ah-mode-btn-scratch" onclick="switchAgentsHubMode('scratch')">
-          🆕 2. ВЕДЕНИЕ ПРОЕКТА С НУЛЯ (От пустой сцены, Окон и Куратора до 3D: 0593, 0574, 0613 и др.)
-        </button>
-        <button class="proj-mode-btn" id="ah-mode-btn-goal" onclick="switchAgentsHubMode('goal')">
-          🚀 3. АВТОНОМНЫЙ УПРАВЛЕНЕЦ <code>/goal</code> (Директор проекта — конвейер после Дизайнера или с нуля)
-        </button>
+      <!-- НАГЛЯДНАЯ ШПАРГАЛКА: ЧЕМ ОТЛИЧАЕТСЯ РАБОТА «С НУЛЯ» ОТ «ПРАВОК» -->
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:16px; font-size:12.2px; line-height:1.48;">
+        <div style="background:rgba(59,130,246,0.09); border:1px solid rgba(59,130,246,0.4); border-radius:12px; padding:10px 14px; color:#e2e8f0;">
+          <div style="font-weight:900; color:#93c5fd; margin-bottom:3px;">🆕 КОГДА ВЕДЁМ ПРОЕКТ С НУЛЯ:</div>
+          <b>1. <code>Окна</code></b> (сам выставляет проёмы в стенах, высоты, ригели, окна и радиаторы) ➔ <b>2. <code>Куратор</code></b> (собирает <code>ПАСПОРТ_ПРОЕКТА.md</code>) ➔ <b>3. <code>Дизайнер</code></b> (предлагает концепцию всей квартиры) ➔ <b>4. <code>Мастер Блендер</code></b> (3D-концепты всех комнат + проверка <code>Куратором</code>) ➔ <b>5. <code>Моделлер</code> + <code>Потолки</code></b> (скрытый код <code>.js</code> и вставка за 1 раз) ➔ <b>6. <code>Комплектатор</code> + <code>Декоратор</code></b> ➔ <b>7. <code>Куратор</code></b> (финальный ОТК).
+        </div>
+        <div style="background:rgba(16,185,129,0.09); border:1px solid rgba(16,185,129,0.4); border-radius:12px; padding:10px 14px; color:#e2e8f0;">
+          <div style="font-weight:900; color:#6ee7b7; margin-bottom:3px;">🔧 КОГДА ВНОСИМ ПРАВКИ (НЕ МЕНЯЯ ВСЮ СЦЕНУ!):</div>
+          <b>1. <code>Дизайнер</code></b> (или <code>Куратор</code> разбирает правки и предлагает красивые решения по проблемным узлам) ➔ <b>2. <code>Мастер Блендер</code></b> (делает 3D-концепты <b>только</b> по изменяемым комнатам + оценка <code>Куратором</code>) ➔ <b>3. <code>Моделлер</code></b> (пишет код скрыто и меняет <b>только</b> нужные узлы, а существующие потолки лишь подправляет под новую мебель) ➔ <b>4. <code>Комплектатор / Декоратор</code></b> ➔ <b>5. <code>Куратор</code></b>.
+        </div>
       </div>
 
-      <!-- СХЕМА НАШЕГО ИДЕАЛЬНОГО ВОРКФЛОУ (КОРОТКАЯ НАГЛЯДНАЯ ЦЕПОЧКА) -->
-      <div id="ah-workflow-banner" style="background:rgba(0,0,0,0.32); border:1px dashed rgba(255,255,255,0.2); border-radius:12px; padding:11px 14px; margin-bottom:16px; font-size:12.5px; line-height:1.5; color:#e2e8f0;"></div>
-
-      <!-- КОНТЕЙНЕР КАРТОЧЕК С ГОТОВЫМИ ПРОМПТАМИ ДЛЯ АГЕНТОВ -->
+      <!-- КОНТЕЙНЕР КАРТОЧЕК С УНИВЕРСАЛЬНЫМИ ПРОМПТАМИ -->
       <div id="ah-prompts-container" style="display:flex; flex-direction:column; gap:14px;"></div>
     </div>
   </div>
@@ -7732,118 +7732,32 @@
 
 
 
-    // ==================== 11. РАЗДЕЛ «ОБЩЕНИЕ С АГЕНТАМИ» (ГОТОВЫЕ ПРОМПТЫ ПО РОЛЯМ, ПРАВКИ, С НУЛЯ И /GOAL) ====================
-    var currentAhProjId = '0545';
-    var currentAhMode = 'fixes'; // 'fixes' | 'scratch' | 'goal'
-
-    var AH_PROJECT_PRESETS = {
-      '0545': {
-        stageBadge: '🔥 Тестируем сейчас: Правки + Дизайнер',
-        defaultMode: 'fixes',
-        planFile: '545 Итог планировка.pdf',
-        measureFile: 'обмеры_06082026.pdf',
-        anketaFile: '0545 (2).pdf',
-        fixesFile: 'ПРАВКИ_ОТ_АНЖЕЛИКИ_0545.md',
-        summary: '3D-сцена собрана за ночь, Прихожая почти ок (добавить наружные ручки на арочную дверь и проверить зеркало), а по Кухне-гостиной, Спальне, Гостевой и 2 Санузлам есть список правок в ПРАВКИ_ОТ_АНЖЕЛИКИ_0545.md. Сейчас запускаем Дизайнера 0545, чтобы он оценил эстетику, предложил красивые решения с референсами и аргументацией из ТЗ!',
-        defaultRooms: ['02. Кухня-гостиная', '03. Мастер-спальня', '04. Вторая спальня / Детская / Гостевая', '05. Основная ванная комната', '06. Гостевой санузел / Постирочная']
-      },
-      '0593': {
-        stageBadge: '📐 Новая планировка с нуля (0593 (1).pdf)',
-        defaultMode: 'scratch',
-        planFile: '0593 (1).pdf (Лист «План мебели и оборудования 01» — НЕ брать старый №4!)',
-        measureFile: 'Обмерный план в 0593 (1).pdf',
-        anketaFile: 'Анкета и созвон в папке 0593',
-        fixesFile: 'ПРАВКИ_ОТ_АНЖЕЛИКИ_0593.md',
-        summary: 'Ночной агент построил проект по устаревшему промежуточному плану №4 вместо финального «0593 (1).pdf» (План мебели и оборудования 01). Поэтому проект 0593 перестраиваем с нуля по финальной планировке: сначала Окна 0593 (окна, конвекторы), Куратор 0593, затем Дизайнер 0593 (особенно круто обыграть санузлы!).',
-        defaultRooms: ['Вся квартира целиком (все помещения по Плану Л2)']
-      },
-      '0645': {
-        stageBadge: '🚨 Горящие визы (Королёв)',
-        defaultMode: 'fixes',
-        planFile: 'Планировочное решение в папке 0645',
-        measureFile: 'Обмерный план в папке 0645',
-        anketaFile: 'Бриф и Анкета в папке 0645',
-        fixesFile: 'ПАСПОРТ_ПРОЕКТА.md',
-        summary: 'Горящий проект (Артем, 52.65 м²): доработать кухню-гостиную и спальню/гардеробную, проверить по всем стандартам и отрендерить.',
-        defaultRooms: ['02. Кухня-гостиная', '03. Мастер-спальня']
-      },
-      '0574': {
-        stageBadge: '🚨 2-эт. дом (ждёт с 29.10)',
-        defaultMode: 'scratch',
-        planFile: 'Планировка 1 и 2 этажа в папке 0574',
-        measureFile: '3D-модель и чертежи заказчика в папке 0574',
-        anketaFile: 'ТЗ и созвон в папке 0574',
-        fixesFile: 'ПАСПОРТ_ПРОЕКТА.md',
-        summary: 'Двухэтажный дом 54.73 м² (Андрей): собрать строго по его 3D-модели, планировке и ТЗ.',
-        defaultRooms: ['Вся квартира целиком (все помещения по Плану Л2)']
-      },
-      '0596': {
-        stageBadge: '🏠 Таунхаус 132 м² (1 эт. правки + 2 эт.)',
-        defaultMode: 'fixes',
-        planFile: 'Планировка 1 и 2 этажа в папке 0596',
-        measureFile: 'Обмерный план в папке 0596',
-        anketaFile: 'Бриф и записи созвона в папке 0596',
-        fixesFile: 'ПАСПОРТ_ПРОЕКТА.md',
-        summary: 'Таунхаус 132 м²: внести правки по 1-му этажу и собрать 2-й этаж.',
-        defaultRooms: ['Вся квартира целиком (все помещения по Плану Л2)']
-      },
-      '0606': {
-        stageBadge: '🔥 Микро-правки кухни + Вся квартира',
-        defaultMode: 'fixes',
-        planFile: 'Планировочное решение в папке 0606',
-        measureFile: 'Обмерный план в папке 0606',
-        anketaFile: 'Анкета и референсы в папке 0606',
-        fixesFile: 'ПАСПОРТ_ПРОЕКТА.md',
-        summary: 'Елизавета: сдать микро-правки по кухне-гостиной и запустить в работу остальные помещения квартиры.',
-        defaultRooms: ['02. Кухня-гостиная']
-      }
-    };
+    // ==================== 11. РАЗДЕЛ «ОБЩЕНИЕ С АГЕНТАМИ» (УНИВЕРСАЛЬНЫЕ ПРОМПТЫ ПО 8 РОЛЯМ: С НУЛЯ, ПРАВКИ И /GOAL) ====================
+    var currentAhRoleFilter = 'all';      // 'all' | 'curator' | 'windows' | 'designer' | 'blender' | 'modeler' | 'ceilings' | 'complect' | 'decorator'
+    var currentAhSituationFilter = 'all'; // 'all' | 'scratch' | 'fixes' | 'goal'
 
     function initAgentsHub() {
-      const sel = document.getElementById('ah-project-select');
-      const pillsBox = document.getElementById('ah-quick-proj-pills');
-      if (!sel || !pillsBox) return;
-
-      const list = (typeof getWorkProjects === 'function') ? getWorkProjects() : [];
-      const activeList = list.filter(x => !x.closed);
-      if (activeList.length === 0) {
-        activeList.push({ id: '0545', name: 'Мария (60 м²)', folder: 'D:\\\\ФАНАТИКС\\\\0545' });
-        activeList.push({ id: '0593', name: 'Евгения (Евро-3)', folder: 'D:\\\\ФАНАТИКС\\\\0593' });
-      }
-
-      sel.innerHTML = activeList.map(p => `<option value="${p.id}" ${p.id === currentAhProjId ? 'selected' : ''}>${p.id} — ${p.name || 'Проект'}</option>`).join('');
-
-      const priorityIds = ['0545', '0593', '0645', '0574', '0596', '0606', '0619', '0609', '0613', '0576', '0633', '0653', '0654'];
-      const topProjs = [];
-      priorityIds.forEach(pid => {
-        const found = activeList.find(x => x.id === pid);
-        if (found) topProjs.push(found);
-        else if (AH_PROJECT_PRESETS[pid]) topProjs.push({ id: pid, name: pid });
-      });
-
-      pillsBox.innerHTML = topProjs.map(p => {
-        const preset = AH_PROJECT_PRESETS[p.id];
-        const badge = preset ? ` • ${preset.stageBadge}` : '';
-        const isSel = (p.id === currentAhProjId);
-        return `<button class="plus-chip ${isSel ? 'selected-chip' : ''}" onclick="selectAgentsHubProject('${p.id}')">📂 <b>${p.id}</b>${badge}</button>`;
-      }).join('');
-
-      updateAgentsHubProjectContext();
       renderAgentsHubPrompts();
     }
 
-    function selectAgentsHubProject(projId) {
-      currentAhProjId = projId;
-      const sel = document.getElementById('ah-project-select');
-      if (sel) sel.value = projId;
+    function setAhRoleFilter(roleKey) {
+      currentAhRoleFilter = roleKey;
+      const roles = ['all', 'curator', 'windows', 'designer', 'blender', 'modeler', 'ceilings', 'complect', 'decorator'];
+      roles.forEach(r => {
+        const btn = document.getElementById('ah-role-' + r);
+        if (btn) btn.className = 'plus-chip' + (r === roleKey ? ' selected-chip' : '');
+      });
+      renderAgentsHubPrompts();
+    }
 
-      const preset = AH_PROJECT_PRESETS[projId];
-      if (preset && preset.defaultRooms) {
-        document.querySelectorAll('.ah-room-chk').forEach(chk => {
-          chk.checked = preset.defaultRooms.includes(chk.value);
-        });
-      }
-      initAgentsHub();
+    function setAhSituationFilter(sitKey) {
+      currentAhSituationFilter = sitKey;
+      const sits = ['all', 'scratch', 'fixes', 'goal'];
+      sits.forEach(s => {
+        const btn = document.getElementById('ah-sit-' + s);
+        if (btn) btn.className = 'plus-chip' + (s === sitKey ? ' selected-chip' : '');
+      });
+      renderAgentsHubPrompts();
     }
 
     function onAhRoomAllToggle(allChk) {
@@ -7855,65 +7769,15 @@
       renderAgentsHubPrompts();
     }
 
-    function switchAgentsHubMode(mode) {
-      currentAhMode = mode;
-      const bFixes = document.getElementById('ah-mode-btn-fixes');
-      const bScratch = document.getElementById('ah-mode-btn-scratch');
-      const bGoal = document.getElementById('ah-mode-btn-goal');
-      if (bFixes) bFixes.className = 'proj-mode-btn' + (mode === 'fixes' ? ' active-pmode-anketa' : '');
-      if (bScratch) bScratch.className = 'proj-mode-btn' + (mode === 'scratch' ? ' active-pmode-brief' : '');
-      if (bGoal) bGoal.className = 'proj-mode-btn' + (mode === 'goal' ? ' active-pmode-agent' : '');
+    function onAhSingleRoomToggle() {
+      const allChk = document.querySelector('.ah-room-chk');
+      const others = Array.from(document.querySelectorAll('.ah-room-chk')).slice(1);
+      if (others.some(c => c.checked) && allChk) {
+        allChk.checked = false;
+      } else if (allChk && !others.some(c => c.checked)) {
+        allChk.checked = true;
+      }
       renderAgentsHubPrompts();
-    }
-
-    function getAhProjectMeta(projId) {
-      const list = (typeof getWorkProjects === 'function') ? getWorkProjects() : [];
-      const p = list.find(x => x.id === projId) || {};
-      const preset = AH_PROJECT_PRESETS[projId] || {};
-      const folder = p.folder || `D:\\ФАНАТИКС\\${projId}`;
-      return {
-        id: projId,
-        name: p.name || `Проект ${projId}`,
-        folder: folder,
-        planFile: preset.planFile || `Итоговый план расстановки мебели (Лист Л2) в папке ${folder}`,
-        measureFile: preset.measureFile || `Обмерный план в папке ${folder}`,
-        anketaFile: preset.anketaFile || `Анкета визуализации и Бриф в папке ${folder}`,
-        fixesFile: preset.fixesFile || `ПРАВКИ_ОТ_АНЖЕЛИКИ_${projId}.md (и ПАСПОРТ_ПРОЕКТА.md)`,
-        summary: preset.summary || p.deadline || `Рабочая папка: ${folder}. Все исходники, планировка и референсы находятся внутри папки проекта.`
-      };
-    }
-
-    function updateAgentsHubProjectContext() {
-      const meta = getAhProjectMeta(currentAhProjId);
-      const tEl = document.getElementById('ah-proj-summary-title');
-      const dEl = document.getElementById('ah-proj-summary-desc');
-      if (tEl) tEl.innerHTML = `📌 Проект <b>${meta.id}</b> (${meta.name}) • Папка: <code>${meta.folder}</code>`;
-      if (dEl) {
-        dEl.innerHTML = `
-          <div>• <b>Текущая задача:</b> ${meta.summary}</div>
-          <div style="margin-top:3px; color:#cbd5e1;">• <b>Планировка Л2:</b> <code>${meta.planFile}</code> | <b>Файл правок / Паспорт:</b> <code>${meta.fixesFile}</code></div>
-        `;
-      }
-
-      const shortBar = document.getElementById('ah-short-chat-names-bar');
-      if (shortBar) {
-        const roles = [
-          { title: `Куратор ${meta.id}`, desc: 'Сбор ТЗ, фиксация правок и проверка ОТК' },
-          { title: `Дизайнер ${meta.id}`, desc: 'Эстетика, концепция, референсы, Pinterest и аргументация из ТЗ' },
-          { title: `Мастер Блендер ${meta.id}`, desc: 'Первичная сборка 3D CAD-видов всех комнат' },
-          { title: `Концептуалист ${meta.id}`, desc: 'Новые 3D CAD-виды ТОЛЬКО по изменяемым комнатам' },
-          { title: `Моделлер ${meta.id}`, desc: 'Сначала скрытый код .js -> затем вставка в Homestyler' },
-          { title: `Потолки ${meta.id}`, desc: 'Потолки, ниши (+100 мм от радиатора), карнизы и свет' },
-          { title: `Комплектатор ${meta.id}`, desc: 'Мебель, техника, свет и декор из 3 библиотек' },
-          { title: `Окна ${meta.id}`, desc: 'Высоты, окна и конвекторы в новой пустой сцене' },
-          { title: `Управленец ${meta.id}`, desc: 'Директор проекта для запуска через /goal' }
-        ];
-        shortBar.innerHTML = roles.map(r => `
-          <button class="copy-btn" style="background:rgba(16,185,129,0.18); border-color:rgba(16,185,129,0.5); color:#a7f3d0; padding:5px 10px; font-size:12px;" onclick="copyShortChatName('${r.title}', this)" title="${r.desc}">
-            📋 <b>${r.title}</b>
-          </button>
-        `).join('');
-      }
     }
 
     function copyShortChatName(nameStr, btn) {
@@ -7929,573 +7793,595 @@
       if (!ta) return;
       navigator.clipboard.writeText(ta.value).then(() => {
         const old = btn.innerHTML;
-        btn.innerHTML = `✅ ПРОМПТ СКОПИРОВАН! (Назови чат: «${chatTitle}»)`;
-        setTimeout(() => { btn.innerHTML = old; }, 2500);
+        btn.innerHTML = `✅ ПРОМПТ СКОПИРОВАН! (Чат: «${chatTitle}»)`;
+        setTimeout(() => { btn.innerHTML = old; }, 2400);
       });
     }
 
     function getSelectedAhRoomsText() {
       const chks = Array.from(document.querySelectorAll('.ah-room-chk:checked')).map(c => c.value);
-      if (chks.length === 0) return 'Все помещения, указанные в списке правок';
+      if (chks.length === 0) return 'Все помещения по Плану Л2 (или все комнаты, указанные в списке правок)';
       return chks.join(', ');
     }
 
     function renderAgentsHubPrompts() {
-      const meta = getAhProjectMeta(currentAhProjId);
-      const pid = meta.id;
-      const folder = meta.folder;
+      const rawId = (document.getElementById('ah-optional-proj-id') ? document.getElementById('ah-optional-proj-id').value.trim() : '');
+      const pidSuffix = rawId ? (' ' + rawId) : '';
+      const folderStr = rawId ? ('D:\\ФАНАТИКС\\' + rawId) : 'папке текущего проекта (D:\\ФАНАТИКС\\<ID_ПРОЕКТА>)';
       const roomsStr = getSelectedAhRoomsText();
       const customNote = (document.getElementById('ah-custom-user-note') ? document.getElementById('ah-custom-user-note').value.trim() : '');
-      const customNoteBlock = customNote ? `\n\n📌 ДОПОЛНИТЕЛЬНОЕ УКАЗАНИЕ ОТ АНЖЕЛИКИ СЕЙЧАС:\n«${customNote}»` : '';
+      const customNoteBlock = customNote ? `\n\n📌 ДОПОЛНИТЕЛЬНОЕ УКАЗАНИЕ ОТ АНЖЕЛИКИ:\n«${customNote}»` : '';
 
-      const banner = document.getElementById('ah-workflow-banner');
-      const container = document.getElementById('ah-prompts-container');
-      if (!container || !banner) return;
+      // Обновляем панель коротких имён чатов
+      const shortBar = document.getElementById('ah-short-chat-names-bar');
+      if (shortBar) {
+        const roleNames = [
+          { title: `Куратор${pidSuffix}`, desc: 'Сбор ТЗ, фиксация правок, проверка ОТК и управление через /goal' },
+          { title: `Окна${pidSuffix}`, desc: 'Этап 0: выставление проёмов в стенах, высот, ригелей, окон и радиаторов' },
+          { title: `Дизайнер${pidSuffix}`, desc: 'Разработка концепции с нуля, решение правок и запуск /goal' },
+          { title: `Мастер Блендер${pidSuffix}`, desc: '3D-концепты в Blender (с нуля или точечно по комнатам с правками)' },
+          { title: `Моделлер${pidSuffix}`, desc: 'Скрытая запись кода корпусной мебели .js и вставка за 1 раз' },
+          { title: `Потолки${pidSuffix}`, desc: 'Потолки, ниши (+100 мм от радиатора), карнизы и свет (с нуля или правка под мебель)' },
+          { title: `Комплектатор${pidSuffix}`, desc: 'Мебель, стулья, люстры, бра, базовая техника и сантехника' },
+          { title: `Декоратор${pidSuffix}`, desc: 'Только декор полок, одежда в гардеробные, аксессуары в СУ и растения' }
+        ];
+        shortBar.innerHTML = roleNames.map(r => `
+          <button class="copy-btn" style="background:rgba(16,185,129,0.18); border-color:rgba(16,185,129,0.5); color:#a7f3d0; padding:4px 9px; font-size:11.8px;" onclick="copyShortChatName('${r.title}', this)" title="${r.desc}">
+            📋 <b>${r.title}</b>
+          </button>
+        `).join('');
+      }
 
-      let cards = [];
+      const allCards = [
+        // ==================== 1. КУРАТОР ====================
+        {
+          roleKey: 'curator',
+          situation: 'scratch',
+          step: '1️⃣ КУРАТОР • ВАРИАНТ А: СТАРТ ПРОЕКТА С НУЛЯ',
+          chatName: `Куратор${pidSuffix}`,
+          roleTitle: `Куратор — Сбор всей вводной информации с нуля в единый ПАСПОРТ_ПРОЕКТА.md`,
+          skill: `C:\\Users\\Анжелика\\.gemini\\config\\skills\\lav-01-project-keeper\\SKILL.md`,
+          badgeColor: 'blue',
+          whenToUse: 'Запускай в начале любого нового проекта. Куратор изучает Обмерный план, Итоговый План Л2, Бриф, Анкету, Созвон и Референсы заказчика и разжёвывает всё по комнатам для Дизайнера и Моделлера.',
+          prompt: `🏷️ ПРАВИЛО НАЗВАНИЯ ЧАТА: Назови этот чат коротко: «Куратор${pidSuffix}».
 
-      if (currentAhMode === 'fixes') {
-        banner.innerHTML = `
-          <div style="font-weight:900; color:#f3e8ff; margin-bottom:4px;">🔧 ПОРЯДОК РАБОТЫ ПО СУЩЕСТВУЮЩЕМУ ПРОЕКТУ И ПРАВКАМ (НАПРИМЕР, ПРОЕКТ ${pid}):</div>
-          <div>
-            <b>1. <code>Куратор ${pid}</code></b> (фиксирует все правки Анжелики/клиента в <code>ПАСПОРТ_ПРОЕКТА.md</code>) ➔
-            <b>2. <code>Дизайнер ${pid}</code></b> (смотрит эстетику, что красиво/некрасиво, собирает референсы и Pinterest в свою папку, аргументирует каждое предложение из ТЗ/Анкеты/Созвона и согласовывает с Анжеликой) ➔
-            <b>3. <code>Концептуалист ${pid}</code></b> (делает новые 3D-виды в Blender CAD <b>только по изменяемым комнатам</b>) ➔
-            <b>4. <code>Куратор ${pid}</code></b> (сверяет концепты с ТЗ и Планом Л2) ➔
-            <b>5. <code>Моделлер ${pid}</code></b> (сначала пишет код <code>.js</code> скрыто -> затем по твоей команде вставляет в сцену Homestyler) ➔
-            <b>6. <code>Куратор ${pid}</code></b> (финальная проверка всех анкет, плинтусов, карнизов и группировки).
-          </div>
-        `;
+Ты — Куратор проекта и Хранитель ТЗ (Роль №1).
+Перед началом работы ОБЯЗАТЕЛЬНО прочитай свой скилл и стандарты:
+1. C:\\Users\\Анжелика\\.gemini\\config\\skills\\lav-01-project-keeper\\SKILL.md
+2. D:\\LAV_СИСТЕМА_АГЕНТОВ\\00_ЭТАЛОНЫ_УЗЛОВ_И_ДЕТАЛЕЙ\\СТАНДАРТЫ_ЭРГОНОМИКИ_И_КОНСТРУКТИВА_МЕБЕЛИ.md
 
-        cards = [
-          {
-            step: 'ШАГ 1 (ЕСЛИ ЕСТЬ НОВЫЕ ПРАВКИ ОТ ТЕБЯ ИЛИ КЛИЕНТА)',
-            chatName: `Куратор ${pid}`,
-            roleTitle: `Куратор ${pid} — Фиксация правок и подготовка готового разбора для Дизайнера`,
-            skill: `C:\\Users\\Анжелика\\.gemini\\config\\skills\\lav-01-project-keeper\\SKILL.md`,
-            badgeColor: 'blue',
-            whenToUse: 'Запускай первым, если появились новые замечания от тебя или от заказчика, чтобы Куратор всё свёл в единый ПАСПОРТ_ПРОЕКТА.md и Дизайнер не тратил контекст на чтение сырых файлов.',
-            prompt: `🏷️ ПРАВИЛО НАЗВАНИЯ ЧАТА: Обязательно держи короткое название этого чата из 2 слов: «Куратор ${pid}».
+📂 РАБОЧАЯ ПАПКА ПРОЕКТА: ${folderStr}
 
-Ты — Куратор проекта ${pid} (Роль №1).
+🎯 ТВОЯ ЗАДАЧА СЕЙЧАС (ПОЛНЫЙ СБОР ВВОДНЫХ С НУЛЯ):
+1. Изучи все исходные документы в ${folderStr}:
+   - Итоговый план расстановки мебели и оборудования (Лист Л2 — главный закон планировки!);
+   - Обмерный план (высоты потолка, подоконников, оконных проёмов, ригели, стояки);
+   - Бриф, Анкету по визуализации, текст/расшифровку Созвона и все папки с Референсами заказчика.
+   - Если проект уже открыт в Homestyler — сними слепок КООРДИНАТЫ_СЦЕНЫ.json.
+2. Создай в папке проекта подробный, разжёванный документ ПАСПОРТ_ПРОЕКТА.md по каждому помещению:
+   - Точная цепочка модулей по Плану Л2 (слева направо с габаритами в мм);
+   - Пожелания заказчика из Анкеты, Брифа и Созвона + прямые пути к референсам по каждой комнате;
+   - Высоты потолков, дверей, тип карнизов, плинтусов, размещение электрощита (ЩР/ЩС), робота-пылесоса, стиральной/сушильной машин и радиаторов;
+   - Список строгих ТАБУ клиента (что категорически нельзя делать в проекте).${customNoteBlock}
+3. Напиши мне в чат краткий отчёт о готовности ПАСПОРТ_ПРОЕКТА.md.`
+        },
+        {
+          roleKey: 'curator',
+          situation: 'fixes',
+          step: '1️⃣ КУРАТОР • ВАРИАНТ Б: КОГДА ВНЕСЕНЫ ПРАВКИ',
+          chatName: `Куратор${pidSuffix}`,
+          roleTitle: `Куратор — Разбор и фиксация правок (от заказчика или от Анжелики) без перестройки всей сцены`,
+          skill: `C:\\Users\\Анжелика\\.gemini\\config\\skills\\lav-01-project-keeper\\SKILL.md`,
+          badgeColor: 'yellow',
+          whenToUse: 'Отправляй Куратору, когда по проекту появились правки от тебя или от заказчика. Он сверит их с Планом Л2 и запишет точечный план правок по комнатам.',
+          prompt: `🏷️ ПРАВИЛО НАЗВАНИЯ ЧАТА: «Куратор${pidSuffix}».
+
+Ты — Куратор проекта и Хранитель ТЗ (Роль №1).
+Прочитай скилл: C:\\Users\\Анжелика\\.gemini\\config\\skills\\lav-01-project-keeper\\SKILL.md
+
+📂 РАБОЧАЯ ПАПКА ПРОЕКТА: ${folderStr}
+🚪 ЗАТРАГИВАЕМЫЕ ПОМЕЩЕНИЯ: ${roomsStr}
+
+🎯 ТВОЯ ЗАДАЧА СЕЙЧАС (РАЗБОР ПРАВОК):
+1. Изучи новые правки и замечания по проекту (в папке проекта и в моём сообщении ниже), сверь их с итоговым Планом Л2, Анкетой, Созвоном и ПАСПОРТ_ПРОЕКТА.md.
+2. Обнови ПАСПОРТ_ПРОЕКТА.md и зафиксируй чёткий покомнатный список изменений в файл ПРАВКИ_ПРОЕКТА.md:
+   - По каждому затрагиваемому помещению (${roomsStr}) распиши:
+     а) Что в комнате уже сделано правильно и трогать КАТЕГОРИЧЕСКИ НЕ НУЖНО (правило локальности — мы не перестраиваем всю сцену!);
+     б) Какие именно элементы, шкафы, фасады, ручки, потолки, светильники или модели нужно изменить/заменить и как именно по Плану Л2 и ТЗ.${customNoteBlock}
+3. Дай мне краткую сводку в чат, чтобы мы передали задачи Дизайнеру и Моделлеру.`
+        },
+        {
+          roleKey: 'curator',
+          situation: 'fixes',
+          step: '1️⃣ КУРАТОР • ВАРИАНТ В: ПРОВЕРКА ОТК (КОНЦЕПТОВ БЛЕНДЕРА ИЛИ 3D-СЦЕНЫ)',
+          chatName: `Куратор${pidSuffix}`,
+          roleTitle: `Куратор — Строгая проверка Блендер-концептов или готовой 3D-сцены Homestyler по Плану Л2 и ТЗ`,
+          skill: `C:\\Users\\Анжелика\\.gemini\\config\\skills\\lav-04-project-auditor\\SKILL.md`,
+          badgeColor: 'blue',
+          whenToUse: 'Отправляй Куратору в любой момент, когда нужно проверить 3D-концепты от Мастера Блендер (можно передавать Моделлеру или нельзя) ИЛИ проверить уже собранную 3D-сцену в Homestyler.',
+          prompt: `🏷️ ПРАВИЛО НАЗВАНИЯ ЧАТА: «Куратор${pidSuffix}».
+
+Ты — Строгий Куратор и Ревизор ОТК проекта (Роли №1 и №4).
+Прочитай скиллы проверки:
+1. C:\\Users\\Анжелика\\.gemini\\config\\skills\\lav-04-project-auditor\\SKILL.md
+2. D:\\LAV_СИСТЕМА_АГЕНТОВ\\00_ЭТАЛОНЫ_УЗЛОВ_И_ДЕТАЛЕЙ\\СТАНДАРТЫ_ЭРГОНОМИКИ_И_КОНСТРУКТИВА_МЕБЕЛИ.md
+
+📂 РАБОЧАЯ ПАПКА ПРОЕКТА: ${folderStr}
+🚪 ПРОВЕРЯЕМЫЕ ПОМЕЩЕНИЯ: ${roomsStr}
+
+🎯 ТВОЯ ЗАДАЧА СЕЙЧАС (НЕЗАВИСИМАЯ ПРОВЕРКА ПО ПЛАНУ Л2 И ТЗ):
+1. Открой ГЛАЗАМИ через read_file итоговый План Л2, ПАСПОРТ_ПРОЕКТА.md (и утверждённую концепцию / правки), а также проверяемые картинки ЭСКИЗ_<КОМНАТА>.png (или сделай скриншоты take_screenshot открытой сцены Homestyler).
+2. Сверь каждый узел по чек-листу:
+   - 100% совпадение последовательности модулей и габаритов с Планом Л2;
+   - Выполнение всех пунктов ТЗ, Анкеты, Созвона и правок;
+   - Инженерные стандарты: ящик 350 мм под духовкой с интегрированной ручкой, свес острова 250–300 мм, отсутствие внутрянки в закрытых шкафах, поэлементная группировка DiyInstance (каждый шкаф/тумба и каждая группа Корпус/Фасады/Ручки/LED отдельно!), сглаживание «3D филе = 3 мм», отсутствие самодельных люстр/стульев в DIY, отступ шторной ниши +100 мм от радиатора, доступ к ЩР/ЩС.${customNoteBlock}
+3. Вынеси чёткий вердикт по каждой комнате: «ОДОБРЕНО» или точный список косяков на исправление.`
+        },
+        {
+          roleKey: 'curator',
+          situation: 'goal',
+          step: '🚀 1️⃣ КУРАТОР • ВАРИАНТ Г: /GOAL КУРАТОРУ ПО ПРАВКАМ (ПОЛНЫЙ АВТОПИЛОТ ПО ПРАВКАМ)',
+          chatName: `Куратор${pidSuffix}`,
+          roleTitle: `Куратор (/goal по правкам) — Сам запускает Дизайнера -> Мастера Блендер -> сам оценивает -> Моделлера (скрытый код + точечная вставка) -> Комплектатора/Декоратора`,
+          skill: `C:\\Users\\Анжелика\\.gemini\\config\\skills\\lav-01-project-keeper\\SKILL.md`,
+          badgeColor: 'green',
+          whenToUse: 'Когда заказчик или ты внесли правки и всё понятно, что нужно делать: отправляй этот /goal прямо Куратору! Он сам запустит цепочку субагентов и изменит ТОЛЬКО нужные элементы (не трогая остальную сцену).',
+          prompt: `/goal
+🏷️ ПРАВИЛО НАЗВАНИЯ ЧАТА: «Куратор${pidSuffix}».
+
+Ты — Главный Куратор проекта (Роль №1 + №4) в папке ${folderStr}.
+По проекту внесены правки (помещения: ${roomsStr}). Нам понятно, что нужно сделать — проведи полный цикл доработки квартиры до 100% готовности, запуская профильных субагентов строго по очереди (invoke_subagent с TypeName: "self"):${customNoteBlock}
+
+1. РАЗБОР ПРАВОК + ЗАПУСК ДИЗАЙНЕРА:
+- Сверь все правки с итоговым Планом Л2, Анкетой и ПАСПОРТ_ПРОЕКТА.md.
+- Запусти субагента «Дизайнер» (скилл: lav-02-task-architect), чтобы он прошёлся по всем правкам в помещениях (${roomsStr}), подобрал красивые дизайнерские решения, фасады, ручки и конкретные модели светильников/мебели из Избранного Анжелики и 3D Sky Pro, и сохранил их в ДИЗАЙН_КОНЦЕПЦИЯ_УТВЕРЖДЕНА.md.
+
+2. ЗАПУСК МАСТЕРА БЛЕНДЕР + ТВОЯ ОЦЕНКА (МОЖНО ИЛИ НЕЛЬЗЯ):
+- Поручи субагенту «Мастер Блендер» (скилл: lav-02-task-architect) смоделировать в Blender 3D-концепты (ЭСКИЗ_<КОМНАТА>.png) ТОЛЬКО по тем комнатам и узлам, где вносятся правки (${roomsStr}).
+- Сам открой готовые рендеры через read_file, оцени их и строго сверь с Планом Л2, ТЗ и стандартами эргономики — скажи, можно или нельзя передавать в моделирование. Если есть хоть одна ошибка — отправь Мастеру Блендер на переделку до полного утверждения!
+
+3. ЗАПУСК МОДЕЛЛЕРА (СКРЫТЫЙ КОД .JS + ТОЧЕЧНАЯ ПРАВКА БЕЗ СНОСА ВСЕЙ СЦЕНЫ!):
+- Мы работаем над несколькими проектами параллельно, поэтому пусть субагент «Моделлер» (скиллы: lav-03b-joinery-modeler и lav-03c-ceilings-lighting) сначала СКРЫТО подготовит пакетный код в файл UPDATE_JOINERY.js.
+- ⛔ ЖЕЛЕЗНОЕ ПРАВИЛО ПРАВОК: НЕ менять и не перестраивать всю сцену! Вносить изменения ТОЛЬКО по тем правкам и элементам, которые мы озвучили (${roomsStr}), соблюдая поэлементную группировку DiyInstance и «3D филе = 3 мм». Существующие потолки не перестраивать с нуля, а только подкорректировать с учётом изменившейся мебели.
+- Когда код готов и нужный проект открыт в Homestyler — вставить все изменения за один раз.
+
+4. КОМПЛЕКТАТОР / ДЕКОРАТОР + ТВОЯ ФИНАЛЬНАЯ ПРОВЕРКА:
+- Запусти субагента «Комплектатор / Декоратор» (скилл: lav-03d-skypro-decorator), чтобы поправить/расставить нужную мебель, светильники, технику и декор на полках.
+- В финале сам проверь всю собранную квартиру через take_screenshot по Плану Л2, Анкете и ТЗ. Если что-то не соответствует — верни нужному субагенту на исправление, пока квартира не будет готова на 100%!`
+        },
+        {
+          roleKey: 'curator',
+          situation: 'goal',
+          step: '🚀 1️⃣ КУРАТОР • ВАРИАНТ Д: /GOAL КУРАТОРУ С НУЛЯ (ПОЛНАЯ СБОРКА НОВОГО ПРОЕКТА)',
+          chatName: `Куратор${pidSuffix}`,
+          roleTitle: `Куратор (/goal с нуля) — Полный конвейер сборки новой квартиры от Окон и Проёмов до декора и ОТК`,
+          skill: `D:\\LAV_СИСТЕМА_АГЕНТОВ\\00_ГЛАВНЫЙ_РЕГЛАМЕНТ_И_ОРКЕСТРАТОР.md`,
+          badgeColor: 'purple',
+          whenToUse: 'Используй, когда нужно собрать проект целиком с нуля в автономном режиме (Окна и Проёмы -> Паспорт ТЗ -> Дизайнер -> Мастер Блендер -> Моделлер и Потолки -> Комплектатор и Декоратор -> ОТК).',
+          prompt: `/goal
+🏷️ ПРАВИЛО НАЗВАНИЯ ЧАТА: «Куратор${pidSuffix}».
+
+Ты — Главный Куратор проекта в папке ${folderStr}.
+Твоя цель — провести полный цикл сборки квартиры с нуля строго по итоговому Плану расстановки мебели (Лист Л2), Обмерному плану, Анкете, Брифу и Созвону, запуская субагентов по очереди (invoke_subagent с TypeName: "self"):${customNoteBlock}
+
+1. ЭТАП 0 — ОКНА И ПРОЁМЫ (Скилл: lav-03a-windows-openings):
+- Запусти субагента «Окна», чтобы он выставил недостающие оконные и дверные проёмы в стенах по Обмерному плану и Плану Л2, выровнял высоты стен и подоконников, построил ригели, смоделировал окна, поставил радиаторы/конвекторы и сохранил КООРДИНАТЫ_СЦЕНЫ.json.
+
+2. ЭТАП 1 — ПАСПОРТ ПРОЕКТА (Скилл: lav-01-project-keeper):
+- Изучи все файлы и референсы в папке проекта и собери полный покомнатный ПАСПОРТ_ПРОЕКТА.md.
+
+3. ЭТАП 2 — ДИЗАЙНЕР + МАСТЕР БЛЕНДЕР + ТВОЯ ПРОВЕРКА:
+- Запусти субагента «Дизайнер» (скилл: lav-02-task-architect) для проработки дизайн-концепции и подбора моделей света/мебели по всем помещениям.
+- Запусти субагента «Мастер Блендер» для построения 3D CAD-концептов (ЭСКИЗ_<КОМНАТА>.png) всех комнат.
+- Сам проверь каждый концепт по Плану Л2 и ТЗ (если есть ошибки — верни в Blender на доработку).
+
+4. ЭТАП 3 — МОДЕЛЛЕР И ПОТОЛКИ (СКРЫТЫЙ КОД .JS -> ВСТАВКА ЗА 1 РАЗ):
+- Запусти субагентов «Моделлер» (lav-03b-joinery-modeler) и «Потолки» (lav-03c-ceilings-lighting): пусть подготовят полный код корпусной мебели (с поэлементной группировкой DiyInstance, без внутрянки в закрытых шкафах, с 3D филе = 3 мм) и чистовых потолков (с обходом шкафов и нишами штор +100 мм от радиатора), и вставят в открытый проект Homestyler за 1 проход.
+
+5. ЭТАП 4 — КОМПЛЕКТАТОР + ДЕКОРАТОР + ФИНАЛЬНЫЙ ОТК (Скилл: lav-03d-skypro-decorator и lav-04-project-auditor):
+- Запусти субагентов «Комплектатор» и «Декоратор» для расстановки техники, сантехники, мягкой мебели, столов, стульев, люстр, бра и декора полок/гардеробных из папок Избранного и 3D Sky Pro.
+- Проведи финальную проверку всей квартиры через take_screenshot по Плану Л2 и ТЗ до 100% готовности!`
+        },
+
+        // ==================== 2. ОКНА И ПРОЁМЫ (ЭТАП 0) ====================
+        {
+          roleKey: 'windows',
+          situation: 'scratch',
+          step: '2️⃣ ОКНА И ПРОЁМЫ • ЭТАП 0 (САМЫЙ ПЕРВЫЙ ШАГ В HOMESTYLER)',
+          chatName: `Окна${pidSuffix}`,
+          roleTitle: `Окна и Проёмы — Сам выставляет проёмы в стенах по Обмеру и Плану Л2, выравнивает высоты, строит ригели, окна и радиаторы`,
+          skill: `C:\\Users\\Анжелика\\.gemini\\config\\skills\\lav-03a-windows-openings\\SKILL.md`,
+          badgeColor: 'purple',
+          whenToUse: 'Запускай в новой сцене Homestyler сразу после черчения стен! Агент сам прорежет пустые проёмы в стенах (или выровняет существующие), выставит высоты стен и подоконников, построит ригели, окна и радиаторы.',
+          prompt: `🏷️ ПРАВИЛО НАЗВАНИЯ ЧАТА: Назови этот чат коротко: «Окна${pidSuffix}».
+
+Ты — Мастер Архитектурной Коробки, Проёмов, Высот, Окон, Ригелей и Радиаторов в Homestyler (Этап 0).
 Перед началом работы ОБЯЗАТЕЛЬНО прочитай свой скилл:
-- C:\\Users\\Анжелика\\.gemini\\config\\skills\\lav-01-project-keeper\\SKILL.md
-- D:\\LAV_СИСТЕМА_АГЕНТОВ\\00_ЭТАЛОНЫ_УЗЛОВ_И_ДЕТАЛЕЙ\\СТАНДАРТЫ_ЭРГОНОМИКИ_И_КОНСТРУКТИВА_МЕБЕЛИ.md
+- C:\\Users\\Анжелика\\.gemini\\config\\skills\\lav-03a-windows-openings\\SKILL.md
 
-📂 ПАПКА ПРОЕКТА: ${folder}
-- Итоговая планировка (План Л2): ${folder}\\${meta.planFile}
-- Анкета / Бриф / Созвон: ${folder}\\${meta.anketaFile}
-- Файл текущих правок: ${folder}\\${meta.fixesFile}
+📂 РАБОЧАЯ ПАПКА ПРОЕКТА: ${folderStr}
 
-🎯 ТВОЯ ЗАДАЧА СЕЙЧАС (СВЕДЕНИЕ ВСЕХ ВВОДНЫХ И ПРАВОК ДЛЯ ДИЗАЙНЕРА ПРОЕКТА):
-1. Изучи файл правок (${folder}\\${meta.fixesFile}), сверь его с итоговым Планом Л2 (${meta.planFile}), Анкетой, Брифом и расшифровкой созвона.
-2. Обнови единый документ ${folder}\\ПАСПОРТ_ПРОЕКТА.md так, чтобы Дизайнер проекта (${pid}) мог работать сразу по твоему готовому разжёванному разбору без чтения гигантских исходников:
-   - По каждому помещению (${roomsStr}) чётко выпиши:
-     а) Что уже сделано хорошо и трогать НЕ нужно;
-     б) Какие конструктивные и эстетические косяки нужно исправить;
-     в) Точную цепочку модулей по Плану Л2 (слева направо с размерами в мм), высоты, карнизы, плинтусы, двери и инженерные узлы (ЩР/ЩС, радиаторы, робот-пылесос);
-     г) Что именно заказчица говорила на созвоне и писала в анкете по этим зонам + прямые пути к её любимым фото-референсам.${customNoteBlock}
-3. Напиши мне в чат краткий отчёт о готовности разбора для передачи в чат «Дизайнер ${pid}».`
-          },
-          {
-            step: '⭐ ШАГ 2 (ГЛАВНЫЙ ЭТАП — ОБЩЕНИЕ АНЖЕЛИКИ С ДИЗАЙНЕРОМ ПРОЕКТА!)',
-            chatName: `Дизайнер ${pid}`,
-            roleTitle: `Дизайнер ${pid} — Эстетический аудит, поиск красивых решений + Референсы + Аргументация из ТЗ`,
-            skill: `C:\\Users\\Анжелика\\.gemini\\config\\skills\\lav-02-task-architect\\SKILL.md`,
-            badgeColor: 'purple',
-            whenToUse: 'Тестируем прямо сейчас на проекте 0545! Дизайнер изучает разбор Куратора, правки и референсы, оценивает, что сейчас сделано грубовато/некрасиво, создаёт свою папку с референсами и Pinterest и предлагает тебе красивые решения со 100% аргументацией из ТЗ.',
-            prompt: `🏷️ ПРАВИЛО НАЗВАНИЯ ЧАТА: Обязательно назови этот чат коротко (2 слова): «Дизайнер ${pid}».
+🎯 ТВОЯ ЗАДАЧА СЕЙЧАС (ВЫПОЛНИТЬ ЗА 1 ПРОХОД В ОТКРЫТОМ HOMESTYLER):
+1. Открой ГЛАЗАМИ через read_file Обмерный план, Итоговый План расстановки мебели (Лист Л2) и фотографии с объекта (если они есть в папке проекта).
+2. Подключись к открытому проекту в Homestyler (порт 9222, evaluate_script с waitForStableDom: false) и подключи библиотеку:
+   if (!window.HSJoinery) (0, eval)(await (await fetch('http://127.0.0.1:3033/hs-joinery.js')).text());
+3. ВЫСТАВИ ВЫСОТЫ И САМИ ПРОЁМЫ В СТЕНАХ:
+   - Выровняй общую высоту стен и потолка (activeLayer.height и wall.height3d) строго по Обмерному плану.
+   - Сними координаты всех стен сцены и сопоставь их с Обмерным планом и Планом Л2.
+   - Если оконные или открытые дверные проёмы ещё НЕ стоят в стенах — САМ прорежь и выставь их в нужных стенах строго по размерам и привязкам (простенкам) из Обмерного плана и Плана Л2 через функцию:
+     await HSJoinery.placeWallOpening(wallId, { widthMm, heightMm, sillZMm, offsetFromStartMm });
+   - Если какие-то проёмы или двери уже стоят — проверь и выровняй их высоты (z подоконника, ZSize высоты проёма и ширину XSize) строго по Обмерному плану. (Сами стены НЕ двигай!).
+4. ПОСТРОЙ РИГЕЛИ / БАЛКИ:
+   - Если на Обмерном плане или фото есть потолочные ригели / балки — построй их в webCADDocument в отдельной группе DiyInstance «Ригели и балки».
+5. СМОДЕЛИРУЙ ОКНА ВНУТРИ ОКОННЫХ ПРОЁМОВ:
+   - Если в папке есть фото с объекта — построй рамы, створки и перемычки (импосты) 1-в-1 по фото (в нужном цвете рам).
+   - Если фото нет — построй чистые современные окна без лишних рамок и переплётов.
+   - Раздели на 3 отдельные группы DiyInstance: «Оконные рамы», «Стекло окон» (прозрачное стекло seekId: '1f9ddc12-654b-4067-8f13-eb82ba008198'), «Подоконники (без ушек)».
+6. ПОСТАВЬ РАДИАТОРЫ ИЛИ ВНУТРИПОЛЬНЫЕ КОНВЕКТОРЫ:
+   - По Плану Л2 и Обмерному плану поставь у каждого окна радиаторы отопления (или внутрипольные конвекторы 'floor_convector' перед окнами в пол).
+7. Сделай контрольные скриншоты take_screenshot для самопроверки, сохрани слепок КООРДИНАТЫ_СЦЕНЫ.json в папку проекта и напиши мне сводную таблицу выставленных проёмов, высот и окон!${customNoteBlock}`
+        },
 
-Ты — Ведущий Дизайнер-Стилизатор и Арт-директор проекта ${pid}. Мы с тобой работаем в паре: ты отвечаешь за высокую эстетику, продуманный дизайн, красоту узлов и 100% попадание в пожелания заказчицы.
+        // ==================== 3. ДИЗАЙНЕР ====================
+        {
+          roleKey: 'designer',
+          situation: 'scratch',
+          step: '3️⃣ ДИЗАЙНЕР • ВАРИАНТ А: РАЗРАБОТКА КОНЦЕПЦИИ ПРОЕКТА С НУЛЯ',
+          chatName: `Дизайнер${pidSuffix}`,
+          roleTitle: `Дизайнер (Проект с нуля) — Разработка стильной концепции всей квартиры, подбор столярки, света и мебели с аргументацией из ТЗ`,
+          skill: `C:\\Users\\Анжелика\\.gemini\\config\\skills\\lav-02-task-architect\\SKILL.md`,
+          badgeColor: 'purple',
+          whenToUse: 'Отправляй Дизайнеру, когда начинаем новый проект с нуля (после того как Куратор собрал ПАСПОРТ_ПРОЕКТА.md). Он продумает красоту каждой комнаты и согласует с тобой.',
+          prompt: `🏷️ ПРАВИЛО НАЗВАНИЯ ЧАТА: Назови этот чат коротко: «Дизайнер${pidSuffix}».
 
+Ты — Ведущий Дизайнер-Стилизатор и Арт-директор проекта (Роль №2).
 Перед началом работы ОБЯЗАТЕЛЬНО прочитай свои регламенты:
 1. C:\\Users\\Анжелика\\.gemini\\config\\skills\\lav-02-task-architect\\SKILL.md (Часть 1 — Режим «Дизайнер проекта»)
 2. D:\\LAV_СИСТЕМА_АГЕНТОВ\\02_ПОСТАНОВЩИК_ТЗ_И_РЕФЕРЕНСЫ\\КАНОНЫ_ДИЗАЙНА_И_СТИЛИСТИКИ_LAV.md
 3. D:\\LAV_СИСТЕМА_АГЕНТОВ\\00_БИБЛИОТЕКА_ДИЗАЙНЕРСКИХ_РЕШЕНИЙ_АНЖЕЛИКИ\\КАТАЛОГ_ДИЗАЙНЕРСКИХ_ПРИЕМОВ.md
 4. D:\\LAV_СИСТЕМА_АГЕНТОВ\\00_ЭТАЛОНЫ_УЗЛОВ_И_ДЕТАЛЕЙ\\СТАНДАРТЫ_ЭРГОНОМИКИ_И_КОНСТРУКТИВА_МЕБЕЛИ.md
 
-📂 ПАПКА ПРОЕКТА: ${folder}
-- Готовый разбор от Куратора: ${folder}\\ПАСПОРТ_ПРОЕКТА.md
-- Мои замечания и правки после проверки: ${folder}\\${meta.fixesFile}
-- Итоговая планировка (План Л2): ${folder}\\${meta.planFile}
-- Папка референсов заказчицы: ${folder}\\Референсы_по_комнатам
+📂 РАБОЧАЯ ПАПКА ПРОЕКТА: ${folderStr}
 
-🎯 ТВОЯ ЗАДАЧА СЕЙЧАС (ПО ПОМЕЩЕНИЯМ: ${roomsStr}):
-1. Прочитай готовый разбор от Куратора (${folder}\\ПАСПОРТ_ПРОЕКТА.md) и файл моих правок (${folder}\\${meta.fixesFile}).
-2. Открой ГЛАЗАМИ через read_file итоговый План Л2, фото-референсы заказчицы в ${folder}\\Референсы_по_комнатам и текущие скриншоты комнат (${folder}\\ФИНАЛ_${pid}_*.png или ЭСКИЗ_*.png).
-3. Создай в папке проекта свою дизайнерскую папку:
-   👉 ${folder}\\ДИЗАЙН_КОНЦЕПЦИЯ_И_РЕФЕРЕНСЫ\\ (с подпапками по помещениям).
-4. Проведи глубокий ЭСТЕТИЧЕСКИЙ РАЗБОР каждого помещения из списка (${roomsStr}):
-   - Честно оцени с точки зрения профессионального дизайна и эстетики: что сейчас выглядит грубовато, топорно, скучно или некрасиво (например: некрасивые полочки в гостиной, скучная пластика стен/мебели, непродуманные узлы в санузлах, пропорции зеркал/шкафов), а что уже сделано хорошо и трогать не нужно.
-   - Предложи мне конкретные, стильные и красивые дизайнерские решения, как обыграть каждую проблемную зону!
-   - Подбери и сохрани в папку ${folder}\\ДИЗАЙН_КОНЦЕПЦИЯ_И_РЕФЕРЕНСЫ\\ визуальные референсы (из референсов самой заказчицы, из нашей Библиотеки дизайнерских решений Анжелики или найди свежие идеи в Pinterest / поиске) — включая решения по столярным узлам, фасадам, полкам, зеркалам, а также референсы по люстрам, подвесным светильникам и бра!
-5. 🚨 ЖЕЛЕЗНОЕ ПРАВИЛО — 100% АРГУМЕНТАЦИЯ КАЖДОГО ПРЕДЛОЖЕНИЯ:
-   - Каждое решение, которое ты мне предлагаешь, ты ОБЯЗАН чётко аргументировать: почему ты предлагаешь именно его — со ссылкой на конкретный пункт Технического Задания, Брифа, Анкеты, слова заказчицы на Созвоне или её конкретный фото-референс (например: «Предлагаю обыграть этот узел так-то, потому что на референсе клиента [путь] и на созвоне заказчица просила такой уют / такой оттенок / такую фрезеровку...»). Никаких предложений «с потолка» вопреки Плану Л2 и ТЗ!${customNoteBlock}
+🎯 ТВОЯ ЗАДАЧА СЕЙЧАС (КОНЦЕПЦИЯ ПРОЕКТА С НУЛЯ):
+1. Прочитай ПАСПОРТ_ПРОЕКТА.md и открой ГЛАЗАМИ через read_file Итоговый План Л2 и все фото-референсы заказчика в папке проекта.
+2. Создай в папке проекта папку ДИЗАЙН_КОНЦЕПЦИЯ_И_РЕФЕРЕНСЫ (с подпапками по комнатам).
+3. По каждому помещению предложи мне продуманную, стильную и красивую дизайн-концепцию:
+   - Архитектура и пластика корпусной мебели (какие фасады, фрезеровки, ручки, открытые полки с подсветкой, зеркала, оформление ТВ-зоны, кухонного фартука, раскладка плитки и тумб в санузлах);
+   - Конкретные модели люстр, подвесных светильников, бра, стульев и мягкой мебели (подбери превью из папок Избранного Анжелики и базы 3D Sky Pro).
+4. 🚨 ЖЕЛЕЗНОЕ ПРАВИЛО — 100% АРГУМЕНТАЦИЯ ИЗ ТЗ:
+   - Каждое решение аргументируй ссылкой на конкретный пункт Брифа, Анкеты, слова заказчика на Созвоне или его фото-референс! Никаких шаблонных решений вопреки Плану Л2.${customNoteBlock}
+5. Покажи мне свои предложения по комнатам с кликабельными ссылками на референсы и превью моделей для согласования!`
+        },
+        {
+          roleKey: 'designer',
+          situation: 'fixes',
+          step: '3️⃣ ДИЗАЙНЕР • ВАРИАНТ Б: КОГДА ВНОСИМ ПРАВКИ И УЛУЧШАЕМ РЕШЕНИЯ',
+          chatName: `Дизайнер${pidSuffix}`,
+          roleTitle: `Дизайнер (По правкам) — Эстетический разбор правок, предложение красивых решений по проблемным узлам и подбор света/мебели`,
+          skill: `C:\\Users\\Анжелика\\.gemini\\config\\skills\\lav-02-task-architect\\SKILL.md`,
+          badgeColor: 'yellow',
+          whenToUse: 'Отправляй Дизайнеру, когда по проекту есть правки (от тебя или от клиента) или когда текущая сборка выглядит грубовато и нужно придумать, как красиво обыграть узлы.',
+          prompt: `🏷️ ПРАВИЛО НАЗВАНИЯ ЧАТА: Назови этот чат коротко: «Дизайнер${pidSuffix}».
 
-Жду от тебя структурированный разбор по помещениям с кликабельными ссылками на подобранные референсы и твоей аргументацией. Мы с тобой обсудим каждое решение, и когда я скажу «Утверждаю» — ты зафиксируешь итог в файл ${folder}\\ДИЗАЙН_КОНЦЕПЦИЯ_УТВЕРЖДЕНА.md для передачи в Блендер-КАД!`
-          },
-          {
-            step: '🚀 ШАГ 2Б (ПРЯМО В ЧАТ ДИЗАЙНЕРА — КОГДА ВЫ УЖЕ ДОГОВОРИЛИСЬ И ТЫ ДАЁШЬ ЕМУ /GOAL НА ДОРАБОТКУ ПРОЕКТА!)',
-            chatName: `Дизайнер ${pid}`,
-            roleTitle: `Дизайнер ${pid} (/goal прямо в его чате) — Блендер + Проверка Куратором -> Скрытый код Моделлера -> Вставка за 1 раз + Комплектатор + Финальный Куратор`,
-            skill: `C:\\Users\\Анжелика\\.gemini\\config\\skills\\lav-02-task-architect\\SKILL.md`,
-            badgeColor: 'green',
-            whenToUse: 'Когда вы с Дизайнером согласовали решения и выбрали светильники/стулья — отправляй этот /goal прямо ему в чат! Он сначала проверит концепты в Blender с Куратором, напишет код скрыто (не мешая другим проектам), а затем за 1 раз вставит, расставит мебель/декор и проверит Куратором.',
-            prompt: `/goal
-Мы с тобой согласовали решения по проекту ${pid}.
-Вот мои корректировки по твоим предложениям:
-- [ДОПИШИ СЮДА СВОИ КОРРЕКТИРОВКИ]${customNoteBlock}
-
-Зафиксируй наши итоговые решения и выбранные модели светильников, бра, стульев и мебели в файл ${folder}\\ДИЗАЙН_КОНЦЕПЦИЯ_И_РЕФЕРЕНСЫ\\ДИЗАЙН_КОНЦЕПЦИЯ_УТВЕРЖДЕНА.md и доведи проект ${pid} до полностью собранной квартиры, запуская субагентов строго по очереди (invoke_subagent с TypeName: "self"):
-
-1. КОНЦЕПТЫ В BLENDER + ПРОВЕРКА КУРАТОРОМ ПО ПЛАНУ Л2:
-- Сначала по изменяемым помещениям (${roomsStr}, особенно по кухне-гостиной и зонам с правками) сделай 3D-концепты в Blender (ЭСКИЗ_<КОМНАТА>.png).
-- Обязательно посмотри их сам и запусти субагента «Куратор ${pid}» (скилл: lav-04-project-auditor), чтобы он проверил концепты по итоговой планировке (${meta.planFile}) и ТЗ. Если что-то не соответствует — исправь концепт в Blender до полного утверждения.
-
-2. СКРЫТАЯ ПОДГОТОВКА КОДА (БЕЗ ВСТАВКИ В HOMESTYLER!):
-- Мы параллельно работаем над несколькими проектами, поэтому НЕ лезь сразу моделировать в браузер!
-- Когда концепты утверждены Куратором, запусти субагента «Моделлер ${pid}» (скиллы: lav-03b-joinery-modeler и lav-03c-ceilings-lighting), чтобы он СКРЫТО написал готовый пакетный код .js в файл (${folder}\\UPDATE_JOINERY_${pid}.js):
-  • точечно обновить корпусную мебель по утверждённым концептам (не стирая готовые комнаты и соблюдая поэлементную группировку DiyInstance);
-  • потолки в проекте уже есть — их нужно только подкорректировать в коде с учётом изменившейся мебели.
-
-3. ВСТАВКА ЗА 1 РАЗ + КОМПЛЕКТАТОР + ФИНАЛЬНАЯ ПРОВЕРКА КУРАТОРОМ:
-- Когда весь код готов и в Homestyler открыт проект ${pid} — вставь обновлённую мебель и поправленные потолки в сцену ЗА ОДИН РАЗ.
-- Сразу после этого запусти субагента «Комплектатор ${pid}» (скилл: lav-03d-skypro-decorator), чтобы он расставил все выбранные нами светильники, стулья, мягкую мебель, технику, сантехнику и весь декор (на открытых полочках и по всем комнатам).
-- В конце запусти субагента «Куратор ${pid}» (скиллы: lav-01-project-keeper и lav-04-project-auditor), чтобы он проверил всю собранную квартиру по планировке (${meta.planFile}), анкете и ТЗ. Если что-то не соответствует — отправь на доработку нужному субагенту и перепроверь Куратором, пока квартира не будет полностью готова на 100%!`
-          },
-          {
-            step: 'ШАГ 3 (ПОСЛЕ ТОГО КАК ТЫ УТВЕРДИЛА РЕШЕНИЯ С ДИЗАЙНЕРОМ)',
-            chatName: `Концептуалист ${pid}`,
-            roleTitle: `Концептуалист ${pid} — Новые 3D-концепты в Blender CAD ТОЛЬКО по изменяемым комнатам`,
-            skill: `C:\\Users\\Анжелика\\.gemini\\config\\skills\\lav-02-task-architect\\SKILL.md`,
-            badgeColor: 'yellow',
-            whenToUse: 'Когда вы с Дизайнером согласовали все правки и красивые решения — запускай Концептуалиста. Он делает новые 3D-концепты в Blender CAD только по тем комнатам, которые вы решили поменять (не трогая готовые комнаты!).',
-            prompt: `🏷️ ПРАВИЛО НАЗВАНИЯ ЧАТА: Обязательно назови этот чат коротко (2 слова): «Концептуалист ${pid}».
-
-Ты — Концептуалист Блендер-КАД режима по проекту ${pid} (Роль №2Б).
+Ты — Ведущий Дизайнер-Стилизатор и Арт-директор проекта (Роль №2).
 Перед началом работы ОБЯЗАТЕЛЬНО прочитай:
-1. C:\\Users\\Анжелика\\.gemini\\config\\skills\\lav-02-task-architect\\SKILL.md (Часть 2 — Режим «Концептуалист»)
-2. D:\\LAV_СИСТЕМА_АГЕНТОВ\\00_ЭТАЛОНЫ_УЗЛОВ_И_ДЕТАЛЕЙ\\СТАНДАРТЫ_ЭРГОНОМИКИ_И_КОНСТРУКТИВА_МЕБЕЛИ.md
-
-📂 ПАПКА ПРОЕКТА: ${folder}
-- Утверждённая нами с Дизайнером концепция и правки: ${folder}\\ДИЗАЙН_КОНЦЕПЦИЯ_УТВЕРЖДЕНА.md (и ${folder}\\${meta.fixesFile})
-- Паспорт проекта и координаты: ${folder}\\ПАСПОРТ_ПРОЕКТА.md и ${folder}\\КООРДИНАТЫ_СЦЕНЫ.json
-- Итоговая планировка (План Л2): ${folder}\\${meta.planFile}
-
-🎯 ТВОЯ ЗАДАЧА СЕЙЧАС (ТОЧЕЧНОЕ ОБНОВЛЕНИЕ БЛЕНДЕР-КОНЦЕПТОВ):
-1. Мы с Дизайнером проекта ${pid} утвердили правки и новые дизайнерские решения.
-2. ⛔ ПРАВИЛО ЛОКАЛЬНОСТИ: перестраивай и генерируй новые 3D CAD-виды ТОЛЬКО по следующим помещениям:
-   👉 ${roomsStr}
-   (Помещения, по которым мы не вносили изменений, перестраивать НЕ НУЖНО!)
-3. Строго соблюдай последовательность модулей по Плану Л2 и все инженерные правила:
-   - Пенал с духовкой: снизу ящик 350 мм со строго интегрированной ручкой, над ним духовка 600 мм, выше СВЧ;
-   - Остров кухни: свес столешницы 250–300 мм со стороны стульев;
-   - Деление верхних шкафов на отдельные дверки красивым шагом; ящики — отдельными накладными элементами; закрытые шкафы — без внутрянки;
-   - Поверх электрощита (ЩР) и роутера (ЩС) — открывающаяся дверца.
-4. Запусти рендер новых эскизов через Blender 5.2 в фоновом режиме (по 4 сек на кадр), открой каждую картинку ЭСКИЗ_<КОМНАТА>.png глазами через read_file, проверь гео-пропорции и обнови соответствующие файлы ТЗ_МОДЕЛЛЕРУ_<КОМНАТА>.md (с чётким разделением на Таблицу А «Строим в DIY» и Таблицу Б «Ставим готовой 3D-моделью»).${customNoteBlock}
-5. Покажи готовые новые картинки мне в чате для согласования с тобой и с Куратором ${pid}!`
-          },
-          {
-            step: 'ШАГ 4 (ПРОВЕРКА БЛЕНДЕР-КОНЦЕПТОВ КУРАТОРОМ ПЕРЕД 3D)',
-            chatName: `Куратор ${pid}`,
-            roleTitle: `Куратор ${pid} — Сверка новых Блендер-концептов с ТЗ, Анкетой и Планом Л2`,
-            skill: `C:\\Users\\Анжелика\\.gemini\\config\\skills\\lav-04-project-auditor\\SKILL.md`,
-            badgeColor: 'blue',
-            whenToUse: 'Отправь в чат «Куратор», чтобы он проверил новые картинки от Концептуалиста по всем пунктам ТЗ и Плана Л2 перед запуском Моделлера.',
-            prompt: `🏷️ ПРАВИЛО НАЗВАНИЯ ЧАТА: «Куратор ${pid}».
-
-Проведи строгую проверку (Рубеж ОТК №1) новых 3D-концептов Blender CAD от Концептуалиста по проекту ${pid} (помещения: ${roomsStr}).
-Скиллы проверки:
-- C:\\Users\\Анжелика\\.gemini\\config\\skills\\lav-04-project-auditor\\SKILL.md
-- C:\\Users\\Анжелика\\.gemini\\config\\skills\\lav-01-project-keeper\\SKILL.md
-
-1. Открой ГЛАЗАМИ через read_file:
-   - Итоговый План Л2 (${folder}\\${meta.planFile});
-   - Утверждённую концепцию Дизайнера (${folder}\\ДИЗАЙН_КОНЦЕПЦИЯ_УТВЕРЖДЕНА.md) и файл правок (${folder}\\${meta.fixesFile});
-   - Новые картинки ЭСКИЗ_<КОМНАТА>.png в папке ${folder}.
-2. Сверь каждый модуль слева направо:
-   - Всё ли на 100% соответствует нашему ТЗ, Брифам, Анкете, Созвону, Плану Л2 и согласованным с Дизайнером решениям?
-   - Соблюдены ли стандарты эргономики (ящик 350 мм под духовкой, свес острова, деление фасадов, отсутствие коротких ручек, доступ к ЩР/ЩС, отступ ниши штор от радиатора +100 мм)?${customNoteBlock}
-3. Если всё соответствует — скопируй/утверди файлы как ЭСКИЗ_УТВЕРЖДЕН_<КОМНАТА>.png и дай разрешение на запуск «Моделлер ${pid}». Если нашёл расхождение — выпиши точный пункт для исправления.`
-          },
-          {
-            step: 'ШАГ 5А (МОДЕЛЛЕР — ФАЗА 1: СНАЧАЛА МОДЕЛИРУЕТ КОДОМ СКРЫТО!)',
-            chatName: `Моделлер ${pid}`,
-            roleTitle: `Моделлер ${pid} (Фаза 1) — Написание чистого кода столярки скрыто в файл .js (без вставки)`,
-            skill: `C:\\Users\\Анжелика\\.gemini\\config\\skills\\lav-03b-joinery-modeler\\SKILL.md`,
-            badgeColor: 'green',
-            whenToUse: 'Когда все помещения согласованы с тобой и Куратором — отправляем Моделлеру. На Фазе 1 он сначала спокойно и чисто пишет весь JS-код в файл, не трогая открытую сцену, и ждёт твоей команды «Вставляй!».',
-            prompt: `🏷️ ПРАВИЛО НАЗВАНИЯ ЧАТА: Обязательно назови этот чат коротко (2 слова): «Моделлер ${pid}».
-
-Ты — Узкий Мастер Столярки и Корпусной Мебели в Homestyler по проекту ${pid} (Роль №3Б).
-Перед началом работы ОБЯЗАТЕЛЬНО прочитай свой скилл и стандарты:
-1. C:\\Users\\Анжелика\\.gemini\\config\\skills\\lav-03b-joinery-modeler\\SKILL.md
-2. C:\\Users\\Анжелика\\.gemini\\config\\skills\\lav-03c-ceilings-lighting\\SKILL.md
+1. C:\\Users\\Анжелика\\.gemini\\config\\skills\\lav-02-task-architect\\SKILL.md (Часть 1 — Режим «Дизайнер проекта»)
+2. D:\\LAV_СИСТЕМА_АГЕНТОВ\\02_ПОСТАНОВЩИК_ТЗ_И_РЕФЕРЕНСЫ\\КАНОНЫ_ДИЗАЙНА_И_СТИЛИСТИКИ_LAV.md
 3. D:\\LAV_СИСТЕМА_АГЕНТОВ\\00_ЭТАЛОНЫ_УЗЛОВ_И_ДЕТАЛЕЙ\\СТАНДАРТЫ_ЭРГОНОМИКИ_И_КОНСТРУКТИВА_МЕБЕЛИ.md
 
-📂 ПАПКА ПРОЕКТА: ${folder}
-- Утверждённые эскизы: ЭСКИЗ_УТВЕРЖДЕН_<КОМНАТА>.png в ${folder}
-- Утверждённая концепция и правки: ${folder}\\ДИЗАЙН_КОНЦЕПЦИЯ_УТВЕРЖДЕНА.md и ${folder}\\${meta.fixesFile}
-- Координаты сцены: ${folder}\\КООРДИНАТЫ_СЦЕНЫ.json
+📂 РАБОЧАЯ ПАПКА ПРОЕКТА: ${folderStr}
+🚪 ЗАТРАГИВАЕМЫЕ ПОМЕЩЕНИЯ: ${roomsStr}
 
-🎯 ТВОЯ ЗАДАЧА — ФАЗА 1 (СКРЫТОЕ МОДЕЛИРОВАНИЕ КОДОМ БЕЗ ВСТАВКИ В СЦЕНУ!):
-Напиши и сохрани в папку ${folder} полностью готовый, выверенный пакетный JS-скрипт точечного обновления столярки и потолков (${folder}\\UPDATE_JOINERY_${pid}.js) для помещений:
-👉 ${roomsStr}
+🎯 ТВОЯ ЗАДАЧА СЕЙЧАС (ПРОРАБОТКА ПРАВОК И ЭСТЕТИКИ):
+1. Изучи ПАСПОРТ_ПРОЕКТА.md, список правок в папке проекта, Итоговый План Л2, фото-референсы заказчика и текущие скриншоты комнат.
+2. По затрагиваемым помещениям (${roomsStr}) оцени:
+   - Что уже сделано хорошо и трогать НЕ нужно;
+   - Что сейчас выглядит грубовато, скучно или требует исправления по нашим правкам (столярка, полки, шкафы, зеркала, санузлы, свет, мебель).
+3. Предложи мне красивые, стильные решения по каждому исправляемому узлу, сохрани подобранные референсы и превью светильников/бра/стульев/мебели (из Избранного Анжелики и 3D Sky Pro) в папку ДИЗАЙН_КОНЦЕПЦИЯ_И_РЕФЕРЕНСЫ.
+4. Каждое предложение строго аргументируй из ТЗ, Анкеты, Созвона и референсов заказчика!${customNoteBlock}
 
-🚨 ОБЯЗАТЕЛЬНЫЕ ЖЕЛЕЗНЫЕ ПРАВИЛА В КОДЕ:
-1. ⛔ ЛОКАЛЬНОСТЬ: НЕ стирай всю сцену целиком! Заменяй и перестраивай ТОЛЬКО те комнаты/группы DiyInstance, которые входят в утверждённый список правок (${roomsStr}), сохраняя готовую работу в остальных зонах.
-2. 🗂️ ПОЭЛЕМЕНТНАЯ ГРУППИРОВКА (DiyInstance):
-   - Каждый предмет мебели = ОТДЕЛЬНЫЙ набор групп! Если в комнате 2 шкафа (или шкаф и комод/тумба) — у Шкафа 1 свои группы («Шкаф 1 - Корпус», «Шкаф 1 - Фасады», «Шкаф 1 - Ручки»), у Шкафа 2 свои («Шкаф 2 - Корпус», «Шкаф 2 - Фасады», «Шкаф 2 - Ручки»).
-   - Кухня: отдельно «Нижний корпус», отдельно «Нижние фасады» (выдвижные ящики — отдельными накладными элементами!), отдельно «Верхний корпус», отдельно «Верхние фасады», отдельно «Ручки», «Столешница», «Фартук», «Подсветка LED».
-   - Зеркало: 3 отдельные группы («Рамка», «Зеркальное полотно», «Подсветка LED»). Никогда не сливай весь свет комнаты в одну группу!
-3. 🚪 ЗАКРЫТЫЕ ШКАФЫ — БЕЗ ВНУТРЯНКИ: если фасады шкафа закрыты, внутренние полки и штанги внутри него НЕ строить (shelvesZ: [])!
-4. ✨ ОБЯЗАТЕЛЬНОЕ СГЛАЖИВАНИЕ «3D ФИЛЕ = 3 ММ»: ко всем фасадам (даже прямым), ручкам и молдингам применять frame.roundedFacade(..., 3.0) / HSJoinery.filletShell(sh, 3.0). Никаких острых углов 90°!
-5. 🚫 ЗАПРЕТ НА КОРОТКИЕ РУЧКИ И DIY-МЕБЕЛЬ/СВЕТ: никаких самовольных коротких ручек (150–400 мм) на инсталляциях, витринах, антресолях и средних секциях! На межкомнатных и арочных дверях ручки ставить С ОБЕИХ СТОРОН полотна! Категорически НЕ моделировать в DIY люстры, бра, подвесы, торшеры, стулья, кресла, кровати, диваны, шторы, робот-пылесос, плиту, духовку и сантехнику!${customNoteBlock}
+Жду твой структурированный разбор с кликабельными ссылками для согласования!`
+        },
+        {
+          roleKey: 'designer',
+          situation: 'goal',
+          step: '🚀 3️⃣ ДИЗАЙНЕР • ВАРИАНТ В: /GOAL ПРЯМО В ЧАТ ДИЗАЙНЕРА (КОГДА МЫ С НИМ ВСЁ ОПРЕДЕЛИЛИ!)',
+          chatName: `Дизайнер${pidSuffix}`,
+          roleTitle: `Дизайнер (/goal после согласования) — Сам запускает Мастера Блендер -> проверка Куратором -> скрытый код Моделлера -> вставка за 1 раз + Комплектатор/Декоратор + Финальный Куратор`,
+          skill: `C:\\Users\\Анжелика\\.gemini\\config\\skills\\lav-02-task-architect\\SKILL.md`,
+          badgeColor: 'green',
+          whenToUse: 'Когда вы с Дизайнером в чате всё обсудили и определили решения — отправляй этот /goal прямо ему в чат! Он сам организует Блендер, проверку Куратором, скрытый код Моделлера, комплектацию и финальный ОТК.',
+          prompt: `/goal
+Мы с тобой согласовали дизайн-решения по проекту.
+Вот мои финальные комментарии и корректировки:
+- [ДОПИШИ СЮДА СВОИ КОРРЕКТИРОВКИ ИЛИ ОСТАВЬ КАК ЕСТЬ]${customNoteBlock}
 
-⚠️ СЕЙЧАС (НА ФАЗЕ 1) В HOMESTYLER СЦЕНУ НЕ ВСТАВЛЯЙ! Только напиши и проверь сам код в файле ${folder}\\UPDATE_JOINERY_${pid}.js и напиши мне: «Код полностью готов и проверен по всем пунктам. Жду твою команду на вставку в сцену!»`
-          },
-          {
-            step: 'ШАГ 5Б (МОДЕЛЛЕР — ФАЗА 2: КОМАНДА «ТЫ НАКОДИЛ, МОЛОДЕЦ — ВСТАВЛЯЙ ТЕПЕРЬ!»)',
-            chatName: `Моделлер ${pid}`,
-            roleTitle: `Моделлер ${pid} (Фаза 2) — Вставка готового кода в сцену Homestyler и скриншоты`,
-            skill: `C:\\Users\\Анжелика\\.gemini\\config\\skills\\lav-03b-joinery-modeler\\SKILL.md`,
-            badgeColor: 'green',
-            whenToUse: 'Отправь это короткое сообщение в тот же чат «Моделлер», когда он написал код на Фазе 1.',
-            prompt: `Всё супер, ты накодил, молодец — ВСТАВЛЯЙ ТЕПЕРЬ в открытую 3D-сцену Homestyler (порт 9222)!
+Зафиксируй все наши утверждённые решения и выбранные модели светильников, бра, стульев и мебели в файл ДИЗАЙН_КОНЦЕПЦИЯ_И_РЕФЕРЕНСЫ\\ДИЗАЙН_КОНЦЕПЦИЯ_УТВЕРЖДЕНА.md и доведи проект до полностью собранной квартиры, запуская профильных субагентов строго по очереди (invoke_subagent с TypeName: "self"):
 
-1. Подключи библиотеку window.HSJoinery (http://127.0.0.1:3033/hs-joinery.js) и выполни свой готовый скрипт ${folder}\\UPDATE_JOINERY_${pid}.js через evaluate_script с параметром "waitForStableDom": false и обязательным вызовом createModelMeshAsync().
-2. Выстави камеру по очереди в каждое обновлённое помещение (${roomsStr}), сделай скриншоты через take_screenshot, открой их глазами через read_file и убедись, что нет ни одной вывернутой в стену двери, ни одного пересечения и все группы DiyInstance названы раздельно.
-3. Сохрани финальные скриншоты в папку ${folder} для проверки Куратором ${pid}!`
-          },
-          {
-            step: 'ШАГ 6 (ФИНАЛЬНАЯ ПРОВЕРКА КУРАТОРОМ ВСЕЙ СЦЕНЫ, ПЛИНТУСОВ, КАРНИЗОВ И АНКЕТ)',
-            chatName: `Куратор ${pid}`,
-            roleTitle: `Куратор ${pid} — Полный аудит 3D-сцены в Homestyler по ТЗ, Плану Л2 и всем анкетам`,
-            skill: `C:\\Users\\Анжелика\\.gemini\\config\\skills\\lav-04-project-auditor\\SKILL.md`,
-            badgeColor: 'blue',
-            whenToUse: 'Запускай сразу после того, как Моделлер вставил изменения в сцену. Куратор проверит каждую мелочь перед тем, как ты доставишь мебель.',
-            prompt: `🏷️ ПРАВИЛО НАЗВАНИЯ ЧАТА: «Куратор ${pid}».
+1. 3D-КОНЦЕПТЫ В BLENDER + ПРОВЕРКА КУРАТОРОМ ПО ПЛАНУ Л2:
+- Сначала запусти субагента «Мастер Блендер» (или построй сам в Blender) 3D-концепты (ЭСКИЗ_<КОМНАТА>.png) по нужным помещениям (${roomsStr}, особенно кухня-гостиная и узлы с изменениями).
+- Обязательно посмотри концепты сам и отправь их субагенту «Куратор» (скилл: lav-04-project-auditor), чтобы он строго проверил их по итоговому Плану Л2 и ТЗ (можно или нельзя). Если есть замечания — исправь концепт в Blender до одобрения Куратором.
 
-Моделлер вставил обновлённую 3D-модель в сцену Homestyler по проекту ${pid}.
-Проведи полную независимую проверку 3D-сцены (Рубеж ОТК №2 — режим READ-ONLY) строго по скиллу:
-- C:\\Users\\Анжелика\\.gemini\\config\\skills\\lav-04-project-auditor\\SKILL.md
+2. СКРЫТАЯ ПОДГОТОВКА КОДА МОДЕЛЛЕРОМ (НЕ ТРОГАЯ БРАУЗЕР ВО ВРЕМЯ НАПИСАНИЯ!):
+- Мы параллельно работаем над несколькими проектами, поэтому НЕ лезь сразу моделировать в браузер!
+- Когда концепты одобрены Куратором, запусти субагента «Моделлер» (скиллы: lav-03b-joinery-modeler и lav-03c-ceilings-lighting), чтобы он СКРЫТО написал готовый пакетный код .js в файл (UPDATE_JOINERY.js):
+  • если мы вносим ПРАВКИ — менять ТОЛЬКО те элементы и узлы, которые мы озвучили (НЕ перестраивая всю сцену целиком!), а существующие потолки только подкорректировать под изменившуюся мебель;
+  • если мы собираем СЦЕНУ С НУЛЯ — подготовить полный код всей корпусной мебели, потолков, шторных ниш (+100 мм от радиатора), карнизов и света;
+  • строго соблюдать поэлементную группировку DiyInstance (каждый шкаф/тумба отдельно + свои Корпус/Фасады/Ручки/LED), отсутствие внутрянки в закрытых шкафах и «3D филе = 3 мм».
 
-📂 СВЕРЯЙ НАПРЯМУЮ С ИСХОДНИКАМИ В ПАПКЕ ${folder}:
-1. Итоговое планировочное решение (${meta.planFile}) — все ли модули кухни, санузлов, спален и гостиной стоят строго на своих местах и в своих размерах?
-2. Анкета визуализации (${meta.anketaFile}), Бриф и Созвон — проверены ли:
-   - Плинтуса, потолочные карнизы / теневые профили, высоты потолка;
-   - Ручки на дверях (с обеих сторон полотна!) и отсутствие запрещённых коротких ручек (150–400 мм);
-   - Отступ шторных ниш от радиаторов (+100 мм зазора);
-   - Наличие сглаживания «3D филе = 3 мм» на фасадах, ручках и молдингах;
-   - Поэлементная группировка DiyInstance в сцене (каждый шкаф/тумба отдельно + внутри отдельные группы Корпус / Фасады / Ручки / Подсветка LED);
-   - Отсутствие внутрянки в закрытых шкафах и отсутствие самодельных светильников/стульев/сантехники в DIY;
-   - 100% соответствие нашей исходной задумке с Дизайнером (${folder}\\ДИЗАЙН_КОНЦЕПЦИЯ_УТВЕРЖДЕНА.md) и списку правок (${folder}\\${meta.fixesFile}).${customNoteBlock}
+3. ВСТАВКА ЗА 1 РАЗ + КОМПЛЕКТАТОР / ДЕКОРАТОР + ФИНАЛЬНАЯ ПРОВЕРКА КУРАТОРОМ:
+- Когда весь код готов и в Homestyler открыт наш проект — вставь корпусная мебель и потолки в сцену ЗА ОДИН РАЗ.
+- Сразу после этого запусти субагентов «Комплектатор» и «Декоратор» (скилл: lav-03d-skypro-decorator), чтобы расставить все выбранные нами светильники, стулья, мебель, базовую технику, сантехнику и весь декор на полках и по комнатам.
+- В финале запусти субагента «Куратор» (скиллы: lav-01-project-keeper и lav-04-project-auditor), чтобы он проверил всю собранную квартиру по Плану Л2, Анкете и ТЗ. Если что-то не соответствует — отправь на доработку нужному субагенту и перепроверь Куратором до 100% готовности!`
+        },
 
-Запиши подробный отчёт в ${folder}\\АКТ_ОТК_РУБЕЖ_2_${pid}.md и напиши мне в чат: всё ли соответствует на 100% (тогда я перехожу к расстановке мебели) или какие точечные штрихи нужно поправить.`
-          }
-        ];
-      } else if (currentAhMode === 'scratch') {
-        banner.innerHTML = `
-          <div style="font-weight:900; color:#fde68a; margin-bottom:4px;">🆕 ПОЛНОЕ ВЕДЕНИЕ ПРОЕКТА С НУЛЯ (ОТ ПУСТОЙ СЦЕНЫ ДО ГОТОВОГО 3D — НАПРИМЕР, ПРОЕКТ ${pid}):</div>
-          <div>
-            <b>0. <code>Окна ${pid}</code></b> (высоты стен, проёмы, окна, конвекторы по Обмеру и Плану Л2) ➔
-            <b>1. <code>Куратор ${pid}</code></b> (изучает всю папку с нуля и собирает <code>ПАСПОРТ_ПРОЕКТА.md</code>) ➔
-            <b>2. <code>Дизайнер ${pid}</code></b> (разрабатывает с тобой концепцию всей квартиры + свою папку референсов и Pinterest с аргументацией из ТЗ) ➔
-            <b>3. <code>Мастер Блендер ${pid}</code></b> (строит 3D CAD-виды всех комнат) ➔
-            <b>4. <code>Куратор ${pid}</code></b> (проверяет эскизы) ➔
-            <b>5. <code>Моделлер ${pid}</code></b> (сначала код скрыто -> затем вставка в Homestyler) ➔
-            <b>6. <code>Потолки ${pid}</code></b> ➔
-            <b>7. <code>Куратор ${pid}</code></b> (проверка всей сцены, анкет, карнизов, плинтусов) ➔
-            <b>8. <code>Комплектатор ${pid}</code></b> (или ты доставляешь мебель сама).
-          </div>
-        `;
+        // ==================== 4. МАСТЕР БЛЕНДЕР ====================
+        {
+          roleKey: 'blender',
+          situation: 'scratch',
+          step: '4️⃣ МАСТЕР БЛЕНДЕР • ВАРИАНТ А: 3D-КОНЦЕПТЫ ВСЕЙ КВАРТИРЫ С НУЛЯ',
+          chatName: `Мастер Блендер${pidSuffix}`,
+          roleTitle: `Мастер Блендер (С нуля) — Построение 3D CAD-видов всех помещений квартиры строго по Плану Л2 и концепции Дизайнера`,
+          skill: `C:\\Users\\Анжелика\\.gemini\\config\\skills\\lav-02-task-architect\\SKILL.md`,
+          badgeColor: 'blue',
+          whenToUse: 'Используй при ведении проекта с нуля, чтобы быстро построить в Blender наглядные 3D-эскизы всех комнат перед моделированием в Homestyler.',
+          prompt: `🏷️ ПРАВИЛО НАЗВАНИЯ ЧАТА: Назови этот чат коротко: «Мастер Блендер${pidSuffix}».
 
-        cards = [
-          {
-            step: 'ШАГ 0 (ЕСЛИ СЦЕНА В HOMESTYLER НОВАЯ И ПУСТАЯ ИЛИ НОВАЯ ПЛАНИРОВКА)',
-            chatName: `Окна ${pid}`,
-            roleTitle: `Окна ${pid} — Высоты стен, проёмы, окна, ригели и радиаторы/конвекторы`,
-            skill: `C:\\Users\\Анжелика\\.gemini\\config\\skills\\lav-03a-windows-openings\\SKILL.md`,
-            badgeColor: 'yellow',
-            whenToUse: 'Запускай самым первым, когда начертила стены и пустые проёмы в Homestyler (например, сейчас для перестройки 0593 по новой планировке 0593 (1).pdf).',
-            prompt: `🏷️ ПРАВИЛО НАЗВАНИЯ ЧАТА: Обязательно назови этот чат коротко (2 слова): «Окна ${pid}».
-
-Ты — Мастер Архитектурной Коробки, Высот, Окон и Радиаторов по проекту ${pid} (ЭТАП 0 — Роль №3А).
-Перед началом работы ОБЯЗАТЕЛЬНО прочитай свой скилл:
-- C:\\Users\\Анжелика\\.gemini\\config\\skills\\lav-03a-windows-openings\\SKILL.md
-
-📂 ПАПКА ПРОЕКТА: ${folder}
-- Итоговая планировка (План Л2): ${folder}\\${meta.planFile}
-- Обмерный план и фото с объекта: ${folder}\\${meta.measureFile}
-- Анкета визуализации: ${folder}\\${meta.anketaFile}
-
-🎯 ТВОЯ ЗАДАЧА СЕЙЧАС:
-1. Открой глазами через read_file Обмерный план, финальный План Л2 (${meta.planFile}) и фото с объекта (если есть в папке).
-2. Выровняй в открытой сцене Homestyler (порт 9222) высоты стен и пустых оконных проёмов строго по Обмерному плану (стены и входные/межкомнатные двери НЕ двигать!).
-3. Построй ригели/балки (если указаны на обмере) и смоделируй окна (по фото с объекта или чистые без рамок, если фото нет).
-4. Поставь радиаторы или внутрипольные конвекторы строго по Плану Л2 и Анкете (внутрипольные конвекторы бери из «Избранное -> по умолчанию» floor_convector: bbf509c9-a2e3-48d7-af8b-cfea59ce3cf8).
-5. Сними точный слепок координат сцены в файл ${folder}\\КООРДИНАТЫ_СЦЕНЫ.json, сделай контрольный скриншот take_screenshot и доложи о готовности!${customNoteBlock}`
-          },
-          {
-            step: 'ШАГ 1 (СБОР ВСЕЙ ВВОДНОЙ ИНФОРМАЦИИ ПО ПРОЕКТУ С НУЛЯ)',
-            chatName: `Куратор ${pid}`,
-            roleTitle: `Куратор ${pid} — Полное изучение Брифа, Анкеты, Созвона, Плана Л2 и создание ПАСПОРТ_ПРОЕКТА.md`,
-            skill: `C:\\Users\\Анжелика\\.gemini\\config\\skills\\lav-01-project-keeper\\SKILL.md`,
-            badgeColor: 'blue',
-            whenToUse: 'Куратор изучает все файлы проекта с нуля и готовит чистый, разжёванный ПАСПОРТ_ПРОЕКТА.md для Дизайнера.',
-            prompt: `🏷️ ПРАВИЛО НАЗВАНИЯ ЧАТА: Обязательно назови этот чат коротко (2 слова): «Куратор ${pid}».
-
-Ты — Главный Куратор проекта ${pid} (Роль №1).
-Перед началом работы ОБЯЗАТЕЛЬНО прочитай свой скилл:
-- C:\\Users\\Анжелика\\.gemini\\config\\skills\\lav-01-project-keeper\\SKILL.md
-
-📂 ПАПКА ПРОЕКТА: ${folder}
-- Итоговая планировка (План Л2): ${folder}\\${meta.planFile}
-- Обмерный план: ${folder}\\${meta.measureFile}
-- Анкета / Бриф / Созвон: ${folder}\\${meta.anketaFile}
-
-🎯 ТВОЯ ЗАДАЧА СЕЙЧАС (ПОЛНЫЙ СБОР ПРОЕКТА С НУЛЯ ДЛЯ ДИЗАЙНЕРА):
-1. Прочитай все документы в папке ${folder} (текст из PDF-анкет извлеки через pypdf, а графические листы Обмерного плана, финального Плана Л2 и КАЖДЫЙ фото-референс заказчика открой ГЛАЗАМИ через read_file!).
-   ⚠️ Если в папке несколько файлов планировок — обязательно проверь даты/штампы и бери ТОЛЬКО финальный утверждённый лист расстановки мебели (${meta.planFile})!
-2. Сними (или проверь) слепок координат открытой сцены Homestyler в файл ${folder}\\КООРДИНАТЫ_СЦЕНЫ.json.
-3. Создай исчерпывающий, чётко структурированный ${folder}\\ПАСПОРТ_ПРОЕКТА.md (и копию GEMINI.md), чтобы Дизайнер проекта работал сразу по твоему готовому разбору:
-   - Общая база квартиры: чистовая высота потолка, тип потолка и карнизов, плинтусы, двери, окна, конвекторы/радиаторы, цветовая база, металл фурнитуры и КАТЕГОРИЧЕСКИЕ ТАБУ клиента;
-   - По каждой комнате: точная цепочка модулей по Плану Л2 вдоль каждой стены (слева направо с размерами в мм), инженерные узлы (ЩР/ЩС, коллекторы, робот-пылесос), выжимка созвона и карта референсов (что именно нравится заказчику на каждом фото, а где референсов нет и Дизайнеру нужно предложить своё решение).${customNoteBlock}`
-          },
-          {
-            step: '⭐ ШАГ 2 (ДИЗАЙНЕР ПРОЕКТА С НУЛЯ — ФОРМУЛИРУЕТ КОНЦЕПЦИЮ ВСЕЙ КВАРТИРЫ С АРГУМЕНТАЦИЕЙ)',
-            chatName: `Дизайнер ${pid}`,
-            roleTitle: `Дизайнер ${pid} — Концепция всей квартиры с нуля + Папка референсов и Pinterest + Аргументация из ТЗ`,
-            skill: `C:\\Users\\Анжелика\\.gemini\\config\\skills\\lav-02-task-architect\\SKILL.md`,
-            badgeColor: 'purple',
-            whenToUse: 'Твой главный творческий диалог! Дизайнер берёт готовый разбор от Куратора, создаёт папку референсов (включая Pinterest, светильники, бра, столярку) и предлагает концепцию по всей квартире с аргументацией каждого решения.',
-            prompt: `🏷️ ПРАВИЛО НАЗВАНИЯ ЧАТА: Обязательно назови этот чат коротко (2 слова): «Дизайнер ${pid}».
-
-Ты — Ведущий Дизайнер-Стилизатор проекта ${pid}. Мы с тобой разрабатываем дизайн-концепцию всей квартиры на основе готового разбора от Куратора.
-
-Перед началом работы ОБЯЗАТЕЛЬНО прочитай свои регламенты:
-1. C:\\Users\\Анжелика\\.gemini\\config\\skills\\lav-02-task-architect\\SKILL.md (Часть 1 — Режим «Дизайнер проекта»)
-2. D:\\LAV_СИСТЕМА_АГЕНТОВ\\02_ПОСТАНОВЩИК_ТЗ_И_СТИЛИСТИКА\\КАНОНЫ_ДИЗАЙНА_И_СТИЛИСТИКИ_LAV.md (или в 02_ПОСТАНОВЩИК_ТЗ_И_РЕФЕРЕНСЫ)
-3. D:\\LAV_СИСТЕМА_АГЕНТОВ\\00_БИБЛИОТЕКА_ДИЗАЙНЕРСКИХ_РЕШЕНИЙ_АНЖЕЛИКИ\\КАТАЛОГ_ДИЗАЙНЕРСКИХ_ПРИЕМОВ.md
-4. D:\\LAV_СИСТЕМА_АГЕНТОВ\\00_ЭТАЛОНЫ_УЗЛОВ_И_ДЕТАЛЕЙ\\СТАНДАРТЫ_ЭРГОНОМИКИ_И_КОНСТРУКТИВА_МЕБЕЛИ.md
-
-📂 ПАПКА ПРОЕКТА: ${folder}
-- Готовый разбор от Куратора: ${folder}\\ПАСПОРТ_ПРОЕКТА.md
-- Итоговая планировка (План Л2): ${folder}\\${meta.planFile}
-- Папка референсов клиента: ${folder}\\Референсы_по_комнатам
-
-🎯 ТВОЯ ЗАДАЧА СЕЙЧАС (СФОРМУЛИРОВАТЬ ДИЗАЙН-КОНЦЕПЦИЮ ВСЕЙ КВАРТИРЫ):
-1. Изучи готовый разбор от Куратора (${folder}\\ПАСПОРТ_ПРОЕКТА.md), открой глазами через read_file итоговый План Л2 и все референсы заказчика.
-2. Заведи внутри проекта свою дизайнерскую папку:
-   👉 ${folder}\\ДИЗАЙН_КОНЦЕПЦИЯ_И_РЕФЕРЕНСЫ\\ (с подпапками по всем помещениям квартиры).
-3. Сформулируй и предложи мне целостную, красивую концепцию по всей квартире и отдельно по каждому помещению:
-   - В чём главная стилевая ДНК и главные «фишки» этого интерьера;
-   - Какие конструктивные и декоративные решения мы применяем в каждой комнате (пластика и фрезеровка фасадов, тип ручек, оформление стен, зеркал, ТВ-зон, шкафов, интегрированных раковин и полок в санузлах);
-   - Подбери и сохрани в ${folder}\\ДИЗАЙН_КОНЦЕПЦИЯ_И_РЕФЕРЕНСЫ\\ визуальные референсы (из папки клиента, из нашей Библиотеки дизайнерских решений Анжелики и найди классные свежие референсы в Pinterest / веб-поиске) — включая референсы по светильникам, люстрам, подвесам и бра!
-4. 🚨 ЖЕЛЕЗНОЕ ПРАВИЛО — 100% АРГУМЕНТАЦИЯ ИЗ ТЗ:
-   - Каждое предложенное тобой решение ты ОБЯЗАН аргументировать: по какой именно причине ты его предлагаешь — со ссылкой на Бриф, Анкету, слова заказчика на Созвоне или его референс (например: «Предлагаю здесь такой цвет и такую пластику узла, потому что заказчица в анкете / на созвоне / на референсе X указала то-то...»).${customNoteBlock}
-
-Выдай мне подробное предложение по всем комнатам со ссылками на референсы. Когда я согласую концепцию — сохрани её в ${folder}\\ДИЗАЙН_КОНЦЕПЦИЯ_УТВЕРЖДЕНА.md!`
-          },
-          {
-            step: 'ШАГ 3 (ПЕРВИЧНАЯ СБОРКА 3D CAD-ВИДОВ ВСЕХ КОМНАТ В BLENDER)',
-            chatName: `Мастер Блендер ${pid}`,
-            roleTitle: `Мастер Блендер ${pid} — Построение 3D CAD-концептов всех помещений по утверждённой концепции`,
-            skill: `C:\\Users\\Анжелика\\.gemini\\config\\skills\\lav-02-task-architect\\SKILL.md`,
-            badgeColor: 'yellow',
-            whenToUse: 'Запускается после того, как ты утвердила концепцию квартиры с Дизайнером (либо запускается автоматически через /goal).',
-            prompt: `🏷️ ПРАВИЛО НАЗВАНИЯ ЧАТА: Обязательно назови этот чат коротко (2 слова): «Мастер Блендер ${pid}».
-
-Ты — Мастер Блендер-КАД режима по проекту ${pid} (Роль №2Б).
+Ты — Мастер Блендер (3D CAD-концепты интерьера в Blender 5.2, Роль №2).
 Перед началом работы ОБЯЗАТЕЛЬНО прочитай:
 1. C:\\Users\\Анжелика\\.gemini\\config\\skills\\lav-02-task-architect\\SKILL.md (Часть 2 — Режим «Мастер Блендер»)
 2. D:\\LAV_СИСТЕМА_АГЕНТОВ\\00_ЭТАЛОНЫ_УЗЛОВ_И_ДЕТАЛЕЙ\\СТАНДАРТЫ_ЭРГОНОМИКИ_И_КОНСТРУКТИВА_МЕБЕЛИ.md
 
-📂 ПАПКА ПРОЕКТА: ${folder}
-- Утверждённая нами с Дизайнером концепция: ${folder}\\ДИЗАЙН_КОНЦЕПЦИЯ_УТВЕРЖДЕНА.md
-- Паспорт проекта и координаты: ${folder}\\ПАСПОРТ_ПРОЕКТА.md и ${folder}\\КООРДИНАТЫ_СЦЕНЫ.json
-- Итоговая планировка (План Л2): ${folder}\\${meta.planFile}
+📂 РАБОЧАЯ ПАПКА ПРОЕКТА: ${folderStr}
 
-🎯 ТВОЯ ЗАДАЧА СЕЙЧАС:
-1. Построй в Blender 5.2 чистые 3D CAD-концепты (ЭСКИЗ_<КОМНАТА>.png) по всем помещениям проекта (${roomsStr}) строго по утверждённой концепции Дизайнера (${folder}\\ДИЗАЙН_КОНЦЕПЦИЯ_УТВЕРЖДЕНА.md) и Плану Л2.
-2. Соблюдай все стандарты эргономики мебели (пенал с духовкой: ящик 350 мм снизу + духовка 600 мм + СВЧ; свес острова 250–300 мм; красивое деление верхних шкафов; отдельные накладные ящики; закрытые шкафы без внутрянки; дверца доступа поверх ЩР/ЩС; отступ шторной ниши +100 мм от радиатора).
-3. Открой каждый рендер ЭСКИЗ_<КОМНАТА>.png глазами через read_file, проверь сам и сформируй по каждой комнате файл ТЗ_МОДЕЛЛЕРУ_<КОМНАТА>.md (с разделением на Таблицу А «Строим в DIY» и Таблицу Б «Ставим готовой 3D-моделью»).${customNoteBlock}`
-          },
-          {
-            step: 'ШАГ 4 (ПРОВЕРКА КОНЦЕПТОВ КУРАТОРОМ ПЕРЕД МОДЕЛИРОВАНИЕМ)',
-            chatName: `Куратор ${pid}`,
-            roleTitle: `Куратор ${pid} — Аудит всех эскизов Мастера Блендер на соответствие ТЗ и Плану Л2`,
-            skill: `C:\\Users\\Анжелика\\.gemini\\config\\skills\\lav-04-project-auditor\\SKILL.md`,
-            badgeColor: 'blue',
-            whenToUse: 'Куратор проверяет все картинки ЭСКИЗ_<КОМНАТА>.png перед передачей Моделлеру.',
-            prompt: `🏷️ ПРАВИЛО НАЗВАНИЯ ЧАТА: «Куратор ${pid}».
+🎯 ТВОЯ ЗАДАЧА СЕЙЧАС (3D-КОНЦЕПТЫ ВСЕХ КОМНАТ С НУЛЯ):
+1. Изучи ПАСПОРТ_ПРОЕКТА.md, утверждённую концепцию Дизайнера (ДИЗАЙН_КОНЦЕПЦИЯ_УТВЕРЖДЕНА.md), КООРДИНАТЫ_СЦЕНЫ.json и открой глазами Итоговый План Л2.
+2. Построй в Blender 5.2 чистые 3D CAD-виды (ЭСКИЗ_<КОМНАТА>.png) по всем помещениям квартиры строго по цепочке модулей Плана Л2 и стандартам эргономики (ящик 350 мм под духовкой, свес острова 250–300 мм, деление верхних шкафов, дверца над ЩР/ЩС, отступ ниши штор +100 мм от радиатора).
+3. Открой каждый сгенерированный рендер глазами через read_file, проверь гео-пропорции, создай файлы ТЗ_МОДЕЛЛЕРУ_<КОМНАТА>.md и покажи эскизы на проверку Куратору и мне!${customNoteBlock}`
+        },
+        {
+          roleKey: 'blender',
+          situation: 'fixes',
+          step: '4️⃣ МАСТЕР БЛЕНДЕР • ВАРИАНТ Б: 3D-КОНЦЕПТЫ ТОЛЬКО ПО ИЗМЕНЯЕМЫМ КОМНАТАМ (ПРИ ПРАВКАХ)',
+          chatName: `Мастер Блендер${pidSuffix}`,
+          roleTitle: `Мастер Блендер (По правкам) — Быстрое обновление 3D-концептов в Blender ТОЛЬКО по тем комнатам, где вносятся правки`,
+          skill: `C:\\Users\\Анжелика\\.gemini\\config\\skills\\lav-02-task-architect\\SKILL.md`,
+          badgeColor: 'yellow',
+          whenToUse: 'Используй при внесении правок, чтобы перепроверить в Blender только изменяемые комнаты (например, кухню-гостиную или санузлы), не тратя время на готовые помещения.',
+          prompt: `🏷️ ПРАВИЛО НАЗВАНИЯ ЧАТА: Назови этот чат коротко: «Мастер Блендер${pidSuffix}».
 
-Проведи строгую проверку (Рубеж ОТК №1) всех 3D-эскизов ЭСКИЗ_<КОМНАТА>.png от Мастера Блендер по проекту ${pid}.
-Скилл: C:\\Users\\Анжелика\\.gemini\\config\\skills\\lav-04-project-auditor\\SKILL.md
+Ты — Мастер Блендер (3D CAD-концепты в Blender 5.2, Роль №2).
+Прочитай скилл: C:\\Users\\Анжелика\\.gemini\\config\\skills\\lav-02-task-architect\\SKILL.md
 
-Сверь каждую картинку глазами (read_file) с:
-1) Итоговым Планом Л2 (${folder}\\${meta.planFile});
-2) ПАСПОРТ_ПРОЕКТА.md (Анкета, Бриф, Созвон);
-3) Утверждённой концепцией Дизайнера (${folder}\\ДИЗАЙН_КОНЦЕПЦИЯ_УТВЕРЖДЕНА.md).
-Если всё соответствует на 100% — утверди эскизы как ЭСКИЗ_УТВЕРЖДЕН_<КОМНАТА>.png для запуска «Моделлер ${pid}».`
-          },
-          {
-            step: 'ШАГ 5А И 5Б (МОДЕЛЛЕР В 2 ШАГА: 1) НАКОДИЛ СКРЫТО -> 2) ВСТАВИЛ В СЦЕНУ)',
-            chatName: `Моделлер ${pid}`,
-            roleTitle: `Моделлер ${pid} — Скрытая генерация кода столярки (.js) и вставка по твоей команде`,
-            skill: `C:\\Users\\Анжелика\\.gemini\\config\\skills\\lav-03b-joinery-modeler\\SKILL.md`,
-            badgeColor: 'green',
-            whenToUse: 'Когда все помещения согласованы — Моделлер сначала пишет весь код скрыто в .js, а когда ты говоришь «Молодец, вставляй!» — выполняет его в Homestyler.',
-            prompt: `🏷️ ПРАВИЛО НАЗВАНИЯ ЧАТА: Обязательно назови этот чат коротко (2 слова): «Моделлер ${pid}».
+📂 РАБОЧАЯ ПАПКА ПРОЕКТА: ${folderStr}
+🚪 СТРОИМ КОНЦЕПТЫ ТОЛЬКО ПО ПОМЕЩЕНИЯМ: ${roomsStr}
 
-Ты — Узкий Мастер Столярки и Корпусной Мебели в Homestyler по проекту ${pid} (Роль №3Б).
-Скиллы:
-- C:\\Users\\Анжелика\\.gemini\\config\\skills\\lav-03b-joinery-modeler\\SKILL.md
-- D:\\LAV_СИСТЕМА_АГЕНТОВ\\00_ЭТАЛОНЫ_УЗЛОВ_И_ДЕТАЛЕЙ\\СТАНДАРТЫ_ЭРГОНОМИКИ_И_КОНСТРУКТИВА_МЕБЕЛИ.md
+🎯 ТВОЯ ЗАДАЧА СЕЙЧАС (ТОЧЕЧНЫЕ 3D-КОНЦЕПТЫ ПО ПРАВКАМ):
+1. Изучи утверждённые с Дизайнером решения (ДИЗАЙН_КОНЦЕПЦИЯ_УТВЕРЖДЕНА.md), список правок и Итоговый План Л2.
+2. ⛔ ПРАВИЛО ЛОКАЛЬНОСТИ: построй/обнови 3D CAD-виды в Blender (ЭСКИЗ_<КОМНАТА>.png) ТОЛЬКО по следующим помещениям:
+   👉 ${roomsStr}
+   (Остальные комнаты, где правок нет, перестраивать НЕ НУЖНО!).
+3. Строго сверяйся с Планом Л2 и стандартами эргономики (ящик 350 мм под духовкой, свес острова 250–300 мм, пропорции фасадов и полок).
+4. Проверь рендеры глазами через read_file и передай на оценку Куратору и мне!${customNoteBlock}`
+        },
 
-📂 ПАПКА ПРОЕКТА: ${folder}
-1. ФАЗА 1 (СКРЫТЫЙ КОД): На основе утверждённых эскизов ЭСКИЗ_УТВЕРЖДЕН_<КОМНАТА>.png, ТЗ_МОДЕЛЛЕРУ_<КОМНАТА>.md и КООРДИНАТЫ_СЦЕНЫ.json напиши и сохрани в папку ${folder} готовые JS-скрипты сборки корпусной мебели (INSERT_<КОМНАТА>.js) по помещениям: ${roomsStr}.
-   - Соблюдай поэлементную группировку DiyInstance (каждый шкаф, комод, тумба и зеркало — отдельные собственные группы Корпус / Фасады / Ручки / Подсветка LED!);
-   - Закрытые шкафы — без внутренних полок (shelvesZ: []);
-   - Обязательное сглаживание «3D филе = 3 мм» на всех фасадах, ручках и молдингах;
-   - Ручки на дверях — с обеих сторон полотна; никаких коротких ручек 150–400 мм; никакого самодельного света/стульев/сантехники в DIY!
-2. Сначала напиши только код и доложи мне о готовности. Как только я напишу тебе «Вставляй!» — выполни скрипты в Homestyler (waitForStableDom: false, createModelMeshAsync()) и сделай скриншоты take_screenshot всех комнат!${customNoteBlock}`
-          },
-          {
-            step: 'ШАГ 6 (ПОТОЛКИ, КАРНИЗЫ, ШТОРНЫЕ НИШИ И ТОЧЕЧНЫЙ СВЕТ)',
-            chatName: `Потолки ${pid}`,
-            roleTitle: `Потолки ${pid} — Чистовые потолки (с обходом шкафов), карнизы, ниши (+100 мм от радиатора) и свет`,
-            skill: `C:\\Users\\Анжелика\\.gemini\\config\\skills\\lav-03c-ceilings-lighting\\SKILL.md`,
-            badgeColor: 'yellow',
-            whenToUse: 'Запускается сразу после построения корпусной мебели.',
-            prompt: `🏷️ ПРАВИЛО НАЗВАНИЯ ЧАТА: Обязательно назови этот чат коротко (2 слова): «Потолки ${pid}».
+        // ==================== 5. МОДЕЛЛЕР (КОРПУСНАЯ МЕБЕЛЬ) ====================
+        {
+          roleKey: 'modeler',
+          situation: 'scratch',
+          step: '5️⃣ МОДЕЛЛЕР • ВАРИАНТ А: СБОРКА ВСЕЙ КОРПУСНОЙ МЕБЕЛИ С НУЛЯ (СКРЫТЫЙ КОД -> ВСТАВКА ЗА 1 РАЗ)',
+          chatName: `Моделлер${pidSuffix}`,
+          roleTitle: `Моделлер (С нуля) — Скрытая подготовка кода всей столярки (.js) и пакетная вставка в открытый Homestyler за 1 проход`,
+          skill: `C:\\Users\\Анжелика\\.gemini\\config\\skills\\lav-03b-joinery-modeler\\SKILL.md`,
+          badgeColor: 'blue',
+          whenToUse: 'Используй для сборки всей корпусной мебели, кухонь, шкафов, тумб, зеркал, молдингов 45° и душевых перегородок в новом проекте.',
+          prompt: `🏷️ ПРАВИЛО НАЗВАНИЯ ЧАТА: Назови этот чат коротко: «Моделлер${pidSuffix}».
 
-Ты — Мастер Потолков, Карнизов, Шторных Ниш и Света в Homestyler по проекту ${pid} (Роль №3В).
-Скилл: C:\\Users\\Анжелика\\.gemini\\config\\skills\\lav-03c-ceilings-lighting\\SKILL.md
+Ты — Узкий Мастер Столярки и Корпусной Мебели в Homestyler (Роль №3Б).
+Перед началом работы ОБЯЗАТЕЛЬНО прочитай свой скилл и стандарты:
+1. C:\\Users\\Анжелика\\.gemini\\config\\skills\\lav-03b-joinery-modeler\\SKILL.md
+2. D:\\LAV_СИСТЕМА_АГЕНТОВ\\00_ЭТАЛОНЫ_УЗЛОВ_И_ДЕТАЛЕЙ\\СТАНДАРТЫ_ЭРГОНОМИКИ_И_КОНСТРУКТИВА_МЕБЕЛИ.md
 
-📂 ПАПКА ПРОЕКТА: ${folder} (${ folder }\\ПАСПОРТ_ПРОЕКТА.md и КООРДИНАТЫ_СЦЕНЫ.json).
-1. Построй чистовые белые матовые потолки во всех помещениях (${roomsStr}), математически огибая все высокие шкафы и пеналы до потолка.
-2. Отодвинь потолочные шторные ниши от радиаторов так, чтобы от передней грани радиатора до края ниши было минимум +100 мм зазора (общая глубина ниши 250–300 мм).
-3. Если потолок натяжной и в ТЗ есть потолочный карниз — крепи карниз нижней полкой строго к СТЕНЕ с зазором сверху под гарпун и LED.
-4. Расставь аккуратные круглые встроенные точки света строго по геометрическим осям свободной зоны потолка в отдельные группы DiyInstance (никогда не сливай потолочный свет с подсветкой мебели или зеркал!). Сделай скриншоты take_screenshot.${customNoteBlock}`
-          },
-          {
-            step: 'ШАГ 7 (ФИНАЛЬНАЯ ПРОВЕРКА КУРАТОРОМ ВСЕЙ 3D-СЦЕНЫ И АНКЕТ)',
-            chatName: `Куратор ${pid}`,
-            roleTitle: `Куратор ${pid} — Полная ревизия готовой 3D-сцены (План Л2, Анкета, плинтуса, карнизы, группировка)`,
-            skill: `C:\\Users\\Анжелика\\.gemini\\config\\skills\\lav-04-project-auditor\\SKILL.md`,
-            badgeColor: 'blue',
-            whenToUse: 'Проверяет всю 3D-коробку и мебель перед расстановкой мягкой мебели и декора.',
-            prompt: `🏷️ ПРАВИЛО НАЗВАНИЯ ЧАТА: «Куратор ${pid}».
+📂 РАБОЧАЯ ПАПКА ПРОЕКТА: ${folderStr}
 
-Проведи полную ревизию (Рубеж ОТК №2 — режим READ-ONLY) готовой 3D-сцены Homestyler по проекту ${pid} по скиллу:
-- C:\\Users\\Анжелика\\.gemini\\config\\skills\\lav-04-project-auditor\\SKILL.md
+🎯 ТВОЯ ЗАДАЧА (ПОЛНАЯ СБОРКА СТОЛЯРКИ ПО ПЛАНУ Л2 И УТВЕРЖДЁННЫМ ЭСКИЗАМ):
+1. Изучи ПАСПОРТ_ПРОЕКТА.md, КООРДИНАТЫ_СЦЕНЫ.json, Итоговый План Л2 и утверждённые эскизы ЭСКИЗ_УТВЕРЖДЕН_<КОМНАТА>.png.
+2. Сначала СКРЫТО напиши чистый пакетный JS-код всей корпусной мебели в файл BUILD_JOINERY.js (используя библиотеку window.HSJoinery):
+   - 🗂️ ПОЭЛЕМЕНТНАЯ ГРУППИРОВКА (DiyInstance): каждый предмет мебели в комнате = свои отдельные группы («Шкаф 1 - Корпус/Фасады/Ручки», «Шкаф 2 - Корпус/Фасады/Ручки», «Комод - Корпус/Фасады/Ручки»; Кухня: отдельно «Нижний корпус», «Нижние фасады» с отдельными ящиками, «Верхний корпус», «Верхние фасады», «Ручки», «Столешница», «Фартук», «Подсветка LED»; Зеркало: «Рамка», «Зеркальное полотно», «Подсветка LED»). Никогда не сливай два предмета или весь свет в одну группу!
+   - 🚪 ЗАКРЫТЫЕ ШКАФЫ — БЕЗ ВНУТРЯНКИ: если фасады шкафа закрыты, внутренние полки и штанги внутри него НЕ делать (shelvesZ: [])!
+   - ✨ ОБЯЗАТЕЛЬНОЕ СГЛАЖИВАНИЕ «3D ФИЛЕ = 3 ММ» на всех фасадах, ручках и молдингах 45°.
+   - 🚫 НЕ моделировать в DIY люстры, бра, стулья, столы, диваны, кровати, шторы, технику и сантехнику! На дверях — ручки с обеих сторон полотна.
+3. Когда код полностью готов и целевой проект открыт в Homestyler — вставь всю столярку ЗА ОДИН РАЗ (waitForStableDom: false, createModelMeshAsync()), сделай скриншоты take_screenshot каждой комнаты, проверь глазами через read_file и исправь любые пересечения!${customNoteBlock}`
+        },
+        {
+          roleKey: 'modeler',
+          situation: 'fixes',
+          step: '5️⃣ МОДЕЛЛЕР • ВАРИАНТ Б: ТОЧЕЧНЫЕ ПРАВКИ СТОЛЯРКИ (СКРЫТЫЙ КОД -> ЗАМЕНА ТОЛЬКО НУЖНЫХ УЗЛОВ!)',
+          chatName: `Моделлер${pidSuffix}`,
+          roleTitle: `Моделлер (По правкам) — Скрытая запись кода .js и точечное обновление ТОЛЬКО указанных элементов (НЕ трогая всю сцену!)`,
+          skill: `C:\\Users\\Анжелика\\.gemini\\config\\skills\\lav-03b-joinery-modeler\\SKILL.md`,
+          badgeColor: 'green',
+          whenToUse: 'Используй, когда нужно внести правки по корпусной мебели. Агент напишет код скрыто в файл и обновит только указанные шкафы/тумбы/полки, не стирая остальную квартиру!',
+          prompt: `🏷️ ПРАВИЛО НАЗВАНИЯ ЧАТА: Назови этот чат коротко: «Моделлер${pidSuffix}».
 
-Проверь соответствие каждого помещения (${roomsStr}) исходной задумке Дизайнера (${folder}\\ДИЗАЙН_КОНЦЕПЦИЯ_УТВЕРЖДЕНА.md), Плану Л2 (${meta.planFile}), Анкете (${meta.anketaFile}) и Созвону:
-- Последовательность модулей, высоты, карнизы, плинтуса, двери и ручки с обеих сторон;
-- Поэлементная группировка DiyInstance (каждый шкаф отдельно + свои Корпус/Фасады/Ручки/LED);
-- Отсутствие внутрянки в закрытых шкафах, наличие 3D филе = 3 мм, отсутствие самодельного света/стульев/техники в DIY.
-Сохрани отчёт в ${folder}\\АКТ_ОТК_РУБЕЖ_2_${pid}.md и напиши мне итог в чат!`
-          },
-          {
-            step: 'ШАГ 8 (КОМПЛЕКТАТОР — РАССТАНОВКА ТЕХНИКИ, МЕБЕЛИ, СВЕТА И ДЕКОРА ИЗ 3 БАЗ)',
-            chatName: `Комплектатор ${pid}`,
-            roleTitle: `Комплектатор ${pid} — Расстановка готовых моделей из Избранного Анжелики, 3D Sky Pro и каталога Homestyler`,
-            skill: `C:\\Users\\Анжелика\\.gemini\\config\\skills\\lav-03d-skypro-decorator\\SKILL.md`,
-            badgeColor: 'green',
-            whenToUse: 'По желанию: можешь расставить мебель сама или поручить Комплектатору поставить технику, сантехнику, кровати, диваны, стулья и люстры по референсам Дизайнера.',
-            prompt: `🏷️ ПРАВИЛО НАЗВАНИЯ ЧАТА: Обязательно назови этот чат коротко (2 слова): «Комплектатор ${pid}».
+Ты — Узкий Мастер Столярки и Корпусной Мебели в Homestyler (Роль №3Б).
+Перед началом работы ОБЯЗАТЕЛЬНО прочитай:
+1. C:\\Users\\Анжелика\\.gemini\\config\\skills\\lav-03b-joinery-modeler\\SKILL.md
+2. D:\\LAV_СИСТЕМА_АГЕНТОВ\\00_ЭТАЛОНЫ_УЗЛОВ_И_ДЕТАЛЕЙ\\СТАНДАРТЫ_ЭРГОНОМИКИ_И_КОНСТРУКТИВА_МЕБЕЛИ.md
 
-Ты — Комплектатор Техники, Сантехники, Мебели, Света и Декора в Homestyler по проекту ${pid} (Роль №3Г).
-Скилл: C:\\Users\\Анжелика\\.gemini\\config\\skills\\lav-03d-skypro-decorator\\SKILL.md
+📂 РАБОЧАЯ ПАПКА ПРОЕКТА: ${folderStr}
+🚪 ЗАТРАГИВАЕМЫЕ ПОМЕЩЕНИЯ / УЗЛЫ: ${roomsStr}
 
-📂 ПАПКА ПРОЕКТА: ${folder} (${folder}\\ДИЗАЙН_КОНЦЕПЦИЯ_УТВЕРЖДЕНА.md и ПАСПОРТ_ПРОЕКТА.md).
-Используй строго 3 источника готовых 3D-моделей (КАТЕГОРИЧЕСКИ ЗАПРЕЩЕНО моделировать мебель, стулья и светильники в DIY!):
-1) Папки «Мой кабинет -> Избранное» Анжелики в Homestyler (HSJoinery.FAVORITE_FOLDERS: базовая техника/сантехника defaultModels 28463658, папки Освещения, Мебели, Брендов и 10 целевых папок Декора по комнатам);
-2) Локальная база 3D Sky Pro (http://127.0.0.1:3033/api/search и Telegram-поиск с обязательным просмотром превью через read_file);
-3) Внутренний каталог Homestyler (await HSJoinery.searchHomestylerCatalog(query, { limit: 15 })).
-Расставь модели в помещениях (${roomsStr}) строго по координатам Плана Л2 лицом в комнату и сделай финальные скриншоты take_screenshot!${customNoteBlock}`
-          }
-        ];
-      } else if (currentAhMode === 'goal') {
-        banner.innerHTML = `
-          <div style="font-weight:900; color:#6ee7b7; margin-bottom:4px;">🚀 РЕЖИМ АВТОНОМНОГО ДИРЕКТОРА ПРОЕКТА (КОМАНДА <code>/goal</code> В ПЕРВОЙ СТРОЧКЕ — ЧАТ: <code>Управленец ${pid}</code>):</div>
-          <div>
-            С <b><code>Дизайнером ${pid}</code></b> ты всегда сначала общаешься сама и утверждаешь концепцию. А как только концепция утверждена — запускаешь <b><code>Управленец ${pid}</code></b> через <code>/goal</code>, и он сам без остановок проводит: <b>Блендер-КАД ➔ Проверка Куратором ➔ Моделирование в Homestyler ➔ Финальная проверка Куратором!</b>
-          </div>
-        `;
+🎯 ТВОЯ ЗАДАЧА (ТОЧЕЧНОЕ ИСПРАВЛЕНИЕ СТОЛЯРКИ БЕЗ СНОСА СЦЕНЫ):
+1. Изучи утверждённые правки (ДИЗАЙН_КОНЦЕПЦИЯ_УТВЕРЖДЕНА.md / ПРАВКИ_ПРОЕКТА.md), План Л2 и КООРДИНАТЫ_СЦЕНЫ.json.
+2. ⛔ ЖЕЛЕЗНОЕ ПРАВИЛО ЛОКАЛЬНОСТИ:
+   - КАТЕГОРИЧЕСКИ ЗАПРЕЩЕНО стирать или перестраивать всю сцену целиком!
+   - Меняй ТОЛЬКО те конкретные шкафы, фасады, полки, тумбы или ручки в помещениях (${roomsStr}), которые озвучены в правках, полностью сохраняя готовую работу в остальных зонах.
+3. СКРЫТАЯ ПОДГОТОВКА КОДА:
+   - Сначала напиши чистый JS-скрипт точечного обновления в файл UPDATE_JOINERY.js (не трогая браузер, пока мы работаем над другими проектами).
+   - Соблюдай поэлементную группировку DiyInstance (каждый предмет отдельно + Корпус / Фасады / Ящики / Ручки / Подсветка LED отдельно), отсутствие внутрянки в закрытых шкафах (shelvesZ: []) и обязательное сглаживание «3D филе = 3 мм».
+4. ВСТАВКА ЗА 1 РАЗ И САМОПРОВЕРКА:
+   - Когда код готов и в Homestyler открыт этот проект — примени обновление ЗА ОДИН РАЗ, сделай скриншоты take_screenshot исправленных узлов и проверь их глазами через read_file!${customNoteBlock}`
+        },
 
-        cards = [
-          {
-            step: '🔥 ВАРИАНТ 1 (САМЫЙ УДОБНЫЙ): /GOAL ПОСЛЕ ТОГО, КАК ТЫ УТВЕРДИЛА КОНЦЕПЦИЮ С ДИЗАЙНЕРОМ',
-            chatName: `Управленец ${pid}`,
-            roleTitle: `Управленец ${pid} (/goal) — Автономный конвейер от Блендер-КАД до проверенной 3D-сцены в Homestyler`,
-            skill: `D:\\LAV_СИСТЕМА_АГЕНТОВ\\00_ГЛАВНЫЙ_РЕГЛАМЕНТ_И_ОРКЕСТРАТОР.md`,
-            badgeColor: 'green',
-            whenToUse: 'Идеально подходит и для новых проектов, и для правок (включая 0545): ты уже всё обсудила и согласовала с «Дизайнером», и теперь Управленец сам ведёт Блендер -> Куратора -> Моделлера -> Потолки -> финальную проверку Куратора.',
-            prompt: `/goal
-🏷️ ПРАВИЛО НАЗВАНИЯ ЧАТА: Обязательно назови этот чат коротко (2 слова): «Управленец ${pid}».
+        // ==================== 6. ПОТОЛКИ И СВЕТ ====================
+        {
+          roleKey: 'ceilings',
+          situation: 'scratch',
+          step: '6️⃣ ПОТОЛКИ И СВЕТ • ВАРИАНТ А: ПОТОЛКИ, КАРНИЗЫ, НИШИ ШТОР (+100 ММ) И СВЕТ С НУЛЯ',
+          chatName: `Потолки${pidSuffix}`,
+          roleTitle: `Потолки (С нуля) — Построение потолков с обходом шкафов, шторных ниш (+100 мм от радиатора), карнизов и точечного света`,
+          skill: `C:\\Users\\Анжелика\\.gemini\\config\\skills\\lav-03c-ceilings-lighting\\SKILL.md`,
+          badgeColor: 'blue',
+          whenToUse: 'Запускай ПОСЛЕ построения корпусной мебели, когда потолков в проекте ещё нет.',
+          prompt: `🏷️ ПРАВИЛО НАЗВАНИЯ ЧАТА: Назови этот чат коротко: «Потолки${pidSuffix}».
 
-Ты — Агент-Управленец (Директор проекта ${pid}).
-Мы с Дизайнером проекта ${pid} уже согласовали концепцию и список решений в папке проекта: ${folder} (см. ${folder}\\ДИЗАЙН_КОНЦЕПЦИЯ_УТВЕРЖДЕНА.md, ${folder}\\ПАСПОРТ_ПРОЕКТА.md и ${folder}\\${meta.fixesFile}).
+Ты — Узкий Мастер Потолков, Карнизов, Шторных Ниш и Света в Homestyler (Роль №3В).
+Перед началом работы ОБЯЗАТЕЛЬНО прочитай свой скилл:
+- C:\\Users\\Анжелика\\.gemini\\config\\skills\\lav-03c-ceilings-lighting\\SKILL.md
 
-Твоя задача — автономно провести полный цикл реализации и многоступенчатой проверки по помещениям:
-👉 ${roomsStr}
+📂 РАБОЧАЯ ПАПКА ПРОЕКТА: ${folderStr}
 
-📋 СТРОГИЙ АЛГОРИТМ РАБОТЫ ДИРЕКТОРА ПРОЕКТА ${pid}:
-1. ЭТАП БЛЕНДЕР-КАД (Скилл: C:\\Users\\Анжелика\\.gemini\\config\\skills\\lav-02-task-architect\\SKILL.md):
-   - Построй (или обнови точечно только по выбранным помещениям ${roomsStr}, не трогая готовые комнаты!) чистые 3D CAD-концепты ЭСКИЗ_<КОМНАТА>.png в Blender 5.2 строго по утверждённой нами с Дизайнером концепции (${folder}\\ДИЗАЙН_КОНЦЕПЦИЯ_УТВЕРЖДЕНА.md) и Плану Л2 (${folder}\\${meta.planFile}).
-   - Сформируй точные ТЗ_МОДЕЛЛЕРУ_<КОМНАТА>.md (разделив на Таблицу А «Строим в DIY» и Таблицу Б «Готовые 3D-модели»).
-2. РУБЕЖ ОТК №1 — ПРОВЕРКА КУРАТОРОМ (Скилл: C:\\Users\\Анжелика\\.gemini\\config\\skills\\lav-04-project-auditor\\SKILL.md):
-   - Открой ГЛАЗАМИ через read_file каждый сгенерированный ЭСКИЗ_<КОМНАТА>.png и сверь его с Планом Л2, Анкетой, Созвоном и ДИЗАЙН_КОНЦЕПЦИЯ_УТВЕРЖДЕНА.md.
-   - Если есть хоть одно расхождение (перепутаны модули, нет ящика 350 мм под духовкой, нет свеса острова, кривые пропорции) — немедленно исправь в Blender и перерендери, пока эскиз не получит статус ЭСКИЗ_УТВЕРЖДЕН_<КОМНАТА>.png!
-3. ЭТАП МОДЕЛИРОВАНИЯ В HOMESTYLER (Скиллы: lav-03b-joinery-modeler и lav-03c-ceilings-lighting):
-   - Подключись к открытой вкладке проекта ${pid} в Homestyler (порт 9222).
-   - Напиши чистый пакетный JS-код столярки и потолков (UPDATE_JOINERY_${pid}.js) и вставь его в сцену (waitForStableDom: false, createModelMeshAsync()).
-   - 🚨 СТРОГО СОБЛЮДАЙ ПРАВИЛА:
-     • Локальность: НЕ стирать готовую работу в тех комнатах, которые не требуют правок!
-     • Поэлементная группировка DiyInstance: каждый шкаф, комод, тумба и зеркало имеют СВОИ отдельные группы («Шкаф 1 - Корпус/Фасады/Ручки», «Шкаф 2 - Корпус/Фасады/Ручки», «Нижний корпус», «Нижние фасады», «Верхний корпус», «Верхние фасады», «Подсветка LED» отдельно на каждый предмет!).
-     • Закрытые шкафы — без внутренних полок (shelvesZ: []).
-     • Обязательное сглаживание «3D филе = 3 мм» (HSJoinery.filletShell) на всех фасадах, ручках и молдингах.
-     • На дверях ручки с обеих сторон полотна; никаких коротких ручек 150–400 мм; никакого самодельного света, стульев, штор или сантехники в DIY!
-     • Потолки огибают шкафы до потолка, шторные ниши отодвинуты на +100 мм от радиаторов.
-4. РУБЕЖ ОТК №2 — ФИНАЛЬНАЯ РЕВИЗИЯ КУРАТОРОМ (Скилл: lav-04-project-auditor):
-   - Сделай скриншоты take_screenshot каждого помещения (${roomsStr}), открой их глазами через read_file и проверь всю сцену по чек-листу ОТК: соответствие исходной задумке, всем анкетам, брифам, планировке Л2, наличие плинтусов, карнизов, правильных высот и групп DiyInstance.
-   - Если найдена ошибка — сразу поправь её точечно в сцене и перепроверь!
-   - Сохрани финальный отчёт в ${folder}\\АКТ_ОТК_РУБЕЖ_2_${pid}.md.${customNoteBlock}`
-          },
-          {
-            step: '🆕 ВАРИАНТ 2: /GOAL ПОЛНЫЙ ЦИКЛ ПРОЕКТА С НУЛЯ (КОРОБКА + КУРАТОР + БЛЕНДЕР + 3D + КОМПЛЕКТАЦИЯ)',
-            chatName: `Управленец ${pid}`,
-            roleTitle: `Управленец ${pid} (/goal) — Полная сборка нового проекта с нуля (или полная перестройка 0593 по финальному плану)`,
-            skill: `D:\\LAV_СИСТЕМА_АГЕНТОВ\\00_ГЛАВНЫЙ_РЕГЛАМЕНТ_И_ОРКЕСТРАТОР.md`,
-            badgeColor: 'purple',
-            whenToUse: 'Используй, когда нужно прогнать проект целиком от выравнивания окон/высот и сбора ПАСПОРТ_ПРОЕКТА.md до полной 3D-сцены.',
-            prompt: `/goal
-🏷️ ПРАВИЛО НАЗВАНИЯ ЧАТА: Обязательно назови этот чат коротко (2 слова): «Управленец ${pid}».
+🎯 ТВОЯ ЗАДАЧА СЕЙЧАС (ПОСТРОЕНИЕ ПОТОЛКОВ И СВЕТА С НУЛЯ ПОСЛЕ СТОЛЯРКИ):
+1. Считай из открытой сцены Homestyler реальные габариты всех построенных шкафов до потолка, антресолей и радиаторов у окон.
+2. Построй в webCADDocument по каждой комнате:
+   - Чистый белый матовый потолок, математически огибающий все шкафы до потолка (чтобы потолок и карнизы нигде не врезались в мебель!);
+   - Потолочные шторные ниши у окон с ОБЯЗАТЕЛЬНЫМ отступом минимум +100 мм от переднего края радиатора (общая глубина ниши 250–300 мм);
+   - Потолочные карнизы по периметру (при натяжном потолке крепить нижней полкой строго к СТЕНЕ с зазором сверху под гарпун и LED-ленту);
+   - Аккуратные круглые встроенные точки света и треки по плану света (в отдельных группах DiyInstance — никогда не сливай потолочный свет с мебельной подсветкой!).
+3. Сделай скриншоты take_screenshot для визуальной самопроверки!${customNoteBlock}`
+        },
+        {
+          roleKey: 'ceilings',
+          situation: 'fixes',
+          step: '6️⃣ ПОТОЛКИ И СВЕТ • ВАРИАНТ Б: ПОДКОРРЕКТИРОВАТЬ СУЩЕСТВУЮЩИЕ ПОТОЛКИ ПОД ИЗМЕНИВШУЮСЯ МЕБЕЛЬ',
+          chatName: `Потолки${pidSuffix}`,
+          roleTitle: `Потолки (По правкам) — Точечная подгонка существующих потолков, ниш и карнизов с учётом исправленной мебели`,
+          skill: `C:\\Users\\Анжелика\\.gemini\\config\\skills\\lav-03c-ceilings-lighting\\SKILL.md`,
+          badgeColor: 'yellow',
+          whenToUse: 'Используй, когда потолки в сцене УЖЕ ЕСТЬ, но после правок корпусной мебели нужно аккуратно поправить вырезы потолка или карнизы под новые габариты шкафов.',
+          prompt: `🏷️ ПРАВИЛО НАЗВАНИЯ ЧАТА: Назови этот чат коротко: «Потолки${pidSuffix}».
 
-Ты — Агент-Управленец (Директор проекта ${pid}).
-Твоя задача — провести полный цикл сборки и многоступенчатой проверки проекта ${pid} в папке ${folder} строго по финальному планировочному решению (${folder}\\${meta.planFile}), Обмерному плану (${meta.measureFile}), Анкете, Брифу и Созвону.
+Ты — Узкий Мастер Потолков, Карнизов, Шторных Ниш и Света в Homestyler (Роль №3В).
+Прочитай скилл: C:\\Users\\Анжелика\\.gemini\\config\\skills\\lav-03c-ceilings-lighting\\SKILL.md
 
-📋 ПОШАГОВЫЙ ПЛАН ДИРЕКТОРА ПРОЕКТА ${pid}:
-1. ЭТАП 0 — ОКНА, ВЫСОТЫ И КОНВЕКТОРЫ (Скилл: C:\\Users\\Анжелика\\.gemini\\config\\skills\\lav-03a-windows-openings\\SKILL.md):
-   - Проверь и выровняй высоты стен и оконных проёмов по Обмерному плану, смоделируй окна, расставь радиаторы/внутрипольные конвекторы по Плану Л2 и сохрани ${folder}\\КООРДИНАТЫ_СЦЕНЫ.json.
-2. ЭТАП 1 — КУРАТОР ПРОЕКТА (Скилл: C:\\Users\\Анжелика\\.gemini\\config\\skills\\lav-01-project-keeper\\SKILL.md):
-   - Изучи все документы и референсы в папке ${folder} и создай полный покомнатный ${folder}\\ПАСПОРТ_ПРОЕКТА.md.
-3. ЭТАП 2 — ДИЗАЙН-КОНЦЕПЦИЯ И БЛЕНДЕР-КАД (Скилл: C:\\Users\\Анжелика\\.gemini\\config\\skills\\lav-02-task-architect\\SKILL.md):
-   - Если в папке уже есть ${folder}\\ДИЗАЙН_КОНЦЕПЦИЯ_УТВЕРЖДЕНА.md — работай строго по ней; иначе сформируй концепцию с опорой на любимые референсы заказчика и построй в Blender 5.2 чистые 3D CAD-виды ЭСКИЗ_<КОМНАТА>.png по всем помещениям (${roomsStr}).
-4. РУБЕЖ ОТК №1 — ПРОВЕРКА ЭСКИЗОВ КУРАТОРОМ (Скилл: lav-04-project-auditor):
-   - Сверь каждый ЭСКИЗ_<КОМНАТА>.png с Планом Л2, Анкетой и Созвоном. Утверди как ЭСКИЗ_УТВЕРЖДЕН_<КОМНАТА>.png.
-5. ЭТАП 3 — СТОЛЯРКА, ПОТОЛКИ И СВЕТ В HOMESTYLER (Скиллы: lav-03b-joinery-modeler и lav-03c-ceilings-lighting):
-   - Построй всю корпусную мебель, молдинги 45°, душевые перегородки, чистовые потолки (с обходом шкафов), шторные ниши (+100 мм от радиатора), карнизы и точечный свет.
-   - Строго соблюдай поэлементную группировку DiyInstance (каждый шкаф/тумба отдельно + свои Корпус/Фасады/Ручки/LED), отсутствие внутрянки в закрытых шкафах, «3D филе = 3 мм» и запрет на короткие ручки и самодельный свет/стулья в DIY.
-6. ЭТАП 4 — КОМПЛЕКТАЦИЯ ГОТОВЫМИ 3D-МОДЕЛЯМИ (Скилл: lav-03d-skypro-decorator):
-   - Поставь базовую технику и сантехнику из «Избранное -> по умолчанию» (fid: 28463658), мебель и люстры/бра из Избранного Анжелики / 3D Sky Pro / каталога Homestyler и декор из целевых папок Избранного.
-7. РУБЕЖ ОТК №2 — ФИНАЛЬНАЯ РЕВИЗИЯ КУРАТОРОМ (Скилл: lav-04-project-auditor):
-   - Сделай финальные скриншоты take_screenshot всех комнат, проверь их глазами через read_file по всем пунктам ТЗ и сохрани отчёт ${folder}\\АКТ_ОТК_РУБЕЖ_2_${pid}.md!${customNoteBlock}`
-          }
-        ];
-      }
+📂 РАБОЧАЯ ПАПКА ПРОЕКТА: ${folderStr}
+🚪 ЗАТРАГИВАЕМЫЕ ПОМЕЩЕНИЯ: ${roomsStr}
+
+🎯 ТВОЯ ЗАДАЧА СЕЙЧАС (ТОЧЕЧНАЯ КОРРЕКТИРОВКА СУЩЕСТВУЮЩИХ ПОТОЛКОВ):
+1. Потолки в этом проекте УЖЕ ЕСТЬ! Поэтому НЕ удаляй потолки во всей квартире.
+2. Проверь помещения (${roomsStr}), где изменилась корпусная мебель или были замечания по потолкам/карнизам/нишам:
+   - Подкорректируй контур потолка и потолочных карнизов так, чтобы они чисто огибали обновлённые шкафы до потолка без щелей и без наездов на фасады;
+   - Проверь, что у шторных ниш выдержан отступ +100 мм от передней грани радиатора;
+   - Если точки света оказались слишком близко к новым шкафам — аккуратно отцентрируй их по свободному полю потолка.
+3. Проверь результат глазами через take_screenshot!${customNoteBlock}`
+        },
+
+        // ==================== 7. КОМПЛЕКТАТОР (МЕБЕЛЬ, СВЕТ, ТЕХНИКА, САНТЕХНИКА) ====================
+        {
+          roleKey: 'complect',
+          situation: 'scratch',
+          step: '7️⃣ КОМПЛЕКТАТОР • ВАРИАНТ А: РАССТАНОВКА МЕБЕЛИ, СВЕТИЛЬНИКОВ, ТЕХНИКИ И САНТЕХНИКИ С НУЛЯ',
+          chatName: `Комплектатор${pidSuffix}`,
+          roleTitle: `Комплектатор (Мебель, Свет, Техника и Сантехника) — Полная расстановка готовых 3D-моделей по Плану Л2 и концепции Дизайнера`,
+          skill: `C:\\Users\\Анжелика\\.gemini\\config\\skills\\lav-03d-skypro-decorator\\SKILL.md`,
+          badgeColor: 'purple',
+          whenToUse: 'Используй, когда нужно расставить всю готовую мебель (диваны, кровати, столы, стулья, кресла), люстры, подвесы, бра, а также базовую технику и сантехнику.',
+          prompt: `🏷️ ПРАВИЛО НАЗВАНИЯ ЧАТА: Назови этот чат коротко: «Комплектатор${pidSuffix}».
+
+Ты — Комплектатор Мебели, Освещения, Техники и Сантехники в Homestyler (Роль №3Г — Часть 1).
+Перед началом работы ОБЯЗАТЕЛЬНО прочитай свой скилл:
+- C:\\Users\\Анжелика\\.gemini\\config\\skills\\lav-03d-skypro-decorator\\SKILL.md
+
+📂 РАБОЧАЯ ПАПКА ПРОЕКТА: ${folderStr}
+🚪 ПОМЕЩЕНИЯ: ${roomsStr}
+
+🎯 ТВОЯ ЗАДАЧА СЕЙЧАС (РАССТАНОВКА МЕБЕЛИ, СВЕТА, ТЕХНИКИ И САНТЕХНИКИ):
+1. Изучи Итоговый План Л2, ПАСПОРТ_ПРОЕКТА.md и утверждённую концепцию Дизайнера (ДИЗАЙН_КОНЦЕПЦИЯ_УТВЕРЖДЕНА.md). Корпусную мебель и потолки НЕ трогай!
+2. Поставь БАЗОВУЮ ТЕХНИКУ, САНТЕХНИКУ И ТЕКСТИЛЬ из папки Анжелики «Мой кабинет -> Избранное -> По умолчанию» (fid: 28463658) через HSJoinery.placeFavoriteModel:
+   - Кухня: варочная панель ('cooktop'), духовка+СВЧ ('oven_microwave'), мойка и смеситель ('kitchen_sink_set' / 'kitchen_faucet');
+   - Санузлы: комплект инсталляции унитаза ('toilet_full_set'), душевая стойка ('shower_set_with_water'), раковина/смеситель ('bath_vessel_sink_set'), стиральная и сушильная машины ('washing_machine', 'tumble_dryer'), полотенцесушители (fid: 28480387);
+   - Жилые зоны: ТВ ('tv'), кондиционеры ('air_conditioner'), шторы и тюль ('curtain_tulle', 'curtain_blackout', 'window_blinds').
+3. Подбери (с обязательным просмотром превью через read_file!) и расставь ГОТОВУЮ МЕБЕЛЬ И ОСВЕЩЕНИЕ строго по Плану Л2 и референсам комнаты из папок Избранного Анжелики (Подвесы fid: 28480398, Бра fid: 28480395, Люстры fid: 28480293, Торшеры fid: 28480300, Диваны fid: 28480275, Кровати fid: 28480266, Кресла fid: 28480261, Стулья fid: 28480270, Столы fid: 28480269 / 28480262) и базы 3D Sky Pro (http://127.0.0.1:3033/api/search).
+4. Проверь каждую комнату глазами через take_screenshot: все модели должны стоять чётко на полу (z=0), спинкой к стене, стулья задвинуты к столу, бра на стенах, подвесы ровно над столом/островом/тумбами!${customNoteBlock}`
+        },
+        {
+          roleKey: 'complect',
+          situation: 'fixes',
+          step: '7️⃣ КОМПЛЕКТАТОР • ВАРИАНТ Б: ТОЧЕЧНАЯ ЗАМЕНА МЕБЕЛИ ИЛИ СВЕТИЛЬНИКОВ ПО ПРАВКАМ',
+          chatName: `Комплектатор${pidSuffix}`,
+          roleTitle: `Комплектатор (По правкам) — Точечная замена или добавление конкретных предметов мебели, стульев, люстр, бра или сантехники`,
+          skill: `C:\\Users\\Анжелика\\.gemini\\config\\skills\\lav-03d-skypro-decorator\\SKILL.md`,
+          badgeColor: 'yellow',
+          whenToUse: 'Используй, когда нужно заменить только конкретные светильники, стулья, диван, кровать или сантехнику по правкам, не трогая остальную комплектацию.',
+          prompt: `🏷️ ПРАВИЛО НАЗВАНИЯ ЧАТА: Назови этот чат коротко: «Комплектатор${pidSuffix}».
+
+Ты — Комплектатор Мебели, Освещения, Техники и Сантехники в Homestyler (Роль №3Г — Часть 1).
+Прочитай скилл: C:\\Users\\Анжелика\\.gemini\\config\\skills\\lav-03d-skypro-decorator\\SKILL.md
+
+📂 РАБОЧАЯ ПАПКА ПРОЕКТА: ${folderStr}
+🚪 ЗАТРАГИВАЕМЫЕ ПОМЕЩЕНИЯ: ${roomsStr}
+
+🎯 ТВОЯ ЗАДАЧА СЕЙЧАС (ТОЧЕЧНАЯ ЗАМЕНА МЕБЕЛИ / СВЕТА ПО ПРАВКАМ):
+1. Изучи список правок и согласованные с Дизайнером позиции в ДИЗАЙН_КОНЦЕПЦИЯ_УТВЕРЖДЕНА.md.
+2. ⛔ ПРАВИЛО ЛОКАЛЬНОСТИ: НЕ удаляй и не двигай мебель в тех зонах, которые уже согласованы! Замени или добавь ТОЛЬКО указанные в правках предметы мебели, стулья, люстры, подвесы, бра, шторы или сантехнику в помещениях (${roomsStr}).
+3. Перед вставкой каждой модели обязательно проверь её превью глазами через read_file, выставь точные координаты и разворот, и проверь результат через take_screenshot!${customNoteBlock}`
+        },
+
+        // ==================== 8. ДЕКОРАТОР (ТОЛЬКО ДЕКОР ПОЛОК, ОДЕЖДА В ГАРДЕРОБНЫЕ, САНУЗЛЫ, РАСТЕНИЯ) ====================
+        {
+          roleKey: 'decorator',
+          situation: 'all_decor',
+          step: '🌿 8️⃣ ДЕКОРАТОР • НАПОЛНЕНИЕ ПОЛОК, ГАРДЕРОБНЫХ, СТОЛОВ И САНУЗЛОВ ДЕКОРОМ (БЕЗ ИЗМЕНЕНИЯ МЕБЕЛИ!)',
+          chatName: `Декоратор${pidSuffix}`,
+          roleTitle: `Декоратор — Наполнение открытых полок, гардеробных (одежда/сумки), столов, санузлов и расстановка растений из 10 папок Избранного`,
+          skill: `C:\\Users\\Анжелика\\.gemini\\config\\skills\\lav-03d-skypro-decorator\\SKILL.md`,
+          badgeColor: 'green',
+          whenToUse: 'Идеально, когда ты САМА выбрала и расставила мебель (или после Комплектатора), и нужно, чтобы агент только красиво задекорировал все открытые полки, гардеробные, столы и санузлы!',
+          prompt: `🏷️ ПРАВИЛО НАЗВАНИЯ ЧАТА: Назови этот чат коротко: «Декоратор${pidSuffix}».
+
+Ты — Узкий Декоратор Интерьера в Homestyler (Роль №3Г — Часть 2: чистое декорирование без изменения мебели).
+Перед началом работы ОБЯЗАТЕЛЬНО прочитай раздел 3 своего скилла (Карта 10 целевых папок Избранного Анжелики):
+- C:\\Users\\Анжелика\\.gemini\\config\\skills\\lav-03d-skypro-decorator\\SKILL.md
+
+📂 РАБОЧАЯ ПАПКА ПРОЕКТА: ${folderStr}
+🚪 ДЕКОРИРУЕМЫЕ ПОМЕЩЕНИЯ: ${roomsStr}
+
+🚨 ЖЕЛЕЗНЫЙ ЗАКОН ДЕКОРАТОРА:
+- Вся корпусная и мягкая мебель, столы, стулья, светильники, техника и сантехника в сцене УЖЕ СТОЯТ!
+- КАТЕГОРИЧЕСКИ ЗАПРЕЩЕНО удалять, менять или двигать стоящую мебель и свет! Твоя задача — ТОЛЬКО аккуратно и со вкусом расставить декор, одежду, книги, аксессуары и растения.
+
+🎯 ТВОЯ ЗАДАЧА СЕЙЧАС (ЧИСТОЕ ДЕКОРИРОВАНИЕ ИЗ 10 ПАПОК «МОЙ КАБИНЕТ -> ИЗБРАННОЕ» АНЖЕЛИКИ):
+1. Подключись к открытой сцене Homestyler (порт 9222, waitForStableDom: false), подключи window.HSJoinery и считай точные координаты и высоты (zMm) всех открытых полок, ниш, стеллажей, консолей, тумб, столешниц, обеденных/журнальных столов и штанг гардеробных в помещениях (${roomsStr}).
+2. Используй рандомизированную выборку со всей глубины целевых папок Анжелики:
+   const items = await HSJoinery.sampleFavoriteModels(fid, count);
+   (обязательно просматривай превью через read_file перед вставкой и разворачивай каждый предмет строго лицом в комнату!):
+   - 🏺 Открытые полки, стеллажи, ТВ-тумбы, прикроватные тумбы и консоли в Прихожей, Гостиной и Спальне -> строго из папки «Декор - Декор для полок» (fid: 28480394);
+   - 📚 Рабочие столы, кабинеты и подростковые комнаты -> книги из папки «Декор - Книги» (fid: 28480289) + декор полок (fid: 28480394);
+   - 👗 Гардеробные, открытые секции шкафов и прихожие -> одежда на плечиках на штанги, стопки одежды, сумки, обувь и коробки на полки строго из папки «Гардероб - Одежда» (fid: 28480340);
+   - ☕ Кухонная столешница, остров и витрины кухни -> из папки «Кухня - Декор для кухни» (fid: 28480297);
+   - 💐 Обеденный стол и журнальный столик -> букеты и вазы из папок «Растения - Букеты» (fid: 28480396) и «Растения - Озеленение» (fid: 28480397);
+   - 🧴 Ванная комната и гостевой санузел -> косметические баночки, дозаторы, полотенца и диффузоры СТРОГО из папки «Санузел - Декор для санузла» (fid: 28480273) (никогда не ставь баночки санузла в жилые комнаты!);
+   - 🧺 Постирочная и хозшкаф -> корзины для белья, порошки и полотенца из папки «Прачечная - Наполнение прачечной» (fid: 28480352);
+   - 🌿 Свободные углы комнат по композиции -> напольные зелёные растения в кашпо из папки «Растения - Растения» (fid: 28480305).
+3. Сделай контрольные скриншоты take_screenshot каждой задекорированной зоны и проверь глазами через read_file, чтобы ни один предмет декора не висел в воздухе, не проваливался в полку и не пересекался с соседними предметами!${customNoteBlock}`
+        }
+      ];
+
+      // Фильтрация по выбранной роли и ситуации
+      const filtered = allCards.filter(c => {
+        const roleOk = (currentAhRoleFilter === 'all') || (c.roleKey === currentAhRoleFilter);
+        let sitOk = true;
+        if (currentAhSituationFilter === 'scratch') {
+          sitOk = (c.situation === 'scratch' || c.situation === 'all_decor');
+        } else if (currentAhSituationFilter === 'fixes') {
+          sitOk = (c.situation === 'fixes' || c.situation === 'all_decor');
+        } else if (currentAhSituationFilter === 'goal') {
+          sitOk = (c.situation === 'goal');
+        }
+        return roleOk && sitOk;
+      });
 
       const borderMap = {
         purple: 'border:1.5px solid rgba(168,85,247,0.65); background:rgba(168,85,247,0.07);',
@@ -8504,7 +8390,10 @@
         blue: 'border:1.5px solid rgba(59,130,246,0.65); background:rgba(59,130,246,0.07);'
       };
 
-      container.innerHTML = cards.map((c, idx) => {
+      const container = document.getElementById('ah-prompts-container');
+      if (!container) return;
+
+      container.innerHTML = filtered.map((c, idx) => {
         const taId = `ah-prompt-ta-${idx}`;
         const styleStr = borderMap[c.badgeColor] || borderMap.blue;
         return `
@@ -8528,7 +8417,7 @@
                 </button>
               </div>
             </div>
-            <textarea id="${taId}" class="script-answer-input" style="min-height:185px; font-family:Consolas, monospace; font-size:12.2px; line-height:1.48; color:#f8fafc; background:rgba(0,0,0,0.45); border-color:rgba(255,255,255,0.18);">${c.prompt}</textarea>
+            <textarea id="${taId}" class="script-answer-input" style="min-height:175px; font-family:Consolas, monospace; font-size:12.2px; line-height:1.48; color:#f8fafc; background:rgba(0,0,0,0.45); border-color:rgba(255,255,255,0.18);">${c.prompt}</textarea>
           </div>
         `;
       }).join('');
