@@ -17,3 +17,6 @@ _patch_*.py
 _sync_*.py
 наполнение/
 фоновые/
+
+# LAV Visual Studio local generation results
+.lav_results/
