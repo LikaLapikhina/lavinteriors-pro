@@ -1124,7 +1124,7 @@
         }
         if (stateData && typeof stateData === 'object') {
           var changed = false;
-          var isFirstBootOnLaptop = !localStorage.getItem('lav_work_projects_db_v21') || localStorage.getItem('lav_work_projects_db_v8') || localStorage.getItem('lav_work_projects_db_v7');
+          var isFirstBootOnLaptop = !localStorage.getItem('lav_work_projects_db_v30_nov10') || localStorage.getItem('lav_work_projects_db_v8') || localStorage.getItem('lav_work_projects_db_v7');
           Object.keys(stateData).forEach(function(k) {
             if (k.startsWith('lav_') && stateData[k]) {
               if (isFirstBootOnLaptop || forceReloadUI || !localStorage.getItem(k)) {
@@ -1161,8 +1161,12 @@
         }
       };
 
+      // Очистка старого кэша браузера от 03.11 / 08.11, чтобы всегда показывались свежие данные 10.11.2026
+      if (localStorage.getItem('lav_schema_ver') !== 'v30_nov10_2026') {
+        ['lav_custom_edits_v23','lav_custom_edits_v30_nov10','lav_modeling_html_v12','lav_calls_html_v12','lav_projects_tbody_v18','lav_sheet_nov11_v16','lav_calendar_events_2026_v17','lav_work_projects_db_v21'].forEach(function(k){ localStorage.removeItem(k); });
+        localStorage.setItem('lav_schema_ver', 'v30_nov10_2026');
+      }
       window.__pullLavCloudState = pullCloudState;
-      window.addEventListener('DOMContentLoaded', function() { pullCloudState(false); });
     })();
 
     function openLaptopSetupModal() {
@@ -1210,7 +1214,7 @@
   <div class="top-bar">
     <div class="brand">
       <h1 data-editable="true">⚡ LAV COMMAND CENTER — Личный кабинет Анжелики</h1>
-      <p data-editable="true">Вторник <b>10.11.2026</b> • В табличке на завтра <b>11.11.2026</b> пока стоит <b>5 500,00 ₽</b> (0599 500 ₽ + 0600 2 500 ₽ + 0615 2 500 ₽) • 🚨 <b>НЕ ВПИСАНЫ</b> утверждённые этапы у ВД Валерии Г.: <b>0654</b> (ПР + аванс визы = <b>4 400–5 400 ₽</b>) и <b>0645</b> (утверждены визы = <b>5 518–6 937 ₽</b>)!</p>
+      <p data-editable="true">Вторник <b>10.11.2026</b> • В табличке на завтра <b>11.11.2026</b> пока стоит <b>5 500,00 ₽</b> (0599 500 ₽ + 0600 2 500 ₽ + 0615 2 500 ₽) • ⏳ <b>Ждём от другого ВД (Валерия Г. напишет позже)</b> расчёт по 2 утверждённым этапам: <b>0654</b> (ПР + оплачены визы = <b>+4 400–5 400 ₽</b>) и <b>0645</b> (утверждены визы = <b>+5 518–6 937 ₽</b>)!</p>
     </div>
     <div class="top-actions">
       <a href="javascript:(async function(){try{var c=new AbortController();var t=setTimeout(function(){c.abort();},1200);var r=await fetch('http://127.0.0.1:3033/homestyler-panel.js?t='+Date.now(),{signal:c.signal});clearTimeout(t);if(r.ok){window.__SKYPRO_SERVER_ORIGIN__='http://127.0.0.1:3033';(0,eval)(await r.text());return;}}catch(e){}try{var ep=await (await fetch('https://lavinteriors.pro/office/skypro-endpoint.json?t='+Date.now())).json();if(ep&&ep.tunnelUrl){window.__SKYPRO_SERVER_ORIGIN__=ep.tunnelUrl.replace(/\/+$/,'');var r2=await fetch(window.__SKYPRO_SERVER_ORIGIN__+'/homestyler-panel.js?t='+Date.now());(0,eval)(await r2.text());return;}}catch(e2){}alert('Не удалось подключиться к 3DSky серверу ПК');})();void(0);" class="action-btn" style="background:linear-gradient(135deg,#2563eb,#1d4ed8);border-color:#60a5fa;color:#fff;text-decoration:none;font-weight:700;" title="Зажми левой кнопкой мыши и перетащи на панель закладок браузера! Внутри Homestyler 1 клик по закладке откроет панель 3DSky Pro">⚡ 3DSky Панель</a>
@@ -1237,9 +1241,9 @@
       <div class="kpi-sub" id="kpi-not-sub" data-editable="true">Сейчас вписаны 3 строки: <b>0599</b> (500 ₽ доп. встреча) + <b>0600</b> (2 500 ₽ аванс визы) + <b>0615</b> (2 500 ₽ аванс визы) • Итого за ноябрь в табл.: 32 000 ₽</div>
     </div>
     <div class="kpi-card highlight-purple" style="border-color:#ef4444; background:rgba(239,68,68,0.12);">
-      <div class="kpi-label" style="color:#fca5a5;">🚨 НЕ ВПИСАЛИ НА 11.11 (УТВЕРЖДЕНО!)</div>
+      <div class="kpi-label" style="color:#fde68a;">⏳ ОТ ДРУГОГО ВД (0654 + 0645 — НАПИШЕТ ПОЗЖЕ)</div>
       <div class="kpi-val" style="color:#f87171;" data-editable="true">+ 9 918 – 12 337 ₽</div>
-      <div class="kpi-sub" data-editable="true">Написать сейчас! Не внесли 2 утверждения (ВД Валерия Г.): <b>0654</b> (ПР + аванс визы = 4 400..5 400 ₽) и <b>0645</b> (утверждены визы = 5 518..6 937 ₽)!</div>
+      <div class="kpi-sub" data-editable="true">По утверждённым проектам другой ВД (Валерия Г., напишет позже): <b>0654</b> (ПР + аванс визы = 4 400..5 400 ₽) и <b>0645</b> (утверждены визы = 5 518..6 937 ₽)</div>
     </div>
     <div class="kpi-card highlight-blue">
       <div class="kpi-label">💼 ВЕСЬ ПОРТФЕЛЬ (22 В РАБОТЕ + 3 ЗАКРЫТЫ)</div>
@@ -1409,7 +1413,7 @@
           <div class="block-header">
             <div>
               <div class="block-title" style="color:#f87171; font-size:16px;">🚨 2. НЕ ВПИСАНО В ТАБЛИЧКУ НА 11.11.2026 (ХОТЯ ЭТАПЫ УЖЕ УТВЕРЖДЕНЫ!) — + 9 918 .. 12 337 ₽</div>
-              <div class="block-subtitle">Оба утверждённых проекта ведёт ВД Валерия Г. — нужно написать сейчас, чтобы дописали на завтра 11.11:</div>
+              <div class="block-subtitle">По этим 2 утверждённым проектам другой дизайнер (ВД Валерия Г.) — она напишет позже по выплате:</div>
             </div>
           </div>
           <div id="list-not-in-sheet">
@@ -1599,7 +1603,7 @@
     <div class="block-box red-priority" style="margin-bottom:18px; border-width:2px; background:linear-gradient(135deg, rgba(239,68,68,0.16), rgba(15,23,42,0.95)); box-shadow:0 8px 28px rgba(239,68,68,0.22);">
       <div class="block-header" style="margin-bottom:10px; padding-bottom:8px;">
         <div>
-          <div class="block-title" style="color:#fecaca; font-size:17px;">🚨 ЖЁСТКИЙ ОРИЕНТИР НА ЗАВТРА (ПОНЕДЕЛЬНИК 09.11) — ЧТО СДАТЬ В ПЕРВУЮ ОЧЕРЕДЬ</div>
+          <div class="block-title" style="color:#fecaca; font-size:17px;">🚨 ЖЁСТКИЙ ОРИЕНТИР НА СЕГОДНЯ И ЗАВТРА (10–11 НОЯБРЯ) — ЧТО СДАТЬ В ПЕРВУЮ ОЧЕРЕДЬ</div>
           <div class="block-subtitle" style="color:#fde68a; margin-top:3px;">Проекты, где ты лично пообещала, где ждут дольше всего (с 27–29.10) или где давно молчание в чате:</div>
         </div>
       </div>
@@ -1664,7 +1668,7 @@
       <div>
         <div class="block-box red-priority">
           <div class="block-header">
-            <div class="block-title" style="color:#f87171;">🔥 ЧТО ДЕЛАЕМ СЕГОДНЯ (ВС 08.11 + В НОЧЬ С АГЕНТАМИ) И В ПН–СР (09–11.11)</div>
+            <div class="block-title" style="color:#f87171;">🔥 ПЛАН РАБОТ НА НЕДЕЛЮ (ВТ 10.11 – ПТ 13.11) ПО ПРИОРИТЕТАМ</div>
             <button class="copy-btn" onclick="addNewTaskPrompt('modeling')">➕ Добавить</button>
           </div>
           <div class="task-list" id="modeling-task-list">
@@ -1734,7 +1738,7 @@
       <div>
         <div class="block-box purple-priority">
           <div class="block-header">
-            <div class="block-title" style="color:#c084fc;">📲 НАПИСАТЬ ЗАВТРА (ПН 09.11) + ГДЕ МЯЧ НА СТОРОНЕ КЛИЕНТОВ (НЕ ПАНИКОВАТЬ!)</div>
+            <div class="block-title" style="color:#c084fc;">📲 КОМУ НАПИСАТЬ В ЧАТЫ + ГДЕ МЯЧ НА СТОРОНЕ КЛИЕНТОВ (НЕ ПАНИКОВАТЬ!)</div>
             <button class="copy-btn" onclick="addNewTaskPrompt('calls')">➕ Добавить задачу</button>
           </div>
           <div class="task-list" id="calls-task-list">
@@ -3539,12 +3543,12 @@
       document.querySelectorAll('[data-editable="true"]').forEach(el => {
         edits.push(el.innerHTML);
       });
-      localStorage.setItem('lav_custom_edits_v23', JSON.stringify(edits));
+      localStorage.setItem('lav_custom_edits_v30_nov10', JSON.stringify(edits));
     }
 
     function loadCustomEdits() {
       try {
-        const raw = localStorage.getItem('lav_custom_edits_v23');
+        const raw = localStorage.getItem('lav_custom_edits_v30_nov10');
         if (!raw) return;
         const edits = JSON.parse(raw);
         const els = document.querySelectorAll('[data-editable="true"]');
@@ -3586,13 +3590,13 @@
     }
 
     function saveAddedTasks() {
-      localStorage.setItem('lav_modeling_html_v12', document.getElementById('modeling-task-list').innerHTML);
-      localStorage.setItem('lav_calls_html_v12', document.getElementById('calls-task-list').innerHTML);
+      localStorage.setItem('lav_modeling_html_v30_nov10', document.getElementById('modeling-task-list').innerHTML);
+      localStorage.setItem('lav_calls_html_v30_nov10', document.getElementById('calls-task-list').innerHTML);
     }
 
     function loadAddedTasks() {
-      const m = localStorage.getItem('lav_modeling_html_v12');
-      const c = localStorage.getItem('lav_calls_html_v12');
+      const m = localStorage.getItem('lav_modeling_html_v30_nov10');
+      const c = localStorage.getItem('lav_calls_html_v30_nov10');
       if (m) document.getElementById('modeling-task-list').innerHTML = m;
       if (c) document.getElementById('calls-task-list').innerHTML = c;
     }
@@ -3620,7 +3624,7 @@
         <td style="font-weight:800; color:#60a5fa;" data-editable="true">${rest}</td>
       `;
       tbody.insertBefore(tr, tbody.lastElementChild);
-      localStorage.setItem('lav_projects_tbody_v18', tbody.innerHTML);
+      localStorage.setItem('lav_projects_tbody_v30_nov10', tbody.innerHTML);
       switchTab('tab-projects', document.querySelectorAll('.tab-btn')[2]);
     }
 
@@ -3670,7 +3674,7 @@
       } catch(e) {}
       const cs = localStorage.getItem('lav_custom_scripts_v4');
       if (cs) document.getElementById('custom-scripts-container').innerHTML = cs;
-      const pt = localStorage.getItem('lav_projects_tbody_v18');
+      const pt = localStorage.getItem('lav_projects_tbody_v30_nov10');
       if (pt) document.getElementById('projects-tbody').innerHTML = pt;
     }
 
@@ -3679,13 +3683,13 @@
       el.classList.toggle('done');
       const states = [];
       document.querySelectorAll('.task-item').forEach(item => states.push(item.classList.contains('done')));
-      localStorage.setItem('lav_tasks_nov08_v6', JSON.stringify(states));
+      localStorage.setItem('lav_tasks_nov10_v30', JSON.stringify(states));
       saveAddedTasks();
     }
 
     function loadTasks() {
       try {
-        const raw = localStorage.getItem('lav_tasks_nov08_v6');
+        const raw = localStorage.getItem('lav_tasks_nov10_v30');
         if (!raw) return;
         const states = JSON.parse(raw);
         document.querySelectorAll('.task-item').forEach((item, i) => {
@@ -3729,10 +3733,7 @@
           outSum += amt; outIds.push(id);
         }
       });
-      document.getElementById('kpi-in-sheet').textContent = inSum.toLocaleString('ru-RU', {minimumFractionDigits: 2, maximumFractionDigits: 2}) + ' ₽';
-      document.getElementById('kpi-in-sub').textContent = inIds.length + ' пр. в табл. на 04.11: ' + inIds.join(', ');
-      document.getElementById('kpi-not-in-sheet').textContent = outSum.toLocaleString('ru-RU', {minimumFractionDigits: 2, maximumFractionDigits: 2}) + ' ₽';
-      document.getElementById('kpi-not-sub').textContent = outIds.length + ' поз. на след. среду 11.11: ' + outIds.join(', ');
+      // Не перезаписываем верхние KPI старым шаблоном 04.11
     }
 
     function saveSheetState() {
@@ -3740,12 +3741,12 @@
       document.querySelectorAll('.sheet-item').forEach(item => {
         state[item.getAttribute('data-id')] = item.getAttribute('data-in') === 'true';
       });
-      localStorage.setItem('lav_sheet_nov11_v16', JSON.stringify(state));
+      localStorage.setItem('lav_sheet_nov11_v30_nov10', JSON.stringify(state));
     }
 
     function loadSheetState() {
       try {
-        const raw = localStorage.getItem('lav_sheet_nov11_v16');
+        const raw = localStorage.getItem('lav_sheet_nov11_v30_nov10');
         if (!raw) return;
         const state = JSON.parse(raw);
         document.querySelectorAll('.sheet-item').forEach(item => {
@@ -3762,7 +3763,7 @@
 
 
     // ==================== 7. КАЛЕНДАРЬ (ОКТЯБРЬ, НОЯБРЬ, ДЕКАБРЬ 2026) ====================
-    const CAL_STORAGE_KEY = 'lav_calendar_events_2026_v17';
+    const CAL_STORAGE_KEY = 'lav_calendar_events_2026_v30_nov10';
     const CAL_NOTES_KEY = 'lav_calendar_daynotes_2026_v2';
     let currentCalMonth = 10; // 9 = Октябрь, 10 = Ноябрь, 11 = Декабрь
     let selectedCalDateKey = '2026-11-10';
@@ -3971,7 +3972,7 @@
 
 
     // ==================== 8. ПРОЕКТЫ В РАБОТЕ И ИНТЕРАКТИВНЫЙ КОНСТРУКТОР ПРОМПТОВ АГЕНТАМ ====================
-    const WORK_PROJECTS_KEY = 'lav_work_projects_db_v21';
+    const WORK_PROJECTS_KEY = 'lav_work_projects_db_v30_nov10';
     let currentWorkProjId = '0653';
     let currentWorkRoomKey = 'hall';
     var currentVizRoomKey = 'hall';
@@ -5513,7 +5514,7 @@
           });
           return merged;
         }
-        const oldRaw = localStorage.getItem('lav_work_projects_db_v10') || localStorage.getItem('lav_work_projects_db_v21') || localStorage.getItem('lav_work_projects_db_v21') || localStorage.getItem('lav_work_projects_db_v8') || localStorage.getItem('lav_work_projects_db_v7') || localStorage.getItem('lav_work_projects_db_v6') || localStorage.getItem('lav_work_projects_db_v5');
+        const oldRaw = localStorage.getItem('lav_work_projects_db_v10') || localStorage.getItem('lav_work_projects_db_v30_nov10') || localStorage.getItem('lav_work_projects_db_v30_nov10') || localStorage.getItem('lav_work_projects_db_v8') || localStorage.getItem('lav_work_projects_db_v7') || localStorage.getItem('lav_work_projects_db_v6') || localStorage.getItem('lav_work_projects_db_v5');
         const fresh = JSON.parse(JSON.stringify(DEFAULT_WORK_PROJECTS));
         if (oldRaw) {
           const oldList = JSON.parse(oldRaw);
