@@ -1124,7 +1124,7 @@
         }
         if (stateData && typeof stateData === 'object') {
           var changed = false;
-          var isFirstBootOnLaptop = !localStorage.getItem('lav_work_projects_db_v19') || localStorage.getItem('lav_work_projects_db_v8') || localStorage.getItem('lav_work_projects_db_v7');
+          var isFirstBootOnLaptop = !localStorage.getItem('lav_work_projects_db_v20') || localStorage.getItem('lav_work_projects_db_v8') || localStorage.getItem('lav_work_projects_db_v7');
           Object.keys(stateData).forEach(function(k) {
             if (k.startsWith('lav_') && stateData[k]) {
               if (isFirstBootOnLaptop || forceReloadUI || !localStorage.getItem(k)) {
@@ -1210,7 +1210,7 @@
   <div class="top-bar">
     <div class="brand">
       <h1 data-editable="true">⚡ LAV COMMAND CENTER — Личный кабинет Анжелики</h1>
-      <p data-editable="true">Воскресенье <b>08.11.2026</b> • В портфеле <b>25 проектов</b> (<b>23 активных</b>: ✅ <b>0654</b> план отправлен сегодня, ✅ <b>0645</b> все визы отправлены, 📐 <b>0653</b> чертим сейчас, 🔥 <b>6 виз с 27–30.10</b> на запуск с агентами!) • Выплата 04.11: <b>26 500,00 ₽ ✅</b></p>
+      <p data-editable="true">Вторник <b>10.11.2026</b> • Завтра <b>Среда выплат 11.11.2026</b> (ждём <b>16 417 – 24 337 ₽</b>: утверждены визы <b>0645</b> + утверждён план и оплачены визы <b>0654</b> + авансы <b>0663</b>, <b>0615</b>, <b>0606</b>!) • В работе <b>22 проекта</b> (<b>0633</b> закрыт и передан, расчёт получен в 26 500 ₽ ✅)</p>
     </div>
     <div class="top-actions">
       <a href="javascript:(async function(){try{var c=new AbortController();var t=setTimeout(function(){c.abort();},1200);var r=await fetch('http://127.0.0.1:3033/homestyler-panel.js?t='+Date.now(),{signal:c.signal});clearTimeout(t);if(r.ok){window.__SKYPRO_SERVER_ORIGIN__='http://127.0.0.1:3033';(0,eval)(await r.text());return;}}catch(e){}try{var ep=await (await fetch('https://lavinteriors.pro/office/skypro-endpoint.json?t='+Date.now())).json();if(ep&&ep.tunnelUrl){window.__SKYPRO_SERVER_ORIGIN__=ep.tunnelUrl.replace(/\/+$/,'');var r2=await fetch(window.__SKYPRO_SERVER_ORIGIN__+'/homestyler-panel.js?t='+Date.now());(0,eval)(await r2.text());return;}}catch(e2){}alert('Не удалось подключиться к 3DSky серверу ПК');})();void(0);" class="action-btn" style="background:linear-gradient(135deg,#2563eb,#1d4ed8);border-color:#60a5fa;color:#fff;text-decoration:none;font-weight:700;" title="Зажми левой кнопкой мыши и перетащи на панель закладок браузера! Внутри Homestyler 1 клик по закладке откроет панель 3DSky Pro">⚡ 3DSky Панель</a>
@@ -1229,27 +1229,27 @@
     <div class="kpi-card highlight-green">
       <div class="kpi-label">✅ ПОЛУЧЕНО В 1-Ю СРЕДУ НОЯБРЯ (04.11.2026)</div>
       <div class="kpi-val" id="kpi-in-sheet" style="color:#34d399;" data-editable="true">26 500,00 ₽ ✅</div>
-      <div class="kpi-sub" id="kpi-in-sub" data-editable="true">Пришло 26 500 ₽ (в табл. было 22 500 ₽: 0653 5к, 0631 4к, 0637 4к, 0601 3к, 0613 2.5к, 0611 2к, 0633 2к + 4 000 ₽ сверху!)</div>
+      <div class="kpi-sub" id="kpi-in-sub" data-editable="true">7 пр.: 0653 (5к), 0633 (6к с доплатой — закрыт/передан!), 0631 (4к), 0637 (4к), 0601 (3к), 0613 (2.5к), 0611 (2к)</div>
     </div>
     <div class="kpi-card highlight-yellow">
-      <div class="kpi-label">⏳ АВАНСЫ И ДОПЛАТА 0633 НА ЭТУ СРЕДУ (11.11)</div>
-      <div class="kpi-val" id="kpi-not-in-sheet" style="color:#fbbf24;" data-editable="true">18 201,60 ₽</div>
-      <div class="kpi-sub" id="kpi-not-sub" data-editable="true">Доплата 0633 (+4 701,60 план + 3к аванс виз) + новые авансы на 11.11: 0663 (4к), 0600 (2.5к), 0589 (2к), 0615 (2к)</div>
+      <div class="kpi-label">💰 ЗАВТРА В СРЕДУ (11.11): УТВЕРЖДЕНИЯ + АВАНСЫ</div>
+      <div class="kpi-val" id="kpi-not-in-sheet" style="color:#fbbf24;" data-editable="true">16 418 – 24 337 ₽</div>
+      <div class="kpi-sub" id="kpi-not-sub" data-editable="true">0645 визы (+5 518..6 937 ₽) + 0654 план и аванс виз (+4 400..5 400 ₽) + 0663 (+4 000 ₽) + 0615 (+2 500..3 000 ₽) + 0606 (+2 500..2 900 ₽)</div>
     </div>
     <div class="kpi-card highlight-purple">
-      <div class="kpi-label">🚀 ПОТЕНЦИАЛ НА ЭТУ СРЕДУ (11.11): СДАЧА ЭТАПОВ</div>
-      <div class="kpi-val" style="color:#c084fc;" data-editable="true">55 000 – 95 470 ₽</div>
-      <div class="kpi-sub" data-editable="true">18 201,60 ₽ (авансы+0633) + до 77 269 ₽ за сдачу горящих виз (0645, 0574, 0596, 0606, 0593, 0545, 0619, 0609) и планов (0654, 0653)!</div>
+      <div class="kpi-label">🎨 В ПРОЦЕССЕ СБОРКИ ВИЗ (ОСТАТКИ ЗА СДАЧУ)</div>
+      <div class="kpi-val" style="color:#c084fc;" data-editable="true">84 253,40 ₽</div>
+      <div class="kpi-sub" data-editable="true">Авансы по ним УЖЕ выплачены! Ждём за сдачу виз: 0613 (9.6к), 0596 (9.1к), 0574 (9.1к), 0593 (8.8к), 0611 (8.6к), 0576 (7.8к), 0572 (7.4к), 0601 (6.9к), 0545 (6.75к), 0619 (5.6к), 0609 (5к)</div>
     </div>
     <div class="kpi-card highlight-blue">
-      <div class="kpi-label">💼 ВЕСЬ ПОРТФЕЛЬ В НОЯБРЕ (25 ПРОЕКТОВ)</div>
-      <div class="kpi-val" style="color:#60a5fa;" data-editable="true">347 183,00 ₽</div>
-      <div class="kpi-sub" data-editable="true">Получено всего: <b>92 778,80 ₽</b> (66 278,80 окт + 26 500 нояб) • Чистый остаток в работе: <b>254 404,20 ₽</b></div>
+      <div class="kpi-label">💼 ВЕСЬ ПОРТФЕЛЬ (22 В РАБОТЕ + 3 ЗАКРЫТЫ)</div>
+      <div class="kpi-val" style="color:#60a5fa;" data-editable="true">349 629,00 ₽</div>
+      <div class="kpi-sub" data-editable="true">Получено всего: <b>92 778,80 ₽</b> (66 278,80 окт + 26 500 нояб) • Чистый остаток по 22 активным проектам: <b>256 850,20 ₽</b></div>
     </div>
     <div class="kpi-card" style="border-color:rgba(16,185,129,0.35); background:rgba(15,23,42,0.85);">
-      <div class="kpi-label" style="color:#6ee7b7;">📦 АРХИВ: ИТОГ ЗА ОКТЯБРЬ 2026 (ЗАКРЫТ)</div>
+      <div class="kpi-label" style="color:#6ee7b7;">📦 АРХИВ: ОКТЯБРЬ 2026 + ЗАКРЫТЫЕ (0587, 0550, 0633)</div>
       <div class="kpi-val" style="color:#a7f3d0;" data-editable="true">66 278,80 ₽ ✅</div>
-      <div class="kpi-sub" data-editable="true">3 выплаты октября: <b>7 000 ₽</b> (14.10) + <b>17 000 ₽</b> (21.10) + <b>42 278,80 ₽</b> (28.10 — 10 пр.)</div>
+      <div class="kpi-sub" data-editable="true">Октябрь: 7к (14.10) + 17к (21.10) + 42 278,80 (28.10) • Закрыты: 0587 (9 922 ₽), 0550 (8 000 ₽), 0633 (10 000 ₽ — передан)</div>
     </div>
   </div>
 
@@ -1356,164 +1356,184 @@
   <div id="tab-sheet" class="tab-section">
     <div class="today-grid">
       <div>
+        <div class="block-box yellow-priority" style="border-width:2px;">
+          <div class="block-header">
+            <div>
+              <div class="block-title" style="color:#fbbf24; font-size:16px;">💰 1. ЧТО ДОЛЖНЫ ВЫПЛАТИТЬ ЗАВТРА В СРЕДУ (11.11.2026) — РАСЧЁТ: 16 417,60 – 24 337,20 ₽</div>
+              <div class="block-subtitle">2 крупных утверждения за эту неделю (0645 Визы + 0654 Планировка и оплата виз) + невыплаченные авансы по новым проектам:</div>
+            </div>
+          </div>
+          <div id="list-not-in-sheet">
+            <div class="sheet-item not-in-sheet" data-id="0645_viz" data-amount="6937.2" data-in="false" style="border-color:#10b981; background:rgba(16,185,129,0.10);">
+              <div>
+                <span class="tag tag-proj">0645</span> <span class="tag tag-max">💬 MAX • ВД Валерия Г.</span> <span class="tag tag-green">🎉 УТВЕРДИЛИ ВСЕ ВИЗУАЛИЗАЦИИ! (Доплата за этап виз)</span>
+                <div style="font-weight:700; font-size:13.2px; margin-top:4px; line-height:1.45;" data-editable="true">
+                  Общая сумма в табл. (F9): <b>28 392,00 ₽</b> (20%). Уже выплачено: <b>14 356,80 ₽</b> (11 356,80 ₽ за 1-й этап 40% + 3 000 ₽ аванс виз).<br>
+                  • За 2-й этап (Визы = 30%–35% от 28 392 ₽ = <b>8 517,60 – 9 937,20 ₽</b>) минус аванс 3 000 ₽ -> на завтра 11.11 положено: <b>+ 5 517,60 ₽</b> (при 30%) или <b>+ 6 937,20 ₽</b> (при 35%)!<br>
+                  • <i>На 3-й этап (Чертежи РД) остаётся ещё <b>7 098,00 – 8 517,60 ₽</b> (если дадут аванс на чертежи — ещё +2 000 ₽).</i>
+                </div>
+              </div>
+              <div style="text-align:right; min-width:135px;">
+                <div style="font-size:16px; font-weight:900; color:#34d399; margin-bottom:4px;">+ 5 518 .. 6 937 ₽</div>
+                <button class="sheet-toggle-btn btn-out" onclick="toggleSheetItem(this)">⏳ Ждём 11.11</button>
+              </div>
+            </div>
+
+            <div class="sheet-item not-in-sheet" data-id="0654_plan" data-amount="5400" data-in="false" style="border-color:#10b981; background:rgba(16,185,129,0.10);">
+              <div>
+                <span class="tag tag-proj">0654</span> <span class="tag tag-tg">📱 TG • ВД Валерия Г.</span> <span class="tag tag-green">🎉 УТВЕРДИЛИ ПЛАНИРОВКУ + ОПЛАТИЛИ ВИЗЫ!</span>
+                <div style="font-weight:700; font-size:13.2px; margin-top:4px; line-height:1.45;" data-editable="true">
+                  Общая сумма в табл. (F10): <b>16 000,00 ₽</b> (20%). Выплачено 28.10: <b>4 000,00 ₽</b> (2 000 ₽ бриф + 2 000 ₽ аванс плана).<br>
+                  • 1) За утверждённую планировку (40% от 16 000 ₽ = 6 400 ₽ минус 4 000 ₽ аванса) = <b>+ 2 400,00 ₽</b> (в кол. «Планировка»);<br>
+                  • 2) Плюс заказчики уже оплатили визы -> в кол. «Аванс визы» должны поставить ещё <b>+ 2 000,00 – 3 000,00 ₽</b>!<br>
+                  • <b>Итого по 0654 на завтра 11.11: + 4 400,00 – 5 400,00 ₽!</b> (Остаток на финал виз и РД: 6 600 – 7 600 ₽).
+                </div>
+              </div>
+              <div style="text-align:right; min-width:135px;">
+                <div style="font-size:16px; font-weight:900; color:#34d399; margin-bottom:4px;">+ 4 400 .. 5 400 ₽</div>
+                <button class="sheet-toggle-btn btn-out" onclick="toggleSheetItem(this)">⏳ Ждём 11.11</button>
+              </div>
+            </div>
+
+            <div class="sheet-item not-in-sheet" data-id="0663_adv" data-amount="4000" data-in="false">
+              <div>
+                <span class="tag tag-proj">0663</span> <span class="tag tag-tg">📱 TG</span> <span class="tag tag-purple">🆕 Аванс за Полный проект 66 м² (Созвон проведён 04.11!)</span>
+                <div style="font-weight:700; font-size:13.2px; margin-top:3px;" data-editable="true">
+                  На прошлой неделе в табличке 04.11 его ещё не было! За проведённый Бриф (2 000 ₽) + Аванс планировки (2 000 ₽) на завтра 11.11 положено <b>+ 4 000,00 ₽</b>!
+                </div>
+              </div>
+              <div style="text-align:right; min-width:135px;">
+                <div style="font-size:16px; font-weight:900; color:#fbbf24; margin-bottom:4px;">+ 4 000,00 ₽</div>
+                <button class="sheet-toggle-btn btn-out" onclick="toggleSheetItem(this)">⏳ Ждём 11.11</button>
+              </div>
+            </div>
+
+            <div class="sheet-item not-in-sheet" data-id="0615_adv" data-amount="3000" data-in="false">
+              <div>
+                <span class="tag tag-proj">0615</span> <span class="tag tag-tg">📱 TG • Александра</span> <span class="tag tag-purple">🆕 Аванс за Визы (2 этажа, 167.9 / 180 м² = ~20 500 ₽)</span>
+                <div style="font-weight:700; font-size:13.2px; margin-top:3px;" data-editable="true">
+                  Большая двухуровневая квартира 180 м²! Анкета и референсы получены, проект в работе — на 11.11 должны поставить аванс виз <b>+ 2 500,00 – 3 500,00 ₽</b>!
+                </div>
+              </div>
+              <div style="text-align:right; min-width:135px;">
+                <div style="font-size:16px; font-weight:900; color:#fbbf24; margin-bottom:4px;">+ 2 500 .. 3 500 ₽</div>
+                <button class="sheet-toggle-btn btn-out" onclick="toggleSheetItem(this)">⏳ Ждём 11.11</button>
+              </div>
+            </div>
+
+            <div class="sheet-item not-in-sheet" data-id="0606_adv" data-amount="2900" data-in="false">
+              <div>
+                <span class="tag tag-proj">0606</span> <span class="tag tag-max">💬 MAX • Елизавета</span> <span class="tag tag-money">💰 Остаток кухни-гостиной (+2 900 ₽) ИЛИ аванс за всю квартиру (70.7 м²)!</span>
+                <div style="font-weight:700; font-size:13.2px; margin-top:3px;" data-editable="true">
+                  Аванс 2 000 ₽ был 21.10. Заказчица уже оплатила всю оставшуюся квартиру (70.7 м²) — проверить, поставили ли аванс/доплату <b>+ 2 000 – 2 900 ₽</b>!
+                </div>
+              </div>
+              <div style="text-align:right; min-width:135px;">
+                <div style="font-size:16px; font-weight:900; color:#fbbf24; margin-bottom:4px;">+ 2 000 .. 2 900 ₽</div>
+                <button class="sheet-toggle-btn btn-out" onclick="toggleSheetItem(this)">⏳ Проверить 11.11</button>
+              </div>
+            </div>
+
+            <div class="sheet-item not-in-sheet" data-id="0600_adv" data-amount="2500" data-in="false">
+              <div>
+                <span class="tag tag-proj">0600</span> <span class="tag tag-max">💬 MAX • ВД Алёна</span> <span class="tag tag-blue">⏳ В таблице уже вписано 2 500 ₽ (ждёт анкету клиентки)</span>
+                <div style="font-weight:700; font-size:13.2px; margin-top:3px;" data-editable="true">
+                  В Excel в строке 15 (0600, 6 600 ₽) в ячейке N15 уже вбита сумма <b>2 500,00 ₽</b> (придёт, как только клиентка скинет анкету).
+                </div>
+              </div>
+              <div style="text-align:right; min-width:135px;">
+                <div style="font-size:16px; font-weight:900; color:#93c5fd; margin-bottom:4px;">+ 2 500,00 ₽</div>
+                <button class="sheet-toggle-btn btn-out" onclick="toggleSheetItem(this)">⏳ По анкете</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div class="block-box green-priority">
           <div class="block-header">
             <div>
-              <div class="block-title" style="color:#34d399;">✅ 1. ПОЛУЧЕНО В 1-Ю СРЕДУ НОЯБРЯ (04.11.2026) — ФАКТ: 26 500,00 ₽ ✅ (7 пр. + 4 000 ₽ сверху!)</div>
-              <div class="block-subtitle">В жёлтой табличке стояло 22 500 ₽, по факту пришло 26 500,00 ₽ (+4 000 ₽ сверху):</div>
+              <div class="block-title" style="color:#34d399;">✅ 2. УЖЕ ПОЛУЧЕНО В 1-Ю СРЕДУ НОЯБРЯ (04.11.2026) — 26 500,00 ₽ ✅ (ЗАКРЫТО)</div>
+              <div class="block-subtitle">Все авансы по этим 6 новым проектам + расчёт за планировку 0633 уже пришли тебе 04.11:</div>
             </div>
           </div>
 
           <div id="list-in-sheet">
-            <div class="sheet-item in-sheet" data-id="0653" data-amount="5000" data-in="true">
+            <div class="sheet-item in-sheet" data-id="0633" data-amount="6000" data-in="true">
               <div>
-                <span class="tag tag-proj">0653</span> <span class="tag tag-tg">📱 TG • ВД Света</span> <span class="tag tag-green">✅ 2 000 ₽ (бриф) + 3 000 ₽ (аванс плана)</span>
-                <div style="font-weight:700; font-size:13.5px; margin-top:3px;" data-editable="true">Полный проект ЖК «Вэйв» (Платон, 20 348 ₽) • В табличке 2 строками на 04.11: <b>5 000 ₽</b>! Остаток: <b>15 348 ₽</b></div>
+                <span class="tag tag-proj">0633</span> <span class="tag tag-tg">📱 TG</span> <span class="tag tag-green">✅ ПЛАНИРОВКА ОПЛАЧЕНА (2 000 + 4 000 ₽ сверху) • ПРОЕКТ ЗАКРЫТ И ПЕРЕДАН!</span>
+                <div style="font-weight:700; font-size:13.2px; margin-top:3px;" data-editable="true">
+                  21.10 получено 4 000 ₽ + 04.11 пришло ещё 6 000 ₽ (2 000 ₽ в табл. + 4 000 ₽ доплатили сверху в составе 26 500 ₽) = <b>10 000,00 ₽</b>! От проекта отказались, передан другому дизайнеру.
+                </div>
               </div>
               <div style="text-align:right;">
-                <div style="font-size:16px; font-weight:900; color:#34d399; margin-bottom:4px;">+ 5 000,00 ₽</div>
-                <button class="sheet-toggle-btn btn-in" onclick="toggleSheetItem(this)">✅ На 04.11</button>
+                <div style="font-size:16px; font-weight:900; color:#34d399; margin-bottom:4px;">+ 6 000,00 ₽ ✅</div>
+                <button class="sheet-toggle-btn btn-in" onclick="toggleSheetItem(this)">✅ Закрыт 04.11</button>
               </div>
             </div>
 
-            <div class="sheet-item in-sheet" data-id="0633" data-amount="2000" data-in="true" style="border-color:#ef4444; background:rgba(239,68,68,0.12);">
+            <div class="sheet-item in-sheet" data-id="0653" data-amount="5000" data-in="true">
               <div>
-                <span class="tag tag-proj">0633</span> <span class="tag tag-tg">📱 TG</span> <span class="tag tag-red">🚨 СПОР: ПОСТАВИЛИ 2 000 ₽ ВМЕСТО 6 701,60 ₽ ЗА ПЛАН!</span>
-                <div style="font-weight:700; font-size:13.5px; margin-top:3px;" data-editable="true">План утверждён! От суммы <b>26 754 ₽</b> 1-й этап (40%) = <b>10 701,60 ₽</b> − 4 000 ₽ авансов = <b>должны 6 701,60 ₽</b> (недописали 4 701,60 ₽)!</div>
+                <span class="tag tag-proj">0653</span> <span class="tag tag-tg">📱 TG • ВД Света</span> <span class="tag tag-green">✅ Аванс получен 04.11: 2 000 ₽ (бриф) + 3 000 ₽ (аванс плана)</span>
+                <div style="font-weight:700; font-size:13.2px; margin-top:3px;" data-editable="true">ЖК «Вэйв» (Платон, 20 348 ₽) • Аванс <b>5 000 ₽</b> выплачен 04.11. Остаток по проекту: <b>15 348,00 ₽</b>.</div>
               </div>
               <div style="text-align:right;">
-                <div style="font-size:16px; font-weight:900; color:#fca5a5; margin-bottom:4px;">+ 2 000,00 ₽ ⚠️</div>
-                <button class="sheet-toggle-btn btn-in" onclick="toggleSheetItem(this)">✅ На 04.11</button>
+                <div style="font-size:16px; font-weight:900; color:#34d399; margin-bottom:4px;">+ 5 000,00 ₽ ✅</div>
+                <button class="sheet-toggle-btn btn-in" onclick="toggleSheetItem(this)">✅ Получено 04.11</button>
               </div>
             </div>
 
             <div class="sheet-item in-sheet" data-id="0631" data-amount="4000" data-in="true">
               <div>
-                <span class="tag tag-proj">0631</span> <span class="tag tag-tg">📱 TG • ВД Елена</span> <span class="tag tag-green">✅ 2 000 ₽ (бриф) + 2 000 ₽ (аванс плана)</span>
-                <div style="font-weight:700; font-size:13.5px; margin-top:3px;" data-editable="true">Полный проект (в табл. <b>29 304,60 ₽</b>) • Сегодня в 20:00 созвон! Остаток после 04.11: <b>25 304,60 ₽</b></div>
-              </div>
-              <div style="text-align:right;">
-                <div style="font-size:16px; font-weight:900; color:#34d399; margin-bottom:4px;">+ 4 000,00 ₽</div>
-                <button class="sheet-toggle-btn btn-in" onclick="toggleSheetItem(this)">✅ На 04.11</button>
-              </div>
-            </div>
-
-            <div class="sheet-item in-sheet" data-id="0637" data-amount="4000" data-in="true">
-              <div>
-                <span class="tag tag-proj">0637</span> <span class="tag tag-max">💬 MAX • ВД Елена</span> <span class="tag tag-green">✅ 2 000 ₽ (бриф) + 2 000 ₽ (аванс плана)</span>
-                <div style="font-weight:700; font-size:13.5px; margin-top:3px;" data-editable="true">Полный проект 44.94 м² (в табл. <b>24 570,00 ₽</b>) • Ждём замер. Остаток после 04.11: <b>20 570,00 ₽</b></div>
-              </div>
-              <div style="text-align:right;">
-                <div style="font-size:16px; font-weight:900; color:#34d399; margin-bottom:4px;">+ 4 000,00 ₽</div>
-                <button class="sheet-toggle-btn btn-in" onclick="toggleSheetItem(this)">✅ На 04.11</button>
-              </div>
-            </div>
-
-            <div class="sheet-item in-sheet" data-id="0601" data-amount="3000" data-in="true">
-              <div>
-                <span class="tag tag-proj">0601</span> <span class="tag tag-tg">📱 TG • ВД Светлана</span> <span class="tag tag-green">✅ аванс визы (3 000 ₽!)</span>
-                <div style="font-weight:700; font-size:13.5px; margin-top:3px;" data-editable="true">Новый проект Визы 81 м² (расчёт <b>9 922,50 ₽</b>) • Анкета у Светланы есть, ждём рефы! Остаток: <b>6 922,50 ₽</b></div>
-              </div>
-              <div style="text-align:right;">
-                <div style="font-size:16px; font-weight:900; color:#34d399; margin-bottom:4px;">+ 3 000,00 ₽</div>
-                <button class="sheet-toggle-btn btn-in" onclick="toggleSheetItem(this)">✅ На 04.11</button>
-              </div>
-            </div>
-
-            <div class="sheet-item in-sheet" data-id="0613" data-amount="2500" data-in="true">
-              <div>
-                <span class="tag tag-proj">0613</span> <span class="tag tag-max">💬 MAX • ВД Алёна</span> <span class="tag tag-green">✅ аванс визы (2 500 ₽!)</span>
-                <div style="font-weight:700; font-size:13.5px; margin-top:3px;" data-editable="true">Визы 73 м² (в табл. <b>12 100,00 ₽</b>) • Созвон проведён 30.10. Остаток после 04.11: <b>9 600,00 ₽</b></div>
-              </div>
-              <div style="text-align:right;">
-                <div style="font-size:16px; font-weight:900; color:#34d399; margin-bottom:4px;">+ 2 500,00 ₽</div>
-                <button class="sheet-toggle-btn btn-in" onclick="toggleSheetItem(this)">✅ На 04.11</button>
-              </div>
-            </div>
-
-            <div class="sheet-item in-sheet" data-id="0611" data-amount="2000" data-in="true">
-              <div>
-                <span class="tag tag-proj">0611</span> <span class="tag tag-tg">📱 TG • ВД Елена</span> <span class="tag tag-green">✅ аванс визы</span>
-                <div style="font-weight:700; font-size:13.5px; margin-top:3px;" data-editable="true">Визы 78 м² (в табл. <b>10 647,00 ₽</b>) • Заполняют анкету. Остаток после 04.11: <b>8 647,00 ₽</b></div>
-              </div>
-              <div style="text-align:right;">
-                <div style="font-size:16px; font-weight:900; color:#34d399; margin-bottom:4px;">+ 2 000,00 ₽</div>
-                <button class="sheet-toggle-btn btn-in" onclick="toggleSheetItem(this)">✅ На 04.11</button>
-              </div>
-            </div>
-            <div class="sheet-item in-sheet" data-id="ДОП_0411" data-amount="4000" data-in="true" style="border-color:#10b981; background:rgba(16,185,129,0.14);">
-              <div>
-                <span class="tag tag-proj">+4 000 ₽ СВЕРХУ</span> <span class="tag tag-green">✅ ПРИШЛО СВЕРХ ТАБЛИЧКИ 22 500 ₽ -> ИТОГО 26 500,00 ₽!</span>
-                <div style="font-weight:700; font-size:13.5px; margin-top:3px;" data-editable="true">На этой неделе 04.11 отправили <b>26 500,00 ₽</b> вместо 22 500 ₽ (доп. <b>+4 000 ₽</b> сверх таблички).</div>
+                <span class="tag tag-proj">0631</span> <span class="tag tag-tg">📱 TG • ВД Елена</span> <span class="tag tag-green">✅ Аванс получен 04.11: 2 000 ₽ (бриф) + 2 000 ₽ (аванс плана)</span>
+                <div style="font-weight:700; font-size:13.2px; margin-top:3px;" data-editable="true">Светлана, Полный проект (<b>29 304,60 ₽</b>) • Аванс <b>4 000 ₽</b> выплачен 04.11. Ждём замер. Остаток: <b>25 304,60 ₽</b>.</div>
               </div>
               <div style="text-align:right;">
                 <div style="font-size:16px; font-weight:900; color:#34d399; margin-bottom:4px;">+ 4 000,00 ₽ ✅</div>
                 <button class="sheet-toggle-btn btn-in" onclick="toggleSheetItem(this)">✅ Получено 04.11</button>
               </div>
             </div>
-          </div>
-        </div>
 
-        <div class="block-box yellow-priority">
-          <div class="block-header">
-            <div>
-              <div class="block-title" style="color:#fbbf24;">⏳ 2. АВАНСЫ И ДОПЛАТА НА СЛЕДУЮЩУЮ СРЕДУ (11.11.2026) — 18 201,60 ₽</div>
-              <div class="block-subtitle">Доплата за утверждённый план 0633 + авансы по новым проектам после получения анкет/созвонов:</div>
-            </div>
-          </div>
-          <div id="list-not-in-sheet">
-            <div class="sheet-item not-in-sheet" data-id="0633_diff" data-amount="7701.6" data-in="false" style="border-color:#ef4444;">
+            <div class="sheet-item in-sheet" data-id="0637" data-amount="4000" data-in="true">
               <div>
-                <span class="tag tag-proj">0633</span> <span class="tag tag-tg">📱 TG</span> <span class="tag tag-red">🚨 ДОПЛАТА ЗА ПЛАН (+4 701,60 ₽) + АВАНС ВИЗ (+3 000 ₽)</span>
-                <div style="font-weight:700; font-size:13.5px; margin-top:3px;" data-editable="true">За план должны <b>6 701,60 ₽</b> (поставили 2 000 -> доплата <b>+4 701,60 ₽</b>) + <b>3 000 ₽</b> аванс за старт виз!</div>
+                <span class="tag tag-proj">0637</span> <span class="tag tag-max">💬 MAX • ВД Елена</span> <span class="tag tag-green">✅ Аванс получен 04.11: 2 000 ₽ (бриф) + 2 000 ₽ (аванс плана)</span>
+                <div style="font-weight:700; font-size:13.2px; margin-top:3px;" data-editable="true">Полный проект 44.94 м² (<b>24 570,00 ₽</b>) • Аванс <b>4 000 ₽</b> выплачен 04.11. Ждём замер. Остаток: <b>20 570,00 ₽</b>.</div>
               </div>
               <div style="text-align:right;">
-                <div style="font-size:16px; font-weight:900; color:#fca5a5; margin-bottom:4px;">+ 7 701,60 ₽</div>
-                <button class="sheet-toggle-btn btn-out" onclick="toggleSheetItem(this)">⏳ На 11.11</button>
+                <div style="font-size:16px; font-weight:900; color:#34d399; margin-bottom:4px;">+ 4 000,00 ₽ ✅</div>
+                <button class="sheet-toggle-btn btn-in" onclick="toggleSheetItem(this)">✅ Получено 04.11</button>
               </div>
             </div>
 
-            <div class="sheet-item not-in-sheet" data-id="0663" data-amount="4000" data-in="false">
+            <div class="sheet-item in-sheet" data-id="0601" data-amount="3000" data-in="true">
               <div>
-                <span class="tag tag-proj">0663</span> <span class="tag tag-tg">📱 TG</span> <span class="tag tag-purple">🆕 Полный проект 66 м² (= 36 036,00 ₽) • Провести Бриф!</span>
-                <div style="font-weight:700; font-size:13.5px; margin-top:3px;" data-editable="true">Проводим созвон по Брифу -> на 11.11 идут <b>2 000 ₽ (бриф) + 2 000 ₽ (аванс плана) = +4 000 ₽</b>!</div>
+                <span class="tag tag-proj">0601</span> <span class="tag tag-tg">📱 TG • ВД Светлана</span> <span class="tag tag-green">✅ Аванс визы получен 04.11 (3 000 ₽!)</span>
+                <div style="font-weight:700; font-size:13.2px; margin-top:3px;" data-editable="true">Влад и Леда, Визы 81.8 м² (<b>9 922,50 ₽</b>) • Аванс <b>3 000 ₽</b> выплачен 04.11. Остаток за сдачу виз: <b>6 922,50 ₽</b>.</div>
               </div>
               <div style="text-align:right;">
-                <div style="font-size:16px; font-weight:900; color:#fbbf24; margin-bottom:4px;">+ 4 000,00 ₽</div>
-                <button class="sheet-toggle-btn btn-out" onclick="toggleSheetItem(this)">⏳ На 11.11</button>
+                <div style="font-size:16px; font-weight:900; color:#34d399; margin-bottom:4px;">+ 3 000,00 ₽ ✅</div>
+                <button class="sheet-toggle-btn btn-in" onclick="toggleSheetItem(this)">✅ Получено 04.11</button>
               </div>
             </div>
 
-            <div class="sheet-item not-in-sheet" data-id="0600" data-amount="2500" data-in="false">
+            <div class="sheet-item in-sheet" data-id="0613" data-amount="2500" data-in="true">
               <div>
-                <span class="tag tag-proj">0600</span> <span class="tag tag-max">💬 MAX • ВД Алёна</span> <span class="tag tag-purple">⏳ Визы 33 м² (= 6 600,00 ₽) • В табл. уже стоит 2 500 ₽!</span>
-                <div style="font-weight:700; font-size:13.5px; margin-top:3px;" data-editable="true">Ждём анкету -> созвон -> в таблицу ставят дату выплаты аванса <b>+2 500 ₽</b> на 11.11! Остаток: <b>4 100 ₽</b></div>
+                <span class="tag tag-proj">0613</span> <span class="tag tag-max">💬 MAX • ВД Алёна</span> <span class="tag tag-green">✅ Аванс визы получен 04.11 (2 500 ₽!)</span>
+                <div style="font-weight:700; font-size:13.2px; margin-top:3px;" data-editable="true">Анастасия, Визы 73 м² (<b>12 100,00 ₽</b>) • Аванс <b>2 500 ₽</b> выплачен 04.11. Остаток за сдачу виз: <b>9 600,00 ₽</b>.</div>
               </div>
               <div style="text-align:right;">
-                <div style="font-size:16px; font-weight:900; color:#fbbf24; margin-bottom:4px;">+ 2 500,00 ₽</div>
-                <button class="sheet-toggle-btn btn-out" onclick="toggleSheetItem(this)">⏳ На 11.11</button>
+                <div style="font-size:16px; font-weight:900; color:#34d399; margin-bottom:4px;">+ 2 500,00 ₽ ✅</div>
+                <button class="sheet-toggle-btn btn-in" onclick="toggleSheetItem(this)">✅ Получено 04.11</button>
               </div>
             </div>
 
-            <div class="sheet-item not-in-sheet" data-id="0589" data-amount="2000" data-in="false">
+            <div class="sheet-item in-sheet" data-id="0611" data-amount="2000" data-in="true">
               <div>
-                <span class="tag tag-proj">0589</span> <span class="tag tag-max">💬 MAX</span> <span class="tag tag-purple">⏳ Визы 120 м² (= 15 000,00 ₽) • Ждём анкету</span>
-                <div style="font-weight:700; font-size:13.5px; margin-top:3px;" data-editable="true">Ждём анкету от Никиты -> созвон -> аванс <b>+2 000 ₽</b> на 11.11! Остаток: <b>13 000 ₽</b></div>
+                <span class="tag tag-proj">0611</span> <span class="tag tag-tg">📱 TG • ВД Елена</span> <span class="tag tag-green">✅ Аванс визы получен 04.11 (2 000 ₽!)</span>
+                <div style="font-weight:700; font-size:13.2px; margin-top:3px;" data-editable="true">Mid-century, Визы 78 м² (<b>10 647,00 ₽</b>) • Аванс <b>2 000 ₽</b> выплачен 04.11. Остаток за сдачу виз: <b>8 647,00 ₽</b>.</div>
               </div>
               <div style="text-align:right;">
-                <div style="font-size:16px; font-weight:900; color:#fbbf24; margin-bottom:4px;">+ 2 000,00 ₽</div>
-                <button class="sheet-toggle-btn btn-out" onclick="toggleSheetItem(this)">⏳ На 11.11</button>
-              </div>
-            </div>
-
-            <div class="sheet-item not-in-sheet" data-id="0615" data-amount="2000" data-in="false">
-              <div>
-                <span class="tag tag-proj">0615</span> <span class="tag tag-tg">📱 TG</span> <span class="tag tag-purple">🆕 Визы 2 этажа (большая кв.) • Ждём рефы</span>
-                <div style="font-weight:700; font-size:13.5px; margin-top:3px;" data-editable="true">Дождаться референсов + уточнить площадь -> созвон -> аванс <b>+2 000 ₽</b> на 11.11!</div>
-              </div>
-              <div style="text-align:right;">
-                <div style="font-size:16px; font-weight:900; color:#fbbf24; margin-bottom:4px;">+ 2 000,00 ₽</div>
-                <button class="sheet-toggle-btn btn-out" onclick="toggleSheetItem(this)">⏳ На 11.11</button>
+                <div style="font-size:16px; font-weight:900; color:#34d399; margin-bottom:4px;">+ 2 000,00 ₽ ✅</div>
+                <button class="sheet-toggle-btn btn-in" onclick="toggleSheetItem(this)">✅ Получено 04.11</button>
               </div>
             </div>
           </div>
@@ -1524,79 +1544,52 @@
         <div class="block-box purple-priority">
           <div class="block-header">
             <div>
-              <div class="block-title" style="color:#c084fc;">🚀 3. ПОТЕНЦИАЛЬНЫЕ ВЫПЛАТЫ В СЛЕДУЮЩУЮ СРЕДУ (11 НОЯБРЯ 2026)</div>
-              <div class="block-subtitle">Что может войти в выплату следующей среды 11.11 по мере сдачи горящих виз, правок и планировок на этой неделе:</div>
+              <div class="block-title" style="color:#c084fc;">📊 3. ОТ КОГО И СКОЛЬКО ТЫ ЖДЁШЬ ПО ВСЕМ ОСТАЛЬНЫМ ПРОЕКТАМ (СВОДКА ОСТАТКОВ)</div>
+              <div class="block-subtitle">Где аванс УЖЕ получен, и сколько придёт после сдачи этапов в ноябре:</div>
             </div>
           </div>
 
-          <div class="table-wrap">
-            <table class="fin-table">
-              <thead>
-                <tr>
-                  <th>Проект / Канал</th>
-                  <th>Что нужно сдать до вторника 10.11</th>
-                  <th>Потенциал на 11.11</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr class="fin-row-yellow">
-                  <td data-editable="true"><b>1. Новые авансы + доплата плана 0633</b></td>
-                  <td data-editable="true">Доплата плана 0633 (4 701,60 + 3к аванс виз) + бриф 0663 (4к) + авансы 0600 (2.5к), 0589 (2к), 0615 (2к)</td>
-                  <td style="color:#fbbf24; font-weight:900; font-size:14.5px;" data-editable="true">+ 18 201,60 ₽</td>
-                </tr>
-                <tr class="fin-row-green">
-                  <td data-editable="true"><b>2. 0606 (💬 MAX • Елизавета)</b></td>
-                  <td data-editable="true">Сдать микро-правки по кухне-гостиной (финал 2 900 ₽) + аванс за продолжение всей квартиры!</td>
-                  <td style="color:#34d399; font-weight:900; font-size:14.5px;" data-editable="true">+ 2 900,00 ₽ (+аванс кв.!)</td>
-                </tr>
-                <tr class="fin-row-green">
-                  <td data-editable="true"><b>3. 0645 (💬 MAX • Артем, Королёв)</b></td>
-                  <td data-editable="true">Срочно отправить визы на этой неделе (закрытие виз 6 937,20 ₽, либо с чертежами весь остаток 14 035,20 ₽)</td>
-                  <td style="color:#34d399; font-weight:900; font-size:14.5px;" data-editable="true">+ 6 937 – 14 035 ₽</td>
-                </tr>
-                <tr class="fin-row-green">
-                  <td data-editable="true"><b>4. 0574 (📱 TG • Андрей, 2-эт. дом)</b></td>
-                  <td data-editable="true">Сдать визы 2-эт. дома (ждёт с 29.10! Общая 12 142 − 3 000 аванс)</td>
-                  <td style="color:#34d399; font-weight:900; font-size:14.5px;" data-editable="true">+ 9 142,00 ₽</td>
-                </tr>
-                <tr class="fin-row-green">
-                  <td data-editable="true"><b>5. 0596 (💬 MAX • Таунхаус 132 м²)</b></td>
-                  <td data-editable="true">Внести правки по 1-му этажу + сдать 2-й этаж (общая 10 780 − 2 000 аванс)</td>
-                  <td style="color:#34d399; font-weight:900; font-size:14.5px;" data-editable="true">+ 8 780,00 ₽</td>
-                </tr>
-                <tr class="fin-row-blue">
-                  <td data-editable="true"><b>6. Визы с 27.10: 0593, 0545, 0619</b></td>
-                  <td data-editable="true">Сдать визы: 0593 (ост. 9 147 ₽) + 0545 (ост. 6 750 ₽) + 0619 (ост. 5 616,70 ₽)</td>
-                  <td style="color:#60a5fa; font-weight:900; font-size:14.5px;" data-editable="true">до + 21 513,70 ₽</td>
-                </tr>
-                <tr class="fin-row-blue">
-                  <td data-editable="true"><b>7. Визы 0609, 0613 и правки 0576</b></td>
-                  <td data-editable="true">0609 (ост. 5 000 ₽) + правки 0576 (ост. 7 800 ₽) + визы 0613 (ост. 9 600 ₽)</td>
-                  <td style="color:#60a5fa; font-weight:900; font-size:14.5px;" data-editable="true">до + 22 400,00 ₽</td>
-                </tr>
-                <tr class="fin-row-blue">
-                  <td data-editable="true"><b>8. Планировки этой недели: 0654 и 0653</b></td>
-                  <td data-editable="true">Сдать и утвердить планы: 0654 (+2 400 план + 2к аванс виз) и 0653 (+3 139,20 план + 3к аванс виз)</td>
-                  <td style="color:#60a5fa; font-weight:900; font-size:14.5px;" data-editable="true">до + 10 539,20 ₽</td>
-                </tr>
-                <tr style="background:rgba(168,85,247,0.18); font-weight:900; font-size:14.5px;">
-                  <td colspan="2">ИТОГО ПОТЕНЦИАЛ НА СЛЕДУЮЩУЮ СРЕДУ (11.11.2026):</td>
-                  <td style="color:#e9d5ff; font-size:16px;" data-editable="true">от 45 000 ₽ до 95 470 ₽ 🚀</td>
-                </tr>
-              </tbody>
-            </table>
+          <div style="display:flex; flex-direction:column; gap:8px; font-size:12.8px;">
+            <div style="padding:10px 12px; border-radius:10px; background:rgba(168,85,247,0.10); border:1px solid rgba(168,85,247,0.4);">
+              <div style="font-weight:900; color:#e9d5ff; margin-bottom:4px;">🎨 ГРУППА А: Только Визы (11 проектов — авансы по всем УЖЕ выплачены! Ждём остатки за сдачу виз = 84 253,40 ₽):</div>
+              <div style="color:#cbd5e1; line-height:1.55;">
+                1. <b>0613</b> (MAX, 73 м²): всего 12 100 ₽ − 2 500 ₽ (04.11) = ждём <b>+ 9 600,00 ₽</b><br>
+                2. <b>0596</b> (MAX, Таунхаус 132 м²): всего 11 147 ₽ − 2 000 ₽ (28.10) = ждём <b>+ 9 147,00 ₽</b><br>
+                3. <b>0574</b> (TG, 2-эт. дом 54.7 м²): всего 12 142 ₽ − 3 000 ₽ (21.10) = ждём <b>+ 9 142,00 ₽</b><br>
+                4. <b>0593</b> (MAX, Екатерина 91 м²): всего 10 780 ₽ − 2 000 ₽ (28.10) = ждём <b>+ 8 780,00 ₽</b><br>
+                5. <b>0611</b> (TG, Mid-century 78 м²): всего 10 647 ₽ − 2 000 ₽ (04.11) = ждём <b>+ 8 647,00 ₽</b><br>
+                6. <b>0576</b> (TG, Вернадского 80): всего 9 800 ₽ − 2 000 ₽ (21.10) = ждём <b>+ 7 800,00 ₽</b><br>
+                7. <b>0572</b> (TG, 1 комната правки): всего 9 398,20 ₽ − 2 000 ₽ (21.10) = ждём <b>+ 7 398,20 ₽</b><br>
+                8. <b>0601</b> (TG, Влад и Леда 81.8 м²): всего 9 922,50 ₽ − 3 000 ₽ (04.11) = ждём <b>+ 6 922,50 ₽</b><br>
+                9. <b>0545</b> (TG, Мария 60 м²): всего 10 250 ₽ − 3 500 ₽ (28.10) = ждём <b>+ 6 750,00 ₽</b><br>
+                10. <b>0599</b> (MAX, Александра 61.6 м²): всего 8 200 ₽ − 2 500 ₽ (28.10) = ждём <b>+ 5 700,00 ₽</b><br>
+                11. <b>0619</b> (TG, Полярная 25): всего 7 616,70 ₽ − 2 000 ₽ (28.10) = ждём <b>+ 5 616,70 ₽</b><br>
+                12. <b>0609</b> (TG, Сити Бэй 53.8 м²): всего 10 000 ₽ − 5 000 ₽ (28.10) = ждём <b>+ 5 000,00 ₽</b>
+              </div>
+            </div>
+
+            <div style="padding:10px 12px; border-radius:10px; background:rgba(59,130,246,0.10); border:1px solid rgba(59,130,246,0.4);">
+              <div style="font-weight:900; color:#93c5fd; margin-bottom:4px;">📐 ГРУППА Б: Полные проекты (6 проектов = 123 293,80 ₽ остатка по этапам План / Визы / Чертежи):</div>
+              <div style="color:#cbd5e1; line-height:1.55;">
+                1. <b>0645</b> (MAX, 52.65 м²): всего 28 392 ₽ − 14 356,80 ₽ = остаток <b>14 035,20 ₽</b> (из них <b>5 518..6 937 ₽</b> завтра за утверждённые визы + <b>7 098..8 518 ₽</b> за чертежи РД!)<br>
+                2. <b>0654</b> (TG, Кривцово): всего 16 000 ₽ − 4 000 ₽ = остаток <b>12 000,00 ₽</b> (из них <b>4 400..5 400 ₽</b> завтра за утверждённый план и аванс виз + <b>6 600..7 600 ₽</b> за визы и РД!)<br>
+                3. <b>0653</b> (TG, Платон): всего 20 348 ₽ − 5 000 ₽ (04.11) = остаток <b>15 348,00 ₽</b> (сдаём план -> +3 139,20 ₽ за план + визы и РД)<br>
+                4. <b>0631</b> (TG, Светлана): всего 29 304,60 ₽ − 4 000 ₽ (04.11) = остаток <b>25 304,60 ₽</b> (ждём замер -> план +7 721,84 ₽)<br>
+                5. <b>0637</b> (MAX, 44.94 м²): всего 24 570 ₽ − 4 000 ₽ (04.11) = остаток <b>20 570,00 ₽</b> (ждём замер -> план +5 828,00 ₽)<br>
+                6. <b>0663</b> (TG, 66 м²): всего 36 036 ₽ − 0 ₽ = остаток <b>36 036,00 ₽</b> (завтра ждём <b>+4 000 ₽</b> аванс за бриф и план!)
+              </div>
+            </div>
           </div>
         </div>
 
-        <!-- ОТДЕЛЬНОЕ ОКОШКО ЗА ОКТЯБРЬ 2026 -->
-        <div class="block-box" style="border-color:rgba(16,185,129,0.45); background:rgba(16,185,129,0.06); margin-bottom:14px;">
-          <div class="block-header" style="margin-bottom:8px; padding-bottom:6px;">
+        <div class="block-box" style="border-color:rgba(16,185,129,0.45); background:rgba(16,185,129,0.06);">
+          <div class="block-header">
             <div>
-              <div class="block-title" style="color:#6ee7b7; font-size:15px;">📦 4. ОТДЕЛЬНОЕ ОКОШКО: АРХИВ ВЫПЛАТ ЗА ОКТЯБРЬ 2026 — 66 278,80 ₽ ✅</div>
-              <div class="block-subtitle">Все полученные выплаты за октябрь (зафиксировано и закрыто):</div>
+              <div class="block-title" style="color:#6ee7b7;">📦 4. АРХИВ ОКТЯБРЯ 2026 (66 278,80 ₽ ✅) + ЗАКРЫТЫЕ ПРОЕКТЫ (0587, 0550, 0633)</div>
+              <div class="block-subtitle">Полностью закрытые выплаты и проекты, с которыми мы больше не работаем:</div>
             </div>
           </div>
-          <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:10px; font-size:12.5px;">
+          <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:8px; font-size:12.5px;">
             <div style="padding:10px; border-radius:10px; background:rgba(0,0,0,0.28); border:1px solid rgba(255,255,255,0.08);">
               <div style="color:#94a3b8; font-weight:700;">1-я среда • 14.10.2026</div>
               <div style="font-size:17px; font-weight:900; color:#34d399; margin:4px 0;">7 000,00 ₽ ✅</div>
@@ -1653,7 +1646,7 @@
 
         <div class="block-box" style="margin-bottom:0; background:rgba(0,0,0,0.28);">
           <div class="block-header" style="margin-bottom:8px; padding-bottom:6px;">
-            <div class="block-title" id="selected-date-title" style="color:#fbbf24; font-size:14px;">📌 8 Ноября 2026 (Воскресенье — Сегодня)</div>
+            <div class="block-title" id="selected-date-title" style="color:#fbbf24; font-size:14px;">📌 10 Ноября 2026 (Вторник — Сегодня)</div>
             <button class="copy-btn" onclick="addCalEventPrompt()">➕ Записать на этот день</button>
           </div>
           <div id="selected-date-events" class="task-list" style="margin-bottom:10px;"></div>
@@ -3616,12 +3609,12 @@
       document.querySelectorAll('[data-editable="true"]').forEach(el => {
         edits.push(el.innerHTML);
       });
-      localStorage.setItem('lav_custom_edits_v21', JSON.stringify(edits));
+      localStorage.setItem('lav_custom_edits_v22', JSON.stringify(edits));
     }
 
     function loadCustomEdits() {
       try {
-        const raw = localStorage.getItem('lav_custom_edits_v21');
+        const raw = localStorage.getItem('lav_custom_edits_v22');
         if (!raw) return;
         const edits = JSON.parse(raw);
         const els = document.querySelectorAll('[data-editable="true"]');
@@ -3817,12 +3810,12 @@
       document.querySelectorAll('.sheet-item').forEach(item => {
         state[item.getAttribute('data-id')] = item.getAttribute('data-in') === 'true';
       });
-      localStorage.setItem('lav_sheet_nov04_v14', JSON.stringify(state));
+      localStorage.setItem('lav_sheet_nov11_v15', JSON.stringify(state));
     }
 
     function loadSheetState() {
       try {
-        const raw = localStorage.getItem('lav_sheet_nov04_v14');
+        const raw = localStorage.getItem('lav_sheet_nov11_v15');
         if (!raw) return;
         const state = JSON.parse(raw);
         document.querySelectorAll('.sheet-item').forEach(item => {
@@ -3839,10 +3832,10 @@
 
 
     // ==================== 7. КАЛЕНДАРЬ (ОКТЯБРЬ, НОЯБРЬ, ДЕКАБРЬ 2026) ====================
-    const CAL_STORAGE_KEY = 'lav_calendar_events_2026_v16';
+    const CAL_STORAGE_KEY = 'lav_calendar_events_2026_v17';
     const CAL_NOTES_KEY = 'lav_calendar_daynotes_2026_v2';
     let currentCalMonth = 10; // 9 = Октябрь, 10 = Ноябрь, 11 = Декабрь
-    let selectedCalDateKey = '2026-11-08';
+    let selectedCalDateKey = '2026-11-10';
 
     const DEFAULT_CAL_EVENTS = {
       '2026-10-14': [{ text: '💰 Выплата: 7 000 ₽', type: 'ev-pay' }],
@@ -3954,7 +3947,7 @@
         const cell = document.createElement('div');
         const dow = new Date(year, monthIndex, d).getDay(); // 3 = Среда
         let cls = 'cal-day';
-        if (dateKey === '2026-11-08') cls += ' today';
+        if (dateKey === '2026-11-10') cls += ' today';
         else if (dow === 3) cls += ' payday';
         if (dateKey === selectedCalDateKey) cls += ' selected-day';
         cell.className = cls;
@@ -3974,7 +3967,7 @@
         cell.innerHTML = `
           <div class="cal-day-num">
             <span>${d}</span>
-            <span style="font-size:10px;">${dateKey === '2026-11-08' ? '🔥 СЕГОДНЯ' : (hasNote ? '📝' : (dow === 3 ? '💵' : ''))}</span>
+            <span style="font-size:10px;">${dateKey === '2026-11-10' ? '🔥 СЕГОДНЯ' : (hasNote ? '📝' : (dow === 3 ? '💵' : ''))}</span>
           </div>
           <div class="cal-events-mini">${pillsHtml}</div>
         `;
@@ -3997,7 +3990,7 @@
       const parts = selectedCalDateKey.split('-');
       const monthsRu = ['Января','Февраля','Марта','Апреля','Мая','Июня','Июля','Августа','Сентября','Октября','Ноября','Декабря'];
       const mName = monthsRu[parseInt(parts[1], 10) - 1];
-      titleEl.textContent = `📌 ${parseInt(parts[2], 10)} ${mName} ${parts[0]}` + (selectedCalDateKey === '2026-11-08' ? ' (Сегодня — Воскресенье)' : '');
+      titleEl.textContent = `📌 ${parseInt(parts[2], 10)} ${mName} ${parts[0]}` + (selectedCalDateKey === '2026-11-10' ? ' (Сегодня — Вторник)' : '');
 
       const eventsMap = getCalEvents();
       const dayEvents = eventsMap[selectedCalDateKey] || [];
@@ -4048,7 +4041,7 @@
 
 
     // ==================== 8. ПРОЕКТЫ В РАБОТЕ И ИНТЕРАКТИВНЫЙ КОНСТРУКТОР ПРОМПТОВ АГЕНТАМ ====================
-    const WORK_PROJECTS_KEY = 'lav_work_projects_db_v19';
+    const WORK_PROJECTS_KEY = 'lav_work_projects_db_v20';
     let currentWorkProjId = '0653';
     let currentWorkRoomKey = 'hall';
     var currentVizRoomKey = 'hall';
@@ -5157,11 +5150,11 @@
       },
       {
             "id": "0601",
-            "name": "Визы 81 м² (ВД Светлана • Анкета есть, ждём рефы)",
+            "name": "Влад и Леда • Визы 81.8 м² (ВД Светлана • Паспорт готов!)",
             "channel": "📱 TG",
             "format": "🎨 Только Визы",
-            "price": "9 922,50 ₽ (аванс 3 000 ₽ получ. 04.11, ост. 6 922,50 ₽)",
-            "status": "📲 Аванс 3 000 ₽ уже пришёл 04.11! Но заказчик так и НЕ отправил референсы — ЗАВТРА (ПН 09.11) обязательно написать ему в чат TG и назначить созвон!",
+            "price": "9 922,50 ₽ (аванс 3 000 ₽ получ. 04.11 ✅, ост. 6 922,50 ₽)",
+            "status": "🎨 Аванс 3 000 ₽ УЖЕ ВЫПЛАЧЕН 04.11! В папке D:\\ФАНАТИКС\\0601 уже собран ПАСПОРТ_ПРОЕКТА.md, анкета и итоговая планировка (остаток за сдачу виз: 6 922,50 ₽).",
             "closed": false,
             "folder": "D:\\ФАНАТИКС\\0601",
             "voiceDump": "Новый проект 0601 (в TG, ВД Светлана, площадь 81 м², только 3D-визуализация). Расчёт по тарифу Стандарт (80–150 м² = 3 500 ₽/м², со скидкой 30% = 2 450 ₽/м², визы 5% = 122,50 ₽/м²): 81 × 122,50 = 9 922,50 ₽ (если посчитали по ставке 136,50 ₽/м² — 11 056,50 ₽). В таблице выплат на 04.11 уже стоит аванс +3 000 ₽! Анкета у Светланы есть, ждём только референсы и назначаем созвон.",
@@ -5171,17 +5164,17 @@
             "baseCeiling": "Чистый белый матовый потолок без чёрных рамок по умолчанию",
             "baseFamily": "Площадь 81 м². ВД Светлана.",
             "rooms": {},
-            "deadline": "📲 СРОК: ЗАВТРА (ПН 09.11) — Написать заказчику в чат TG (попросить референсы и назначить созвон)!",
+            "deadline": "🎨 СРОК: Провести созвон / собрать визы 81.8 м² (аванс 3 000 ₽ уже получен 04.11 ✅)",
             "deadlineColor": "purple",
-            "infoAudit": "⚠️ Аванс 3 000 ₽ получен 04.11 • Клиент ещё не скинул референсы -> завтра написать в чат!"
+            "infoAudit": "✅ Аванс 3 000 ₽ получен 04.11 • ПАСПОРТ_ПРОЕКТА.md готов в D:\\ФАНАТИКС\\0601"
       },
       {
             "id": "0615",
-            "name": "Визы • 2 этажа (Большая квартира • Ждём референсы!)",
+            "name": "Александра • Визы 2 этажа 180 м² (Мишина 26 • Паспорт готов!)",
             "channel": "📱 TG",
             "format": "🎨 Только Визы",
-            "price": "❓ Уточнить м² и сумму (2 этажа!)",
-            "status": "📲 2-этажная квартира (Визы, Александра): нужно завтра (ПН 09.11) скачать файлы из чата в D:\\ФАНАТИКС\\0615, посмотреть — если всё понятно, сразу делать визы, либо провести созвон!",
+            "price": "~20 500 ₽ (На 11.11 ждём аванс +2 500..3 500 ₽!)",
+            "status": "🎨 Двухуровневая квартира 167.9 / 180 м² (14 помещений)! ПАСПОРТ_ПРОЕКТА.md и референсы из анкеты уже собраны в D:\\ФАНАТИКС\\0615. Аванс пока НЕ выплачен — ждём завтра в среду 11.11 (+2 500..3 500 ₽)!",
             "closed": false,
             "folder": "D:\\ФАНАТИКС\\0615",
             "voiceDump": "Новый проект 0615 в Telegram (большая двухэтажная квартира, только 3D-визуализация). Площадь в чате пока не написали — нужно уточнить метраж и стоимость в таблице, дождаться референсов от заказчиков и провести созвон.",
@@ -5191,9 +5184,9 @@
             "baseCeiling": "Чистый белый матовый потолок без чёрных рамок по умолчанию",
             "baseFamily": "Двухэтажная большая квартира.",
             "rooms": {},
-            "deadline": "📲 СРОК: ПН 09.11 — Сформировать базу в D:\\ФАНАТИКС\\0615 -> созвониться ИЛИ сразу делать проект!",
+            "deadline": "💰 Аванс +2 500..3 500 ₽ ждём завтра 11.11 • База в D:\\ФАНАТИКС\\0615 готова!",
             "deadlineColor": "purple",
-            "infoAudit": "📂 Папка D:\\ФАНАТИКС\\0615 пока пустая: скачать план/рефы из TG -> решить (созвон или сборка)"
+            "infoAudit": "⏳ Аванс ЕЩЁ НЕ ВЫПЛАЧЕН (ждём на 11.11!) • ПАСПОРТ_ПРОЕКТА.md в папке готов"
       },
       {
             "id": "0589",
@@ -5220,8 +5213,8 @@
             "name": "Полный проект 66 м² (Тариф Стандарт • Нужно провести Бриф!)",
             "channel": "📱 TG",
             "format": "📐 Полный проект",
-            "price": "36 036 ₽ (Полный проект 66 м² • Ждут с 04.11)",
-            "status": "📐 Полный проект 66 м² (Стандарт = 36 036 ₽): созвон прошёл 4 ноября, ждут планировку с 04.11 — по срокам пока абсолютно нормально, спокойно чертим после 0653!",
+            "price": "36 036 ₽ (На 11.11 ждём аванс +4 000 ₽!)",
+            "status": "📐 Полный проект 66 м² (Стандарт = 36 036 ₽): созвон прошёл 04.11 (запись Созвон 0663.MP3 в папке). Аванс (2 000 ₽ бриф + 2 000 ₽ аванс плана = 4 000 ₽) ждём завтра в среду 11.11! Чертим планировку.",
             "closed": false,
             "folder": "D:\\ФАНАТИКС\\0663",
             "voiceDump": "Новый полный проект 0663 в Telegram (тариф Стандарт, площадь 66 м²). По формуле компании (3 900 ₽/м² − 30% = 2 730 ₽/м², наши 20% = 546 ₽/м²): 66 × 546 = 36 036,00 ₽ (1-й этап Бриф+Планировка 40% = 14 414,40 ₽). Нужно назначить и провести созвон по Брифу!",
@@ -5231,18 +5224,18 @@
             "baseCeiling": "Чистый белый матовый потолок без чёрных рамок по умолчанию",
             "baseFamily": "Площадь 66 м², тариф Стандарт (Полный проект).",
             "rooms": {},
-            "deadline": "📐 СРОК: ЧТ–ПТ (12–13.11, ЖДУТ С 04.11 — ВРЕМЯ ТЕРПИТ) — Разработать планировочные решения!",
+            "deadline": "💰 Аванс +4 000 ₽ ждём завтра 11.11 • На этой неделе сдать планировку (ждут с 04.11)",
             "deadlineColor": "purple",
-            "infoAudit": "✅ Созвон проведён 04.11 (ждут с 4 ноября, срок ещё нормальный) -> планово чертим планировку"
+            "infoAudit": "⏳ Аванс +4 000 ₽ ЕЩЁ НЕ БЫЛ В ТАБЛИЧКЕ 04.11 -> ждём завтра 11.11!"
       },
       {
             "id": "0633",
-            "name": "Евродвушка 69.5 м² (✅ План утверждён! ⚠️ Спор по оплате)",
+            "name": "Евродвушка 69.5 м² (План сдан и оплачен • Передан другому дизайнеру)",
             "channel": "📱 TG",
             "format": "📋 Полный проект",
-            "price": "26 754 ₽ (⚠️ на 04.11 стоит 2 000 ₽ вместо 6 701,60 ₽!)",
-            "status": "⚠️ ПЛАНИРОВКА УТВЕРЖДЕНА! Добиваемся пересчёта оплаты на среду 11.11 (+4 701,60 ₽ доплата за план + 3 000 ₽ аванс виз) и переходим к визуализациям.",
-            "closed": false,
+            "price": "10 000 ₽ получено (закрыт)",
+            "status": "✅ ЗАКРЫТ ДЛЯ НАС (передан другому дизайнеру после этапа планировки). Выплата получена: 4 000 ₽ (21.10) + 6 000 ₽ (04.11 в составе 26 500 ₽) = 10 000 ₽.",
+            "closed": true,
             "folder": "D:\\ФАНАТИКС\\0633",
             "voiceDump": "В папке D:\\ФАНАТИКС\\0633 лежат: 0633 25.10 Планировочные решения.pdf (2 варианта), Дизайн-референсы.pdf и файл ArchiCAD .pln.",
             "baseStyle": "См. D:\\ФАНАТИКС\\0633\\Дизайн-референсы.pdf",
@@ -5296,17 +5289,17 @@
                         }
                   }
             },
-            "deadline": "🚨 СРОК: СРЕДА 11.11 — Проверить доплату +4 701,60 ₽ за план + 3 000 ₽ аванс виз!",
-            "deadlineColor": "purple",
-            "infoAudit": "🚨 План утверждён! Ждём доплату 4 701,60 ₽ + 3 000 ₽ аванс виз"
+            "deadline": "✅ ЗАКРЫТ И ПЕРЕДАН: Выплата за планировку получена в составе 26 500 ₽ (04.11)",
+            "deadlineColor": "green",
+            "infoAudit": "✅ Архив (этап планировки закрыт, дальше ведёт другой дизайнер)"
       },
       {
             "id": "0654",
             "name": "Евродвушка 43 м² • Полный проект (ВД Валерия Г.)",
             "channel": "📱 TG",
             "format": "📋 Полный проект",
-            "price": "16 000 ₽ (получено 4 000 ₽, остаток 12 000 ₽)",
-            "status": "✅ СЕГОДНЯ (ВС 08.11) ОТПРАВИЛА ПЛАНИРОВОЧНЫЕ РЕШЕНИЯ! Мяч на стороне заказчиков — ждём от них обратную связь и утверждение планировки (после утверждения — оплата плана и визы).",
+            "price": "16 000 ₽ (получ. 4 000 ₽ • На 11.11: +4 400..5 400 ₽!)",
+            "status": "🎉 ПЛАНИРОВКА УТВЕРЖДЕНА + ОПЛАТИЛИ ВИЗЫ! На завтра в среду 11.11 тебе должны выплатить: +2 400 ₽ (закрытие плана) + 2 000..3 000 ₽ (аванс за визы) = 4 400..5 400 ₽! Переходим к сборке 3D-визуализаций.",
             "closed": false,
             "folder": "D:\\ФАНАТИКС\\0654",
             "voiceDump": "📂 ПОЛНОЕ ДОСЬЕ С ФОТО И ПРОМПТОМ ДЛЯ ANTIGRAVITY: https://lavinteriors.pro/office/0654/ • Заказчики: Сергей (рост 190 см) и Елизавета Бардуковы, 1 ребёнок, 2 маленькие собаки. 1-й этаж таунхауса в д. Кривцово (H=3000 мм). Разворот лестницы по примеру соседей Авито, сдвиг санузла влево с сохранением нормального кабинета (стол глуб. 900 мм на 2 монитора + диван 1400-1600 мм). Кухня в потолок 3000 мм, столешница 900-920 мм, газовый котёл в пенале, газ. варочная 3 конф., встроенная вытяжка, ПММ 600, тонированная витрина с подсветкой, ТВ на кронштейне БЕЗ тумбы. Гостевой СУ без душа: шкаф над инсталляцией, раковина-лапомойка.",
@@ -5316,17 +5309,17 @@
             "baseCeiling": "Чистовой потолок с учётом опуска 3000 мм",
             "baseFamily": "ЛПР Сергей (40 м², полный проект). Созвон в среду 28.10 после 16:00.",
             "rooms": {},
-            "deadline": "✅ СДАНО 08.11: Планировки отправлены сегодня -> ждём обратную связь от заказчиков!",
-            "deadlineColor": "blue",
-            "infoAudit": "✅ Аванс 4 000 ₽ получен • Планировки отправлены 08.11 -> ждём ОС от клиентов!"
+            "deadline": "💰 НА ЗАВТРА (СР 11.11): Выплата за план (+2 400 ₽) + аванс виз (+2 000..3 000 ₽) -> делаем визы!",
+            "deadlineColor": "amber",
+            "infoAudit": "🎉 План утверждён, визы оплачены! На 11.11 ждём +4 400..5 400 ₽"
       },
       {
             "id": "0645",
             "name": "Артем (для мамы) • Королёв 52.65 м² (ВД Валерия Г.)",
             "channel": "💬 MAX",
             "format": "📋 Полный проект",
-            "price": "28 392 ₽ (получено 14 356,80 ₽, ост. 14 035,20 ₽)",
-            "status": "✅ ОТПРАВИЛА ВСЕ ВИЗУАЛИЗАЦИИ! Мяч на стороне Артема — ждём от него обратную связь по визам. Как только утвердит — получаем оплату за визы и делаем рабочие чертежи (РД)!",
+            "price": "28 392 ₽ (получ. 14 356,80 ₽ • На 11.11: +5 518..6 937 ₽ за визы!)",
+            "status": "🎉 УТВЕРДИЛИ ВСЕ ВИЗУАЛИЗАЦИИ! На завтра в среду 11.11 должны выплатить остаток за этап виз (+5 517,60 .. 6 937,20 ₽). Как только Артем оплатит 3-й этап (чертежи РД) — делаем рабочие чертежи (ещё +7 098..8 518 ₽)!",
             "closed": false,
             "defaultRoom": "hall",
             "folder": "D:\\ФАНАТИКС\\0645",
@@ -5427,9 +5420,9 @@
                         }
                   }
             },
-            "deadline": "✅ ВИЗЫ ОТПРАВЛЕНЫ: Ждём обратную связь от Артема -> после утверждения делаем чертежи (РД)!",
+            "deadline": "💰 НА ЗАВТРА (СР 11.11): Доплата за утверждённые визы (+5 518..6 937 ₽) -> ждём оплату чертежей РД!",
             "deadlineColor": "blue",
-            "infoAudit": "✅ Получено 14 356,80 ₽ (остаток 14 035,20 ₽) • Все визы сданы -> ждём ОС для старта чертежей!"
+            "infoAudit": "🎉 Визы утверждены! На 11.11 ждём оплату виз (+5 518..6 937 ₽), затем чертежи РД"
       },
       {
             "id": "0631",
@@ -5473,11 +5466,11 @@
       },
       {
             "id": "0611",
-            "name": "Визы 78 м² (ВД Елена • Заполняют анкету)",
+            "name": "Mid-century • Визы 78 м² (ВД Елена • Созвон проведён 06.11!)",
             "channel": "📱 TG",
             "format": "🎨 Только Визы",
-            "price": "10 647 ₽ (аванс 2 000 ₽ получ. 04.11, ост. 8 647 ₽)",
-            "status": "⏳ Аванс 2 000 ₽ получен 04.11! Общались в ноябре, ждём от заказчиков заполненную анкету и референсы для старта визуализаций.",
+            "price": "10 647 ₽ (аванс 2 000 ₽ получ. 04.11 ✅, ост. 8 647 ₽)",
+            "status": "🎨 Аванс 2 000 ₽ УЖЕ ВЫПЛАЧЕН 04.11! Созвон с заказчиками проведён 06.11 (полная расшифровка СОЗВОН_И_ПРАВКИ.md лежит в D:\\ФАНАТИКС\\0611, срок ~2 недели). Остаток за визы: 8 647,00 ₽.",
             "closed": false,
             "folder": "D:\\ФАНАТИКС\\0611",
             "voiceDump": "Новый проект 0611 в Telegram (ВД Елена, только 3D-визуализация). В официальной таблице уже стоит сумма 10 647,00 ₽ (это 78 м² × 136,50 ₽/м²) и на 04.11 стоит аванс +2 000,00 ₽ (остаток 8 647,00 ₽). Заказчики сейчас заполняют анкету — ждём анкету и референсы.",
@@ -5487,9 +5480,9 @@
             "baseCeiling": "Чистый белый матовый потолок без чёрных рамок по умолчанию",
             "baseFamily": "Площадь 78 м² (10 647 ₽ в таблице). ВД Елена.",
             "rooms": {},
-            "deadline": "⏳ ОЖИДАНИЕ: Общались в ноябре — ждём анкету и референсы от заказчиков",
-            "deadlineColor": "blue",
-            "infoAudit": "✅ Аванс 2 000 ₽ получен 04.11 (остаток 8 647 ₽) • Ждём анкету/рефы от клиентов"
+            "deadline": "🎨 СРОК: До ~18–20.11 (созвон был 06.11) — Собрать визы Mid-century (остаток 8 647 ₽)",
+            "deadlineColor": "amber",
+            "infoAudit": "✅ Аванс 2 000 ₽ получен 04.11 • СОЗВОН_И_ПРАВКИ.md готов в D:\\ФАНАТИКС\\0611"
       },
       {
             "id": "0600",
@@ -5590,7 +5583,7 @@
           });
           return merged;
         }
-        const oldRaw = localStorage.getItem('lav_work_projects_db_v10') || localStorage.getItem('lav_work_projects_db_v19') || localStorage.getItem('lav_work_projects_db_v19') || localStorage.getItem('lav_work_projects_db_v8') || localStorage.getItem('lav_work_projects_db_v7') || localStorage.getItem('lav_work_projects_db_v6') || localStorage.getItem('lav_work_projects_db_v5');
+        const oldRaw = localStorage.getItem('lav_work_projects_db_v10') || localStorage.getItem('lav_work_projects_db_v20') || localStorage.getItem('lav_work_projects_db_v20') || localStorage.getItem('lav_work_projects_db_v8') || localStorage.getItem('lav_work_projects_db_v7') || localStorage.getItem('lav_work_projects_db_v6') || localStorage.getItem('lav_work_projects_db_v5');
         const fresh = JSON.parse(JSON.stringify(DEFAULT_WORK_PROJECTS));
         if (oldRaw) {
           const oldList = JSON.parse(oldRaw);
