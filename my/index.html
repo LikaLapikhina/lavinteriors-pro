@@ -1124,7 +1124,7 @@
         }
         if (stateData && typeof stateData === 'object') {
           var changed = false;
-          var isFirstBootOnLaptop = !localStorage.getItem('lav_work_projects_db_v33_nov10') || localStorage.getItem('lav_work_projects_db_v8') || localStorage.getItem('lav_work_projects_db_v7');
+          var isFirstBootOnLaptop = !localStorage.getItem('lav_work_projects_db_v34_nov10') || localStorage.getItem('lav_work_projects_db_v8') || localStorage.getItem('lav_work_projects_db_v7');
           Object.keys(stateData).forEach(function(k) {
             if (k.startsWith('lav_') && stateData[k]) {
               if (isFirstBootOnLaptop || forceReloadUI || !localStorage.getItem(k)) {
@@ -1162,9 +1162,9 @@
       };
 
       // Очистка старого кэша браузера от 03.11 / 08.11, чтобы всегда показывались свежие данные 10.11.2026
-      if (localStorage.getItem('lav_schema_ver') !== 'v33_nov10_2026') {
-        ['lav_custom_edits_v23','lav_custom_edits_v33_nov10','lav_modeling_html_v12','lav_calls_html_v12','lav_projects_tbody_v18','lav_sheet_nov11_v16','lav_calendar_events_2026_v17','lav_work_projects_db_v21'].forEach(function(k){ localStorage.removeItem(k); });
-        localStorage.setItem('lav_schema_ver', 'v33_nov10_2026');
+      if (localStorage.getItem('lav_schema_ver') !== 'v34_nov10_2026') {
+        ['lav_custom_edits_v23','lav_custom_edits_v34_nov10','lav_modeling_html_v12','lav_calls_html_v12','lav_projects_tbody_v18','lav_sheet_nov11_v16','lav_calendar_events_2026_v17','lav_work_projects_db_v21'].forEach(function(k){ localStorage.removeItem(k); });
+        localStorage.setItem('lav_schema_ver', 'v34_nov10_2026');
       }
       window.__pullLavCloudState = pullCloudState;
     })();
@@ -1214,7 +1214,7 @@
   <div class="top-bar">
     <div class="brand">
       <h1 data-editable="true">⚡ LAV COMMAND CENTER — Личный кабинет Анжелики</h1>
-      <p data-editable="true">Вторник <b>10.11.2026</b> • В табличке на завтра <b>11.11.2026</b> уже <b>17 000,00 ₽ ✅</b> (6 строк: 0654 5 000 ₽ + 0589 3 500 ₽ + 0606 3 000 ₽ + 0600 2 500 ₽ + 0615 2 500 ₽ + 0599 500 ₽ • Итог ноября: <b>43 500 ₽</b>) + ждём <b>0645</b> (утверждены визы)! • ⏳ <b>Ждём от другого ВД (Валерия Г. напишет позже)</b> расчёт по 2 утверждённым этапам: <b>0654</b> (ПР + оплачены визы = <b>+4 400–5 400 ₽</b>) и <b>0645</b> (утверждены визы = <b>+5 518–6 937 ₽</b>)!</p>
+      <p data-editable="true">Вторник <b>10.11.2026</b> • На завтра <b>11.11.2026</b> вписано ВСЕ 7 ПРОЕКТОВ на <b>23 000,00 ₽ ✅</b> (0645 6 000 ₽ + 0654 5 000 ₽ + 0589 3 500 ₽ + 0606 3 000 ₽ + 0600 2 500 ₽ + 0615 2 500 ₽ + 0599 500 ₽ • Итог ноября: <b>49 500,00 ₽ ✅</b>)! • ⏳ <b>Ждём от другого ВД (Валерия Г. напишет позже)</b> расчёт по 2 утверждённым этапам: <b>0654</b> (ПР + оплачены визы = <b>+4 400–5 400 ₽</b>) и <b>0645</b> (утверждены визы = <b>+5 518–6 937 ₽</b>)!</p>
     </div>
     <div class="top-actions">
       <a href="javascript:(async function(){try{var c=new AbortController();var t=setTimeout(function(){c.abort();},1200);var r=await fetch('http://127.0.0.1:3033/homestyler-panel.js?t='+Date.now(),{signal:c.signal});clearTimeout(t);if(r.ok){window.__SKYPRO_SERVER_ORIGIN__='http://127.0.0.1:3033';(0,eval)(await r.text());return;}}catch(e){}try{var ep=await (await fetch('https://lavinteriors.pro/office/skypro-endpoint.json?t='+Date.now())).json();if(ep&&ep.tunnelUrl){window.__SKYPRO_SERVER_ORIGIN__=ep.tunnelUrl.replace(/\/+$/,'');var r2=await fetch(window.__SKYPRO_SERVER_ORIGIN__+'/homestyler-panel.js?t='+Date.now());(0,eval)(await r2.text());return;}}catch(e2){}alert('Не удалось подключиться к 3DSky серверу ПК');})();void(0);" class="action-btn" style="background:linear-gradient(135deg,#2563eb,#1d4ed8);border-color:#60a5fa;color:#fff;text-decoration:none;font-weight:700;" title="Зажми левой кнопкой мыши и перетащи на панель закладок браузера! Внутри Homestyler 1 клик по закладке откроет панель 3DSky Pro">⚡ 3DSky Панель</a>
@@ -1237,18 +1237,18 @@
     </div>
     <div class="kpi-card highlight-yellow">
       <div class="kpi-label">📋 В ТАБЛИЧКЕ НА ЗАВТРА (11.11.2026)</div>
-      <div class="kpi-val" id="kpi-not-in-sheet" style="color:#fbbf24;" data-editable="true">17 000,00 ₽ ✅</div>
-      <div class="kpi-sub" id="kpi-not-sub" data-editable="true">6 пр. на 11.11: <b>0654</b> (5 000 ₽: 3к ПР + 2к аванс виз) + <b>0589</b> (3 500 ₽) + <b>0606</b> (3 000 ₽) + <b>0600</b> (2 500 ₽) + <b>0615</b> (2 500 ₽) + <b>0599</b> (500 ₽) • Ноябрь: <b>43 500 ₽</b>!</div>
+      <div class="kpi-val" id="kpi-not-in-sheet" style="color:#34d399;" data-editable="true">23 000,00 ₽ ✅</div>
+      <div class="kpi-sub" id="kpi-not-sub" data-editable="true">ВСЕ 7 пр. вписаны на 11.11: <b>0645</b> (6 000 ₽) + <b>0654</b> (5 000 ₽) + <b>0589</b> (3 500 ₽) + <b>0606</b> (3 000 ₽) + <b>0600</b> (2 500 ₽) + <b>0615</b> (2 500 ₽) + <b>0599</b> (500 ₽)!</div>
     </div>
-    <div class="kpi-card highlight-purple" style="border-color:#ef4444; background:rgba(239,68,68,0.12);">
-      <div class="kpi-label" style="color:#fde68a;">⏳ ЕЩЁ ДОЛЖНЫ ВПИСАТЬ: 0645 (УТВЕРЖДЕНЫ ВИЗЫ!)</div>
-      <div class="kpi-val" style="color:#f87171;" data-editable="true">+ 5 518 – 6 937 ₽</div>
-      <div class="kpi-sub" data-editable="true">По <b>0654</b> поставили 5 000 ₽ на 11.11 (3к ПР + 2к аванс виз из 16 000 ₽) • Осталось добавить <b>0645</b> (утверждены визы у Валерии Г.)!</div>
+    <div class="kpi-card highlight-purple" style="border-color:#10b981; background:rgba(16,185,129,0.12);">
+      <div class="kpi-label" style="color:#6ee7b7;">🔥 ИТОГО ЗА НОЯБРЬ (04.11 + 11.11)</div>
+      <div class="kpi-val" style="color:#34d399;" data-editable="true">49 500,00 ₽ ✅</div>
+      <div class="kpi-sub" data-editable="true">04.11: <b>26 500,00 ₽</b> + 11.11: <b>23 000,00 ₽</b> (все авансы и оба утверждения <b>0654</b> и <b>0645</b> полностью внесены в таблицу!)</div>
     </div>
     <div class="kpi-card highlight-blue">
       <div class="kpi-label">💼 ВЕСЬ ПОРТФЕЛЬ (22 В РАБОТЕ + 3 ЗАКРЫТЫ)</div>
-      <div class="kpi-val" style="color:#60a5fa;" data-editable="true">356 574,00 ₽</div>
-      <div class="kpi-sub" data-editable="true">Получено с 11.11 по табл.: <b>104 778,80 ₽</b> (66 278,80 окт + 38 500 нояб) • По всем 22 проектам авансы стоят 100%! Остаток: <b>251 795,20 ₽</b></div>
+      <div class="kpi-val" style="color:#60a5fa;" data-editable="true">356 738,00 ₽</div>
+      <div class="kpi-sub" data-editable="true">Получено с 11.11 по табл.: <b>115 778,80 ₽</b> (66 278,80 окт + 49 500 нояб) • Чистый остаток по 22 активным проектам: <b>240 959,20 ₽</b></div>
     </div>
     <div class="kpi-card" style="border-color:rgba(16,185,129,0.35); background:rgba(15,23,42,0.85);">
       <div class="kpi-label" style="color:#6ee7b7;">📦 АРХИВ: ОКТЯБРЬ 2026 (ЗАКРЫТ)</div>
@@ -1363,7 +1363,7 @@
         <div class="block-box green-priority" style="border-width:2px;">
           <div class="block-header">
             <div>
-              <div class="block-title" style="color:#34d399; font-size:16px;">✅ 1. УЖЕ ВПИСАНО В ТАБЛИЧКУ НА ЗАВТРА (11.11.2026) — 17 000,00 ₽ ✅ (6 СТРОК • ИТОГ НОЯБРЯ В ТАБЛ.: 43 500,00 ₽)</div>
+              <div class="block-title" style="color:#34d399; font-size:16px;">✅ 1. ВПИСАНО В ТАБЛИЧКУ НА ЗАВТРА (11.11.2026) — 23 000,00 ₽ ✅ (ВСЕ 7 ПРОЕКТОВ • ИТОГ НОЯБРЯ: 49 500,00 ₽)</div>
               <div class="block-subtitle">Точно по присланному сегодня (10.11) скриншоту таблицы «НОЯБРЬ 2026»:</div>
             </div>
           </div>
@@ -1445,47 +1445,30 @@
                 <button class="sheet-toggle-btn btn-in" onclick="toggleSheetItem(this)">✅ В табл. 11.11</button>
               </div>
             </div>
+
+            <div class="sheet-item in-sheet" data-id="0645_1111" data-amount="6000" data-in="true">
+              <div>
+                <span class="tag tag-proj">0645</span> <span class="tag tag-max">💬 MAX • ВД Валерия Г.</span> <span class="tag tag-green">✅ ДОБАВИЛИ НА 11.11.2026: 4 000 ₽ (визы) + 2 000 ₽ (аванс РД) = 6 000,00 ₽!</span>
+                <div style="font-weight:700; font-size:13.2px; margin-top:3px;" data-editable="true">
+                  Общая сумма: <b>28 392,00 ₽ (20%)</b>. Ранее получено: 4 000 ₽ (21.10) + 10 356,80 ₽ (28.10: 7 356,80 ПР + 3 000 аванс виз) = 14 356,80 ₽. На 11.11.2026 поставили: <b>4 000,00 ₽ (закрытие виз) + 2 000,00 ₽ (аванс чертежей РД) = + 6 000,00 ₽ ✅</b>! Итого получено уже <b>20 356,80 ₽ (72%)</b>, остаток за финал РД: <b>8 035,20 ₽</b>.
+                </div>
+              </div>
+              <div style="text-align:right; min-width:130px;">
+                <div style="font-size:16px; font-weight:900; color:#34d399; margin-bottom:4px;">+ 6 000,00 ₽ ✅</div>
+                <button class="sheet-toggle-btn btn-in" onclick="toggleSheetItem(this)">✅ В табл. 11.11</button>
+              </div>
+            </div>
           </div>
         </div>
 
-        <div class="block-box red-priority" style="border-width:2px;">
-          <div class="block-header">
+        <div class="block-box green-priority" style="border-width:1.5px; margin-bottom:14px;">
+          <div class="block-header" style="margin-bottom:4px; padding-bottom:4px;">
             <div>
-              <div class="block-title" style="color:#f87171; font-size:16px;">🚨 2. НЕ ВПИСАНО В ТАБЛИЧКУ НА 11.11.2026 (ХОТЯ ЭТАПЫ УЖЕ УТВЕРЖДЕНЫ!) — + 9 918 .. 12 337 ₽</div>
-              <div class="block-subtitle">По этим 2 утверждённым проектам другой дизайнер (ВД Валерия Г.) — она напишет позже по выплате:</div>
+              <div class="block-title" style="color:#6ee7b7; font-size:15px;">🎉 2. ВСЕ ДОПЛАТЫ И УТВЕРЖДЁННЫЕ ЭТАПЫ НА 11.11.2026 ВНЕСЕНЫ НА 100%!</div>
+              <div class="block-subtitle">И Елена (0606 +3 000 ₽, 0589 +3 500 ₽), и Валерия (0654 +5 000 ₽, 0645 +6 000 ₽) всё проставили на завтра 11.11.2026!</div>
             </div>
           </div>
-          <div id="list-not-in-sheet">
-            <div class="sheet-item not-in-sheet" data-id="0654_missing" data-amount="5400" data-in="false" style="border-color:#ef4444; background:rgba(239,68,68,0.12);">
-              <div>
-                <span class="tag tag-proj">0654</span> <span class="tag tag-tg">📱 TG • ВД Валерия Г.</span> <span class="tag tag-red">🚨 ЗАБЫЛИ ВПИСАТЬ: «ПР + аванс визы» (План утверждён + визы оплачены!)</span>
-                <div style="font-weight:700; font-size:13.2px; margin-top:4px; line-height:1.45;" data-editable="true">
-                  Посмотри, как в табличке за 28.10 написано у 0645: <b>«ПР+ аванс визы»</b>! По <b>0654</b> (общая сумма <b>16 000,00 ₽</b>, выплачено 28.10 только 4 000 ₽ за бриф+аванс) заказчики <b>УТВЕРДИЛИ планировочное решение И ОПЛАТИЛИ визы</b>!<br>
-                  • Должны вписать на 11.11.2026: <b>2 400,00 ₽</b> (закрытие ПР до 40% = 6 400 ₽) + <b>2 000..3 000 ₽</b> (аванс визы) = <b>+ 4 400,00 – 5 400,00 ₽</b>!
-                </div>
-              </div>
-              <div style="text-align:right; min-width:135px;">
-                <div style="font-size:16px; font-weight:900; color:#fca5a5; margin-bottom:4px;">+ 4 400 .. 5 400 ₽</div>
-                <button class="sheet-toggle-btn btn-out" onclick="toggleSheetItem(this)">🚨 Не вписано!</button>
-              </div>
-            </div>
-
-            <div class="sheet-item not-in-sheet" data-id="0645_missing" data-amount="6937.2" data-in="false" style="border-color:#ef4444; background:rgba(239,68,68,0.12);">
-              <div>
-                <span class="tag tag-proj">0645</span> <span class="tag tag-max">💬 MAX • ВД Валерия Г.</span> <span class="tag tag-red">🚨 ЗАБЫЛИ ВПИСАТЬ: Итог за утверждённые Визы!</span>
-                <div style="font-weight:700; font-size:13.2px; margin-top:4px; line-height:1.45;" data-editable="true">
-                  Общая сумма в табл.: <b>28 392,00 ₽</b>. Выплачено: 4 000 ₽ (21.10 бриф+аванс) + 10 356,80 ₽ (28.10 ПР 7 356,80 + аванс визы 3 000) = <b>14 356,80 ₽</b>.<br>
-                  • Заказчик Артем <b>УТВЕРДИЛ ВСЕ ВИЗУАЛИЗАЦИИ</b>! За закрытие этапа виз (за вычетом аванса 3 000 ₽) должны вписать на 11.11.2026: <b>+ 5 517,60 – 6 937,20 ₽</b>!
-                </div>
-              </div>
-              <div style="text-align:right; min-width:135px;">
-                <div style="font-size:16px; font-weight:900; color:#fca5a5; margin-bottom:4px;">+ 5 518 .. 6 937 ₽</div>
-                <button class="sheet-toggle-btn btn-out" onclick="toggleSheetItem(this)">🚨 Не вписано!</button>
-              </div>
-            </div>
-
-
-          </div>
+          <div id="list-not-in-sheet"></div>
         </div>
 
         <div class="block-box" style="border-color:rgba(16,185,129,0.45); background:rgba(16,185,129,0.06);">
@@ -3115,15 +3098,15 @@
               <td data-editable="true">—</td>
               <td data-editable="true">0,00 ₽ (Закрыт)</td>
             </tr>
-            <tr style="background:rgba(239,68,68,0.18);">
+            <tr class="fin-row-green">
               <td>4</td>
               <td data-editable="true"><b>0645</b></td>
-              <td data-editable="true">💬 MAX • Валерия Г. • <span class="tag tag-red">🎉 ВИЗЫ УТВЕРЖДЕНЫ! (НЕ ВПИСАЛИ НА 11.11!)</span></td>
+              <td data-editable="true">💬 MAX • Валерия Г. • <span class="tag tag-green">💰 На 11.11: +6 000 ₽ (4 000 ₽ визы + 2 000 ₽ аванс РД)!</span></td>
               <td data-editable="true">28 392,00 ₽ (20%)</td>
               <td style="color:#34d399; font-weight:900;" data-editable="true">14 356,80 ₽ ✅ (4к + 10 356,80)</td>
               <td data-editable="true">—</td>
-              <td style="color:#fca5a5; font-weight:900;" data-editable="true">🚨 0 ₽ (ЗАБЫЛИ +5 517,60–6 937,20 ₽!)</td>
-              <td style="font-weight:800; color:#fbbf24;" data-editable="true">14 035,20 ₽ (визы + чертежи)</td>
+              <td style="color:#34d399; font-weight:900;" data-editable="true">+ 6 000,00 ₽ ✅ (4к визы + 2к РД)</td>
+              <td style="font-weight:800; color:#60a5fa;" data-editable="true">8 035,20 ₽ (финал РД)</td>
             </tr>
             <tr class="fin-row-green">
               <td>5</td>
@@ -3336,12 +3319,12 @@
               <td style="font-weight:800; color:#60a5fa;" data-editable="true">11 445,00 ₽</td>
             </tr>
             <tr style="background:rgba(255,255,255,0.08); font-weight:900; font-size:14.5px;">
-              <td colspan="3">ИТОГО ПО ТАБЛИЦЕ (ОКТЯБРЬ: 66 278,80 ₽ + НОЯБРЬ: 38 500,00 ₽ = 104 778,80 ₽):</td>
-              <td data-editable="true">337 874,00 ₽</td>
+              <td colspan="3">ИТОГО ПО ТАБЛИЦЕ (ОКТЯБРЬ: 66 278,80 ₽ + НОЯБРЬ: 49 500,00 ₽ = 115 778,80 ₽):</td>
+              <td data-editable="true">338 038,00 ₽</td>
               <td style="color:#34d399; font-size:15px;" data-editable="true">66 278,80 ₽ ✅</td>
               <td style="color:#34d399; font-size:15px;" data-editable="true">26 500,00 ₽ ✅ (9 строк)</td>
-              <td style="color:#34d399; font-size:15px;" data-editable="true">12 000,00 ₽ ✅ (5 строк + ждём ВД Валерию по 0654/0645)</td>
-              <td style="color:#60a5fa; font-size:15px;" data-editable="true">233 095,20 ₽</td>
+              <td style="color:#34d399; font-size:15px;" data-editable="true">23 000,00 ₽ ✅ (7 проектов!)</td>
+              <td style="color:#60a5fa; font-size:15px;" data-editable="true">222 259,20 ₽</td>
             </tr>
           </tbody>
         </table></table>
@@ -3571,12 +3554,12 @@
       document.querySelectorAll('[data-editable="true"]').forEach(el => {
         edits.push(el.innerHTML);
       });
-      localStorage.setItem('lav_custom_edits_v33_nov10', JSON.stringify(edits));
+      localStorage.setItem('lav_custom_edits_v34_nov10', JSON.stringify(edits));
     }
 
     function loadCustomEdits() {
       try {
-        const raw = localStorage.getItem('lav_custom_edits_v33_nov10');
+        const raw = localStorage.getItem('lav_custom_edits_v34_nov10');
         if (!raw) return;
         const edits = JSON.parse(raw);
         const els = document.querySelectorAll('[data-editable="true"]');
@@ -3618,13 +3601,13 @@
     }
 
     function saveAddedTasks() {
-      localStorage.setItem('lav_modeling_html_v33_nov10', document.getElementById('modeling-task-list').innerHTML);
-      localStorage.setItem('lav_calls_html_v33_nov10', document.getElementById('calls-task-list').innerHTML);
+      localStorage.setItem('lav_modeling_html_v34_nov10', document.getElementById('modeling-task-list').innerHTML);
+      localStorage.setItem('lav_calls_html_v34_nov10', document.getElementById('calls-task-list').innerHTML);
     }
 
     function loadAddedTasks() {
-      const m = localStorage.getItem('lav_modeling_html_v33_nov10');
-      const c = localStorage.getItem('lav_calls_html_v33_nov10');
+      const m = localStorage.getItem('lav_modeling_html_v34_nov10');
+      const c = localStorage.getItem('lav_calls_html_v34_nov10');
       if (m) document.getElementById('modeling-task-list').innerHTML = m;
       if (c) document.getElementById('calls-task-list').innerHTML = c;
     }
@@ -3652,7 +3635,7 @@
         <td style="font-weight:800; color:#60a5fa;" data-editable="true">${rest}</td>
       `;
       tbody.insertBefore(tr, tbody.lastElementChild);
-      localStorage.setItem('lav_projects_tbody_v33_nov10', tbody.innerHTML);
+      localStorage.setItem('lav_projects_tbody_v34_nov10', tbody.innerHTML);
       switchTab('tab-projects', document.querySelectorAll('.tab-btn')[2]);
     }
 
@@ -3702,7 +3685,7 @@
       } catch(e) {}
       const cs = localStorage.getItem('lav_custom_scripts_v4');
       if (cs) document.getElementById('custom-scripts-container').innerHTML = cs;
-      const pt = localStorage.getItem('lav_projects_tbody_v33_nov10');
+      const pt = localStorage.getItem('lav_projects_tbody_v34_nov10');
       if (pt) document.getElementById('projects-tbody').innerHTML = pt;
     }
 
@@ -3769,12 +3752,12 @@
       document.querySelectorAll('.sheet-item').forEach(item => {
         state[item.getAttribute('data-id')] = item.getAttribute('data-in') === 'true';
       });
-      localStorage.setItem('lav_sheet_nov11_v33_nov10', JSON.stringify(state));
+      localStorage.setItem('lav_sheet_nov11_v34_nov10', JSON.stringify(state));
     }
 
     function loadSheetState() {
       try {
-        const raw = localStorage.getItem('lav_sheet_nov11_v33_nov10');
+        const raw = localStorage.getItem('lav_sheet_nov11_v34_nov10');
         if (!raw) return;
         const state = JSON.parse(raw);
         document.querySelectorAll('.sheet-item').forEach(item => {
@@ -3791,7 +3774,7 @@
 
 
     // ==================== 7. КАЛЕНДАРЬ (ОКТЯБРЬ, НОЯБРЬ, ДЕКАБРЬ 2026) ====================
-    const CAL_STORAGE_KEY = 'lav_calendar_events_2026_v33_nov10';
+    const CAL_STORAGE_KEY = 'lav_calendar_events_2026_v34_nov10';
     const CAL_NOTES_KEY = 'lav_calendar_daynotes_2026_v2';
     let currentCalMonth = 10; // 9 = Октябрь, 10 = Ноябрь, 11 = Декабрь
     let selectedCalDateKey = '2026-11-10';
@@ -4000,7 +3983,7 @@
 
 
     // ==================== 8. ПРОЕКТЫ В РАБОТЕ И ИНТЕРАКТИВНЫЙ КОНСТРУКТОР ПРОМПТОВ АГЕНТАМ ====================
-    const WORK_PROJECTS_KEY = 'lav_work_projects_db_v33_nov10';
+    const WORK_PROJECTS_KEY = 'lav_work_projects_db_v34_nov10';
     let currentWorkProjId = '0653';
     let currentWorkRoomKey = 'hall';
     var currentVizRoomKey = 'hall';
@@ -5277,7 +5260,7 @@
             "name": "Артем (для мамы) • Королёв 52.65 м² (ВД Валерия Г.)",
             "channel": "💬 MAX",
             "format": "📋 Полный проект",
-            "price": "28 392 ₽ (✅ 21.10: 4 000 ₽ + 28.10: 10 356,80 ₽ = 14 356,80 ₽ • Ост.: 14 035,20 ₽)",
+            "price": "28 392 ₽ (✅ Получено 14 356,80 ₽ + на 11.11: 6 000 ₽ [4к визы + 2к РД] = 20 356,80 ₽ • Ост.: 8 035,20 ₽)",
             "status": "🎉 УТВЕРДИЛИ ВСЕ ВИЗУАЛИЗАЦИИ! На завтра в среду 11.11 должны выплатить остаток за этап виз (+5 517,60 .. 6 937,20 ₽). Как только Артем оплатит 3-й этап (чертежи РД) — делаем рабочие чертежи (ещё +7 098..8 518 ₽)!",
             "closed": false,
             "defaultRoom": "hall",
@@ -5381,7 +5364,7 @@
             },
             "deadline": "💰 НА ЗАВТРА (СР 11.11): Доплата за утверждённые визы (+5 518..6 937 ₽) -> ждём оплату чертежей РД!",
             "deadlineColor": "blue",
-            "infoAudit": "📋 В ТАБЛИЦЕ (ОКТЯБРЬ): 21.10.2026 = 4 000,00 ₽ (бриф+аванс) + 28.10.2026 = 10 356,80 ₽ (ПР+ аванс визы) • ⏳ ВИЗЫ УТВЕРЖДЕНЫ (другой ВД Валерия Г. напишет позже по выплате!)"
+            "infoAudit": "📋 В ТАБЛИЦЕ: 21.10 = 4 000 ₽ + 28.10 = 10 356,80 ₽ + 11.11.2026 = 6 000,00 ₽ (4 000 ₽ визы + 2 000 ₽ аванс чертежей) • Остаток за финал РД: 8 035,20 ₽"
       },
       {
             "id": "0631",
@@ -5542,7 +5525,7 @@
           });
           return merged;
         }
-        const oldRaw = localStorage.getItem('lav_work_projects_db_v10') || localStorage.getItem('lav_work_projects_db_v33_nov10') || localStorage.getItem('lav_work_projects_db_v33_nov10') || localStorage.getItem('lav_work_projects_db_v8') || localStorage.getItem('lav_work_projects_db_v7') || localStorage.getItem('lav_work_projects_db_v6') || localStorage.getItem('lav_work_projects_db_v5');
+        const oldRaw = localStorage.getItem('lav_work_projects_db_v10') || localStorage.getItem('lav_work_projects_db_v34_nov10') || localStorage.getItem('lav_work_projects_db_v34_nov10') || localStorage.getItem('lav_work_projects_db_v8') || localStorage.getItem('lav_work_projects_db_v7') || localStorage.getItem('lav_work_projects_db_v6') || localStorage.getItem('lav_work_projects_db_v5');
         const fresh = JSON.parse(JSON.stringify(DEFAULT_WORK_PROJECTS));
         if (oldRaw) {
           const oldList = JSON.parse(oldRaw);
