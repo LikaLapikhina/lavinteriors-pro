@@ -1,0 +1,2181 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LAV Journal · Issue 01 / 2027 - Year of the Fire Goat | LAV Interiors</title>
+  <meta name="description" content="Minimalist 21-spread architectural magazine by LAV Interiors dedicated to the 2027 Year of the Red Fire Goat: one interior per spread, concise editorial notes, and color palettes." />
+  <link rel="canonical" href="https://lavinteriors.pro/fire-goat-2027/" />
+  <link rel="icon" href="/my-favicon/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="/my-favicon/favicon-96x96.png" sizes="96x96" type="image/png" />
+  <link rel="apple-touch-icon" href="/my-favicon/apple-touch-icon.png" sizes="180x180" />
+
+  <meta property="og:title" content="LAV Journal · Year of the Fire Goat 2027" />
+  <meta property="og:description" content="21 minimalist magazine spreads: luxury interiors, 2027 Fire Goat symbolism, and bespoke material palettes by LAV Interiors." />
+  <meta property="og:image" content="https://lavinteriors.pro/fire-goat-2027/images/plate-01.jpg" />
+  <meta property="og:url" content="https://lavinteriors.pro/fire-goat-2027/" />
+  <meta property="og:type" content="article" />
+
+  <!-- STRICTLY 2 FONTS ONLY: Cormorant Garamond (Serif) + Manrope (Sans) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    :root{
+      /* Strictly 2 font families */
+      --serif:"Cormorant Garamond",Georgia,"Times New Roman",serif;
+      --sans:"Manrope",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+
+      --desk:#151618;
+      --desk-2:#1C1D20;
+      --paper:#F5F2EC;
+      --ink:#181614;
+      --muted:#6D665C;
+      --crimson:#8B1D1A;
+      --line:rgba(24,22,20,.13);
+      --line-soft:rgba(24,22,20,.08);
+      --header-h:90px;
+      --spread-max:1140px;
+      --ease:cubic-bezier(.2,.8,.2,1);
+    }
+
+    *,*::before,*::after{box-sizing:border-box}
+    html{
+      scroll-behavior:smooth;
+      scrollbar-gutter:stable;
+    }
+    body{
+      margin:0;
+      min-block-size:100dvb;
+      font-family:var(--sans);
+      color:var(--ink);
+      background:
+        radial-gradient(1000px 650px at 50% 0%, rgba(255,255,255,.045), transparent 60%),
+        linear-gradient(180deg, var(--desk) 0%, var(--desk-2) 50%, #121315 100%);
+      -webkit-font-smoothing:antialiased;
+      text-rendering:optimizeLegibility;
+    }
+    a{color:inherit;text-decoration:none}
+    img{display:block;max-inline-size:100%;block-size:auto}
+    button{font:inherit;color:inherit}
+    ::selection{background:rgba(139,29,26,.16)}
+
+    /* Thin reading progress line */
+    .read-progress{
+      position:fixed;
+      inset-block-start:0;
+      inset-inline-start:0;
+      inline-size:100%;
+      block-size:2px;
+      z-index:140;
+      pointer-events:none;
+    }
+    .read-progress-bar{
+      block-size:100%;
+      inline-size:100%;
+      transform-origin:left center;
+      transform:scaleX(0);
+      background:var(--crimson);
+    }
+
+    /* EXACT LAV INTERIORS HEADER */
+    .header{
+      position:sticky;
+      inset-block-start:0;
+      z-index:100;
+      background:rgba(228,221,208,.94);
+      backdrop-filter:blur(14px) saturate(1.2);
+      -webkit-backdrop-filter:blur(14px) saturate(1.2);
+      border-block-end:1px solid rgba(24,22,20,.14);
+    }
+    .header-wrap{
+      max-inline-size:1200px;
+      margin-inline:auto;
+      padding-inline:22px;
+    }
+    .header-inner{
+      min-block-size:var(--header-h);
+      display:grid;
+      grid-template-columns:1fr auto 1fr;
+      align-items:center;
+      gap:16px;
+      padding-block:10px;
+    }
+    .nav-left{
+      display:flex;
+      align-items:center;
+      gap:18px;
+      flex-wrap:wrap;
+    }
+    .nav-left a,
+    .header-cta-service{
+      font-family:var(--sans);
+      font-size:10px;
+      font-weight:500;
+      letter-spacing:.28em;
+      text-transform:uppercase;
+      color:rgba(24,22,20,.74);
+      padding-block:8px;
+      white-space:nowrap;
+      position:relative;
+      transition:color 220ms var(--ease);
+    }
+    .nav-left a::after,
+    .header-cta-service::after{
+      content:"";
+      position:absolute;
+      inset-inline:0;
+      inset-block-end:4px;
+      block-size:1px;
+      background:var(--ink);
+      transform:scaleX(0);
+      transform-origin:left;
+      transition:transform 260ms var(--ease);
+    }
+    .nav-left a:hover,.header-cta-service:hover{color:var(--ink)}
+    .nav-left a:hover::after,.header-cta-service:hover::after{transform:scaleX(1)}
+
+    .brand-center{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:5px;
+      text-align:center;
+    }
+    .brand-sub{
+      font-family:var(--sans);
+      font-size:9px;
+      letter-spacing:.30em;
+      text-transform:uppercase;
+      color:rgba(24,22,20,.58);
+      white-space:nowrap;
+    }
+    .brand-top{
+      font-family:var(--serif);
+      font-weight:600;
+      font-size:24px;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      line-height:1;
+      white-space:nowrap;
+    }
+    .actions-right{
+      display:flex;
+      align-items:center;
+      justify-content:flex-end;
+      gap:14px;
+    }
+    .lang{
+      display:flex;
+      align-items:center;
+      gap:9px;
+      padding:7px 12px;
+      border:1px solid rgba(24,22,20,.22);
+      background:rgba(245,242,236,.65);
+      font-family:var(--sans);
+      font-size:10px;
+      letter-spacing:.24em;
+      text-transform:uppercase;
+      color:rgba(24,22,20,.56);
+    }
+    .lang button{
+      border:0;
+      background:transparent;
+      padding:0;
+      cursor:pointer;
+      opacity:.7;
+      transition:opacity 200ms var(--ease);
+    }
+    .lang button.active{
+      opacity:1;
+      color:var(--ink);
+      font-weight:600;
+    }
+
+    /* Minimal desk top rail */
+    .desk-rail{
+      max-inline-size:var(--spread-max);
+      margin:28px auto 18px;
+      padding-inline:22px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+      flex-wrap:wrap;
+      color:rgba(245,242,236,.64);
+      font-size:10px;
+      letter-spacing:.26em;
+      text-transform:uppercase;
+    }
+    .desk-rail strong{color:#F5F2EC;font-weight:600}
+    .desk-actions{
+      display:flex;
+      gap:16px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+    .desk-actions a{
+      color:rgba(245,242,236,.78);
+      border-block-end:1px solid rgba(245,242,236,.24);
+      padding-block-end:2px;
+      transition:color 200ms var(--ease), border-color 200ms var(--ease);
+    }
+    .desk-actions a:hover{color:#fff;border-color:#fff}
+
+    /* MAGAZINE SPREAD ENGINE */
+    .magazine-desk{
+      max-inline-size:var(--spread-max);
+      margin-inline:auto;
+      padding:6px 22px 84px;
+      display:flex;
+      flex-direction:column;
+      gap:clamp(36px, 5vw, 66px);
+    }
+
+    .spread-book{
+      position:relative;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      background:var(--paper);
+      color:var(--ink);
+      box-shadow:
+        0 34px 72px rgba(0,0,0,.55),
+        0 6px 18px rgba(0,0,0,.35),
+        inset 0 0 0 1px rgba(24,22,20,.07);
+      scroll-margin-top:114px;
+    }
+    /* Subtle physical page-stack edges */
+    .spread-book::before,
+    .spread-book::after{
+      content:"";
+      position:absolute;
+      inset-block:5px;
+      inline-size:5px;
+      pointer-events:none;
+      z-index:4;
+    }
+    .spread-book::before{
+      inset-inline-start:-5px;
+      background:repeating-linear-gradient(90deg, #D8D3C8 0 1px, #ECE8DF 1px 2.5px);
+      box-shadow:-2px 4px 10px rgba(0,0,0,.34);
+    }
+    .spread-book::after{
+      inset-inline-end:-5px;
+      background:repeating-linear-gradient(90deg, #ECE8DF 0 1.5px, #D4CFC3 1.5px 2.5px);
+      box-shadow:2px 4px 10px rgba(0,0,0,.34);
+    }
+
+    .mag-page{
+      position:relative;
+      min-block-size:clamp(580px, 58vw, 740px);
+      display:flex;
+      flex-direction:column;
+      overflow:clip;
+    }
+    /* Realistic center binding spine crease */
+    .mag-page--left{
+      background:
+        linear-gradient(90deg,
+          rgba(255,255,255,.26) 0%,
+          rgba(255,255,255,0) 7%,
+          rgba(0,0,0,0) 89%,
+          rgba(20,16,12,.05) 95%,
+          rgba(16,12,9,.15) 100%),
+        var(--paper);
+      border-inline-end:1px solid rgba(24,22,20,.08);
+    }
+    .mag-page--right{
+      background:
+        linear-gradient(90deg,
+          rgba(16,12,9,.13) 0%,
+          rgba(20,16,12,.045) 5%,
+          rgba(255,255,255,.22) 11%,
+          rgba(255,255,255,0) 20%,
+          rgba(0,0,0,0) 94%,
+          rgba(20,16,12,.035) 100%),
+        var(--paper);
+    }
+
+    /* Photo Page: serene gallery frame with generous editorial margin */
+    .mag-page--photo{
+      padding:clamp(28px, 3.8vw, 48px) clamp(26px, 3.6vw, 46px) clamp(48px, 4.6vw, 58px);
+      justify-content:center;
+      align-items:center;
+    }
+    .plate-frame{
+      margin:0;
+      position:relative;
+      inline-size:100%;
+      aspect-ratio:3 / 4;
+      overflow:clip;
+      background:#1B1917;
+      cursor:pointer;
+    }
+    .plate-frame img{
+      inline-size:100%;
+      block-size:100%;
+      object-fit:cover;
+      transition:transform 650ms var(--ease);
+    }
+    .plate-frame:hover img{transform:scale(1.024)}
+    .plate-zoom{
+      position:absolute;
+      inset-block-end:12px;
+      inset-inline-end:12px;
+      padding:6px 10px;
+      background:rgba(21,22,24,.76);
+      color:#F5F2EC;
+      font-size:8.5px;
+      letter-spacing:.22em;
+      text-transform:uppercase;
+      opacity:0;
+      transition:opacity 220ms var(--ease);
+    }
+    .plate-frame:hover .plate-zoom{opacity:1}
+
+    /* Editorial Text Page: ultra-minimalist, airy luxury breathing room */
+    .mag-page--editorial{
+      padding:clamp(34px, 4.4vw, 56px) clamp(32px, 4.4vw, 58px) clamp(52px, 4.8vw, 62px);
+    }
+    .ed-shell{
+      flex:1;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      gap:24px;
+    }
+    .ed-top-meta{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      padding-block-end:14px;
+      border-block-end:1px solid var(--line-soft);
+      font-size:9.5px;
+      letter-spacing:.26em;
+      text-transform:uppercase;
+    }
+    .ed-plate-no{
+      color:var(--crimson);
+      font-weight:600;
+    }
+    .ed-cat{
+      color:var(--muted);
+    }
+
+    .ed-center{
+      display:flex;
+      flex-direction:column;
+      gap:24px;
+      margin-block:auto;
+      padding-block:12px;
+    }
+    .ed-title{
+      margin:0;
+      font-family:var(--serif);
+      font-weight:500;
+      font-size:clamp(2.1rem, 3.1vw, 3.05rem);
+      line-height:1.03;
+      letter-spacing:-.01em;
+      color:var(--ink);
+    }
+    .ed-body{
+      margin:0;
+      font-family:var(--sans);
+      font-weight:300;
+      font-size:13.8px;
+      line-height:1.86;
+      color:#3A352F;
+      max-inline-size:44ch;
+    }
+
+    /* Clean Architectural Color Palette Block */
+    .palette-block{
+      padding-block-start:20px;
+      border-block-start:1px solid var(--line);
+      display:flex;
+      flex-direction:column;
+      gap:14px;
+    }
+    .palette-heading{
+      font-size:9px;
+      font-weight:600;
+      letter-spacing:.28em;
+      text-transform:uppercase;
+      color:var(--muted);
+    }
+    .swatch-grid{
+      display:grid;
+      grid-template-columns:repeat(4, minmax(0, 1fr));
+      gap:12px;
+    }
+    .swatch-item{
+      display:flex;
+      flex-direction:column;
+      gap:7px;
+    }
+    .swatch-color{
+      display:block;
+      inline-size:100%;
+      block-size:26px;
+      border:1px solid rgba(24,22,20,.14);
+    }
+    .swatch-label{
+      font-size:9px;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      color:var(--muted);
+      line-height:1.3;
+    }
+
+    /* Quiet bottom action bar on text page */
+    .ed-bottom-bar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+      padding-block-start:14px;
+      border-block-start:1px solid var(--line-soft);
+    }
+    .ed-link{
+      border:0;
+      background:transparent;
+      padding:4px 0;
+      font-family:var(--sans);
+      font-size:9.5px;
+      font-weight:600;
+      letter-spacing:.22em;
+      text-transform:uppercase;
+      color:var(--ink);
+      border-block-end:1px solid rgba(24,22,20,.34);
+      cursor:pointer;
+      transition:color 200ms var(--ease), border-color 200ms var(--ease);
+    }
+    .ed-link:hover{
+      color:var(--crimson);
+      border-color:var(--crimson);
+    }
+    .ed-link--muted{
+      color:var(--muted);
+      font-weight:500;
+      border-color:transparent;
+    }
+    .ed-link--muted:hover{
+      color:var(--ink);
+      border-color:rgba(24,22,20,.35);
+    }
+
+    /* Running Folio (page numbers) */
+    .folio{
+      position:absolute;
+      inset-block-end:16px;
+      inset-inline:clamp(26px, 3.6vw, 48px);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      font-family:var(--sans);
+      font-size:8.5px;
+      letter-spacing:.24em;
+      text-transform:uppercase;
+      color:rgba(24,22,20,.42);
+      pointer-events:none;
+    }
+    .folio-num{
+      font-family:var(--serif);
+      font-size:13.5px;
+      font-weight:600;
+      letter-spacing:.08em;
+      color:var(--ink);
+    }
+
+    /* COVER / INTRO SPREAD (00–01) */
+    .cover-title{
+      margin:0;
+      font-family:var(--serif);
+      font-weight:500;
+      font-size:clamp(2.8rem, 4.4vw, 4.2rem);
+      line-height:.96;
+      letter-spacing:-.015em;
+      color:var(--ink);
+    }
+    .cover-facts{
+      display:grid;
+      grid-template-columns:repeat(3, minmax(0, 1fr));
+      gap:14px;
+      padding-block:18px;
+      border-block:1px solid var(--line);
+    }
+    .cover-facts dt{
+      font-size:8.5px;
+      letter-spacing:.24em;
+      text-transform:uppercase;
+      color:var(--muted);
+      margin-block-end:4px;
+    }
+    .cover-facts dd{
+      margin:0;
+      font-family:var(--serif);
+      font-size:19px;
+      font-weight:500;
+      color:var(--ink);
+    }
+
+    /* Minimalist Index / Table of Contents on Page 01 */
+    .toc-list{
+      list-style:none;
+      margin:0;
+      padding:0;
+      display:grid;
+      grid-template-columns:1fr;
+      gap:4px;
+    }
+    .toc-list a{
+      display:grid;
+      grid-template-columns:26px 1fr auto;
+      align-items:baseline;
+      gap:10px;
+      padding:5px 0;
+      border-block-end:1px solid var(--line-soft);
+      transition:color 180ms var(--ease), border-color 180ms var(--ease);
+    }
+    .toc-list a:hover{
+      color:var(--crimson);
+      border-color:rgba(139,29,26,.35);
+    }
+    .toc-no{
+      font-size:9px;
+      letter-spacing:.16em;
+      color:var(--crimson);
+      font-weight:600;
+    }
+    .toc-name{
+      font-family:var(--serif);
+      font-size:15.5px;
+      font-weight:500;
+      line-height:1.2;
+    }
+    .toc-pg{
+      font-family:var(--sans);
+      font-size:9.5px;
+      letter-spacing:.16em;
+      color:var(--muted);
+    }
+
+    /* Closing Studio Commission Spread */
+    .offer-card{
+      padding:20px 22px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.42);
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+    .offer-head{
+      display:flex;
+      justify-content:space-between;
+      align-items:baseline;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+    .offer-head h3{
+      margin:0;
+      font-family:var(--serif);
+      font-weight:500;
+      font-size:23px;
+      line-height:1.1;
+    }
+    .offer-price{
+      font-family:var(--serif);
+      font-size:20px;
+      font-weight:600;
+      color:var(--crimson);
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      font-family:var(--sans);
+      font-size:9.5px;
+      font-weight:600;
+      letter-spacing:.24em;
+      text-transform:uppercase;
+      padding:13px 18px;
+      border:1px solid var(--ink);
+      background:transparent;
+      color:var(--ink);
+      cursor:pointer;
+      white-space:nowrap;
+      transition:background 220ms var(--ease), color 220ms var(--ease), border-color 220ms var(--ease);
+    }
+    .btn:hover{background:var(--ink);color:var(--paper)}
+    .btn.primary{background:var(--ink);color:var(--paper)}
+    .btn.primary:hover{background:var(--crimson);border-color:var(--crimson);color:#fff}
+    .btn.crimson{background:var(--crimson);border-color:var(--crimson);color:#F8F5EF}
+    .btn.crimson:hover{background:var(--ink);border-color:var(--ink);color:#fff}
+    .btn-row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+
+    /* Native Full-Screen Lightbox (<dialog>) */
+    dialog.plate-dialog{
+      border:1px solid rgba(24,22,20,.22);
+      padding:0;
+      background:var(--paper);
+      color:var(--ink);
+      inline-size:min(960px, calc(100% - 28px));
+      max-block-size:min(90dvb, 820px);
+      overflow:auto;
+      box-shadow:0 32px 84px rgba(0,0,0,.62);
+    }
+    dialog.plate-dialog:modal{overscroll-behavior:contain}
+    dialog.plate-dialog::backdrop{
+      background:rgba(12,12,14,.82);
+      backdrop-filter:blur(5px);
+      overflow:hidden;
+      overscroll-behavior:contain;
+    }
+    .dlg-layout{
+      display:grid;
+      grid-template-columns:1.02fr .98fr;
+      min-block-size:100%;
+    }
+    .dlg-media{background:#151412;display:flex}
+    .dlg-media img{inline-size:100%;block-size:100%;object-fit:cover;aspect-ratio:3 / 4}
+    .dlg-body{
+      padding:clamp(24px, 3.4vw, 40px);
+      display:flex;
+      flex-direction:column;
+      gap:18px;
+    }
+    .dlg-top{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding-block-end:12px;
+      border-block-end:1px solid var(--line);
+    }
+    .dlg-close{
+      border:1px solid rgba(24,22,20,.24);
+      background:transparent;
+      padding:6px 12px;
+      font-size:9.5px;
+      letter-spacing:.22em;
+      text-transform:uppercase;
+      cursor:pointer;
+    }
+    .dlg-close:hover{background:var(--ink);color:var(--paper)}
+    .dlg-title{
+      margin:0;
+      font-family:var(--serif);
+      font-weight:500;
+      font-size:clamp(1.85rem, 2.6vw, 2.5rem);
+      line-height:1.05;
+    }
+    .dlg-note{
+      margin:0;
+      font-weight:300;
+      font-size:13.5px;
+      line-height:1.8;
+      color:#3A352F;
+    }
+    .dlg-actions{
+      margin-block-start:auto;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      padding-block-start:12px;
+    }
+    .dlg-actions .btn{inline-size:100%}
+
+    /* Footer */
+    .site-footer{
+      border-block-start:1px solid rgba(245,242,236,.12);
+      background:#111214;
+      color:rgba(245,242,236,.72);
+      padding-block:42px 32px;
+    }
+    .footer-wrap{
+      max-inline-size:var(--spread-max);
+      margin-inline:auto;
+      padding-inline:22px;
+    }
+    .footer-top{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap:24px;
+      flex-wrap:wrap;
+      padding-block-end:24px;
+      border-block-end:1px solid rgba(245,242,236,.10);
+    }
+    .foot-brand-name{
+      margin:0 0 8px;
+      font-family:var(--serif);
+      font-size:21px;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      color:#F5F2EC;
+    }
+    .foot-desc{
+      margin:0;
+      max-inline-size:440px;
+      font-size:12px;
+      line-height:1.68;
+      color:rgba(245,242,236,.56);
+    }
+    .foot-links{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px 20px;
+    }
+    .foot-links a{
+      font-size:9.5px;
+      letter-spacing:.24em;
+      text-transform:uppercase;
+      color:rgba(245,242,236,.76);
+    }
+    .foot-links a:hover{color:#fff}
+    .footer-bottom{
+      padding-block-start:18px;
+      display:flex;
+      justify-content:space-between;
+      flex-wrap:wrap;
+      gap:12px 20px;
+      font-size:11px;
+      color:rgba(245,242,236,.44);
+    }
+    .legal-links{display:flex;gap:16px;flex-wrap:wrap}
+    .legal-links a:hover{color:#F5F2EC}
+
+    /* Progressive scroll-driven subtle entry */
+    @media (prefers-reduced-motion: no-preference){
+      @supports ((animation-timeline: view()) and (animation-range: entry)){
+        @keyframes spread-rise{
+          from{opacity:.55;transform:translateY(22px)}
+          to{opacity:1;transform:translateY(0)}
+        }
+        .spread-reveal{
+          animation:spread-rise auto linear backwards;
+          animation-timeline:view();
+          animation-range:entry 0% entry 22%;
+        }
+      }
+    }
+
+    /* Responsive: stacks neatly on mobile */
+    @media (max-width: 920px){
+      .header-inner{
+        grid-template-columns:1fr;
+        justify-items:center;
+        gap:10px;
+        padding-block:12px;
+      }
+      .nav-left,.actions-right{justify-content:center}
+      .spread-book{
+        grid-template-columns:1fr;
+        gap:0;
+      }
+      .spread-book::before,.spread-book::after{display:none}
+      .mag-page{min-block-size:auto}
+      .mag-page--left,.mag-page--right{
+        background:var(--paper);
+        border-inline-end:0;
+      }
+      .mag-page--photo{
+        padding:24px 20px 18px;
+      }
+      .mag-page--editorial{
+        padding:22px 22px 48px;
+      }
+      .mag-page--photo .folio{display:none}
+      .dlg-layout{grid-template-columns:1fr}
+    }
+    @media (max-width: 560px){
+      .swatch-grid{grid-template-columns:repeat(2, minmax(0, 1fr))}
+      .cover-facts{grid-template-columns:1fr}
+      .btn{inline-size:100%}
+    }
+  </style>
+</head>
+<body>
+  <div class="read-progress" aria-hidden="true">
+    <div class="read-progress-bar" id="readProgressBar"></div>
+  </div>
+
+  <!-- EXACT LAV INTERIORS HEADER -->
+  <header class="header">
+    <div class="header-wrap">
+      <div class="header-inner">
+        <nav aria-label="Primary" class="nav-left">
+          <a href="https://lavinteriors.pro/#portfolio" data-i18n="navPortfolio">Portfolio</a>
+          <a href="https://lavinteriors.pro/#about" data-i18n="navAbout">About</a>
+          <a href="https://lavinteriors.pro/#process" data-i18n="navProcess">Process</a>
+          <a href="https://lavinteriors.pro/#pricing" data-i18n="navPricing">Pricing</a>
+        </nav>
+
+        <a aria-label="LAV Interiors Home" class="brand-center" href="https://lavinteriors.pro/">
+          <div class="brand-sub" data-i18n="brandSub">Interior Design &amp; Architecture</div>
+          <div class="brand-top">LAV INTERIORS</div>
+        </a>
+
+        <div class="actions-right">
+          <a class="header-cta-service" href="https://lavinteriors.pro/visual/" data-i18n="navVisualStudio">LAV Visual Studio</a>
+          <div aria-label="Language switch" class="lang">
+            <button class="active" id="langEN" type="button">EN</button>
+            <span>|</span>
+            <button id="langRU" type="button">RU</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="desk-rail">
+    <span><strong>LAV JOURNAL · ISSUE 01 / 2027</strong> - <span data-i18n="railSub">YEAR OF THE RED FIRE GOAT · 21 SPREADS</span></span>
+    <div class="desk-actions">
+      <a href="#cover" data-i18n="railIndex">Index</a>
+      <a href="#plate-01" data-i18n="railStart">Plate 01</a>
+      <a href="#commission" data-i18n="railOrder">Order Design</a>
+    </div>
+  </div>
+
+  <main class="magazine-desk">
+
+    <!-- OPENING COVER & CONTENTS SPREAD (p. 00–01) -->
+    <article class="spread-book" id="cover">
+      <section class="mag-page mag-page--left mag-page--editorial">
+        <div class="ed-shell">
+          <div class="ed-top-meta">
+            <span class="ed-plate-no" data-i18n="covKicker">SPECIAL EDITION · 2027</span>
+            <span class="ed-cat">LAV INTERIORS</span>
+          </div>
+
+          <div class="ed-center">
+            <h1 class="cover-title" data-i18n="covTitle">Year of the<br>Fire Goat</h1>
+            <p class="ed-body" data-i18n="covText">
+              Beginning February 6, 2027, the Eastern calendar enters the rare 60-year cycle of the Yin Fire Goat. Across 21 quiet luxury spreads, we explore how travertine, dark walnut, candlelight, and a single sculptural crimson accent transform festive styling into timeless architecture.
+            </p>
+
+            <dl class="cover-facts">
+              <div>
+                <dt data-i18n="f1L">Lunar Cycle</dt>
+                <dd data-i18n="f1V">Feb 6, 2027</dd>
+              </div>
+              <div>
+                <dt data-i18n="f2L">Element</dt>
+                <dd data-i18n="f2V">Yin Fire</dd>
+              </div>
+              <div>
+                <dt data-i18n="f3L">Collection</dt>
+                <dd data-i18n="f3V">21 Plates</dd>
+              </div>
+            </dl>
+          </div>
+
+          <div class="btn-row">
+            <a class="btn primary" href="#plate-01" data-i18n="covRead">Start Reading ↓</a>
+            <a class="btn" href="https://lavinteriors.pro/interior-concepts/" data-i18n="covOrder">Order Room Concepts (48h)</a>
+          </div>
+        </div>
+        <div class="folio">
+          <span>LAV JOURNAL · ISSUE 01</span>
+          <span class="folio-num">00</span>
+        </div>
+      </section>
+
+      <section class="mag-page mag-page--right mag-page--editorial">
+        <div class="ed-shell" style="gap:14px">
+          <div class="ed-top-meta">
+            <span class="ed-plate-no" data-i18n="tocLabel">CONTENTS · 21 PLATES</span>
+            <span class="ed-cat" data-i18n="tocSub">CLICK TO JUMP</span>
+          </div>
+
+          <ol class="toc-list">
+            <li><a href="#plate-01"><span class="toc-no">01</span><span class="toc-name" data-sp-title="plate-01">Timber Rhythm & Quiet Crimson</span><span class="toc-pg">02</span></a></li>
+            <li><a href="#plate-02"><span class="toc-no">02</span><span class="toc-name" data-sp-title="plate-02">Charcoal Boiserie & Living Hearth</span><span class="toc-pg">04</span></a></li>
+            <li><a href="#plate-03"><span class="toc-no">03</span><span class="toc-name" data-sp-title="plate-03">Snow Outside, Raw Granite Inside</span><span class="toc-pg">06</span></a></li>
+            <li><a href="#plate-04"><span class="toc-no">04</span><span class="toc-name" data-sp-title="plate-04">The Sculptural Marble Kitchen</span><span class="toc-pg">08</span></a></li>
+            <li><a href="#plate-05"><span class="toc-no">05</span><span class="toc-name" data-sp-title="plate-05">Illuminated Amber Onyx Counter</span><span class="toc-pg">10</span></a></li>
+            <li><a href="#plate-06"><span class="toc-no">06</span><span class="toc-name" data-sp-title="plate-06">The Patinated Bronze Staircase</span><span class="toc-pg">12</span></a></li>
+            <li><a href="#plate-07"><span class="toc-no">07</span><span class="toc-name" data-sp-title="plate-07">Fluted Travertine Colonnade</span><span class="toc-pg">14</span></a></li>
+            <li><a href="#plate-08"><span class="toc-no">08</span><span class="toc-name" data-sp-title="plate-08">Circular Light Dome Salon</span><span class="toc-pg">16</span></a></li>
+            <li><a href="#plate-09"><span class="toc-no">09</span><span class="toc-name" data-sp-title="plate-09">Monolithic Chimney & Raw Stone</span><span class="toc-pg">18</span></a></li>
+            <li><a href="#plate-10"><span class="toc-no">10</span><span class="toc-name" data-sp-title="plate-10">Honey Onyx & Botanical Light</span><span class="toc-pg">20</span></a></li>
+            <li><a href="#plate-11"><span class="toc-no">11</span><span class="toc-name" data-sp-title="plate-11">Wave Timber Ceiling & Ruby Crown</span><span class="toc-pg">22</span></a></li>
+            <li><a href="#plate-12"><span class="toc-no">12</span><span class="toc-name" data-sp-title="plate-12">Emerald Botanical Fireplace Room</span><span class="toc-pg">24</span></a></li>
+            <li><a href="#plate-13"><span class="toc-no">13</span><span class="toc-name" data-sp-title="plate-13">Minimalist Travertine Stair Foyer</span><span class="toc-pg">26</span></a></li>
+            <li><a href="#plate-14"><span class="toc-no">14</span><span class="toc-name" data-sp-title="plate-14">Olive Velvet & Backlit Green Marble</span><span class="toc-pg">28</span></a></li>
+            <li><a href="#plate-15"><span class="toc-no">15</span><span class="toc-name" data-sp-title="plate-15">Sunlit Salon & Bronze Ribbon Light</span><span class="toc-pg">30</span></a></li>
+            <li><a href="#plate-16"><span class="toc-no">16</span><span class="toc-name" data-sp-title="plate-16">Double-Height Oak Chalet Salon</span><span class="toc-pg">32</span></a></li>
+            <li><a href="#plate-17"><span class="toc-no">17</span><span class="toc-name" data-sp-title="plate-17">Brushed Brass Dome & Winter Garden</span><span class="toc-pg">34</span></a></li>
+            <li><a href="#plate-18"><span class="toc-no">18</span><span class="toc-name" data-sp-title="plate-18">Bronzed Mirror Wall & Sculpted Brass</span><span class="toc-pg">36</span></a></li>
+            <li><a href="#plate-19"><span class="toc-no">19</span><span class="toc-name" data-sp-title="plate-19">Sweeping Staircase & Walnut Burl</span><span class="toc-pg">38</span></a></li>
+            <li><a href="#plate-20"><span class="toc-no">20</span><span class="toc-name" data-sp-title="plate-20">Arched Walnut Residence Bar</span><span class="toc-pg">40</span></a></li>
+            <li><a href="#plate-21"><span class="toc-no">21</span><span class="toc-name" data-sp-title="plate-21">Fresco Ceiling Resort Residence</span><span class="toc-pg">42</span></a></li>
+          </ol>
+        </div>
+        <div class="folio">
+          <span class="folio-num">01</span>
+          <span>INDEX</span>
+        </div>
+      </section>
+    </article>
+
+    <!-- SPREAD 01 (p. 02–03) -->
+    <article class="spread-book" id="plate-01">
+      <section class="mag-page mag-page--left mag-page--photo">
+        <figure class="plate-frame" data-plate-id="plate-01" tabindex="0" role="button" aria-label="Open Plate 01 - Timber Rhythm & Quiet Crimson">
+          <img src="images/plate-01.jpg" alt="Timber Rhythm & Quiet Crimson - LAV Interiors 2027 Year of the Fire Goat" fetchpriority="high" width="896" height="1200" />
+          <span class="plate-zoom" data-i18n="zoomLabel">View &amp; Wallpaper ↗</span>
+        </figure>
+        <div class="folio">
+          <span>LAV JOURNAL · 2027</span>
+          <span class="folio-num">02</span>
+        </div>
+      </section>
+      <section class="mag-page mag-page--right mag-page--editorial">
+        <div class="ed-shell">
+          <div class="ed-top-meta">
+            <span class="ed-plate-no">PLATE 01 / 21</span>
+            <span class="ed-cat" data-sp-cat="plate-01">Alpine Architecture</span>
+          </div>
+
+          <div class="ed-center">
+            <h2 class="ed-title" data-sp-title="plate-01">Timber Rhythm & Quiet Crimson</h2>
+            <p class="ed-body" data-sp-text="plate-01">Double-height smoked oak rafters and vertical fluted paneling give this mountain chalet an architectural stillness that needs no holiday clutter. In the 2027 Year of the Red Fire Goat, Wood naturally nourishes Fire, allowing a single crimson sculpture to anchor the room with gallery poise. Warm indirect cove light softens the dark beams so the entire salon feels effortless and timeless.</p>
+
+            <div class="palette-block">
+              <div class="palette-heading" data-i18n="paletteLabel">Color &amp; Material Palette</div>
+              <div class="swatch-grid">
+              <div class="swatch-item"><span class="swatch-color" style="background:#5A3E2B"></span><span class="swatch-label" data-sw="plate-01-0">Smoked Oak</span></div>
+              <div class="swatch-item"><span class="swatch-color" style="background:#DDD5C7"></span><span class="swatch-label" data-sw="plate-01-1">Fluted Lime</span></div>
+              <div class="swatch-item"><span class="swatch-color" style="background:#EFECE6"></span><span class="swatch-label" data-sw="plate-01-2">Ivory Boucle</span></div>
+              <div class="swatch-item"><span class="swatch-color" style="background:#951B1C"></span><span class="swatch-label" data-sw="plate-01-3">Ruby Lacquer</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="ed-bottom-bar">
+            <a class="ed-link" href="https://lavinteriors.pro/interior-concepts/" data-i18n="orderRoomLink">Order this aesthetic for my room →</a>
+            <button type="button" class="ed-link ed-link--muted" data-plate-id="plate-01" data-i18n="wallpaperBtn">HD Wallpaper ↗</button>
+          </div>
+        </div>
+        <div class="folio">
+          <span class="folio-num">03</span>
+          <span>YEAR OF THE FIRE GOAT</span>
+        </div>
+      </section>
+    </article>
+
+    <!-- SPREAD 02 (p. 04–05) -->
+    <article class="spread-book spread-reveal" id="plate-02">
+      <section class="mag-page mag-page--left mag-page--editorial">
+        <div class="ed-shell">
+          <div class="ed-top-meta">
+            <span class="ed-plate-no">PLATE 02 / 21</span>
+            <span class="ed-cat" data-sp-cat="plate-02">Noir Neoclassic</span>
+          </div>
+
+          <div class="ed-center">
+            <h2 class="ed-title" data-sp-title="plate-02">Charcoal Boiserie & Living Hearth</h2>
+            <p class="ed-body" data-sp-text="plate-02">Matte charcoal moldings absorb visual noise so live fireplace embers, brass taper candles, and ruby glaze glow like museum pieces. The 2027 symbol belongs to Yin Fire, the quiet element of domestic warmth rather than harsh neon brightness. Symmetrical white boucle armchairs and a honed travertine table keep the room grounded and deeply intimate.</p>
+
+            <div class="palette-block">
+              <div class="palette-heading" data-i18n="paletteLabel">Color &amp; Material Palette</div>
+              <div class="swatch-grid">
+              <div class="swatch-item"><span class="swatch-color" style="background:#1A1A1A"></span><span class="swatch-label" data-sw="plate-02-0">Matte Charcoal</span></div>
+              <div class="swatch-item"><span class="swatch-color" style="background:#F2EEE7"></span><span class="swatch-label" data-sw="plate-02-1">Lime Plaster</span></div>
+              <div class="swatch-item"><span class="swatch-color" style="background:#C9BBA4"></span><span class="swatch-label" data-sw="plate-02-2">Travertine</span></div>
+              <div class="swatch-item"><span class="swatch-color" style="background:#8A1818"></span><span class="swatch-label" data-sw="plate-02-3">Fire Glaze</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="ed-bottom-bar">
+            <a class="ed-link" href="https://lavinteriors.pro/interior-concepts/" data-i18n="orderRoomLink">Order this aesthetic for my room →</a>
+            <button type="button" class="ed-link ed-link--muted" data-plate-id="plate-02" data-i18n="wallpaperBtn">HD Wallpaper ↗</button>
+          </div>
+        </div>
+        <div class="folio">
+          <span class="folio-num">04</span>
+          <span>LAV INTERIORS</span>
+        </div>
+      </section>
+      <section class="mag-page mag-page--right mag-page--photo">
+        <figure class="plate-frame" data-plate-id="plate-02" tabindex="0" role="button" aria-label="Open Plate 02 - Charcoal Boiserie & Living Hearth">
+          <img src="images/plate-02.jpg" alt="Charcoal Boiserie & Living Hearth - LAV Interiors 2027 Year of the Fire Goat" loading="lazy" width="896" height="1200" />
+          <span class="plate-zoom" data-i18n="zoomLabel">View &amp; Wallpaper ↗</span>
+        </figure>
+        <div class="folio">
+          <span>PLATE 02</span>
+          <span class="folio-num">05</span>
+        </div>
+      </section>
+    </article>
+
+    <!-- SPREAD 03 (p. 06–07) -->
+    <article class="spread-book spread-reveal" id="plate-03">
+      <section class="mag-page mag-page--left mag-page--photo">
+        <figure class="plate-frame" data-plate-id="plate-03" tabindex="0" role="button" aria-label="Open Plate 03 - Snow Outside, Raw Granite Inside">
+          <img src="images/plate-03.jpg" alt="Snow Outside, Raw Granite Inside - LAV Interiors 2027 Year of the Fire Goat" loading="lazy" width="896" height="1200" />
+          <span class="plate-zoom" data-i18n="zoomLabel">View &amp; Wallpaper ↗</span>
+        </figure>
+        <div class="folio">
+          <span>LAV JOURNAL · 2027</span>
+          <span class="folio-num">06</span>
+        </div>
+      </section>
+      <section class="mag-page mag-page--right mag-page--editorial">
+        <div class="ed-shell">
+          <div class="ed-top-meta">
+            <span class="ed-plate-no">PLATE 03 / 21</span>
+            <span class="ed-cat" data-sp-cat="plate-03">Winter Sanctuary</span>
+          </div>
+
+          <div class="ed-center">
+            <h2 class="ed-title" data-sp-title="plate-03">Snow Outside, Raw Granite Inside</h2>
+            <p class="ed-body" data-sp-text="plate-03">Instead of a conventional fir tree, a crimson-leaf maple rises from a hand-split granite monolith beneath a cascade of clear crystal light. Because the Goat carries Earth energy warmed by Fire in 2027, raw mineral textures hold saturated red accents far more gracefully than glossy surfaces. Burgundy pillows quietly tie the curved velvet sofa to the winter panorama beyond the glass.</p>
+
+            <div class="palette-block">
+              <div class="palette-heading" data-i18n="paletteLabel">Color &amp; Material Palette</div>
+              <div class="swatch-grid">
+              <div class="swatch-item"><span class="swatch-color" style="background:#8B857B"></span><span class="swatch-label" data-sw="plate-03-0">Raw Granite</span></div>
+              <div class="swatch-item"><span class="swatch-color" style="background:#CFC0AC"></span><span class="swatch-label" data-sw="plate-03-1">Cashmere Beige</span></div>
+              <div class="swatch-item"><span class="swatch-color" style="background:#5C171E"></span><span class="swatch-label" data-sw="plate-03-2">Deep Burgundy</span></div>
+              <div class="swatch-item"><span class="swatch-color" style="background:#E5E8EB"></span><span class="swatch-label" data-sw="plate-03-3">Clear Crystal</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="ed-bottom-bar">
+            <a class="ed-link" href="https://lavinteriors.pro/interior-concepts/" data-i18n="orderRoomLink">Order this aesthetic for my room →</a>
+            <button type="button" class="ed-link ed-link--muted" data-plate-id="plate-03" data-i18n="wallpaperBtn">HD Wallpaper ↗</button>
+          </div>
+        </div>
+        <div class="folio">
+          <span class="folio-num">07</span>
+          <span>YEAR OF THE FIRE GOAT</span>
+        </div>
+      </section>
+    </article>
+
+    <!-- SPREAD 04 (p. 08–09) -->
+    <article class="spread-book spread-reveal" id="plate-04">
+      <section class="mag-page mag-page--left mag-page--editorial">
+        <div class="ed-shell">
+          <div class="ed-top-meta">
+            <span class="ed-plate-no">PLATE 04 / 21</span>
+            <span class="ed-cat" data-sp-cat="plate-04">Culinary Architecture</span>
+          </div>
+
+          <div class="ed-center">
+            <h2 class="ed-title" data-sp-title="plate-04">The Sculptural Marble Kitchen</h2>
+            <p class="ed-body" data-sp-text="plate-04">A cylindrical Calacatta Viola marble island locks into a cantilevered walnut table, turning everyday hosting into quiet architectural theater. Full-height handleless dark veneer columns conceal all appliances so the kitchen reads like a tailored salon. Fresh pine boughs, tall brass tapers, and a ceramic Fire Goat complete the table without a trace of clutter.</p>
+
+            <div class="palette-block">
+              <div class="palette-heading" data-i18n="paletteLabel">Color &amp; Material Palette</div>
+              <div class="swatch-grid">
+              <div class="swatch-item"><span class="swatch-color" style="background:#3A261B"></span><span class="swatch-label" data-sw="plate-04-0">Dark Walnut</span></div>
+              <div class="swatch-item"><span class="swatch-color" style="background:#EDE9E4"></span><span class="swatch-label" data-sw="plate-04-1">Calacatta Viola</span></div>
+              <div class="swatch-item"><span class="swatch-color" style="background:#2D4430"></span><span class="swatch-label" data-sw="plate-04-2">Winter Pine</span></div>
+              <div class="swatch-item"><span class="swatch-color" style="background:#9B1C19"></span><span class="swatch-label" data-sw="plate-04-3">Ceramic Crimson</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="ed-bottom-bar">
+            <a class="ed-link" href="https://lavinteriors.pro/interior-concepts/" data-i18n="orderRoomLink">Order this aesthetic for my room →</a>
+            <button type="button" class="ed-link ed-link--muted" data-plate-id="plate-04" data-i18n="wallpaperBtn">HD Wallpaper ↗</button>
+          </div>
+        </div>
+        <div class="folio">
+          <span class="folio-num">08</span>
+          <span>LAV INTERIORS</span>
+        </div>
+      </section>
+      <section class="mag-page mag-page--right mag-page--photo">
+        <figure class="plate-frame" data-plate-id="plate-04" tabindex="0" role="button" aria-label="Open Plate 04 - The Sculptural Marble Kitchen">
+          <img src="images/plate-04.jpg" alt="The Sculptural Marble Kitchen - LAV Interiors 2027 Year of the Fire Goat" loading="lazy" width="896" height="1200" />
+          <span class="plate-zoom" data-i18n="zoomLabel">View &amp; Wallpaper ↗</span>
+        </figure>
+        <div class="folio">
+          <span>PLATE 04</span>
+          <span class="folio-num">09</span>
+        </div>
+      </section>
+    </article>
+
+    <!-- SPREAD 05 (p. 10–11) -->
+    <article class="spread-book spread-reveal" id="plate-05">
+      <section class="mag-page mag-page--left mag-page--photo">
+        <figure class="plate-frame" data-plate-id="plate-05" tabindex="0" role="button" aria-label="Open Plate 05 - Illuminated Amber Onyx Counter">
+          <img src="images/plate-05.jpg" alt="Illuminated Amber Onyx Counter - LAV Interiors 2027 Year of the Fire Goat" loading="lazy" width="896" height="1200" />
+          <span class="plate-zoom" data-i18n="zoomLabel">View &amp; Wallpaper ↗</span>
+        </figure>
+        <div class="folio">
+          <span>LAV JOURNAL · 2027</span>
+          <span class="folio-num">10</span>
+        </div>
+      </section>
+      <section class="mag-page mag-page--right mag-page--editorial">
+        <div class="ed-shell">
+          <div class="ed-top-meta">
+            <span class="ed-plate-no">PLATE 05 / 21</span>
+            <span class="ed-cat" data-sp-cat="plate-05">Hospitality & Boutique</span>
+          </div>
+
+          <div class="ed-center">
+            <h2 class="ed-title" data-sp-title="plate-05">Illuminated Amber Onyx Counter</h2>
+            <p class="ed-body" data-sp-text="plate-05">Translucent honey onyx transforms a boutique reception or private club bar into a sculptural lantern that guests remember instantly. Architectural charcoal columns and backlit amber glassware shelves frame the blown ruby glass Fire Goat at eye level. In commercial interiors, this restraint turns seasonal styling into organic brand magnetism.</p>
+
+            <div class="palette-block">
+              <div class="palette-heading" data-i18n="paletteLabel">Color &amp; Material Palette</div>
+              <div class="swatch-grid">
+              <div class="swatch-item"><span class="swatch-color" style="background:#D7963A"></span><span class="swatch-label" data-sw="plate-05-0">Backlit Onyx</span></div>
+              <div class="swatch-item"><span class="swatch-color" style="background:#565658"></span><span class="swatch-label" data-sw="plate-05-1">Slate Grey</span></div>
+              <div class="swatch-item"><span class="swatch-color" style="background:#2C2621"></span><span class="swatch-label" data-sw="plate-05-2">Smoked Bronze</span></div>
+              <div class="swatch-item"><span class="swatch-color" style="background:#7E0F12"></span><span class="swatch-label" data-sw="plate-05-3">Ruby Glass</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="ed-bottom-bar">
+            <a class="ed-link" href="https://lavinteriors.pro/interior-concepts/" data-i18n="orderRoomLink">Order this aesthetic for my room →</a>
+            <button type="button" class="ed-link ed-link--muted" data-plate-id="plate-05" data-i18n="wallpaperBtn">HD Wallpaper ↗</button>
+          </div>
+        </div>
+        <div class="folio">
+          <span class="folio-num">11</span>
+          <span>YEAR OF THE FIRE GOAT</span>
+        </div>
+      </section>
+    </article>
+
+    <!-- SPREAD 06 (p. 12–13) -->
+    <article class="spread-book spread-reveal" id="plate-06">
+      <section class="mag-page mag-page--left mag-page--editorial">
+        <div class="ed-shell">
+          <div class="ed-top-meta">
+            <span class="ed-plate-no">PLATE 06 / 21</span>
+            <span class="ed-cat" data-sp-cat="plate-06">Grand Architecture</span>
+          </div>
+
+          <div class="ed-center">
+            <h2 class="ed-title" data-sp-title="plate-06">The Patinated Bronze Staircase</h2>
+            <p class="ed-body" data-sp-text="plate-06">A sweeping patinated bronze stair ribbon cuts effortlessly across classical white bas-relief walls beneath a cloud of alabaster light discs. Curved architectural lines soften the intensity of Fire energy and reflect the artistic temperament of the 2027 Goat year. Moss velvet, cognac leather, and veined marble tables bridge heritage craft with modern collectible form.</p>
+
+            <div class="palette-block">
+              <div class="palette-heading" data-i18n="paletteLabel">Color &amp; Material Palette</div>
+              <div class="swatch-grid">
+              <div class="swatch-item"><span class="swatch-color" style="background:#3B3025"></span><span class="swatch-label" data-sw="plate-06-0">Patinated Bronze</span></div>
+              <div class="swatch-item"><span class="swatch-color" style="background:#535E33"></span><span class="swatch-label" data-sw="plate-06-1">Moss Velvet</span></div>
+              <div class="swatch-item"><span class="swatch-color" style="background:#B3743D"></span><span class="swatch-label" data-sw="plate-06-2">Cognac Leather</span></div>
+              <div class="swatch-item"><span class="swatch-color" style="background:#A51B19"></span><span class="swatch-label" data-sw="plate-06-3">Scarlet Gold</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="ed-bottom-bar">
+            <a class="ed-link" href="https://lavinteriors.pro/interior-concepts/" data-i18n="orderRoomLink">Order this aesthetic for my room →</a>
+            <button type="button" class="ed-link ed-link--muted" data-plate-id="plate-06" data-i18n="wallpaperBtn">HD Wallpaper ↗</button>
+          </div>
+        </div>
+        <div class="folio">
+          <span class="folio-num">12</span>
+          <span>LAV INTERIORS</span>
+        </div>
+      </section>
+      <section class="mag-page mag-page--right mag-page--photo">
+        <figure class="plate-frame" data-plate-id="plate-06" tabindex="0" role="button" aria-label="Open Plate 06 - The Patinated Bronze Staircase">
+          <img src="images/plate-06.jpg" alt="The Patinated Bronze Staircase - LAV Interiors 2027 Year of the Fire Goat" loading="lazy" width="896" height="1200" />
+          <span class="plate-zoom" data-i18n="zoomLabel">View &amp; Wallpaper ↗</span>
+        </figure>
+        <div class="folio">
+          <span>PLATE 06</span>
+          <span class="folio-num">13</span>
+        </div>
+      </section>
+    </article>
+
+    <!-- SPREAD 07 (p. 14–15) -->
+    <article class="spread-book spread-reveal" id="plate-07">
+      <section class="mag-page mag-page--left mag-page--photo">
+        <figure class="plate-frame" data-plate-id="plate-07" tabindex="0" role="button" aria-label="Open Plate 07 - Fluted Travertine Colonnade">
+          <img src="images/plate-07.jpg" alt="Fluted Travertine Colonnade - LAV Interiors 2027 Year of the Fire Goat" loading="lazy" width="896" height="1200" />
+          <span class="plate-zoom" data-i18n="zoomLabel">View &amp; Wallpaper ↗</span>
+        </figure>
+        <div class="folio">
+          <span>LAV JOURNAL · 2027</span>
+          <span class="folio-num">14</span>
+        </div>
+      </section>
+      <section class="mag-page mag-page--right mag-page--editorial">
+        <div class="ed-shell">
+          <div class="ed-top-meta">
+            <span class="ed-plate-no">PLATE 07 / 21</span>
+            <span class="ed-cat" data-sp-cat="plate-07">Open-Plan Residence</span>
+          </div>
+
+          <div class="ed-center">
+            <h2 class="ed-title" data-sp-title="plate-07">Fluted Travertine Colonnade</h2>
+            <p class="ed-body" data-sp-text="plate-07">Tall fluted travertine columns with recessed bronze uplighting create a serene boundary between the marble kitchen and double-height living room. Following the studio's 90/10 color rule, calm ivory upholstery and warm stone let one glossy crimson accent speak clearly. Low column lighting elongates vertical proportions without harsh ceiling glare.</p>
+
+            <div class="palette-block">
+              <div class="palette-heading" data-i18n="paletteLabel">Color &amp; Material Palette</div>
+              <div class="swatch-grid">
+              <div class="swatch-item"><span class="swatch-color" style="background:#C7B7A0"></span><span class="swatch-label" data-sw="plate-07-0">Fluted Travertine</span></div>
+              <div class="swatch-item"><span class="swatch-color" style="background:#EAE3D7"></span><span class="swatch-label" data-sw="plate-07-1">Warm Cream</span></div>
+              <div class="swatch-item"><span class="swatch-color" style="background:#392F26"></span><span class="swatch-label" data-sw="plate-07-2">Dark Bronze</span></div>
+              <div class="swatch-item"><span class="swatch-color" style="background:#991B1B"></span><span class="swatch-label" data-sw="plate-07-3">Crimson Lacquer</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="ed-bottom-bar">
+            <a class="ed-link" href="https://lavinteriors.pro/interior-concepts/" data-i18n="orderRoomLink">Order this aesthetic for my room →</a>
+            <button type="button" class="ed-link ed-link--muted" data-plate-id="plate-07" data-i18n="wallpaperBtn">HD Wallpaper ↗</button>
+          </div>
+        </div>
+        <div class="folio">
+          <span class="folio-num">15</span>
+          <span>YEAR OF THE FIRE GOAT</span>
+        </div>
+      </section>
+    </article>
+
+    <!-- SPREAD 08 (p. 16–17) -->
+    <article class="spread-book spread-reveal" id="plate-08">
+      <section class="mag-page mag-page--left mag-page--editorial">
+        <div class="ed-shell">
+          <div class="ed-top-meta">
+            <span class="ed-plate-no">PLATE 08 / 21</span>
+            <span class="ed-cat" data-sp-cat="plate-08">Sculptural Volume</span>
+          </div>
+
+          <div class="ed-center">
+            <h2 class="ed-title" data-sp-title="plate-08">Circular Light Dome Salon</h2>
+            <p class="ed-body" data-sp-text="plate-08">Treating the ceiling as the fifth facade, this glowing circular cove mirrors the generous arc of the quilted leather sectional below. A backlit veined stone slab warms the dark fluted timber wall beside a luminous ribbed Fire Goat art installation. Every curve guides guests naturally toward unhurried evening conversation.</p>
+
+            <div class="palette-block">
+              <div class="palette-heading" data-i18n="paletteLabel">Color &amp; Material Palette</div>
+              <div class="swatch-grid">
+              <div class="swatch-item"><span class="swatch-color" style="background:#6F4429"></span><span class="swatch-label" data-sw="plate-08-0">Saddle Leather</span></div>
+              <div class="swatch-item"><span class="swatch-color" style="background:#E5DDD0"></span><span class="swatch-label" data-sw="plate-08-1">Warm Plaster</span></div>
+              <div class="swatch-item"><span class="swatch-color" style="background:#3C2F26"></span><span class="swatch-label" data-sw="plate-08-2">Fluted Walnut</span></div>
+              <div class="swatch-item"><span class="swatch-color" style="background:#9C221B"></span><span class="swatch-label" data-sw="plate-08-3">Ember Red</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="ed-bottom-bar">
+            <a class="ed-link" href="https://lavinteriors.pro/interior-concepts/" data-i18n="orderRoomLink">Order this aesthetic for my room →</a>
+            <button type="button" class="ed-link ed-link--muted" data-plate-id="plate-08" data-i18n="wallpaperBtn">HD Wallpaper ↗</button>
+          </div>
+        </div>
+        <div class="folio">
+          <span class="folio-num">16</span>
+          <span>LAV INTERIORS</span>
+        </div>
+      </section>
+      <section class="mag-page mag-page--right mag-page--photo">
+        <figure class="plate-frame" data-plate-id="plate-08" tabindex="0" role="button" aria-label="Open Plate 08 - Circular Light Dome Salon">
+          <img src="images/plate-08.jpg" alt="Circular Light Dome Salon - LAV Interiors 2027 Year of the Fire Goat" loading="lazy" width="896" height="1200" />
+          <span class="plate-zoom" data-i18n="zoomLabel">View &amp; Wallpaper ↗</span>
+        </figure>
+        <div class="folio">
+          <span>PLATE 08</span>
+          <span class="folio-num">17</span>
+        </div>
+      </section>
+    </article>
+
+    <!-- SPREAD 09 (p. 18–19) -->
+    <article class="spread-book spread-reveal" id="plate-09">
+      <section class="mag-page mag-page--left mag-page--photo">
+        <figure class="plate-frame" data-plate-id="plate-09" tabindex="0" role="button" aria-label="Open Plate 09 - Monolithic Chimney & Raw Stone">
+          <img src="images/plate-09.jpg" alt="Monolithic Chimney & Raw Stone - LAV Interiors 2027 Year of the Fire Goat" loading="lazy" width="896" height="1200" />
+          <span class="plate-zoom" data-i18n="zoomLabel">View &amp; Wallpaper ↗</span>
+        </figure>
+        <div class="folio">
+          <span>LAV JOURNAL · 2027</span>
+          <span class="folio-num">18</span>
+        </div>
+      </section>
+      <section class="mag-page mag-page--right mag-page--editorial">
+        <div class="ed-shell">
+          <div class="ed-top-meta">
+            <span class="ed-plate-no">PLATE 09 / 21</span>
+            <span class="ed-cat" data-sp-cat="plate-09">Warm Minimalism</span>
+          </div>
+
+          <div class="ed-center">
+            <h2 class="ed-title" data-sp-title="plate-09">Monolithic Chimney & Raw Stone</h2>
+            <p class="ed-body" data-sp-text="plate-09">A towering matte-black fireplace monolith rests directly on a hand-carved rough stone hearth, pairing crisp architectural discipline with elemental weight. Translucent crimson glass catches the live flames beside tall sunlit windows and built-in oak libraries. This dialogue between dark vertical mass and natural daylight defines contemporary quiet luxury.</p>
+
+            <div class="palette-block">
+              <div class="palette-heading" data-i18n="paletteLabel">Color &amp; Material Palette</div>
+              <div class="swatch-grid">
+              <div class="swatch-item"><span class="swatch-color" style="background:#23211F"></span><span class="swatch-label" data-sw="plate-09-0">Matte Obsidian</span></div>
+              <div class="swatch-item"><span class="swatch-color" style="background:#7D7871"></span><span class="swatch-label" data-sw="plate-09-1">Split Stone</span></div>
+              <div class="swatch-item"><span class="swatch-color" style="background:#9E7A56"></span><span class="swatch-label" data-sw="plate-09-2">Natural Oak</span></div>
+              <div class="swatch-item"><span class="swatch-color" style="background:#9E1718"></span><span class="swatch-label" data-sw="plate-09-3">Flame Glass</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="ed-bottom-bar">
+            <a class="ed-link" href="https://lavinteriors.pro/interior-concepts/" data-i18n="orderRoomLink">Order this aesthetic for my room →</a>
+            <button type="button" class="ed-link ed-link--muted" data-plate-id="plate-09" data-i18n="wallpaperBtn">HD Wallpaper ↗</button>
+          </div>
+        </div>
+        <div class="folio">
+          <span class="folio-num">19</span>
+          <span>YEAR OF THE FIRE GOAT</span>
+        </div>
+      </section>
+    </article>
+
+    <!-- SPREAD 10 (p. 20–21) -->
+    <article class="spread-book spread-reveal" id="plate-10">
+      <section class="mag-page mag-page--left mag-page--editorial">
+        <div class="ed-shell">
+          <div class="ed-top-meta">
+            <span class="ed-plate-no">PLATE 10 / 21</span>
+            <span class="ed-cat" data-sp-cat="plate-10">Evening Lounge</span>
+          </div>
+
+          <div class="ed-center">
+            <h2 class="ed-title" data-sp-title="plate-10">Honey Onyx & Botanical Light</h2>
+            <p class="ed-body" data-sp-text="plate-10">A floor-to-ceiling luminous slab of honey onyx replaces harsh overhead lighting with the soft amber glow of a permanent fireplace. Dark walnut paneling, oxblood leather club chairs, and floating porcelain blossom chandeliers create a deeply atmospheric winter retreat. Candlelit evergreen branches and a blown glass goat bring the table to life after sunset.</p>
+
+            <div class="palette-block">
+              <div class="palette-heading" data-i18n="paletteLabel">Color &amp; Material Palette</div>
+              <div class="swatch-grid">
+              <div class="swatch-item"><span class="swatch-color" style="background:#DDA245"></span><span class="swatch-label" data-sw="plate-10-0">Honey Onyx</span></div>
+              <div class="swatch-item"><span class="swatch-color" style="background:#2E2019"></span><span class="swatch-label" data-sw="plate-10-1">Espresso Walnut</span></div>
+              <div class="swatch-item"><span class="swatch-color" style="background:#542122"></span><span class="swatch-label" data-sw="plate-10-2">Oxblood Leather</span></div>
+              <div class="swatch-item"><span class="swatch-color" style="background:#8D1517"></span><span class="swatch-label" data-sw="plate-10-3">Ruby Crystal</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="ed-bottom-bar">
+            <a class="ed-link" href="https://lavinteriors.pro/interior-concepts/" data-i18n="orderRoomLink">Order this aesthetic for my room →</a>
+            <button type="button" class="ed-link ed-link--muted" data-plate-id="plate-10" data-i18n="wallpaperBtn">HD Wallpaper ↗</button>
+          </div>
+        </div>
+        <div class="folio">
+          <span class="folio-num">20</span>
+          <span>LAV INTERIORS</span>
+        </div>
+      </section>
+      <section class="mag-page mag-page--right mag-page--photo">
+        <figure class="plate-frame" data-plate-id="plate-10" tabindex="0" role="button" aria-label="Open Plate 10 - Honey Onyx & Botanical Light">
+          <img src="images/plate-10.jpg" alt="Honey Onyx & Botanical Light - LAV Interiors 2027 Year of the Fire Goat" loading="lazy" width="896" height="1200" />
+          <span class="plate-zoom" data-i18n="zoomLabel">View &amp; Wallpaper ↗</span>
+        </figure>
+        <div class="folio">
+          <span>PLATE 10</span>
+          <span class="folio-num">21</span>
+        </div>
+      </section>
+    </article>
+
+    <!-- SPREAD 11 (p. 22–23) -->
+    <article class="spread-book spread-reveal" id="plate-11">
+      <section class="mag-page mag-page--left mag-page--photo">
+        <figure class="plate-frame" data-plate-id="plate-11" tabindex="0" role="button" aria-label="Open Plate 11 - Wave Timber Ceiling & Ruby Crown">
+          <img src="images/plate-11.jpg" alt="Wave Timber Ceiling & Ruby Crown - LAV Interiors 2027 Year of the Fire Goat" loading="lazy" width="896" height="1200" />
+          <span class="plate-zoom" data-i18n="zoomLabel">View &amp; Wallpaper ↗</span>
+        </figure>
+        <div class="folio">
+          <span>LAV JOURNAL · 2027</span>
+          <span class="folio-num">22</span>
+        </div>
+      </section>
+      <section class="mag-page mag-page--right mag-page--editorial">
+        <div class="ed-shell">
+          <div class="ed-top-meta">
+            <span class="ed-plate-no">PLATE 11 / 21</span>
+            <span class="ed-cat" data-sp-cat="plate-11">Editorial Drama</span>
+          </div>
+
+          <div class="ed-center">
+            <h2 class="ed-title" data-sp-title="plate-11">Wave Timber Ceiling & Ruby Crown</h2>
+            <p class="ed-body" data-sp-text="plate-11">Undulating sculpted walnut ceiling slats cradle a bold crimson floral chandelier, uniting height and warmth in one architectural gesture. Below, a ribbed black fireplace wall and brushed brass drum table anchor velvet seating in muted taupe and burgundy. Echoing crimson at both ceiling and floor level keeps grand proportions cohesive.</p>
+
+            <div class="palette-block">
+              <div class="palette-heading" data-i18n="paletteLabel">Color &amp; Material Palette</div>
+              <div class="swatch-grid">
+              <div class="swatch-item"><span class="swatch-color" style="background:#5B402D"></span><span class="swatch-label" data-sw="plate-11-0">Curved Walnut</span></div>
+              <div class="swatch-item"><span class="swatch-color" style="background:#1E1D1B"></span><span class="swatch-label" data-sw="plate-11-1">Ribbed Graphite</span></div>
+              <div class="swatch-item"><span class="swatch-color" style="background:#B79A66"></span><span class="swatch-label" data-sw="plate-11-2">Brushed Brass</span></div>
+              <div class="swatch-item"><span class="swatch-color" style="background:#9E1619"></span><span class="swatch-label" data-sw="plate-11-3">Crimson Petal</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="ed-bottom-bar">
+            <a class="ed-link" href="https://lavinteriors.pro/interior-concepts/" data-i18n="orderRoomLink">Order this aesthetic for my room →</a>
+            <button type="button" class="ed-link ed-link--muted" data-plate-id="plate-11" data-i18n="wallpaperBtn">HD Wallpaper ↗</button>
+          </div>
+        </div>
+        <div class="folio">
+          <span class="folio-num">23</span>
+          <span>YEAR OF THE FIRE GOAT</span>
+        </div>
+      </section>
+    </article>
+
+    <!-- SPREAD 12 (p. 24–25) -->
+    <article class="spread-book spread-reveal" id="plate-12">
+      <section class="mag-page mag-page--left mag-page--editorial">
+        <div class="ed-shell">
+          <div class="ed-top-meta">
+            <span class="ed-plate-no">PLATE 12 / 21</span>
+            <span class="ed-cat" data-sp-cat="plate-12">Old Money Salon</span>
+          </div>
+
+          <div class="ed-center">
+            <h2 class="ed-title" data-sp-title="plate-12">Emerald Botanical Fireplace Room</h2>
+            <p class="ed-body" data-sp-text="plate-12">Coffered dark walnut ceilings and an emerald botanical mural wrap this fireplace room in timeless heritage charm. Deep forest green is the quietest, richest foil for 2027 Fire Goat red, making glowing crimson accents feel aristocratic rather than loud. A carved limestone mantle and curved ivory sofa keep the room luminous and inviting.</p>
+
+            <div class="palette-block">
+              <div class="palette-heading" data-i18n="paletteLabel">Color &amp; Material Palette</div>
+              <div class="swatch-grid">
+              <div class="swatch-item"><span class="swatch-color" style="background:#2C3E2E"></span><span class="swatch-label" data-sw="plate-12-0">Forest Tapestry</span></div>
+              <div class="swatch-item"><span class="swatch-color" style="background:#36281E"></span><span class="swatch-label" data-sw="plate-12-1">Coffered Walnut</span></div>
+              <div class="swatch-item"><span class="swatch-color" style="background:#D8CFC1"></span><span class="swatch-label" data-sw="plate-12-2">Limestone</span></div>
+              <div class="swatch-item"><span class="swatch-color" style="background:#941A18"></span><span class="swatch-label" data-sw="plate-12-3">Glowing Ruby</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="ed-bottom-bar">
+            <a class="ed-link" href="https://lavinteriors.pro/interior-concepts/" data-i18n="orderRoomLink">Order this aesthetic for my room →</a>
+            <button type="button" class="ed-link ed-link--muted" data-plate-id="plate-12" data-i18n="wallpaperBtn">HD Wallpaper ↗</button>
+          </div>
+        </div>
+        <div class="folio">
+          <span class="folio-num">24</span>
+          <span>LAV INTERIORS</span>
+        </div>
+      </section>
+      <section class="mag-page mag-page--right mag-page--photo">
+        <figure class="plate-frame" data-plate-id="plate-12" tabindex="0" role="button" aria-label="Open Plate 12 - Emerald Botanical Fireplace Room">
+          <img src="images/plate-12.jpg" alt="Emerald Botanical Fireplace Room - LAV Interiors 2027 Year of the Fire Goat" loading="lazy" width="896" height="1200" />
+          <span class="plate-zoom" data-i18n="zoomLabel">View &amp; Wallpaper ↗</span>
+        </figure>
+        <div class="folio">
+          <span>PLATE 12</span>
+          <span class="folio-num">25</span>
+        </div>
+      </section>
+    </article>
+
+    <!-- SPREAD 13 (p. 26–27) -->
+    <article class="spread-book spread-reveal" id="plate-13">
+      <section class="mag-page mag-page--left mag-page--photo">
+        <figure class="plate-frame" data-plate-id="plate-13" tabindex="0" role="button" aria-label="Open Plate 13 - Minimalist Travertine Stair Foyer">
+          <img src="images/plate-13.jpg" alt="Minimalist Travertine Stair Foyer - LAV Interiors 2027 Year of the Fire Goat" loading="lazy" width="896" height="1200" />
+          <span class="plate-zoom" data-i18n="zoomLabel">View &amp; Wallpaper ↗</span>
+        </figure>
+        <div class="folio">
+          <span>LAV JOURNAL · 2027</span>
+          <span class="folio-num">26</span>
+        </div>
+      </section>
+      <section class="mag-page mag-page--right mag-page--editorial">
+        <div class="ed-shell">
+          <div class="ed-top-meta">
+            <span class="ed-plate-no">PLATE 13 / 21</span>
+            <span class="ed-cat" data-sp-cat="plate-13">Gallery Entrance</span>
+          </div>
+
+          <div class="ed-center">
+            <h2 class="ed-title" data-sp-title="plate-13">Minimalist Travertine Stair Foyer</h2>
+            <p class="ed-body" data-sp-text="plate-13">True residential poise begins at the threshold, where monolithic honed travertine walls frame a serene architectural staircase. A rounded boucle daybed invites pause while an arched portal offers a quiet glimpse of the lit Christmas tree beyond. Placing a single Fire Goat sculpture on the marble plinth sets the mood for the entire house.</p>
+
+            <div class="palette-block">
+              <div class="palette-heading" data-i18n="paletteLabel">Color &amp; Material Palette</div>
+              <div class="swatch-grid">
+              <div class="swatch-item"><span class="swatch-color" style="background:#D7CBB8"></span><span class="swatch-label" data-sw="plate-13-0">Honed Travertine</span></div>
+              <div class="swatch-item"><span class="swatch-color" style="background:#BFA98E"></span><span class="swatch-label" data-sw="plate-13-1">Warm Sand</span></div>
+              <div class="swatch-item"><span class="swatch-color" style="background:#ECE6DC"></span><span class="swatch-label" data-sw="plate-13-2">Ivory Boucle</span></div>
+              <div class="swatch-item"><span class="swatch-color" style="background:#9D1819"></span><span class="swatch-label" data-sw="plate-13-3">Scarlet Lacquer</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="ed-bottom-bar">
+            <a class="ed-link" href="https://lavinteriors.pro/interior-concepts/" data-i18n="orderRoomLink">Order this aesthetic for my room →</a>
+            <button type="button" class="ed-link ed-link--muted" data-plate-id="plate-13" data-i18n="wallpaperBtn">HD Wallpaper ↗</button>
+          </div>
+        </div>
+        <div class="folio">
+          <span class="folio-num">27</span>
+          <span>YEAR OF THE FIRE GOAT</span>
+        </div>
+      </section>
+    </article>
+
+    <!-- SPREAD 14 (p. 28–29) -->
+    <article class="spread-book spread-reveal" id="plate-14">
+      <section class="mag-page mag-page--left mag-page--editorial">
+        <div class="ed-shell">
+          <div class="ed-top-meta">
+            <span class="ed-plate-no">PLATE 14 / 21</span>
+            <span class="ed-cat" data-sp-cat="plate-14">Organic Luxury</span>
+          </div>
+
+          <div class="ed-center">
+            <h2 class="ed-title" data-sp-title="plate-14">Olive Velvet & Backlit Green Marble</h2>
+            <p class="ed-body" data-sp-text="plate-14">Floor-to-ceiling niches of illuminated emerald quartzite alternate with warm walnut panels behind a deep olive velvet sofa. The interplay of glowing green veining, matte wood, and dark veined marble creates rich tactile depth without excess ornament. Winter berries and a crimson Fire Goat complete the organic color chord.</p>
+
+            <div class="palette-block">
+              <div class="palette-heading" data-i18n="paletteLabel">Color &amp; Material Palette</div>
+              <div class="swatch-grid">
+              <div class="swatch-item"><span class="swatch-color" style="background:#274234"></span><span class="swatch-label" data-sw="plate-14-0">Emerald Quartzite</span></div>
+              <div class="swatch-item"><span class="swatch-color" style="background:#62653E"></span><span class="swatch-label" data-sw="plate-14-1">Olive Velvet</span></div>
+              <div class="swatch-item"><span class="swatch-color" style="background:#5D3E28"></span><span class="swatch-label" data-sw="plate-14-2">Warm Walnut</span></div>
+              <div class="swatch-item"><span class="swatch-color" style="background:#8C181B"></span><span class="swatch-label" data-sw="plate-14-3">Berry Crimson</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="ed-bottom-bar">
+            <a class="ed-link" href="https://lavinteriors.pro/interior-concepts/" data-i18n="orderRoomLink">Order this aesthetic for my room →</a>
+            <button type="button" class="ed-link ed-link--muted" data-plate-id="plate-14" data-i18n="wallpaperBtn">HD Wallpaper ↗</button>
+          </div>
+        </div>
+        <div class="folio">
+          <span class="folio-num">28</span>
+          <span>LAV INTERIORS</span>
+        </div>
+      </section>
+      <section class="mag-page mag-page--right mag-page--photo">
+        <figure class="plate-frame" data-plate-id="plate-14" tabindex="0" role="button" aria-label="Open Plate 14 - Olive Velvet & Backlit Green Marble">
+          <img src="images/plate-14.jpg" alt="Olive Velvet & Backlit Green Marble - LAV Interiors 2027 Year of the Fire Goat" loading="lazy" width="896" height="1200" />
+          <span class="plate-zoom" data-i18n="zoomLabel">View &amp; Wallpaper ↗</span>
+        </figure>
+        <div class="folio">
+          <span>PLATE 14</span>
+          <span class="folio-num">29</span>
+        </div>
+      </section>
+    </article>
+
+    <!-- SPREAD 15 (p. 30–31) -->
+    <article class="spread-book spread-reveal" id="plate-15">
+      <section class="mag-page mag-page--left mag-page--photo">
+        <figure class="plate-frame" data-plate-id="plate-15" tabindex="0" role="button" aria-label="Open Plate 15 - Sunlit Salon & Bronze Ribbon Light">
+          <img src="images/plate-15.jpg" alt="Sunlit Salon & Bronze Ribbon Light - LAV Interiors 2027 Year of the Fire Goat" loading="lazy" width="896" height="1200" />
+          <span class="plate-zoom" data-i18n="zoomLabel">View &amp; Wallpaper ↗</span>
+        </figure>
+        <div class="folio">
+          <span>LAV JOURNAL · 2027</span>
+          <span class="folio-num">30</span>
+        </div>
+      </section>
+      <section class="mag-page mag-page--right mag-page--editorial">
+        <div class="ed-shell">
+          <div class="ed-top-meta">
+            <span class="ed-plate-no">PLATE 15 / 21</span>
+            <span class="ed-cat" data-sp-cat="plate-15">Daylight Elegance</span>
+          </div>
+
+          <div class="ed-center">
+            <h2 class="ed-title" data-sp-title="plate-15">Sunlit Salon & Bronze Ribbon Light</h2>
+            <p class="ed-body" data-sp-text="plate-15">A sweeping sculptural bronze chandelier floats effortlessly above tall sunlit windows and a softly backlit alabaster bookcase. Warm champagne plaster and cream linen upholstery preserve daylight brightness even during short winter afternoons. A tabletop ruby-and-gold goat offers a refined nod to 2027 without disturbing the room's stillness.</p>
+
+            <div class="palette-block">
+              <div class="palette-heading" data-i18n="paletteLabel">Color &amp; Material Palette</div>
+              <div class="swatch-grid">
+              <div class="swatch-item"><span class="swatch-color" style="background:#E4DACB"></span><span class="swatch-label" data-sw="plate-15-0">Champagne Plaster</span></div>
+              <div class="swatch-item"><span class="swatch-color" style="background:#6D543D"></span><span class="swatch-label" data-sw="plate-15-1">Sculpted Bronze</span></div>
+              <div class="swatch-item"><span class="swatch-color" style="background:#F0EBE2"></span><span class="swatch-label" data-sw="plate-15-2">Linen Cream</span></div>
+              <div class="swatch-item"><span class="swatch-color" style="background:#981918"></span><span class="swatch-label" data-sw="plate-15-3">Ruby Gold</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="ed-bottom-bar">
+            <a class="ed-link" href="https://lavinteriors.pro/interior-concepts/" data-i18n="orderRoomLink">Order this aesthetic for my room →</a>
+            <button type="button" class="ed-link ed-link--muted" data-plate-id="plate-15" data-i18n="wallpaperBtn">HD Wallpaper ↗</button>
+          </div>
+        </div>
+        <div class="folio">
+          <span class="folio-num">31</span>
+          <span>YEAR OF THE FIRE GOAT</span>
+        </div>
+      </section>
+    </article>
+
+    <!-- SPREAD 16 (p. 32–33) -->
+    <article class="spread-book spread-reveal" id="plate-16">
+      <section class="mag-page mag-page--left mag-page--editorial">
+        <div class="ed-shell">
+          <div class="ed-top-meta">
+            <span class="ed-plate-no">PLATE 16 / 21</span>
+            <span class="ed-cat" data-sp-cat="plate-16">Contemporary Loft</span>
+          </div>
+
+          <div class="ed-center">
+            <h2 class="ed-title" data-sp-title="plate-16">Double-Height Oak Chalet Salon</h2>
+            <p class="ed-body" data-sp-text="plate-16">Clean oak wall paneling, a hovering ring chandelier, and a glowing alabaster floor cone bring modern architectural clarity to chalet living. Oversized modular sofas rest on a large woven rug that anchors the expansive veined marble floor. Standing full-scale beside the seating group, the Fire Goat acts as bold contemporary sculpture.</p>
+
+            <div class="palette-block">
+              <div class="palette-heading" data-i18n="paletteLabel">Color &amp; Material Palette</div>
+              <div class="swatch-grid">
+              <div class="swatch-item"><span class="swatch-color" style="background:#A68B6B"></span><span class="swatch-label" data-sw="plate-16-0">Brushed Oak</span></div>
+              <div class="swatch-item"><span class="swatch-color" style="background:#C7C3BC"></span><span class="swatch-label" data-sw="plate-16-1">Limestone Grey</span></div>
+              <div class="swatch-item"><span class="swatch-color" style="background:#F3DEC2"></span><span class="swatch-label" data-sw="plate-16-2">Alabaster Glow</span></div>
+              <div class="swatch-item"><span class="swatch-color" style="background:#9B1C1B"></span><span class="swatch-label" data-sw="plate-16-3">Crimson Art</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="ed-bottom-bar">
+            <a class="ed-link" href="https://lavinteriors.pro/interior-concepts/" data-i18n="orderRoomLink">Order this aesthetic for my room →</a>
+            <button type="button" class="ed-link ed-link--muted" data-plate-id="plate-16" data-i18n="wallpaperBtn">HD Wallpaper ↗</button>
+          </div>
+        </div>
+        <div class="folio">
+          <span class="folio-num">32</span>
+          <span>LAV INTERIORS</span>
+        </div>
+      </section>
+      <section class="mag-page mag-page--right mag-page--photo">
+        <figure class="plate-frame" data-plate-id="plate-16" tabindex="0" role="button" aria-label="Open Plate 16 - Double-Height Oak Chalet Salon">
+          <img src="images/plate-16.jpg" alt="Double-Height Oak Chalet Salon - LAV Interiors 2027 Year of the Fire Goat" loading="lazy" width="896" height="1200" />
+          <span class="plate-zoom" data-i18n="zoomLabel">View &amp; Wallpaper ↗</span>
+        </figure>
+        <div class="folio">
+          <span>PLATE 16</span>
+          <span class="folio-num">33</span>
+        </div>
+      </section>
+    </article>
+
+    <!-- SPREAD 17 (p. 34–35) -->
+    <article class="spread-book spread-reveal" id="plate-17">
+      <section class="mag-page mag-page--left mag-page--photo">
+        <figure class="plate-frame" data-plate-id="plate-17" tabindex="0" role="button" aria-label="Open Plate 17 - Brushed Brass Dome & Winter Garden">
+          <img src="images/plate-17.jpg" alt="Brushed Brass Dome & Winter Garden - LAV Interiors 2027 Year of the Fire Goat" loading="lazy" width="896" height="1200" />
+          <span class="plate-zoom" data-i18n="zoomLabel">View &amp; Wallpaper ↗</span>
+        </figure>
+        <div class="folio">
+          <span>LAV JOURNAL · 2027</span>
+          <span class="folio-num">34</span>
+        </div>
+      </section>
+      <section class="mag-page mag-page--right mag-page--editorial">
+        <div class="ed-shell">
+          <div class="ed-top-meta">
+            <span class="ed-plate-no">PLATE 17 / 21</span>
+            <span class="ed-cat" data-sp-cat="plate-17">Conservatory Pavilion</span>
+          </div>
+
+          <div class="ed-center">
+            <h2 class="ed-title" data-sp-title="plate-17">Brushed Brass Dome & Winter Garden</h2>
+            <p class="ed-body" data-sp-text="plate-17">A recessed brushed-brass ceiling dome and spiral crystal chandelier crown a serene conversation circle framed in slim black steel glazing. Illuminated garden trees outside act as living nocturnal artwork, extending the room straight into nature. Soft ivory and sage seating keeps the crimson centerpiece crisp and effortless.</p>
+
+            <div class="palette-block">
+              <div class="palette-heading" data-i18n="paletteLabel">Color &amp; Material Palette</div>
+              <div class="swatch-grid">
+              <div class="swatch-item"><span class="swatch-color" style="background:#7A6345"></span><span class="swatch-label" data-sw="plate-17-0">Aged Brass</span></div>
+              <div class="swatch-item"><span class="swatch-color" style="background:#79836D"></span><span class="swatch-label" data-sw="plate-17-1">Sage Linen</span></div>
+              <div class="swatch-item"><span class="swatch-color" style="background:#1D1E1F"></span><span class="swatch-label" data-sw="plate-17-2">Black Steel</span></div>
+              <div class="swatch-item"><span class="swatch-color" style="background:#971A19"></span><span class="swatch-label" data-sw="plate-17-3">Ruby Accent</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="ed-bottom-bar">
+            <a class="ed-link" href="https://lavinteriors.pro/interior-concepts/" data-i18n="orderRoomLink">Order this aesthetic for my room →</a>
+            <button type="button" class="ed-link ed-link--muted" data-plate-id="plate-17" data-i18n="wallpaperBtn">HD Wallpaper ↗</button>
+          </div>
+        </div>
+        <div class="folio">
+          <span class="folio-num">35</span>
+          <span>YEAR OF THE FIRE GOAT</span>
+        </div>
+      </section>
+    </article>
+
+    <!-- SPREAD 18 (p. 36–37) -->
+    <article class="spread-book spread-reveal" id="plate-18">
+      <section class="mag-page mag-page--left mag-page--editorial">
+        <div class="ed-shell">
+          <div class="ed-top-meta">
+            <span class="ed-plate-no">PLATE 18 / 21</span>
+            <span class="ed-cat" data-sp-cat="plate-18">Architectural Mirrors</span>
+          </div>
+
+          <div class="ed-center">
+            <h2 class="ed-title" data-sp-title="plate-18">Bronzed Mirror Wall & Sculpted Brass</h2>
+            <p class="ed-body" data-sp-text="plate-18">Tinted bronzed mirror panels set between tall dark columns double the warm sparkle of the holiday tree without cold glare. Sculpted patinated brass coffee tables anchor curved sage seating on a circular rug. The result feels serene, rhythmic, and unmistakably tailored for quiet evening gatherings.</p>
+
+            <div class="palette-block">
+              <div class="palette-heading" data-i18n="paletteLabel">Color &amp; Material Palette</div>
+              <div class="swatch-grid">
+              <div class="swatch-item"><span class="swatch-color" style="background:#85755B"></span><span class="swatch-label" data-sw="plate-18-0">Bronzed Mirror</span></div>
+              <div class="swatch-item"><span class="swatch-color" style="background:#2D2620"></span><span class="swatch-label" data-sw="plate-18-1">Dark Espresso</span></div>
+              <div class="swatch-item"><span class="swatch-color" style="background:#9EA394"></span><span class="swatch-label" data-sw="plate-18-2">Muted Sage</span></div>
+              <div class="swatch-item"><span class="swatch-color" style="background:#931618"></span><span class="swatch-label" data-sw="plate-18-3">Crimson Glaze</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="ed-bottom-bar">
+            <a class="ed-link" href="https://lavinteriors.pro/interior-concepts/" data-i18n="orderRoomLink">Order this aesthetic for my room →</a>
+            <button type="button" class="ed-link ed-link--muted" data-plate-id="plate-18" data-i18n="wallpaperBtn">HD Wallpaper ↗</button>
+          </div>
+        </div>
+        <div class="folio">
+          <span class="folio-num">36</span>
+          <span>LAV INTERIORS</span>
+        </div>
+      </section>
+      <section class="mag-page mag-page--right mag-page--photo">
+        <figure class="plate-frame" data-plate-id="plate-18" tabindex="0" role="button" aria-label="Open Plate 18 - Bronzed Mirror Wall & Sculpted Brass">
+          <img src="images/plate-18.jpg" alt="Bronzed Mirror Wall & Sculpted Brass - LAV Interiors 2027 Year of the Fire Goat" loading="lazy" width="896" height="1200" />
+          <span class="plate-zoom" data-i18n="zoomLabel">View &amp; Wallpaper ↗</span>
+        </figure>
+        <div class="folio">
+          <span>PLATE 18</span>
+          <span class="folio-num">37</span>
+        </div>
+      </section>
+    </article>
+
+    <!-- SPREAD 19 (p. 38–39) -->
+    <article class="spread-book spread-reveal" id="plate-19">
+      <section class="mag-page mag-page--left mag-page--photo">
+        <figure class="plate-frame" data-plate-id="plate-19" tabindex="0" role="button" aria-label="Open Plate 19 - Sweeping Staircase & Walnut Burl">
+          <img src="images/plate-19.jpg" alt="Sweeping Staircase & Walnut Burl - LAV Interiors 2027 Year of the Fire Goat" loading="lazy" width="896" height="1200" />
+          <span class="plate-zoom" data-i18n="zoomLabel">View &amp; Wallpaper ↗</span>
+        </figure>
+        <div class="folio">
+          <span>LAV JOURNAL · 2027</span>
+          <span class="folio-num">38</span>
+        </div>
+      </section>
+      <section class="mag-page mag-page--right mag-page--editorial">
+        <div class="ed-shell">
+          <div class="ed-top-meta">
+            <span class="ed-plate-no">PLATE 19 / 21</span>
+            <span class="ed-cat" data-sp-cat="plate-19">Private Residence</span>
+          </div>
+
+          <div class="ed-center">
+            <h2 class="ed-title" data-sp-title="plate-19">Sweeping Staircase & Walnut Burl</h2>
+            <p class="ed-body" data-sp-text="plate-19">A luminous curved ceiling cove draws the eye gently toward a sweeping white staircase dressed with warm evergreen garland. At the center, travertine and sculptural walnut burl tables create an intimate contrast of matte grain beneath glossy ruby lacquer. Illuminated walnut vitrines give the far wall gallery-like warmth.</p>
+
+            <div class="palette-block">
+              <div class="palette-heading" data-i18n="paletteLabel">Color &amp; Material Palette</div>
+              <div class="swatch-grid">
+              <div class="swatch-item"><span class="swatch-color" style="background:#6B452B"></span><span class="swatch-label" data-sw="plate-19-0">Walnut Burl</span></div>
+              <div class="swatch-item"><span class="swatch-color" style="background:#EAE4DA"></span><span class="swatch-label" data-sw="plate-19-1">Warm Ivory</span></div>
+              <div class="swatch-item"><span class="swatch-color" style="background:#D5C9B6"></span><span class="swatch-label" data-sw="plate-19-2">Travertine</span></div>
+              <div class="swatch-item"><span class="swatch-color" style="background:#991B1B"></span><span class="swatch-label" data-sw="plate-19-3">Ruby Lacquer</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="ed-bottom-bar">
+            <a class="ed-link" href="https://lavinteriors.pro/interior-concepts/" data-i18n="orderRoomLink">Order this aesthetic for my room →</a>
+            <button type="button" class="ed-link ed-link--muted" data-plate-id="plate-19" data-i18n="wallpaperBtn">HD Wallpaper ↗</button>
+          </div>
+        </div>
+        <div class="folio">
+          <span class="folio-num">39</span>
+          <span>YEAR OF THE FIRE GOAT</span>
+        </div>
+      </section>
+    </article>
+
+    <!-- SPREAD 20 (p. 40–41) -->
+    <article class="spread-book spread-reveal" id="plate-20">
+      <section class="mag-page mag-page--left mag-page--editorial">
+        <div class="ed-shell">
+          <div class="ed-top-meta">
+            <span class="ed-plate-no">PLATE 20 / 21</span>
+            <span class="ed-cat" data-sp-cat="plate-20">Private Club Lounge</span>
+          </div>
+
+          <div class="ed-center">
+            <h2 class="ed-title" data-sp-title="plate-20">Arched Walnut Residence Bar</h2>
+            <p class="ed-body" data-sp-text="plate-20">An arched illuminated home bar in brushed metal and rich walnut turns a residential lounge into an intimate members-club setting. Soft ivory curved upholstery and a fluted brass pedestal table keep the atmosphere relaxed yet ceremonial for 2027 hosting. Warm linear lighting inside the bar arch draws focus effortlessly after dusk.</p>
+
+            <div class="palette-block">
+              <div class="palette-heading" data-i18n="paletteLabel">Color &amp; Material Palette</div>
+              <div class="swatch-grid">
+              <div class="swatch-item"><span class="swatch-color" style="background:#4B3324"></span><span class="swatch-label" data-sw="plate-20-0">American Walnut</span></div>
+              <div class="swatch-item"><span class="swatch-color" style="background:#B7A58A"></span><span class="swatch-label" data-sw="plate-20-1">Champagne Metal</span></div>
+              <div class="swatch-item"><span class="swatch-color" style="background:#EBE4D9"></span><span class="swatch-label" data-sw="plate-20-2">Cream Boucle</span></div>
+              <div class="swatch-item"><span class="swatch-color" style="background:#9E1A1A"></span><span class="swatch-label" data-sw="plate-20-3">Scarlet Accent</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="ed-bottom-bar">
+            <a class="ed-link" href="https://lavinteriors.pro/interior-concepts/" data-i18n="orderRoomLink">Order this aesthetic for my room →</a>
+            <button type="button" class="ed-link ed-link--muted" data-plate-id="plate-20" data-i18n="wallpaperBtn">HD Wallpaper ↗</button>
+          </div>
+        </div>
+        <div class="folio">
+          <span class="folio-num">40</span>
+          <span>LAV INTERIORS</span>
+        </div>
+      </section>
+      <section class="mag-page mag-page--right mag-page--photo">
+        <figure class="plate-frame" data-plate-id="plate-20" tabindex="0" role="button" aria-label="Open Plate 20 - Arched Walnut Residence Bar">
+          <img src="images/plate-20.jpg" alt="Arched Walnut Residence Bar - LAV Interiors 2027 Year of the Fire Goat" loading="lazy" width="896" height="1200" />
+          <span class="plate-zoom" data-i18n="zoomLabel">View &amp; Wallpaper ↗</span>
+        </figure>
+        <div class="folio">
+          <span>PLATE 20</span>
+          <span class="folio-num">41</span>
+        </div>
+      </section>
+    </article>
+
+    <!-- SPREAD 21 (p. 42–43) -->
+    <article class="spread-book spread-reveal" id="plate-21">
+      <section class="mag-page mag-page--left mag-page--photo">
+        <figure class="plate-frame" data-plate-id="plate-21" tabindex="0" role="button" aria-label="Open Plate 21 - Fresco Ceiling Resort Residence">
+          <img src="images/plate-21.jpg" alt="Fresco Ceiling Resort Residence - LAV Interiors 2027 Year of the Fire Goat" loading="lazy" width="896" height="1200" />
+          <span class="plate-zoom" data-i18n="zoomLabel">View &amp; Wallpaper ↗</span>
+        </figure>
+        <div class="folio">
+          <span>LAV JOURNAL · 2027</span>
+          <span class="folio-num">42</span>
+        </div>
+      </section>
+      <section class="mag-page mag-page--right mag-page--editorial">
+        <div class="ed-shell">
+          <div class="ed-top-meta">
+            <span class="ed-plate-no">PLATE 21 / 21</span>
+            <span class="ed-cat" data-sp-cat="plate-21">Lunar New Year Villa</span>
+          </div>
+
+          <div class="ed-center">
+            <h2 class="ed-title" data-sp-title="plate-21">Fresco Ceiling Resort Residence</h2>
+            <p class="ed-body" data-sp-text="plate-21">Designed for warm-climate villas celebrating the February 6, 2027 Lunar New Year, this sunlit salon trades snow for lush tropical garden glazing. An inlaid ornamental ceiling medallion echoes the burgundy leather ottoman and blown ruby glass goat on the brushed gold drum table. Proof that Fire Goat elegance translates effortlessly to every climate.</p>
+
+            <div class="palette-block">
+              <div class="palette-heading" data-i18n="paletteLabel">Color &amp; Material Palette</div>
+              <div class="swatch-grid">
+              <div class="swatch-item"><span class="swatch-color" style="background:#8F483E"></span><span class="swatch-label" data-sw="plate-21-0">Terracotta Fresco</span></div>
+              <div class="swatch-item"><span class="swatch-color" style="background:#B8985D"></span><span class="swatch-label" data-sw="plate-21-1">Brushed Gold</span></div>
+              <div class="swatch-item"><span class="swatch-color" style="background:#5D2025"></span><span class="swatch-label" data-sw="plate-21-2">Burgundy Leather</span></div>
+              <div class="swatch-item"><span class="swatch-color" style="background:#A11819"></span><span class="swatch-label" data-sw="plate-21-3">Blown Ruby</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="ed-bottom-bar">
+            <a class="ed-link" href="https://lavinteriors.pro/interior-concepts/" data-i18n="orderRoomLink">Order this aesthetic for my room →</a>
+            <button type="button" class="ed-link ed-link--muted" data-plate-id="plate-21" data-i18n="wallpaperBtn">HD Wallpaper ↗</button>
+          </div>
+        </div>
+        <div class="folio">
+          <span class="folio-num">43</span>
+          <span>YEAR OF THE FIRE GOAT</span>
+        </div>
+      </section>
+    </article>
+
+    <!-- CLOSING STUDIO COMMISSION SPREAD (p. 44–45) -->
+    <article class="spread-book spread-reveal" id="commission">
+      <section class="mag-page mag-page--left mag-page--editorial">
+        <div class="ed-shell">
+          <div class="ed-top-meta">
+            <span class="ed-plate-no" data-i18n="endKicker">LAV INTERIORS · COMMISSION</span>
+            <span class="ed-cat" data-i18n="endWorld">REMOTE WORLDWIDE</span>
+          </div>
+
+          <div class="ed-center">
+            <h2 class="cover-title" data-i18n="endTitle">Bring This Issue Into Your Home</h2>
+            <p class="ed-body" data-i18n="endText">
+              Every interior in this 2027 journal follows our studio system: natural stone, timber warmth, architectural lighting hierarchy, and tailored joinery. Whether you want rapid visual concepts for one room or a complete turnkey design project, we work remotely worldwide.
+            </p>
+          </div>
+
+          <div class="ed-bottom-bar">
+            <a class="ed-link" href="https://lavinteriors.pro/">lavinteriors.pro ↗</a>
+            <a class="ed-link ed-link--muted" href="https://t.me/LAVINTERIORS" target="_blank" rel="noopener">Telegram ↗</a>
+          </div>
+        </div>
+        <div class="folio">
+          <span>STUDIO DIRECTORY</span>
+          <span class="folio-num">44</span>
+        </div>
+      </section>
+
+      <section class="mag-page mag-page--right mag-page--editorial">
+        <div class="ed-shell">
+          <div class="ed-top-meta">
+            <span class="ed-plate-no" data-i18n="servLabel">HOW TO START</span>
+            <span class="ed-cat">2027</span>
+          </div>
+
+          <div class="ed-center" style="gap:16px">
+            <div class="offer-card">
+              <div class="offer-head">
+                <h3 data-i18n="off1T">Style Vision Concepts (48h)</h3>
+                <span class="offer-price" data-i18n="off1P">From $99</span>
+              </div>
+              <p class="ed-body" style="font-size:12.5px" data-i18n="off1D">
+                Send a photo or dimensions of your space and receive 30 to 50 custom design concepts tailored to your real room. Optional Plan + Vision with floor layout in 72 hours ($199).
+              </p>
+              <div class="btn-row">
+                <a class="btn crimson" href="https://lavinteriors.pro/interior-concepts/" data-i18n="off1Btn">Order Style Vision →</a>
+              </div>
+            </div>
+
+            <div class="offer-card">
+              <div class="offer-head">
+                <h3 data-i18n="off2T">Full Design Project</h3>
+                <span class="offer-price" data-i18n="off2P">Turnkey</span>
+              </div>
+              <p class="ed-body" style="font-size:12.5px" data-i18n="off2D">
+                Complete architectural and interior system: spatial layout, photorealistic visualization, builder-ready ArchiCAD working drawings, custom furniture detailing, and full procurement lists.
+              </p>
+              <div class="btn-row">
+                <a class="btn primary" href="https://lavinteriors.pro/#pricing" data-i18n="off2Btn">Calculate Project →</a>
+                <a class="btn" href="https://lavinteriors.pro/#contact" data-i18n="off2Btn2">Contact Studio</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="ed-bottom-bar">
+            <a class="ed-link ed-link--muted" href="#cover" data-i18n="backTop">↑ Back to Cover</a>
+            <a class="ed-link ed-link--muted" href="mailto:hello@lavinteriors.pro">hello@lavinteriors.pro</a>
+          </div>
+        </div>
+        <div class="folio">
+          <span class="folio-num">45</span>
+          <span>LAV INTERIORS</span>
+        </div>
+      </section>
+    </article>
+
+  </main>
+
+  <!-- NATIVE FULL-SCREEN PLATE VIEWER (<dialog>) -->
+  <dialog id="plateDialog" class="plate-dialog" closedby="any" aria-labelledby="dlgTitle">
+    <div class="dlg-layout">
+      <div class="dlg-media">
+        <img id="dlgImg" src="" alt="" width="896" height="1200" />
+      </div>
+      <div class="dlg-body">
+        <div class="dlg-top">
+          <span class="ed-plate-no" id="dlgKicker">PLATE 01 / 21</span>
+          <form method="dialog">
+            <button type="submit" class="dlg-close" autofocus data-i18n="dlgClose">Close ✕</button>
+          </form>
+        </div>
+        <h1 class="dlg-title" id="dlgTitle">Title</h1>
+        <p class="dlg-note" id="dlgNote"></p>
+        <div class="swatch-grid" id="dlgSwatches"></div>
+        <div class="dlg-actions">
+          <a id="dlgDownload" class="btn" href="#" download data-i18n="dlgDownload">Download Mobile Wallpaper (HD)</a>
+          <a class="btn crimson" href="https://lavinteriors.pro/interior-concepts/" data-i18n="dlgOrder">Order Concepts for My Room (48h) →</a>
+          <a class="btn" href="https://lavinteriors.pro/#contact" data-i18n="dlgDiscuss">Discuss Full Design Project</a>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <footer class="site-footer">
+    <div class="footer-wrap">
+      <div class="footer-top">
+        <div>
+          <p class="foot-brand-name">LAV INTERIORS</p>
+          <p class="foot-desc" data-i18n="footDesc">
+            A contemporary editorial luxury approach to interiors, architecture, landscape and commercial spaces. Payment terms, contract details and scope are discussed individually outside the website.
+          </p>
+        </div>
+        <div class="foot-links">
+          <a href="https://lavinteriors.pro/" data-i18n="footHome">Main Site</a>
+          <a href="https://lavinteriors.pro/#portfolio" data-i18n="navPortfolio">Portfolio</a>
+          <a href="https://lavinteriors.pro/#pricing" data-i18n="navPricing">Pricing</a>
+          <a href="https://lavinteriors.pro/interior-concepts/" data-i18n="footConcepts">Style Vision</a>
+          <a href="https://lavinteriors.pro/visual/" data-i18n="navVisualStudio">LAV Visual Studio</a>
+          <a href="https://t.me/LAVINTERIORS" target="_blank" rel="noopener">Telegram</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="legal-links">
+          <a href="https://lavinteriors.pro/privacy/" data-i18n="privacyLink">Privacy Policy</a>
+          <a href="https://lavinteriors.pro/terms/" data-i18n="termsLink">Terms of Use</a>
+          <a href="https://lavinteriors.pro/cookies/" data-i18n="cookiesLink">Cookie Policy</a>
+        </div>
+        <span>LAV Interiors · lavinteriors.pro · hello@lavinteriors.pro</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const SPREADS = [{"id": "plate-01", "num": "01", "img": "images/plate-01.jpg", "file": "LAV-Fire-Goat-2027-01-Alpine-Chalet.jpg", "en": {"cat": "Alpine Architecture", "title": "Timber Rhythm & Quiet Crimson", "text": "Double-height smoked oak rafters and vertical fluted paneling give this mountain chalet an architectural stillness that needs no holiday clutter. In the 2027 Year of the Red Fire Goat, Wood naturally nourishes Fire, allowing a single crimson sculpture to anchor the room with gallery poise. Warm indirect cove light softens the dark beams so the entire salon feels effortless and timeless.", "swatches": [["#5A3E2B", "Smoked Oak"], ["#DDD5C7", "Fluted Lime"], ["#EFECE6", "Ivory Boucle"], ["#951B1C", "Ruby Lacquer"]]}, "ru": {"cat": "Альпийская архитектура", "title": "Ритм дерева и тихий рубин", "text": "Двухсветные балки из копчёного дуба и вертикальные реечные панели создают в этом шале спокойный масштаб без лишней новогодней мишуры. В 2027 год Красной Огненной Козы стихия Дерева мягко питает Огонь, поэтому одна скульптура держит всю композицию гостиной. Тёплая скрытая подсветка смягчает тёмное дерево, оставляя интерьер вне времени.", "swatches": [["#5A3E2B", "Копчёный дуб"], ["#DDD5C7", "Реечная панель"], ["#EFECE6", "Молочный букле"], ["#951B1C", "Рубиновый лак"]]}}, {"id": "plate-02", "num": "02", "img": "images/plate-02.jpg", "file": "LAV-Fire-Goat-2027-02-Noir-Fireplace.jpg", "en": {"cat": "Noir Neoclassic", "title": "Charcoal Boiserie & Living Hearth", "text": "Matte charcoal moldings absorb visual noise so live fireplace embers, brass taper candles, and ruby glaze glow like museum pieces. The 2027 symbol belongs to Yin Fire, the quiet element of domestic warmth rather than harsh neon brightness. Symmetrical white boucle armchairs and a honed travertine table keep the room grounded and deeply intimate.", "swatches": [["#1A1A1A", "Matte Charcoal"], ["#F2EEE7", "Lime Plaster"], ["#C9BBA4", "Travertine"], ["#8A1818", "Fire Glaze"]]}, "ru": {"cat": "Чёрная неоклассика", "title": "Угольные буазери и живой очаг", "text": "Матовые графитовые стены убирают визуальный шум, позволяя живому огню камина, тонким свечам и алой глазури светиться как драгоценностям. Символ 2027 года относится к стихии Иньского Огня - это камерное тепло домашнего очага, а не кричащий блеск. Симметричные кресла букле и столик из травертина уравновешивают глубину зала.", "swatches": [["#1A1A1A", "Матовый графит"], ["#F2EEE7", "Гипс"], ["#C9BBA4", "Травертин"], ["#8A1818", "Огненная глазурь"]]}}, {"id": "plate-03", "num": "03", "img": "images/plate-03.jpg", "file": "LAV-Fire-Goat-2027-03-Winter-Sanctuary.jpg", "en": {"cat": "Winter Sanctuary", "title": "Snow Outside, Raw Granite Inside", "text": "Instead of a conventional fir tree, a crimson-leaf maple rises from a hand-split granite monolith beneath a cascade of clear crystal light. Because the Goat carries Earth energy warmed by Fire in 2027, raw mineral textures hold saturated red accents far more gracefully than glossy surfaces. Burgundy pillows quietly tie the curved velvet sofa to the winter panorama beyond the glass.", "swatches": [["#8B857B", "Raw Granite"], ["#CFC0AC", "Cashmere Beige"], ["#5C171E", "Deep Burgundy"], ["#E5E8EB", "Clear Crystal"]]}, "ru": {"cat": "Зимняя резиденция", "title": "Снег за окном, дикий гранит внутри", "text": "Вместо привычной ёлки прямо из монолитной чаши колотого гранита растёт багряный клён под каскадом хрустального света. Коза несёт силу Земли, согретую Огнём 2027 года, поэтому природный камень держит красный цвет гораздо благороднее глянца. Винные подушки деликатно связывают плавный бархатный диван с заснеженным лесом за окном.", "swatches": [["#8B857B", "Колотый гранит"], ["#CFC0AC", "Кашемир"], ["#5C171E", "Глубокий бордо"], ["#E5E8EB", "Хрусталь"]]}}, {"id": "plate-04", "num": "04", "img": "images/plate-04.jpg", "file": "LAV-Fire-Goat-2027-04-Marble-Kitchen.jpg", "en": {"cat": "Culinary Architecture", "title": "The Sculptural Marble Kitchen", "text": "A cylindrical Calacatta Viola marble island locks into a cantilevered walnut table, turning everyday hosting into quiet architectural theater. Full-height handleless dark veneer columns conceal all appliances so the kitchen reads like a tailored salon. Fresh pine boughs, tall brass tapers, and a ceramic Fire Goat complete the table without a trace of clutter.", "swatches": [["#3A261B", "Dark Walnut"], ["#EDE9E4", "Calacatta Viola"], ["#2D4430", "Winter Pine"], ["#9B1C19", "Ceramic Crimson"]]}, "ru": {"cat": "Архитектура кухни", "title": "Скульптурный остров Calacatta", "text": "Цилиндрический остров из мрамора Calacatta Viola соединяется с консольным столом из массива ореха, превращая кухню в парадный салон. Высокие гладкие фасады в тёмном шпоне полностью скрывают технику и бытовой шум. Ветки хвои, латунные свечи и керамическая фигура Огненной Козы завершают композицию без лишних деталей.", "swatches": [["#3A261B", "Тёмный орех"], ["#EDE9E4", "Calacatta Viola"], ["#2D4430", "Хвоя"], ["#9B1C19", "Алая керамика"]]}}, {"id": "plate-05", "num": "05", "img": "images/plate-05.jpg", "file": "LAV-Fire-Goat-2027-05-Backlit-Onyx.jpg", "en": {"cat": "Hospitality & Boutique", "title": "Illuminated Amber Onyx Counter", "text": "Translucent honey onyx transforms a boutique reception or private club bar into a sculptural lantern that guests remember instantly. Architectural charcoal columns and backlit amber glassware shelves frame the blown ruby glass Fire Goat at eye level. In commercial interiors, this restraint turns seasonal styling into organic brand magnetism.", "swatches": [["#D7963A", "Backlit Onyx"], ["#565658", "Slate Grey"], ["#2C2621", "Smoked Bronze"], ["#7E0F12", "Ruby Glass"]]}, "ru": {"cat": "Отели и бутики", "title": "Стойка из подсвеченного оникса", "text": "Просвечивающий медовый оникс превращает стойку бутика или приватного бара в архитектурный фонарь, который запоминается с первой секунды. Графитовые колонны и тёплые витрины с янтарным стеклом обрамляют выдувную рубиновую скульптуру на уровне взгляда. В коммерческих интерьерах такой акцент работает сильнее любой прямой рекламы.", "swatches": [["#D7963A", "Световой оникс"], ["#565658", "Графит"], ["#2C2621", "Бронза"], ["#7E0F12", "Рубиновое стекло"]]}}, {"id": "plate-06", "num": "06", "img": "images/plate-06.jpg", "file": "LAV-Fire-Goat-2027-06-Bronze-Staircase.jpg", "en": {"cat": "Grand Architecture", "title": "The Patinated Bronze Staircase", "text": "A sweeping patinated bronze stair ribbon cuts effortlessly across classical white bas-relief walls beneath a cloud of alabaster light discs. Curved architectural lines soften the intensity of Fire energy and reflect the artistic temperament of the 2027 Goat year. Moss velvet, cognac leather, and veined marble tables bridge heritage craft with modern collectible form.", "swatches": [["#3B3025", "Patinated Bronze"], ["#535E33", "Moss Velvet"], ["#B3743D", "Cognac Leather"], ["#A51B19", "Scarlet Gold"]]}, "ru": {"cat": "Большая архитектура", "title": "Бронзовая лента парадной лестницы", "text": "Плавная лента лестницы из патинированной бронзы рассекает двухсветный зал с белыми барельефами под каскадом алебастровых дисков. Изогнутая геометрия смягчает стихию Огня и отражает утончённый характер 2027 года Козы. Оливковый бархат, коньячная кожа и выразительный мрамор соединяют классику с современным коллекционным дизайном.", "swatches": [["#3B3025", "Бронза"], ["#535E33", "Оливковый бархат"], ["#B3743D", "Коньячная кожа"], ["#A51B19", "Алый с золотом"]]}}, {"id": "plate-07", "num": "07", "img": "images/plate-07.jpg", "file": "LAV-Fire-Goat-2027-07-Travertine-Columns.jpg", "en": {"cat": "Open-Plan Residence", "title": "Fluted Travertine Colonnade", "text": "Tall fluted travertine columns with recessed bronze uplighting create a serene boundary between the marble kitchen and double-height living room. Following the studio's 90/10 color rule, calm ivory upholstery and warm stone let one glossy crimson accent speak clearly. Low column lighting elongates vertical proportions without harsh ceiling glare.", "swatches": [["#C7B7A0", "Fluted Travertine"], ["#EAE3D7", "Warm Cream"], ["#392F26", "Dark Bronze"], ["#991B1B", "Crimson Lacquer"]]}, "ru": {"cat": "Двухсветная гостиная", "title": "Колоннада из травертина", "text": "Высокие каннелированные колонны из травертина со встроенной подсветкой мягко делят кухню и просторную гостиную. По правилу 90/10 спокойная молочная база и тёплый камень дают одному рубиновому акценту чистое звучание. Нижний архитектурный свет визуально вытягивает высоту потолка без резких бликов.", "swatches": [["#C7B7A0", "Травертин"], ["#EAE3D7", "Тёплый крем"], ["#392F26", "Тёмная бронза"], ["#991B1B", "Рубиновый лак"]]}}, {"id": "plate-08", "num": "08", "img": "images/plate-08.jpg", "file": "LAV-Fire-Goat-2027-08-Circular-Dome.jpg", "en": {"cat": "Sculptural Volume", "title": "Circular Light Dome Salon", "text": "Treating the ceiling as the fifth facade, this glowing circular cove mirrors the generous arc of the quilted leather sectional below. A backlit veined stone slab warms the dark fluted timber wall beside a luminous ribbed Fire Goat art installation. Every curve guides guests naturally toward unhurried evening conversation.", "swatches": [["#6F4429", "Saddle Leather"], ["#E5DDD0", "Warm Plaster"], ["#3C2F26", "Fluted Walnut"], ["#9C221B", "Ember Red"]]}, "ru": {"cat": "Скульптурный объём", "title": "Световой купол и арт-инсталляция", "text": "Потолок здесь работает как пятый фасад: круглый световой кессон точно повторяет дугу изогнутого кожаного дивана. Подсвеченный каменный слэб согревает реечную ореховую стену рядом со светящейся скульптурой Огненной Козы. Плавная геометрия собирает пространство для неспешного вечернего общения.", "swatches": [["#6F4429", "Коньячная кожа"], ["#E5DDD0", "Штукатурка"], ["#3C2F26", "Ореховая рейка"], ["#9C221B", "Тёплый алый"]]}}, {"id": "plate-09", "num": "09", "img": "images/plate-09.jpg", "file": "LAV-Fire-Goat-2027-09-Monolith-Hearth.jpg", "en": {"cat": "Warm Minimalism", "title": "Monolithic Chimney & Raw Stone", "text": "A towering matte-black fireplace monolith rests directly on a hand-carved rough stone hearth, pairing crisp architectural discipline with elemental weight. Translucent crimson glass catches the live flames beside tall sunlit windows and built-in oak libraries. This dialogue between dark vertical mass and natural daylight defines contemporary quiet luxury.", "swatches": [["#23211F", "Matte Obsidian"], ["#7D7871", "Split Stone"], ["#9E7A56", "Natural Oak"], ["#9E1718", "Flame Glass"]]}, "ru": {"cat": "Тёплый минимализм", "title": "Монолитный камин на диком камне", "text": "Высокая чёрная каминная башня опирается прямо на глыбу колотого камня, соединяя строгую геометрию с природной массой. Прозрачное рубиновое стекло ловит живое пламя на фоне высоких окон и встроенных дубовых библиотек. Контраст тёмной вертикали и чистого дневного света формирует почерк тихой роскоши.", "swatches": [["#23211F", "Матовый чёрный"], ["#7D7871", "Дикий камень"], ["#9E7A56", "Натуральный дуб"], ["#9E1718", "Алое стекло"]]}}, {"id": "plate-10", "num": "10", "img": "images/plate-10.jpg", "file": "LAV-Fire-Goat-2027-10-Honey-Onyx-Salon.jpg", "en": {"cat": "Evening Lounge", "title": "Honey Onyx & Botanical Light", "text": "A floor-to-ceiling luminous slab of honey onyx replaces harsh overhead lighting with the soft amber glow of a permanent fireplace. Dark walnut paneling, oxblood leather club chairs, and floating porcelain blossom chandeliers create a deeply atmospheric winter retreat. Candlelit evergreen branches and a blown glass goat bring the table to life after sunset.", "swatches": [["#DDA245", "Honey Onyx"], ["#2E2019", "Espresso Walnut"], ["#542122", "Oxblood Leather"], ["#8D1517", "Ruby Crystal"]]}, "ru": {"cat": "Вечерний лаунж", "title": "Панно из медового оникса", "text": "Монументальная стена из подсвеченного янтарного оникса полностью заменяет резкий верхний свет мягким тёплым сиянием. Тёмный орех, бордовые кожаные кресла и воздушные цветочные люстры создают камерную зимнюю атмосферу. Живые свечи, хвоя и стеклянная фигура оживляют центральный стол после заката.", "swatches": [["#DDA245", "Медовый оникс"], ["#2E2019", "Тёмный орех"], ["#542122", "Бордовая кожа"], ["#8D1517", "Рубин"]]}}, {"id": "plate-11", "num": "11", "img": "images/plate-11.jpg", "file": "LAV-Fire-Goat-2027-11-Wave-Ceiling.jpg", "en": {"cat": "Editorial Drama", "title": "Wave Timber Ceiling & Ruby Crown", "text": "Undulating sculpted walnut ceiling slats cradle a bold crimson floral chandelier, uniting height and warmth in one architectural gesture. Below, a ribbed black fireplace wall and brushed brass drum table anchor velvet seating in muted taupe and burgundy. Echoing crimson at both ceiling and floor level keeps grand proportions cohesive.", "swatches": [["#5B402D", "Curved Walnut"], ["#1E1D1B", "Ribbed Graphite"], ["#B79A66", "Brushed Brass"], ["#9E1619", "Crimson Petal"]]}, "ru": {"cat": "Журнальная драматургия", "title": "Волнообразный деревянный потолок", "text": "Пластика гнутых ореховых ламелей на потолке обрамляет выразительную рубиновую люстру, объединяя высоту и тепло зала. Рельефный чёрный камин и латунный стол собирают мягкую группу в оттенках тауп и глубокого бордо. Перекличка алого цвета вверху и внизу связывает высокий интерьер по вертикали.", "swatches": [["#5B402D", "Гнутый орех"], ["#1E1D1B", "Рельефный графит"], ["#B79A66", "Матовая латунь"], ["#9E1619", "Рубин"]]}}, {"id": "plate-12", "num": "12", "img": "images/plate-12.jpg", "file": "LAV-Fire-Goat-2027-12-Botanical-Library.jpg", "en": {"cat": "Old Money Salon", "title": "Emerald Botanical Fireplace Room", "text": "Coffered dark walnut ceilings and an emerald botanical mural wrap this fireplace room in timeless heritage charm. Deep forest green is the quietest, richest foil for 2027 Fire Goat red, making glowing crimson accents feel aristocratic rather than loud. A carved limestone mantle and curved ivory sofa keep the room luminous and inviting.", "swatches": [["#2C3E2E", "Forest Tapestry"], ["#36281E", "Coffered Walnut"], ["#D8CFC1", "Limestone"], ["#941A18", "Glowing Ruby"]]}, "ru": {"cat": "Эстетика Old Money", "title": "Изумрудный ботанический зал", "text": "Кессонный потолок из тёмного ореха и глубокая ботаническая роспись наполняют каминную комнату спокойным благородством. Хвойно-изумрудный оттенок - самый тихий и богатый партнёр для огненного красного 2027 года. Резной камин из известняка и светлый изогнутый диван сохраняют воздух и лёгкость.", "swatches": [["#2C3E2E", "Изумрудная фреска"], ["#36281E", "Ореховый кессон"], ["#D8CFC1", "Известняк"], ["#941A18", "Алый акцент"]]}}, {"id": "plate-13", "num": "13", "img": "images/plate-13.jpg", "file": "LAV-Fire-Goat-2027-13-Travertine-Foyer.jpg", "en": {"cat": "Gallery Entrance", "title": "Minimalist Travertine Stair Foyer", "text": "True residential poise begins at the threshold, where monolithic honed travertine walls frame a serene architectural staircase. A rounded boucle daybed invites pause while an arched portal offers a quiet glimpse of the lit Christmas tree beyond. Placing a single Fire Goat sculpture on the marble plinth sets the mood for the entire house.", "swatches": [["#D7CBB8", "Honed Travertine"], ["#BFA98E", "Warm Sand"], ["#ECE6DC", "Ivory Boucle"], ["#9D1819", "Scarlet Lacquer"]]}, "ru": {"cat": "Парадный холл", "title": "Минималистичный холл из травертина", "text": "Статус дома читается с первого шага, когда монолитные стены из матового травертина обрамляют чистую геометрию лестницы. Округлая кушетка букле приглашает к паузе, а за аркой деликатно светится новогодняя ёлка. Один выверенный арт-объект на ступенях задаёт тон всей резиденции.", "swatches": [["#D7CBB8", "Травертин"], ["#BFA98E", "Тёплый песок"], ["#ECE6DC", "Молочный букле"], ["#9D1819", "Алый лак"]]}}, {"id": "plate-14", "num": "14", "img": "images/plate-14.jpg", "file": "LAV-Fire-Goat-2027-14-Emerald-Marble.jpg", "en": {"cat": "Organic Luxury", "title": "Olive Velvet & Backlit Green Marble", "text": "Floor-to-ceiling niches of illuminated emerald quartzite alternate with warm walnut panels behind a deep olive velvet sofa. The interplay of glowing green veining, matte wood, and dark veined marble creates rich tactile depth without excess ornament. Winter berries and a crimson Fire Goat complete the organic color chord.", "swatches": [["#274234", "Emerald Quartzite"], ["#62653E", "Olive Velvet"], ["#5D3E28", "Warm Walnut"], ["#8C181B", "Berry Crimson"]]}, "ru": {"cat": "Органическая роскошь", "title": "Оливковый бархат и зелёный кварцит", "text": "Высокие подсвеченные ниши из изумрудного кварцита чередуются с тёплыми ореховыми панелями за глубоким оливковым диваном. Союз светящегося камня, матового дерева и тёмного мрамора даёт богатую фактурность без лишнего декора. Зимние ягоды и рубиновая скульптура тонко завершают природную палитру.", "swatches": [["#274234", "Зелёный кварцит"], ["#62653E", "Оливковый бархат"], ["#5D3E28", "Орех"], ["#8C181B", "Рубиновая ягода"]]}}, {"id": "plate-15", "num": "15", "img": "images/plate-15.jpg", "file": "LAV-Fire-Goat-2027-15-Bronze-Ribbon-Light.jpg", "en": {"cat": "Daylight Elegance", "title": "Sunlit Salon & Bronze Ribbon Light", "text": "A sweeping sculptural bronze chandelier floats effortlessly above tall sunlit windows and a softly backlit alabaster bookcase. Warm champagne plaster and cream linen upholstery preserve daylight brightness even during short winter afternoons. A tabletop ruby-and-gold goat offers a refined nod to 2027 without disturbing the room's stillness.", "swatches": [["#E4DACB", "Champagne Plaster"], ["#6D543D", "Sculpted Bronze"], ["#F0EBE2", "Linen Cream"], ["#981918", "Ruby Gold"]]}, "ru": {"cat": "Дневная эстетика", "title": "Светлый салон и бронзовая лента", "text": "Скульптурная бронзовая люстра легко парит между высокими окнами и подсвеченным стеллажом с тёплой каменной спинкой. Оттенки шампанского и сливочного льна сохраняют ощущение света даже в короткий зимний день. Небольшая рубиновая фигура с золотом деликатно отмечает 2027 год, не нарушая тишины комнаты.", "swatches": [["#E4DACB", "Шампань"], ["#6D543D", "Бронза"], ["#F0EBE2", "Сливочный лён"], ["#981918", "Рубин и золото"]]}}, {"id": "plate-16", "num": "16", "img": "images/plate-16.jpg", "file": "LAV-Fire-Goat-2027-16-Modern-Timber.jpg", "en": {"cat": "Contemporary Loft", "title": "Double-Height Oak Chalet Salon", "text": "Clean oak wall paneling, a hovering ring chandelier, and a glowing alabaster floor cone bring modern architectural clarity to chalet living. Oversized modular sofas rest on a large woven rug that anchors the expansive veined marble floor. Standing full-scale beside the seating group, the Fire Goat acts as bold contemporary sculpture.", "swatches": [["#A68B6B", "Brushed Oak"], ["#C7C3BC", "Limestone Grey"], ["#F3DEC2", "Alabaster Glow"], ["#9B1C1B", "Crimson Art"]]}, "ru": {"cat": "Современное шале", "title": "Двухсветная гостиная в светлом дубе", "text": "Чистые дубовые панели, парящее световое кольцо и тёплый напольный торшер-конус придают загородному шале современную лёгкость. Глубокие модульные диваны на крупном ковре уверенно собирают просторный мраморный зал. Полноразмерная скульптура Огненной Козы работает здесь как объект современного искусства.", "swatches": [["#A68B6B", "Светлый дуб"], ["#C7C3BC", "Серый камень"], ["#F3DEC2", "Тёплый свет"], ["#9B1C1B", "Алый арт"]]}}, {"id": "plate-17", "num": "17", "img": "images/plate-17.jpg", "file": "LAV-Fire-Goat-2027-17-Brass-Dome.jpg", "en": {"cat": "Conservatory Pavilion", "title": "Brushed Brass Dome & Winter Garden", "text": "A recessed brushed-brass ceiling dome and spiral crystal chandelier crown a serene conversation circle framed in slim black steel glazing. Illuminated garden trees outside act as living nocturnal artwork, extending the room straight into nature. Soft ivory and sage seating keeps the crimson centerpiece crisp and effortless.", "swatches": [["#7A6345", "Aged Brass"], ["#79836D", "Sage Linen"], ["#1D1E1F", "Black Steel"], ["#971A19", "Ruby Accent"]]}, "ru": {"cat": "Стеклянный павильон", "title": "Латунный купол и зимний сад", "text": "Углублённый купол из матовой латуни и спиральная люстра венчают камерную диванную группу за тонкими чёрными рамами остекления. Подсвеченные деревья во дворе работают как живая вечерняя картина, растворяя границу с садом. Сочетание шалфейного и молочного текстиля подчёркивает чистоту рубинового акцента.", "swatches": [["#7A6345", "Матовая латунь"], ["#79836D", "Шалфей"], ["#1D1E1F", "Чёрная сталь"], ["#971A19", "Рубин"]]}}, {"id": "plate-18", "num": "18", "img": "images/plate-18.jpg", "file": "LAV-Fire-Goat-2027-18-Mirror-Columns.jpg", "en": {"cat": "Architectural Mirrors", "title": "Bronzed Mirror Wall & Sculpted Brass", "text": "Tinted bronzed mirror panels set between tall dark columns double the warm sparkle of the holiday tree without cold glare. Sculpted patinated brass coffee tables anchor curved sage seating on a circular rug. The result feels serene, rhythmic, and unmistakably tailored for quiet evening gatherings.", "swatches": [["#85755B", "Bronzed Mirror"], ["#2D2620", "Dark Espresso"], ["#9EA394", "Muted Sage"], ["#931618", "Crimson Glaze"]]}, "ru": {"cat": "Работа с зеркалами", "title": "Бронзовые зеркала и колонны", "text": "Тонированные зеркальные панели между строгими тёмными колоннами удваивают сияние ёлки без холодного офисного блика. Скульптурные латунные столики собирают плавную диванную группу на круглом ковре. Пространство звучит ритмично, глубоко и удивительно спокойно.", "swatches": [["#85755B", "Бронзовое зеркало"], ["#2D2620", "Эспрессо"], ["#9EA394", "Мягкий шалфей"], ["#931618", "Алая глазурь"]]}}, {"id": "plate-19", "num": "19", "img": "images/plate-19.jpg", "file": "LAV-Fire-Goat-2027-19-Curved-Stair-Cove.jpg", "en": {"cat": "Private Residence", "title": "Sweeping Staircase & Walnut Burl", "text": "A luminous curved ceiling cove draws the eye gently toward a sweeping white staircase dressed with warm evergreen garland. At the center, travertine and sculptural walnut burl tables create an intimate contrast of matte grain beneath glossy ruby lacquer. Illuminated walnut vitrines give the far wall gallery-like warmth.", "swatches": [["#6B452B", "Walnut Burl"], ["#EAE4DA", "Warm Ivory"], ["#D5C9B6", "Travertine"], ["#991B1B", "Ruby Lacquer"]]}, "ru": {"cat": "Частная резиденция", "title": "Плавная лестница и кап ореха", "text": "Световая ниша на потолке мягко ведёт взгляд к парадной белой лестнице, украшенной живой хвойной гирляндой. В центре гостиной столики из травертина и капа ореха создают благородный контраст фактур под глянцевым рубиновым лаком. Подсвеченные ореховые витрины наполняют глубину комнаты тёплым светом.", "swatches": [["#6B452B", "Кап ореха"], ["#EAE4DA", "Слоновая кость"], ["#D5C9B6", "Травертин"], ["#991B1B", "Рубиновый лак"]]}}, {"id": "plate-20", "num": "20", "img": "images/plate-20.jpg", "file": "LAV-Fire-Goat-2027-20-Private-Bar.jpg", "en": {"cat": "Private Club Lounge", "title": "Arched Walnut Residence Bar", "text": "An arched illuminated home bar in brushed metal and rich walnut turns a residential lounge into an intimate members-club setting. Soft ivory curved upholstery and a fluted brass pedestal table keep the atmosphere relaxed yet ceremonial for 2027 hosting. Warm linear lighting inside the bar arch draws focus effortlessly after dusk.", "swatches": [["#4B3324", "American Walnut"], ["#B7A58A", "Champagne Metal"], ["#EBE4D9", "Cream Boucle"], ["#9E1A1A", "Scarlet Accent"]]}, "ru": {"cat": "Клубный лаунж", "title": "Арочный домашний бар в орехе", "text": "Подсвеченная арочная барная зона в шпоне ореха и металле превращает гостиную в камерный клубный лаунж для приёма гостей. Светлый изогнутый диван и столик на каннелированном латунном основании поддерживают расслабленный, но торжественный ритм. Тёплый контурный свет внутри арки мягко собирает вечернюю сцену.", "swatches": [["#4B3324", "Американский орех"], ["#B7A58A", "Светлый металл"], ["#EBE4D9", "Кремовый букле"], ["#9E1A1A", "Алый акцент"]]}}, {"id": "plate-21", "num": "21", "img": "images/plate-21.jpg", "file": "LAV-Fire-Goat-2027-21-Fresco-Villa.jpg", "en": {"cat": "Lunar New Year Villa", "title": "Fresco Ceiling Resort Residence", "text": "Designed for warm-climate villas celebrating the February 6, 2027 Lunar New Year, this sunlit salon trades snow for lush tropical garden glazing. An inlaid ornamental ceiling medallion echoes the burgundy leather ottoman and blown ruby glass goat on the brushed gold drum table. Proof that Fire Goat elegance translates effortlessly to every climate.", "swatches": [["#8F483E", "Terracotta Fresco"], ["#B8985D", "Brushed Gold"], ["#5D2025", "Burgundy Leather"], ["#A11819", "Blown Ruby"]]}, "ru": {"cat": "Южная резиденция", "title": "Вилла с орнаментальным куполом", "text": "Прочтение восточного Нового года 6 февраля 2027 для вилл в тёплом климате, где вместо снега за окнами раскрывается зелёный сад. Орнаментальный плафон на потолке рифмуется с бордовым кожаным пуфом и рубиновой стеклянной фигурой на золотом столе. Эстетика года Огненной Козы одинаково благородно звучит в любой точке мира.", "swatches": [["#8F483E", "Терракота"], ["#B8985D", "Матовое золото"], ["#5D2025", "Бордовая кожа"], ["#A11819", "Рубиновое стекло"]]}}];
+    const BY_ID = Object.fromEntries(SPREADS.map((s) => [s.id, s]));
+
+    const UI = {
+      en: {
+        navPortfolio: 'Portfolio', navAbout: 'About', navProcess: 'Process', navPricing: 'Pricing',
+        brandSub: 'Interior Design & Architecture', navVisualStudio: 'LAV Visual Studio',
+        railSub: 'YEAR OF THE RED FIRE GOAT · 21 SPREADS', railIndex: 'Index', railStart: 'Plate 01', railOrder: 'Order Design',
+        covKicker: 'SPECIAL EDITION · 2027', covTitle: 'Year of the<br>Fire Goat',
+        covText: 'Beginning February 6, 2027, the Eastern calendar enters the rare 60-year cycle of the Yin Fire Goat. Across 21 quiet luxury spreads, we explore how travertine, dark walnut, candlelight, and a single sculptural crimson accent transform festive styling into timeless architecture.',
+        f1L: 'Lunar Cycle', f1V: 'Feb 6, 2027', f2L: 'Element', f2V: 'Yin Fire', f3L: 'Collection', f3V: '21 Plates',
+        covRead: 'Start Reading ↓', covOrder: 'Order Room Concepts (48h)',
+        tocLabel: 'CONTENTS · 21 PLATES', tocSub: 'CLICK TO JUMP',
+        zoomLabel: 'View & Wallpaper ↗', paletteLabel: 'Color & Material Palette',
+        orderRoomLink: 'Order this aesthetic for my room →', wallpaperBtn: 'HD Wallpaper ↗',
+        endKicker: 'LAV INTERIORS · COMMISSION', endWorld: 'REMOTE WORLDWIDE',
+        endTitle: 'Bring This Issue Into Your Home',
+        endText: 'Every interior in this 2027 journal follows our studio system: natural stone, timber warmth, architectural lighting hierarchy, and tailored joinery. Whether you want rapid visual concepts for one room or a complete turnkey design project, we work remotely worldwide.',
+        servLabel: 'HOW TO START', off1T: 'Style Vision Concepts (48h)', off1P: 'From $99',
+        off1D: 'Send a photo or dimensions of your space and receive 30 to 50 custom design concepts tailored to your real room. Optional Plan + Vision with floor layout in 72 hours ($199).',
+        off1Btn: 'Order Style Vision →',
+        off2T: 'Full Design Project', off2P: 'Turnkey',
+        off2D: 'Complete architectural and interior system: spatial layout, photorealistic visualization, builder-ready ArchiCAD working drawings, custom furniture detailing, and full procurement lists.',
+        off2Btn: 'Calculate Project →', off2Btn2: 'Contact Studio', backTop: '↑ Back to Cover',
+        dlgClose: 'Close ✕', dlgDownload: 'Download Mobile Wallpaper (HD)',
+        dlgOrder: 'Order Concepts for My Room (48h) →', dlgDiscuss: 'Discuss Full Design Project',
+        footDesc: 'A contemporary editorial luxury approach to interiors, architecture, landscape and commercial spaces. Payment terms, contract details and scope are discussed individually outside the website.',
+        footHome: 'Main Site', footConcepts: 'Style Vision',
+        privacyLink: 'Privacy Policy', termsLink: 'Terms of Use', cookiesLink: 'Cookie Policy'
+      },
+      ru: {
+        navPortfolio: 'Портфолио', navAbout: 'О студии', navProcess: 'Процесс', navPricing: 'Стоимость',
+        brandSub: 'Дизайн интерьеров и архитектура', navVisualStudio: 'LAV Visual Studio',
+        railSub: 'ГОД КРАСНОЙ ОГНЕННОЙ КОЗЫ · 21 РАЗВОРОТ', railIndex: 'Содержание', railStart: 'Кадр 01', railOrder: 'Заказать',
+        covKicker: 'СПЕЦВЫПУСК · 2027', covTitle: 'Год Огненной<br>Козы',
+        covText: '6 февраля 2027 года по восточному календарю наступает редкий 60-летний цикл Иньской Огненной Козы. На 21 минималистичном развороте мы показываем, как травертин, тёмный орех, свет свечей и один рубиновый арт-объект превращают новогодний декор в архитектуру вне времени.',
+        f1L: 'Восточный цикл', f1V: '6 фев 2027', f2L: 'Стихия года', f2V: 'Огонь Инь', f3L: 'В выпуске', f3V: '21 разворот',
+        covRead: 'Листать выпуск ↓', covOrder: 'Концепция комнаты (48 ч)',
+        tocLabel: 'СОДЕРЖАНИЕ · 21 КАДР', tocSub: 'НАЖМИТЕ ДЛЯ ПЕРЕХОДА',
+        zoomLabel: 'Открыть и обои ↗', paletteLabel: 'Цветовая и материальная палитра',
+        orderRoomLink: 'Хочу такую эстетику для своей комнаты →', wallpaperBtn: 'Обои HD ↗',
+        endKicker: 'LAV INTERIORS · ЗАКАЗ ПРОЕКТА', endWorld: 'УДАЛЁННО ПО ВСЕМУ МИРУ',
+        endTitle: 'Примерьте этот выпуск на свой дом',
+        endText: 'Каждый интерьер этого журнала построен по системе нашей студии: натуральный камень, тепло дерева, выверенный свет и точная столярка. Мы работаем удалённо по всему миру - от экспресс-концепций за 48 часов до полного проекта под ключ.',
+        servLabel: 'КАК НАЧАТЬ', off1T: 'Концепции Style Vision (48 ч)', off1P: 'От $99',
+        off1D: 'Пришлите фото или обмер комнаты и получите 30–50 авторских концепций под реальную геометрию вашего пространства. Есть пакет Plan + Vision с планировкой за 72 часа ($199).',
+        off1Btn: 'Заказать Style Vision →',
+        off2T: 'Полный дизайн-проект', off2P: 'Под ключ',
+        off2D: 'Системный проект без хаоса: эргономичная планировка, фотореалистичная визуализация, рабочие чертежи в ArchiCAD, столярные узлы и полная ведомость комплектации.',
+        off2Btn: 'Рассчитать проект →', off2Btn2: 'Связаться со студией', backTop: '↑ К обложке',
+        dlgClose: 'Закрыть ✕', dlgDownload: 'Скачать обои на телефон (HD)',
+        dlgOrder: 'Заказать концепцию комнаты (48 ч) →', dlgDiscuss: 'Обсудить полный проект',
+        footDesc: 'Современный журнальный подход к частным и коммерческим интерьерам, архитектуре и ландшафту. Условия оплаты, сроки и состав работ обсуждаются индивидуально вне сайта.',
+        footHome: 'Главный сайт', footConcepts: 'Style Vision',
+        privacyLink: 'Политика конфиденциальности', termsLink: 'Условия использования', cookiesLink: 'Политика Cookies'
+      }
+    };
+
+    let currentLang = 'en';
+    let activeId = 'plate-01';
+
+    const dialog = document.getElementById('plateDialog');
+    const dlgImg = document.getElementById('dlgImg');
+    const dlgKicker = document.getElementById('dlgKicker');
+    const dlgTitle = document.getElementById('dlgTitle');
+    const dlgNote = document.getElementById('dlgNote');
+    const dlgSwatches = document.getElementById('dlgSwatches');
+    const dlgDownload = document.getElementById('dlgDownload');
+
+    function openPlate(id) {
+      const s = BY_ID[id];
+      if (!s) return;
+      activeId = id;
+      const copy = s[currentLang];
+      dlgImg.src = s.img;
+      dlgImg.alt = copy.title;
+      dlgKicker.textContent = `PLATE ${s.num} / 21 · ${copy.cat.toUpperCase()}`;
+      dlgTitle.textContent = copy.title;
+      dlgNote.textContent = copy.text;
+      dlgSwatches.innerHTML = copy.swatches.map(([hex, lbl]) =>
+        `<div class="swatch-item"><span class="swatch-color" style="background:${hex}"></span><span class="swatch-label">${lbl}</span></div>`
+      ).join('');
+      dlgDownload.href = s.img;
+      dlgDownload.setAttribute('download', s.file);
+      if (!dialog.open) dialog.showModal();
+    }
+
+    function applyLang(lang) {
+      currentLang = lang === 'ru' ? 'ru' : 'en';
+      document.documentElement.lang = currentLang;
+      document.getElementById('langEN').classList.toggle('active', currentLang === 'en');
+      document.getElementById('langRU').classList.toggle('active', currentLang === 'ru');
+
+      const dict = UI[currentLang];
+      document.querySelectorAll('[data-i18n]').forEach((el) => {
+        const k = el.getAttribute('data-i18n');
+        if (!dict[k]) return;
+        if (dict[k].includes('<br>')) el.innerHTML = dict[k];
+        else el.textContent = dict[k];
+      });
+
+      for (const s of SPREADS) {
+        const copy = s[currentLang];
+        document.querySelectorAll(`[data-sp-cat="${s.id}"]`).forEach((el) => el.textContent = copy.cat);
+        document.querySelectorAll(`[data-sp-title="${s.id}"]`).forEach((el) => el.textContent = copy.title);
+        document.querySelectorAll(`[data-sp-text="${s.id}"]`).forEach((el) => el.textContent = copy.text);
+        copy.swatches.forEach(([, lbl], si) => {
+          document.querySelectorAll(`[data-sw="${s.id}-${si}"]`).forEach((el) => el.textContent = lbl);
+        });
+      }
+
+      if (dialog.open) openPlate(activeId);
+      try { localStorage.setItem('lav_fire_goat_lang', currentLang); } catch (_) {}
+    }
+
+    document.addEventListener('click', (e) => {
+      const trigger = e.target.closest('[data-plate-id]');
+      if (trigger) openPlate(trigger.dataset.plateId);
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        const trigger = e.target.closest('[data-plate-id]');
+        if (trigger) {
+          e.preventDefault();
+          openPlate(trigger.dataset.plateId);
+        }
+      }
+    });
+
+    document.getElementById('langEN').addEventListener('click', () => applyLang('en'));
+    document.getElementById('langRU').addEventListener('click', () => applyLang('ru'));
+
+    // Mandatory light-dismiss fallback for browsers without <dialog closedby>
+    if (!('closedBy' in HTMLDialogElement.prototype)) {
+      const outside = (e, dlg) => {
+        const r = dlg.getBoundingClientRect();
+        return e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom;
+      };
+      let pressedOutside = false;
+      dialog.addEventListener('pointerdown', (e) => { pressedOutside = outside(e, dialog); });
+      dialog.addEventListener('pointerup', (e) => { if (pressedOutside && outside(e, dialog)) dialog.close(); });
+    }
+
+    const bar = document.getElementById('readProgressBar');
+    function updateProgress() {
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      bar.style.transform = `scaleX(${max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0})`;
+    }
+    window.addEventListener('scroll', updateProgress, { passive: true });
+    window.addEventListener('resize', updateProgress, { passive: true });
+
+    const params = new URLSearchParams(window.location.search);
+    let savedLang = null;
+    try { savedLang = localStorage.getItem('lav_fire_goat_lang'); } catch (_) {}
+    applyLang(params.get('lang') || savedLang || 'en');
+    updateProgress();
+  </script>
+</body>
+</html>
